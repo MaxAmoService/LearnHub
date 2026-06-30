@@ -1,0 +1,402 @@
+// =============================================================================
+// Mathe 1 Grundlagen — Übungsaufgaben (Leicht / Mittel / Schwer / Prüfung)
+// =============================================================================
+
+import { Exercise } from "./mathExercises";
+
+const moduleId = "adv-mathe1";
+
+// ===========================================================================
+// LEICHT (Difficulty 1) — 6 Aufgaben
+// ===========================================================================
+
+export const mathe1PracticeLeicht: Exercise[] = [
+  {
+    id: "ma1-u-1",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "input",
+    question: "Berechne $|\\mathcal{P}(\\{a, b, c\\})|$, also die Kardinalität der Potenzmenge einer 3-elementigen Menge.",
+    expectedAnswer: "8",
+    format: "Zahl",
+    solution: "$|\\mathcal{P}(M)| = 2^{|M|} = 2^3 = 8$. Die Potenzmenge enthält: $\\emptyset, \\{a\\}, \\{b\\}, \\{c\\}, \\{a,b\\}, \\{a,c\\}, \\{b,c\\}, \\{a,b,c\\}$.",
+  },
+  {
+    id: "ma1-u-2",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "multiple",
+    question: "Welche der folgenden Aussagen zu Mengen ist **falsch**?",
+    options: [
+      { label: "$\\{1, 2, 2, 3\\} = \\{1, 2, 3\\}$ (Doppelte Einträge zählen nicht)", value: "a" },
+      { label: "$\\emptyset \\subseteq M$ für jede Menge $M$", value: "b" },
+      { label: "$\\emptyset \\in \\mathcal{P}(M)$ für jede Menge $M$", value: "c" },
+      { label: "$\\{1\\} \\subseteq \\mathcal{P}(\\{1,2\\})$", value: "d" },
+    ],
+    correctOption: "d",
+    solution: "$\\{1\\}$ ist ein ELEMENT der Potenzmenge, aber keine TEILMENGE. Korrekt wäre: $\\{\\{1\\}\\} \\subseteq \\mathcal{P}(\\{1,2\\})$ oder $\\{1\\} \\in \\mathcal{P}(\\{1,2\\})$. Alle anderen Aussagen sind wahr.",
+  },
+  {
+    id: "ma1-u-3",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "input",
+    question: "Berechne $\\sum_{k=1}^{5} (2k - 1)$, also die Summe der ersten 5 ungeraden Zahlen.",
+    expectedAnswer: "25",
+    format: "Zahl",
+    solution: "$\\sum_{k=1}^{5} (2k-1) = 1 + 3 + 5 + 7 + 9 = 25 = 5^2$. Merke: Die Summe der ersten $n$ ungeraden Zahlen ist $n^2$.",
+  },
+  {
+    id: "ma1-u-4",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "input",
+    question: "Berechne $\\binom{7}{2}$, den Binomialkoeffizienten.",
+    expectedAnswer: "21",
+    format: "Zahl",
+    solution: "$\\binom{7}{2} = \\frac{7 \\cdot 6}{2 \\cdot 1} = 21$. Oder symmetrisch: $\\binom{7}{2} = \\binom{7}{5}$.",
+  },
+  {
+    id: "ma1-u-5",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "input",
+    question: "Berechne $|3 + 4j|$, den Betrag der komplexen Zahl $z = 3 + 4j$.",
+    expectedAnswer: "5",
+    format: "Zahl",
+    solution: "$|z| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$. Das ist das bekannte 3-4-5-Pythagoras-Tripel!",
+  },
+  {
+    id: "ma1-u-6",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "multiple",
+    question: "Was ist der $\\lim_{n \\to \\infty} \\frac{2n + 1}{n - 3}$?",
+    options: [
+      { label: "0", value: "a" },
+      { label: "2", value: "b" },
+      { label: "1", value: "c" },
+      { label: "$\\infty$", value: "d" },
+    ],
+    correctOption: "b",
+    solution: "Durch $n$ kürzen: $\\frac{2 + 1/n}{1 - 3/n} \\to \\frac{2}{1} = 2$. Gleicher Zähler- und Nennergrad → Grenzwert = Verhältnis der Leitkoeffizienten.",
+  },
+];
+
+// ===========================================================================
+// MITTEL (Difficulty 2) — 6 Aufgaben
+// ===========================================================================
+
+export const mathe1PracticeMittel: Exercise[] = [
+  {
+    id: "ma1-u-7",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "input",
+    question: "Wie viele injektive Abbildungen $f: \\{1,2,3\\} \\to \\{a,b,c,d,e\\}$ gibt es?",
+    expectedAnswer: "60",
+    format: "Zahl",
+    solution: "$5 \\cdot 4 \\cdot 3 = 60$. Für das erste Urbild 5 Möglichkeiten, für das zweite noch 4 (muss verschieden sein), für das dritte noch 3.",
+  },
+  {
+    id: "ma1-u-8",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "multiple",
+    question: "Beim Induktionsbeweis von $\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$ — was ist der korrekte Induktionsschritt?",
+    options: [
+      { label: "$\\frac{n(n+1)}{2} + (n+1) = \\frac{(n+1)(n+2)}{2}$", value: "a" },
+      { label: "$\\frac{n(n-1)}{2} + n = \\frac{n(n+1)}{2}$", value: "b" },
+      { label: "$n + (n+1) = 2n + 1$", value: "c" },
+      { label: "$\\frac{(n+1)(n+2)}{2} - \\frac{n(n+1)}{2} = n+1$", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "$\\sum_{i=1}^{n+1} i = \\sum_{i=1}^{n} i + (n+1) \\overset{\\text{IV}}{=} \\frac{n(n+1)}{2} + (n+1) = \\frac{n(n+1) + 2(n+1)}{2} = \\frac{(n+1)(n+2)}{2}$ ✓",
+  },
+  {
+    id: "ma1-u-9",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "multiple",
+    question: "Löse die Ungleichung: $|2x - 3| < 5$. Was ist die Lösungsmenge?",
+    options: [
+      { label: "$(-1, 4)$", value: "a" },
+      { label: "$(1, 4)$", value: "b" },
+      { label: "$(-4, 1)$", value: "c" },
+      { label: "$(-\\infty, 4)$", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "$|2x-3| < 5 \\iff -5 < 2x-3 < 5$. $+3$: $-2 < 2x < 8$. $:2$: $-1 < x < 4$. Also $L = (-1, 4)$.",
+  },
+  {
+    id: "ma1-u-10",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "input",
+    question: "Berechne $\\lim_{n \\to \\infty} \\left(1 + \\frac{4}{n}\\right)^n$.",
+    expectedAnswer: "e^4",
+    format: "Mathematischer Ausdruck",
+    hint: "Denke an die Euler-Grenzwertformel: $\\lim (1 + a/n)^n = e^a$",
+    solution: "Mit der Euler-Formel: $\\lim_{n \\to \\infty} (1 + \\frac{4}{n})^n = e^4$. Hier ist $a = 4$.",
+  },
+  {
+    id: "ma1-u-11",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "input",
+    question: "Wandle $z = -1 - j\\sqrt{3}$ in Polarform um und gib den Winkel als Bruchteil von $\\pi$ an (z.B. \"4pi/3\").",
+    expectedAnswer: "4pi/3",
+    format: "Winkel (z.B. 5pi/6)",
+    hint: "Der Punkt liegt im 3. Quadranten. $|z| = \\sqrt{1 + 3} = 2$.",
+    solution: "$|z| = \\sqrt{(-1)^2 + (-\\sqrt{3})^2} = \\sqrt{1+3} = 2$. $\\tan\\varphi = \\frac{-\\sqrt{3}}{-1} = \\sqrt{3}$, was $\\frac{\\pi}{3}$ entspricht. Da beide Komponenten negativ sind (3. Quadrant): $\\varphi = \\pi + \\frac{\\pi}{3} = \\frac{4\\pi}{3}$. Also $z = 2\\angle\\frac{4\\pi}{3}$.",
+  },
+  {
+    id: "ma1-u-12",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "multiple",
+    question: "Welcher Ansatz ist richtig, um $\\frac{x+1}{x-2} \\geq 3$ zu lösen?",
+    options: [
+      { label: "Fallunterscheidung: $x > 2$ und $x < 2$ (wegen Vorzeichen von $x-2$)", value: "a" },
+      { label: "Einfach mit $(x-2)$ multiplizieren — das Vorzeichen ist egal", value: "b" },
+      { label: "Beide Seiten quadrieren", value: "c" },
+      { label: "Substitution $u = x+1$", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "Da $x-2$ je nach $x$ positiv oder negativ sein kann, muss eine Fallunterscheidung gemacht werden. Bei Multiplikation mit einem negativen Ausdruck dreht sich das Ungleichheitszeichen um! $x=2$ ist Definitionslücke.",
+  },
+];
+
+// ===========================================================================
+// SCHWER (Difficulty 3) — 8 Aufgaben
+// ===========================================================================
+
+export const mathe1PracticeSchwer: Exercise[] = [
+  {
+    id: "ma1-u-13",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "multiple",
+    question: "Zeige mit Induktion: $6 \\mid (7^n - 1)$ für alle $n \\in \\mathbb{N}$. Was ist der Schlüssel zum Induktionsschritt?",
+    options: [
+      { label: "$7^{n+1} - 1 = 7 \\cdot 7^n - 1 = (6+1)7^n - 1 = 6 \\cdot 7^n + (7^n - 1)$ — beide Summanden durch 6 teilbar", value: "a" },
+      { label: "$7^{n+1} - 1 = 6 \\cdot 7^n$", value: "b" },
+      { label: "Direkter Beweis ohne Induktion ist einfacher", value: "c" },
+      { label: "$7^{n+1} = 7(6k+1) = 42k+7$ für $7^n = 6k+1$", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "Der Trick: $7 = 6 + 1$, also $7 \\cdot 7^n = (6+1)7^n = 6 \\cdot 7^n + 7^n$. Dann ist $7^{n+1} - 1 = 6 \\cdot 7^n + (7^n - 1)$. Nach IV ist $7^n - 1$ durch 6 teilbar, der erste Summand offensichtlich auch. ✓",
+  },
+  {
+    id: "ma1-u-14",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Löse $\\frac{x^2 - x - 6}{x + 2} \\geq 0$. Gib die Lösungsmenge als Intervall(e) an (z.B. \"(-∞,-2)∪[3,∞)\").",
+    expectedAnswer: "(-∞,-2)∪[3,∞)",
+    format: "Intervall (z.B. (-∞,2]∪(3,∞))",
+    hint: "Zähler faktorisieren: $x^2 - x - 6 = (x-3)(x+2)$. Dann kürzen — aber Vorsicht mit der Definitionslücke!",
+    solution: "Zähler: $(x-3)(x+2)$. Bruch: $\\frac{(x-3)(x+2)}{x+2} = x-3$ für $x \\neq -2$. Ungleichung $x-3 \\geq 0 \\to x \\geq 3$. ABER: $x=-2$ ist Definitionslücke! Bei $x=-2$ ist der Bruch nicht definiert. Also: $L = [3, \\infty)$. WICHTIG: $-2$ ist nicht in $L$!",
+  },
+  {
+    id: "ma1-u-15",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Berechne $\\lim_{n \\to \\infty} \\left(\\frac{n+5}{n+2}\\right)^{3n}$.",
+    expectedAnswer: "e^9",
+    format: "Mathematischer Ausdruck (z.B. e^3)",
+    hint: "$\\frac{n+5}{n+2} = 1 + \\frac{3}{n+2}$",
+    solution: "$\\frac{n+5}{n+2} = 1 + \\frac{3}{n+2}$. Dann: $(1 + \\frac{3}{n+2})^{3n} = [(1 + \\frac{3}{n+2})^{n+2}]^{\\frac{3n}{n+2}} \\to (e^3)^3 = e^9$.",
+  },
+  {
+    id: "ma1-u-16",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Bestimme alle komplexen Lösungen von $z^4 = -4$ und gib den Betrag der Lösungen an.",
+    expectedAnswer: "sqrt(2)",
+    format: "Zahl oder Ausdruck (z.B. sqrt(2))",
+    hint: "$-4 = 4\\angle\\pi$ in Polarform. $\\sqrt[4]{4} = \\sqrt{2}$.",
+    solution: "$z^4 = 4\\angle\\pi$. Betrag: $r = \\sqrt[4]{4} = (2^2)^{1/4} = 2^{1/2} = \\sqrt{2}$. Winkel: $\\varphi_k = \\frac{\\pi + 2k\\pi}{4}$, $k = 0,1,2,3$. Die 4 Lösungen liegen auf dem Kreis mit Radius $\\sqrt{2}$.",
+  },
+  {
+    id: "ma1-u-17",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "multiple",
+    question: "Bestimme alle reellen $x$ mit $\\frac{|x-2|}{x+1} \\leq 1$. Welcher Fall muss betrachtet werden?",
+    options: [
+      { label: "Fall 1: $x > -1$ (Nenner positiv), Fall 2: $x < -1$ (Nenner negativ), jeweils mit $|x-2|$ Auflösung", value: "a" },
+      { label: "Nur $x > 2$ und $x < 2$ (wegen Betrag)", value: "b" },
+      { label: "Einfach $\\pm(x-2) \\leq x+1$ für beide Vorzeichen", value: "c" },
+      { label: "Die Ungleichung hat keine Lösung", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "Definitionsmenge: $x \\neq -1$. Fallunterscheidung nach Nenner-Vorzeichen UND Betragsauflösung. $|x-2| = x-2$ für $x \\geq 2$, $|x-2| = -(x-2)$ für $x < 2$. Insgesamt 3 Fälle: $x < -1$, $-1 < x < 2$, $x \\geq 2$. Lösung: $x \\in (-1, \\infty)$.",
+  },
+  {
+    id: "ma1-u-18",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Bestimme alle Nullstellen des Polynoms $p(z) = z^3 - 1$ in $\\mathbb{C}$ und gib die Anzahl der reellen Nullstellen an.",
+    expectedAnswer: "1",
+    format: "Zahl",
+    hint: "Eine Nullstelle ist offensichtlich $z=1$. Die anderen beiden sind $e^{\\pm 2\\pi j/3}$.",
+    solution: "$z^3 = 1 = 1\\angle 0$. Die 3 Lösungen: $z_0 = 1$, $z_1 = e^{2\\pi j/3} = -\\frac{1}{2} + j\\frac{\\sqrt{3}}{2}$, $z_2 = e^{-2\\pi j/3} = -\\frac{1}{2} - j\\frac{\\sqrt{3}}{2}$. Nur $z_0 = 1$ ist reell. Also: 1 reelle Nullstelle.",
+  },
+  {
+    id: "ma1-u-19",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "multiple",
+    question: "Für welche $c \\in \\mathbb{R}$ gilt $\\lim_{n \\to \\infty} \\frac{(c^2-1)n^2 + 3n}{n^2 + 1} = 0$?",
+    options: [
+      { label: "$c = \\pm 1$", value: "a" },
+      { label: "$c = 0$", value: "b" },
+      { label: "$c = \\pm 2$", value: "c" },
+      { label: "Für kein $c$", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "$\\lim = c^2 - 1$ (Koeffizient der höchsten Potenz). Damit der Grenzwert 0 ist: $c^2 - 1 = 0 \\to c = \\pm 1$.",
+  },
+  {
+    id: "ma1-u-20",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Beweise: $\\binom{n}{k} = \\binom{n}{n-k}$. Gib den Wert von $\\binom{10}{8}$ an.",
+    expectedAnswer: "45",
+    format: "Zahl",
+    solution: "$\\binom{10}{8} = \\binom{10}{2} = \\frac{10 \\cdot 9}{2} = 45$. Die Symmetrie $\\binom{n}{k} = \\binom{n}{n-k}$ spart Rechenarbeit!",
+  },
+];
+
+// ===========================================================================
+// PRÜFUNG (Exam Mode) — 10 Aufgaben (alle Schwierigkeiten gemischt)
+// ===========================================================================
+
+export const mathe1Exam: Exercise[] = [
+  // Schwierigkeit 1
+  {
+    id: "ma1-ex-1",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "input",
+    question: "Berechne $\\sum_{k=1}^{4} k^2$.",
+    expectedAnswer: "30",
+    format: "Zahl",
+    solution: "$1^2 + 2^2 + 3^2 + 4^2 = 1 + 4 + 9 + 16 = 30$.",
+  },
+  {
+    id: "ma1-ex-2",
+    lessonId: moduleId,
+    difficulty: 1,
+    type: "multiple",
+    question: "Was ist $\\mathcal{P}(\\{1,2\\})$?",
+    options: [
+      { label: "$\\{\\emptyset, \\{1\\}, \\{2\\}, \\{1,2\\}\\}$", value: "a" },
+      { label: "$\\{\\{1\\}, \\{2\\}, \\{1,2\\}\\}$", value: "b" },
+      { label: "$\\{1, 2, \\{1,2\\}\\}$", value: "c" },
+      { label: "$\\{1, 2\\}$", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "Die Potenzmenge enthält alle Teilmengen, inklusive der leeren Menge! $2^2 = 4$ Elemente.",
+  },
+  // Schwierigkeit 2
+  {
+    id: "ma1-ex-3",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "input",
+    question: "Löse die Ungleichung: $\\frac{x}{x-2} > 1$ für $x \\neq 2$. Gib die Lösungsmenge als Intervall an.",
+    expectedAnswer: "(2,∞)",
+    format: "Intervall (z.B. (2,∞))",
+    solution: "$\\frac{x}{x-2} > 1 \\iff \\frac{x - (x-2)}{x-2} > 0 \\iff \\frac{2}{x-2} > 0 \\iff x-2 > 0 \\iff x > 2$. Also $L = (2, \\infty)$.",
+  },
+  {
+    id: "ma1-ex-4",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "input",
+    question: "Berechne den Grenzwert: $\\lim_{n \\to \\infty} \\frac{5n^3 + 2n}{2n^3 - n^2}$.",
+    expectedAnswer: "2.5",
+    tolerance: 0.1,
+    format: "Zahl oder Bruch",
+    solution: "$\\lim \\frac{5 + 2/n^2}{2 - 1/n} = \\frac{5}{2} = 2{,}5$.",
+  },
+  {
+    id: "ma1-ex-5",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "multiple",
+    question: "Der Induktionsanfang für $\\sum_{i=1}^{n} i^3 = (\\sum_{i=1}^{n} i)^2$ mit $n=1$ liefert:",
+    options: [
+      { label: "$1 = 1$ ✓", value: "a" },
+      { label: "$1 = 0$ ✗", value: "b" },
+      { label: "$3 = 2$ ✗", value: "c" },
+      { label: "Die Aussage ist für $n=1$ nicht definiert", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "Linke Seite: $1^3 = 1$. Rechte Seite: $(1)^2 = 1$. $1 = 1$ ✓",
+  },
+  // Schwierigkeit 3
+  {
+    id: "ma1-ex-6",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Berechne $(1+j)^6$ und gib den Realteil an.",
+    expectedAnswer: "-8",
+    format: "Zahl",
+    hint: "Nutze die Polarform: $1+j = \\sqrt{2}\\angle\\frac{\\pi}{4}$",
+    solution: "$(1+j)^6 = (\\sqrt{2})^6\\angle(6 \\cdot \\frac{\\pi}{4}) = 8\\angle\\frac{3\\pi}{2} = 8(0 - j) = -8j$. Realteil: $0$. Moment — $8\\angle\\frac{3\\pi}{2} = 8(\\cos\\frac{3\\pi}{2} + j\\sin\\frac{3\\pi}{2}) = 8(0 + j(-1)) = -8j$. Also Realteil = 0. Alternativ: $(1+j)^2 = 2j$, $(1+j)^6 = (2j)^3 = 8j^3 = -8j$.",
+  },
+  {
+    id: "ma1-ex-7",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Zeige: $n^2 + n$ ist für alle $n \\in \\mathbb{N}$ gerade. Was ist $n^2 + n$ faktorisiert?",
+    expectedAnswer: "n(n+1)",
+    format: "Ausdruck",
+    solution: "$n^2 + n = n(n+1)$. Das Produkt zweier aufeinanderfolgender Zahlen — eine davon ist immer gerade! Also ist das Produkt gerade. Beweis ohne Induktion möglich.",
+  },
+  {
+    id: "ma1-ex-8",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "input",
+    question: "Berechne $\\lim_{n \\to \\infty} \\sqrt{n^2 + 2n} - n$.",
+    expectedAnswer: "1",
+    format: "Zahl",
+    solution: "Erweitern: $\\frac{(n^2+2n) - n^2}{\\sqrt{n^2+2n} + n} = \\frac{2n}{\\sqrt{n^2+2n} + n} = \\frac{2}{\\sqrt{1+2/n} + 1} \\to \\frac{2}{2} = 1$.",
+  },
+  {
+    id: "ma1-ex-9",
+    lessonId: moduleId,
+    difficulty: 2,
+    type: "input",
+    question: "Gib $\\sum_{k=0}^{5} \\binom{5}{k}$ an (Summe aller Binomialkoeffizienten einer Zeile des Pascalschen Dreiecks).",
+    expectedAnswer: "32",
+    format: "Zahl",
+    hint: "$\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$",
+    solution: "$\\sum_{k=0}^{5} \\binom{5}{k} = 2^5 = 32$. Das ist eine direkte Folgerung aus dem Binomischen Lehrsatz mit $x=y=1$.",
+  },
+  {
+    id: "ma1-ex-10",
+    lessonId: moduleId,
+    difficulty: 3,
+    type: "multiple",
+    question: "Eine Abbildung $f: \\mathbb{R} \\to \\mathbb{R}$ mit $f(f(x)) = -x$ für alle $x$. Was folgt daraus?",
+    options: [
+      { label: "$f$ ist bijektiv (jedes $y$ hat genau ein Urbild)", value: "a" },
+      { label: "$f$ ist nicht injektiv", value: "b" },
+      { label: "$f$ ist nicht surjektiv", value: "c" },
+      { label: "$f(x) = x$ für alle $x$", value: "d" },
+    ],
+    correctOption: "a",
+    solution: "Aus $f(f(x)) = -x$ folgt: $f$ ist bijektiv. Injektivität: $f(x_1)=f(x_2) \\implies f(f(x_1))=f(f(x_2)) \\implies -x_1=-x_2 \\implies x_1=x_2$. Surjektivität: Zu $y \\in \\mathbb{R}$ wähle $x = -f(y)$, dann $f(x) = f(-f(y))$... oder eleganter: Die Abbildung $g(x) = -x$ ist bijektiv und $f \\circ f = g$, also muss $f$ bijektiv sein (da Komposition bijektiver Abbildungen bijektiv ist).",
+  },
+];

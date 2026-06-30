@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build artifacts
+*.log
+tsconfig.tsbuildinfo
+
+# Environment
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+vercel.env
+
+# Data (local only — not in repo)
+data/
+
+# Firebase
+scripts/auth-export.json
+auth-export.json
+
+# Local docs (not in repo)
+AGENTS.md
+CLAUDE.md
+FIREBASE_SETUP.md
+
+# Local scripts
+scripts/fetch-feedback.mjs
+scripts/generate-module-registry.js
+
+# Temp / scratch
+tmp/
+graphify-out/
+*.pdf
+*.txt
+
+# Python scripts (scratch utilities)
+*.py
+scripts/*.py
+
+# Claude Code / Mimocode
+.claude/
+.mimocode/
