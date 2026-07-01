@@ -599,11 +599,38 @@ function loadClickerFromCache(uid: string): ClickerState | null {
 }
 
 export async function loadClickerState(uid: string): Promise<ClickerState> {
+  // 1. Versuche localStorage Cache (sofort, kein Netzwerk)
+  const cached = loadClickerFromCache(uid);
+
   try {
     const profile = await getUserProfile(uid);
-    if (!profile || profile.clickerPoints === undefined) {
-      // Erste Initialisierung — Defaults in Firebase speichern
-      await updateUserProfile(uid, { ...CLICKER_DEFAULTS });
+    if (!profile) {
+      // Kein Profil → Defaults (z.B. neuer User)
+      if (cached) return cached;
+      return CLICKER_DEFAULTS;
+    }
+
+    if (profile.clickerPoints === undefined) {
+      // Erste Initialisierung — Defaults mit korrekten Firestore-Feldnamen speichern
+      const defaultsForFirestore: Record<string, unknown> = {
+        clickerPoints: CLICKER_DEFAULTS.points,
+        clickerTotalPoints: CLICKER_DEFAULTS.totalPoints,
+        clickerClickPower: CLICKER_DEFAULTS.clickPower,
+        clickerAutoSpeed: CLICKER_DEFAULTS.autoSpeed,
+        clickerAutoAmount: CLICKER_DEFAULTS.autoAmount,
+        clickerPrestigePoints: CLICKER_DEFAULTS.prestigePoints,
+        clickerPrestigeLevel: CLICKER_DEFAULTS.prestigeLevel,
+        clickerUpgrades: CLICKER_DEFAULTS.upgrades,
+        clickerOwnedPets: CLICKER_DEFAULTS.ownedPets,
+        clickerActivePet: CLICKER_DEFAULTS.activePet,
+        clickerActivePets: CLICKER_DEFAULTS.activePets,
+        clickerPetLevels: CLICKER_DEFAULTS.petLevels,
+        clickerEquippedAvatar: CLICKER_DEFAULTS.equippedAvatar,
+        clickerEquippedFrame: CLICKER_DEFAULTS.equippedFrame,
+        clickerOwnedCosmetics: CLICKER_DEFAULTS.ownedCosmetics,
+        clickerLastTick: CLICKER_DEFAULTS.lastTick,
+      };
+      await updateUserProfile(uid, defaultsForFirestore);
       saveClickerToCache(uid, CLICKER_DEFAULTS);
       return CLICKER_DEFAULTS;
     }
@@ -662,7 +689,6 @@ export async function loadClickerState(uid: string): Promise<ClickerState> {
   } catch (err) {
     console.error("[Clicker] Firestore load failed, trying cache:", err);
     // Fallback: localStorage Cache
-    const cached = loadClickerFromCache(uid);
     if (cached) {
       console.warn("[Clicker] Using cached state as fallback");
       return cached;

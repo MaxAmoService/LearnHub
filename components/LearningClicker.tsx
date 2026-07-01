@@ -345,7 +345,45 @@ export default function LearningClicker() {
     return () => { if (tickIntervalRef.current) clearInterval(tickIntervalRef.current); };
   }, [user, state.autoAmount, state.autoSpeed, prestigeMultiplier, petBonuses.auto]);
 
-  // Periodischer Full-State-Sync (alle 60 Sekunden) — speichert ALLE Felder
+  // Cache bei jeder State-Änderung sofort speichern (localStorage)
+  const cacheSaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  useEffect(() => {
+    if (!user || loading) return;
+    // Debounce: max alle 2 Sekunden speichern
+    if (cacheSaveTimeoutRef.current) clearTimeout(cacheSaveTimeoutRef.current);
+    cacheSaveTimeoutRef.current = setTimeout(() => {
+      try {
+        localStorage.setItem("learnhub_clicker_cache_" + user.uid, JSON.stringify(state));
+      } catch { /* quota exceeded */ }
+    }, 2000);
+    return () => { if (cacheSaveTimeoutRef.current) clearTimeout(cacheSaveTimeoutRef.current); };
+  }, [user, state, loading]);
+
+  // State bei Tab-Wechsel / Schließen speichern (nutzt Ref für aktuellen State)
+  const stateRef = useRef(state);
+  useEffect(() => { stateRef.current = state; }, [state]);
+  useEffect(() => {
+    if (!user) return;
+    const saveNow = () => {
+      const s = stateRef.current;
+      try {
+        localStorage.setItem("learnhub_clicker_cache_" + user.uid, JSON.stringify(s));
+      } catch {}
+      saveFullClickerState(user.uid, s);
+    };
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") saveNow();
+    };
+    const handleBeforeUnload = () => saveNow();
+    window.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [user]);
+
+  // Periodischer Full-State-Sync (alle 60 Sekunden) — speichert ALLE Felder in Firestore
   useEffect(() => {
     if (!user) return;
     const syncInterval = setInterval(() => {
