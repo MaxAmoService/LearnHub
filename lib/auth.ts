@@ -577,12 +577,34 @@ const CLICKER_DEFAULTS: ClickerState = {
   lastTick: new Date().toISOString(),
 };
 
+// ─── Clicker localStorage Cache ─────────────────────────────────────────────
+
+const CLICKER_CACHE_PREFIX = "learnhub_clicker_cache_";
+
+function saveClickerToCache(uid: string, state: ClickerState): void {
+  try {
+    localStorage.setItem(CLICKER_CACHE_PREFIX + uid, JSON.stringify(state));
+  } catch { /* quota exceeded or SSR */ }
+}
+
+function loadClickerFromCache(uid: string): ClickerState | null {
+  try {
+    const raw = localStorage.getItem(CLICKER_CACHE_PREFIX + uid);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    // Validate basic structure
+    if (typeof parsed.points !== "number" || typeof parsed.totalPoints !== "number") return null;
+    return parsed as ClickerState;
+  } catch { return null; }
+}
+
 export async function loadClickerState(uid: string): Promise<ClickerState> {
   try {
     const profile = await getUserProfile(uid);
     if (!profile || profile.clickerPoints === undefined) {
       // Erste Initialisierung — Defaults in Firebase speichern
       await updateUserProfile(uid, { ...CLICKER_DEFAULTS });
+      saveClickerToCache(uid, CLICKER_DEFAULTS);
       return CLICKER_DEFAULTS;
     }
 
@@ -634,9 +656,19 @@ export async function loadClickerState(uid: string): Promise<ClickerState> {
       });
     }
 
+    // Cache für Fallback speichern
+    saveClickerToCache(uid, state);
     return state;
   } catch (err) {
-    console.error("[Clicker] Load failed:", err);
+    console.error("[Clicker] Firestore load failed, trying cache:", err);
+    // Fallback: localStorage Cache
+    const cached = loadClickerFromCache(uid);
+    if (cached) {
+      console.warn("[Clicker] Using cached state as fallback");
+      return cached;
+    }
+    // Letzter Fallback: Defaults (aber NIE speichern — nur anzeigen)
+    console.error("[Clicker] No cache available, returning defaults");
     return CLICKER_DEFAULTS;
   }
 }
@@ -680,6 +712,44 @@ export async function saveClickerTick(uid: string, autoAmount: number, autoSpeed
   } catch (err) {
     console.error("[Clicker] Tick save failed:", err);
     return 0;
+  }
+}
+
+// Vollständigen Clicker-State in Firestore + Cache speichern
+export async function saveFullClickerState(uid: string, state: ClickerState): Promise<void> {
+  try {
+    await updateUserProfile(uid, {
+      clickerPoints: state.points,
+      clickerTotalPoints: state.totalPoints,
+      clickerClickPower: state.clickPower,
+      clickerAutoSpeed: state.autoSpeed,
+      clickerAutoAmount: state.autoAmount,
+      clickerPrestigePoints: state.prestigePoints,
+      clickerPrestigeLevel: state.prestigeLevel,
+      clickerUpgrades: state.upgrades,
+      clickerOwnedPets: state.ownedPets,
+      clickerActivePet: state.activePet,
+      clickerActivePets: state.activePets,
+      clickerPetLevels: state.petLevels,
+      clickerEquippedAvatar: state.equippedAvatar,
+      clickerEquippedFrame: state.equippedFrame,
+      clickerOwnedCosmetics: state.ownedCosmetics,
+      clickerPrestigeSkill_critChance: state.prestige_skill_critChance || 0,
+      clickerPrestigeSkill_luck: state.prestige_skill_luck || 0,
+      clickerPrestigeSkill_autoBoost: state.prestige_skill_autoBoost || 0,
+      clickerPrestigeSkill_speedBoost: state.prestige_skill_speedBoost || 0,
+      clickerPrestigeSkill_goldenTouch: state.prestige_skill_goldenTouch || 0,
+      clickerPrestigeSkill_petLover: state.prestige_skill_petLover || 0,
+      clickerPrestigeSkill_petSlots: state.prestige_skill_petSlots || 0,
+      clickerPrestigeSkill_clickMastery: state.prestige_skill_clickMastery || 0,
+      clickerPrestigeSkill_goldRush: state.prestige_skill_goldRush || 0,
+      clickerLastTick: state.lastTick,
+    });
+    saveClickerToCache(uid, state);
+  } catch (err) {
+    console.error("[Clicker] Full state save failed:", err);
+    // Trotzdem im Cache speichern
+    saveClickerToCache(uid, state);
   }
 }
 

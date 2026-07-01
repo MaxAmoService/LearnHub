@@ -6,6 +6,7 @@ import {
   loadClickerState,
   saveClickerClick,
   saveClickerTick,
+  saveFullClickerState,
   buyClickerUpgradeBulk,
   prestigeClickerState,
   openPetBox,
@@ -299,15 +300,36 @@ export default function LearningClicker() {
 
   // State aus Firebase laden (nur beim ersten Laden oder User-Wechsel)
   const loadedUidRef = useRef<string | null>(null);
+  const [loadError, setLoadError] = useState(false);
+
   useEffect(() => {
     if (!user) { setLoading(false); loadedUidRef.current = null; return; }
     if (loadedUidRef.current === user.uid) return; // Bereits geladen — nicht erneut laden
     loadedUidRef.current = user.uid;
     setLoading(true);
-    loadClickerState(user.uid).then((s) => {
-      setState(s);
+    setLoadError(false);
+
+    const loadWithRetry = async (retries = 2) => {
+      for (let attempt = 0; attempt <= retries; attempt++) {
+        try {
+          const s = await loadClickerState(user.uid);
+          setState(s);
+          setLoading(false);
+          setLoadError(false);
+          return;
+        } catch (err) {
+          console.error(`[Clicker] Load attempt ${attempt + 1} failed:`, err);
+          if (attempt < retries) {
+            await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+          }
+        }
+      }
+      // Alle Versuche fehlgeschlagen
       setLoading(false);
-    });
+      setLoadError(true);
+    };
+
+    loadWithRetry();
   }, [user?.uid]);
 
   // Auto-Tick: Punkte in Firebase speichern (alle 10 Sekunden)
@@ -322,6 +344,15 @@ export default function LearningClicker() {
     }, 10_000);
     return () => { if (tickIntervalRef.current) clearInterval(tickIntervalRef.current); };
   }, [user, state.autoAmount, state.autoSpeed, prestigeMultiplier, petBonuses.auto]);
+
+  // Periodischer Full-State-Sync (alle 60 Sekunden) — speichert ALLE Felder
+  useEffect(() => {
+    if (!user) return;
+    const syncInterval = setInterval(() => {
+      saveFullClickerState(user.uid, state);
+    }, 60_000);
+    return () => clearInterval(syncInterval);
+  }, [user, state]);
 
   // Lokaler Auto-Tick (alle 1 Sekunde)
   const autoUpgradeCount =
@@ -567,9 +598,9 @@ export default function LearningClicker() {
       setBuyFeedback(upgrade.id);
       setTimeout(() => setBuyFeedback(null), 300);
 
-      // Firebase asynchron
-      flushPendingClicks().then(() => {
-        buyClickerUpgradeBulk(user.uid, upgrade.id, quantity);
+      // Firebase asynchron — Upgrade + Full-State-Cache
+      flushPendingClicks().then(async () => {
+        await buyClickerUpgradeBulk(user.uid, upgrade.id, quantity);
       });
 
       return {
@@ -594,6 +625,8 @@ export default function LearningClicker() {
       const result = await openPetBox(user.uid, boxType);
       if (result) {
         setState(result.state);
+        // Full State nach Box-Öffnung speichern
+        saveFullClickerState(user.uid, result.state);
         const revealId = revealIdRef.current++;
         setRevealedPet({ pet: result.pet, id: revealId });
 
@@ -624,14 +657,20 @@ export default function LearningClicker() {
     const isEquipped = state.activePets.includes(petId);
     if (!isEquipped && state.activePets.length >= maxPetSlots) return; // Slot-Limit erreicht
     const newState = await equipPet(user.uid, petId);
-    if (newState) setState(newState);
+    if (newState) {
+      setState(newState);
+      saveFullClickerState(user.uid, newState);
+    }
   }, [user, state.activePets, maxPetSlots]);
 
   // Pet upgraden
   const handleUpgradePet = useCallback(async (petId: string) => {
     if (!user) return;
     const newState = await upgradePet(user.uid, petId);
-    if (newState) setState(newState);
+    if (newState) {
+      setState(newState);
+      saveFullClickerState(user.uid, newState);
+    }
   }, [user]);
 
   // Tooltip mit 1.5s Delay
@@ -668,6 +707,8 @@ export default function LearningClicker() {
       const newState = await prestigeClickerState(user.uid);
       if (newState) {
         setState(newState);
+        // Full State nach Prestige speichern
+        saveFullClickerState(user.uid, newState);
       }
       setTimeout(() => setPrestigeAnimating(false), 1500);
     }, 1000);
@@ -678,6 +719,8 @@ export default function LearningClicker() {
     if (!user) return;
     await resetClickerState(user.uid);
     setState(DEFAULT_STATE);
+    // Cache leeren
+    try { localStorage.removeItem("learnhub_clicker_cache_" + user.uid); } catch {}
   }, [user]);
 
   // Computed values
@@ -1793,6 +1836,31 @@ export default function LearningClicker() {
 
           {loading && (
             <div className="p-4 text-center text-slate-500 text-xs">Lade...</div>
+          )}
+
+          {loadError && !loading && (
+            <div className="p-3 text-center">
+              <div className="text-red-400 text-xs mb-2">Fortschritt konnte nicht geladen werden</div>
+              <button
+                onClick={() => {
+                  if (user) {
+                    loadedUidRef.current = null;
+                    setLoading(true);
+                    setLoadError(false);
+                    loadClickerState(user.uid).then((s) => {
+                      setState(s);
+                      setLoading(false);
+                    }).catch(() => {
+                      setLoading(false);
+                      setLoadError(true);
+                    });
+                  }
+                }}
+                className="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-xs text-slate-300"
+              >
+                Erneut versuchen
+              </button>
+            </div>
           )}
         </div>
         {/* Resize Handle */}
