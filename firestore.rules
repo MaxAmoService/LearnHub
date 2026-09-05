@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ╔══════════════════════════════════════════════════════════════╗
+    // ║  DSGVO-konforme Security Rules                              ║
+    // ╚══════════════════════════════════════════════════════════════╝
+
+    // User-Profil: eigener User kann alles lesen/schreiben
+    // Leaderboard-opted-in Users sind für alle lesbar
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow update: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+
+      match /data/{docId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // Username-Reservierungen
+    match /usernames/{username} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow delete: if request.auth != null && request.auth.uid == resource.data.uid;
+    }
+
+    // Pending Verifications (Registrierung — User noch nicht eingeloggt)
+    // Client schreibt Code, liest beim Verify. Rate-Limiting client-seitig.
+    match /pending_verifications/{email} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Feedback: authentifizierte & anonyme Nutzer dürfen erstellen
+    match /feedback/{docId} {
+      allow read: if false;
+      allow create: if request.resource.data.message is string
+        && request.resource.data.message.size() >= 10
+        && request.resource.data.message.size() <= 2000;
+      allow delete: if request.auth != null;
+    }
+
+    // Alles andere: blockiert
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
