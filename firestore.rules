@@ -26,13 +26,6 @@ service cloud.firestore {
       allow delete: if request.auth != null && request.auth.uid == resource.data.uid;
     }
 
-    // Pending Verifications (Registrierung — User noch nicht eingeloggt)
-    // Client schreibt Code, liest beim Verify. Rate-Limiting client-seitig.
-    match /pending_verifications/{email} {
-      allow read: if true;
-      allow write: if true;
-    }
-
     // Feedback: authentifizierte & anonyme Nutzer dürfen erstellen
     match /feedback/{docId} {
       allow read: if false;
