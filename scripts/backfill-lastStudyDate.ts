@@ -14,20 +14,26 @@
  * Usage: npx ts-node scripts/backfill-lastStudyDate.ts [--dry-run]
  */
 
-import * as admin from "firebase-admin";
+import { applicationDefault, getApps, initializeApp } from "firebase-admin/app";
+import {
+  getFirestore,
+  Timestamp,
+  type Query,
+  type QueryDocumentSnapshot,
+} from "firebase-admin/firestore";
 import { todayKey } from "../lib/dates";
 
 const dryRun = process.argv.includes("--dry-run");
 
-if (admin.apps.length === 0) {
-  admin.initializeApp({ credential: admin.credential.applicationDefault() });
+if (getApps().length === 0) {
+  initializeApp({ credential: applicationDefault() });
 }
 
-const db = admin.firestore();
+const db = getFirestore();
 const PAGE_SIZE = 450; // unter dem Batch-Limit von 500
 
 function lastActiveToDate(value: unknown): Date | null {
-  if (value instanceof admin.firestore.Timestamp) return value.toDate();
+  if (value instanceof Timestamp) return value.toDate();
   if (typeof value === "string") {
     const date = new Date(value);
     return Number.isNaN(date.getTime()) ? null : date;
@@ -41,10 +47,10 @@ async function main(): Promise<void> {
   let skippedHasField = 0;
   let skippedNoLastActive = 0;
 
-  let lastDoc: admin.firestore.QueryDocumentSnapshot | undefined;
+  let lastDoc: QueryDocumentSnapshot | undefined;
 
   while (true) {
-    let q: admin.firestore.Query = db.collection("users").limit(PAGE_SIZE);
+    let q: Query = db.collection("users").limit(PAGE_SIZE);
     if (lastDoc) q = q.startAfter(lastDoc);
     const snapshot = await q.get();
     if (snapshot.empty) break;
