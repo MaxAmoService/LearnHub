@@ -12,15 +12,18 @@
 // Date.UTC-Normalisierung).
 
 const BERLIN_TZ = "Europe/Berlin";
-const DAY_BOUNDARY_MS = 4 * 60 * 60 * 1000; // Tagesgrenze: 04:00
+const DAY_BOUNDARY_HOUR = 4; // Tagesgrenze: 04:00 Berliner Zeit
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
-// en-CA formatiert als "YYYY-MM-DD" — stabil über Locales hinweg.
-const keyFormatter = new Intl.DateTimeFormat("en-CA", {
+// Liefert die Berliner Lokalbestandteile (Jahr/Monat/Tag/Stunde) eines
+// Instants. hourCycle "h23" garantiert Stunden 00-23 (kein "24" um Mitternacht).
+const berlinPartsFormatter = new Intl.DateTimeFormat("en-CA", {
   timeZone: BERLIN_TZ,
   year: "numeric",
   month: "2-digit",
   day: "2-digit",
+  hour: "2-digit",
+  hourCycle: "h23",
 });
 
 interface KeyParts {
@@ -42,9 +45,29 @@ function formatKey(year: number, month: number, day: number): string {
  * Tages-Key ("YYYY-MM-DD") eines Zeitpunkts in Europe/Berlin.
  * Die Tagesgrenze liegt bei 04:00: Instants zwischen 00:00 und 03:59 Berliner
  * Zeit zählen zum Vortag.
+ *
+ * DST-sicher: Erst werden die Berliner Lokalbestandteile direkt über Intl
+ * ermittelt (die kennt die Umstellungen), dann wird der Tag rein kalendarisch
+ * über Date.UTC-Normalisierung um eins zurückgesetzt. Ein Zeitversatz in
+ * Millisekunden darf hier NICHT verwendet werden — der verschiebt den Instant
+ * an den Umstellungstagen über die Offset-Änderung hinweg in den falschen
+ * Kalendertag (z. B. 04:30 CEST am Frühlings-Umstellungstag).
  */
 export function todayKey(now: Date = new Date()): string {
-  return keyFormatter.format(new Date(now.getTime() - DAY_BOUNDARY_MS));
+  let year = 0;
+  let month = 0;
+  let day = 0;
+  let hour = 0;
+  for (const part of berlinPartsFormatter.formatToParts(now)) {
+    if (part.type === "year") year = Number(part.value);
+    else if (part.type === "month") month = Number(part.value);
+    else if (part.type === "day") day = Number(part.value);
+    else if (part.type === "hour") hour = Number(part.value);
+  }
+  const date = new Date(
+    Date.UTC(year, month - 1, hour < DAY_BOUNDARY_HOUR ? day - 1 : day)
+  );
+  return formatKey(date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate());
 }
 
 /** Kalenderarithmetik auf Keys — DST-sicher über Date.UTC-Normalisierung. */

@@ -31,16 +31,28 @@ describe("todayKey", () => {
     expect(todayKey(new Date("2026-08-09T02:30:00Z"))).toBe("2026-08-09");
   });
 
-  it("Zeitumstellung Frühjahr (Berlin 2026-03-29): 03:30 CEST zählt zum Vortag", () => {
-    // 01:30 UTC = 03:30 CEST (Zeit ist gerade um 02:00→03:00 gesprungen)
+  it("Zeitumstellung Frühjahr (Berlin 2026-03-29, Sprung 02:00→03:00 CET)", () => {
+    // 01:30 UTC = 03:30 CEST — nach dem Sprung, vor der Tagesgrenze → Vortag
     expect(todayKey(new Date("2026-03-29T01:30:00Z"))).toBe("2026-03-28");
-    // 02:30 UTC = 04:30 CEST → neuer Tag
+    // 03:59 CEST (01:59 UTC) → noch Vortag
+    expect(todayKey(new Date("2026-03-29T01:59:00Z"))).toBe("2026-03-28");
+    // 04:00 CEST (02:00 UTC) → neuer Tag
+    expect(todayKey(new Date("2026-03-29T02:00:00Z"))).toBe("2026-03-29");
+    // 04:30 CEST (02:30 UTC) → neuer Tag (das war vor dem Fix der Fehlerfall)
     expect(todayKey(new Date("2026-03-29T02:30:00Z"))).toBe("2026-03-29");
   });
 
-  it("Zeitumstellung Herbst (Berlin 2026-10-25): 02:30 CEST zählt zum Vortag", () => {
-    // 00:30 UTC = 02:30 CEST (vor der Rückstellung)
+  it("Zeitumstellung Herbst (Berlin 2026-10-25, doppelte Stunde 02:00-03:00)", () => {
+    // 02:30 CEST — erste Passage der Doppelstunde (00:30 UTC) → Vortag
     expect(todayKey(new Date("2026-10-25T00:30:00Z"))).toBe("2026-10-24");
+    // 02:30 CET — zweite Passage der Doppelstunde (01:30 UTC) → ebenfalls Vortag
+    expect(todayKey(new Date("2026-10-25T01:30:00Z"))).toBe("2026-10-24");
+    // 03:59 CET (02:59 UTC) → noch Vortag
+    expect(todayKey(new Date("2026-10-25T02:59:00Z"))).toBe("2026-10-24");
+    // 04:00 CET (03:00 UTC) → neuer Tag
+    expect(todayKey(new Date("2026-10-25T03:00:00Z"))).toBe("2026-10-25");
+    // 04:30 CET (03:30 UTC) → neuer Tag
+    expect(todayKey(new Date("2026-10-25T03:30:00Z"))).toBe("2026-10-25");
   });
 });
 
