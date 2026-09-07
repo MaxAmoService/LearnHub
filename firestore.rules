@@ -19,8 +19,11 @@ service cloud.firestore {
       }
 
       // Lehrpläne: Pläne und Activity-Monats-Docs gehören dem User.
+      // Delete braucht eine eigene Klausel: request.resource existiert bei
+      // delete nicht, die write-Klausel verweigert Löschen daher implizit.
       match /plans/{planId} {
         allow read, write: if request.auth != null && request.auth.uid == userId;
+        allow delete: if request.auth != null && request.auth.uid == userId;
       }
 
       match /activity/{month} {

@@ -450,6 +450,40 @@ export async function archivePlan(uid: string, planId: string): Promise<void> {
   });
 }
 
+/**
+ * Plan ENDGÜLTIG löschen — inklusive aller planItems. Das Client SDK
+ * kaskadiert Subcollections nicht: Ohne explizites Löschen der Items
+ * blieben verwaiste Dokumente liegen. Batches werden in Chunks unter
+ * dem Firestore-Limit (500) committet, falls ein Plan sehr viele Items hat.
+ */
+export async function deletePlan(uid: string, planId: string): Promise<void> {
+  const db = getDb();
+  const planRef = doc(db, "users", uid, "plans", planId);
+
+  const itemsSnap = await getDocs(
+    query(collection(db, "users", uid, "plans", planId, "planItems"))
+  );
+
+  const CHUNK_SIZE = 450; // unter dem Batch-Limit von 500
+  const batches = [writeBatch(db)];
+  let count = 0;
+
+  itemsSnap.forEach((d) => {
+    if (count >= CHUNK_SIZE) {
+      batches.push(writeBatch(db));
+      count = 0;
+    }
+    batches[batches.length - 1].delete(d.ref);
+    count += 1;
+  });
+
+  batches[batches.length - 1].delete(planRef);
+
+  for (const batch of batches) {
+    await batch.commit();
+  }
+}
+
 /** Neues Item ans Ende des Plans (order = Maximum + 1). */
 export async function addPlanItem(
   uid: string,

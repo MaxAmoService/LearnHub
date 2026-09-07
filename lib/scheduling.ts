@@ -138,6 +138,9 @@ export function computeEndspurtStart(plan: PlanLike, today: string): string {
 /**
  * Tempo: gewichteter Ist-Fortschritt vs. erwarteter Soll-Fortschritt
  * (linear über die Laufzeit). „Gefestigt" zählt als 100 % des Items.
+ * Am Erstellungstag ist noch kein Soll aufgelaufen — Soll = 0 — und der
+ * Plan gilt als 'on_track' statt 'critical': der Erstellungstag selbst
+ * zählt nicht als verstrichener Lerntag.
  */
 export function computePace(
   plan: PlanLike,
@@ -174,7 +177,9 @@ export function computePace(
     return "critical";
   }
 
-  const elapsed = Math.max(daysBetween(start, today) + 1, 0);
+  // Verstrichene Lerntage exklusive des Erstellungstags: Am Erstellungstag
+  // ist elapsed = 0 → Soll = 0 → on_track/ahead, nie critical.
+  const elapsed = Math.max(daysBetween(start, today), 0);
   const expectedFraction = total <= 0 ? 1 : Math.min(Math.max(elapsed / total, 0), 1);
   const expected = totalWeighted * expectedFraction;
   const ratio = expected <= 0 ? (actualWeighted > 0 ? 2 : 1) : actualWeighted / expected;

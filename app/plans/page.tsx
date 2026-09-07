@@ -10,7 +10,7 @@ import { AlertCircle, CalendarDays, Loader2, Plus } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 import { LoginModal } from "@/components/LoginModal";
 import { PlanCard } from "@/components/PlanCard";
-import { loadAllPlanItems, loadPlans, type PlanItemWithId, type PlanWithId } from "@/lib/plans";
+import { deletePlan, loadAllPlanItems, loadPlans, type PlanItemWithId, type PlanWithId } from "@/lib/plans";
 
 export default function PlansPage() {
   const { user, isLoading } = useAuth();
@@ -19,6 +19,7 @@ export default function PlansPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showLogin, setShowLogin] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     if (!user) return;
@@ -43,6 +44,21 @@ export default function PlansPage() {
     if (user) load();
     else setLoading(false);
   }, [user, load]);
+
+  async function handleDeletePlan(planId: string) {
+    if (!user) return;
+    setDeletingId(planId);
+    setError(null);
+    try {
+      await deletePlan(user.uid, planId);
+      await load();
+    } catch (err) {
+      console.error("deletePlan error:", err);
+      setError("Der Plan konnte nicht gelöscht werden.");
+    } finally {
+      setDeletingId(null);
+    }
+  }
 
   if (isLoading || (user && loading)) {
     return (
@@ -124,7 +140,13 @@ export default function PlansPage() {
       {activePlans.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {activePlans.map((plan) => (
-            <PlanCard key={plan.id} plan={plan} items={itemsByPlan[plan.id] ?? []} />
+            <PlanCard
+              key={plan.id}
+              plan={plan}
+              items={itemsByPlan[plan.id] ?? []}
+              onDelete={handleDeletePlan}
+              deleting={deletingId === plan.id}
+            />
           ))}
         </div>
       )}
@@ -136,7 +158,13 @@ export default function PlansPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 opacity-70">
             {archivedPlans.map((plan) => (
-              <PlanCard key={plan.id} plan={plan} items={itemsByPlan[plan.id] ?? []} />
+              <PlanCard
+                key={plan.id}
+                plan={plan}
+                items={itemsByPlan[plan.id] ?? []}
+                onDelete={handleDeletePlan}
+                deleting={deletingId === plan.id}
+              />
             ))}
           </div>
         </div>

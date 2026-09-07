@@ -218,7 +218,7 @@ describe("computePace", () => {
   });
 
   it("ahead: Ist-Fortschritt über Soll", () => {
-    // elapsed 4 von 10 → Soll 0.4; beide Items zur Hälfte → Ist 0.5 → ratio 1.25
+    // elapsed 3 von 10 → Soll 0.3; beide Items zur Hälfte → Ist 0.5 → ratio 1.67
     const items = [
       makeItem({ completedUnits: 2, estimatedUnits: 4 }),
       makeItem({ completedUnits: 2, estimatedUnits: 4 }),
@@ -232,7 +232,7 @@ describe("computePace", () => {
       makeItem({ completedUnits: 4, estimatedUnits: 4 }),
       makeItem({ completedUnits: 0, estimatedUnits: 4 }),
     ];
-    expect(computePace(plan, items, "2026-09-05")).toBe("on_track");
+    expect(computePace(plan, items, "2026-09-06")).toBe("on_track");
   });
 
   it("behind: Ist deutlich unter Soll", () => {
@@ -241,7 +241,7 @@ describe("computePace", () => {
       makeItem({ completedUnits: 2, estimatedUnits: 4 }),
       makeItem({ completedUnits: 2, estimatedUnits: 4 }),
     ];
-    expect(computePace(plan, items, "2026-09-06")).toBe("behind");
+    expect(computePace(plan, items, "2026-09-07")).toBe("behind");
   });
 
   it("critical: kaum Fortschritt", () => {
@@ -254,7 +254,21 @@ describe("computePace", () => {
       makeItem({ sm2: { repetitions: 2, interval: 7 } }),
       makeItem({ completedUnits: 0 }),
     ];
-    expect(computePace(plan, items, "2026-09-05")).toBe("on_track");
+    expect(computePace(plan, items, "2026-09-06")).toBe("on_track");
+  });
+
+  it("frisch erstellter Plan ohne Fortschritt: on_track statt critical", () => {
+    const fresh = makePlan({
+      createdAt: "2026-09-07T12:00:00.000Z",
+      deadline: "2027-01-05", // 120 Tage Laufzeit
+    });
+    const items = [makeItem({ completedUnits: 0 })];
+    // Erstellungstag: noch kein Soll aufgelaufen → kein Rückstand
+    expect(computePace(fresh, items, "2026-09-07")).toBe("on_track");
+    // Am Erstellungstag direkt etwas geschafft → voraus
+    expect(
+      computePace(fresh, [makeItem({ completedUnits: 1 })], "2026-09-07")
+    ).toBe("ahead");
   });
 
   it("Deadline überschritten: alles gefestigt → ahead, sonst Abstufung", () => {
