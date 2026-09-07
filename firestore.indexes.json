@@ -2,7 +2,7 @@
   "indexes": [
     {
       "collectionGroup": "planItems",
-      "queryScope": "COLLECTION",
+      "queryScope": "COLLECTION_GROUP",
       "fields": [
         { "fieldPath": "uid", "order": "ASCENDING" },
         { "fieldPath": "nextDueAt", "order": "ASCENDING" }
