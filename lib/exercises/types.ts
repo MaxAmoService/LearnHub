@@ -78,6 +78,22 @@ export interface MatchExercise {
 
 export type Exercise = RecallExercise | NumericExercise | ChoiceExercise | MatchExercise;
 
+export function isRecallExercise(e: Exercise): e is RecallExercise {
+  return e.type === "recall";
+}
+
+export function isNumericExercise(e: Exercise): e is NumericExercise {
+  return e.type === "numeric";
+}
+
+export function isChoiceExercise(e: Exercise): e is ChoiceExercise {
+  return e.type === "choice";
+}
+
+export function isMatchExercise(e: Exercise): e is MatchExercise {
+  return e.type === "match";
+}
+
 export interface ExerciseFile {
   topicSlug: string;
   planTemplateSlug: string;

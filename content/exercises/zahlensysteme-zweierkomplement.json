@@ -1,0 +1,43 @@
+{
+  "topicSlug": "zahlensysteme-zweierkomplement",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Zweierkomplement und negative Zahlen",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "zahlensysteme-zweierkomplement-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Stellen Sie die Dezimalzahl -12 im Zweierkomplement mit 8 Bit dar.",
+      "answer": "11110100",
+      "explanation": "Betrag bilden: 12 = 00001100. Invertieren: 11110011. +1 addieren: 11110100."
+    },
+    {
+      "id": "zahlensysteme-zweierkomplement-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Welche Dezimalzahl stellt die 8-Bit-Zweierkomplement-Zahl 10001000 dar?",
+      "answer": -120,
+      "calculation": "136-256",
+      "explanation": "Führendes Bit ist 1 → negativ. Wert = 136 − 256 = -120. Kontrolle: invertieren + 1 ergibt 01111000 = 120."
+    },
+    {
+      "id": "zahlensysteme-zweierkomplement-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bilden Sie das Zweierkomplement von 81 (8 Bit), also die Darstellung von -81.",
+      "answer": "10101111",
+      "explanation": "81 = 01010001. Invertieren: 10101110. +1: 10101111."
+    },
+    {
+      "id": "zahlensysteme-zweierkomplement-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Addieren Sie im Zweierkomplement (8 Bit): 19 + (-7). Geben Sie das 8-Bit-Ergebnis an.",
+      "answer": "00001100",
+      "explanation": "Darstellungen: 19 = 00010011, -7 = 11111001. Addition: 00010011 + 11111001 = 00001100 = 12."
+    }
+  ]
+}

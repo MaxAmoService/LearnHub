@@ -1,0 +1,49 @@
+{
+  "topicSlug": "zahlensysteme-codes",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Codes: BCD, Gray-Code, Hamming-Abstand",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "zahlensysteme-codes-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wandeln Sie die Binärzahl 10000011 in einen Gray-Code um (8 Bit).",
+      "answer": "11000010",
+      "explanation": "Gray-Code: Jedes Bit = aktuelles Bit XOR vorheriges Bit (b_i XOR b_{i−1}). 10000011 → 11000010."
+    },
+    {
+      "id": "zahlensysteme-codes-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wandeln Sie den Gray-Code 11100001 zurück in eine Binärzahl (8 Bit).",
+      "answer": "10100111",
+      "explanation": "Rückwandlung durch XOR-Kette von links: 11100001 → 10100111."
+    },
+    {
+      "id": "zahlensysteme-codes-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechnen Sie den Hamming-Abstand zwischen 10000010 und 00000000.",
+      "answer": 2,
+      "calculation": "2",
+      "explanation": "XOR bilden: 10000010 XOR 00000000 = 10000010. Einsen zählen: 2 — so viele Bitfehler könnte der Code mit Abstand d ≥ 1 erkennen."
+    },
+    {
+      "id": "zahlensysteme-codes-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Warum wird bei Drehgebern der Gray-Code statt der normalen Binärkodierung verwendet?",
+      "options": [
+        "Beim Übergang zwischen benachbarten Positionen ändert sich nur ein Bit — keine Zwischenzustände",
+        "Der Gray-Code benötigt halb so viele Leitungen",
+        "Der Gray-Code erlaubt die Erkennung von Bitfehlern über Parität",
+        "Der Gray-Code ist schneller als jede Binärkodierung"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gray-Code ist einreflexiv: Nachbarwerte unterscheiden sich in genau einem Bit. Damit kann beim Abtasten eines Drehgebers nie ein mehrdeutiger Zwischenzustand entstehen. Die anderen Antworten sind keine Eigenschaften des Gray-Codes."
+    }
+  ]
+}

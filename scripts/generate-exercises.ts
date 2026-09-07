@@ -313,6 +313,7 @@ function evaluateArithmetic(input: string): number | null {
       if (fn === "log2") return Math.log2(arg);
       if (fn === "ceil") return Math.ceil(arg);
       if (fn === "floor") return Math.floor(arg);
+      if (fn === "round") return Math.round(arg);
       return null;
     }
     const n = Number(next());

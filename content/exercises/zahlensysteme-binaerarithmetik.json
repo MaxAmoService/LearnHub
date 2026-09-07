@@ -1,0 +1,42 @@
+{
+  "topicSlug": "zahlensysteme-binaerarithmetik",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Rechnen im Binärsystem (Addition, Subtraktion)",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "zahlensysteme-binaerarithmetik-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Addieren Sie binär (8 Bit): 01010111 + 00100101.",
+      "answer": "01111100",
+      "explanation": "Bitweise Addition mit Übertrag: 01010111 + 00100101 = 01111100. Probe dezimal: 87 + 37 = 124."
+    },
+    {
+      "id": "zahlensysteme-binaerarithmetik-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Subtrahieren Sie binär (8 Bit): 01010100 − 00011001.",
+      "answer": "00111011",
+      "explanation": "Subtraktion mit Borgen: 01010100 − 00011001 = 00111011. Probe dezimal: 84 − 25 = 59."
+    },
+    {
+      "id": "zahlensysteme-binaerarithmetik-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Multiplizieren Sie binär (Ergebnis 8 Bit): 00000110 × 00001110.",
+      "answer": "01010100",
+      "explanation": "Multiplikation durch Verschieben und Addieren: 00000110 × 00001110 = 01010100. Probe dezimal: 6 × 14 = 84."
+    },
+    {
+      "id": "zahlensysteme-binaerarithmetik-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Verschieben Sie die Binärzahl 00000111 um zwei Stellen nach links (logischer Shift). Geben Sie das 8-Bit-Ergebnis an.",
+      "answer": "00011100",
+      "explanation": "Shift um 2 nach links entspricht einer Multiplikation mit 4 und hängt rechts zwei Nullen an: 00000111 → 00011100 (7 × 4 = 28)."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "topicSlug": "netzwerktechnik-subnetting",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Subnetting: CIDR, Subnetzmaske, VLSM",
+  "source": "procedural",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-subnetting-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Netzwerk nutzt das Subnetz 119.155.144.0/21 (Subnetzmaske 255.255.248.0). Wie viele Hosts können maximal adressiert werden?",
+      "answer": 2046,
+      "unit": "Hosts",
+      "calculation": "2^11 - 2",
+      "explanation": "Host-Bits: 32 − 21 = 11. Nutzbare Adressen: 2^11 − 2 = 2046 (minus Netzadresse 119.155.144.0 und Broadcast 119.155.151.255)."
+    },
+    {
+      "id": "netzwerktechnik-subnetting-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wie lautet die Netzwerkadresse des Hosts 119.155.144.1 mit Subnetzmaske 255.255.248.0 (/ 21)?",
+      "answer": "119.155.144.0",
+      "explanation": "Netzwerkadresse = IP UND Maske (bitweise AND). Mit /21 werden die letzten 11 Bit genullt: 119.155.144.1 → 119.155.144.0."
+    },
+    {
+      "id": "netzwerktechnik-subnetting-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wie lautet die Broadcast-Adresse des Subnetzes 119.155.144.0/21?",
+      "answer": "119.155.151.255",
+      "explanation": "Broadcast = alle Host-Bits auf 1: Netzadresse 119.155.144.0 mit 11 gesetzten Host-Bits → 119.155.151.255."
+    },
+    {
+      "id": "netzwerktechnik-subnetting-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Abteilung benötigt ein Subnetz für 1628 Hosts. Welche Präfixlänge (CIDR) ist die längste, die ausreicht?",
+      "answer": 21,
+      "calculation": "32 - ceil(log2(1630))",
+      "explanation": "Benötigte Adressen inklusive Netz- und Broadcast-Adresse: 1628 + 2 = 1630. Gesucht ist das kleinste h mit 2^h ≥ 1630: 2^11 = 2048. Präfix = 32 − 11 = /21 (ergibt 2046 nutzbare Adressen)."
+    },
+    {
+      "id": "netzwerktechnik-subnetting-05",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche der folgenden Adressen liegt im Subnetz 119.155.144.0/21?",
+      "options": [
+        "119.155.144.164",
+        "119.155.159.242",
+        "119.155.120.13",
+        "119.155.167.251"
+      ],
+      "correctIndex": 0,
+      "explanation": "Das Subnetz umfasst 119.155.144.0 bis 119.155.151.255 (2046 Hosts). Nur 119.155.144.164 liegt in diesem Bereich; die anderen Adressen gehören zu benachbarten Subnetzen."
+    }
+  ]
+}

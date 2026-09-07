@@ -1,0 +1,40 @@
+{
+  "topicSlug": "wirtschaft-amortisation-roi",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Amortisationsrechnung und ROI",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "wirtschaft-amortisation-roi-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Unternehmen investiert 55500 € in neue Software. Die jährliche Einsparung beträgt 17000 € (Verzinsung wird nicht berücksichtigt). Nach wie vielen Jahren hat sich die Investition amortisiert?",
+      "answer": 4,
+      "unit": "Jahre",
+      "calculation": "ceil(55500/17000)",
+      "explanation": "Amortisationszeit = Investition ÷ jährliche Einsparung = 55500 ÷ 17000 = 3.26 Jahre. Da erst nach einem vollen Jahr abgerechnet wird: 4 Jahre."
+    },
+    {
+      "id": "wirtschaft-amortisation-roi-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Investition 55500 €, jährliche Einsparung 17000 €. Wie hoch ist der kumulierte Gewinn nach 7 Jahren (ohne Verzinsung)?",
+      "answer": 63500,
+      "unit": "€",
+      "calculation": "7*17000-55500",
+      "explanation": "7 Jahre × 17000 € = 119000 € Ersparnis. Abzüglich 55500 € Investition: 63500 €."
+    },
+    {
+      "id": "wirtschaft-amortisation-roi-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Investition 55500 €, jährliche Einsparung 17000 €. Berechnen Sie den ROI (Return on Investment) nach 7 Jahren in Prozent (eine Nachkommastelle, ohne Verzinsung).",
+      "answer": 114.4,
+      "unit": "%",
+      "calculation": "round(((7*17000-55500)/55500*100)*10)/10",
+      "explanation": "ROI = (Gesamtersparnis − Investition) ÷ Investition × 100 = ((7 × 17000 − 55500) ÷ 55500) × 100 = 114.4 %. Negative Werte bedeuten: noch nicht amortisiert."
+    }
+  ]
+}

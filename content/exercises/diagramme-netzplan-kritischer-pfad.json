@@ -1,0 +1,55 @@
+{
+  "topicSlug": "diagramme-netzplan-kritischer-pfad",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Netzplantechnik und kritischer Pfad",
+  "source": "procedural",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vorgangsliste eines Projekts:\nV1: 9 Tage (Vorgänger: –)\nV2: 4 Tage (Vorgänger: V1)\nV3: 2 Tage (Vorgänger: V1)\nV4: 8 Tage (Vorgänger: V2)\nV5: 6 Tage (Vorgänger: V2)\nV6: 6 Tage (Vorgänger: V3)\nV7: 4 Tage (Vorgänger: V1, V2, V4, V5, V6)\n\nWie lang ist die kürzestmögliche Projektdauer?",
+      "answer": 25,
+      "unit": "Tage",
+      "explanation": "Vorwärtsrechnung (früheste Zeitpunkte) über die Vorgänger:\nV1: FAZ 0, FEZ 9, SAZ 0, SEZ 9, Puffer 0\nV2: FAZ 9, FEZ 13, SAZ 9, SEZ 13, Puffer 0\nV3: FAZ 9, FEZ 11, SAZ 13, SEZ 15, Puffer 4\nV4: FAZ 13, FEZ 21, SAZ 13, SEZ 21, Puffer 0\nV5: FAZ 13, FEZ 19, SAZ 15, SEZ 21, Puffer 2\nV6: FAZ 11, FEZ 17, SAZ 15, SEZ 21, Puffer 4\nV7: FAZ 21, FEZ 25, SAZ 21, SEZ 25, Puffer 0\nDie Projektdauer ist der früheste Endzeitpunkt des letzten Vorgangs: 25 Tage. Kritischer Pfad: V1 → V2 → V4 → V7."
+    },
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vorgangsliste eines Projekts:\nV1: 9 Tage (Vorgänger: –)\nV2: 4 Tage (Vorgänger: V1)\nV3: 2 Tage (Vorgänger: V1)\nV4: 8 Tage (Vorgänger: V2)\nV5: 6 Tage (Vorgänger: V2)\nV6: 6 Tage (Vorgänger: V3)\nV7: 4 Tage (Vorgänger: V1, V2, V4, V5, V6)\n\nWie groß ist der Gesamtpuffer des Vorgangs V6?",
+      "answer": 4,
+      "unit": "Tage",
+      "calculation": "15-11",
+      "explanation": "V6: FAZ 11, SAZ 15 → Gesamtpuffer = SAZ − FAZ = 4 Tage. Der Vorgang darf sich um 4 Tage verschieben, ohne das Projektende zu gefährden."
+    },
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-03",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Vorgangsliste eines Projekts:\nV1: 9 Tage (Vorgänger: –)\nV2: 4 Tage (Vorgänger: V1)\nV3: 2 Tage (Vorgänger: V1)\nV4: 8 Tage (Vorgänger: V2)\nV5: 6 Tage (Vorgänger: V2)\nV6: 6 Tage (Vorgänger: V3)\nV7: 4 Tage (Vorgänger: V1, V2, V4, V5, V6)\n\nWelcher Vorgang liegt auf dem kritischen Pfad (Gesamtpuffer 0)?",
+      "options": [
+        "V1",
+        "V3",
+        "V5",
+        "V6"
+      ],
+      "correctIndex": 0,
+      "explanation": "Puffer aller Vorgänge: V1 = 0, V2 = 0, V3 = 4, V4 = 0, V5 = 2, V6 = 4, V7 = 0. Nur Vorgänge mit Puffer 0 sind kritisch: V1, V2, V4, V7."
+    },
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-04",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Vorgangsliste eines Projekts:\nV1: 9 Tage (Vorgänger: –)\nV2: 4 Tage (Vorgänger: V1)\nV3: 2 Tage (Vorgänger: V1)\nV4: 8 Tage (Vorgänger: V2)\nV5: 6 Tage (Vorgänger: V2)\nV6: 6 Tage (Vorgänger: V3)\nV7: 4 Tage (Vorgänger: V1, V2, V4, V5, V6)\n\nErmitteln Sie den kritischen Pfad und erläutern Sie, warum er für die Projektsteuerung wichtig ist.",
+      "sampleAnswer": "Kritischer Pfad: V1 → V2 → V4 → V7 mit einer Gesamtdauer von 25 Tagen. Alle Vorgänge auf diesem Pfad haben Gesamtpuffer 0 — jede Verzögerung verschiebt das Projektende direkt. Deshalb muss die Projektleitung genau diese Vorgänge eng überwachen und Ressourcen dort priorisieren.",
+      "keyPoints": [
+        "Kritischer Pfad: V1 → V2 → V4 → V7",
+        "Gesamtpuffer 0 auf allen kritischen Vorgängen",
+        "Verzögerung eines kritischen Vorgangs verschiebt das Projektende",
+        "Steuerung/Überwachung fokussiert auf den kritischen Pfad"
+      ]
+    }
+  ]
+}

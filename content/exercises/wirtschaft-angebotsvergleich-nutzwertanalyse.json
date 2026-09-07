@@ -1,0 +1,56 @@
+{
+  "topicSlug": "wirtschaft-angebotsvergleich-nutzwertanalyse",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Angebotsvergleich und Nutzwertanalyse",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "wirtschaft-angebotsvergleich-nutzwertanalyse-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Nutzwertanalyse mit den Kriterien Preis (25 %), Lieferzeit (35 %), Service (20 %), Garantie (40 %).\nAngebot C erzielt die Bewertungen: Preis = 2, Lieferzeit = 4, Service = 3, Garantie = 2. Berechnen Sie die gewichtete Gesamtpunktzahl.",
+      "answer": 330,
+      "unit": "Punkte",
+      "calculation": "2*25+4*35+3*20+2*40",
+      "explanation": "Jede Bewertung mit dem Kriteriengewicht multiplizieren und summieren: 2 × 25 = 50; 4 × 35 = 140; 3 × 20 = 60; 2 × 40 = 80 → 330 Punkte."
+    },
+    {
+      "id": "wirtschaft-angebotsvergleich-nutzwertanalyse-02",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Bei einer Nutzwertanalyse erreichen die Angebote: Angebot A 320 Punkte, Angebot B 355 Punkte, Angebot C 330 Punkte (Kriterien: Preis 25 %, Lieferzeit 35 %, Service 20 %, Garantie 40 %). Welches Angebot ist nach der Nutzwertanalyse das beste?",
+      "options": [
+        "Angebot A",
+        "Angebot B",
+        "Angebot C"
+      ],
+      "correctIndex": 1,
+      "explanation": "Gewichte: Preis 25 %, Lieferzeit 35 %, Service 20 %, Garantie 40 %\nAngebot A: Preis 3 (75), Lieferzeit 3 (105), Service 1 (20), Garantie 3 (120) → Summe 320\nAngebot B: Preis 4 (100), Lieferzeit 5 (175), Service 2 (40), Garantie 1 (40) → Summe 355\nAngebot C: Preis 2 (50), Lieferzeit 4 (140), Service 3 (60), Garantie 2 (80) → Summe 330. Angebot B hat mit 355 Punkten die höchste gewichtete Summe. Die Gewichtung ist entscheidend: eine hohe Einzelbewertung in einem schwach gewichteten Kriterium schlägt nicht durch."
+    },
+    {
+      "id": "wirtschaft-angebotsvergleich-nutzwertanalyse-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Nutzwertanalyse: Angebot A 320 Punkte, Angebot B 355 Punkte, Angebot C 330 Punkte. Um wie viele Punkte liegt das beste Angebot vor dem zweitbesten?",
+      "answer": 25,
+      "unit": "Punkte",
+      "calculation": "355-330",
+      "explanation": "Angebot B (355) − Angebot C (330) = 25 Punkte Vorsprung."
+    },
+    {
+      "id": "wirtschaft-angebotsvergleich-nutzwertanalyse-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wann ist eine Nutzwertanalyse einem reinen Preisvergleich überlegen? Nennen Sie den entscheidenden Unterschied.",
+      "sampleAnswer": "Wenn Angebote sich nicht nur im Preis unterscheiden, sondern qualitative Faktoren eine Rolle spielen (Service, Garantie, Lieferzeit). Die Nutzwertanalyse gewichtet solche Kriterien und macht den Vergleich nachvollziehbar und begründbar — der reine Preisvergleich ignoriert sie.",
+      "keyPoints": [
+        "Mehrere Kriterien, nicht nur Preis",
+        "Kriterien werden gewichtet",
+        "Entscheidung wird nachvollziehbar/begründbar",
+        "Subjektive Bewertung bleibt transparent sichtbar"
+      ]
+    }
+  ]
+}

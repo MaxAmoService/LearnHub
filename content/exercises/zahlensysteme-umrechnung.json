@@ -1,0 +1,60 @@
+{
+  "topicSlug": "zahlensysteme-umrechnung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Dezimal, binär, hexadezimal: Umrechnen",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "zahlensysteme-umrechnung-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wandeln Sie die Dezimalzahl 111 in eine 8-Bit-Binärzahl um.",
+      "answer": "01101111",
+      "explanation": "Stellenwerte: 128 64 32 16 8 4 2 1. 111 = 01101111 (64 + 32 + 8 + 4 + 2 + 1)."
+    },
+    {
+      "id": "zahlensysteme-umrechnung-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wandeln Sie die Binärzahl 01110010 in eine Dezimalzahl um.",
+      "answer": 114,
+      "calculation": "64+32+16+2",
+      "explanation": "Stellenwerte aufaddieren: 64 + 32 + 16 + 2 = 114."
+    },
+    {
+      "id": "zahlensysteme-umrechnung-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wandeln Sie die Dezimalzahl 83 in eine zweistellige Hexadezimalzahl um.",
+      "answer": "53",
+      "explanation": "Division durch 16: 83 : 16 = 5 Rest 3 → 5 und 3 → 53."
+    },
+    {
+      "id": "zahlensysteme-umrechnung-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wandeln Sie die Hexadezimalzahl 0x8A in eine Dezimalzahl um.",
+      "answer": 138,
+      "calculation": "8*16+10",
+      "explanation": "0x8A = 8 · 16 + 10 = 138."
+    },
+    {
+      "id": "zahlensysteme-umrechnung-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wandeln Sie die Dezimalzahl 248 in eine Oktalzahl um.",
+      "answer": "370",
+      "explanation": "Wiederholte Division durch 8: 248 : 8 = 31 Rest 0 → 37 Rest 0 → 370."
+    },
+    {
+      "id": "zahlensysteme-umrechnung-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wandeln Sie die Binärzahl 11100100 in eine Hexadezimalzahl um.",
+      "answer": "E4",
+      "explanation": "In 4er-Gruppen (Nibbles) teilen: 1110 0100 → E und 4 → 0xE4."
+    }
+  ]
+}

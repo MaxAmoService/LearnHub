@@ -13,6 +13,7 @@
     "backfill:planitem-uid": "tsx scripts/backfill-planitem-uid.ts",
     "backfill:topic-slug": "tsx scripts/backfill-topic-slug.ts",
     "gen:exercises": "tsx scripts/generate-exercises.ts",
+    "materialize:procedural": "tsx scripts/materialize-procedural.ts",
     "seed:plan-templates": "tsx scripts/seed-plan-templates.ts"
   },
   "dependencies": {

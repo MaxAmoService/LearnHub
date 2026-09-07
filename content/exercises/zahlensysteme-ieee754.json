@@ -1,0 +1,42 @@
+{
+  "topicSlug": "zahlensysteme-ieee754",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Gleitkommazahlen nach IEEE 754",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "zahlensysteme-ieee754-01",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Stellen Sie die Dezimalzahl -9.625 als 32-Bit-Gleitkommazahl nach IEEE 754 (single precision) dar. Geben Sie das Bitmuster als Hexadezimalzahl an (8 Hex-Ziffern).",
+      "answer": "C11A0000",
+      "explanation": "Vorzeichenbit: 1. Exponent: 3 + 127 (Bias) = 130 (binär 10000010). Mantisse (23 Bit, führende 1 implizit): 00110100000000000000000. Zusammengesetzt: 1 10000010 00110100000000000000000 = 0xC11A0000."
+    },
+    {
+      "id": "zahlensysteme-ieee754-02",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Stellen Sie die Dezimalzahl -5.5 als 32-Bit-Gleitkommazahl nach IEEE 754 (single precision) dar. Geben Sie das Bitmuster als Hexadezimalzahl an (8 Hex-Ziffern).",
+      "answer": "C0B00000",
+      "explanation": "Vorzeichenbit: 1. Exponent: 2 + 127 (Bias) = 129 (binär 10000001). Mantisse (23 Bit, führende 1 implizit): 01100000000000000000000. Zusammengesetzt: 1 10000001 01100000000000000000000 = 0xC0B00000."
+    },
+    {
+      "id": "zahlensysteme-ieee754-03",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Das 32-Bit-Muster 0x40A40000 ist eine IEEE-754-Gleitkommazahl (single precision). Welche Dezimalzahl stellt es dar?",
+      "answer": 5.125,
+      "explanation": "Vorzeichen: 0. Exponent: 129 − 127 = 2. Mantisse: 1.010010… Wert = 1,… · 2^2 = 5.125."
+    },
+    {
+      "id": "zahlensysteme-ieee754-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Das 32-Bit-Muster 0xC0D94000 ist eine IEEE-754-Gleitkommazahl (single precision). Welche Dezimalzahl stellt es dar?",
+      "answer": -6.7890625,
+      "explanation": "Vorzeichen: 1. Exponent: 129 − 127 = 2. Mantisse: 1.101100… Wert = −1,… · 2^2 = -6.7890625."
+    }
+  ]
+}

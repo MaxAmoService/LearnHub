@@ -1,0 +1,48 @@
+{
+  "topicSlug": "zahlensysteme-fehlererkennung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Fehlererkennung: Paritätsbit und Prüfsummen",
+  "source": "procedural",
+  "standalone": true,
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "zahlensysteme-fehlererkennung-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechnen Sie das Paritätsbit (gerade Parität) für das 7-Bit-Datenwort 1001100.",
+      "answer": 1,
+      "calculation": "1+0+0+1+1+0+0 % 2",
+      "explanation": "Gerade Parität: Die Gesamtzahl der Einsen (inklusive Paritätsbit) muss gerade sein. Das Datenwort enthält 3 Einsen → Paritätsbit = 1 (Summe 4)."
+    },
+    {
+      "id": "zahlensysteme-fehlererkennung-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechnen Sie das Paritätsbit (ungerade Parität) für das 7-Bit-Datenwort 1101010.",
+      "answer": 1,
+      "explanation": "Ungerade Parität: Die Gesamtzahl der Einsen muss ungerade sein. 4 Einsen im Datenwort → Paritätsbit = 1 (Summe 5)."
+    },
+    {
+      "id": "zahlensysteme-fehlererkennung-03",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Ein Empfänger prüft das Byte 10010011 mit gerader Parität (das 8. Bit ist das Paritätsbit). Wird ein Übertragungsfehler erkannt? Begründen Sie.",
+      "sampleAnswer": "Nein. Das Byte enthält 4 Einsen — eine gerade Anzahl, die Prüfung passt. Ein 2-Bit-Fehler bliebe allerdings unentdeckt.",
+      "keyPoints": [
+        "Einsen zählen",
+        "gerade → kein Fehler erkennbar",
+        "Paritätsbit erkennt nur ungerade Anzahl Bitfehler"
+      ]
+    },
+    {
+      "id": "zahlensysteme-fehlererkennung-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechnen Sie die Prüfsumme (Modulo 256) für die Datenbytes 0xBE, 0x46, 0x1B, 0x6D.",
+      "answer": 140,
+      "calculation": "(190+70+27+109) % 256",
+      "explanation": "Summe: 190 + 70 + 27 + 109 = 396. Modulo 256: 396 % 256 = 140."
+    }
+  ]
+}
