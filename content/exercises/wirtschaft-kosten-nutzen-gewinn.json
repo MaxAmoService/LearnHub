@@ -1,0 +1,92 @@
+{
+  "topicSlug": "wirtschaft-kosten-nutzen-gewinn",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Wirtschaftlichkeit: Kosten, Nutzen, Gewinn",
+  "source": "generated",
+  "generatedWith": "deepseek/deepseek-v4-pro-0813",
+  "reviewedBy": null,
+  "standalone": true,
+  "exercises": [
+    {
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Die IT-Abteilung eines Unternehmens plant die Einführung eines neuen Helpdesk-Systems. Erläutern Sie in diesem Zusammenhang die betriebswirtschaftlichen Begriffe Kosten, Nutzen und Gewinn. Definieren Sie außerdem den Begriff Wirtschaftlichkeit und geben Sie die zugehörige Formel an. Begründen Sie, warum bei einer Investitionsentscheidung neben dem Gewinn auch die Wirtschaftlichkeit betrachtet werden sollte.",
+      "sampleAnswer": "Kosten sind der in Geld bewertete Verbrauch von Produktionsfaktoren, z. B. Lizenz-, Hardware- und Personalkosten für das Helpdesk-System. Nutzen ist die in Geld bewertete positive Wirkung einer Maßnahme, etwa durch schnellere Ticketbearbeitung eingesparte Arbeitsstunden oder vermiedene Produktionsausfälle. Gewinn ist die Differenz aus Nutzen (bzw. Erlösen) und Kosten; im Helpdesk-Beispiel: Gewinn = jährlich eingesparte Personalkosten − jährliche Systemkosten. Wirtschaftlichkeit ist das Verhältnis von Leistung (Nutzen) zu den dafür eingesetzten Kosten: Wirtschaftlichkeit = Nutzen ÷ Kosten. Eine Investition ist wirtschaftlich, wenn das Verhältnis größer als 1 ist. Der Gewinn allein sagt nichts über den dazu nötigen Mitteleinsatz aus; zwei Projekte mit gleichem Gewinn können unterschiedlich hohe Kosten haben. Die Wirtschaftlichkeit relativiert den Erfolg am Ressourceneinsatz und ermöglicht so einen fairen Vergleich verschiedener Alternativen.",
+      "keyPoints": [
+        "Kosten = in Geld bewerteter Ressourcenverbrauch",
+        "Nutzen = bewertete positive Wirkung/Einsparung",
+        "Gewinn = Nutzen − Kosten",
+        "Wirtschaftlichkeit = Nutzen ÷ Kosten",
+        "Wirtschaftlich, wenn Kennzahl > 1",
+        "Wirtschaftlichkeit relativiert den Erfolg am Mitteleinsatz"
+      ],
+      "id": "wirtschaft-kosten-nutzen-gewinn-01"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Unternehmen führt eine neue Software zur automatisierten Rechnungsprüfung ein. Dadurch entfallen jährlich 2.500 Arbeitsstunden, die bisher manuell abgerechnet wurden. Eine Arbeitsstunde wird mit einem internen Stundensatz von 40 EUR bewertet. Die Softwarelizenz kostet 20.000 EUR pro Jahr, zusätzlich fallen 2.000 EUR Wartungskosten pro Jahr an. Berechnen Sie den jährlichen Gewinn aus dieser Maßnahme in EUR.",
+      "answer": 78000,
+      "unit": "EUR",
+      "calculation": "2500*40-(20000+2000)",
+      "explanation": "Schritt 1: Der jährliche Nutzen (Einsparung) ergibt sich aus der eingesparten Zeit multipliziert mit dem Stundensatz: 2.500 h × 40 EUR/h = 100.000 EUR. Schritt 2: Die jährlichen Kosten setzen sich aus Lizenz- und Wartungskosten zusammen: 20.000 EUR + 2.000 EUR = 22.000 EUR. Schritt 3: Der Gewinn ist die Differenz aus Nutzen und Kosten: 100.000 EUR − 22.000 EUR = 78.000 EUR. Die Maßnahme erwirtschaftet also einen jährlichen Gewinn von 78.000 EUR. Zusätzlich lässt sich die Wirtschaftlichkeit als Nutzen/Kosten = 100.000 EUR ÷ 22.000 EUR ≈ 4,55 angeben; die Investition ist damit deutlich wirtschaftlich.",
+      "id": "wirtschaft-kosten-nutzen-gewinn-02"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein IT-Service-Unternehmen investiert in ein neues Fernwartungssystem. Die Anschaffungskosten betragen 80.000 EUR und werden linear über vier Jahre abgeschrieben. Zusätzlich fallen jährliche Betriebskosten in Höhe von 10.000 EUR an. Durch das System entfallen pro Jahr Personalkosten in Höhe von 60.000 EUR. Berechnen Sie die durchschnittliche jährliche Wirtschaftlichkeit (Nutzen ÷ Kosten) über die vier Jahre. Runden Sie kaufmännisch auf zwei Nachkommastellen.",
+      "answer": 2,
+      "calculation": "60000/(80000/4+10000)",
+      "explanation": "Schritt 1: Der jährliche Nutzen besteht aus den entfallenden Personalkosten: 60.000 EUR. Schritt 2: Die jährlichen Kosten setzen sich aus der linearen Abschreibung und den Betriebskosten zusammen. Die lineare Abschreibung verteilt die Anschaffungskosten gleichmäßig auf die Nutzungsdauer: 80.000 EUR ÷ 4 Jahre = 20.000 EUR pro Jahr. Die jährlichen Gesamtkosten betragen daher: 20.000 EUR + 10.000 EUR = 30.000 EUR. Schritt 3: Die Wirtschaftlichkeit ist das Verhältnis von Nutzen zu Kosten: Wirtschaftlichkeit = 60.000 EUR ÷ 30.000 EUR = 2,0. Das System erbringt also pro eingesetztem Euro einen Nutzen von zwei Euro; die Investition ist wirtschaftlich, da die Kennzahl größer als 1 ist.",
+      "id": "wirtschaft-kosten-nutzen-gewinn-03"
+    },
+    {
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche betriebswirtschaftliche Kennzahl setzt die erbrachte Leistung (den Nutzen) ins Verhältnis zu den dafür angefallenen Kosten?",
+      "options": [
+        "Rentabilität",
+        "Produktivität",
+        "Wirtschaftlichkeit",
+        "Deckungsbeitrag",
+        "Gewinn"
+      ],
+      "correctIndex": 2,
+      "explanation": "Die Wirtschaftlichkeit ist definiert als Verhältnis von Leistung (Nutzen) zu Kosten, also Wertgröße zu Wertgröße. Die Rentabilität setzt dagegen den Gewinn ins Verhältnis zum eingesetzten Kapital (z. B. Eigenkapital oder Gesamtkapital). Die Produktivität ist eine mengenmäßige Kennzahl (Outputmenge ÷ Inputmenge). Der Deckungsbeitrag ist die Differenz aus Verkaufserlösen und variablen Kosten. Der Gewinn ist die Differenz aus Erlösen und Gesamtkosten. Ausschließlich die Wirtschaftlichkeit beantwortet die Frage, wie viel Nutzen je eingesetzter Kosteneinheit entsteht.",
+      "id": "wirtschaft-kosten-nutzen-gewinn-04"
+    },
+    {
+      "type": "match",
+      "difficulty": 2,
+      "prompt": "Ordnen Sie die betriebswirtschaftlichen Kernbegriffe ihren typischen Formeln bzw. Beschreibungen zu.",
+      "pairs": [
+        {
+          "left": "Wirtschaftlichkeit",
+          "right": "Leistung / Kosten"
+        },
+        {
+          "left": "Rentabilität",
+          "right": "Gewinn / eingesetztes Kapital"
+        },
+        {
+          "left": "Produktivität",
+          "right": "Outputmenge / Inputmenge"
+        },
+        {
+          "left": "Gewinn",
+          "right": "Erlöse − Kosten"
+        },
+        {
+          "left": "Deckungsbeitrag",
+          "right": "Erlöse − variable Kosten"
+        },
+        {
+          "left": "Umsatzrentabilität",
+          "right": "Gewinn / Umsatz"
+        }
+      ],
+      "id": "wirtschaft-kosten-nutzen-gewinn-05"
+    }
+  ]
+}

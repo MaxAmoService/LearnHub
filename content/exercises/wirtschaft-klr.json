@@ -1,0 +1,92 @@
+{
+  "topicSlug": "wirtschaft-klr",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Kosten- und Leistungsrechnung",
+  "source": "generated",
+  "generatedWith": "deepseek/deepseek-v4-pro-0813",
+  "reviewedBy": null,
+  "standalone": true,
+  "exercises": [
+    {
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Erläutern Sie den Unterschied zwischen Aufwendungen und Kosten in der Kosten- und Leistungsrechnung. Gehen Sie dabei auf neutrale Aufwendungen und kalkulatorische Kosten ein und nennen Sie jeweils ein Beispiel.",
+      "sampleAnswer": "In der Finanzbuchhaltung werden alle Geschäftsvorfälle als Aufwendungen erfasst, die das Eigenkapital mindern – unabhängig davon, ob sie für die eigentliche betriebliche Leistungserstellung angefallen sind. In der Kosten- und Leistungsrechnung (KLR) werden dagegen nur die betriebsbedingten und periodengerechten Werteverzehre als Kosten angesetzt. \n\nAbgrenzung:\n1. Neutrale Aufwendungen sind Aufwendungen, die keine Kosten sind. Man unterscheidet:\n   - betriebsfremde Aufwendungen (z. B. Spende)\n   - periodenfremde Aufwendungen (z. B. Gewerbesteuernachzahlung für Vorjahre)\n   - außerordentliche Aufwendungen (z. B. Verlust aus Anlagenverkauf)\n2. Kalkulatorische Kosten sind Kosten, denen kein oder ein anders hoher Aufwand gegenübersteht. Man unterscheidet:\n   - Anderskosten (z. B. kalkulatorische Abschreibung statt bilanzieller Abschreibung)\n   - Zusatzkosten (z. B. kalkulatorischer Unternehmerlohn)\n\nZiel der Abgrenzung ist es, den tatsächlichen betriebsbedingten Ressourcenverbrauch unabhängig von handels- und steuerrechtlichen Bewertungsvorschriften abzubilden.",
+      "keyPoints": [
+        "Aufwendungen = gesamter bewerteter Verbrauch laut Finanzbuchhaltung",
+        "Kosten = betriebsbedingter, periodengerechter Werteverzehr",
+        "Neutrale Aufwendungen: betriebsfremd, periodenfremd, außerordentlich",
+        "Kalkulatorische Kosten: Anderskosten und Zusatzkosten",
+        "Beispiele für beide Kategorien",
+        "Zweck: betriebswirtschaftlich richtige Abbildung"
+      ],
+      "id": "wirtschaft-klr-01"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Industriebetrieb rechnet in der Kostenstellenrechnung mit Zuschlagssätzen. Für die Materialstelle gelten: Materialeinzelkosten 120.000 €, Materialgemeinkosten 18.000 €. Berechnen Sie den Materialgemeinkostenzuschlagssatz in Prozent.",
+      "answer": 15,
+      "unit": "%",
+      "calculation": "(18000 / 120000) * 100",
+      "explanation": "Der Zuschlagssatz für Gemeinkosten wird berechnet als (Gemeinkosten / Einzelkosten) × 100. Einsetzen: (18.000 € / 120.000 €) × 100 = 15 %. Die Materialgemeinkosten werden also mit 15 % auf die Materialeinzelkosten zugeschlagen.",
+      "id": "wirtschaft-klr-02"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechnen Sie im Rahmen der Zuschlagskalkulation die Selbstkosten eines Auftrags. Gegeben sind: Fertigungsmaterial 40.000 €, Materialgemeinkostenzuschlag 10 %, Fertigungslöhne 25.000 €, Fertigungsgemeinkostenzuschlag 120 %, Verwaltungs- und Vertriebsgemeinkostenzuschlag 15 % auf die Herstellkosten.",
+      "answer": 113850,
+      "unit": "€",
+      "calculation": "(40000 + 40000 * 0.10 + 25000 + 25000 * 1.20) * 1.15",
+      "explanation": "Schritt 1: Materialkosten = Fertigungsmaterial + Materialgemeinkosten = 40.000 € + 10 % von 40.000 € = 40.000 € + 4.000 € = 44.000 €. Schritt 2: Fertigungskosten = Fertigungslöhne + Fertigungsgemeinkosten = 25.000 € + 120 % von 25.000 € = 25.000 € + 30.000 € = 55.000 €. Schritt 3: Herstellkosten = Materialkosten + Fertigungskosten = 44.000 € + 55.000 € = 99.000 €. Schritt 4: Verwaltungs- und Vertriebsgemeinkosten = 15 % von 99.000 € = 14.850 €. Schritt 5: Selbstkosten = Herstellkosten + Verwaltungs- und Vertriebsgemeinkosten = 99.000 € + 14.850 € = 113.850 €.",
+      "id": "wirtschaft-klr-03"
+    },
+    {
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Aussage zu kalkulatorischen Kosten ist korrekt?",
+      "options": [
+        "Kalkulatorische Kosten sind ausschließlich Zusatzkosten, denen kein Aufwand gegenübersteht.",
+        "Kalkulatorische Kosten werden in der Finanzbuchhaltung als Aufwand erfasst.",
+        "Kalkulatorische Kosten bilden den betriebsbedingten Werteverzehr unabhängig von handels- und steuerrechtlichen Vorschriften ab.",
+        "Kalkulatorische Kosten entsprechen den neutralen Aufwendungen, nur aus interner Sicht."
+      ],
+      "correctIndex": 2,
+      "explanation": "Richtig ist: Kalkulatorische Kosten dienen der KLR dazu, den tatsächlichen betriebsbedingten Werteverzehr abzubilden – unabhängig von externen Rechnungslegungsvorschriften. Sie umfassen Anderskosten (Aufwand in anderer Höhe, z. B. kalkulatorische Abschreibung) und Zusatzkosten (kein Aufwand, z. B. kalkulatorischer Unternehmerlohn). Die erste Option ist falsch, weil sie Anderskosten ignoriert. Die zweite Option verwechselt internes und externes Rechnungswesen: kalkulatorische Kosten erscheinen nicht in der Finanzbuchhaltung. Die vierte Option verwechselt kalkulatorische Kosten mit neutralen Aufwendungen – diese sind genau das Gegenteil (Aufwand, aber keine Kosten).",
+      "id": "wirtschaft-klr-04"
+    },
+    {
+      "type": "match",
+      "difficulty": 2,
+      "prompt": "Ordnen Sie die folgenden Kostenbegriffe ihren Definitionen zu.",
+      "pairs": [
+        {
+          "left": "Einzelkosten",
+          "right": "Kosten, die einem Kostenträger direkt und verursachungsgerecht zugerechnet werden können (z. B. Fertigungsmaterial)."
+        },
+        {
+          "left": "Gemeinkosten",
+          "right": "Kosten, die einem Kostenträger nicht direkt zugerechnet werden können und über Schlüssel verteilt werden (z. B. Miete)."
+        },
+        {
+          "left": "Fixe Kosten",
+          "right": "Kosten, die kurzfristig unabhängig von der Produktionsmenge anfallen (z. B. Gehälter)."
+        },
+        {
+          "left": "Variable Kosten",
+          "right": "Kosten, die sich mit der Produktionsmenge ändern (z. B. Materialverbrauch)."
+        },
+        {
+          "left": "Anderskosten",
+          "right": "Kalkulatorische Kosten, denen ein Aufwand in anderer Höhe gegenübersteht (z. B. kalkulatorische Abschreibung)."
+        },
+        {
+          "left": "Zusatzkosten",
+          "right": "Kalkulatorische Kosten, denen kein Aufwand gegenübersteht (z. B. kalkulatorischer Unternehmerlohn)."
+        }
+      ],
+      "id": "wirtschaft-klr-05"
+    }
+  ]
+}

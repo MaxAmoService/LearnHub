@@ -1,0 +1,89 @@
+{
+  "topicSlug": "computersysteme-schnittstellen-datenuebertragung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Schnittstellen und Datenübertragung (seriell/parallel)",
+  "source": "generated",
+  "generatedWith": "deepseek/deepseek-v4-pro-0813",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein System soll eine Datei von 1 Megabit (1.000.000 Bit) Nutzdaten übertragen. Zur Auswahl stehen:\n- eine parallele Schnittstelle mit 8 Datenleitungen und 500 kHz Takt,\n- eine serielle Schnittstelle mit 10 Mbit/s Übertragungsrate, Rahmen 8N1 (1 Startbit, 8 Datenbits, 1 Stoppbit).\nUm wie viele Sekunden ist die Übertragung über die serielle Schnittstelle kürzer? (1 Mbit/s = 1.000.000 bit/s)",
+      "answer": 0.125,
+      "unit": "s",
+      "calculation": "1000000/(8*500000) - 1000000/((10000000/10)*8)",
+      "explanation": "Parallele Nutzdatenrate: 8 Bit/Takt × 500.000 Takte/s = 4.000.000 bit/s. Zeit parallel: 1.000.000 Bit ÷ 4.000.000 bit/s = 0,25 s. Seriell: Bruttobitrate 10.000.000 bit/s; pro 10-Bit-Rahmen sind 8 Nutzbits enthalten, daher Netto-Nutzdatenrate = 10.000.000 bit/s × (8/10) = 8.000.000 bit/s. Zeit seriell: 1.000.000 Bit ÷ 8.000.000 bit/s = 0,125 s. Zeitdifferenz = 0,25 s − 0,125 s = 0,125 s.",
+      "id": "computersysteme-schnittstellen-datenuebertragung-01"
+    },
+    {
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Moderne Hochgeschwindigkeits-Schnittstellen wie PCIe oder USB 3.x sind seriell ausgelegt, obwohl für parallele Übertragung mehr Leitungen zur Verfügung stehen. Erläutern Sie drei Gründe für diese Entwicklung.",
+      "sampleAnswer": "Bei sehr hohen Takten führen Laufzeitunterschiede (Skew) zwischen den parallelen Leitungen dazu, dass die Bits nicht gleichzeitig am Empfänger ankommen. Die Synchronisation wird aufwendig und begrenzt den Takt. Serielle Verbindungen benötigen deutlich weniger Adern und Pins, was Steckverbinder, Kabel und Platinenflächen verkleinert und Kosten senkt. Zudem erlauben serielle differentielle Punkt-zu-Punkt-Verbindungen höhere Taktraten und eine bessere Signalintegrität, da Störeinflüsse geringer sind.",
+      "keyPoints": [
+        "Minimierung von Laufzeitunterschieden (Skew)",
+        "geringere Leitungs-/Pinanzahl und Kosten",
+        "höhere Taktraten durch differentielle Punkt-zu-Punkt-Verbindungen",
+        "bessere Signalintegrität"
+      ],
+      "id": "computersysteme-schnittstellen-datenuebertragung-02"
+    },
+    {
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Warum stößt die parallele Datenübertragung bei sehr hohen Taktfrequenzen an physikalische Grenzen?",
+      "options": [
+        "Weil parallele Leitungen grundsätzlich höhere Widerstände haben als serielle.",
+        "Weil Laufzeitunterschiede (Skew) zwischen den einzelnen Leitungen die Synchronisation erschweren.",
+        "Weil parallele Schnittstellen keine Fehlererkennungsbits übertragen können.",
+        "Weil serielle Übertragung grundsätzlich keinen Takt benötigt."
+      ],
+      "correctIndex": 1,
+      "explanation": "Bei paralleler Übertragung müssen alle Bits gleichzeitig am Empfänger eintreffen. Aufgrund minimal unterschiedlicher Leitungslängen und kapazitiver Beläge entstehen Laufzeitunterschiede (Skew), die bei hohen Taktfrequenzen die Signalgültigkeit gefährden. Option A ist falsch, da der Widerstand nicht der begrenzende Faktor ist. Option C ist falsch, da parallele Übertragung sehr wohl Fehlererkennung unterstützen kann. Option D ist falsch, weil auch serielle Schnittstellen einen Takt benötigen – entweder als separates Taktsignal oder durch Taktrickgewinnung aus dem Datenstrom.",
+      "id": "computersysteme-schnittstellen-datenuebertragung-03"
+    },
+    {
+      "type": "match",
+      "difficulty": 1,
+      "prompt": "Ordnen Sie die Grundbegriffe der Datenübertragung ihren Beschreibungen zu.",
+      "pairs": [
+        {
+          "left": "Baudrate",
+          "right": "Anzahl der Signalwechsel pro Sekunde"
+        },
+        {
+          "left": "Bitrate",
+          "right": "Anzahl der übertragenen Nutzbits pro Sekunde"
+        },
+        {
+          "left": "Skew",
+          "right": "Laufzeitunterschied zwischen parallelen Signalleitungen"
+        },
+        {
+          "left": "Vollduplex",
+          "right": "Gleichzeitiges Senden und Empfangen auf getrennten Kanälen"
+        },
+        {
+          "left": "Halbduplex",
+          "right": "Wechselseitiges Senden und Empfangen auf demselben Kanal"
+        },
+        {
+          "left": "Paritätsbit",
+          "right": "Zusätzliches Bit zur einfachen Fehlererkennung"
+        }
+      ],
+      "id": "computersysteme-schnittstellen-datenuebertragung-04"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Mikrocontroller sendet über eine serielle Schnittstelle (UART) mit einer Baudrate von 115.200 Baud. Der Rahmen ist 8N1: 1 Startbit, 8 Datenbits, kein Paritätsbit, 1 Stoppbit. Wie viele Nutzdatenbytes können maximal pro Sekunde übertragen werden?",
+      "answer": 11520,
+      "unit": "Byte/s",
+      "calculation": "115200 / (1 + 8 + 1)",
+      "explanation": "Bei einer UART-Schnittstelle entspricht 1 Baud hier 1 Bit (1 Signalwechsel pro Bit). Pro Rahmen werden 1 Startbit + 8 Datenbits + 1 Stoppbit = 10 Bit übertragen. Bei 115.200 Baud beträgt die Brutto-Bitrate 115.200 bit/s. Daraus ergibt sich die Rahmengeschwindigkeit: 115.200 bit/s ÷ 10 bit/Rahmen = 11.520 Rahmen/s. Jeder Rahmen enthält 8 Nutzdatenbits, also 1 Byte. Somit können maximal 11.520 Nutzdatenbyte pro Sekunde übertragen werden.",
+      "id": "computersysteme-schnittstellen-datenuebertragung-05"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "topicSlug": "netzwerktechnik-vlan-segmentierung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "VLAN und Segmentierung",
+  "source": "generated",
+  "generatedWith": "deepseek/deepseek-v4-pro-0813",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Erläutern Sie, warum ein VLAN die Broadcast-Domäne verkleinert. Nennen Sie außerdem drei konkrete Vorteile, die sich daraus für ein Unternehmensnetz ergeben.",
+      "sampleAnswer": "Ein VLAN fasst logisch zusammengehörige Ports eines Switches zu einer eigenen Broadcast-Domäne zusammen. Broadcasts (z. B. ARP-Anfragen) werden von einem Switch nur an Ports desselben VLANs geflutet und nicht an Ports anderer VLANs weitergeleitet. Dadurch bleibt das Broadcast-Aufkommen pro VLAN gering. Vorteile: 1) Weniger störender Broadcast-Verkehr und dadurch bessere Performance. 2) Höhere Sicherheit, weil Abteilungen logisch getrennt sind und unberechtigter Zugriff auf fremde VLANs nicht ohne Weiteres möglich ist. 3) Flexiblere Zuordnung von Ports zu Arbeitsgruppen unabhängig vom physischen Standort (z. B. über mehrere Stockwerke). Weitere Vorteile: gezielte Anwendung von Sicherheitsregeln (ACLs) und bessere Skalierbarkeit.",
+      "keyPoints": [
+        "Eigene Broadcast-Domäne pro VLAN",
+        "Broadcasts nicht in andere VLANs weitergeleitet",
+        "Performance durch geringeres Broadcast-Aufkommen",
+        "Sicherheit durch logische Trennung",
+        "Flexible, standortunabhängige Gruppenbildung",
+        "Gezielte ACLs/Richtlinien möglich"
+      ],
+      "id": "netzwerktechnik-vlan-segmentierung-01"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Der 802.1Q-Tag enthält ein 12 Bit breites Feld für die VLAN-ID. Die IDs 0 und 4095 sind für Sonderzwecke reserviert und dürfen nicht für normale VLANs verwendet werden. Wie viele verschiedene VLANs können maximal unterschieden werden?",
+      "answer": 4094,
+      "calculation": "2^12 - 2",
+      "explanation": "12 Bit für die VLAN-ID ergeben 2^12 = 4096 mögliche Werte. Da die IDs 0 und 4095 reserviert sind, bleiben 4096 − 2 = 4094 nutzbare VLAN-IDs. Die erlaubten IDs liegen also im Bereich 1 bis 4094.",
+      "id": "netzwerktechnik-vlan-segmentierung-02"
+    },
+    {
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Switch-Port ist als Access-Port mit der PVID 20 konfiguriert. Wie verhält sich der Switch, wenn an diesem Port ungetaggte Frames von einem Endgerät eingehen?",
+      "options": [
+        "Der Switch ordnet die Frames dem VLAN 20 zu, leitet sie intern mit VLAN-Tag 20 weiter und entfernt das Tag beim Ausgang zu anderen Access-Ports desselben VLANs.",
+        "Der Switch verwirft die ungetaggten Frames, weil an einem Access-Port ausschließlich Frames mit VLAN-Tag 20 erwartet werden.",
+        "Der Switch leitet die ungetaggten Frames immer dem nativen VLAN (VLAN 1) zu; die PVID 20 gilt nur für bereits getaggte Frames.",
+        "Der Switch sendet die Frames unverändert an alle Ports mit PVID 20, ohne eine interne VLAN-Zuordnung vorzunehmen."
+      ],
+      "correctIndex": 0,
+      "explanation": "Ein Access-Port ist einem einzigen VLAN zugeordnet (hier VLAN 20). Eingehende ungetaggte Frames werden diesem VLAN zugewiesen und intern getaggt weitergeleitet. Beim Verlassen zu Access-Ports desselben VLANs wird das Tag wieder entfernt. Option B beschreibt ein falsches Trunk-Verhalten; Option C verwechselt PVID mit dem nativen VLAN eines Trunk-Ports; Option D beschreibt ein Broadcast-ähnliches Fluten und ignoriert die gezielte Weiterleitung innerhalb des VLANs.",
+      "id": "netzwerktechnik-vlan-segmentierung-03"
+    },
+    {
+      "type": "match",
+      "difficulty": 2,
+      "prompt": "Ordnen Sie die Begriffe aus dem VLAN-Umfeld den jeweils passenden Beschreibungen zu.",
+      "pairs": [
+        {
+          "left": "Access-Port",
+          "right": "Port, der ungetaggte Frames einem einzigen VLAN zuordnet und typischerweise mit Endgeräten verbunden wird."
+        },
+        {
+          "left": "Trunk-Port",
+          "right": "Port, der Frames mehrerer VLANs mit 802.1Q-Tags zwischen Switches oder zu einem Router überträgt."
+        },
+        {
+          "left": "Native VLAN",
+          "right": "VLAN, in dem Frames auf einem Trunk-Port ungetaggt übertragen werden (häufig VLAN 1)."
+        },
+        {
+          "left": "PVID",
+          "right": "VLAN-ID, die einem Access-Port zugewiesen wird und eingehende ungetaggte Frames aufnimmt."
+        },
+        {
+          "left": "Voice-VLAN",
+          "right": "Separates VLAN für IP-Telefone, das häufig mit QoS priorisiert wird."
+        },
+        {
+          "left": "Management-VLAN",
+          "right": "VLAN, über das Administratoren den Switch fernkonfigurieren, z. B. per SSH."
+        }
+      ],
+      "id": "netzwerktechnik-vlan-segmentierung-04"
+    },
+    {
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Ein Unternehmen hat einen zentralen Switch mit 24 Ports. Drei Abteilungen – Vertrieb, Entwicklung und Verwaltung – sollen logisch getrennt werden. Für die Kommunikation zwischen den VLANs steht ein Router mit nur einer physikalischen Netzwerkschnittstelle zur Verfügung. Beschreiben Sie die erforderlichen Konfigurationsschritte am Switch und am Router, einschließlich sinnvoller VLAN-IDs und Port-Zuordnungen. Gehen Sie insbesondere auf das Trunking-Verfahren und die Router-Konfiguration ein.",
+      "sampleAnswer": "Am Switch: 1) Drei VLANs anlegen, z. B. VLAN 10 = Vertrieb, VLAN 20 = Entwicklung, VLAN 30 = Verwaltung (IDs 1–4094, hier bewusst nicht VLAN 1). 2) Access-Ports zuweisen: z. B. Ports 1–8 zu VLAN 10, Ports 9–16 zu VLAN 20, Ports 17–22 zu VLAN 30. Port-Modus auf Access setzen und jeweils die passende PVID vergeben. 3) Einen Trunk-Port (z. B. Port 24) zum Router konfigurieren: Switchport-Modus Trunk, erlaubte VLANs 10,20,30, optional nativen VLAN z. B. VLAN 99 (nicht mit einem Datennetz-VLAN identisch), 802.1Q als Trunking-Protokoll aktivieren. Am Router: 4) Die eine physikalische Schnittstelle in logische Subinterfaces aufteilen (Router-on-a-Stick): eth0.10 mit 802.1Q-Tag 10, eth0.20 mit Tag 20, eth0.30 mit Tag 30. 5) Jede Subinterface erhält die IP-Adresse des Standardgateways für das jeweilige VLAN, z. B. eth0.10 → 10.0.10.1/24, eth0.20 → 10.0.20.1/24, eth0.30 → 10.0.30.1/24. 6) Endgeräte der Abteilungen erhalten passende IP-Adressen aus dem jeweiligen Subnetz und als Gateway die IP der zugehörigen Subinterface. 7) Wichtig: Ohne den Router oder einen Layer-3-Switch bleiben die VLANs separate Broadcast-Domänen und können nicht miteinander kommunizieren. Zur Sicherheit sollten das native VLAN ungenutzt bleiben bzw. ein eigenes Management-VLAN verwendet und VLAN-Hopping vermieden werden.",
+      "keyPoints": [
+        "VLANs anlegen und sinnvolle IDs vergeben (z. B. 10,20,30)",
+        "Access-Ports den VLANs zuordnen und PVID setzen",
+        "Trunk-Port mit 802.1Q zum Router konfigurieren",
+        "Router-on-a-Stick: Subinterfaces mit VLAN-Tags einrichten",
+        "Jede Subinterface erhält IP-Adresse als Gateway des VLANs",
+        "Separate Broadcast-Domänen ohne Layer-3-Routing"
+      ],
+      "id": "netzwerktechnik-vlan-segmentierung-05"
+    }
+  ]
+}

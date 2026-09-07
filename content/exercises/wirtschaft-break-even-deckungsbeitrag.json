@@ -1,0 +1,93 @@
+{
+  "topicSlug": "wirtschaft-break-even-deckungsbeitrag",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Break-even und Deckungsbeitrag",
+  "source": "generated",
+  "generatedWith": "deepseek/deepseek-v4-pro-0813",
+  "reviewedBy": null,
+  "standalone": true,
+  "exercises": [
+    {
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Ein IT-Dienstleister bietet einen Managed-Service-Vertrag mit einer monatlichen Grundgebühr und variablen Kosten pro Supportstunde an.\n\nErläutern Sie an diesem Beispiel den Unterschied zwischen dem Deckungsbeitrag pro Einheit (Stückdeckungsbeitrag) und dem Gesamtdeckungsbeitrag. Gehen Sie dabei auf die Rolle der Fixkosten ein und erklären Sie, warum der Gesamtdeckungsbeitrag zunächst die Fixkosten decken muss.",
+      "sampleAnswer": "Der Stückdeckungsbeitrag (db) ist die Differenz zwischen dem Nettoverkaufspreis (p) einer Leistungseinheit und den variablen Kosten (kv), die direkt bei der Erbringung dieser Einheit anfallen: db = p − kv. Im Beispiel wäre das etwa der Stundensatz für den Support abzüglich der variablen Kosten pro Supportstunde (z. B. Lohnkosten für externe Techniker oder Lizenzkosten pro Stunde). Er gibt an, wie viel jede verkaufte Einheit zur Deckung der Fixkosten beiträgt.\n\nDer Gesamtdeckungsbeitrag (DB) ist die Summe der Stückdeckungsbeiträge aller verkauften Einheiten: DB = db × Menge. In unserem Beispiel würde man alle verkauften Supportstunden mit ihrem jeweiligen Stückdeckungsbeitrag multiplizieren und aufsummieren.\n\nDie Fixkosten (z. B. Büromiete, Gehälter der Festangestellten, Versicherungen, Abschreibungen auf die Server-Infrastruktur) fallen unabhängig von der verkauften Menge an. Deshalb muss der Gesamtdeckungsbeitrag zunächst die gesamten Fixkosten decken. Erst wenn DB > Fixkosten, erwirtschaftet das Unternehmen einen Gewinn. Ist DB < Fixkosten, entsteht ein Verlust. Im Break-even-Punkt gilt: DB = Fixkosten, also Gewinn = 0.",
+      "keyPoints": [
+        "Stückdeckungsbeitrag db = Preis − variable Kosten pro Einheit",
+        "Gesamtdeckungsbeitrag DB = db × Menge",
+        "Fixkosten fallen unabhängig von der Menge an",
+        "DB muss zunächst die Fixkosten decken",
+        "Break-even: DB = Fixkosten, Gewinn = 0",
+        "Erst DB > Fixkosten führt zu Gewinn"
+      ],
+      "id": "wirtschaft-break-even-deckungsbeitrag-01"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein IT-Systemhaus kalkuliert die Einführung eines neuen Cloud-Backup-Dienstes für Geschäftskunden.\n\nPro Kunde und Monat fallen variable Kosten in Höhe von 18,50 € an (Speicherplatz, Support-Anteil, Lizenzen). Der Dienst wird zu einem Netto-Verkaufspreis von 49,90 € pro Kunde und Monat angeboten. Die monatlichen Fixkosten für Betrieb, Wartung und Verwaltung des Dienstes betragen 6.280,00 €.\n\nBerechnen Sie den Break-even-Point in Kunden pro Monat. Geben Sie den Rechenweg vollständig an.",
+      "answer": 200,
+      "unit": "Kunden",
+      "calculation": "6280 / (49.9 - 18.5)",
+      "explanation": "Der Break-even-Point ist die Menge, bei der der Gewinn genau 0 € beträgt, also der Gesamtdeckungsbeitrag die Fixkosten vollständig deckt.\n\nSchritt 1: Stückdeckungsbeitrag (db) berechnen:\ndb = Nettoverkaufspreis − variable Kosten pro Einheit\ndb = 49,90 € − 18,50 € = 31,40 € pro Kunde und Monat\n\nSchritt 2: Break-even-Menge = Fixkosten ÷ Stückdeckungsbeitrag\nBreak-even-Menge = 6.280,00 € ÷ 31,40 € = 200 Kunden pro Monat\n\nInterpretation: Ab 200 Kunden pro Monat ist der Dienst kostendeckend. Der 201. Kunde bringt erstmals Gewinn, da sein Deckungsbeitrag vollständig als Gewinn übrig bleibt.",
+      "id": "wirtschaft-break-even-deckungsbeitrag-02"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein mittelständisches IT-Unternehmen bietet zwei Produkte an: Managed-Server-Hosting (A) und Hardware-Verkauf mit Installation (B).\n\nFür den kommenden Monat liegen folgende Plandaten vor:\n- Fixkosten gesamt: 48.000,00 €\n- Produkt A: Nettoverkaufspreis 120,00 €, variable Kosten 80,00 €, geplante Absatzmenge 900 Stück\n- Produkt B: Nettoverkaufspreis 350,00 €, variable Kosten 210,00 €, geplante Absatzmenge 300 Stück\n\nBerechnen Sie den monatlichen Plangewinn des Unternehmens für diesen Produktmix. Geben Sie den Rechenweg vollständig an.",
+      "answer": 30000,
+      "unit": "€",
+      "calculation": "900 * (120 - 80) + 300 * (350 - 210) - 48000",
+      "explanation": "Bei einem Produktmix muss zunächst der Deckungsbeitrag je Produkt berechnet und mit der jeweiligen Absatzmenge multipliziert werden. Die Summe der Deckungsbeiträge wird dann den Fixkosten gegenübergestellt.\n\nSchritt 1: Stückdeckungsbeitrag je Produkt berechnen.\nProdukt A: db_A = Preis_A − variable Kosten_A = 120,00 € − 80,00 € = 40,00 € pro Stück\nProdukt B: db_B = Preis_B − variable Kosten_B = 350,00 € − 210,00 € = 140,00 € pro Stück\n\nSchritt 2: Gesamtdeckungsbeitrag je Produkt berechnen.\nDB_A = db_A × Menge_A = 40,00 € × 900 = 36.000,00 €\nDB_B = db_B × Menge_B = 140,00 € × 300 = 42.000,00 €\nDB_gesamt = 36.000,00 € + 42.000,00 € = 78.000,00 €\n\nSchritt 3: Gewinn = Gesamtdeckungsbeitrag − Fixkosten\nGewinn = 78.000,00 € − 48.000,00 € = 30.000,00 €\n\nDas Unternehmen erwirtschaftet mit dem geplanten Produktmix einen Monatsgewinn von 30.000,00 €. Da der Gewinn positiv ist, liegt der geplante Absatz deutlich über dem Break-even-Punkt (der bei 48.000,00 € Gesamtdeckungsbeitrag liegen würde).",
+      "id": "wirtschaft-break-even-deckungsbeitrag-03"
+    },
+    {
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Aussage zum Break-even-Point (BEP) ist korrekt?",
+      "options": [
+        "Der Break-even-Point ist die Absatzmenge, bei der der Gewinn maximal ist.",
+        "Der Break-even-Point ist die Absatzmenge, bei der die Gesamtkosten vollständig durch die Erlöse gedeckt sind und der Gewinn 0 € beträgt.",
+        "Der Break-even-Point ist die Absatzmenge, bei der die variablen Kosten vollständig durch die Fixkosten gedeckt sind.",
+        "Der Break-even-Point ist der Zeitpunkt, an dem die Abschreibungen vollständig durch die Erlöse gedeckt sind.",
+        "Der Break-even-Point ist die Absatzmenge, bei der der Deckungsbeitrag pro Stück am höchsten ist."
+      ],
+      "correctIndex": 1,
+      "explanation": "Der Break-even-Point (Gewinnschwelle) beschreibt die Absatzmenge, bei der die Erlöse genau den Gesamtkosten entsprechen. Der Gewinn ist an diesem Punkt 0 €. Jede weitere verkaufte Einheit erwirtschaftet einen Gewinn in Höhe ihres Stückdeckungsbeitrags, da die Fixkosten bereits vollständig gedeckt sind.\n\nWarum die anderen Aussagen falsch sind:\n- Option 1 (maximaler Gewinn): Der maximale Gewinn liegt nicht am Break-even-Point, sondern bei der maximalen Ausbringungsmenge bzw. innerhalb der Kapazitätsgrenze.\n- Option 3 (variable Kosten durch Fixkosten gedeckt): Variable und Fixkosten werden nicht gegeneinander verrechnet. Fixkosten werden durch den Deckungsbeitrag (Erlöse − variable Kosten) gedeckt.\n- Option 4 (Abschreibungen): Abschreibungen sind nur ein Teil der Fixkosten. Der Break-even-Point berücksichtigt sämtliche Kosten, nicht nur Abschreibungen.\n- Option 5 (höchster Stückdeckungsbeitrag): Der Stückdeckungsbeitrag ist unabhängig von der Absatzmenge, solange Preis und variable Kosten konstant bleiben. Der Break-even-Point beschreibt eine Menge, nicht einen Deckungsbeitragswert.",
+      "id": "wirtschaft-break-even-deckungsbeitrag-04"
+    },
+    {
+      "type": "match",
+      "difficulty": 2,
+      "prompt": "Ordnen Sie die folgenden betriebswirtschaftlichen Kennzahlen bzw. Begriffe aus der Break-even-Analyse ihren korrekten Definitionen zu.",
+      "pairs": [
+        {
+          "left": "Variable Kosten",
+          "right": "Kosten, die sich proportional zur Ausbringungsmenge verändern"
+        },
+        {
+          "left": "Fixkosten",
+          "right": "Kosten, die unabhängig von der Ausbringungsmenge in konstanter Höhe anfallen"
+        },
+        {
+          "left": "Stückdeckungsbeitrag",
+          "right": "Differenz aus Nettoverkaufspreis und variablen Kosten je Stück"
+        },
+        {
+          "left": "Gesamtdeckungsbeitrag",
+          "right": "Summe aller Deckungsbeiträge einer Abrechnungsperiode vor Abzug der Fixkosten"
+        },
+        {
+          "left": "Break-even-Point",
+          "right": "Absatzmenge, bei der Gewinn und Verlust gleich Null sind"
+        },
+        {
+          "left": "Gewinnschwelle",
+          "right": "Synonym für den Punkt, an dem Erlöse und Gesamtkosten gleich hoch sind"
+        }
+      ],
+      "id": "wirtschaft-break-even-deckungsbeitrag-05"
+    }
+  ]
+}

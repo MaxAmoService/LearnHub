@@ -1,0 +1,91 @@
+{
+  "topicSlug": "zahlensysteme-zeichenkodierung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "ASCII, Unicode und Zeichenkodierung",
+  "source": "generated",
+  "generatedWith": "deepseek/deepseek-v4-pro-0813",
+  "reviewedBy": null,
+  "standalone": true,
+  "exercises": [
+    {
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Sie müssen bei einem Softwareprojekt entscheiden, ob Sie Texte in ASCII oder in Unicode (UTF-8) speichern. Der Auftraggeber wünscht eine verständliche Begründung. Nennen Sie fünf konkrete Unterschiede oder Konsequenzen, die bei dieser Entscheidung zu berücksichtigen sind. Erwähnen Sie mindestens: Zeichenvorrat, Speicherbedarf, Kompatibilität, Internationalisierung und technische Auswirkung auf die Dateigröße bei Sonderzeichen.",
+      "sampleAnswer": "ASCII ist ein 7-Bit-Code (wertebereich 0–127), der nur 128 Zeichen umfasst: Groß- und Kleinbuchstaben des lateinischen Alphabets, Ziffern, einige Satzzeichen und Steuerzeichen. Umlaute, Akzente, andere Alphabete oder Sonderzeichen wie €, ©, ∞ fehlen vollständig. Bei Speicherung in ASCII ist pro Zeichen genau 1 Byte erforderlich (das höchste Bit bleibt unbenutzt oder wird für Erweiterungen wie ISO 8859-1 verwendet). Unicode (UTF-8) ist eine variable Mehrbyte-Kodierung: Die ersten 128 Zeichen (identisch mit ASCII) belegen ebenfalls genau 1 Byte, alle weiteren Zeichen belegen 2 bis 4 Bytes. Das hat zwei direkte Konsequenzen: Erstens lassen sich alle internationalen Zeichen, Emojis, mathematische Symbole und künftige Sprachen abbilden (über 1,1 Millionen Codepoints sind definierbar). Zweitens wächst der Speicherbedarf bei überwiegend nichtlateinischen Texten oder vielen Sonderzeichen spürbar an – bei reinem ASCII-Text (z. B. einfacher Quellcode) bleibt er identisch, da UTF-8 abwärtskompatibel ist: Jede gültige ASCII-Datei ist zugleich eine gültige UTF-8-Datei. Bei der Entscheidung ist daher zu prüfen: Muss das System ausschließlich technische Identifikatoren oder englische Texte verarbeiten (ASCII ggf. ausreichend), oder ist die Anwendung international nutzbar (Unicode zwingend, da sonst Datenverlust oder fehlerhafte Darstellung auftritt)? Moderne Softwareentwicklung setzt aus Kompatibilitätsgründen fast ausschließlich auf UTF-8 ohne BOM.",
+      "keyPoints": [
+        "ASCII: 7 Bit, 128 Zeichen, nur lateinische Zeichen, Umlaute fehlen",
+        "Sonderzeichen wie € oder Umlaute benötigen in UTF-8 2–4 Bytes statt 1 Byte",
+        "UTF-8 ist abwärtskompatibel: ASCII-Dateien sind automatisch UTF-8-Dateien",
+        "Internationalisierung erfordert Unicode; ASCII ungeeignet für Fremdsprachen",
+        "Speicherbedarf steigt bei Sonderzeichen/Antike, bleibt gleich bei reinem ASCII"
+      ],
+      "id": "zahlensysteme-zeichenkodierung-01"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Textfile enthält ausschließlich Daten, die der ASCII-Zeichensatz vollständig abdeckt: 2.500 lateinische Kleinbuchstaben, 800 Ziffern, 300 Leerzeichen, 200 Punkte und 150 Kommata. Anschließend wird die Datei UML-automatisiert als UTF-8 o h n e BOM gespeichert. Berechnen Sie die Dateigröße in Byte nach der UTF-8-Kodierung.",
+      "answer": 3950,
+      "unit": "Byte",
+      "calculation": "2500 + 800 + 300 + 200 + 150",
+      "explanation": "ASCII umfasst die 128 Zeichen mit Codepoints 0–127; dazu gehören alle lateinischen Kleinbuchstaben (a–z), Ziffern (0–9), Leerzeichen (Codepoint 32), Punkt (Codepoint 46) und Komma (Codepoint 44). UTF-8 ist so konstruiert, dass alle Zeichen im Bereich U+0000 bis U+007F – also exakt der ASCII-Zeichensatz – mit genau 1 Byte kodiert werden. Das höchste Bit bleibt 0. Erst Codepoints ab U+0080 (z. B. Umlaute, €, U+0080–U+07FF) benötigen 2 Bytes, Codepoints bis U+FFFF benötigen 3 Bytes, darüber 4 Bytes. Da alle genannten Zeichen in den ASCII-Bereich fallen, belegt jedes Zeichen genau 1 Byte. Gesamtzahl der Zeichen: 2.500 Kleinbuchstaben + 800 Ziffern + 300 Leerzeichen + 200 Punkte + 150 Kommata = 3.950 Zeichen. Dateigröße = 3.950 Zeichen × 1 Byte/Zeichen = 3.950 Byte. Ein BOM (Byte Order Mark, U+FEFF) würde zusätzlich 3 Bytes am Dateianfang belegen, ist hier aber ausdrücklich nicht vorhanden.",
+      "id": "zahlensysteme-zeichenkodierung-02"
+    },
+    {
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Kollege behauptet: „ASCII-Code 65 ist 'A', im Unicode-Standard ist Codepoint U+0065 ebenfalls 'A' – daher sind die Kodierungen identisch.“ Welche Aussage beschreibt den Sachverhalt korrekt?",
+      "options": [
+        "ASCII-Codepoint 65 (0x41) entspricht Unicode U+0041 (LATIN CAPITAL LETTER A), da Unicode die ersten 128 Codepoints identisch übernimmt. U+0065 ist dagegen der Kleinbuchstabe 'a'.",
+        "ASCII-65 und Unicode U+0065 sind beide 'A', weil Unicode die ASCII-Tabelle vollständig kopiert.",
+        "ASCII-65 ist 'A', Unicode U+0065 ist ebenfalls 'A' – der Unterschied liegt nur in der Bitbreite (7 Bit vs. 8 Bit).",
+        "ASCII-65 ist 'A', Unicode U+0065 ist aber U+0065, weil Unicode streng hexadezimal arbeitet und ASCII dezimal interpretiert wird."
+      ],
+      "correctIndex": 0,
+      "explanation": "ASCII definiert Codepoint 65 (dezimal) bzw. 0x41 (hexadezimal) als Großbuchstaben 'A'. Der Unicode-Standard übernimmt die unteren 128 Zeichen exakt: U+0000 bis U+007F entsprechen identisch den ASCII-Codes. Daher ist U+0041 (hexadezimal 41 = dezimal 65) der Großbuchstabe 'A'. Die Angabe U+0065 ist ein echter Verwechslungskandidat: U+0065 ist nicht 'A', sondern der Kleinbuchstabe 'a' (e = fünfter Buchstabe = 0x61 + 4 = 0x65). Die Option „ASCII-65 und U+0065 sind beide 'A'“ wiederholt schlicht den Fehler der Kollegenbehauptung. Die Option „der Unterschied liegt nur in der Bitbreite“ ist ebenfalls falsch: ASCII ist 7 Bit, Unicode-Codepoints werden unabhängig von einer konkreten Bytebreite definiert (UTF-8 verwendet 1–4 Bytes, UTF-16 2 oder 4, UTF-32 immer 4). Die Option „ASCII dezimal vs. Unicode hexadezimal“ verwechselt die Darstellungsform (dezimale/hexadezimale Notation) mit der Kodierung selbst – die Werte sind dieselben, nur anders geschrieben.",
+      "id": "zahlensysteme-zeichenkodierung-03"
+    },
+    {
+      "type": "match",
+      "difficulty": 1,
+      "prompt": "Ordnen Sie den folgenden Begriffen aus der Zeichenkodierung jeweils ihre korrekte Bedeutung zu.",
+      "pairs": [
+        {
+          "left": "Byte Order Mark (BOM)",
+          "right": "Unsichtbares Zeichen U+FEFF am Dateianfang, das die Byte-Reihenfolge bei UTF-16/UTF-32 anzeigt"
+        },
+        {
+          "left": "ASCII",
+          "right": "7-Bit-Codierung mit 128 Zeichen, Basis für die ersten 128 Unicode-Codepoints"
+        },
+        {
+          "left": "UTF-8",
+          "right": "Variable Länge: 1–4 Bytes pro Zeichen, abwärtskompatibel zu ASCII"
+        },
+        {
+          "left": "Codepoint",
+          "right": "Eindeutige numerische Position eines Zeichens im Unicode-Standard, notiert als U+XXXX"
+        },
+        {
+          "left": "ISO 8859-1 (Latin-1)",
+          "right": "8-Bit-Erweiterung von ASCII, deckt westeuropäische Sonderzeichen ab (Umlaute, Akzente)"
+        },
+        {
+          "left": "Steuerzeichen",
+          "right": "Nicht druckbare Zeichen wie Tabulator (0x09) oder Zeilenvorschub (0x0A), die Ablauf steuern"
+        }
+      ],
+      "id": "zahlensysteme-zeichenkodierung-04"
+    },
+    {
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Software soll einen Meldungstext mit genau 120 Zeichen speichern. Der Text besteht zu 70 % aus ASCII-Zeichen (Buchstaben, Ziffern, Leerzeichen), zu 20 % aus Zeichen, die in UTF-8 mit 2 Byte kodiert werden (z. B. Umlaute, griechische Buchstaben, U+0080–U+07FF), und zu 10 % aus Zeichen, die 3 Byte benötigen (z. B. viele CJK-Schriftzeichen oder Symbole im Bereich U+0800–U+FFFF). Berechnen Sie den Gesamtspeicherbedarf des Textes in Byte bei Verwendung von UTF-8.",
+      "answer": 168,
+      "unit": "Byte",
+      "calculation": "120 * 0.7 * 1 + 120 * 0.2 * 2 + 120 * 0.1 * 3",
+      "explanation": "UTF-8 ist eine variable Mehrbyte-Kodierung: ASCII-Zeichen (U+0000–U+007F) belegen genau 1 Byte, Zeichen des Bereichs U+0080–U+07FF belegen 2 Bytes, U+0800–U+FFFF belegen 3 Bytes, darüber 4 Bytes (für die Aufgabe relevant sind nur 1, 2 und 3 Byte). Verteilung bei 120 Zeichen: 70 % ASCII = 120 × 0,7 = 84 Zeichen à 1 Byte → 84 Byte. 20 % mit 2 Byte = 120 × 0,2 = 24 Zeichen à 2 Byte → 48 Byte. 10 % mit 3 Byte = 120 × 0,1 = 12 Zeichen à 3 Byte → 36 Byte. Summe: 84 + 48 + 36 = 168 Byte. Zur Einordnung: In ASCII wären die 120 Zeichen 120 Byte, in UTF-16 mindestens 240 Byte (alle Zeichen 2 Byte, sofern keine 4-Byte-Surrogate nötig sind). UTF-8 ist hier also deutlich sparsamer als UTF-16, benötigt aber mehr als reines ASCII.",
+      "id": "zahlensysteme-zeichenkodierung-05"
+    }
+  ]
+}
