@@ -17,6 +17,32 @@ service cloud.firestore {
       match /data/{docId} {
         allow read, write: if request.auth != null && request.auth.uid == userId;
       }
+
+      // Lehrpläne: Pläne und Activity-Monats-Docs gehören dem User.
+      match /plans/{planId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+
+      match /activity/{month} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // Lehrplan-Items: eigene Regel auf Gruppenebene. Verschachtelte
+    // match-Blöcke greifen für Collection-Group-Queries NICHT — deshalb hier
+    // der rekursive Pfad. uid ist im Item denormalisiert und wird beim
+    // Schreiben erzwungen. (Delete ist implizit verweigert: request.resource
+    // existiert bei delete nicht.)
+    match /{path=**}/planItems/{itemId} {
+      allow read: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow write: if request.auth != null && request.resource.data.uid == request.auth.uid;
+    }
+
+    // Lehrplan-Vorlagen: öffentlich lesbar, clientseitig nicht schreibbar
+    // (nur Admin SDK / Console).
+    match /planTemplates/{templateId} {
+      allow read: if true;
+      allow write: if false;
     }
 
     // Username-Reservierungen
