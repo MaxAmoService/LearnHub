@@ -14,6 +14,7 @@ export interface ItemProgressLike {
 }
 
 export interface PlanItemLike {
+  title?: string;
   order?: number;
   weight?: number;
   estimatedUnits?: number;
