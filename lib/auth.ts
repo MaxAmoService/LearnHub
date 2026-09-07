@@ -28,6 +28,8 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { getAuthInstance, getDb } from "./firebase";
+import { todayKey } from "./dates";
+import { effectiveDailyLessons, updateStreak } from "./streak";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -42,6 +44,7 @@ export interface UserProfile {
   createdAt: string;
   streak: number;
   lastActive: string;
+  lastStudyDate?: string; // "YYYY-MM-DD" — letzter echter Lerntag (nicht Presence)
   streakFreeze: boolean;
   dailyGoalTarget: number;
   dailyLessonsToday: number;
@@ -263,11 +266,12 @@ export async function loginUser(email: string, password: string): Promise<UserPr
     profile.emailVerified = true;
   }
 
-  // Streak updaten
-  const updated = updateStreak(profile);
-  await updateUserProfile(firebaseUser.uid, { streak: updated.streak, lastActive: updated.lastActive });
+  // lastActive für Presence stempeln — der Streak wird beim Login NICHT mehr
+  // verändert: Er hängt an lastStudyDate und ändert sich nur bei echtem
+  // Lernfortschritt (saveUserProgress / Abhaken von Lehrplan-Items).
+  await updateUserProfile(firebaseUser.uid, {});
 
-  return updated;
+  return profile;
 }
 
 // ─── E-Mail erneut senden ───────────────────────────────────────────────────
@@ -361,35 +365,6 @@ export async function deleteAccount(password: string): Promise<void> {
   await deleteUser(user);
 }
 
-// ─── Streak ─────────────────────────────────────────────────────────────────
-
-function updateStreak(profile: UserProfile): UserProfile {
-  const today = new Date().toDateString();
-  const lastActive = new Date(profile.lastActive).toDateString();
-  const yesterday = new Date(Date.now() - 86400000).toDateString();
-  const twoDaysAgo = new Date(Date.now() - 2 * 86400000).toDateString();
-
-  if (lastActive === today) return profile;
-
-  // Reset daily counter for new day
-  const dailyLessonsDate = profile.dailyLessonsDate || "";
-  const dailyReset = dailyLessonsDate !== today
-    ? { dailyLessonsToday: 0, dailyLessonsDate: today }
-    : {};
-
-  if (lastActive === yesterday) {
-    return { ...profile, streak: profile.streak + 1, lastActive: new Date().toISOString(), ...dailyReset };
-  }
-
-  // Streak-Freeze: 1 verpasster Tag (yesterday) überlebt
-  if (lastActive === twoDaysAgo && profile.streakFreeze) {
-    return { ...profile, streakFreeze: false, lastActive: new Date().toISOString(), ...dailyReset };
-  }
-
-  // Streak gebrochen
-  return { ...profile, streak: 1, lastActive: new Date().toISOString(), ...dailyReset };
-}
-
 // ─── Progress ───────────────────────────────────────────────────────────────
 
 export async function saveUserProgress(
@@ -403,19 +378,13 @@ export async function saveUserProgress(
   if (!wasLessonAlreadyDone) {
     profile.completedLessons[moduleId].push(lessonId);
     profile.totalXP += 10;
-    // Tageszähler hochzählen
-    const today = new Date().toDateString();
-    if (profile.dailyLessonsDate !== today) {
-      profile.dailyLessonsToday = 1;
-      profile.dailyLessonsDate = today;
-    } else {
-      profile.dailyLessonsToday = (profile.dailyLessonsToday || 0) + 1;
-    }
   }
+  let quizImproved = false;
   if (quizScore !== undefined) {
     const old = profile.quizScores[moduleId] || 0;
     if (quizScore > old) {
       profile.quizScores[moduleId] = quizScore;
+      quizImproved = true;
       // Nur XP für den ersten Abschluss vergeben, nicht für Wiederholungen
       if (!wasLessonAlreadyDone) {
         profile.totalXP += (quizScore - old) * 2;
@@ -433,13 +402,47 @@ export async function saveUserProgress(
       }
     }
   } catch { /* ok */ }
-  const updated = updateStreak(profile);
-  await updateUserProfile(uid, {
-    completedLessons: updated.completedLessons, completedModules: updated.completedModules,
-    quizScores: updated.quizScores, totalXP: updated.totalXP, streak: updated.streak, lastActive: updated.lastActive,
-    dailyLessonsToday: updated.dailyLessonsToday, dailyLessonsDate: updated.dailyLessonsDate,
-  });
-  return updated;
+
+  const updates: Partial<UserProfile> = {
+    completedLessons: profile.completedLessons,
+    completedModules: profile.completedModules,
+    quizScores: profile.quizScores,
+    totalXP: profile.totalXP,
+  };
+
+  // lastStudyDate & Streak NUR bei echtem Fortschritt — Wiederholungen ohne
+  // neue Punkte verlängern weder Streak noch Tageszähler.
+  const progressed = !wasLessonAlreadyDone || quizImproved;
+  if (progressed) {
+    const today = todayKey();
+    // Streak VOR dem Stempeln von lastStudyDate berechnen: Die reine Funktion
+    // vergleicht den VORHERIGEN Lerntag (bzw. lastActive, falls das Feld fehlt).
+    let studyDays: number[] | null = null;
+    try {
+      const { loadActiveStudyDays } = await import("./plans");
+      studyDays = await loadActiveStudyDays(uid);
+    } catch { /* Pläne-Fehler darf Fortschritt nie blockieren → striktes Verhalten */ }
+    const streakUpdate = updateStreak(profile, { studyDays });
+
+    profile.streak = streakUpdate.streak;
+    profile.streakFreeze = streakUpdate.streakFreeze;
+    profile.lastStudyDate = today;
+    updates.streak = streakUpdate.streak;
+    updates.streakFreeze = streakUpdate.streakFreeze;
+    updates.lastStudyDate = today;
+
+    if (!wasLessonAlreadyDone) {
+      // Tageszähler lazy: der alte Wert gilt nur, wenn dailyLessonsDate == heute
+      const daily = effectiveDailyLessons(profile);
+      profile.dailyLessonsToday = daily + 1;
+      profile.dailyLessonsDate = today;
+      updates.dailyLessonsToday = daily + 1;
+      updates.dailyLessonsDate = today;
+    }
+  }
+
+  await updateUserProfile(uid, updates);
+  return profile;
 }
 
 export async function toggleSaveModule(uid: string, slug: string): Promise<UserProfile | null> {
