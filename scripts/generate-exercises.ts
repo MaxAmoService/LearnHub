@@ -101,11 +101,28 @@ interface TemplateFile {
 interface TopicContext {
   itemTitle: string;
   moduleSlug: string | null;
+  /** Anzeigename des Bereichs, abgeleitet aus dem topicSlug-Präfix. */
+  areaName: string;
   /** Themen desselben Bereichs (ohne das Zielthema) — Überlappung vermeiden. */
   siblings: string[];
-  /** Alle übrigen Themen-Titel (kompakt, zur Abgrenzung). */
-  otherTopics: string[];
   standalone: boolean;
+}
+
+// Bereichszuordnung über das topicSlug-Präfix — NICHT über moduleSlug, sonst
+// landen z. B. bei wirtschaft-* die Zahlensysteme-Themen als Nachbarn
+// (beide haben moduleSlug null).
+const AREAS: Array<{ prefix: string; name: string }> = [
+  { prefix: "computersysteme-", name: "Computersysteme" },
+  { prefix: "netzwerktechnik-", name: "Netzwerktechnik" },
+  { prefix: "zahlensysteme-", name: "Zahlensysteme" },
+  { prefix: "it-sicherheit-", name: "IT-Sicherheit" },
+  { prefix: "wirtschaft-", name: "Wirtschaft" },
+  { prefix: "projektmanagement-", name: "Projektmanagement" },
+  { prefix: "diagramme-", name: "Diagramme" },
+];
+
+function areaOf(topicSlug: string): { prefix: string; name: string } | null {
+  return AREAS.find((a) => topicSlug.startsWith(a.prefix)) ?? null;
 }
 
 function loadTopicContext(topicSlug: string): TopicContext {
@@ -118,20 +135,29 @@ function loadTopicContext(topicSlug: string): TopicContext {
   if (!topic) {
     throw new Error(`Thema "${topicSlug}" nicht in der Vorlage ${PLAN_TEMPLATE_SLUG} gefunden.`);
   }
+  const area = areaOf(topicSlug);
   const moduleSlug = topic.moduleSlug ?? null;
   const siblings = template.items
-    .filter((i) => i.topicSlug !== topicSlug && (i.moduleSlug ?? null) === moduleSlug)
+    .filter(
+      (i) =>
+        i.topicSlug !== topicSlug &&
+        area !== null &&
+        areaOf(i.topicSlug ?? "")?.prefix === area.prefix
+    )
     .map((i) => i.title);
-  const otherTopics = template.items
-    .filter((i) => i.topicSlug !== topicSlug && (i.moduleSlug ?? null) !== moduleSlug)
-    .map((i) => i.title);
-  return { itemTitle: topic.title, moduleSlug, siblings, otherTopics, standalone: moduleSlug === null };
+  return {
+    itemTitle: topic.title,
+    moduleSlug,
+    areaName: area?.name ?? moduleSlug ?? "kein Bereich",
+    siblings,
+    standalone: moduleSlug === null,
+  };
 }
 
 // ─── Prompts ────────────────────────────────────────────────────────────────
 
 function buildSystemPrompt(ctx: TopicContext): string {
-  const bereich = ctx.moduleSlug ?? "kein Modul zugeordnet";
+  const bereich = ctx.areaName;
   return [
     "Du bist Autor von Übungsaufgaben für die IHK-Abschlussprüfung Teil 1 (AP1) der IT-Berufe",
     "(Fachinformatiker/-in, IT-System-Elektroniker/-in usw.). Deine Aufgaben bereiten Auszubildende",
@@ -171,10 +197,7 @@ function buildSystemPrompt(ctx: TopicContext): string {
     `BEREICH: ${bereich}`,
     ctx.siblings.length > 0
       ? `NACHBARTHEMEN (gleicher Bereich — Aufgaben dürfen NICHT überlappen):\n${ctx.siblings.map((t) => `- ${t}`).join("\n")}`
-      : "NACHBARTHEMEN: keine (Thema ohne zugeordnetes Modul).",
-    ctx.otherTopics.length > 0
-      ? `WEITERE AP1-THEMEN (nur zur Abgrenzung, nicht behandeln):\n${ctx.otherTopics.map((t) => `- ${t}`).join("\n")}`
-      : "",
+      : "NACHBARTHEMEN: keine (Einzelthema im Bereich).",
     "",
     ...(ctx.standalone
       ? [
