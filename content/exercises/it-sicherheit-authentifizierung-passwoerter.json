@@ -1,0 +1,94 @@
+{
+  "topicSlug": "it-sicherheit-authentifizierung-passwoerter",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Authentifizierung und sichere Passwörter",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Unterschied: Authentifizierung vs. Autorisierung?",
+      "sampleAnswer": "Auth = Wer bist du? (Identität). Autorisierung = Was darfst du? (Berechtigung)",
+      "keyPoints": [
+        "Auth"
+      ]
+    },
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was sind die 3 Faktoren der Authentifizierung?",
+      "sampleAnswer": "Wissen (Passwort), Besitz (Token), Biometrie (Fingerabdruck)",
+      "keyPoints": [
+        "Auth",
+        "MFA kombiniert mindestens 2"
+      ]
+    },
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Salting beim Passwort-Hashing?",
+      "sampleAnswer": "Zufälliger Wert wird vor dem Hash angehängt → gleiche Passwörter erzeugen unterschiedliche Hashes",
+      "keyPoints": [
+        "Auth",
+        "Schutz gegen Rainbow Tables"
+      ]
+    },
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was sind die 3 Authentifizierungsfaktoren?",
+      "sampleAnswer": "1. Was man WEISS (Passwort), 2. Was man HAT (Token/Karte), 3. Was man IST (Biometrie)",
+      "keyPoints": [
+        "Eingabe"
+      ]
+    },
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wie viele Zeichen sollte ein sicheres Passwort MINDESTENS haben?",
+      "answer": 12,
+      "unit": "Zeichen",
+      "explanation": "Experten empfehlen mindestens 12 Zeichen. Längere Passwörter sind exponentiell schwerer zu knacken."
+    },
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen Authentifizierung und Autorisierung?",
+      "options": [
+        "Authentifizierung = Wer bist du? Autorisierung = Was darfst du?",
+        "Authentifizierung = Was darfst du? Autorisierung = Wer bist du?",
+        "Beide Begriffe bedeuten dasselbe",
+        "Authentifizierung ist verschlüsselt, Autorisierung nicht"
+      ],
+      "correctIndex": 0,
+      "explanation": "Authentifizierung prüft die IDENTITÄT (Wer bist du?), Autorisierung prüft die BERECHTIGUNG (Was darfst du?)."
+    },
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-ex-07",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Was ist der Zweck von Salting beim Passwort-Hashing?",
+      "sampleAnswer": "Salting: Vor dem Hashen wird ein zufälliger Wert (Salt) angehängt. So erzeugen gleiche Passwörter unterschiedliche Hashes — Rainbow-Table-Angriffe werden nutzlos.",
+      "keyPoints": [
+        ""
+      ]
+    },
+    {
+      "id": "it-sicherheit-authentifizierung-passwoerter-ex-08",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Wie nennt man den Prozess, bei dem Passwörter durch systematisches Ausprobieren geknackt werden?",
+      "sampleAnswer": "Brute-Force: Alle möglichen Kombinationen werden durchprobiert. Schutz: lange Passwörter, Account-Lockout, Captcha.",
+      "keyPoints": [
+        "Brute-Force"
+      ]
+    }
+  ]
+}

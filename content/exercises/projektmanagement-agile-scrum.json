@@ -1,0 +1,101 @@
+{
+  "topicSlug": "projektmanagement-agile-scrum",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Agile Methoden und Scrum",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "projektmanagement-agile-scrum-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "3 Scrum-Rollen?",
+      "sampleAnswer": "Product Owner (Kunde), Scrum Master (Berater), Cross-functional Team (5-9)",
+      "keyPoints": [
+        "Scrum"
+      ]
+    },
+    {
+      "id": "projektmanagement-agile-scrum-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "4 Scrum-Events?",
+      "sampleAnswer": "Sprint Planning, Daily (15min), Sprint Review, Retrospektive",
+      "keyPoints": [
+        "Scrum"
+      ]
+    },
+    {
+      "id": "projektmanagement-agile-scrum-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Agiles Manifest — 4 Werte?",
+      "sampleAnswer": "Individuen>Prozesse, Software>Doku, Zusammenarbeit>Verträge, Reagieren>Befolgen",
+      "keyPoints": [
+        "Agil"
+      ]
+    },
+    {
+      "id": "projektmanagement-agile-scrum-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Definition of Done?",
+      "sampleAnswer": "Kriterien wann ein Arbeitspaket fertig ist: Code, Tests, Doku, Review",
+      "keyPoints": [
+        "Scrum"
+      ]
+    },
+    {
+      "id": "projektmanagement-agile-scrum-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Product Backlog?",
+      "sampleAnswer": "Priorisierte Liste aller Anforderungen (User Stories) — wird vom Product Owner gepflegt",
+      "keyPoints": [
+        "Scrum"
+      ]
+    },
+    {
+      "id": "projektmanagement-agile-scrum-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Sprint?",
+      "sampleAnswer": "Fixer Zeitraum (2-4 Wochen) mit festem Ziel — endet mit funktionierendem Inkrement",
+      "keyPoints": [
+        "Scrum"
+      ]
+    },
+    {
+      "id": "projektmanagement-agile-scrum-match-1",
+      "type": "match",
+      "difficulty": 1,
+      "prompt": "Ordnen Sie die Scrum-Begriffe ihren Aufgaben zu.",
+      "pairs": [
+        {
+          "left": "Product Owner",
+          "right": "Vertritt den Kunden, pflegt das Backlog"
+        },
+        {
+          "left": "Scrum Master",
+          "right": "Berät das Team, hütet den Prozess"
+        },
+        {
+          "left": "Sprint Planning",
+          "right": "Team plant die Sprint-Ziele"
+        },
+        {
+          "left": "Daily Scrum",
+          "right": "15 Minuten, täglich"
+        },
+        {
+          "left": "Sprint Review",
+          "right": "Inkrement vorstellen"
+        },
+        {
+          "left": "Retrospektive",
+          "right": "Verbesserungen für den nächsten Sprint"
+        }
+      ]
+    }
+  ]
+}

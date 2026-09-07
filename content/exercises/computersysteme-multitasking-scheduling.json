@@ -1,0 +1,33 @@
+{
+  "topicSlug": "computersysteme-multitasking-scheduling",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Multitasking und Scheduling",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-multitasking-scheduling-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Preemptive vs. Cooperatives Multitasking?",
+      "sampleAnswer": "Preemptive: OS erzwingt Umschaltung (Zeitscheibe). Cooperativ: Prozess gibt freiwillig ab (veraltet, anfällig)",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-multitasking-scheduling-ex-02",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen Preemptive und Cooperativem Multitasking?",
+      "options": [
+        "Preemptive: OS entscheidet Umschaltung. Cooperativ: Prozess gibt freiwillig ab.",
+        "Cooperatives ist schneller",
+        "Preemptive funktioniert nur mit einem Kern",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 0,
+      "explanation": "Preemptive: OS erzwingt Umschaltung per Zeitscheibe (modern: Windows, Linux). Cooperativ: Prozess muss freiwillig CPU abgeben (veraltet, anfällig für Einfrieren)."
+    }
+  ]
+}

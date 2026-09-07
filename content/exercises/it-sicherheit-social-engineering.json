@@ -1,0 +1,95 @@
+{
+  "topicSlug": "it-sicherheit-social-engineering",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Social Engineering und Phishing",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "it-sicherheit-social-engineering-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Phishing vs. Spear-Phishing?",
+      "sampleAnswer": "Phishing = Massen-E-Mails. Spear-Phishing = zielgerichtet auf bestimmte Person",
+      "keyPoints": [
+        "Social Eng"
+      ]
+    },
+    {
+      "id": "it-sicherheit-social-engineering-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Pretexting?",
+      "sampleAnswer": "Fake-Identität/Vorwand um an Infos zu kommen (z.B. Anruf als IT-Support)",
+      "keyPoints": [
+        "Social Eng"
+      ]
+    },
+    {
+      "id": "it-sicherheit-social-engineering-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Baiting?",
+      "sampleAnswer": "Lockmittel auslegen (z.B. USB-Stick mit Malware) — nutzt Neugier aus",
+      "keyPoints": [
+        "Social Eng"
+      ]
+    },
+    {
+      "id": "it-sicherheit-social-engineering-ex-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist Phishing?",
+      "options": [
+        "Ein Angriff auf Netzwerkinfrastruktur",
+        "Das Ausspähen von Passwörtern über gefälschte E-Mails/Webseiten",
+        "Eine Methode zum Passwort-Hashing",
+        "Ein Verschlüsselungsverfahren"
+      ],
+      "correctIndex": 1,
+      "explanation": "Phishing: Der Angreifer täuscht dem Opfer eine vertrauenswürdige Quelle vor (z.B. Bank, E-Mail-Provider), um an sensible Daten zu kommen."
+    },
+    {
+      "id": "it-sicherheit-social-engineering-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Nutzer bekommt eine E-Mail: 'Ihr Paket konnte nicht zugestellt werden. Klicken Sie hier.' Die URL zeigt auf eine unbekannte Domain. Was ist das?",
+      "options": [
+        "Ein normaler Kundenservice",
+        "Spear-Phishing",
+        "Phishing",
+        "Social Engineering per Telefon"
+      ],
+      "correctIndex": 2,
+      "explanation": "Klassisches Phishing: eine gefälschte E-Mail mit Link auf eine betrügerische Seite. Spear-Phishing wäre zielgerichtet auf eine bestimmte Person."
+    },
+    {
+      "id": "it-sicherheit-social-engineering-ex-06",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Mitarbeiter gibt am Telefon seine PIN weiter, weil sich jemand als IT-Abteilung ausgibt. Was ist das?",
+      "options": [
+        "Phishing",
+        "Pretexting (Social Engineering)",
+        "Brute-Force",
+        "Keylogging"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pretexting: Der Angreifer erfindet einen Vorwand (Prätext), um an Informationen zu kommen. Hier: Fake-Anruf als IT-Abteilung."
+    },
+    {
+      "id": "it-sicherheit-social-engineering-ex-07",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Mitarbeiter öffnet einen USB-Stick mit 'Gehaltsliste_2024.pdf.exe'. Was für ein Angriff?",
+      "options": [
+        "Phishing",
+        "Baiting (Social Engineering)",
+        "SQL-Injection",
+        "DDoS"
+      ],
+      "correctIndex": 1,
+      "explanation": "Baiting: Lockmittel (hier: vermeintliche Gehaltsliste) wird ausgelegt. Die .exe-Datei ist Malware. Social Engineering über Neugier."
+    }
+  ]
+}

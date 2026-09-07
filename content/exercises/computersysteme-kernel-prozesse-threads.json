@@ -1,0 +1,43 @@
+{
+  "topicSlug": "computersysteme-kernel-prozesse-threads",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Kernel, Prozesse und Threads",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-kernel-prozesse-threads-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht der Kernel?",
+      "sampleAnswer": "Kern des OS: Hardware-Zugriff, Speicherverwaltung, Prozessverwaltung, Geräteverwaltung, Sicherheit",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-kernel-prozesse-threads-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Prozess vs. Thread?",
+      "sampleAnswer": "Prozess: Programm + eigene Ressourcen + eigener Adressraum. Thread: leichtgewichtig, teilt Ressourcen des Prozesses",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-kernel-prozesse-threads-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Kernel eines Betriebssystems?",
+      "options": [
+        "Die grafische Oberfläche",
+        "Der Kern des OS — direkter Hardwarezugriff, Prozess- und Speicherverwaltung",
+        "Ein Virenscanner",
+        "Der Webbrowser"
+      ],
+      "correctIndex": 1,
+      "explanation": "Der Kernel ist der Kern des Betriebssystems mit direktem Hardwarezugriff. Er verwaltet Prozesse, Speicher, Geräte und Sicherheit."
+    }
+  ]
+}

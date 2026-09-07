@@ -1,0 +1,49 @@
+{
+  "topicSlug": "computersysteme-dateisysteme-zugriffsrechte",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Dateisysteme und Zugriffsrechte",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-dateisysteme-zugriffsrechte-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "NTFS, ext4, APFS — welches OS?",
+      "sampleAnswer": "NTFS = Windows, ext4 = Linux, APFS = macOS",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-dateisysteme-zugriffsrechte-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist MBR vs. GPT?",
+      "sampleAnswer": "MBR: max. 2 TB, max. 4 primäre Partitionen (Legacy). GPT: max. 9.4 ZB, unbegrenzte Partitionen (modern)",
+      "keyPoints": [
+        "Systemsoftware"
+      ]
+    },
+    {
+      "id": "computersysteme-dateisysteme-zugriffsrechte-match-1",
+      "type": "match",
+      "difficulty": 1,
+      "prompt": "Ordnen Sie die Dateisysteme ihren Betriebssystemen zu.",
+      "pairs": [
+        {
+          "left": "NTFS",
+          "right": "Windows"
+        },
+        {
+          "left": "ext4",
+          "right": "Linux"
+        },
+        {
+          "left": "APFS",
+          "right": "macOS"
+        }
+      ]
+    }
+  ]
+}

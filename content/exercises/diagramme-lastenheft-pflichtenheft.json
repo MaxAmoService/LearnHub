@@ -1,0 +1,29 @@
+{
+  "topicSlug": "diagramme-lastenheft-pflichtenheft",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Lastenheft und Pflichtenheft",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "diagramme-lastenheft-pflichtenheft-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Lastenheft vs. Pflichtenheft?",
+      "sampleAnswer": "Lastenheft=WAS (Auftraggeber). Pflichtenheft=WIE (Auftragnehmer)",
+      "keyPoints": [
+        "Dokumente"
+      ]
+    },
+    {
+      "id": "diagramme-lastenheft-pflichtenheft-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wann nimmt man welches Diagramm?",
+      "sampleAnswer": "ER=DB planen, UML=Software-Struktur, EPK=Geschäftsprozesse, Struktogramm=Programmlogik, Netzplan=Projektplanung",
+      "keyPoints": [
+        "Allgemein"
+      ]
+    }
+  ]
+}

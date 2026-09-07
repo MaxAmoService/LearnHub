@@ -1,0 +1,29 @@
+{
+  "topicSlug": "netzwerktechnik-wlan",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "WLAN-Standards",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-wlan-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welcher WLAN-Standard ist aktuell am schnellsten?",
+      "sampleAnswer": "802.11ax (Wi-Fi 6) — bis 9,6 Gbit/s",
+      "keyPoints": [
+        "WLAN"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-wlan-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welches WLAN-Sicherheitsprotokoll ist am sichersten?",
+      "sampleAnswer": "WPA3",
+      "keyPoints": [
+        "WLAN"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "topicSlug": "projektmanagement-smart-ziele",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Projektziele und SMART",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "projektmanagement-smart-ziele-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "SMART-Ziele?",
+      "sampleAnswer": "Spezifisch, Messbar, Anspruchsvoll, Realistisch, Terminiert",
+      "keyPoints": [
+        "Grundlagen"
+      ]
+    }
+  ]
+}

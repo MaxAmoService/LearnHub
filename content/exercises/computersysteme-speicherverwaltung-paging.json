@@ -1,0 +1,101 @@
+{
+  "topicSlug": "computersysteme-speicherverwaltung-paging",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Speicherverwaltung: Paging und virtueller Speicher",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-speicherverwaltung-paging-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Paging?",
+      "sampleAnswer": "Virtueller Speicher in feste Seiten (4KB) einteilen. Page Table ordnet virtuelle Seiten physischen Rahmen zu",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Page Fault?",
+      "sampleAnswer": "Zugriff auf Seite, die nicht im RAM ist → OS muss sie von Festplatte laden (langsam!)",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist virtueller Speicher?",
+      "sampleAnswer": "Auslagerung auf Festplatte bei RAM-Mangel. Erlaubt mehr Speichernutzung als physisch vorhanden",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Big-Endian vs. Little-Endian?",
+      "sampleAnswer": "Big: MSB zuerst (Motorola, Netzwerk). Little: LSB zuerst (Intel/x86). Gleicher Wert, andere Bytereihenfolge",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Paging vs. Segmentierung?",
+      "sampleAnswer": "Paging: feste Seiten, keine ext. Fragmentierung. Segmentierung: variable Segmente nach Programmstruktur, ext. Fragmentierung",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie viele Seitenrahmen bei 4 GB RAM und 4 KB Seiten?",
+      "sampleAnswer": "4 GB / 4 KB = 1.048.576 Seitenrahmen",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein System hat 8 GB RAM und die Seitengröße beträgt 4 KB. Wie viele Seitenrahmen gibt es?",
+      "answer": 2097152,
+      "tolerance": 1,
+      "explanation": "8 GB / 4 KB = (8 × 1024³) / (4 × 1024) = 8.589.934.592 / 4.096 = 2.097.152 Seitenrahmen.\nTipp: Seitenrahmen = RAM-Größe / Seitengröße. 8 GB = 8 × 1024 × 1024 × 1024 Bytes"
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-ex-08",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was passiert bei einem Page Fault?",
+      "options": [
+        "Die CPU stürzt ab",
+        "OS muss die angefragte Seite von der Festplatte in den RAM laden — langsam!",
+        "Der Cache wird geleert",
+        "Ein Register wird überschrieben"
+      ],
+      "correctIndex": 1,
+      "explanation": "Page Fault: Zugriff auf Seite, die nicht im RAM ist. OS muss sie von Festplatte (SSD/HDD) laden — ~100x langsamer als RAM-Zugrift. Wenn RAM voll: eine andere Seite wird ausgelagert."
+    },
+    {
+      "id": "computersysteme-speicherverwaltung-paging-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein System hat 4 GB RAM und die Page Size ist 4 KB. Wie viele Seitenrahmen gibt es?",
+      "answer": 1048576,
+      "tolerance": 1,
+      "explanation": "4 GB / 4 KB = (4 × 1024³) / (4 × 1024) = 4.294.967.296 / 4.096 = 1.048.576 Seitenrahmen."
+    }
+  ]
+}

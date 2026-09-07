@@ -50,6 +50,46 @@
         "Verzögerung eines kritischen Vorgangs verschiebt das Projektende",
         "Steuerung/Überwachung fokussiert auf den kritischen Pfad"
       ]
+    },
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist der kritische Weg im Netzplan?",
+      "sampleAnswer": "Längster Pfad — bestimmt die Mindestdauer des Projekts",
+      "keyPoints": [
+        "Netzplan"
+      ]
+    },
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie berechnet man früheste Zeitpunkte?",
+      "sampleAnswer": "Vorwärtsrechnung (links→rechts): Frühester Start = max aller Vorgänger-Endzeiten",
+      "keyPoints": [
+        "Netzplan"
+      ]
+    },
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Gesamtpuffer vs Freier Puffer?",
+      "sampleAnswer": "GP: Verzögerung ohne Projektende zu verschieben. FP: Verzögerung ohne Nachfolger zu beeinflussen",
+      "keyPoints": [
+        "Netzplan"
+      ]
+    },
+    {
+      "id": "diagramme-netzplan-kritischer-pfad-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein kritischer Pfad?",
+      "sampleAnswer": "Längster Pfad im Netzplan — Pufferzeit=0, bestimmt Mindestdauer",
+      "keyPoints": [
+        "Netzplan"
+      ]
     }
   ]
 }

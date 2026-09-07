@@ -1,0 +1,49 @@
+{
+  "topicSlug": "computersysteme-os-vergleich",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Betriebssysteme im Vergleich: Windows, Linux, macOS",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-os-vergleich-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "NTFS, ext4, APFS — welches OS?",
+      "sampleAnswer": "NTFS = Windows, ext4 = Linux, APFS = macOS",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-os-vergleich-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Monolithischer vs. Mikrokernel?",
+      "sampleAnswer": "Monolithisch: alles im Kernel (Linux). Mikrokernel: minimal, Services im User-Space (Minix, QNX)",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-os-vergleich-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was sind Daemons/Dienste?",
+      "sampleAnswer": "Hintergrundprozesse ohne Benutzeroberfläche. Windows: Dienste. Linux/macOS: Daemons. z.B. Druckdienst, Virenscanner",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-os-vergleich-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Update vs. Upgrade?",
+      "sampleAnswer": "Update: Fehlerbehebungen, Sicherheitspatches (klein). Upgrade: neue Version mit neuen Funktionen (groß)",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    }
+  ]
+}

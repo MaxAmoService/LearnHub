@@ -1,0 +1,104 @@
+{
+  "topicSlug": "computersysteme-speicherhierarchie-ram",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Speicherhierarchie und RAM-Arten",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-speicherhierarchie-ram-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "SRAM vs. DRAM?",
+      "sampleAnswer": "SRAM: Flip-Flop, schnell (1ns), teuer, für Cache. DRAM: Kondensator, langsamer (100ns), günstig, für RAM, braucht Refresh",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Speicherhierarchie von schnell nach langsam?",
+      "sampleAnswer": "Register → L1 (~1ns) → L2 (~4ns) → L3 (~10ns) → RAM (~100ns) → SSD (~0.1ms) → HDD (~5-10ms)",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Cache?",
+      "sampleAnswer": "Schneller Pufferspeicher nahe der CPU. Speichert häufig verwendete Daten. L1/L2/L3 = verschiedene Ebenen",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Cache Hit / Miss?",
+      "sampleAnswer": "Hit: Daten sind im Cache → schnell. Miss: Daten nicht da → langsamer Zugriff aus RAM. Hit Rate = Anteil Treffer",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist der Lokalitätsprinzip im Cache?",
+      "sampleAnswer": "Zeitliche Lokalität: Zugriff auf gleiche Daten. Räumliche Lokalität: Zugriff auf benachbarte Daten. Ganze Cache-Line (64B) laden",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ROM?",
+      "sampleAnswer": "Read-Only Memory — nicht flüchtig, nur lesen. Enthält BIOS/UEFI. Behält Inhalt ohne Strom",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen SRAM und DRAM?",
+      "options": [
+        "SRAM ist langsamer aber günstiger",
+        "SRAM ist schneller, teuer, für Cache. DRAM ist langsamer, günstig, für RAM, braucht Refresh",
+        "DRAM behält Daten ohne Strom",
+        "SRAM und DRAM sind identisch"
+      ],
+      "correctIndex": 1,
+      "explanation": "SRAM: Flip-Flop (6 Transistoren), ~1ns, teuer, für Cache. DRAM: Kondensator (1 Transistor), ~100ns, günstig, braucht Refresh alle ~64ms, für RAM."
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-ex-08",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Nenne die Speicherhierarchie von schnell nach langsam (6 Ebenen).",
+      "sampleAnswer": "Register → L1 Cache → L2 Cache → L3 Cache → RAM → SSD → HDD. Je schneller, desto teurer und kleiner.",
+      "keyPoints": [
+        "register l1 l2 l3 ram ssd hdd",
+        "Merksatz: Rein Lustig Lernen Lektionen Richtig Schnell"
+      ]
+    },
+    {
+      "id": "computersysteme-speicherhierarchie-ram-ex-09",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Erkläre den Unterschied zwischen SRAM und DRAM und wo werden sie eingesetzt?",
+      "sampleAnswer": "SRAM: Flip-Flop, schnell (~1ns), teuer, kein Refresh → für Cache (L1/L2/L3). DRAM: Kondensator, langsamer (~100ns), günstig, Refresh nötig → für Hauptspeicher (RAM).",
+      "keyPoints": [
+        "sram dram"
+      ]
+    }
+  ]
+}

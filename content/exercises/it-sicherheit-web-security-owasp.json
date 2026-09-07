@@ -1,0 +1,176 @@
+{
+  "topicSlug": "it-sicherheit-web-security-owasp",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Web-Security (OWASP Top 10)",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "it-sicherheit-web-security-owasp-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist SQL-Injection?",
+      "sampleAnswer": "SQL-Code über Eingabefelder einschleusen → DB zeigt alle Daten, Login umgehen",
+      "keyPoints": [
+        "OWASP",
+        "Schutz: Prepared Statements"
+      ]
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist XSS (Cross-Site Scripting)?",
+      "sampleAnswer": "JavaScript-Code in Webseiten einschleusen → wird im Browser des Opfers ausgeführt",
+      "keyPoints": [
+        "OWASP",
+        "Schutz: Output Encoding, CSP"
+      ]
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist CSRF?",
+      "sampleAnswer": "Cross-Site Request Forgery: Browser führt unbemerkt Aktionen auf anderer Webseite aus",
+      "keyPoints": [
+        "OWASP",
+        "Schutz: CSRF Tokens"
+      ]
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie schützt man sich vor SQL-Injection?",
+      "sampleAnswer": "Prepared Statements (Platzhalter statt String-Konkatenation) + Input Validation",
+      "keyPoints": [
+        "OWASP"
+      ]
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Man-in-the-Middle-Angriff?",
+      "sampleAnswer": "Angreifer schaltet sich zwischen Sender und Empfänger → kann Daten mitlesen/manipulieren",
+      "keyPoints": [
+        "OWASP",
+        "Schutz: TLS/SSL, VPN"
+      ]
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist ein Man-in-the-Middle-Angriff (MITM)?",
+      "options": [
+        "Ein Virus der sich in der Mitte einer Datei versteckt",
+        "Ein Angreifer der sich zwischen zwei Kommunikationspartner schaltet",
+        "Ein Angriff auf die Mitte eines Netzwerks",
+        "Ein Trojaner der Admin-Rechte erlangt"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bei einem MITM-Angriff positioniert sich der Angreifer zwischen Sender und Empfänger und kann den Datenverkehr mitlesen oder manipulieren."
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist eine SQL-Injection?",
+      "options": [
+        "Ein Virus der SQL-Datenbanken befällt",
+        "Einschleusen von SQL-Befehlen über Eingabefelder",
+        "Ein Backup einer SQL-Datenbank",
+        "Eine Verschlüsselungsmethode für SQL"
+      ],
+      "correctIndex": 1,
+      "explanation": "SQL-Injection: Der Angreifer gibt SQL-Code in Eingabefelder ein, der dann vom Server ausgeführt wird. Schutz: Prepared Statements, Input Validation."
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-08",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Was steht hinter der Abkürzung XSS?",
+      "sampleAnswer": "XSS = Cross-Site Scripting. Der Angreifer schleust JavaScript-Code in Webseiten ein, der im Browser des Opfers ausgeführt wird.",
+      "keyPoints": [
+        "Cross-Site Scripting"
+      ]
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-09",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Was steht hinter der Abkürzung CSRF?",
+      "sampleAnswer": "CSRF = Cross-Site Request Forgery. Der Angreifer lässt den Browser des Opfers unbemerkt eine Aktion auf einer anderen Webseite ausführen (z.B. Überweisung).",
+      "keyPoints": [
+        "Cross-Site Request Forgery"
+      ]
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Login-Formular prüft Benutzereingaben nicht. Welche Attacke ist am wahrscheinlichsten?",
+      "options": [
+        "DDoS",
+        "SQL-Injection",
+        "Phishing",
+        "Man-in-the-Middle"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fehlende Input-Validierung ist die #1 Voraussetzung für SQL-Injection. Der Angreifer kann SQL-Befehle direkt in die Eingabefelder schreiben."
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-11",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Gegenmaßnahme verhindert SQL-Injection am zuverlässigsten?",
+      "options": [
+        "Passwörter hashen",
+        "HTTPS aktivieren",
+        "Prepared Statements / Parameterized Queries verwenden",
+        "Eine Firewall installieren"
+      ],
+      "correctIndex": 2,
+      "explanation": "Prepared Statements trennen Code und Daten. Die Eingabe wird NIE als SQL-Code interpretiert — die effektivste Schutzmaßnahme."
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-12",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele Positionen hat die OWASP Top 10 Liste (Stand 2021)?",
+      "answer": 10,
+      "unit": "Positionen",
+      "explanation": "Die OWASP Top 10 enthält — wie der Name sagt — die 10 kritischsten Web-Sicherheitsrisiken."
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-13",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Webshop zeigt in der URL: `shop.de/product?id=1`. Welche Angriffsart ist hier möglich?",
+      "options": [
+        "Cross-Site Scripting (XSS)",
+        "SQL-Injection über die URL-Parameter",
+        "DDoS",
+        "Phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "URL-Parameter wie `id=1` können für SQL-Injection missbraucht werden: `id=1 OR 1=1`. Schutz: Prepared Statements."
+    },
+    {
+      "id": "it-sicherheit-web-security-owasp-ex-14",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche OWASP-Top-10-Schwachstelle erlaubt es einem Angreifer, eigenen JavaScript-Code im Browser anderer Nutzer auszuführen?",
+      "options": [
+        "Injection",
+        "Broken Authentication",
+        "Cross-Site Scripting (XSS)",
+        "Insecure Deserialization"
+      ],
+      "correctIndex": 2,
+      "explanation": "XSS erlaubt das Einschleusen von JavaScript in Webseiten, das dann im Browser anderer Nutzer ausgeführt wird. Schutz: Output Encoding, CSP."
+    }
+  ]
+}

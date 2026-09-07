@@ -1,0 +1,29 @@
+{
+  "topicSlug": "netzwerktechnik-ipv4-adressierung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "IPv4-Adressierung",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-ipv4-adressierung-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welche IP-Bereiche sind privat (RFC 1918)?",
+      "sampleAnswer": "10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16",
+      "keyPoints": [
+        "IPv4"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-ipv4-adressierung-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist die Broadcast-Adresse?",
+      "sampleAnswer": "Letzte Adresse im Subnetz (alle Host-Bits = 1)",
+      "keyPoints": [
+        "IPv4"
+      ]
+    }
+  ]
+}

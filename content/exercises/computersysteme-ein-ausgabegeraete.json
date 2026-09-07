@@ -1,0 +1,213 @@
+{
+  "topicSlug": "computersysteme-ein-ausgabegeraete",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Ein- und Ausgabegeräte",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist RFID?",
+      "sampleAnswer": "Radio-Frequency Identification — Funketikett zur automatischen Identifikation, Reichweite bis 12m",
+      "keyPoints": [
+        "Eingabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen RFID und NFC?",
+      "sampleAnswer": "NFC ist eine Teilmenge von RFID: kürzere Reichweite (<4cm), bidirektional, sicherer (z.B. kontaktloses Bezahlen)",
+      "keyPoints": [
+        "Eingabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was sind die 3 Authentifizierungsfaktoren?",
+      "sampleAnswer": "1. Was man WEISS (Passwort), 2. Was man HAT (Token/Karte), 3. Was man IST (Biometrie)",
+      "keyPoints": [
+        "Eingabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Barcode vs. QR-Code?",
+      "sampleAnswer": "Barcode: 1D, Striche, EAN-13. QR-Code: 2D, quadratisch, mehr Daten, fehlerkorrigierend",
+      "keyPoints": [
+        "Eingabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welche biometrischen Verfahren gibt es?",
+      "sampleAnswer": "Fingerabdruck, Gesichtserkennung, Iris-Scan, Stimmerkennung — nach Genauigkeit und Sicherheit gestaffelt",
+      "keyPoints": [
+        "Eingabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist DPI bei einer Maus?",
+      "sampleAnswer": "Dots Per Inch — Maus-Empfindlichkeit. Höhere DPI = schnellerer Cursor pro Mausbewegung",
+      "keyPoints": [
+        "Eingabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-07",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "LCD vs. OLED — was ist der Unterschied?",
+      "sampleAnswer": "LCD: Flüssigkristalle + Hintergrundbeleuchtung. OLED: selbstleuchtend, perfektes Schwarz, dünn, aber Burn-in-Gefahr",
+      "keyPoints": [
+        "Ausgabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-08",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie funktioniert ein Laserdrucker?",
+      "sampleAnswer": "Toner (Pulver) wird durch Laser auf eine Trommel übertragen, auf Papier fixiert und durch Hitze (Fixiereinheit) dauerhaft gebunden",
+      "keyPoints": [
+        "Ausgabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-09",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist dpi bei Druckern?",
+      "sampleAnswer": "Dots Per Inch — Druckauflösung. 300 dpi reicht für Text, 1200+ dpi für Fotos",
+      "keyPoints": [
+        "Ausgabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-10",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welche 3D-Druck-Verfahren gibt es?",
+      "sampleAnswer": "FDM (Filament, günstig), SLA (Resin, präzise), SLS (Pulver/Metall, industriell)",
+      "keyPoints": [
+        "Ausgabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-11",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Lumen bei Beamern?",
+      "sampleAnswer": "Helligkeitsmaß. 2000+ Lumen für abgedunkelte Räume, 4000+ für helle Räume",
+      "keyPoints": [
+        "Ausgabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-fk-12",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht eine Braille-Zeile?",
+      "sampleAnswer": "Blindenschrift als tastbare Punkte auf einem Ausgabegerät — barrierefreie Computernutzung für Blinde",
+      "keyPoints": [
+        "Ausgabe"
+      ]
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-ex-13",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welcher Authentifizierungsfaktor ist Fingerabdruck?",
+      "options": [
+        "Was man weiß",
+        "Was man hat",
+        "Was man ist",
+        "Was man tut"
+      ],
+      "correctIndex": 2,
+      "explanation": "Biometrie = 'was man IST'. Die drei Faktoren: 'was man weiß' (Passwort), 'was man hat' (Token), 'was man ist' (Biometrie)."
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-ex-14",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen RFID und NFC?",
+      "options": [
+        "RFID und NFC sind identisch",
+        "NFC ist eine Teilmenge von RFID mit kürzerer Reichweite (<4cm) und bidirektional",
+        "RFID ist moderner als NFC",
+        "NFC funktioniert nur mit Kabel"
+      ],
+      "correctIndex": 1,
+      "explanation": "NFC ist eine Teilmenge von RFID. Reichweite <4cm, bidirektional, sicherer. RFID: bis 12m, meist einseitig. NFC = kontaktloses Bezahlen."
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches biometrische Verfahren hat die höchste Sicherheit?",
+      "options": [
+        "Fingerabdruck",
+        "Gesichtserkennung",
+        "Iris-Scan",
+        "Stimmerkennung"
+      ],
+      "correctIndex": 2,
+      "explanation": "Iris-Scan hat die höchste Genauigkeit und Sicherheit — wird in Hochsicherheitsbereichen eingesetzt. Fingerabdruck ist mittel-hoch, Gesichtserkennung hoch, Stimmerkennung mittel."
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-ex-16",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welches Druckverfahren nutzt Toner (Pulver)?",
+      "options": [
+        "Tintenstrahldrucker",
+        "Laserdrucker",
+        "Nadeldrucker",
+        "Thermischer Drucker"
+      ],
+      "correctIndex": 1,
+      "explanation": "Laserdrucker nutzen Toner (Pulver), das durch Laser auf eine Trommel übertragen und durch Hitze fixiert wird. NICHT Tinte!"
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-ex-17",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Vorteil von OLED gegenüber LCD?",
+      "options": [
+        "Günstiger in der Herstellung",
+        "Perfektes Schwarz (selbstleuchtend), dünn, hoher Kontrast",
+        "Kein Burn-in möglich",
+        "Höhere Helligkeit bei Sonnenlicht"
+      ],
+      "correctIndex": 1,
+      "explanation": "OLED-Pixel leuchten selbst — bei Schwarz sind sie aus = perfektes Schwarz, hoher Kontrast, dünn. Nachteil: Burn-in-Gefahr, teurer."
+    },
+    {
+      "id": "computersysteme-ein-ausgabegeraete-ex-18",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was bedeutet 'dpi' bei einem Drucker?",
+      "options": [
+        "Data Processing Interface",
+        "Dots Per Inch — Druckauflösung",
+        "Digital Print Integration",
+        "Druckparameter-Index"
+      ],
+      "correctIndex": 1,
+      "explanation": "DPI = Dots Per Inch = Punkte pro Zoll. 300 dpi reicht für Text, 1200+ dpi für Fotos. Höher = feinerer Druck."
+    }
+  ]
+}

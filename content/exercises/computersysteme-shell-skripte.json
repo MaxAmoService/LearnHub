@@ -1,0 +1,19 @@
+{
+  "topicSlug": "computersysteme-shell-skripte",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Shell, Skripte und Automatisierung",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-shell-skripte-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Shell vs. GUI?",
+      "sampleAnswer": "Shell: textbasierte Kommandozeile (Bash, PowerShell). GUI: grafische Oberfläche. Shell = skriptbar, automatisierbar",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    }
+  ]
+}

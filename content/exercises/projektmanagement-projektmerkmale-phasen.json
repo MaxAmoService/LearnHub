@@ -1,0 +1,69 @@
+{
+  "topicSlug": "projektmanagement-projektmerkmale-phasen",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Projektmerkmale und Projektphasen",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "projektmanagement-projektmerkmale-phasen-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "5 Phasen DIN 69901?",
+      "sampleAnswer": "Initiierung, Definition, Planung, Steuerung, Abschluss",
+      "keyPoints": [
+        "DIN 69901"
+      ]
+    },
+    {
+      "id": "projektmanagement-projektmerkmale-phasen-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "SWOT-Analyse?",
+      "sampleAnswer": "Stärken/Schwächen (intern), Chancen/Risiken (extern)",
+      "keyPoints": [
+        "Methoden"
+      ]
+    },
+    {
+      "id": "projektmanagement-projektmerkmale-phasen-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Ishikawa-Diagramm?",
+      "sampleAnswer": "Ursache-Wirkungs-Diagramm (Fischgräte). 6M: Mensch, Maschine, Material, Methode, Messung, Milieu",
+      "keyPoints": [
+        "Methoden"
+      ]
+    },
+    {
+      "id": "projektmanagement-projektmerkmale-phasen-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Stakeholder?",
+      "sampleAnswer": "Alle Personen/Gruppen mit Interesse am Projekt — positiv oder negativ betroffen",
+      "keyPoints": [
+        "Grundlagen"
+      ]
+    },
+    {
+      "id": "projektmanagement-projektmerkmale-phasen-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Quality Gate?",
+      "sampleAnswer": "Kompetente Überprüfung bei Meilensteinen — entscheidet ob Phase abgeschlossen ist",
+      "keyPoints": [
+        "Grundlagen"
+      ]
+    },
+    {
+      "id": "projektmanagement-projektmerkmale-phasen-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Multiprojektmanagement?",
+      "sampleAnswer": "Verwaltung mehrerer gleichzeitiger Projekte — PMO koordiniert Ressourcen",
+      "keyPoints": [
+        "Grundlagen"
+      ]
+    }
+  ]
+}

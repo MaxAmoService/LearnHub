@@ -1,0 +1,58 @@
+{
+  "topicSlug": "netzwerktechnik-protokolle-ueberblick",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Netzwerkprotokolle im Überblick (HTTP, SMTP, FTP …)",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-protokolle-ueberblick-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "IMAP vs POP3?",
+      "sampleAnswer": "IMAP belässt E-Mails auf dem Server (Multi-Device). POP3 lädt herunter.",
+      "keyPoints": [
+        "Protokolle"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-protokolle-ueberblick-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welchen Port nutzt HTTPS?",
+      "sampleAnswer": "Port 443",
+      "keyPoints": [
+        "TCP/IP",
+        "HTTP=80, SSH=22, SMTP=25, DNS=53"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-protokolle-ueberblick-match-1",
+      "type": "match",
+      "difficulty": 1,
+      "prompt": "Ordnen Sie die Protokolle ihren Standard-Ports zu.",
+      "pairs": [
+        {
+          "left": "HTTP",
+          "right": "80"
+        },
+        {
+          "left": "HTTPS",
+          "right": "443"
+        },
+        {
+          "left": "SSH",
+          "right": "22"
+        },
+        {
+          "left": "SMTP",
+          "right": "25"
+        },
+        {
+          "left": "DNS",
+          "right": "53"
+        }
+      ]
+    }
+  ]
+}

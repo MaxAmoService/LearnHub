@@ -1,0 +1,107 @@
+{
+  "topicSlug": "it-sicherheit-verschluesselung-pki",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Verschlüsselung und PKI",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "it-sicherheit-verschluesselung-pki-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Symmetrisch vs. asymmetrisch — was ist der Unterschied?",
+      "sampleAnswer": "Symmetrisch: 1 Key (AES). Asymmetrisch: 2 Keys — Public + Private (RSA)",
+      "keyPoints": [
+        "Krypto"
+      ]
+    },
+    {
+      "id": "it-sicherheit-verschluesselung-pki-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Hashing? Umkehrbar?",
+      "sampleAnswer": "Einweg-Algorithmus → erzeugt Festwert fester Länge (SHA-256 = 256 Bit). NICHT umkehrbar!",
+      "keyPoints": [
+        "Krypto",
+        "Gegenstück: Verschlüsselung IST umkehrbar"
+      ]
+    },
+    {
+      "id": "it-sicherheit-verschluesselung-pki-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was beweist eine digitale Signatur?",
+      "sampleAnswer": "Authentizität (wer hat unterschrieben) + Integrität (Dokument nicht verändert)",
+      "keyPoints": [
+        "Krypto",
+        "Hash wird mit Private Key verschlüsselt"
+      ]
+    },
+    {
+      "id": "it-sicherheit-verschluesselung-pki-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht eine CA (Certificate Authority)?",
+      "sampleAnswer": "Stellt digitale Zertifikate aus → bindet Public Key an Identität (z.B. google.com)",
+      "keyPoints": [
+        "Krypto"
+      ]
+    },
+    {
+      "id": "it-sicherheit-verschluesselung-pki-ex-05",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was macht ein Hashing-Algorithmus (z.B. SHA-256)?",
+      "options": [
+        "Verschlüsselt Daten symmetrisch",
+        "Erzeugt einen eindeutigen Festwert fester Länge",
+        "Komprimiert Daten auf die Hälfte",
+        "Signiert digital mit einem Private Key"
+      ],
+      "correctIndex": 1,
+      "explanation": "Hashing erzeugt aus beliebig langen Daten einen eindeutigen Hash fester Länge (SHA-256 = 256 Bit). Es ist EINWEG — man kann den Hash nicht zurückrechnen."
+    },
+    {
+      "id": "it-sicherheit-verschluesselung-pki-ex-06",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen symmetrischer und asymmetrischer Verschlüsselung?",
+      "options": [
+        "Symmetrisch = 1 Key, Asymmetrisch = 2 Keys (Public + Private)",
+        "Symmetrisch = schneller, Asymmetrisch = langsamer — gleiche Keys",
+        "Symmetrisch ist unsicherer als asymmetrisch",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 0,
+      "explanation": "Symmetrisch: ein gemeinsamer Key für Ver- und Entschlüsselung (z.B. AES). Asymmetrisch: Public Key zum Verschlüsseln, Private Key zum Entschlüsseln (z.B. RSA)."
+    },
+    {
+      "id": "it-sicherheit-verschluesselung-pki-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Protokoll sorgt für verschlüsselte Webseiten-Übertragung?",
+      "options": [
+        "HTTP",
+        "FTP",
+        "TLS/SSL (HTTPS)",
+        "SMTP"
+      ],
+      "correctIndex": 2,
+      "explanation": "TLS (Transport Layer Security) verschlüsselt die Verbindung zwischen Browser und Server — erkannt am https:// und Schloss-Symbol."
+    },
+    {
+      "id": "it-sicherheit-verschluesselung-pki-ex-08",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Zweck einer digitalen Signatur?",
+      "options": [
+        "Daten verschlüsseln",
+        "Authentizität und Integrität eines Dokuments nachweisen",
+        "Passwörter sicher speichern",
+        "Netzwerkverkehr filtern"
+      ],
+      "correctIndex": 1,
+      "explanation": "Digitale Signatur: Der Sender signiert mit seinem Private Key. Der Empfänger prüft mit dem Public Key — beweist Authentizität und Unverändertheit."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "topicSlug": "computersysteme-os-aufgaben",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Aufgaben und Aufbau eines Betriebssystems",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-os-aufgaben-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was sind Daemons/Dienste?",
+      "sampleAnswer": "Hintergrundprozesse ohne Benutzeroberfläche. Windows: Dienste. Linux/macOS: Daemons. z.B. Druckdienst, Virenscanner",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    },
+    {
+      "id": "computersysteme-os-aufgaben-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Update vs. Upgrade?",
+      "sampleAnswer": "Update: Fehlerbehebungen, Sicherheitspatches (klein). Upgrade: neue Version mit neuen Funktionen (groß)",
+      "keyPoints": [
+        "Betriebssysteme"
+      ]
+    }
+  ]
+}

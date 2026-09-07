@@ -1,0 +1,187 @@
+{
+  "topicSlug": "it-sicherheit-schutzziele-bedrohungen",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Sicherheitsgrundlagen: Schutzziele und Bedrohungen",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was beschreibt die CIA-Triade?",
+      "sampleAnswer": "Confidentiality (Vertraulichkeit), Integrity (Integrität), Availability (Verfügbarkeit)",
+      "keyPoints": [
+        "Grundlagen",
+        "Die drei Grundpfeiler der IT-Sicherheit"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was bedeutet Confidentiality?",
+      "sampleAnswer": "Nur autorisierte Personen haben Zugriff auf Daten",
+      "keyPoints": [
+        "Grundlagen",
+        "Vertraulichkeit"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was bedeutet Integrity?",
+      "sampleAnswer": "Daten sind korrekt und unverändert — keine Manipulation",
+      "keyPoints": [
+        "Grundlagen",
+        "Unversehrtheit"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was bedeutet Availability?",
+      "sampleAnswer": "Systeme und Daten sind zugänglich wenn sie gebraucht werden",
+      "keyPoints": [
+        "Grundlagen",
+        "DDoS-Angriffe zielen dagegen"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Defense in Depth?",
+      "sampleAnswer": "Mehrere Sicherheitsschichten — wenn eine scheitert, greift die nächste",
+      "keyPoints": [
+        "Konzepte"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist das Least-Privilege-Prinzip?",
+      "sampleAnswer": "Jeder Benutzer bekommt nur die minimal nötigen Berechtigungen",
+      "keyPoints": [
+        "Konzepte"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-07",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Ransomware?",
+      "sampleAnswer": "Malware die Daten verschlüsselt und Lösegeld fordert (meist Krypto)",
+      "keyPoints": [
+        "Malware",
+        "Schutz: Backups, Schulung"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-fk-08",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was besagt die 3-2-1-Backup-Regel?",
+      "sampleAnswer": "3 Kopien, auf 2 verschiedenen Medien, 1 davon extern (offsite)",
+      "keyPoints": [
+        "Backup"
+      ]
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-ex-09",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was beschreibt die CIA-Triade?",
+      "options": [
+        "Confidentiality, Integrity, Availability",
+        "Control, Identification, Authentication",
+        "Configuration, Installation, Administration",
+        "Certification, Inspection, Authorization"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die CIA-Triade steht für Vertraulichkeit (Confidentiality), Integrität (Integrity) und Verfügbarkeit (Availability) — die drei Grundpfeiler der IT-Sicherheit."
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-ex-10",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Art von Malware verschlüsselt Daten und verlangt Lösegeld?",
+      "options": [
+        "Trojaner",
+        "Wurm",
+        "Ransomware",
+        "Spyware"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ransomware verschlüsselt die Dateien des Opfers und fordert eine Zahlung (meist in Kryptowährung) für den Entschlüsselungskey."
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-ex-11",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was besagt die 3-2-1-Backup-Regel? Wie viele Kopien sollte man haben?",
+      "answer": 3,
+      "unit": "Kopien",
+      "explanation": "3-2-1-Regel: 3 Kopien der Daten, auf 2 verschiedenen Medien, 1 davon extern (offsite)."
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-ex-12",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was empfiehlt das BSI IT-Grundschutz-Konzept?",
+      "options": [
+        "Alle Systeme gleich absichern",
+        "Standardisierte Sicherheitsmaßnahmen für typische IT-Strukturen",
+        "Nur Firewalls einsetzen",
+        "Sicherheit nur für Server, nicht für Clients"
+      ],
+      "correctIndex": 1,
+      "explanation": "BSI IT-Grundschutz bietet standardisierte Bausteine mit Schutzmaßnahmen für typische IT-Umgebungen — ein systematischer Ansatz zur Absicherung."
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-ex-13",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Prinzip besagt, dass ein Benutzer nur die Berechtigungen haben sollte, die er für seine Arbeit benötigt?",
+      "options": [
+        "Defense in Depth",
+        "Need-to-know / Least Privilege",
+        "Separation of Duties",
+        "Fail-Safe Defaults"
+      ],
+      "correctIndex": 1,
+      "explanation": "Least Privilege: Jeder Benutzer bekommt nur die minimal nötigen Rechte. So wird bei einem Kompromittierung der Schaden begrenzt."
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-ex-14",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was bedeutet Verfügbarkeit (Availability) in der CIA-Triade?",
+      "options": [
+        "Daten sind verschlüsselt",
+        "Systeme und Daten sind zugänglich wenn sie gebraucht werden",
+        "Daten sind nicht verändert worden",
+        "Nur autorisierte Personen haben Zugriff"
+      ],
+      "correctIndex": 1,
+      "explanation": "Verfügbarkeit = Systeme und Daten sind für autorisiutzer stets zugänglich. DDoS-Angriffe zielen z.B. gegen die Verfügbarkeit."
+    },
+    {
+      "id": "it-sicherheit-schutzziele-bedrohungen-ex-15",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist ein Zero-Day-Exploit?",
+      "options": [
+        "Ein Angriff der am ersten Tag nach der Installation stattfindet",
+        "Ein Exploit für eine Schwachstelle, für die es noch keinen Patch gibt",
+        "Ein Angriff mit null Schaden",
+        "Ein Test der keine Schwachstellen findet"
+      ],
+      "correctIndex": 1,
+      "explanation": "Zero-Day: Die Schwachstelle ist noch nicht bekannt (0 Tage seit Entdeckung) — es gibt keinen Patch. Besonders gefährlich."
+    }
+  ]
+}

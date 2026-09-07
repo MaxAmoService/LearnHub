@@ -1,0 +1,132 @@
+{
+  "topicSlug": "computersysteme-von-neumann-cpu",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Von-Neumann-Architektur und CPU-Aufbau",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-von-neumann-cpu-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist die Von-Neumann-Architektur?",
+      "sampleAnswer": "Programm und Daten im selben Speicher, sequenzieller Zugriff über gemeinsamen Bus",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht die ALU?",
+      "sampleAnswer": "Arithmetic Logic Unit — führt arithmetische (+,-,*,/) und logische (UND, ODER, NICHT) Operationen durch",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht das Steuerwerk?",
+      "sampleAnswer": "Koordiniert den Befehlsablauf: Fetch (holen), Decode (entschlüsseln), Execute (ausführen)",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Nenne 4 Register und ihre Aufgabe",
+      "sampleAnswer": "AX (Akku/Rechenergebnisse), BX (Basis), CX (Zähler), DX (Daten), PC (nächster Befehl), IR (aktueller Befehl)",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist der Fetch-Decode-Execute-Zyklus?",
+      "sampleAnswer": "1. Fetch: PC→MAR→Speicher→MDR→IR. 2. Decode: Steuerwerk analysiert Befehl. 3. ALU führt Operation aus",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist der Von-Neumann-Flaschenhals?",
+      "sampleAnswer": "CPU muss abwechselnd Befehle und Daten über denselben Bus holen — sequenzieller Zugriff begrenzt Geschwindigkeit",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Komponente führt arithmetische und logische Operationen in der CPU durch?",
+      "options": [
+        "Steuerwerk",
+        "ALU",
+        "Register",
+        "Cache"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die ALU (Arithmetic Logic Unit) ist das Rechenwerk der CPU. Sie führt alle Rechenoperationen durch: Addition, Subtraktion, UND, ODER, NICHT."
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Aufgabe des Program Counters (PC)?",
+      "options": [
+        "Speichert Rechenergebnisse",
+        "Enthält die Adresse des nächsten Befehls",
+        "Decodiert den aktuellen Befehl",
+        "Führt Berechnungen durch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Der Program Counter (PC) enthält immer die Adresse des nächsten Befehls, der aus dem Speicher geholt werden soll."
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-ex-09",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Beschreibe die drei Phasen des Fetch-Decode-Execute-Zyklus in der richtigen Reihenfolge.",
+      "sampleAnswer": "1. FETCH: PC→MAR, Speicher liefert Befehl→MDR→IR, PC wird erhöht. 2. DECODE: Steuerwerk analysiert den Befehl im IR. 3. EXECUTE: ALU führt Operation aus, Ergebnis wird gespeichert.",
+      "keyPoints": [
+        "fetch decode execute",
+        "PC → MAR → Speicher → MDR → IR → Decode → Execute"
+      ]
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Von-Neumann-Flaschenhals?",
+      "options": [
+        "Die CPU ist zu langsam für den Speicher",
+        "Programm und Daten teilen sich denselben Bus — sequenzieller Zugriff begrenzt Geschwindigkeit",
+        "Der Cache ist zu klein",
+        "Es gibt zu viele Register"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bei Von-Neumann teilen sich Programm und Daten denselben Speicher und Bus. Die CPU muss abwechselnd Befehle und Daten holen — das erzeugt einen Flaschenhals."
+    },
+    {
+      "id": "computersysteme-von-neumann-cpu-ex-11",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Erkläre den Fetch-Decode-Execute-Zyklus anhand eines ADD-Befehls (ADD AX, BX).",
+      "sampleAnswer": "FETCH: PC→MAR, Befehl 'ADD AX,BX' aus Speicher→MDR→IR, PC++. DECODE: Steuerwerk erkennt Opcode ADD, Operanden AX und BX. EXECUTE: ALU addiert AX+BX, Ergebnis in AX gespeichert.",
+      "keyPoints": [
+        "fetch decode execute"
+      ]
+    }
+  ]
+}

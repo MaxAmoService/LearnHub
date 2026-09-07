@@ -1,0 +1,140 @@
+{
+  "topicSlug": "it-sicherheit-netzwerksicherheit-firewalls",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Netzwerksicherheit und Firewalls",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "IDS vs. IPS — Unterschied?",
+      "sampleAnswer": "IDS = erkennt + warnt. IPS = erkennt UND blockiert automatisch",
+      "keyPoints": [
+        "Netzwerk"
+      ]
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist eine DMZ?",
+      "sampleAnswer": "Demilitarisierte Zone: Puffer zwischen Internet und internem Netz — öffentliche Server stehen hier",
+      "keyPoints": [
+        "Netzwerk"
+      ]
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welchen Port nutzt HTTPS? SSH? HTTP?",
+      "sampleAnswer": "HTTPS = 443, SSH = 22, HTTP = 80",
+      "keyPoints": [
+        "Netzwerk",
+        "Merke: 443 = S wie SSL"
+      ]
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht eine Firewall?",
+      "sampleAnswer": "Filtert Netzwerkverkehr nach Regeln (Ports, IPs, Protokolle)",
+      "keyPoints": [
+        "Netzwerk"
+      ]
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "IDS vs IPS?",
+      "sampleAnswer": "IDS = nur Erkennung (passiv). IPS = Erkennung + Blockierung (aktiv).",
+      "keyPoints": [
+        "Sicherheit"
+      ]
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was steht in einer DMZ?",
+      "sampleAnswer": "Öffentlich erreichbare Server (Web, Mail) — zwischen Internet und internem Netz",
+      "keyPoints": [
+        "Sicherheit"
+      ]
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Welcher Port wird standardmäßig für HTTPS verwendet?",
+      "answer": 443,
+      "explanation": "HTTPS nutzt Port 443 (TLS/SSL). HTTP nutzt Port 80."
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-ex-08",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was macht eine Firewall?",
+      "options": [
+        "Verschlüsselt den gesamten Netzwerkverkehr",
+        "Filtert Netzwerkverkehr nach definierten Regeln",
+        "Ersetzt den Virenscanner",
+        "Speichert Passwörter sicher"
+      ],
+      "correctIndex": 1,
+      "explanation": "Eine Firewall filtert den Netzwerkverkehr anhand von Regeln (z.B. erlaubte/verbotene Ports, IP-Adressen). Sie schützt vor unberechtigtem Zugriff."
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-ex-09",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist eine DMZ (Demilitarisierte Zone)?",
+      "options": [
+        "Ein gesicherter Bereich zwischen internem Netz und Internet",
+        "Ein Netzwerk ohne Firewall",
+        "Ein verschlüsseltes WLAN",
+        "Ein Backup-Rechenzentrum"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die DMZ ist ein abgeschirmtes Netzwerk zwischen dem internen Netz und dem Internet. Öffentliche Server (Web, Mail) stehen hier — kompromittiert ist trotzdem das interne Netz geschützt."
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Unterschied zwischen IDS und IPS?",
+      "options": [
+        "IDS erkennt Angriffe, IPS erkennt UND blockiert sie automatisch",
+        "IDS ist für interne Netze, IPS für externe",
+        "Beide sind identisch",
+        "IDS verschlüsselt, IPS entschlüsselt"
+      ],
+      "correctIndex": 0,
+      "explanation": "IDS (Intrusion Detection System) warnt nur. IPS (Intrusion Prevention System) erkennt und BLOCKIERT Angriffe automatisch."
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-ex-11",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Welches Protokoll wird für ein sicheres VPN verwendet (Abkürzung)?",
+      "sampleAnswer": "IPSec (Internet Protocol Security) ist das gängigste VPN-Protokoll. Alternatien: OpenVPN, WireGuard.",
+      "keyPoints": [
+        "IPSec"
+      ]
+    },
+    {
+      "id": "it-sicherheit-netzwerksicherheit-firewalls-ex-12",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Was steht hinter der Abkürzung VPN?",
+      "sampleAnswer": "VPN = Virtual Private Network. Erzeugt einen verschlüsselten Tunnel durch das Internet — wichtig für remote Arbeit.",
+      "keyPoints": [
+        "Virtual Private Network"
+      ]
+    }
+  ]
+}

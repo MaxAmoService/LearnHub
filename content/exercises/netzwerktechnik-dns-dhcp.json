@@ -1,0 +1,29 @@
+{
+  "topicSlug": "netzwerktechnik-dns-dhcp",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "DNS und DHCP",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-dns-dhcp-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht DNS?",
+      "sampleAnswer": "Übersetzt Domainnamen in IP-Adressen",
+      "keyPoints": [
+        "Protokolle"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-dns-dhcp-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was bedeutet DHCP DORA?",
+      "sampleAnswer": "Discover → Offer → Request → Acknowledge",
+      "keyPoints": [
+        "Protokolle"
+      ]
+    }
+  ]
+}

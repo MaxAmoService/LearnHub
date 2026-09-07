@@ -1,0 +1,40 @@
+{
+  "topicSlug": "netzwerktechnik-ipv6",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "IPv6-Grundlagen",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-ipv6-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie viele Bit hat eine IPv6-Adresse?",
+      "sampleAnswer": "128 Bit",
+      "keyPoints": [
+        "IPv6",
+        "IPv4 hat 32 Bit"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-ipv6-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist die IPv6 Loopback-Adresse?",
+      "sampleAnswer": "::1",
+      "keyPoints": [
+        "IPv6"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-ipv6-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Dual Stack?",
+      "sampleAnswer": "IPv4 und IPv6 gleichzeitig auf einem Host",
+      "keyPoints": [
+        "IPv6"
+      ]
+    }
+  ]
+}

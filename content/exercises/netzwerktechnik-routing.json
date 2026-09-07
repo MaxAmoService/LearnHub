@@ -1,0 +1,20 @@
+{
+  "topicSlug": "netzwerktechnik-routing",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Routing-Grundlagen",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-routing-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was trennt ein Router?",
+      "sampleAnswer": "Broadcast-Domänen",
+      "keyPoints": [
+        "Geräte",
+        "Switch trennt nur Kollisionsdomänen"
+      ]
+    }
+  ]
+}

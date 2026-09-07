@@ -53,6 +53,57 @@
       ],
       "correctIndex": 0,
       "explanation": "Das Subnetz umfasst 119.155.144.0 bis 119.155.151.255 (2046 Hosts). Nur 119.155.144.164 liegt in diesem Bereich; die anderen Adressen gehören zu benachbarten Subnetzen."
+    },
+    {
+      "id": "netzwerktechnik-subnetting-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Formel für nutzbare Hosts?",
+      "sampleAnswer": "2^h - 2 (h = Host-Bits)",
+      "keyPoints": [
+        "Subnetting",
+        "-2 für Netzwerk- und Broadcast-Adresse"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-subnetting-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ergibt die AND-Verknüpfung von IP und Maske?",
+      "sampleAnswer": "Die Netzwerkadresse",
+      "keyPoints": [
+        "Subnetting"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-subnetting-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie viele Hosts hat ein /26 Netz?",
+      "sampleAnswer": "62 (2^6 - 2)",
+      "keyPoints": [
+        "Subnetting"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-subnetting-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist VLSM?",
+      "sampleAnswer": "Variable Length Subnet Mask — verschiedene Subnetze mit verschiedenen Präfixlängen",
+      "keyPoints": [
+        "Subnetting"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-subnetting-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Brauche 500 Hosts — welche CIDR-Notation?",
+      "sampleAnswer": "/23 (2^9 - 2 = 510 Hosts)",
+      "keyPoints": [
+        "Subnetting"
+      ]
     }
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "topicSlug": "netzwerktechnik-tcpip-protokolle",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "TCP/IP-Modell und Protokolle",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-tcpip-protokolle-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen TCP und UDP?",
+      "sampleAnswer": "TCP = verbindungsorientiert, zuverlässig. UDP = verbindungslos, schnell, ohne Garantie.",
+      "keyPoints": [
+        "TCP/IP"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-tcpip-protokolle-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie lautet der TCP 3-Wege-Handshake?",
+      "sampleAnswer": "SYN → SYN-ACK → ACK",
+      "keyPoints": [
+        "TCP/IP"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-tcpip-protokolle-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welchen Port nutzt HTTPS?",
+      "sampleAnswer": "Port 443",
+      "keyPoints": [
+        "TCP/IP",
+        "HTTP=80, SSH=22, SMTP=25, DNS=53"
+      ]
+    }
+  ]
+}

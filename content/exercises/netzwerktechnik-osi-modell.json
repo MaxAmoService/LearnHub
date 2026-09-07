@@ -1,0 +1,91 @@
+{
+  "topicSlug": "netzwerktechnik-osi-modell",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "OSI-Modell",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-osi-modell-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Wie viele Schichten hat das OSI-Modell?",
+      "sampleAnswer": "7 Schichten",
+      "keyPoints": [
+        "OSI",
+        "Merksatz: Alle Priester Essen Tafelschokolade Am Palmsonntag"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-osi-modell-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist die PDU auf Schicht 4 (Transport)?",
+      "sampleAnswer": "Segmente",
+      "keyPoints": [
+        "OSI",
+        "TCP/UDP arbeiten hier"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-osi-modell-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Auf welcher OSI-Schicht arbeitet ein Router?",
+      "sampleAnswer": "Schicht 3 — Netzwerk",
+      "keyPoints": [
+        "OSI",
+        "IP-Adressen"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-osi-modell-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Auf welcher OSI-Schicht arbeitet ein Switch?",
+      "sampleAnswer": "Schicht 2 — Sicherung",
+      "keyPoints": [
+        "OSI",
+        "MAC-Adressen"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-osi-modell-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was macht Schicht 6 (Präsentation)?",
+      "sampleAnswer": "Datenformat, Verschlüsselung (SSL/TLS, ASCII, JPEG)",
+      "keyPoints": [
+        "OSI"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-osi-modell-match-1",
+      "type": "match",
+      "difficulty": 1,
+      "prompt": "Ordnen Sie die OSI-Schichten ihren Aufgaben bzw. Geräten zu.",
+      "pairs": [
+        {
+          "left": "Schicht 7 — Anwendung",
+          "right": "HTTP, DNS"
+        },
+        {
+          "left": "Schicht 6 — Darstellung",
+          "right": "Datenformat, Verschlüsselung (SSL/TLS)"
+        },
+        {
+          "left": "Schicht 4 — Transport",
+          "right": "Segmente (TCP/UDP)"
+        },
+        {
+          "left": "Schicht 3 — Vermittlung",
+          "right": "Router, IP-Adressen"
+        },
+        {
+          "left": "Schicht 2 — Sicherung",
+          "right": "Switch, MAC-Adressen"
+        }
+      ]
+    }
+  ]
+}

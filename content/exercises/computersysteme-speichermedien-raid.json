@@ -1,0 +1,189 @@
+{
+  "topicSlug": "computersysteme-speichermedien-raid",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Speichermedien und RAID",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-speichermedien-raid-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "HDD vs. SSD — 3 Unterschiede?",
+      "sampleAnswer": "HDD: magnetisch, langsam (5-10ms), günstig. SSD: Halbleiter, schnell (0.1ms), teurer, robust (kein Mechanik)",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was sind SLC/MLC/TLC/QLC bei SSDs?",
+      "sampleAnswer": "Bits pro Speicherzelle: SLC(1)=schnell/haltbar/teuer, MLC(2), TLC(3), QLC(4)=langsam/günstig",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "RAID 0 — Prinzip?",
+      "sampleAnswer": "Striping: Daten auf alle Platten verteilt. Maximale Geschwindigkeit, KEINE Redundanz. Min. 2 Platten",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "RAID 1 — Prinzip?",
+      "sampleAnswer": "Mirroring: Jede Platte hat eine exakte Kopie. Volle Redundanz, nur 50% nutzbar. Min. 2 Platten",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "RAID 5 — Prinzip + Minimum?",
+      "sampleAnswer": "Striping + verteilte Parität. Mind. 3 Platten. 1 darf ausfallen. Nutzbare Kapazität: (n-1) × Platte",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "RAID 6 — Prinzip + Minimum?",
+      "sampleAnswer": "Doppelte Parität. Mind. 4 Platten. 2 dürfen ausfallen. Nutzbare Kapazität: (n-2) × Platte",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-fk-07",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "RAID 10 — Prinzip?",
+      "sampleAnswer": "Mirror + Stripe (Kombination RAID 1 + RAID 0). Mind. 4 Platten. Schnell UND sicher. 50% nutzbar",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-fk-08",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Ist RAID ein Backup?",
+      "sampleAnswer": "Nein! RAID schützt vor Hardwareausfall, nicht vor Löschen, Viren oder Brand. Trotzdem Backup machen!",
+      "keyPoints": [
+        "Speichermedien"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-match-1",
+      "type": "match",
+      "difficulty": 1,
+      "prompt": "Ordnen Sie die RAID-Level ihren Eigenschaften zu.",
+      "pairs": [
+        {
+          "left": "RAID 0",
+          "right": "Striping — keine Redundanz"
+        },
+        {
+          "left": "RAID 1",
+          "right": "Mirroring — 50 % nutzbar"
+        },
+        {
+          "left": "RAID 5",
+          "right": "Striping mit verteilter Parität (min. 3 Platten)"
+        },
+        {
+          "left": "RAID 6",
+          "right": "Doppelte Parität (min. 4 Platten)"
+        },
+        {
+          "left": "RAID 10",
+          "right": "Mirroring + Striping (min. 4 Platten)"
+        }
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-ex-10",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Hauptunterschied zwischen HDD und SSD?",
+      "options": [
+        "HDD ist schneller als SSD",
+        "SSD hat keine mechanischen Teile — schneller, robuster, teurer",
+        "SSD nutzt Magnetismus, HDD Halbleiter",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 1,
+      "explanation": "SSD: NAND-Flash (Halbleiter), keine Mechanik, ~0.1ms Zugriff. HDD: Magnetische Scheiben, Mechanik, ~5-10ms Zugriff, günstiger pro GB."
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie viel nutzbare Kapazität hat ein RAID 5 mit 5 Platten à 2 TB?",
+      "answer": 8,
+      "unit": "TB",
+      "explanation": "RAID 5: (n-1) × Plattengröße = (5-1) × 2 TB = 8 TB. Eine Platte wird für die verteilte Parität verwendet.\nTipp: RAID 5: nutzbare Kapazität = (n-1) × Plattengröße"
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches RAID-Level bietet den besten Kompromiss aus Leistung und Sicherheit?",
+      "options": [
+        "RAID 0",
+        "RAID 1",
+        "RAID 5",
+        "RAID 10"
+      ],
+      "correctIndex": 2,
+      "explanation": "RAID 5: Striping + verteilte Parität. Gute Lesegeschwindigkeit, 1 Platte darf ausfallen, effiziente Kapazitätsnutzung. RAID 10 ist besser aber teurer."
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-ex-13",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Ein Unternehmen braucht 8 TB Speicher mit Ausfallsicherheit (1 Platte darf ausfallen). Welches RAID mit 4-TB-Platten und wie viele Platten?",
+      "sampleAnswer": "RAID 5 mit 3 Platten à 4 TB: (3-1) × 4 TB = 8 TB nutzbar. RAID 5 erlaubt 1 Platte Ausfall. Alternativ: RAID 1 mit 4 Platten (aber nur 8 TB bei 16 TB gesamt).",
+      "keyPoints": [
+        "raid 5",
+        "RAID 5: nutzbare Kapazität = (n-1) × Platte. 8 TB = (n-1) × 4 TB → n = 3"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-ex-14",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Ein Unternehmen braucht 8 TB Speicher mit Ausfallsicherheit. Welches RAID und wie viele Platten bei 4 TB pro Platte?",
+      "sampleAnswer": "RAID 5 mit 3 Platten à 4 TB: (3-1) × 4 TB = 8 TB nutzbar. 1 Platte darf ausfallen (verteilte Parität). Alternativ RAID 6 mit 4 Platten für höhere Sicherheit.",
+      "keyPoints": [
+        "raid 5"
+      ]
+    },
+    {
+      "id": "computersysteme-speichermedien-raid-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Speichermedium eignet sich für ein NAS im Unternehmen mit 24/7-Betrieb?",
+      "options": [
+        "Consumer-SSD",
+        "Enterprise-HDD oder NAS-HDD (z.B. WD Red, Seagate IronWolf)",
+        "USB-Stick",
+        "Blu-ray"
+      ],
+      "correctIndex": 1,
+      "explanation": "NAS-festige HDDs (WD Red, Seagate IronWolf) sind für 24/7-Betrieb ausgelegt, vibrationsresistent und haben längere Garantie. Consumer-SSDs sind nicht für Dauerbetrieb optimiert."
+    }
+  ]
+}

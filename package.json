@@ -14,6 +14,7 @@
     "backfill:topic-slug": "tsx scripts/backfill-topic-slug.ts",
     "gen:exercises": "tsx scripts/generate-exercises.ts",
     "materialize:procedural": "tsx scripts/materialize-procedural.ts",
+    "convert:exercises": "tsx scripts/convert-existing-exercises.ts",
     "seed:plan-templates": "tsx scripts/seed-plan-templates.ts"
   },
   "dependencies": {

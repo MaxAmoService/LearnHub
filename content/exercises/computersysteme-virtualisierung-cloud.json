@@ -1,0 +1,79 @@
+{
+  "topicSlug": "computersysteme-virtualisierung-cloud",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Virtualisierung und Cloud Computing",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-virtualisierung-cloud-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Typ-1 vs. Typ-2 Hypervisor?",
+      "sampleAnswer": "Typ 1: direkt auf Hardware (ESXi, Hyper-V) — schneller, sicherer. Typ 2: auf Host-OS (VirtualBox) — einfacher",
+      "keyPoints": [
+        "Virtualisierung"
+      ]
+    },
+    {
+      "id": "computersysteme-virtualisierung-cloud-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Container vs. VM?",
+      "sampleAnswer": "Container: Shared Kernel, sehr leicht (ms-Start), Docker. VM: eigenes OS, stärker isoliert, langsamer (s-Start)",
+      "keyPoints": [
+        "Virtualisierung"
+      ]
+    },
+    {
+      "id": "computersysteme-virtualisierung-cloud-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "IaaS vs. PaaS vs. SaaS?",
+      "sampleAnswer": "IaaS: Infrastruktur (Sie: OS+Apps). PaaS: Plattform (Sie: Apps). SaaS: Software (Provider: alles)",
+      "keyPoints": [
+        "Virtualisierung"
+      ]
+    },
+    {
+      "id": "computersysteme-virtualisierung-cloud-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Public vs. Private vs. Hybrid Cloud?",
+      "sampleAnswer": "Public: shared, skalierbar. Private: dediziert, kontrolliert. Hybrid: Mix — sensible Daten lokal, Rest in Cloud",
+      "keyPoints": [
+        "Virtualisierung"
+      ]
+    },
+    {
+      "id": "computersysteme-virtualisierung-cloud-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Thin Client?",
+      "sampleAnswer": "Minimaler Client — nur Anzeige/Eingabe. Berechnungen auf Server/Cloud. Günstig, sicher, zentral verwaltbar",
+      "keyPoints": [
+        "Virtualisierung"
+      ]
+    },
+    {
+      "id": "computersysteme-virtualisierung-cloud-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Hypervisor?",
+      "sampleAnswer": "Software zur Virtualisierung — verwaltet mehrere VMs auf einer Hardware. Auch: Virtual Machine Monitor (VMM)",
+      "keyPoints": [
+        "Virtualisierung"
+      ]
+    },
+    {
+      "id": "computersysteme-virtualisierung-cloud-ex-07",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Vergleiche Typ-1 und Typ-2 Hypervisor in Bezug auf Performance und Sicherheit.",
+      "sampleAnswer": "Typ 1 (Bare-Metal): Direkt auf Hardware, bessere Performance, sicherere Isolation (z.B. ESXi, Hyper-V). Typ 2 (Hosted): Auf Host-OS, mehr Overhead, weniger performant, einfacher zu installieren (z.B. VirtualBox).",
+      "keyPoints": [
+        "typ 1 typ 2"
+      ]
+    }
+  ]
+}

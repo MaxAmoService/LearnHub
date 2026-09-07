@@ -1,0 +1,83 @@
+{
+  "topicSlug": "computersysteme-bios-uefi-boot",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "BIOS/UEFI und Bootvorgang",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-bios-uefi-boot-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "BIOS vs. UEFI?",
+      "sampleAnswer": "BIOS: 16-Bit, MBR (max. 2TB), textbasiert. UEFI: 32/64-Bit, GPT (max. 9.4 ZB), grafisch, Secure Boot",
+      "keyPoints": [
+        "Systemsoftware"
+      ]
+    },
+    {
+      "id": "computersysteme-bios-uefi-boot-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Treiber?",
+      "sampleAnswer": "Software, die das OS mit Hardware kommunizieren lässt. Herstellerspezifisch. Oft Ursache für Bluescreen",
+      "keyPoints": [
+        "Systemsoftware"
+      ]
+    },
+    {
+      "id": "computersysteme-bios-uefi-boot-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Firmware?",
+      "sampleAnswer": "Software, die direkt auf Hardware läuft (BIOS/UEFI, Router-OS). Steuert Hardware auf niedrigster Ebene",
+      "keyPoints": [
+        "Systemsoftware"
+      ]
+    },
+    {
+      "id": "computersysteme-bios-uefi-boot-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Secure Boot?",
+      "sampleAnswer": "UEFI-Feature: Nur signierte Software darf starten → Schutz vor Malware beim Bootvorgang",
+      "keyPoints": [
+        "Systemsoftware"
+      ]
+    },
+    {
+      "id": "computersysteme-bios-uefi-boot-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ROM?",
+      "sampleAnswer": "Read-Only Memory — nicht flüchtig, nur lesen. Enthält BIOS/UEFI. Behält Inhalt ohne Strom",
+      "keyPoints": [
+        "Speicherverwaltung"
+      ]
+    },
+    {
+      "id": "computersysteme-bios-uefi-boot-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "BIOS vs. UEFI — was ist moderner?",
+      "options": [
+        "BIOS ist moderner",
+        "UEFI ist moderner: 32/64-Bit, GPT, grafisch, Secure Boot",
+        "Beide sind gleich alt",
+        "BIOS und UEFI sind identisch"
+      ],
+      "correctIndex": 1,
+      "explanation": "UEFI ersetzt BIOS: 32/64-Bit (statt 16-Bit), GPT (statt MBR, max. 9.4 ZB), grafische Oberfläche, Secure Boot, Netzwerk-Support."
+    },
+    {
+      "id": "computersysteme-bios-uefi-boot-ex-07",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen BIOS und UEFI?",
+      "sampleAnswer": "BIOS: 16-Bit, MBR (max. 2 TB), textbasiert, langsamer Boot. UEFI: 32/64-Bit, GPT (max. 9.4 ZB), grafisch, Secure Boot, schneller Boot, Netzwerk-Support.",
+      "keyPoints": [
+        "bios uefi"
+      ]
+    }
+  ]
+}

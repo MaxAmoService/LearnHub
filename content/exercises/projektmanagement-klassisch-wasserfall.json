@@ -1,0 +1,29 @@
+{
+  "topicSlug": "projektmanagement-klassisch-wasserfall",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Klassisches Projektmanagement: Wasserfall und Meilensteine",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "projektmanagement-klassisch-wasserfall-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Meilenstein?",
+      "sampleAnswer": "Erreichter Zwischenstand — markiert Etappenziele im Projektverlauf",
+      "keyPoints": [
+        "Grundlagen"
+      ]
+    },
+    {
+      "id": "projektmanagement-klassisch-wasserfall-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Quality Gate?",
+      "sampleAnswer": "Kompetente Überprüfung bei Meilensteinen — entscheidet ob Phase abgeschlossen ist",
+      "keyPoints": [
+        "Grundlagen"
+      ]
+    }
+  ]
+}

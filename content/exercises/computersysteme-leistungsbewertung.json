@@ -1,0 +1,58 @@
+{
+  "topicSlug": "computersysteme-leistungsbewertung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Leistungsbewertung und Kenngrößen",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-leistungsbewertung-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Benchmark?",
+      "sampleAnswer": "Standardisierter Test zur Messung der Computerleistung. z.B. PassMark, Geekbench, 3DMark",
+      "keyPoints": [
+        "Leistung"
+      ]
+    },
+    {
+      "id": "computersysteme-leistungsbewertung-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "MIPS vs. FLOPS?",
+      "sampleAnswer": "MIPS: Millionen Instruktionen/Sekunde (Ganzzahl). FLOPS: Floating-Point-Op./Sekunde (Gleitkomma, KI, Grafik)",
+      "keyPoints": [
+        "Leistung"
+      ]
+    },
+    {
+      "id": "computersysteme-leistungsbewertung-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Amdahlsches Gesetz — Formel?",
+      "sampleAnswer": "Speedup = 1 / ((1-p) + p/n). p=parallelisierbarer Anteil, n=Prozessoren. Max. Speedup = 1/(1-p)",
+      "keyPoints": [
+        "Leistung"
+      ]
+    },
+    {
+      "id": "computersysteme-leistungsbewertung-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Amdahl: 80% parallel, 4 CPUs — Speedup?",
+      "sampleAnswer": "1 / (0.2 + 0.8/4) = 1 / (0.2 + 0.2) = 1 / 0.4 = 2.5",
+      "keyPoints": [
+        "Leistung"
+      ]
+    },
+    {
+      "id": "computersysteme-leistungsbewertung-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bei 80% Parallelisierung: Was ist der maximale Speedup mit 4 Prozessoren nach Amdahl?",
+      "answer": 2.5,
+      "tolerance": 0.1,
+      "explanation": "Speedup = 1 / ((1-p) + p/n) = 1 / ((1-0.8) + 0.8/4) = 1 / (0.2 + 0.2) = 1 / 0.4 = 2.5. Maximaler Speedup (n→∞) = 1/(1-0.8) = 5."
+    }
+  ]
+}

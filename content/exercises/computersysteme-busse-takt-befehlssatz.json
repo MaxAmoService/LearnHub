@@ -1,0 +1,126 @@
+{
+  "topicSlug": "computersysteme-busse-takt-befehlssatz",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Busse, Taktfrequenz und Befehlssatz",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welche 3 Arten von Bussen gibt es?",
+      "sampleAnswer": "Adressbus (CPU→Speicher), Datenbus (bidirektional), Steuerbus (Signale wie Lesen/Schreiben)",
+      "keyPoints": [
+        "Busse & Takt"
+      ]
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was bestimmt die Breite des Adressbus?",
+      "sampleAnswer": "Den adressierbaren Speicher: 2^n Bytes. 20 Leitungen = 1 MB, 32 = 4 GB, 48 = 256 TB",
+      "keyPoints": [
+        "Busse & Takt"
+      ]
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist die Taktfrequenz und ihre Einheit?",
+      "sampleAnswer": "Anzahl Zyklen pro Sekunde, gemessen in GHz (1 Milliarde Zyklen/Sekunde). Höher = mehr Befehle/Sekunde",
+      "keyPoints": [
+        "Busse & Takt"
+      ]
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-fk-04",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist CPI?",
+      "sampleAnswer": "Cycles Per Instruction — wie viele Takte ein Befehl durchschnittlich braucht. IPC = 1/CPI (Instr. pro Takt)",
+      "keyPoints": [
+        "Busse & Takt"
+      ]
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-fk-05",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist ein Opcode?",
+      "sampleAnswer": "Operation Code — der Teil eines Befehls, der angibt WELCHE Operation ausgeführt wird (z.B. ADD, MOV)",
+      "keyPoints": [
+        "Busse & Takt"
+      ]
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-fk-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Warum bestimmt Taktfrequenz allein nicht die Leistung?",
+      "sampleAnswer": "Architektur, IPC, Cache-Größe, Pipeline-Tiefe sind ebenso wichtig. 3 GHz mit IPC=4 > 4 GHz mit IPC=2",
+      "keyPoints": [
+        "Busse & Takt"
+      ]
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-fk-07",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen 32-Bit und 64-Bit?",
+      "sampleAnswer": "32-Bit: max. 4 GB RAM adressierbar. 64-Bit: theoretisch 16 Exabyte. Breitere Register und Datenpfade",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche drei Arten von Bussen gibt es?",
+      "options": [
+        "Schnellbus, Langsambus, Cachebus",
+        "Adressbus, Datenbus, Steuerbus",
+        "CPU-Bus, RAM-Bus, GPU-Bus",
+        "USB, SATA, PCIe"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die drei Busse: Adressbus (CPU→Speicher, bestimmt Adressraum), Datenbus (bidirektional, Datenübertragung), Steuerbus (Signale wie Lesen/Schreiben/Interrupt)."
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Prozessor hat 32 Adressleitungen. Wie viele Bytes kann er maximal adressieren?",
+      "answer": 4294967296,
+      "tolerance": 1,
+      "unit": "Bytes",
+      "explanation": "2^32 = 4.294.967.296 Bytes = 4 GB. Der 32-Bit-Adressraum ist auf 4 GB begrenzt — ein Grund für 64-Bit-Systeme.\nTipp: Formel: 2^n Bytes, wobei n = Anzahl Adressleitungen"
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Eine CPU hat 4 GHz Taktfrequenz und IPC = 3. Wie viele Befehle pro Sekunde?",
+      "options": [
+        "4 Milliarden",
+        "12 Milliarden",
+        "1,33 Milliarden",
+        "7 Milliarden"
+      ],
+      "correctIndex": 1,
+      "explanation": "Befehle/Sekunde = Taktfrequenz × IPC = 4 GHz × 3 = 12 Milliarden Befehle pro Sekunde."
+    },
+    {
+      "id": "computersysteme-busse-takt-befehlssatz-ex-11",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein 64-Bit-Prozessor hat 48 Adressleitungen. Wie viel RAM kann er maximal adressieren?",
+      "answer": 256,
+      "unit": "TB",
+      "explanation": "2^48 Bytes = 281.474.976.710.656 Bytes = 256 TB. Die 64-Bit-Architektur erlaubt theoretisch 16 EB, aber physisch oft nur 48 Adressleitungen."
+    }
+  ]
+}

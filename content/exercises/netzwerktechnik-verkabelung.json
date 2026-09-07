@@ -1,0 +1,30 @@
+{
+  "topicSlug": "netzwerktechnik-verkabelung",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "Verkabelung und Übertragungsmedien",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "netzwerktechnik-verkabelung-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Maximale Segmentlänge bei Twisted Pair?",
+      "sampleAnswer": "100 Meter",
+      "keyPoints": [
+        "Kabel"
+      ]
+    },
+    {
+      "id": "netzwerktechnik-verkabelung-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Welches Kabel für 10 Gbit/s über 100m?",
+      "sampleAnswer": "Cat 6a",
+      "keyPoints": [
+        "Kabel",
+        "Cat 6 schafft 10 Gbit/s nur auf 55m"
+      ]
+    }
+  ]
+}

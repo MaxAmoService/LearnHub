@@ -1,0 +1,53 @@
+{
+  "topicSlug": "computersysteme-cpu-pipelining-caches",
+  "planTemplateSlug": "ap1-it-berufe",
+  "itemTitle": "CPU: Pipelining, Caches und RISC vs. CISC",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "computersysteme-cpu-pipelining-caches-fk-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "CISC vs. RISC — was ist der Unterschied?",
+      "sampleAnswer": "CISC: komplexe Befehle, variabel lang (Intel/AMD). RISC: einfache Befehle, einheitlich lang (ARM), Pipeline-freundlich",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-cpu-pipelining-caches-fk-02",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Hyperthreading?",
+      "sampleAnswer": "Ein physischer Kern wird als zwei logische Kerne dargestellt — bessere Auslastung, aber keine echte Verdopplung",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-cpu-pipelining-caches-fk-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist Multicore?",
+      "sampleAnswer": "Mehrere physische Kerne auf einem Chip — echte Parallelverarbeitung möglich",
+      "keyPoints": [
+        "CPU"
+      ]
+    },
+    {
+      "id": "computersysteme-cpu-pipelining-caches-ex-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen CISC und RISC?",
+      "options": [
+        "CISC = einfache Befehle, RISC = komplexe Befehle",
+        "CISC = komplexe Befehle variabel lang, RISC = einfache Befehle einheitlich lang",
+        "CISC = nur für Server, RISC = nur für Mobilgeräte",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 1,
+      "explanation": "CISC (z.B. Intel/AMD x86) hat komplexe Befehle variabler Länge. RISC (z.B. ARM) hat einfache Befehle einheitlicher Länge — Pipeline-freundlich."
+    }
+  ]
+}
