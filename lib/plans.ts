@@ -31,9 +31,9 @@ import {
 import { getDb } from "./firebase";
 import { dayOfMonth, monthKey, todayKey } from "./dates";
 import { qualityFromRatio } from "./exercises/scoring";
-import { newCardProgress, sm2, type FlashcardProgress } from "./spacing";
+import { computePlanReview } from "./planReview";
 import { isConsolidated } from "./scheduling";
-import { updateStreak } from "./streak";
+import type { FlashcardProgress } from "./spacing";
 
 // ─── Typen ──────────────────────────────────────────────────────────────────
 
@@ -230,6 +230,10 @@ export async function completePlanItemExercise(
  * Gemeinsame SM-2-Review-Transaktion für checkOffPlanItem (Selbsteinschätzung,
  * Fallback) und completePlanItemExercise (Trefferquote). `attempt` ≠ null
  * schreibt lastAttempt + attemptCount zusätzlich zum Review.
+ *
+ * Die Berechnung selbst liegt in der reinen Funktion computePlanReview
+ * (lib/planReview.ts) — die API-Route /api/v1/log nutzt dieselbe Funktion
+ * mit dem Admin SDK, damit Web und API niemals auseinanderlaufen.
  */
 async function applyPlanItemReview(
   uid: string,
@@ -263,68 +267,44 @@ async function applyPlanItemReview(
     const item = itemSnap.data() as PlanItemDoc;
     const plan = planSnap.data() as PlanDoc;
 
-    const q = Math.min(Math.max(quality, 0), 5);
-    const newSm2 = sm2(q, item.sm2 ?? newCardProgress(itemId));
-
-    const estimatedUnits = Math.max(item.estimatedUnits ?? 0, 1);
-    const completedUnits = Math.min((item.completedUnits ?? 0) + 1, estimatedUnits);
-
-    // „Gefestigt" hängt am SM-2-Zustand (repetitions >= 2, interval >= 7),
-    // nicht am Abhaken — der Fortschritt misst Behalten, nicht Durcharbeiten.
-    const wasConsolidated = isConsolidated(item);
-    const becameConsolidated = !wasConsolidated && isConsolidated({ sm2: newSm2 });
-
-    const updatedItem: PlanItemDoc = {
-      ...item,
-      completedUnits,
-      sm2: newSm2,
-      nextDueAt: todayKey(new Date(newSm2.nextReview)),
-      ...(attempt
-        ? { lastAttempt: attempt, attemptCount: (item.attemptCount ?? 0) + 1 }
-        : {}),
-    };
-
-    const itemCount = plan.stats?.itemCount ?? 0;
-    const masteredBefore = plan.stats?.masteredCount ?? 0;
-    const masteredAfter = becameConsolidated
-      ? itemCount > 0
-        ? Math.min(masteredBefore + 1, itemCount)
-        : masteredBefore + 1
-      : masteredBefore;
-    const updatedPlan: PlanDoc = {
-      ...plan,
-      stats: { itemCount, masteredCount: masteredAfter },
-    };
-
-    tx.update(itemRef, {
-      sm2: newSm2,
-      completedUnits,
-      nextDueAt: updatedItem.nextDueAt,
-      ...(attempt
-        ? { lastAttempt: attempt, attemptCount: (item.attemptCount ?? 0) + 1 }
-        : {}),
-    });
-    tx.update(planRef, { stats: updatedPlan.stats });
-
-    // Activity: EIN Dokument pro Monat (nicht pro Tag) — ein Streak über zwei
-    // Monate kostet 2 Reads statt 60.
     const activity = activitySnap.exists()
       ? (activitySnap.data() as ActivityDoc)
       : { days: {} };
-    const dayEntry = activity.days?.[day] ?? { units: 0, done: 0, planIds: [] };
-    const planIds = dayEntry.planIds?.includes(planId)
-      ? dayEntry.planIds
-      : [...(dayEntry.planIds ?? []), planId];
+
+    const result = computePlanReview({
+      itemId,
+      planId,
+      item,
+      plan,
+      streakState: userSnap.exists()
+        ? (userSnap.data() as {
+            streak?: number;
+            streakFreeze?: boolean;
+            lastStudyDate?: string;
+            lastActive?: string;
+          })
+        : {},
+      activityDay: activity.days?.[day],
+      quality,
+      attempt,
+      studyDays,
+      nowMs: Date.now(),
+    });
+
+    const updatedItem: PlanItemDoc = { ...item, ...result.itemPatch };
+    const updatedPlan: PlanDoc = { ...plan, stats: result.planStats };
+
+    tx.update(itemRef, result.itemPatch);
+    tx.update(planRef, { stats: result.planStats });
+
+    // Activity: EIN Dokument pro Monat (nicht pro Tag) — ein Streak über zwei
+    // Monate kostet 2 Reads statt 60.
     tx.set(
       activityRef,
       {
         days: {
           ...(activity.days ?? {}),
-          [day]: {
-            units: (dayEntry.units ?? 0) + 1,
-            done: (dayEntry.done ?? 0) + (becameConsolidated ? 1 : 0),
-            planIds,
-          },
+          [day]: result.activityDay,
         },
       },
       { merge: true }
@@ -333,25 +313,10 @@ async function applyPlanItemReview(
     // Streak: lastStudyDate stempeln (echter Lernfortschritt), lastActive
     // bleibt Presence vorbehalten.
     if (userSnap.exists()) {
-      const user = userSnap.data() as {
-        streak?: number;
-        streakFreeze?: boolean;
-        lastStudyDate?: string;
-        lastActive?: string;
-      };
-      const streakUpdate = updateStreak(
-        {
-          streak: user.streak ?? 0,
-          streakFreeze: user.streakFreeze ?? false,
-          lastStudyDate: user.lastStudyDate,
-          lastActive: user.lastActive,
-        },
-        { studyDays }
-      );
       tx.update(userRef, {
-        lastStudyDate: today,
-        streak: streakUpdate.streak,
-        streakFreeze: streakUpdate.streakFreeze,
+        lastStudyDate: result.streak.lastStudyDate,
+        streak: result.streak.streak,
+        streakFreeze: result.streak.streakFreeze,
       });
     }
 

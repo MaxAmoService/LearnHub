@@ -14,14 +14,15 @@ import { getLeaderboard } from "@/lib/auth";
 import { AchievementBadges } from "@/components/AchievementBadges";
 import { setSoundEnabled, isSoundEnabled } from "@/lib/sounds";
 import { useTheme } from "@/components/ThemeProvider";
+import { ApiKeyManager } from "@/components/ApiKeyManager";
 import {
   User, Mail, Lock, Camera, Save, Loader2, CheckCircle2, AlertCircle,
   Shield, Bell, Palette, Trophy, Flame, Zap, BookOpen, ArrowLeft,
   Eye, EyeOff, RefreshCw, Edit3, X, Users, Sparkles, Lock as LockIcon,
-  Settings, Moon, Sun, Download, Stars,
+  Settings, Moon, Sun, Download, Stars, KeyRound,
 } from "lucide-react";
 
-type Tab = "profile" | "security" | "settings" | "stats";
+type Tab = "profile" | "security" | "settings" | "api" | "stats";
 
 export default function ProfilePage() {
   const { user, isLoading, updateProfile, updatePassword, updateEmail, resendVerification, deleteUserAccount } = useAuth();
@@ -167,6 +168,7 @@ export default function ProfilePage() {
     { id: "profile", label: "Profil", icon: <User className="w-4 h-4" /> },
     { id: "security", label: "Sicherheit", icon: <Shield className="w-4 h-4" /> },
     { id: "settings", label: "Einstellungen", icon: <Settings className="w-4 h-4" /> },
+    { id: "api", label: "API", icon: <KeyRound className="w-4 h-4" /> },
     { id: "stats", label: "Statistiken", icon: <Trophy className="w-4 h-4" /> },
   ];
 
@@ -610,6 +612,9 @@ export default function ProfilePage() {
             </div>
           </div>
         )}
+
+        {/* ===== API ===== */}
+        {activeTab === "api" && <ApiKeyManager />}
 
         {/* ===== STATS ===== */}
         {activeTab === "stats" && (

@@ -57,6 +57,15 @@ service cloud.firestore {
       allow delete: if request.auth != null && request.auth.uid == resource.data.uid;
     }
 
+    // API-Keys: für Clients KOMPLETT gesperrt (read UND write false).
+    // Zugriff ausschließlich über das Firebase Admin SDK in Route Handlern
+    // (app/api/v1/...). Hier liegen nur SHA-256-Hashes, nie Klartext-Keys.
+    // Eine Aufweichung dieser Regel würde Fremden Zugriff auf fremde UIDs
+    // (und damit fremde Lerndaten) über die API ermöglichen.
+    match /apiKeys/{keyHash} {
+      allow read, write: if false;
+    }
+
     // Feedback: authentifizierte & anonyme Nutzer dürfen erstellen
     match /feedback/{docId} {
       allow read: if false;
