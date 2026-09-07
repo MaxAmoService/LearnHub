@@ -40,8 +40,8 @@ import {
 import type { PlanLike } from "@/lib/scheduling";
 
 export default function PlanDetailPage() {
-  const params = useParams<{ id: string }>();
-  const planId = params.id;
+  const params = useParams<{ planId: string }>();
+  const planId = params.planId;
   const { user, isLoading } = useAuth();
   const router = useRouter();
 
@@ -401,6 +401,7 @@ export default function PlanDetailPage() {
       </div>
 
       <PlanItemList
+        planId={plan.id}
         items={items}
         onAdd={handleAdd}
         onUpdate={handleUpdate}

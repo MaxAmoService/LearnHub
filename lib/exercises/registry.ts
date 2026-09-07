@@ -20,6 +20,7 @@ import computersystemeleistungsbewertung from "../../content/exercises/computers
 import computersystememultitaskingscheduling from "../../content/exercises/computersysteme-multitasking-scheduling.json";
 import computersystemeosaufgaben from "../../content/exercises/computersysteme-os-aufgaben.json";
 import computersystemeosvergleich from "../../content/exercises/computersysteme-os-vergleich.json";
+import computersystemeschnittstellendatenuebertragung from "../../content/exercises/computersysteme-schnittstellen-datenuebertragung.json";
 import computersystemeshellskripte from "../../content/exercises/computersysteme-shell-skripte.json";
 import computersystemespeicherhierarchieram from "../../content/exercises/computersysteme-speicherhierarchie-ram.json";
 import computersystemespeichermedienraid from "../../content/exercises/computersysteme-speichermedien-raid.json";
@@ -44,12 +45,16 @@ import netzwerktechnikrouting from "../../content/exercises/netzwerktechnik-rout
 import netzwerktechniksubnetting from "../../content/exercises/netzwerktechnik-subnetting.json";
 import netzwerktechniktcpipprotokolle from "../../content/exercises/netzwerktechnik-tcpip-protokolle.json";
 import netzwerktechnikverkabelung from "../../content/exercises/netzwerktechnik-verkabelung.json";
+import netzwerktechnikvlansegmentierung from "../../content/exercises/netzwerktechnik-vlan-segmentierung.json";
 import netzwerktechnikwlan from "../../content/exercises/netzwerktechnik-wlan.json";
 import projektmanagementagilescrum from "../../content/exercises/projektmanagement-agile-scrum.json";
 import projektmanagementklassischwasserfall from "../../content/exercises/projektmanagement-klassisch-wasserfall.json";
 import projektmanagementmagischesdreieck from "../../content/exercises/projektmanagement-magisches-dreieck.json";
 import projektmanagementprojektmerkmalephasen from "../../content/exercises/projektmanagement-projektmerkmale-phasen.json";
 import projektmanagementsmartziele from "../../content/exercises/projektmanagement-smart-ziele.json";
+import wirtschaftbreakevendeckungsbeitrag from "../../content/exercises/wirtschaft-break-even-deckungsbeitrag.json";
+import wirtschaftklr from "../../content/exercises/wirtschaft-klr.json";
+import wirtschaftkostennutzengewinn from "../../content/exercises/wirtschaft-kosten-nutzen-gewinn.json";
 import wirtschaftamortisationroi from "../../content/exercises/wirtschaft-amortisation-roi.json";
 import wirtschaftangebotsvergleichnutzwertanalyse from "../../content/exercises/wirtschaft-angebotsvergleich-nutzwertanalyse.json";
 import zahlensystemebinaerarithmetik from "../../content/exercises/zahlensysteme-binaerarithmetik.json";
@@ -57,6 +62,7 @@ import zahlensystemecodes from "../../content/exercises/zahlensysteme-codes.json
 import zahlensystemefehlererkennung from "../../content/exercises/zahlensysteme-fehlererkennung.json";
 import zahlensystemeieee754 from "../../content/exercises/zahlensysteme-ieee754.json";
 import zahlensystemeumrechnung from "../../content/exercises/zahlensysteme-umrechnung.json";
+import zahlensystemezeichenkodierung from "../../content/exercises/zahlensysteme-zeichenkodierung.json";
 import zahlensystemezweierkomplement from "../../content/exercises/zahlensysteme-zweierkomplement.json";
 
 // JSON-Imports liefern string statt Literal-Union (source-Feld) — deshalb
@@ -72,6 +78,7 @@ const files: ExerciseFile[] = [
   computersystememultitaskingscheduling as ExerciseFile,
   computersystemeosaufgaben as ExerciseFile,
   computersystemeosvergleich as ExerciseFile,
+  computersystemeschnittstellendatenuebertragung as ExerciseFile,
   computersystemeshellskripte as ExerciseFile,
   computersystemespeicherhierarchieram as ExerciseFile,
   computersystemespeichermedienraid as ExerciseFile,
@@ -96,12 +103,16 @@ const files: ExerciseFile[] = [
   netzwerktechniksubnetting as ExerciseFile,
   netzwerktechniktcpipprotokolle as ExerciseFile,
   netzwerktechnikverkabelung as ExerciseFile,
+  netzwerktechnikvlansegmentierung as ExerciseFile,
   netzwerktechnikwlan as ExerciseFile,
   projektmanagementagilescrum as ExerciseFile,
   projektmanagementklassischwasserfall as ExerciseFile,
   projektmanagementmagischesdreieck as ExerciseFile,
   projektmanagementprojektmerkmalephasen as ExerciseFile,
   projektmanagementsmartziele as ExerciseFile,
+  wirtschaftbreakevendeckungsbeitrag as ExerciseFile,
+  wirtschaftklr as ExerciseFile,
+  wirtschaftkostennutzengewinn as ExerciseFile,
   wirtschaftamortisationroi as ExerciseFile,
   wirtschaftangebotsvergleichnutzwertanalyse as ExerciseFile,
   zahlensystemebinaerarithmetik as ExerciseFile,
@@ -109,6 +120,7 @@ const files: ExerciseFile[] = [
   zahlensystemefehlererkennung as ExerciseFile,
   zahlensystemeieee754 as ExerciseFile,
   zahlensystemeumrechnung as ExerciseFile,
+  zahlensystemezeichenkodierung as ExerciseFile,
   zahlensystemezweierkomplement as ExerciseFile,
 ];
 

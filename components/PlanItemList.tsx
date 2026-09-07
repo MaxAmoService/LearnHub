@@ -11,6 +11,7 @@ import {
   ArrowUp,
   BookOpen,
   Check,
+  Dumbbell,
   Pencil,
   Plus,
   Trash2,
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 import { allModules, getModule } from "@/lib/data";
 import { formatDateKey } from "@/lib/dates";
+import { hasExercisesForTopic } from "@/lib/exercises/session";
 import { isConsolidated } from "@/lib/scheduling";
 import type { PlanItemWithId } from "@/lib/plans";
 
@@ -29,6 +31,7 @@ export interface PlanItemInput {
 }
 
 interface PlanItemListProps {
+  planId: string;
   items: PlanItemWithId[];
   onAdd: (data: PlanItemInput) => Promise<void>;
   onUpdate: (itemId: string, changes: Partial<PlanItemInput>) => Promise<void>;
@@ -61,6 +64,7 @@ function itemStatus(item: PlanItemWithId): {
 }
 
 export function PlanItemList({
+  planId,
   items,
   onAdd,
   onUpdate,
@@ -135,6 +139,14 @@ export function PlanItemList({
                         <BookOpen className="w-3 h-3" /> Modul öffnen
                       </Link>
                     )}
+                    {hasExercisesForTopic(item.topicSlug) && (
+                      <Link
+                        href={`/plans/${planId}/uebung/${item.id}`}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 transition-all"
+                      >
+                        <Dumbbell className="w-3 h-3" /> Üben
+                      </Link>
+                    )}
                   </div>
                   <div className="flex flex-wrap items-center gap-2 mt-1.5">
                     <span className={`text-xs px-2 py-0.5 rounded-full border ${status.className}`}>
@@ -144,6 +156,14 @@ export function PlanItemList({
                       Gewicht {item.weight ?? 1} · {(item.completedUnits ?? 0)}/
                       {item.estimatedUnits ?? 1} Einheiten
                     </span>
+                    {item.lastAttempt != null &&
+                      Number.isFinite(item.lastAttempt.correct) &&
+                      Number.isFinite(item.lastAttempt.total) && (
+                        <span className="text-xs text-slate-500">
+                          zuletzt {item.lastAttempt.correct.toLocaleString("de-DE", { maximumFractionDigits: 2 })}/
+                          {item.lastAttempt.total}
+                        </span>
+                      )}
                   </div>
                 </div>
 

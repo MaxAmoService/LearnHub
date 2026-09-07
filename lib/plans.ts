@@ -30,6 +30,7 @@ import {
 } from "firebase/firestore";
 import { getDb } from "./firebase";
 import { dayOfMonth, monthKey, todayKey } from "./dates";
+import { qualityFromRatio } from "./exercises/scoring";
 import { newCardProgress, sm2, type FlashcardProgress } from "./spacing";
 import { isConsolidated } from "./scheduling";
 import { updateStreak } from "./streak";
@@ -199,6 +200,44 @@ export async function checkOffPlanItem(
   itemId: string,
   quality: number
 ): Promise<{ plan: PlanDoc; item: PlanItemDoc } | null> {
+  return applyPlanItemReview(uid, planId, itemId, quality, null);
+}
+
+/**
+ * Schließt einen Übungs-Durchlauf ab (Übungsseite /plans/[planId]/uebung/[itemId]).
+ * Die SM-2-Qualität kommt aus der Trefferquote (lib/exercises/scoring.ts),
+ * NICHT aus einer Selbsteinschätzung. Zusätzlich zum SM-2-Review schreibt
+ * dieselbe Transaktion den letzten Versuch (lastAttempt) und zählt ihn hoch —
+ * atomar, damit Quote und Review-Zeitpunkt nie auseinanderlaufen.
+ */
+export async function completePlanItemExercise(
+  uid: string,
+  planId: string,
+  itemId: string,
+  correct: number,
+  total: number
+): Promise<{ plan: PlanDoc; item: PlanItemDoc } | null> {
+  if (!Number.isFinite(total) || total <= 0) return null;
+  const quality = qualityFromRatio(correct, total);
+  return applyPlanItemReview(uid, planId, itemId, quality, {
+    at: new Date().toISOString(),
+    correct: Math.max(0, correct),
+    total,
+  });
+}
+
+/**
+ * Gemeinsame SM-2-Review-Transaktion für checkOffPlanItem (Selbsteinschätzung,
+ * Fallback) und completePlanItemExercise (Trefferquote). `attempt` ≠ null
+ * schreibt lastAttempt + attemptCount zusätzlich zum Review.
+ */
+async function applyPlanItemReview(
+  uid: string,
+  planId: string,
+  itemId: string,
+  quality: number,
+  attempt: { at: string; correct: number; total: number } | null
+): Promise<{ plan: PlanDoc; item: PlanItemDoc } | null> {
   const db = getDb();
   const itemRef = doc(db, "users", uid, "plans", planId, "planItems", itemId);
   const planRef = doc(db, "users", uid, "plans", planId);
@@ -240,6 +279,9 @@ export async function checkOffPlanItem(
       completedUnits,
       sm2: newSm2,
       nextDueAt: todayKey(new Date(newSm2.nextReview)),
+      ...(attempt
+        ? { lastAttempt: attempt, attemptCount: (item.attemptCount ?? 0) + 1 }
+        : {}),
     };
 
     const itemCount = plan.stats?.itemCount ?? 0;
@@ -258,6 +300,9 @@ export async function checkOffPlanItem(
       sm2: newSm2,
       completedUnits,
       nextDueAt: updatedItem.nextDueAt,
+      ...(attempt
+        ? { lastAttempt: attempt, attemptCount: (item.attemptCount ?? 0) + 1 }
+        : {}),
     });
     tx.update(planRef, { stats: updatedPlan.stats });
 
@@ -391,6 +436,18 @@ export async function loadPlan(
   const snap = await getDoc(doc(db, "users", uid, "plans", planId));
   if (!snap.exists()) return null;
   return { ...(snap.data() as PlanDoc), id: snap.id };
+}
+
+/** Ein einzelnes Plan-Item (Übungsseite) — EIN Read statt der ganzen Liste. */
+export async function loadPlanItem(
+  uid: string,
+  planId: string,
+  itemId: string
+): Promise<PlanItemWithId | null> {
+  const db = getDb();
+  const snap = await getDoc(doc(db, "users", uid, "plans", planId, "planItems", itemId));
+  if (!snap.exists()) return null;
+  return { ...(snap.data() as PlanItemDoc), id: snap.id, planId };
 }
 
 /**

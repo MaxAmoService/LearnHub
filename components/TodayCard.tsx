@@ -10,8 +10,10 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   AlertCircle,
+  BookOpen,
   Brain,
   CheckCircle2,
+  Dumbbell,
   Flame,
   Loader2,
   Plus,
@@ -33,6 +35,7 @@ import {
   type PlanItemWithId,
   type PlanWithId,
 } from "@/lib/plans";
+import { hasExercisesForTopic } from "@/lib/exercises/session";
 import { computePhase, computeEndspurtStart, type Phase } from "@/lib/scheduling";
 import { effectiveDailyLessons } from "@/lib/streak";
 import { buildToday, computeWeekProgress, type ActivityDocLike } from "@/lib/today";
@@ -180,6 +183,34 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     );
   }
 
+  // Grundprinzip: erst TUN, dann bewerten. Themen mit Übungsaufgaben führen
+  // direkt in die Übung (Trefferquote bestimmt die SM-2-Qualität), die
+  // Selbsteinschätzung bleibt nur als Rückfallebene für Themen ohne Aufgaben.
+  function renderItemActions(planId: string, item: PlanItemWithId) {
+    if (hasExercisesForTopic(item.topicSlug)) {
+      return (
+        <div className="flex items-center gap-3">
+          {item.moduleSlug && (
+            <Link
+              href={`/modules/${item.moduleSlug}`}
+              className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-blue-400 transition-colors"
+              title="Erst lesen, dann üben"
+            >
+              <BookOpen className="w-3 h-3" /> Modul öffnen
+            </Link>
+          )}
+          <Link
+            href={`/plans/${planId}/uebung/${item.id}`}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 transition-all"
+          >
+            <Dumbbell className="w-3.5 h-3.5" /> Üben
+          </Link>
+        </div>
+      );
+    }
+    return renderCheckOffButtons(planId, item.id);
+  }
+
   return (
     <section className="glass rounded-xl p-5">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
@@ -250,7 +281,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
                         <p className="text-sm font-medium text-white">{item.title ?? "Unbenanntes Thema"}</p>
                         <p className="text-xs text-slate-500 mt-0.5">{plan.title ?? "Unbenannter Plan"}</p>
                       </div>
-                      {renderCheckOffButtons(block.planId, item.id)}
+                      {renderItemActions(block.planId, item)}
                     </div>,
                   ];
                 }
@@ -325,7 +356,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
                           )}
                         </p>
                       </div>
-                      {renderCheckOffButtons(item.planId, item.id)}
+                      {renderItemActions(item.planId, item)}
                     </div>
                   );
                 })}
