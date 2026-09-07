@@ -42,6 +42,8 @@ export interface PlanTemplateItem {
   order: number;
   weight: number; // 1-5
   estimatedUnits: number;
+  /** Statischer Slug für Übungsaufgaben aus content/exercises/<slug>.json. */
+  topicSlug: string | null;
 }
 
 export interface PlanTemplate {
@@ -59,12 +61,21 @@ export interface PlanItemDoc {
   weight: number;
   estimatedUnits: number;
   completedUnits: number;
+  /**
+   * Slug der zugehörigen Übungsaufgaben (content/exercises/<slug>.json).
+   * Nur bei Template-Items gesetzt; Bestands-Docs vor dem Backfill: null.
+   */
+  topicSlug: string | null;
   /** Exakt die Struktur aus FlashcardProgress (cardId = itemId). */
   sm2: FlashcardProgress | null;
   /** "YYYY-MM-DD" | null — abgeleitet aus sm2.nextReview über lib/dates.ts. */
   nextDueAt: string | null;
   /** Denormalisiert für Collection-Group-Query + Security-Rule. */
   uid: string;
+  /** Letzter Übungs-Durchlauf (Trefferquote). */
+  lastAttempt: { at: string; correct: number; total: number } | null;
+  /** Anzahl abgeschlossener Übungs-Durchläufe. */
+  attemptCount: number;
 }
 
 export interface PlanDoc {
@@ -135,9 +146,12 @@ export async function createPlanFromTemplate(
       order: item.order,
       weight: item.weight,
       estimatedUnits: item.estimatedUnits,
+      topicSlug: item.topicSlug ?? null,
       completedUnits: 0,
       sm2: null,
       nextDueAt: null,
+      lastAttempt: null,
+      attemptCount: 0,
       uid,
     });
   }
