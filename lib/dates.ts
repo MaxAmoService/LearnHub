@@ -106,3 +106,12 @@ export function monthKey(key: string): string {
 export function dayOfMonth(key: string): string {
   return key.slice(8, 10);
 }
+
+/**
+ * "YYYY-MM-DD" → "TT.MM.JJJJ" (deutsche Anzeige). Reine Kalenderrechnung,
+ * keine Zeitzone im Spiel — der Key bleibt unverändert.
+ */
+export function formatDateKey(key: string): string {
+  const { year, month, day } = parseKey(key);
+  return `${String(day).padStart(2, "0")}.${String(month).padStart(2, "0")}.${year}`;
+}

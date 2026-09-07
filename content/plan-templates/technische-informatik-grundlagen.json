@@ -1,0 +1,43 @@
+{
+  "slug": "technische-informatik-grundlagen",
+  "title": "Technische Informatik Grundlagen",
+  "description": "Von der Booleschen Algebra über Schaltnetze und Schaltwerke bis zur Rechnerarchitektur und Assembler — die Grundlagen der Technischen Informatik.",
+  "examType": "Studium / Informatik",
+  "items": [
+    {
+      "title": "Boolesche Algebra",
+      "moduleSlug": null,
+      "order": 0,
+      "weight": 4,
+      "estimatedUnits": 8
+    },
+    {
+      "title": "Schaltnetze",
+      "moduleSlug": null,
+      "order": 1,
+      "weight": 4,
+      "estimatedUnits": 10
+    },
+    {
+      "title": "Schaltwerke",
+      "moduleSlug": null,
+      "order": 2,
+      "weight": 3,
+      "estimatedUnits": 10
+    },
+    {
+      "title": "Rechnerarchitektur",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 3,
+      "weight": 4,
+      "estimatedUnits": 10
+    },
+    {
+      "title": "Assembler",
+      "moduleSlug": null,
+      "order": 4,
+      "weight": 3,
+      "estimatedUnits": 8
+    }
+  ]
+}

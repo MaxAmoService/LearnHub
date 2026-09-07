@@ -1,0 +1,57 @@
+{
+  "slug": "ap1-it-berufe",
+  "title": "AP1 IT-Berufe",
+  "description": "Alle klassischen AP1-Themen der IHK-Prüfung für IT-Berufe: Hardware, Netzwerke, Zahlensysteme, IT-Sicherheit, Wirtschaft und Projektplanung.",
+  "examType": "IHK AP1",
+  "items": [
+    {
+      "title": "Betriebssysteme",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 0,
+      "weight": 4,
+      "estimatedUnits": 10
+    },
+    {
+      "title": "Rechnersysteme und Hardware",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 1,
+      "weight": 5,
+      "estimatedUnits": 12
+    },
+    {
+      "title": "Netzwerktechnik",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 2,
+      "weight": 5,
+      "estimatedUnits": 12
+    },
+    {
+      "title": "Zahlensysteme und Codierung",
+      "moduleSlug": null,
+      "order": 3,
+      "weight": 4,
+      "estimatedUnits": 8
+    },
+    {
+      "title": "IT-Sicherheit",
+      "moduleSlug": "ihk-it-sicherheit",
+      "order": 4,
+      "weight": 4,
+      "estimatedUnits": 10
+    },
+    {
+      "title": "Wirtschaftlichkeit",
+      "moduleSlug": null,
+      "order": 5,
+      "weight": 3,
+      "estimatedUnits": 6
+    },
+    {
+      "title": "Projektplanung",
+      "moduleSlug": "ihk-projektmanagement",
+      "order": 6,
+      "weight": 3,
+      "estimatedUnits": 8
+    }
+  ]
+}

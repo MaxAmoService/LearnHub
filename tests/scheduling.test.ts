@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   computeDailyTarget,
+  computeEndspurtStart,
   computePace,
   computePhase,
   countStudyDays,
@@ -165,6 +166,44 @@ describe("computePhase", () => {
   it("ohne createdAt (altes Dokument) defensiv: aufbau bei Zukunft", () => {
     const plan = makePlan({ createdAt: undefined, deadline: "2027-09-07" });
     expect(computePhase(plan, "2026-09-07")).toBe("aufbau");
+  });
+});
+
+describe("computeEndspurtStart", () => {
+  it("langer Plan (60 Tage): Endspurt beginnt 14 Tage vor der Deadline", () => {
+    const plan = makePlan({
+      createdAt: "2026-07-09T12:00:00.000Z",
+      deadline: "2026-09-07",
+    });
+    expect(computeEndspurtStart(plan, "2026-07-29")).toBe("2026-08-24");
+    // Am Starttag ist Endspurt, am Tag davor noch Festigung
+    expect(computePhase(plan, "2026-08-24")).toBe("endspurt");
+    expect(computePhase(plan, "2026-08-23")).toBe("festigung");
+  });
+
+  it("kurzer Plan (10 Tage): Endspurt = 20 % der Laufzeit (2 Tage)", () => {
+    const plan = makePlan({
+      createdAt: "2026-09-01T12:00:00.000Z",
+      deadline: "2026-09-11",
+    });
+    expect(computeEndspurtStart(plan, "2026-09-01")).toBe("2026-09-09");
+    expect(computePhase(plan, "2026-09-09")).toBe("endspurt");
+    expect(computePhase(plan, "2026-09-08")).toBe("aufbau");
+  });
+
+  it("sehr kurzer Plan: Endspurt mindestens 1 Tag", () => {
+    const plan = makePlan({
+      createdAt: "2026-09-05T12:00:00.000Z",
+      deadline: "2026-09-07",
+    });
+    expect(computeEndspurtStart(plan, "2026-09-05")).toBe("2026-09-06");
+    expect(computePhase(plan, "2026-09-06")).toBe("endspurt");
+  });
+
+  it("ohne createdAt (altes Dokument): defensiv ab heute rechnen", () => {
+    const plan = makePlan({ createdAt: undefined, deadline: "2026-09-17" });
+    // 10 Tage ab heute → Endspurt = 2 Tage → 17.09. minus 2
+    expect(computeEndspurtStart(plan, "2026-09-07")).toBe("2026-09-15");
   });
 });
 

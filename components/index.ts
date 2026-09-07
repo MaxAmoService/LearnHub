@@ -46,6 +46,13 @@ export { OnlineStatus, FrameOnlineStatus } from "./OnlineStatus";
 export { LoginModal } from "./LoginModal";
 export { UserProfile } from "./UserProfile";
 
+// ─── Lernpläne ─────────────────────────────────────────────────
+export { PlanPreview } from "./PlanPreview";
+export { PlanCard, PHASE_LABELS, PHASE_COLORS, PACE_LABELS, PACE_COLORS } from "./PlanCard";
+export { PlanItemList } from "./PlanItemList";
+export { TodayCard } from "./TodayCard";
+export { StudyDaysPicker } from "./StudyDaysPicker";
+
 // ─── Utilities ─────────────────────────────────────────────────
 export { KeyboardShortcuts } from "./KeyboardShortcuts";
 export { lazyInteractive } from "./LazyInteractive";

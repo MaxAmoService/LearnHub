@@ -6,13 +6,14 @@ import { allModules as modules } from "@/lib/data";
 import { ModuleCard } from "@/components/ModuleCard";
 import { ProgressBar } from "@/components/ProgressBar";
 import { LoginModal } from "@/components/LoginModal";
+import { TodayCard } from "@/components/TodayCard";
 import { getUserLevel } from "@/lib/auth";
 import { DashboardSkeleton } from "@/components/Skeleton";
 import { BookOpen, Trophy, Flame, Star, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Dashboard() {
-  const { user, isLoading, updateProfile } = useAuth();
+  const { user, isLoading, updateProfile, refreshUser } = useAuth();
   const [showLogin, setShowLogin] = useState(false);
   const [showCompleted, setShowCompleted] = useState(false);
 
@@ -87,6 +88,19 @@ export default function Dashboard() {
           </>
         )}
       </section>
+
+      {/* Heute — Tagesplan aus den Lernplänen */}
+      {user && (
+        <TodayCard
+          uid={user.uid}
+          profile={{
+            streak: user.streak,
+            dailyLessonsToday: user.dailyLessonsToday,
+            dailyLessonsDate: user.dailyLessonsDate,
+          }}
+          onProgress={refreshUser}
+        />
+      )}
 
       {/* Stats Grid */}
       {user && levelInfo && (

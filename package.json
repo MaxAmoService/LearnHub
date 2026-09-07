@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "backfill:laststudy": "tsx scripts/backfill-lastStudyDate.ts"
+    "backfill:laststudy": "tsx scripts/backfill-lastStudyDate.ts",
+    "seed:plan-templates": "tsx scripts/seed-plan-templates.ts"
 
   },
   "dependencies": {

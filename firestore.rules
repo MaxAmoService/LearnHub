@@ -31,11 +31,13 @@ service cloud.firestore {
     // Lehrplan-Items: eigene Regel auf Gruppenebene. Verschachtelte
     // match-Blöcke greifen für Collection-Group-Queries NICHT — deshalb hier
     // der rekursive Pfad. uid ist im Item denormalisiert und wird beim
-    // Schreiben erzwungen. (Delete ist implizit verweigert: request.resource
-    // existiert bei delete nicht.)
+    // Schreiben erzwungen. Delete braucht eine eigene Klausel:
+    // request.resource existiert bei delete nicht, die write-Klausel
+    // verweigert Löschen daher implizit.
     match /{path=**}/planItems/{itemId} {
       allow read: if request.auth != null && resource.data.uid == request.auth.uid;
       allow write: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
     }
 
     // Lehrplan-Vorlagen: öffentlich lesbar, clientseitig nicht schreibbar

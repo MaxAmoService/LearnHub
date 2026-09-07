@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "./AuthProvider";
 import { UserProfile } from "./UserProfile";
 import { LoginModal } from "./LoginModal";
-import { Menu, X, Home, LayoutGrid, GraduationCap, Trophy } from "lucide-react";
+import { Menu, X, Home, LayoutGrid, GraduationCap, Trophy, CalendarDays } from "lucide-react";
 import Link from "next/link";
 
 export function Navbar() {
@@ -69,6 +69,13 @@ export function Navbar() {
                 🌳 Skill Tree
               </Link>
               <Link
+                href="/plans"
+                className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-150"
+              >
+                <CalendarDays className="w-4 h-4" />
+                Pläne
+              </Link>
+              <Link
                 href="/leaderboard"
                 className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-150"
               >
@@ -129,6 +136,14 @@ export function Navbar() {
                 >
                   <span className="text-slate-500">🌳</span>
                   Skill Tree
+                </Link>
+                <Link
+                  href="/plans"
+                  onClick={() => setShowMobileMenu(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all"
+                >
+                  <CalendarDays className="w-4 h-4 text-slate-500" />
+                  Pläne
                 </Link>
                 <Link
                   href="/leaderboard"

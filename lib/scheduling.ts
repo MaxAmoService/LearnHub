@@ -51,6 +51,13 @@ function planStartKey(plan: PlanLike, today: string): string {
   return plan.createdAt ? todayKey(new Date(plan.createdAt)) : today;
 }
 
+/** Dauer des Endspurts in Tagen — identische Formel wie in computePhase. */
+function endspurtDaysFor(plan: PlanLike, today: string): number {
+  const start = planStartKey(plan, today);
+  const total = Math.max(daysBetween(start, plan.deadline), 0);
+  return total < 30 ? Math.max(1, Math.round(total * 0.2)) : 14;
+}
+
 /** Anzahl Lerntage von `from` bis `to` (inklusive). */
 export function countStudyDays(
   from: string,
@@ -112,11 +119,20 @@ export function computePhase(plan: PlanLike, today: string): Phase {
 
   const start = planStartKey(plan, today);
   const total = Math.max(daysBetween(start, plan.deadline), 0);
-  const endspurtDays = total < 30 ? Math.max(1, Math.round(total * 0.2)) : 14;
+  const endspurtDays = endspurtDaysFor(plan, today);
 
   if (remaining <= endspurtDays) return "endspurt";
   if (remaining <= total * 0.25) return "festigung";
   return "aufbau";
+}
+
+/**
+ * Erster Tag der Endspurt-Phase ("YYYY-MM-DD") — für die Wizard-Vorschau
+ * ("Endspurt ab <Datum>"). Nutzt exakt dieselbe Endspurt-Dauer wie
+ * computePhase, damit Vorschau und Laufzeitverhalten nie auseinanderlaufen.
+ */
+export function computeEndspurtStart(plan: PlanLike, today: string): string {
+  return addDays(plan.deadline, -endspurtDaysFor(plan, today));
 }
 
 /**

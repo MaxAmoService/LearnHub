@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildToday } from "@/lib/today";
+import { buildToday, computeWeekProgress } from "@/lib/today";
 import type { PlanItemLike, PlanLike } from "@/lib/scheduling";
 
 const NOW = new Date("2026-09-07T12:00:00Z"); // Montag
@@ -156,5 +156,66 @@ describe("buildToday", () => {
     const plans = [{ ...makePlan(), id: "p1" }];
     const result = buildToday(plans, { p1: [makeItem({ order: 0 })] }, null, NOW);
     expect(result.queue.length).toBe(1);
+  });
+});
+
+describe("computeWeekProgress", () => {
+  // 2026-09-07 ist ein Montag — Woche läuft 07.09.–13.09.
+  const TODAY = "2026-09-07";
+
+  it("zählt gelernte und geplante Tage der aktuellen Woche", () => {
+    const activity = {
+      "2026-09": {
+        days: {
+          "07": { units: 2, done: 0, planIds: [] },
+          "09": { units: 1, done: 0, planIds: [] },
+          "10": { units: 0, done: 0, planIds: [] }, // units 0 zählt nicht
+        },
+      },
+    };
+    expect(computeWeekProgress(TODAY, activity, [1, 2, 3, 4, 5])).toEqual({
+      studied: 2,
+      planned: 5,
+    });
+  });
+
+  it("Woche über den Monatswechsel: Docs beider Monate", () => {
+    // 2026-09-01 ist ein Dienstag → Woche läuft Mo 31.08. bis So 06.09.
+    const activity = {
+      "2026-08": { days: { "31": { units: 3, done: 0, planIds: [] } } },
+      "2026-09": { days: { "01": { units: 1, done: 0, planIds: [] } } },
+    };
+    expect(computeWeekProgress("2026-09-01", activity, [1, 2, 3, 4, 5])).toEqual({
+      studied: 2,
+      planned: 5,
+    });
+  });
+
+  it("ohne studyDays: jeder Tag ist ein Lerntag", () => {
+    const activity = {
+      "2026-09": { days: { "13": { units: 1, done: 0, planIds: [] } } }, // Sonntag
+    };
+    expect(computeWeekProgress(TODAY, activity, null)).toEqual({
+      studied: 1,
+      planned: 7,
+    });
+    expect(computeWeekProgress(TODAY, activity, undefined)).toEqual({
+      studied: 1,
+      planned: 7,
+    });
+  });
+
+  it("fehlende Activity-Docs und leere days sind defensiv", () => {
+    expect(computeWeekProgress(TODAY, {}, [1, 2, 3, 4, 5])).toEqual({
+      studied: 0,
+      planned: 5,
+    });
+    expect(
+      computeWeekProgress(TODAY, { "2026-09": null, "2026-08": undefined }, [1, 2, 3, 4, 5])
+    ).toEqual({ studied: 0, planned: 5 });
+  });
+
+  it("leere studyDays: nichts geplant, nichts zählt", () => {
+    expect(computeWeekProgress(TODAY, {}, [])).toEqual({ studied: 0, planned: 0 });
   });
 });

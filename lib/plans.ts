@@ -19,9 +19,12 @@ import {
   doc,
   getDoc,
   getDocs,
+  increment,
   orderBy,
   query,
   runTransaction,
+  setDoc,
+  updateDoc,
   where,
   writeBatch,
 } from "firebase/firestore";
@@ -85,6 +88,17 @@ export interface ActivityDoc {
   days: Record<string, ActivityDay>;
 }
 
+/** Plan-Dokument inkl. Doc-ID (ID ist nicht Teil des Dokuments). */
+export interface PlanWithId extends PlanDoc {
+  id: string;
+}
+
+/** Plan-Item inkl. Doc-ID und zugehörigem Plan (beide nicht im Dokument). */
+export interface PlanItemWithId extends PlanItemDoc {
+  id: string;
+  planId: string;
+}
+
 // ─── Pläne anlegen ──────────────────────────────────────────────────────────
 
 export async function createPlanFromTemplate(
@@ -130,6 +144,31 @@ export async function createPlanFromTemplate(
 
   await batch.commit();
   return planId;
+}
+
+/**
+ * Legt einen leeren Plan an (Wizard ohne Vorlage). Gleiche Struktur wie
+ * createPlanFromTemplate, aber ohne Template und ohne Items.
+ */
+export async function createEmptyPlan(
+  uid: string,
+  opts: { title: string; deadline: string; studyDays: number[]; bufferDays: number }
+): Promise<string> {
+  const db = getDb();
+  const planRef = doc(collection(db, "users", uid, "plans"));
+
+  await setDoc(planRef, {
+    title: opts.title,
+    deadline: opts.deadline,
+    studyDays: opts.studyDays,
+    bufferDays: opts.bufferDays,
+    templateId: null,
+    createdAt: new Date().toISOString(),
+    archivedAt: null,
+    stats: { itemCount: 0, masteredCount: 0 },
+  });
+
+  return planRef.id;
 }
 
 // ─── Abhaken (Review) ───────────────────────────────────────────────────────
@@ -294,7 +333,7 @@ export async function loadActiveStudyDays(uid: string): Promise<number[] | null>
 export async function loadDuePlanItems(
   uid: string,
   now: Date = new Date()
-): Promise<PlanItemDoc[]> {
+): Promise<PlanItemWithId[]> {
   const db = getDb();
   const today = todayKey(now);
   const snap = await getDocs(
@@ -306,5 +345,220 @@ export async function loadDuePlanItems(
       orderBy("nextDueAt")
     )
   );
-  return snap.docs.map((d) => d.data() as PlanItemDoc);
+  return snap.docs.map((d) => {
+    const planId = d.ref.parent.parent?.id ?? "";
+    return { ...(d.data() as PlanItemDoc), id: d.id, planId };
+  });
+}
+
+// ─── Planverwaltung (UI) ────────────────────────────────────────────────────
+
+/** Alle Lehrplan-Vorlagen — öffentlich lesbar (firestore.rules). */
+export async function loadPlanTemplates(): Promise<PlanTemplate[]> {
+  const db = getDb();
+  const snap = await getDocs(query(collection(db, "planTemplates")));
+  return snap.docs
+    .map((d) => ({ ...(d.data() as PlanTemplate) }))
+    .sort((a, b) => (a.title ?? "").localeCompare(b.title ?? ""));
+}
+
+/** Alle Pläne des Users (inkl. archivierte) — EIN Read für die Subcollection. */
+export async function loadPlans(uid: string): Promise<PlanWithId[]> {
+  const db = getDb();
+  const snap = await getDocs(query(collection(db, "users", uid, "plans")));
+  return snap.docs.map((d) => ({ ...(d.data() as PlanDoc), id: d.id }));
+}
+
+export async function loadPlan(
+  uid: string,
+  planId: string
+): Promise<PlanWithId | null> {
+  const db = getDb();
+  const snap = await getDoc(doc(db, "users", uid, "plans", planId));
+  if (!snap.exists()) return null;
+  return { ...(snap.data() as PlanDoc), id: snap.id };
+}
+
+/** Alle Items eines Plans, nach order sortiert. */
+export async function loadPlanItems(
+  uid: string,
+  planId: string
+): Promise<PlanItemWithId[]> {
+  const db = getDb();
+  const snap = await getDocs(
+    query(collection(db, "users", uid, "plans", planId, "planItems"))
+  );
+  return snap.docs
+    .map((d) => ({ ...(d.data() as PlanItemDoc), id: d.id, planId }))
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+}
+
+/**
+ * Alle Plan-Items des Users über alle Pläne — EINE Collection-Group-Query
+ * (kein N-pläne-Muster). Clientseitig nach planId gruppiert und nach order
+ * sortiert. Ein-Feld-Filter (uid), kein zusätzlicher Index nötig.
+ */
+export async function loadAllPlanItems(
+  uid: string
+): Promise<Record<string, PlanItemWithId[]>> {
+  const db = getDb();
+  const snap = await getDocs(
+    query(collectionGroup(db, "planItems"), where("uid", "==", uid))
+  );
+
+  const grouped: Record<string, PlanItemWithId[]> = {};
+  for (const d of snap.docs) {
+    const planId = d.ref.parent.parent?.id;
+    if (!planId) continue; // defensiv: Item ohne lesbaren Plan-Pfad überspringen
+    const item = { ...(d.data() as PlanItemDoc), id: d.id, planId };
+    (grouped[planId] ??= []).push(item);
+  }
+  for (const key of Object.keys(grouped)) {
+    grouped[key].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  }
+  return grouped;
+}
+
+/** Activity-Monats-Doc (users/{uid}/activity/{month}) — darf fehlen. */
+export async function loadActivityMonth(
+  uid: string,
+  month: string
+): Promise<ActivityDoc | null> {
+  const db = getDb();
+  const snap = await getDoc(doc(db, "users", uid, "activity", month));
+  if (!snap.exists()) return null;
+  return snap.data() as ActivityDoc;
+}
+
+/** Deadline, Lerntage und Puffer eines Plans nachträglich ändern. */
+export async function updatePlan(
+  uid: string,
+  planId: string,
+  updates: Partial<
+    Pick<PlanDoc, "title" | "deadline" | "studyDays" | "bufferDays">
+  >
+): Promise<void> {
+  const db = getDb();
+  await updateDoc(doc(db, "users", uid, "plans", planId), updates);
+}
+
+/** Plan archivieren — bleibt lesbar, taucht nicht mehr im Heute-Plan auf. */
+export async function archivePlan(uid: string, planId: string): Promise<void> {
+  const db = getDb();
+  await updateDoc(doc(db, "users", uid, "plans", planId), {
+    archivedAt: new Date().toISOString(),
+  });
+}
+
+/** Neues Item ans Ende des Plans (order = Maximum + 1). */
+export async function addPlanItem(
+  uid: string,
+  planId: string,
+  data: {
+    title: string;
+    moduleSlug: string | null;
+    weight: number;
+    estimatedUnits: number;
+  }
+): Promise<string> {
+  const db = getDb();
+  const planRef = doc(db, "users", uid, "plans", planId);
+
+  const [planSnap, existingSnap] = await Promise.all([
+    getDoc(planRef),
+    getDocs(query(collection(db, "users", uid, "plans", planId, "planItems"))),
+  ]);
+  if (!planSnap.exists()) throw new Error("Plan nicht gefunden");
+
+  let maxOrder = -1;
+  existingSnap.forEach((d) => {
+    const order = (d.data() as PlanItemDoc).order ?? 0;
+    if (order > maxOrder) maxOrder = order;
+  });
+
+  const itemRef = doc(collection(db, "users", uid, "plans", planId, "planItems"));
+  const batch = writeBatch(db);
+  batch.set(itemRef, {
+    title: data.title,
+    moduleSlug: data.moduleSlug,
+    order: maxOrder + 1,
+    weight: data.weight,
+    estimatedUnits: data.estimatedUnits,
+    completedUnits: 0,
+    sm2: null,
+    nextDueAt: null,
+    uid,
+  });
+  batch.update(planRef, { "stats.itemCount": increment(1) });
+  await batch.commit();
+  return itemRef.id;
+}
+
+/** Item-Metadaten ändern (kein SM-2-Fortschritt). */
+export async function updatePlanItem(
+  uid: string,
+  planId: string,
+  itemId: string,
+  changes: Partial<
+    Pick<PlanItemDoc, "title" | "moduleSlug" | "weight" | "estimatedUnits">
+  >
+): Promise<void> {
+  const db = getDb();
+  await updateDoc(
+    doc(db, "users", uid, "plans", planId, "planItems", itemId),
+    changes
+  );
+}
+
+/**
+ * Item löschen. Hält plan.stats konsistent (itemCount, masteredCount),
+ * damit checkOffPlanItem sein Clamping nicht verliert. Fehlende stats
+ * werden defensiv als 0 gelesen.
+ */
+export async function deletePlanItem(
+  uid: string,
+  planId: string,
+  itemId: string
+): Promise<void> {
+  const db = getDb();
+  const itemRef = doc(db, "users", uid, "plans", planId, "planItems", itemId);
+  const planRef = doc(db, "users", uid, "plans", planId);
+
+  const [itemSnap, planSnap] = await Promise.all([
+    getDoc(itemRef),
+    getDoc(planRef),
+  ]);
+  if (!itemSnap.exists()) return;
+
+  const item = itemSnap.data() as PlanItemDoc;
+  const stats = planSnap.exists()
+    ? (planSnap.data() as PlanDoc).stats ?? { itemCount: 0, masteredCount: 0 }
+    : { itemCount: 0, masteredCount: 0 };
+
+  const batch = writeBatch(db);
+  batch.delete(itemRef);
+  batch.update(planRef, {
+    "stats.itemCount": Math.max((stats.itemCount ?? 0) - 1, 0),
+    "stats.masteredCount": Math.max(
+      (stats.masteredCount ?? 0) - (isConsolidated(item) ? 1 : 0),
+      0
+    ),
+  });
+  await batch.commit();
+}
+
+/** Reihenfolge speichern (order-Feld pro Item, dense 0..n-1). */
+export async function reorderPlanItems(
+  uid: string,
+  planId: string,
+  orderedIds: string[]
+): Promise<void> {
+  const db = getDb();
+  const batch = writeBatch(db);
+  orderedIds.forEach((itemId, index) => {
+    batch.update(doc(db, "users", uid, "plans", planId, "planItems", itemId), {
+      order: index,
+    });
+  });
+  await batch.commit();
 }

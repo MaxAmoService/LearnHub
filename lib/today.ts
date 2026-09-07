@@ -7,7 +7,7 @@
 // dazu eine über alle Themen gemischte Queue. Überfällige Wiederholungen haben
 // Vorrang vor neuem Stoff — sonst wächst ein nie abgebauter Berg.
 
-import { dayOfMonth, todayKey } from "./dates";
+import { addDays, dayOfMonth, dayOfWeek, monthKey, todayKey } from "./dates";
 import { computePhase, isConsolidated, type PlanItemLike, type PlanLike } from "./scheduling";
 
 export interface ActivityDayLike {
@@ -128,4 +128,44 @@ export function buildToday(
   }
 
   return { blocks, queue };
+}
+
+export interface WeekProgress {
+  /** Gelernte Tage (Activity mit units > 0) in der aktuellen Woche (Mo–So). */
+  studied: number;
+  /** Geplante Lerntage in der aktuellen Woche (aus der studyDays-Union). */
+  planned: number;
+}
+
+/**
+ * Wochenfortschritt der laufenden Woche (Montag bis Sonntag).
+ *
+ * @param activityByMonth Activity-Docs je Monats-Key ("YYYY-MM" → Doc).
+ *   Für Wochen über einen Monatswechsel reicht der Aufrufer zwei Docs
+ *   (aktueller + vorheriger Monat) — die Zuordnung läuft hier über den
+ *   Monats-Key jedes Wochentags.
+ * @param studyDays Union der geplanten Lerntage (1=Mo … 7=So). `null`/
+ *   `undefined` → jeder Tag ist ein Lerntag (Konvention wie in scheduling).
+ */
+export function computeWeekProgress(
+  today: string,
+  activityByMonth: Record<string, ActivityDocLike | null | undefined>,
+  studyDays?: number[] | null
+): WeekProgress {
+  const monday = addDays(today, -(dayOfWeek(today) - 1));
+  const plannedSet = studyDays ? new Set(studyDays) : null;
+
+  let studied = 0;
+  let planned = 0;
+
+  for (let i = 0; i < 7; i++) {
+    const date = addDays(monday, i);
+    if (plannedSet === null || plannedSet.has(dayOfWeek(date))) planned += 1;
+
+    const doc = activityByMonth[monthKey(date)];
+    const entry = doc?.days?.[dayOfMonth(date)];
+    if (entry && (entry.units ?? 0) > 0) studied += 1;
+  }
+
+  return { studied, planned };
 }
