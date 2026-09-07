@@ -10,6 +10,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "backfill:laststudy": "tsx scripts/backfill-lastStudyDate.ts",
+    "backfill:planitem-uid": "tsx scripts/backfill-planitem-uid.ts",
     "seed:plan-templates": "tsx scripts/seed-plan-templates.ts"
 
   },

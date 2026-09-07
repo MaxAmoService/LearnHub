@@ -379,14 +379,22 @@ export async function loadPlan(
   return { ...(snap.data() as PlanDoc), id: snap.id };
 }
 
-/** Alle Items eines Plans, nach order sortiert. */
+/**
+ * Alle Items eines Plans, nach order sortiert. Der where("uid")-Filter ist
+ * Pflicht: Die planItems-Regel prüft resource.data.uid — ohne den Filter
+ * kann Firestore nicht garantieren, dass die Query nur erlaubte Dokumente
+ * trifft, und lehnt sie ab ("insufficient permissions").
+ */
 export async function loadPlanItems(
   uid: string,
   planId: string
 ): Promise<PlanItemWithId[]> {
   const db = getDb();
   const snap = await getDocs(
-    query(collection(db, "users", uid, "plans", planId, "planItems"))
+    query(
+      collection(db, "users", uid, "plans", planId, "planItems"),
+      where("uid", "==", uid)
+    )
   );
   return snap.docs
     .map((d) => ({ ...(d.data() as PlanItemDoc), id: d.id, planId }))
@@ -460,8 +468,12 @@ export async function deletePlan(uid: string, planId: string): Promise<void> {
   const db = getDb();
   const planRef = doc(db, "users", uid, "plans", planId);
 
+  // where("uid") ist Pflicht — sonst lehnt die Regel die List-Query ab.
   const itemsSnap = await getDocs(
-    query(collection(db, "users", uid, "plans", planId, "planItems"))
+    query(
+      collection(db, "users", uid, "plans", planId, "planItems"),
+      where("uid", "==", uid)
+    )
   );
 
   const CHUNK_SIZE = 450; // unter dem Batch-Limit von 500
@@ -500,7 +512,12 @@ export async function addPlanItem(
 
   const [planSnap, existingSnap] = await Promise.all([
     getDoc(planRef),
-    getDocs(query(collection(db, "users", uid, "plans", planId, "planItems"))),
+    getDocs(
+      query(
+        collection(db, "users", uid, "plans", planId, "planItems"),
+        where("uid", "==", uid) // Pflicht für die Regel (List-Query)
+      )
+    ),
   ]);
   if (!planSnap.exists()) throw new Error("Plan nicht gefunden");
 
