@@ -1,57 +1,386 @@
 {
   "slug": "ap1-it-berufe",
   "title": "AP1 IT-Berufe",
-  "description": "Alle klassischen AP1-Themen der IHK-Prüfung für IT-Berufe: Hardware, Netzwerke, Zahlensysteme, IT-Sicherheit, Wirtschaft und Projektplanung.",
+  "description": "Alle klassischen AP1-Themen der IHK-Prüfung für IT-Berufe in Lernsitzungen à 30–60 Minuten: Hardware, Netzwerke, Zahlensysteme, IT-Sicherheit, Wirtschaft und Projektplanung.",
   "examType": "IHK AP1",
   "items": [
     {
-      "title": "Betriebssysteme",
+      "title": "Aufgaben und Aufbau eines Betriebssystems",
       "moduleSlug": "ihk-computersysteme",
       "order": 0,
-      "weight": 4,
-      "estimatedUnits": 10
+      "weight": 2,
+      "estimatedUnits": 1
     },
     {
-      "title": "Rechnersysteme und Hardware",
+      "title": "Kernel, Prozesse und Threads",
       "moduleSlug": "ihk-computersysteme",
       "order": 1,
-      "weight": 5,
-      "estimatedUnits": 12
+      "weight": 4,
+      "estimatedUnits": 2
     },
     {
-      "title": "Netzwerktechnik",
-      "moduleSlug": "ihk-netzwerk",
+      "title": "Multitasking und Scheduling",
+      "moduleSlug": "ihk-computersysteme",
       "order": 2,
-      "weight": 5,
-      "estimatedUnits": 12
+      "weight": 4,
+      "estimatedUnits": 2
     },
     {
-      "title": "Zahlensysteme und Codierung",
-      "moduleSlug": null,
+      "title": "Speicherverwaltung: Paging und virtueller Speicher",
+      "moduleSlug": "ihk-computersysteme",
       "order": 3,
       "weight": 4,
-      "estimatedUnits": 8
+      "estimatedUnits": 2
     },
     {
-      "title": "IT-Sicherheit",
-      "moduleSlug": "ihk-it-sicherheit",
+      "title": "Dateisysteme und Zugriffsrechte",
+      "moduleSlug": "ihk-computersysteme",
       "order": 4,
-      "weight": 4,
-      "estimatedUnits": 10
+      "weight": 3,
+      "estimatedUnits": 2
     },
     {
-      "title": "Wirtschaftlichkeit",
-      "moduleSlug": null,
+      "title": "Shell, Skripte und Automatisierung",
+      "moduleSlug": "ihk-computersysteme",
       "order": 5,
       "weight": 3,
-      "estimatedUnits": 6
+      "estimatedUnits": 1
     },
     {
-      "title": "Projektplanung",
-      "moduleSlug": "ihk-projektmanagement",
+      "title": "Betriebssysteme im Vergleich: Windows, Linux, macOS",
+      "moduleSlug": "ihk-computersysteme",
       "order": 6,
+      "weight": 2,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Virtualisierung und Cloud Computing",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 7,
       "weight": 3,
-      "estimatedUnits": 8
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Von-Neumann-Architektur und CPU-Aufbau",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 8,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "CPU: Pipelining, Caches und RISC vs. CISC",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 9,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Busse, Taktfrequenz und Befehlssatz",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 10,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Speicherhierarchie und RAM-Arten",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 11,
+      "weight": 3,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Speichermedien und RAID",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 12,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Ein- und Ausgabegeräte",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 13,
+      "weight": 2,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "BIOS/UEFI und Bootvorgang",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 14,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Schnittstellen und Datenübertragung (seriell/parallel)",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 15,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Leistungsbewertung und Kenngrößen",
+      "moduleSlug": "ihk-computersysteme",
+      "order": 16,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "OSI-Modell",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 17,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "TCP/IP-Modell und Protokolle",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 18,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "IPv4-Adressierung",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 19,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Subnetting: CIDR, Subnetzmaske, VLSM",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 20,
+      "weight": 5,
+      "estimatedUnits": 3
+    },
+    {
+      "title": "IPv6-Grundlagen",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 21,
+      "weight": 3,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "VLAN und Segmentierung",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 22,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Routing-Grundlagen",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 23,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "DNS und DHCP",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 24,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Netzwerkhardware: Switch, Router, Access Point",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 25,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Verkabelung und Übertragungsmedien",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 26,
+      "weight": 2,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "WLAN-Standards",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 27,
+      "weight": 2,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Netzwerkprotokolle im Überblick (HTTP, SMTP, FTP …)",
+      "moduleSlug": "ihk-netzwerk",
+      "order": 28,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Dezimal, binär, hexadezimal: Umrechnen",
+      "moduleSlug": null,
+      "order": 29,
+      "weight": 3,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Rechnen im Binärsystem (Addition, Subtraktion)",
+      "moduleSlug": null,
+      "order": 30,
+      "weight": 3,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Zweierkomplement und negative Zahlen",
+      "moduleSlug": null,
+      "order": 31,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Gleitkommazahlen nach IEEE 754",
+      "moduleSlug": null,
+      "order": 32,
+      "weight": 5,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "ASCII, Unicode und Zeichenkodierung",
+      "moduleSlug": null,
+      "order": 33,
+      "weight": 2,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Fehlererkennung: Paritätsbit und Prüfsummen",
+      "moduleSlug": null,
+      "order": 34,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Codes: BCD, Gray-Code, Hamming-Abstand",
+      "moduleSlug": null,
+      "order": 35,
+      "weight": 4,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Sicherheitsgrundlagen: Schutzziele und Bedrohungen",
+      "moduleSlug": "ihk-it-sicherheit",
+      "order": 36,
+      "weight": 3,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Authentifizierung und sichere Passwörter",
+      "moduleSlug": "ihk-it-sicherheit",
+      "order": 37,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Netzwerksicherheit und Firewalls",
+      "moduleSlug": "ihk-it-sicherheit",
+      "order": 38,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Verschlüsselung und PKI",
+      "moduleSlug": "ihk-it-sicherheit",
+      "order": 39,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Web-Security (OWASP Top 10)",
+      "moduleSlug": "ihk-it-sicherheit",
+      "order": 40,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Social Engineering und Phishing",
+      "moduleSlug": "ihk-it-sicherheit",
+      "order": 41,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Wirtschaftlichkeit: Kosten, Nutzen, Gewinn",
+      "moduleSlug": null,
+      "order": 42,
+      "weight": 3,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Kosten- und Leistungsrechnung",
+      "moduleSlug": null,
+      "order": 43,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Amortisationsrechnung und ROI",
+      "moduleSlug": null,
+      "order": 44,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Break-even und Deckungsbeitrag",
+      "moduleSlug": null,
+      "order": 45,
+      "weight": 4,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Angebotsvergleich und Nutzwertanalyse",
+      "moduleSlug": null,
+      "order": 46,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Projektmerkmale und Projektphasen",
+      "moduleSlug": "ihk-projektmanagement",
+      "order": 47,
+      "weight": 2,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Projektziele und SMART",
+      "moduleSlug": "ihk-projektmanagement",
+      "order": 48,
+      "weight": 2,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Das magische Dreieck",
+      "moduleSlug": "ihk-projektmanagement",
+      "order": 49,
+      "weight": 2,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Klassisches Projektmanagement: Wasserfall und Meilensteine",
+      "moduleSlug": "ihk-projektmanagement",
+      "order": 50,
+      "weight": 3,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Netzplantechnik und kritischer Pfad",
+      "moduleSlug": "ihk-diagramme",
+      "order": 51,
+      "weight": 5,
+      "estimatedUnits": 2
+    },
+    {
+      "title": "Lastenheft und Pflichtenheft",
+      "moduleSlug": "ihk-diagramme",
+      "order": 52,
+      "weight": 3,
+      "estimatedUnits": 1
+    },
+    {
+      "title": "Agile Methoden und Scrum",
+      "moduleSlug": "ihk-projektmanagement",
+      "order": 53,
+      "weight": 3,
+      "estimatedUnits": 2
     }
   ]
 }
