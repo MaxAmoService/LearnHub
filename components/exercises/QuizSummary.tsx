@@ -58,12 +58,12 @@ export function QuizSummary({
           <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
           <div className="space-y-1">
             <p className="text-sm font-semibold text-emerald-300">
-              Tag geschafft — alles richtig!
+              Tagesziel erreicht — Tagesquiz bestanden
             </p>
             <p className="text-sm text-slate-300">
-              Der heutige Tag gilt als geschafft und dein Streak ist
-              fortgeschrieben. Die Übungen kannst du trotzdem noch machen,
-              wenn du willst.
+              Alles richtig: Der heutige Tag gilt als geschafft und dein
+              Streak ist fortgeschrieben. Die Übungen kannst du trotzdem noch
+              machen, wenn du willst.
             </p>
           </div>
         </div>

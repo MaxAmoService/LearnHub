@@ -8,7 +8,13 @@
 // Vorrang vor neuem Stoff — sonst wächst ein nie abgebauter Berg.
 
 import { addDays, dayOfMonth, dayOfWeek, monthKey, todayKey } from "./dates";
-import { computePhase, isConsolidated, type PlanItemLike, type PlanLike } from "./scheduling";
+import {
+  computeDailyTarget,
+  computePhase,
+  isConsolidated,
+  type PlanItemLike,
+  type PlanLike,
+} from "./scheduling";
 
 export interface ActivityDayLike {
   units?: number;
@@ -210,6 +216,65 @@ export function computeDayDone(input: DayDoneInput): boolean {
   if (input.dueCount > 0 || input.hasOpenNeu) return false;
   if (input.planProgress.length === 0) return false;
   return input.planProgress.every((p) => p.unitsToday >= p.dailyTarget);
+}
+
+export interface DayStatusResult {
+  /** Tag geschafft? (computeDayDone — Quiz bestanden ODER Pensum erreicht). */
+  dayDone: boolean;
+  /**
+   * Was noch offen ist: fällige Wiederholungen über alle aktiven Pläne
+   * (ungedeckelt) + offene Neu-Themen (done < target) — dasselbe Maß wie
+   * `totalDue` der Widget-API.
+   */
+  openCount: number;
+}
+
+/**
+ * Tagesstatus aus Plänen + Items + Quiz-Ergebnis — die EINE Quelle für die
+ * grüne Statuszeile (Heute-Karte, Übungs-Abschluss, Widget-API).
+ * Kein Firestore-Zugriff.
+ */
+export function computeDayStatus(input: {
+  /** Aktive Pläne (archivierte werden intern übersprungen). */
+  plans: TodayPlanLike[];
+  itemsByPlan: Record<string, PlanItemLike[] | undefined>;
+  quizPassedToday: boolean;
+  now?: Date;
+}): DayStatusResult {
+  const now = input.now ?? new Date();
+  const today = todayKey(now);
+  const active = input.plans.filter((p) => p.archivedAt == null);
+
+  // Activity ist für die Block-Struktur irrelevant (nur für die Queue-
+  // Reihenfolge) — null reicht hier.
+  const schedule = buildToday(active, input.itemsByPlan, null, now);
+
+  let dueCount = 0;
+  for (const plan of active) {
+    for (const item of input.itemsByPlan[plan.id] ?? []) {
+      if (item.nextDueAt != null && item.nextDueAt <= today) dueCount += 1;
+    }
+  }
+  const openNeuBlocks = schedule.blocks.filter(
+    (block) =>
+      block.neu !== null &&
+      (block.neu.completedUnits ?? 0) < Math.max(block.neu.estimatedUnits ?? 1, 1)
+  );
+
+  const planProgress = active.map((plan) => ({
+    unitsToday: computePlanUnitsToday(input.itemsByPlan[plan.id] ?? [], today),
+    dailyTarget: computeDailyTarget(plan, input.itemsByPlan[plan.id] ?? [], today),
+  }));
+
+  const dayDone = computeDayDone({
+    quizPassedToday: input.quizPassedToday,
+    hasActivePlans: active.length > 0,
+    dueCount,
+    hasOpenNeu: openNeuBlocks.length > 0,
+    planProgress,
+  });
+
+  return { dayDone, openCount: dueCount + openNeuBlocks.length };
 }
 
 /**

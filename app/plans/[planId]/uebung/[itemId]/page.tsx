@@ -18,18 +18,31 @@ import { AlertCircle, ArrowLeft, Loader2 } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 import { LoginModal } from "@/components/LoginModal";
 import { ExerciseRunner } from "@/components/exercises/ExerciseRunner";
-import { ExerciseSummary, SaveErrorBox } from "@/components/exercises/ExerciseSummary";
+import {
+  ExerciseSummary,
+  SaveErrorBox,
+  type ExerciseDayStatus,
+} from "@/components/exercises/ExerciseSummary";
 import type { ExerciseResult } from "@/components/exercises/types";
 import {
   buildExerciseSession,
   newExerciseSeed,
 } from "@/lib/exercises/session";
-import { completePlanItemExercise, loadPlanItem, type PlanItemWithId } from "@/lib/plans";
+import {
+  completePlanItemExercise,
+  loadAllPlanItems,
+  loadPlanItem,
+  loadPlans,
+  type PlanItemWithId,
+} from "@/lib/plans";
+import { loadQuizDayDoc } from "@/lib/quizClient";
+import { computeDayStatus } from "@/lib/today";
+import { todayKey } from "@/lib/dates";
 
 export default function ExercisePage() {
   const params = useParams<{ planId: string; itemId: string }>();
   const { planId, itemId } = params;
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, refreshUser } = useAuth();
 
   const [showLogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -42,6 +55,9 @@ export default function ExercisePage() {
   const [results, setResults] = useState<ExerciseResult[]>([]);
   const [finished, setFinished] = useState<{ correct: number; total: number } | null>(null);
   const [nextDueAt, setNextDueAt] = useState<string | null>(null);
+  const [dayStatus, setDayStatus] = useState<Omit<ExerciseDayStatus, "streak"> | null>(
+    null
+  );
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState(false);
 
@@ -93,6 +109,26 @@ export default function ExercisePage() {
           exercises.map((e) => e.id)
         );
         setNextDueAt(res?.item.nextDueAt ?? null);
+
+        // Tagesstatus NACH der Sitzung (der Review ist schon geschrieben):
+        // dieselbe reine Funktion wie Heute-Karte und Widget-API.
+        const [plansRes, itemsRes, quizDayRes] = await Promise.all([
+          loadPlans(user.uid),
+          loadAllPlanItems(user.uid),
+          loadQuizDayDoc(user.uid, todayKey()),
+        ]);
+        const quizPassedToday = quizDayRes?.passed === true;
+        const status = computeDayStatus({
+          plans: plansRes,
+          itemsByPlan: itemsRes,
+          quizPassedToday,
+        });
+        await refreshUser();
+        setDayStatus({
+          dayDone: status.dayDone,
+          openCount: status.openCount,
+          quizPassedToday,
+        });
       } catch (err) {
         console.error("completePlanItemExercise error:", err);
         setSaveError(true);
@@ -100,7 +136,7 @@ export default function ExercisePage() {
         setSaving(false);
       }
     },
-    [user, item, planId, itemId]
+    [user, item, planId, itemId, exercises]
   );
 
   function handleComplete(result: ExerciseResult) {
@@ -119,6 +155,7 @@ export default function ExercisePage() {
     setResults([]);
     setFinished(null);
     setNextDueAt(null);
+    setDayStatus(null);
     setSaveError(false);
   }
 
@@ -241,6 +278,11 @@ export default function ExercisePage() {
             total={finished.total}
             nextDueAt={nextDueAt}
             procedural={procedural}
+            dayStatus={
+              dayStatus && user
+                ? { ...dayStatus, streak: user.streak }
+                : null
+            }
             onRestart={handleRestart}
           />
         </div>

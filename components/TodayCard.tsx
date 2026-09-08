@@ -40,7 +40,7 @@ import { loadQuizDayDoc } from "@/lib/quizClient";
 import { hasExercisesForTopic } from "@/lib/exercises/session";
 import { computePhase, computeEndspurtStart, type Phase } from "@/lib/scheduling";
 import { effectiveDailyLessons } from "@/lib/streak";
-import { buildToday, computeWeekProgress, type ActivityDocLike } from "@/lib/today";
+import { buildToday, computeDayStatus, computeWeekProgress, type ActivityDocLike } from "@/lib/today";
 import { PHASE_COLORS, PHASE_LABELS } from "./PlanCard";
 
 const QUALITY_BUTTONS = [
@@ -131,6 +131,14 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
 
   const schedule = buildToday(activePlans, itemsByPlan, mergedActivity, now);
 
+  const dayStatus = computeDayStatus({
+    plans: activePlans,
+    itemsByPlan,
+    quizPassedToday: quizPassed,
+    now,
+  });
+  const dayDone = dayStatus.dayDone;
+
   const studyDaysUnion = (() => {
     if (activePlans.length === 0) return null;
     const union = new Set<number>();
@@ -217,6 +225,101 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     return renderCheckOffButtons(planId, item.id);
   }
 
+  const neuBlock = (
+    <div className="space-y-2">
+      {schedule.blocks.flatMap((block) => {
+        const plan = planById.get(block.planId);
+        if (!plan) return [];
+
+        if (block.neu != null) {
+          const item = block.neu as PlanItemWithId;
+          return [
+            <div
+              key={block.planId}
+              className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3 flex flex-wrap items-center justify-between gap-2"
+            >
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-white">{item.title ?? "Unbenanntes Thema"}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{plan.title ?? "Unbenannter Plan"}</p>
+              </div>
+              {renderItemActions(block.planId, item)}
+            </div>,
+          ];
+        }
+
+        const phase = computePhase(plan, today);
+        if (phase === "aufbau") return [];
+        return [
+          <div
+            key={block.planId}
+            className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3"
+          >
+            <div className="flex flex-wrap items-center gap-2">
+              <span className={`text-xs px-2 py-0.5 rounded-full border ${PHASE_COLORS[phase]}`}>
+                {PHASE_LABELS[phase]}
+              </span>
+              <span className="text-sm font-medium text-slate-300">
+                {plan.title ?? "Unbenannter Plan"}
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 mt-1.5">
+              {phase === "festigung"
+                ? PHASE_HINTS.festigung
+                : `${PHASE_HINTS.endspurt} (seit ${formatDateKey(computeEndspurtStart(plan, today))})`}
+            </p>
+          </div>,
+        ];
+      })}
+      {schedule.blocks.every((block) => {
+        const plan = planById.get(block.planId);
+        if (!plan) return true;
+        return block.neu == null && computePhase(plan, today) === "aufbau";
+      }) && <p className="text-xs text-slate-500">Heute steht nichts Neues an.</p>}
+    </div>
+  );
+
+  const wiederholungBlock =
+    dueItems.length === 0 ? (
+      <p className="text-xs text-slate-500">Keine fälligen Wiederholungen.</p>
+    ) : (
+      <div className="space-y-2">
+        {dueItems.map((item) => {
+          const plan = planById.get(item.planId);
+          const overdue = item.nextDueAt != null && item.nextDueAt < today;
+          return (
+            <div
+              key={`${item.planId}/${item.id}`}
+              className={`rounded-lg border p-3 flex flex-wrap items-center justify-between gap-2 ${
+                overdue
+                  ? "border-red-500/30 bg-red-500/5"
+                  : "border-slate-700/40 bg-slate-800/40"
+              }`}
+            >
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-white">
+                  {item.title ?? "Unbenanntes Thema"}
+                </p>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {plan?.title ?? "Unbenannter Plan"}
+                  {item.nextDueAt != null && (
+                    <>
+                      {" · "}
+                      <span className={overdue ? "text-red-400 font-medium" : ""}>
+                        {overdue
+                          ? `überfällig seit ${formatDateKey(item.nextDueAt)}`
+                          : `fällig seit ${formatDateKey(item.nextDueAt)}`}
+                      </span>
+                    </>
+                  )}
+                </p>
+              </div>
+              {renderItemActions(item.planId, item)}
+            </div>
+          );
+        })}
+      </div>
+    );
+
   return (
     <section className="glass rounded-xl p-5">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
@@ -254,16 +357,20 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         </div>
       </div>
 
-      {quizPassed && (
+      {dayDone && (
         <div className="mb-4 flex items-center gap-3 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
           <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
           <div className="min-w-0">
             <p className="text-sm font-semibold text-emerald-300">
-              Tagesziel erreicht — Tagesquiz bestanden
+              {quizPassed
+                ? "Tagesziel erreicht — Tagesquiz bestanden"
+                : "Tagesziel erreicht — Tagespensum erledigt"}
             </p>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Die Themen unten sind noch offen, aber freiwillig — kein Rückstand.
-            </p>
+            {quizPassed && (
+              <p className="text-xs text-slate-400 mt-0.5">
+                Die Themen unten sind noch offen, aber freiwillig — kein Rückstand.
+              </p>
+            )}
           </div>
         </div>
       )}
@@ -298,111 +405,34 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         </div>
       ) : (
         <div className="space-y-5">
-          {/* Neu */}
-          <div>
-            <h3 className="text-sm font-semibold text-slate-300 mb-2">
-              {quizPassed ? "Zusätzlich üben" : "Neu"}
-            </h3>
-            <div className="space-y-2">
-              {schedule.blocks.flatMap((block) => {
-                const plan = planById.get(block.planId);
-                if (!plan) return [];
-
-                if (block.neu != null) {
-                  const item = block.neu as PlanItemWithId;
-                  return [
-                    <div
-                      key={block.planId}
-                      className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3 flex flex-wrap items-center justify-between gap-2"
-                    >
-                      <div className="min-w-0">
-                        <p className="text-sm font-medium text-white">{item.title ?? "Unbenanntes Thema"}</p>
-                        <p className="text-xs text-slate-500 mt-0.5">{plan.title ?? "Unbenannter Plan"}</p>
-                      </div>
-                      {renderItemActions(block.planId, item)}
-                    </div>,
-                  ];
-                }
-
-                const phase = computePhase(plan, today);
-                if (phase === "aufbau") return [];
-                return [
-                  <div
-                    key={block.planId}
-                    className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3"
-                  >
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className={`text-xs px-2 py-0.5 rounded-full border ${PHASE_COLORS[phase]}`}>
-                        {PHASE_LABELS[phase]}
-                      </span>
-                      <span className="text-sm font-medium text-slate-300">
-                        {plan.title ?? "Unbenannter Plan"}
-                      </span>
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1.5">
-                      {phase === "festigung"
-                        ? PHASE_HINTS.festigung
-                        : `${PHASE_HINTS.endspurt} (seit ${formatDateKey(computeEndspurtStart(plan, today))})`}
-                    </p>
-                  </div>,
-                ];
-              })}
-              {schedule.blocks.every((block) => {
-                const plan = planById.get(block.planId);
-                if (!plan) return true;
-                return block.neu == null && computePhase(plan, today) === "aufbau";
-              }) && (
-                <p className="text-xs text-slate-500">Heute steht nichts Neues an.</p>
-              )}
-            </div>
-          </div>
-
-          {/* Wiederholung */}
-          <div>
-            <h3 className="text-sm font-semibold text-slate-300 mb-2">
-              {quizPassed ? "Zusätzlich üben" : "Wiederholung"}
-            </h3>
-            {dueItems.length === 0 ? (
-              <p className="text-xs text-slate-500">Keine fälligen Wiederholungen.</p>
-            ) : (
-              <div className="space-y-2">
-                {dueItems.map((item) => {
-                  const plan = planById.get(item.planId);
-                  const overdue = item.nextDueAt != null && item.nextDueAt < today;
-                  return (
-                    <div
-                      key={`${item.planId}/${item.id}`}
-                      className={`rounded-lg border p-3 flex flex-wrap items-center justify-between gap-2 ${
-                        overdue
-                          ? "border-red-500/30 bg-red-500/5"
-                          : "border-slate-700/40 bg-slate-800/40"
-                      }`}
-                    >
-                      <div className="min-w-0">
-                        <p className="text-sm font-medium text-white">
-                          {item.title ?? "Unbenanntes Thema"}
-                        </p>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          {plan?.title ?? "Unbenannter Plan"}
-                          {item.nextDueAt != null && (
-                            <>
-                              {" · "}
-                              <span className={overdue ? "text-red-400 font-medium" : ""}>
-                                {overdue
-                                  ? `überfällig seit ${formatDateKey(item.nextDueAt)}`
-                                  : `fällig seit ${formatDateKey(item.nextDueAt)}`}
-                              </span>
-                            </>
-                          )}
-                        </p>
-                      </div>
-                      {renderItemActions(item.planId, item)}
-                    </div>
-                  );
-                })}
+          {dayDone ? (
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-slate-300">Zusätzlich üben</h3>
+              <div>
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                  Neu
+                </p>
+                {neuBlock}
               </div>
-            )}
-          </div>
+              <div>
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                  Wiederholung
+                </p>
+                {wiederholungBlock}
+              </div>
+            </div>
+          ) : (
+            <>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-300 mb-2">Neu</h3>
+                {neuBlock}
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-300 mb-2">Wiederholung</h3>
+                {wiederholungBlock}
+              </div>
+            </>
+          )}
         </div>
       )}
     </section>

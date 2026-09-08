@@ -19,12 +19,11 @@ import {
 } from "../dates";
 import {
   buildToday,
-  computeDayDone,
-  computePlanUnitsToday,
+  computeDayStatus,
   computeWeekProgress,
   type ActivityDocLike,
 } from "../today";
-import { computeDailyTarget, computePace, computePhase, type PlanItemLike } from "../scheduling";
+import { computePace, computePhase, type PlanItemLike } from "../scheduling";
 import { hasExercisesForTopic } from "../exercises/session";
 import type {
   TodayApiItem,
@@ -191,36 +190,13 @@ export async function buildTodayApiData(
   const quizDayData = quizDayDoc.exists ? (quizDayDoc.data() ?? {}) : {};
   const quizPassedToday = quizDayData.passed === true;
 
-  // totalDue: fällige Wiederholungen UNGEDECKELT (buildToday kappt die
-  // Anzeige auf 3 pro Plan) + offene Neu-Themen (done < target).
-  let dueCount = 0;
-  for (const plan of activePlans) {
-    for (const item of itemsByPlan[plan.id] ?? []) {
-      if (item.nextDueAt != null && item.nextDueAt <= today) dueCount += 1;
-    }
-  }
-  const openNeuBlocks = schedule.blocks.filter(
-    (block) =>
-      block.neu !== null &&
-      (block.neu.completedUnits ?? 0) < Math.max(block.neu.estimatedUnits ?? 1, 1)
-  );
-  const hasOpenNeu = openNeuBlocks.length > 0;
-
-  // Pensum PRO PLAN: nur die heute an DIESEM Plan bearbeiteten Einheiten
-  // zählen (sm2.lastReview der Items dieses Plans) — das nutzerweite
-  // doneToday aus dem Activity-Doc taugt dafür nicht (Einheiten eines
-  // gelöschten Plans würden anderen Plänen zugerechnet).
-  const planProgress = activePlans.map((plan) => ({
-    unitsToday: computePlanUnitsToday(itemsByPlan[plan.id] ?? [], today),
-    dailyTarget: computeDailyTarget(plan, itemsByPlan[plan.id] ?? [], today),
-  }));
-
-  const dayDone = computeDayDone({
+  // dayDone + openCount (= totalDue) kommen aus derselben reinen Funktion
+  // wie Heute-Karte und Übungs-Abschluss (computeDayStatus).
+  const dayStatus = computeDayStatus({
+    plans: activePlans,
+    itemsByPlan,
     quizPassedToday,
-    hasActivePlans: activePlans.length > 0,
-    dueCount,
-    hasOpenNeu,
-    planProgress,
+    now,
   });
 
   return {
@@ -234,7 +210,7 @@ export async function buildTodayApiData(
     },
     plans,
     quizUrl: `${opts.baseUrl}/tagesquiz`,
-    dayDone,
-    totalDue: dueCount + openNeuBlocks.length,
+    dayDone: dayStatus.dayDone,
+    totalDue: dayStatus.openCount,
   };
 }

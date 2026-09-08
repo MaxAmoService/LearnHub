@@ -7,7 +7,7 @@
 // wirksame Übung.
 
 import Link from "next/link";
-import { AlertCircle, ArrowRight, CheckCircle2, RotateCcw } from "lucide-react";
+import { AlertCircle, ArrowRight, CheckCircle2, Info, RotateCcw } from "lucide-react";
 import { qualityFromRatio } from "@/lib/exercises/scoring";
 import {
   isChoiceExercise,
@@ -109,12 +109,24 @@ export function WrongExerciseReview({
   );
 }
 
+/** Tagesstatus nach der Sitzung (computeDayStatus, lib/today.ts). */
+export interface ExerciseDayStatus {
+  dayDone: boolean;
+  /** Fällige Wiederholungen + offene Neu-Themen — „Noch offen: N". */
+  openCount: number;
+  /** Tagesquiz heute bestanden? (Zusatz der grünen Zeile). */
+  quizPassedToday: boolean;
+  /** Aktueller Streak nach der Sitzung. */
+  streak: number;
+}
+
 export function ExerciseSummary({
   results,
   correct,
   total,
   nextDueAt,
   procedural,
+  dayStatus,
   onRestart,
 }: {
   results: ExerciseResult[];
@@ -122,6 +134,7 @@ export function ExerciseSummary({
   total: number;
   nextDueAt: string | null;
   procedural: boolean;
+  dayStatus?: ExerciseDayStatus | null;
   onRestart: () => void;
 }) {
   const quality = qualityFromRatio(correct, total);
@@ -151,6 +164,30 @@ export function ExerciseSummary({
           </p>
         </div>
       )}
+
+      {dayStatus &&
+        (dayStatus.dayDone ? (
+          <div className="flex items-center gap-3 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+            <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+            <div>
+              <p className="text-sm font-semibold text-emerald-300">
+                Tagesziel erreicht —{" "}
+                {dayStatus.quizPassedToday ? "Tagesquiz bestanden" : "Tagespensum erledigt"}
+              </p>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Streak auf {dayStatus.streak} {dayStatus.streak === 1 ? "Tag" : "Tage"}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-slate-800/40 p-3">
+            <Info className="w-5 h-5 text-slate-400 flex-shrink-0" />
+            <p className="text-sm text-slate-300">
+              Noch offen: {dayStatus.openCount}{" "}
+              {dayStatus.openCount === 1 ? "Thema" : "Themen"}
+            </p>
+          </div>
+        ))}
 
       {wrong.length > 0 ? (
         <div className="space-y-3">

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildToday,
   computeDayDone,
+  computeDayStatus,
   computePlanUnitsToday,
   computeWeekProgress,
   type DayDoneInput,
@@ -336,5 +337,154 @@ describe("computeDayDone — Tag geschafft (Widget-API)", () => {
     expect(
       computeDayDone(makeInput({ hasActivePlans: false, quizPassedToday: true }))
     ).toBe(true);
+  });
+});
+
+describe("computeDayStatus — Tagesstatus für Karte, Übungs-Abschluss und API", () => {
+  // Montag 14:00 Berlin → Tages-Key "2026-09-07"
+  const NOW = new Date("2026-09-07T12:00:00Z");
+  const TODAY = "2026-09-07";
+
+  function activePlan(
+    id: string,
+    overrides: Partial<PlanLike & { archivedAt?: string | null }> = {}
+  ) {
+    return { ...makePlan(), id, ...overrides };
+  }
+
+  it("Quiz bestanden → dayDone true, openCount zählt trotzdem offene Themen", () => {
+    const plans = [activePlan("p1")];
+    const items = {
+      p1: [
+        makeItem({ order: 0, nextDueAt: "2026-09-06" }),
+        makeItem({ order: 1, nextDueAt: "2026-09-07" }),
+      ],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: true,
+      now: NOW,
+    });
+    expect(status.dayDone).toBe(true);
+    expect(status.openCount).toBe(2); // 2 fällige — beide Items sind fällig, also kein offenes Neu-Thema
+  });
+
+  it("Pensum erreicht und nichts offen → dayDone true, openCount 0", () => {
+    const todayMs = Date.UTC(2026, 8, 7, 12, 0, 0);
+    const plans = [activePlan("p1")];
+    const items = {
+      p1: [
+        makeItem({
+          order: 0,
+          sm2: {
+            repetitions: 2,
+            interval: 7,
+            lastReview: todayMs,
+          } as PlanItemLike["sm2"], // gefestigt + heute geübt
+          completedUnits: 3,
+        }),
+      ],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: false,
+      now: NOW,
+    });
+    expect(status.dayDone).toBe(true);
+    expect(status.openCount).toBe(0);
+  });
+
+  it("Neu-Thema mit done >= target zählt nicht als offen, done < target schon", () => {
+    const plans = [activePlan("p1")];
+    const consolidated = makeItem({
+      order: 0,
+      sm2: { repetitions: 2, interval: 7 }, // gefestigt → nicht mehr "neu"
+      completedUnits: 3,
+      estimatedUnits: 3,
+    });
+    const open = makeItem({ order: 1, completedUnits: 1, estimatedUnits: 3 });
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: { p1: [consolidated, open] },
+      quizPassedToday: false,
+      now: NOW,
+    });
+    expect(status.openCount).toBe(1); // open (1 < 3) ist das offene Neu-Thema
+    expect(status.dayDone).toBe(false);
+
+    const closed = computeDayStatus({
+      plans,
+      itemsByPlan: {
+        p1: [
+          consolidated,
+          makeItem({ order: 1, completedUnits: 3, estimatedUnits: 3 }),
+        ],
+      },
+      quizPassedToday: false,
+      now: NOW,
+    });
+    expect(closed.openCount).toBe(0); // done == target → nicht offen
+  });
+
+  it("fällige Wiederholungen werden ungedeckelt gezählt, archivierte Pläne ignoriert", () => {
+    const plans = [
+      activePlan("p1"),
+      activePlan("p2", { archivedAt: "2026-09-01T10:00:00.000Z" }),
+    ];
+    const items = {
+      p1: [
+        makeItem({ order: 0, nextDueAt: "2026-09-06" }),
+        makeItem({ order: 1, nextDueAt: "2026-09-07" }),
+      ],
+      p2: [makeItem({ order: 0, nextDueAt: "2026-09-05" })],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: false,
+      now: NOW,
+    });
+    expect(status.openCount).toBe(2); // 2 fällige, kein offenes Neu-Thema — p2 zählt nicht
+    expect(status.dayDone).toBe(false);
+  });
+
+  it("Bug-Fall: Einheiten zählen nur für den eigenen Plan", () => {
+    const todayMs = Date.UTC(2026, 8, 7, 12, 0, 0);
+    const plans = [activePlan("p1")];
+    // p1 hat heute NICHTS getan — Ziel 1, aber das offene Thema verhindert
+    // dayDone ohnehin über die Invariante.
+    const items = {
+      p1: [
+        makeItem({
+          order: 0,
+          sm2: {
+            repetitions: 0,
+            interval: 0,
+            lastReview: todayMs, // kommt hier vom Item selbst — ohne sm2 gäbe es 0 Einheiten
+          } as PlanItemLike["sm2"],
+          completedUnits: 0,
+        }),
+      ],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: false,
+      now: NOW,
+    });
+    expect(status.openCount).toBe(1); // Neu-Thema done 0 < target
+    expect(status.dayDone).toBe(false);
+
+    // Der eigentliche Leak-Fall: ein Plan, dessen Items heute keine Reviews
+    // haben, liefert 0 Einheiten — egal was andere Pläne taten (diese
+    // Existenzprüfung ist strukturell: computePlanUnitsToday liest nur die
+    // Items des Plans).
+    const units = computePlanUnitsToday(
+      [makeItem({ order: 0, sm2: null })],
+      TODAY
+    );
+    expect(units).toBe(0);
   });
 });
