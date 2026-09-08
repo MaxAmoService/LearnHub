@@ -112,10 +112,16 @@ export function WrongExerciseReview({
 /** Tagesstatus nach der Sitzung (computeDayStatus, lib/today.ts). */
 export interface ExerciseDayStatus {
   dayDone: boolean;
+  /** Mindestens ein Plan erledigt UND mindestens einer offen. */
+  partial: boolean;
   /** Fällige Wiederholungen + offene Neu-Themen — „Noch offen: N". */
   openCount: number;
   /** Tagesquiz heute bestanden? (Zusatz der grünen Zeile). */
   quizPassedToday: boolean;
+  /** Alle Pläne sind per Quiz erledigt. */
+  allQuizDone: boolean;
+  /** Titel der noch offenen Pläne (für die Teilweise-Zeile). */
+  openPlanTitles: string[];
   /** Heute bearbeitete Einheiten über alle aktiven Pläne. */
   unitsToday: number;
   /** Summe der Tagesziele aller aktiven Pläne. */
@@ -176,14 +182,25 @@ export function ExerciseSummary({
             <div>
               <p className="text-sm font-semibold text-emerald-300">
                 Tagesziel erreicht —{" "}
-                {dayStatus.quizPassedToday ? "Tagesquiz bestanden" : "Tagespensum erledigt"}
+                {dayStatus.allQuizDone
+                  ? "Tagesquiz bestanden"
+                  : dayStatus.quizPassedToday
+                    ? "alle Pläne erledigt"
+                    : "Tagespensum erledigt"}
               </p>
               <p className="text-xs text-slate-400 mt-0.5">
-                {dayStatus.quizPassedToday
+                {dayStatus.quizPassedToday && !dayStatus.allQuizDone
                   ? `Streak auf ${dayStatus.streak} ${dayStatus.streak === 1 ? "Tag" : "Tage"}`
                   : `${dayStatus.unitsToday} von ${dayStatus.dailyTarget} Einheiten heute · Streak auf ${dayStatus.streak} ${dayStatus.streak === 1 ? "Tag" : "Tage"}`}
               </p>
             </div>
+          </div>
+        ) : dayStatus.partial ? (
+          <div className="flex items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/5 p-3">
+            <Info className="w-5 h-5 text-amber-400 flex-shrink-0" />
+            <p className="text-sm text-amber-300">
+              Tagesziel teilweise erreicht — {dayStatus.openPlanTitles.join(", ")} offen
+            </p>
           </div>
         ) : (
           <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-slate-800/40 p-3">

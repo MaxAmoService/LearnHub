@@ -23,6 +23,7 @@ function makePlan(overrides: Partial<TodayApiPlan> = {}): TodayApiPlan {
     todayTarget: 0,
     aheadUnits: 0,
     aheadDays: 0,
+    done: false,
     ...overrides,
   };
 }

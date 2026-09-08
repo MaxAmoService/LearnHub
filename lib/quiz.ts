@@ -85,6 +85,30 @@ export interface QuizDayDocLike {
   /** null = gestartet, kein Ergebnis; true/false = erster Durchgang beendet. */
   passed?: boolean | null;
   tasks?: QuizDayTaskRecord[];
+  /** Pläne, aus denen die Aufgaben stammen — bei bestandenem Quiz sind genau diese erledigt. */
+  planIds?: string[];
+}
+
+/**
+ * Betroffene Pläne eines quizDays-Docs: das planIds-Feld, bei alten Docs
+ * ohne das Feld defensiv aus den Tasks abgeleitet.
+ */
+export function quizPlanIdsFromDay(
+  doc: QuizDayDocLike | null | undefined
+): string[] {
+  if (!doc) return [];
+  if (Array.isArray(doc.planIds)) {
+    return doc.planIds.filter(
+      (id): id is string => typeof id === "string" && id.length > 0
+    );
+  }
+  const fromTasks = new Set<string>();
+  for (const record of Array.isArray(doc.tasks) ? doc.tasks : []) {
+    if (record && typeof record.planId === "string" && record.planId.length > 0) {
+      fromTasks.add(record.planId);
+    }
+  }
+  return [...fromTasks];
 }
 
 // ─── Zusammenstellung ────────────────────────────────────────────────────────
@@ -132,15 +156,25 @@ function pickWeighted(candidates: Candidate[], rng: () => number): Candidate {
 
 /**
  * Baut den Fragenbogen: bis zu `count` Aufgaben aus allen begonnenen Themen.
- * Themen-Pools werden lazy gebaut (prozedural mit frischem `topicSeed`); aus
- * jedem Pool wird ZUFÄLLIG (seeded) ohne Zurücklegen gezogen, wobei zuletzt
- * verwendete Aufgaben (recentExerciseIds) gemieden werden. Derselbe Seed +
- * dieselbe Themenmenge ergibt deterministisch denselben Bogen (Tests
- * verlassen sich darauf).
+ *
+ * Zwei Phasen: Erst bekommt JEDER aktive Plan (activePlanIds) mindestens
+ * eine Frage, sofern er begonnene Themen mit Aufgaben hat — die Stichprobe
+ * soll Pläne fair abdecken. Der Rest wird wie bisher gewichtet gezogen
+ * (überfällig > heute fällig > übrig). Aus jedem Themen-Pool wird ZUFÄLLIG
+ * (seeded) ohne Zurücklegen gezogen, wobei zuletzt verwendete Aufgaben
+ * (recentExerciseIds) gemieden werden. Derselbe Seed + dieselbe Themenmenge
+ * ergibt deterministisch denselben Bogen (Tests verlassen sich darauf).
  */
 export function buildDailyQuiz(
   topics: QuizTopicLike[],
-  opts: { count?: number; today?: string; seed?: number; rng?: () => number } = {}
+  opts: {
+    count?: number;
+    today?: string;
+    seed?: number;
+    rng?: () => number;
+    /** Aktive Pläne: jeder bekommt mindestens eine Frage (sofern möglich). */
+    activePlanIds?: readonly string[];
+  } = {}
 ): DailyQuiz {
   const count = opts.count ?? DAILY_QUIZ_SIZE;
   const today = opts.today ?? todayKey();
@@ -162,17 +196,17 @@ export function buildDailyQuiz(
   const pools = new Map<string, PoolEntry>();
   const keyOf = (t: QuizTopicLike) => `${t.planId}/${t.itemId}`;
 
-  const tasks: QuizTask[] = [];
-  while (tasks.length < count) {
-    const alive = candidates.filter((c) => {
+  const aliveCandidates = (scope: Candidate[]): Candidate[] =>
+    scope.filter((c) => {
       const pool = pools.get(keyOf(c.topic));
-      return !pool || (pool.used < MAX_QUIZ_TASKS_PER_TOPIC && pool.unused.length > 0);
+      return (
+        !pool ||
+        (pool.used < MAX_QUIZ_TASKS_PER_TOPIC && pool.unused.length > 0)
+      );
     });
-    if (alive.length === 0) break;
 
-    const chosen = pickWeighted(alive, rng);
+  const drawTask = (chosen: Candidate): QuizTask | null => {
     const key = keyOf(chosen.topic);
-
     let pool = pools.get(key);
     if (!pool) {
       const topicSeed = Math.floor(rng() * 2 ** 31);
@@ -202,8 +236,7 @@ export function buildDailyQuiz(
     pool.used += 1;
 
     const exercise = pool.exercises[index];
-
-    tasks.push({
+    return {
       planId: chosen.topic.planId,
       itemId: chosen.topic.itemId,
       topicSlug: chosen.topic.topicSlug!,
@@ -211,7 +244,28 @@ export function buildDailyQuiz(
       topicSeed: pool.topicSeed,
       source: pool.source,
       exercise,
-    });
+    };
+  };
+
+  const tasks: QuizTask[] = [];
+
+  // Phase 1: faire Abdeckung — mindestens eine Frage pro aktivem Plan.
+  if (opts.activePlanIds && opts.activePlanIds.length > 0) {
+    for (const planId of opts.activePlanIds) {
+      if (tasks.length >= count) break;
+      const alive = aliveCandidates(candidates.filter((c) => c.topic.planId === planId));
+      if (alive.length === 0) continue;
+      const task = drawTask(pickWeighted(alive, rng));
+      if (task) tasks.push(task);
+    }
+  }
+
+  // Phase 2: Rest nach Fälligkeit gewichtet (wie bisher).
+  while (tasks.length < count) {
+    const alive = aliveCandidates(candidates);
+    if (alive.length === 0) break;
+    const task = drawTask(pickWeighted(alive, rng));
+    if (task) tasks.push(task);
   }
 
   return { seed, tasks };

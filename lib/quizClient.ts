@@ -72,6 +72,7 @@ export async function startDailyQuiz(
       attemptedAt: now.toISOString(),
       passed: null,
       tasks: serializeQuizTasks(quiz),
+      planIds: [...new Set(quiz.tasks.map((t) => t.planId))],
     });
     return true;
   });
@@ -162,6 +163,7 @@ export async function finishDailyQuiz(
         attemptedAt: now.toISOString(),
         passed,
         tasks: serializeQuizTasks(quiz),
+        planIds: [...new Set(quiz.tasks.map((t) => t.planId))],
       });
     } else if (dayData.passed == null) {
       tx.update(dayRef, { passed });

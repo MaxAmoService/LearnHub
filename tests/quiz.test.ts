@@ -13,6 +13,7 @@ import {
   canClaimFreeDay,
   computeQuizTopicReviewPatch,
   evaluateDailyQuiz,
+  quizPlanIdsFromDay,
   rebuildDailyQuizFromDay,
   serializeQuizTasks,
   type QuizTopicLike,
@@ -240,6 +241,74 @@ describe("buildDailyQuiz — Auswahl-Abstinenz (recentExerciseIds)", () => {
       for (const task of quiz.tasks) seen.add(task.exercise.id);
     }
     expect(seen.size).toBeGreaterThan(2);
+  });
+});
+
+describe("quizPlanIdsFromDay — betroffene Pläne des Tagesquiz", () => {
+  it("liefert das planIds-Feld", () => {
+    expect(quizPlanIdsFromDay({ planIds: ["p1", "p2"] })).toEqual(["p1", "p2"]);
+    expect(quizPlanIdsFromDay(null)).toEqual([]);
+    expect(quizPlanIdsFromDay(undefined)).toEqual([]);
+    expect(quizPlanIdsFromDay({})).toEqual([]);
+  });
+
+  it("fällt bei alten Docs ohne planIds auf die Tasks zurück", () => {
+    const doc = {
+      tasks: [
+        { planId: "p1", itemId: "i1", topicSlug: "s", topicTitle: "t", topicSeed: 1, exerciseId: "e1" },
+        { planId: "p1", itemId: "i2", topicSlug: "s", topicTitle: "t", topicSeed: 2, exerciseId: "e2" },
+        { planId: "p2", itemId: "i3", topicSlug: "s", topicTitle: "t", topicSeed: 3, exerciseId: "e3" },
+      ],
+    };
+    expect(quizPlanIdsFromDay(doc)).toEqual(["p1", "p2"]);
+  });
+});
+
+describe("buildDailyQuiz — faire Abdeckung aktiver Pläne", () => {
+  it("jeder aktive Plan mit begonnenen Themen bekommt mindestens eine Frage", () => {
+    const topics = [
+      makeTopic({ planId: "p1", topicSlug: SLUGS.procA }),
+      makeTopic({ planId: "p1", topicSlug: SLUGS.procB }),
+      makeTopic({ planId: "p2", topicSlug: SLUGS.procC }),
+      makeTopic({ planId: "p2", topicSlug: SLUGS.procD }),
+      makeTopic({ planId: "p3", topicSlug: SLUGS.procE }),
+      makeTopic({ planId: "p4", topicSlug: SLUGS.procF }),
+    ];
+    const quiz = buildDailyQuiz(topics, {
+      today: TODAY,
+      seed: 21,
+      count: 4,
+      activePlanIds: ["p1", "p2", "p3", "p4"],
+    });
+    const plans = new Set(quiz.tasks.map((t) => t.planId));
+    expect(plans).toEqual(new Set(["p1", "p2", "p3", "p4"]));
+    expect(quiz.tasks).toHaveLength(4);
+  });
+
+  it("Pläne ohne begonnene Themen/ohne Aufgaben werden übersprungen", () => {
+    const topics = [
+      makeTopic({ planId: "p1", topicSlug: SLUGS.procA }),
+      makeTopic({ planId: "p2", topicSlug: "gibt-es-nicht" }),
+      makeTopic({ planId: "p3", attemptCount: 0, completedUnits: 0 }),
+    ];
+    const quiz = buildDailyQuiz(topics, {
+      today: TODAY,
+      seed: 22,
+      count: 5,
+      activePlanIds: ["p1", "p2", "p3"],
+    });
+    const plans = new Set(quiz.tasks.map((t) => t.planId));
+    expect(plans).toEqual(new Set(["p1"]));
+  });
+
+  it("ohne activePlanIds bleibt das Verhalten wie bisher", () => {
+    const topics = [
+      makeTopic({ planId: "p1", topicSlug: SLUGS.procA }),
+      makeTopic({ planId: "p2", topicSlug: SLUGS.procB }),
+    ];
+    const a = buildDailyQuiz(topics, { today: TODAY, seed: 23, count: 3 });
+    const b = buildDailyQuiz(topics, { today: TODAY, seed: 23, count: 3 });
+    expect(a.tasks.map((t) => t.exercise.id)).toEqual(b.tasks.map((t) => t.exercise.id));
   });
 });
 

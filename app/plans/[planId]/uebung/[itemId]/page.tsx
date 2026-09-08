@@ -36,6 +36,7 @@ import {
   type PlanItemWithId,
 } from "@/lib/plans";
 import { loadQuizDayDoc } from "@/lib/quizClient";
+import { quizPlanIdsFromDay } from "@/lib/quiz";
 import { computeDayStatus } from "@/lib/today";
 import { todayKey } from "@/lib/dates";
 
@@ -122,12 +123,16 @@ export default function ExercisePage() {
           plans: plansRes,
           itemsByPlan: itemsRes,
           quizPassedToday,
+          quizPlanIds: quizPassedToday ? quizPlanIdsFromDay(quizDayRes) : [],
         });
         await refreshUser();
         setDayStatus({
           dayDone: status.dayDone,
           openCount: status.openCount,
           quizPassedToday,
+          partial: status.partial,
+          openPlanTitles: status.openPlanTitles,
+          allQuizDone: status.allQuizDone,
           unitsToday: status.unitsToday,
           dailyTarget: status.dailyTarget,
         });

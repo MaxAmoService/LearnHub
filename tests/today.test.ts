@@ -369,7 +369,7 @@ describe("computeDayStatus — Tagesstatus für Karte, Übungs-Abschluss und API
 
   function activePlan(
     id: string,
-    overrides: Partial<PlanLike & { archivedAt?: string | null }> = {}
+    overrides: Partial<PlanLike & { archivedAt?: string | null; title?: string }> = {}
   ) {
     return { ...makePlan(), id, ...overrides };
   }
@@ -386,10 +386,96 @@ describe("computeDayStatus — Tagesstatus für Karte, Übungs-Abschluss und API
       plans,
       itemsByPlan: items,
       quizPassedToday: true,
+      quizPlanIds: ["p1"],
       now: NOW,
     });
     expect(status.dayDone).toBe(true);
+    expect(status.partial).toBe(false);
+    expect(status.allQuizDone).toBe(true);
+    expect(status.plans[0].quizDone).toBe(true);
+    expect(status.plans[0].done).toBe(true);
     expect(status.openCount).toBe(2); // 2 fällige — beide Items sind fällig, also kein offenes Neu-Thema
+  });
+
+  it("Quiz deckt nur einen von zwei Plänen → teilweise erreicht, anderer offen", () => {
+    const plans = [activePlan("p1", { title: "AP1" }), activePlan("p2", { title: "Mathe" })];
+    const items = {
+      p1: [makeItem({ order: 0, nextDueAt: "2026-09-06" })],
+      p2: [makeItem({ order: 0 })],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: true,
+      quizPlanIds: ["p1"],
+      now: NOW,
+    });
+    expect(status.dayDone).toBe(false);
+    expect(status.partial).toBe(true);
+    expect(status.openPlanTitles).toEqual(["Mathe"]);
+    expect(status.plans.find((p) => p.planId === "p1")?.done).toBe(true);
+    expect(status.plans.find((p) => p.planId === "p2")?.done).toBe(false);
+  });
+
+  it("alle aktiven Pläne per Quiz abgedeckt → Gesamttag erledigt", () => {
+    const plans = [activePlan("p1"), activePlan("p2")];
+    const items = {
+      p1: [makeItem({ order: 0, nextDueAt: "2026-09-06" })],
+      p2: [makeItem({ order: 0 })],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: true,
+      quizPlanIds: ["p1", "p2"],
+      now: NOW,
+    });
+    expect(status.dayDone).toBe(true);
+    expect(status.partial).toBe(false);
+    expect(status.allQuizDone).toBe(true);
+    expect(status.openPlanTitles).toEqual([]);
+  });
+
+  it("kein Plan erledigt → weder dayDone noch partial", () => {
+    const plans = [activePlan("p1"), activePlan("p2")];
+    const items = {
+      p1: [makeItem({ order: 0, nextDueAt: "2026-09-06" })],
+      p2: [makeItem({ order: 0 })],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: false,
+      now: NOW,
+    });
+    expect(status.dayDone).toBe(false);
+    expect(status.partial).toBe(false);
+  });
+
+  it("Pensum pro Plan: ein Plan fertig, einer offen → teilweise", () => {
+    const todayMs = Date.UTC(2026, 8, 7, 12, 0, 0);
+    const plans = [activePlan("p1", { title: "AP1" }), activePlan("p2", { title: "Mathe" })];
+    const items = {
+      p1: [
+        makeItem({
+          order: 0,
+          sm2: { repetitions: 2, interval: 7, lastReview: todayMs } as PlanItemLike["sm2"],
+          completedUnits: 3,
+        }),
+      ],
+      p2: [makeItem({ order: 0 })],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: false,
+      now: NOW,
+    });
+    expect(status.plans.find((p) => p.planId === "p1")?.done).toBe(true);
+    expect(status.plans.find((p) => p.planId === "p2")?.done).toBe(false);
+    expect(status.dayDone).toBe(false);
+    expect(status.partial).toBe(true);
+    expect(status.openPlanTitles).toEqual(["Mathe"]);
   });
 
   it("Pensum erreicht und nichts offen → dayDone true, openCount 0", () => {

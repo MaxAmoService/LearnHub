@@ -44,6 +44,8 @@ export interface TodayApiPlan {
   aheadUnits: number;
   /** Vorsprung in Tagen (konservativ abgerundet, mindestens 0). */
   aheadDays: number;
+  /** Plan heute erledigt? (per bestandenem Tagesquiz ODER per Tagespensum). */
+  done: boolean;
 }
 
 export interface TodayApiStreak {
@@ -64,11 +66,10 @@ export interface TodayApiResponse {
   /** Absoluter Link auf das Tagesquiz — Widget verlinkt direkt dorthin. */
   quizUrl: string;
   /**
-   * Ob der heutige Tag bereits als geschafft gilt. Tagesquiz heute bestanden
-   * → IMMER true (Abkürzung). Sonst gilt die Plausibilitäts-Invariante
-   * (lib/today.ts computeDayDone): keine fälligen Wiederholungen offen,
-   * kein Neu-Thema mit done < target, und das Tagespensum jedes aktiven
-   * Plans erreicht (heute an DIESEM Plan bearbeitete Einheiten).
+   * Ob der heutige Tag bereits als geschafft gilt: JEDER aktive Plan ist
+   * erledigt — per bestandenem Tagesquiz (nur Pläne, aus denen Fragen kamen)
+   * ODER per Tagespensum (lib/today.ts computeDayStatus). Solange ein Plan
+   * offen ist, bleibt dayDone false.
    */
   dayDone: boolean;
   /**

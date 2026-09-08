@@ -34,6 +34,7 @@ import { todayKey } from "@/lib/dates";
 import {
   buildDailyQuiz,
   evaluateDailyQuiz,
+  quizPlanIdsFromDay,
   rebuildDailyQuizFromDay,
   serializeQuizTasks,
   type DailyQuiz,
@@ -41,7 +42,8 @@ import {
   type QuizTopicLike,
 } from "@/lib/quiz";
 import { finishDailyQuiz, loadQuizDayDoc, startDailyQuiz } from "@/lib/quizClient";
-import { loadAllPlanItems, type PlanItemWithId } from "@/lib/plans";
+import { loadAllPlanItems, loadPlans, type PlanItemWithId } from "@/lib/plans";
+import { computeDayStatus } from "@/lib/today";
 
 function toTopics(itemsByPlan: Record<string, PlanItemWithId[]>): QuizTopicLike[] {
   const topics: QuizTopicLike[] = [];
@@ -83,6 +85,10 @@ export default function DailyQuizPage() {
   const [scores, setScores] = useState<number[]>([]);
   const [wrongAnswers, setWrongAnswers] = useState<QuizWrongAnswer[]>([]);
   const [finished, setFinished] = useState<FinishedState | null>(null);
+  const [dayStatus, setDayStatus] = useState<{
+    dayDone: boolean;
+    openPlanTitles: string[];
+  } | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState(false);
 
@@ -99,8 +105,19 @@ export default function DailyQuizPage() {
         setDayDoc(dayRes);
         setQuiz(rebuildDailyQuizFromDay(dayRes));
       } else {
-        const itemsRes = await loadAllPlanItems(user.uid);
-        const fresh = buildDailyQuiz(toTopics(itemsRes), { today });
+        const [itemsRes, plansRes] = await Promise.all([
+          loadAllPlanItems(user.uid),
+          loadPlans(user.uid),
+        ]);
+        // Jeder aktive Plan bekommt mindestens eine Frage (sofern er
+        // begonnene Themen mit Aufgaben hat) — faire Abdeckung.
+        const activePlanIds = plansRes
+          .filter((p) => p.archivedAt == null)
+          .map((p) => p.id);
+        const fresh = buildDailyQuiz(toTopics(itemsRes), {
+          today,
+          activePlanIds,
+        });
         setQuiz(fresh);
         if (fresh.tasks.length > 0) {
           const started = await startDailyQuiz(user.uid, fresh);
@@ -161,6 +178,29 @@ export default function DailyQuizPage() {
           firstAttempt: res.firstAttempt,
         });
         if (res.claimed) await refreshUser();
+
+        // Tagesstatus NACH dem Abschluss — das bestandene Quiz erledigt nur
+        // die Pläne, aus denen Fragen kamen (planIds im quizDays-Doc).
+        try {
+          const [plansRes, itemsRes, quizDayRes] = await Promise.all([
+            loadPlans(user.uid),
+            loadAllPlanItems(user.uid),
+            loadQuizDayDoc(user.uid, todayKey()),
+          ]);
+          const quizPassedToday = quizDayRes?.passed === true;
+          const status = computeDayStatus({
+            plans: plansRes,
+            itemsByPlan: itemsRes,
+            quizPassedToday,
+            quizPlanIds: quizPassedToday ? quizPlanIdsFromDay(quizDayRes) : [],
+          });
+          setDayStatus({
+            dayDone: status.dayDone,
+            openPlanTitles: status.openPlanTitles,
+          });
+        } catch (err) {
+          console.error("DailyQuizPage day status error:", err);
+        }
       } catch (err) {
         console.error("finishDailyQuiz error:", err);
         setSaveError(true);
@@ -189,6 +229,7 @@ export default function DailyQuizPage() {
     setScores([]);
     setWrongAnswers([]);
     setFinished(null);
+    setDayStatus(null);
     setSaveError(false);
   }
 
@@ -348,6 +389,7 @@ export default function DailyQuizPage() {
             claimed={finished.claimed}
             firstAttempt={finished.firstAttempt}
             wrongAnswers={wrongAnswers}
+            dayStatus={dayStatus}
             onRestart={handleRestart}
           />
         </div>

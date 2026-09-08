@@ -25,6 +25,7 @@ export function QuizSummary({
   claimed,
   firstAttempt,
   wrongAnswers,
+  dayStatus,
   onRestart,
 }: {
   correct: number;
@@ -35,6 +36,8 @@ export function QuizSummary({
   /** Dieser Durchgang war der erste des Tages. */
   firstAttempt: boolean;
   wrongAnswers: QuizWrongAnswer[];
+  /** Tagesstatus nach dem Abschluss — ein bestandenes Quiz erledigt nur die Pläne mit Fragen. */
+  dayStatus?: { dayDone: boolean; openPlanTitles: string[] } | null;
   onRestart: () => void;
 }) {
   const percent = total > 0 ? Math.round((correct / total) * 100) : 0;
@@ -58,12 +61,28 @@ export function QuizSummary({
           <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
           <div className="space-y-1">
             <p className="text-sm font-semibold text-emerald-300">
-              Tagesziel erreicht — Tagesquiz bestanden
+              {dayStatus?.dayDone
+                ? "Tagesziel erreicht — Tagesquiz bestanden"
+                : "Tagesquiz bestanden — Streak fortgeschrieben"}
             </p>
             <p className="text-sm text-slate-300">
-              Alles richtig: Der heutige Tag gilt als geschafft und dein
-              Streak ist fortgeschrieben. Die Übungen kannst du trotzdem noch
-              machen, wenn du willst.
+              {dayStatus == null ? (
+                <>Dein Streak ist fortgeschrieben — der Tag gilt als geschafft.</>
+              ) : dayStatus.dayDone ? (
+                <>
+                  Alles richtig: Der heutige Tag gilt als geschafft. Die
+                  Übungen kannst du trotzdem noch machen, wenn du willst.
+                </>
+              ) : (
+                <>
+                  Das Quiz hat aber nur Pläne abgedeckt, aus denen Fragen
+                  kamen. Der Tag ist erst geschafft, wenn auch{" "}
+                  <span className="text-slate-100 font-medium">
+                    {dayStatus.openPlanTitles.join(", ")}
+                  </span>{" "}
+                  erledigt {dayStatus.openPlanTitles.length === 1 ? "ist" : "sind"}.
+                </>
+              )}
             </p>
           </div>
         </div>

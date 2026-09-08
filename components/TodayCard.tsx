@@ -37,10 +37,11 @@ import {
   type PlanWithId,
 } from "@/lib/plans";
 import { loadQuizDayDoc } from "@/lib/quizClient";
+import { quizPlanIdsFromDay, type QuizDayDocLike } from "@/lib/quiz";
 import { hasExercisesForTopic } from "@/lib/exercises/session";
-import { computeDailyTarget, computePhase, computeEndspurtStart, type Phase } from "@/lib/scheduling";
+import { computePhase, computeEndspurtStart, type Phase } from "@/lib/scheduling";
 import { effectiveDailyLessons } from "@/lib/streak";
-import { buildToday, computeAheadDays, computeDayStatus, computePlanUnitsToday, computeWeekProgress, type ActivityDocLike } from "@/lib/today";
+import { buildToday, computeDayStatus, computeWeekProgress, type ActivityDocLike } from "@/lib/today";
 import { PHASE_COLORS, PHASE_LABELS } from "./PlanCard";
 import { ProgressBar } from "./ProgressBar";
 
@@ -77,7 +78,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
   const [activityByMonth, setActivityByMonth] = useState<
     Record<string, ActivityDocLike | undefined>
   >({});
-  const [quizPassed, setQuizPassed] = useState(false);
+  const [quizDay, setQuizDay] = useState<QuizDayDocLike | null>(null);
   const [working, setWorking] = useState<string | null>(null);
 
   const load = useCallback(async () => {
@@ -100,7 +101,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
       setPlans(plansRes);
       setItemsByPlan(itemsRes);
       setDueItems(dueRes);
-      setQuizPassed(quizDayRes?.passed === true);
+      setQuizDay(quizDayRes);
 
       const activity: Record<string, ActivityDocLike | undefined> = {};
       months.forEach((m, i) => {
@@ -132,30 +133,15 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
 
   const schedule = buildToday(activePlans, itemsByPlan, mergedActivity, now);
 
+  const quizPassed = quizDay?.passed === true;
   const dayStatus = computeDayStatus({
     plans: activePlans,
     itemsByPlan,
     quizPassedToday: quizPassed,
+    quizPlanIds: quizPassed ? quizPlanIdsFromDay(quizDay) : [],
     now,
   });
   const dayDone = dayStatus.dayDone;
-
-  // Tagesfortschritt PRO PLAN (dieselbe Rechnung wie in computeDayStatus und
-  // der Widget-API): heute bearbeitete Einheiten, Tagesziel, Vorsprung in
-  // Einheiten und Tagen.
-  const planDayProgress = activePlans.map((plan) => {
-    const items = itemsByPlan[plan.id] ?? [];
-    const todayDone = computePlanUnitsToday(items, today);
-    const todayTarget = computeDailyTarget(plan, items, today);
-    const aheadUnits = Math.max(todayDone - todayTarget, 0);
-    return {
-      plan,
-      todayDone,
-      todayTarget,
-      aheadUnits,
-      aheadDays: computeAheadDays(aheadUnits, todayTarget),
-    };
-  });
 
   const studyDaysUnion = (() => {
     if (activePlans.length === 0) return null;
@@ -269,38 +255,37 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
   }
 
   // Tagesbalken statt Themenbalken: pro Plan der heutige Fortschritt als
-  // Balken (Einheiten heute vs. Tagesziel). Die nächsten Themen stehen
-  // darunter (Neu) bzw. — wenn das Pensum schon erfüllt ist — im Abschnitt
+  // Balken (Einheiten heute vs. Tagesziel) — inkl. Plan-Status (per Quiz
+  // erledigt, Pensum erfüllt oder offen). Die nächsten Themen stehen
+  // darunter (Neu) bzw. — wenn der Plan schon erledigt ist — im Abschnitt
   // „Vorarbeit" mit benanntem Vorsprung in Tagen.
   const tagesbalkenBlock = (
     <div className="space-y-3 mb-2">
-      {planDayProgress.map(({ plan, todayDone, todayTarget }) => {
-        const reached = todayDone >= todayTarget;
+      {dayStatus.plans.map((status) => {
         const pct =
-          todayTarget > 0
-            ? Math.min(100, Math.round((todayDone / todayTarget) * 100))
+          status.todayTarget > 0
+            ? Math.min(100, Math.round((status.todayDone / status.todayTarget) * 100))
             : 100;
+        const label = status.quizDone
+          ? "per Tagesquiz erledigt"
+          : status.done
+            ? "Tagespensum erfüllt"
+            : `Heute ${status.todayDone} von ${status.todayTarget} Einheiten`;
         return (
-          <div key={plan.id} className="space-y-1">
+          <div key={status.planId} className="space-y-1">
             {activePlans.length > 1 && (
-              <p className="text-xs font-medium text-slate-400">
-                {plan.title ?? "Unbenannter Plan"}
-              </p>
+              <p className="text-xs font-medium text-slate-400">{status.title}</p>
             )}
             <div className="flex items-center gap-3">
               <div className="flex-1">
                 <ProgressBar
                   value={pct}
                   size="sm"
-                  color={reached ? "#34d399" : "#8b5cf6"}
+                  color={status.done ? "#34d399" : "#8b5cf6"}
                   animated={false}
                 />
               </div>
-              <p className="text-xs text-slate-400 flex-shrink-0">
-                {reached
-                  ? "Tagespensum erfüllt"
-                  : `Heute ${todayDone} von ${todayTarget} Einheiten`}
-              </p>
+              <p className="text-xs text-slate-400 flex-shrink-0">{label}</p>
             </div>
           </div>
         );
@@ -308,7 +293,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     </div>
   );
 
-  const progressByPlanId = new Map(planDayProgress.map((p) => [p.plan.id, p]));
+  const statusByPlanId = new Map(dayStatus.plans.map((p) => [p.planId, p]));
 
   const neuTodayCards: React.ReactNode[] = [];
   const vorarbeitCards: React.ReactNode[] = [];
@@ -319,16 +304,16 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     if (!plan) continue;
 
     if (block.neu != null) {
-      const progress = progressByPlanId.get(block.planId);
+      const status = statusByPlanId.get(block.planId);
       const item = block.neu as PlanItemWithId;
       const topicBlock = { planId: block.planId, neu: item };
-      if (progress && progress.todayDone >= progress.todayTarget) {
+      if (status && status.done) {
         vorarbeitCards.push(
           renderTopicCard(
             topicBlock,
             plan,
-            progress.aheadDays >= 1
-              ? `${progress.aheadDays} ${progress.aheadDays === 1 ? "Tag" : "Tage"} Vorsprung`
+            status.aheadDays >= 1
+              ? `${status.aheadDays} ${status.aheadDays === 1 ? "Tag" : "Tage"} Vorsprung`
               : null
           )
         );
@@ -455,14 +440,19 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         </div>
       </div>
 
-      {dayDone && (
+      {dayDone ? (
         <div className="mb-4 flex items-center gap-3 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
           <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
           <div className="min-w-0">
             <p className="text-sm font-semibold text-emerald-300">
-              {quizPassed
-                ? "Tagesziel erreicht — Tagesquiz bestanden"
-                : "Tagesziel erreicht — Tagespensum erledigt"}
+              Tagesziel erreicht —{" "}
+              {dayStatus.allQuizDone
+                ? "Tagesquiz bestanden"
+                : dayStatus.plans.some((p) => p.quizDone)
+                  ? "alle Pläne erledigt"
+                  : quizPassed
+                    ? "Tagesquiz bestanden"
+                    : "Tagespensum erledigt"}
             </p>
             {quizPassed && (
               <p className="text-xs text-slate-400 mt-0.5">
@@ -471,7 +461,14 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
             )}
           </div>
         </div>
-      )}
+      ) : dayStatus.partial ? (
+        <div className="mb-4 flex items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/5 p-3">
+          <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+          <p className="text-sm text-amber-300">
+            Tagesziel teilweise erreicht — {dayStatus.openPlanTitles.join(", ")} offen
+          </p>
+        </div>
+      ) : null}
 
       {loading ? (
         <div className="flex items-center justify-center py-10">

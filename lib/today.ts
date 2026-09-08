@@ -44,6 +44,7 @@ export interface TodaySchedule {
 
 export interface TodayPlanLike extends PlanLike {
   id: string;
+  title?: string;
   archivedAt?: string | null;
 }
 
@@ -234,9 +235,34 @@ export function computeDayDone(input: DayDoneInput): boolean {
   return input.planProgress.every((p) => p.unitsToday >= p.dailyTarget);
 }
 
+export interface PlanDayStatus {
+  planId: string;
+  title: string;
+  /** Heute an diesem Plan bearbeitete gewichtete Einheiten. */
+  todayDone: number;
+  /** Tagesziel des Plans (computeDailyTarget). */
+  todayTarget: number;
+  /** Einheiten ÜBER dem Tagesziel (0, wenn das Pensum nicht erfüllt ist). */
+  aheadUnits: number;
+  /** Vorsprung in Tagen (konservativ abgerundet, mindestens 0). */
+  aheadDays: number;
+  /** Offene fällige Wiederholungen DIESES Plans (ungedeckelt). */
+  dueCount: number;
+  /** Offenes Neu-Thema (done < target) in diesem Plan? */
+  hasOpenNeu: boolean;
+  /** Bestandenes Tagesquiz hat Fragen aus diesem Plan gezogen. */
+  quizDone: boolean;
+  /** Der Plan gilt heute als erledigt (per Quiz oder per Pensum). */
+  done: boolean;
+}
+
 export interface DayStatusResult {
-  /** Tag geschafft? (computeDayDone — Quiz bestanden ODER Pensum erreicht). */
+  /** Tag geschafft: JEDER aktive Plan ist erledigt (per Quiz oder Pensum). */
   dayDone: boolean;
+  /** Mindestens ein Plan erledigt UND mindestens einer offen. */
+  partial: boolean;
+  /** Alle Pläne sind per Quiz erledigt (für die Zusatz-Zeile). */
+  allQuizDone: boolean;
   /**
    * Was noch offen ist: fällige Wiederholungen über alle aktiven Pläne
    * (ungedeckelt) + offene Neu-Themen (done < target) — dasselbe Maß wie
@@ -247,58 +273,91 @@ export interface DayStatusResult {
   unitsToday: number;
   /** Summe der Tagesziele (computeDailyTarget) aller aktiven Pläne. */
   dailyTarget: number;
+  /** Titel der noch offenen aktiven Pläne (für „… offen" in der Statuszeile). */
+  openPlanTitles: string[];
+  /** Status PRO aktivem Plan. */
+  plans: PlanDayStatus[];
 }
 
 /**
  * Tagesstatus aus Plänen + Items + Quiz-Ergebnis — die EINE Quelle für die
- * grüne Statuszeile (Heute-Karte, Übungs-Abschluss, Widget-API).
- * Kein Firestore-Zugriff.
+ * Statuszeile (Heute-Karte, Übungs-Abschluss, Widget-API).
+ *
+ * Plan-bezogen: Ein bestandenes Quiz erledigt nur die Pläne, aus denen
+ * mindestens eine Frage stammte (quizPlanIds). Jeder übrige aktive Plan
+ * muss sein Pensum erreichen (computeDayDone mit derselben Invariante:
+ * keine offenen fälligen Wiederholungen, kein offenes Neu-Thema). Der
+ * Gesamttag ist erst erledigt, wenn JEDER aktive Plan erledigt ist —
+ * sonst meldet `partial` den Zwischenstand. Kein Firestore-Zugriff.
  */
 export function computeDayStatus(input: {
   /** Aktive Pläne (archivierte werden intern übersprungen). */
   plans: TodayPlanLike[];
   itemsByPlan: Record<string, PlanItemLike[] | undefined>;
   quizPassedToday: boolean;
+  /** Pläne, aus denen das bestandene Tagesquiz Fragen gezogen hat. */
+  quizPlanIds?: readonly string[];
   now?: Date;
 }): DayStatusResult {
   const now = input.now ?? new Date();
   const today = todayKey(now);
   const active = input.plans.filter((p) => p.archivedAt == null);
+  const quizSet = new Set(input.quizPlanIds ?? []);
 
   // Activity ist für die Block-Struktur irrelevant (nur für die Queue-
   // Reihenfolge) — null reicht hier.
   const schedule = buildToday(active, input.itemsByPlan, null, now);
 
-  let dueCount = 0;
-  for (const plan of active) {
-    for (const item of input.itemsByPlan[plan.id] ?? []) {
-      if (item.nextDueAt != null && item.nextDueAt <= today) dueCount += 1;
-    }
-  }
-  const openNeuBlocks = schedule.blocks.filter(
-    (block) =>
-      block.neu !== null &&
-      (block.neu.completedUnits ?? 0) < Math.max(block.neu.estimatedUnits ?? 1, 1)
-  );
+  const plans: PlanDayStatus[] = active.map((plan) => {
+    const items = input.itemsByPlan[plan.id] ?? [];
+    const block = schedule.blocks.find((b) => b.planId === plan.id);
 
-  const planProgress = active.map((plan) => ({
-    unitsToday: computePlanUnitsToday(input.itemsByPlan[plan.id] ?? [], today),
-    dailyTarget: computeDailyTarget(plan, input.itemsByPlan[plan.id] ?? [], today),
-  }));
+    const todayDone = computePlanUnitsToday(items, today);
+    const todayTarget = computeDailyTarget(plan, items, today);
+    const aheadUnits = Math.max(todayDone - todayTarget, 0);
 
-  const dayDone = computeDayDone({
-    quizPassedToday: input.quizPassedToday,
-    hasActivePlans: active.length > 0,
-    dueCount,
-    hasOpenNeu: openNeuBlocks.length > 0,
-    planProgress,
+    const dueCount = items.filter(
+      (item) => item.nextDueAt != null && item.nextDueAt <= today
+    ).length;
+    const hasOpenNeu =
+      block?.neu != null &&
+      (block.neu.completedUnits ?? 0) < Math.max(block.neu.estimatedUnits ?? 1, 1);
+
+    const quizDone = input.quizPassedToday && quizSet.has(plan.id);
+    const pensumDone = computeDayDone({
+      quizPassedToday: false,
+      hasActivePlans: true,
+      dueCount,
+      hasOpenNeu,
+      planProgress: [{ unitsToday: todayDone, dailyTarget: todayTarget }],
+    });
+
+    return {
+      planId: plan.id,
+      title: plan.title && plan.title.length > 0 ? plan.title : "Plan",
+      todayDone,
+      todayTarget,
+      aheadUnits,
+      aheadDays: computeAheadDays(aheadUnits, todayTarget),
+      dueCount,
+      hasOpenNeu,
+      quizDone,
+      done: quizDone || pensumDone,
+    };
   });
 
+  const openPlans = plans.filter((p) => !p.done);
+  const donePlansCount = plans.length - openPlans.length;
+
   return {
-    dayDone,
-    openCount: dueCount + openNeuBlocks.length,
-    unitsToday: planProgress.reduce((sum, p) => sum + p.unitsToday, 0),
-    dailyTarget: planProgress.reduce((sum, p) => sum + p.dailyTarget, 0),
+    dayDone: active.length > 0 ? openPlans.length === 0 : input.quizPassedToday,
+    partial: active.length > 0 && donePlansCount > 0 && openPlans.length > 0,
+    allQuizDone: active.length > 0 && plans.every((p) => p.quizDone),
+    openCount: plans.reduce((sum, p) => sum + p.dueCount + (p.hasOpenNeu ? 1 : 0), 0),
+    unitsToday: plans.reduce((sum, p) => sum + p.todayDone, 0),
+    dailyTarget: plans.reduce((sum, p) => sum + p.todayTarget, 0),
+    openPlanTitles: openPlans.map((p) => p.title),
+    plans,
   };
 }
 

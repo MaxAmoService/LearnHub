@@ -27,6 +27,7 @@ import {
 } from "../today";
 import { computeDailyTarget, computePace, computePhase, type PlanItemLike } from "../scheduling";
 import { hasExercisesForTopic } from "../exercises/session";
+import { quizPlanIdsFromDay, type QuizDayDocLike } from "../quiz";
 import type {
   TodayApiItem,
   TodayApiPlan,
@@ -193,14 +194,17 @@ export async function buildTodayApiData(
       todayTarget,
       aheadUnits,
       aheadDays: computeAheadDays(aheadUnits, todayTarget),
+      done: planStatusById.get(plan.id)?.done ?? false,
     };
   });
 
   // ── Tagesquiz-Status ──────────────────────────────────────────────────────
-  // quizDays/{today}.passed === true → freier Tag über das Quiz geholt
-  // (das Quiz stempelt dabei lastStudyDate, siehe lib/quizClient.ts).
-  const quizDayData = quizDayDoc.exists ? (quizDayDoc.data() ?? {}) : {};
-  const quizPassedToday = quizDayData.passed === true;
+  // quizDays/{today}.passed === true → die Pläne, aus denen das Quiz Fragen
+  // gezogen hat (planIds), gelten heute als erledigt — nur diese.
+  const quizDayData = quizDayDoc.exists
+    ? ((quizDayDoc.data() ?? {}) as QuizDayDocLike)
+    : null;
+  const quizPassedToday = quizDayData?.passed === true;
 
   // dayDone + openCount (= totalDue) kommen aus derselben reinen Funktion
   // wie Heute-Karte und Übungs-Abschluss (computeDayStatus).
@@ -208,8 +212,10 @@ export async function buildTodayApiData(
     plans: activePlans,
     itemsByPlan,
     quizPassedToday,
+    quizPlanIds: quizPassedToday ? quizPlanIdsFromDay(quizDayData) : [],
     now,
   });
+  const planStatusById = new Map(dayStatus.plans.map((p) => [p.planId, p]));
 
   return {
     date: today,
