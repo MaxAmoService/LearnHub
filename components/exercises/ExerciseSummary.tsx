@@ -116,6 +116,10 @@ export interface ExerciseDayStatus {
   openCount: number;
   /** Tagesquiz heute bestanden? (Zusatz der grünen Zeile). */
   quizPassedToday: boolean;
+  /** Heute bearbeitete Einheiten über alle aktiven Pläne. */
+  unitsToday: number;
+  /** Summe der Tagesziele aller aktiven Pläne. */
+  dailyTarget: number;
   /** Aktueller Streak nach der Sitzung. */
   streak: number;
 }
@@ -175,7 +179,9 @@ export function ExerciseSummary({
                 {dayStatus.quizPassedToday ? "Tagesquiz bestanden" : "Tagespensum erledigt"}
               </p>
               <p className="text-xs text-slate-400 mt-0.5">
-                Streak auf {dayStatus.streak} {dayStatus.streak === 1 ? "Tag" : "Tage"}
+                {dayStatus.quizPassedToday
+                  ? `Streak auf ${dayStatus.streak} ${dayStatus.streak === 1 ? "Tag" : "Tage"}`
+                  : `${dayStatus.unitsToday} von ${dayStatus.dailyTarget} Einheiten heute · Streak auf ${dayStatus.streak} ${dayStatus.streak === 1 ? "Tag" : "Tage"}`}
               </p>
             </div>
           </div>

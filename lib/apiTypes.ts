@@ -36,6 +36,14 @@ export interface TodayApiPlan {
   neu: TodayApiItem | null;
   /** Fällige Wiederholungen (max. 3 pro Plan, wie in lib/today.ts). */
   wiederholung: TodayApiReview[];
+  /** Heute an DIESEM Plan bearbeitete gewichtete Einheiten. */
+  todayDone: number;
+  /** Tagesziel des Plans (computeDailyTarget, gewichtete Einheiten). */
+  todayTarget: number;
+  /** Einheiten ÜBER dem Tagesziel (0, wenn das Pensum noch nicht erfüllt ist). */
+  aheadUnits: number;
+  /** Vorsprung in Tagen (konservativ abgerundet, mindestens 0). */
+  aheadDays: number;
 }
 
 export interface TodayApiStreak {

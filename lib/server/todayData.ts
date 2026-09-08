@@ -19,11 +19,13 @@ import {
 } from "../dates";
 import {
   buildToday,
+  computeAheadDays,
   computeDayStatus,
+  computePlanUnitsToday,
   computeWeekProgress,
   type ActivityDocLike,
 } from "../today";
-import { computePace, computePhase, type PlanItemLike } from "../scheduling";
+import { computeDailyTarget, computePace, computePhase, type PlanItemLike } from "../scheduling";
 import { hasExercisesForTopic } from "../exercises/session";
 import type {
   TodayApiItem,
@@ -170,6 +172,12 @@ export async function buildTodayApiData(
     const planItems = itemsByPlan[plan.id] ?? [];
     const deadline = plan.deadline;
 
+    // Tagesfortschritt PRO PLAN (dieselbe Rechnung wie in computeDayStatus):
+    // heute bearbeitete Einheiten, Tagesziel, Vorsprung (Einheiten + Tage).
+    const todayDone = computePlanUnitsToday(planItems, today);
+    const todayTarget = computeDailyTarget(plan, planItems, today);
+    const aheadUnits = Math.max(todayDone - todayTarget, 0);
+
     return {
       id: plan.id,
       label: plan.title && plan.title.length > 0 ? plan.title : "Plan",
@@ -181,6 +189,10 @@ export async function buildTodayApiData(
       wiederholung: (block?.wiederholung ?? []).map((item) =>
         toReview(opts.baseUrl, plan.id, item)
       ),
+      todayDone,
+      todayTarget,
+      aheadUnits,
+      aheadDays: computeAheadDays(aheadUnits, todayTarget),
     };
   });
 

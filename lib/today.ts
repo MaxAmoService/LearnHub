@@ -180,6 +180,22 @@ export function computePlanUnitsToday(
   return units;
 }
 
+/**
+ * Vorsprung in Tagen: wie viele Lerntage das künftige Tagespensum durch
+ * `aheadUnits` (Einheiten ÜBER dem heutigen Pensum) kürzer wird — der
+ * Unterschied zwischen den Lerntagen, die ohne den Vorsprung nötig wären,
+ * und denen, die bei aktuellem Stand nötig sind.
+ *
+ * Ehrlich und konservativ: aheadUnits / dailyTarget, ABGERUNDET auf ganze
+ * Tage — ein halber Tag Vorsprung bleibt unsichtbar (0). Geschönte
+ * Motivationszahlen gibt es nicht.
+ */
+export function computeAheadDays(aheadUnits: number, dailyTarget: number): number {
+  if (!Number.isFinite(dailyTarget) || dailyTarget <= 0) return 0;
+  if (!Number.isFinite(aheadUnits) || aheadUnits <= 0) return 0;
+  return Math.floor(aheadUnits / dailyTarget);
+}
+
 export interface PlanDayProgress {
   /** Heute an diesem Plan bearbeitete gewichtete Einheiten (echte Reviews). */
   unitsToday: number;
@@ -227,6 +243,10 @@ export interface DayStatusResult {
    * `totalDue` der Widget-API.
    */
   openCount: number;
+  /** Heute bearbeitete Einheiten über alle aktiven Pläne (gewichtet). */
+  unitsToday: number;
+  /** Summe der Tagesziele (computeDailyTarget) aller aktiven Pläne. */
+  dailyTarget: number;
 }
 
 /**
@@ -274,7 +294,12 @@ export function computeDayStatus(input: {
     planProgress,
   });
 
-  return { dayDone, openCount: dueCount + openNeuBlocks.length };
+  return {
+    dayDone,
+    openCount: dueCount + openNeuBlocks.length,
+    unitsToday: planProgress.reduce((sum, p) => sum + p.unitsToday, 0),
+    dailyTarget: planProgress.reduce((sum, p) => sum + p.dailyTarget, 0),
+  };
 }
 
 /**

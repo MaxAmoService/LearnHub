@@ -19,6 +19,10 @@ function makePlan(overrides: Partial<TodayApiPlan> = {}): TodayApiPlan {
     pace: "on_track",
     neu: null,
     wiederholung: [],
+    todayDone: 0,
+    todayTarget: 0,
+    aheadUnits: 0,
+    aheadDays: 0,
     ...overrides,
   };
 }

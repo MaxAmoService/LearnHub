@@ -128,6 +128,8 @@ export default function ExercisePage() {
           dayDone: status.dayDone,
           openCount: status.openCount,
           quizPassedToday,
+          unitsToday: status.unitsToday,
+          dailyTarget: status.dailyTarget,
         });
       } catch (err) {
         console.error("completePlanItemExercise error:", err);

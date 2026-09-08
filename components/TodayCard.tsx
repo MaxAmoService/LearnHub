@@ -38,10 +38,11 @@ import {
 } from "@/lib/plans";
 import { loadQuizDayDoc } from "@/lib/quizClient";
 import { hasExercisesForTopic } from "@/lib/exercises/session";
-import { computePhase, computeEndspurtStart, type Phase } from "@/lib/scheduling";
+import { computeDailyTarget, computePhase, computeEndspurtStart, type Phase } from "@/lib/scheduling";
 import { effectiveDailyLessons } from "@/lib/streak";
-import { buildToday, computeDayStatus, computeWeekProgress, type ActivityDocLike } from "@/lib/today";
+import { buildToday, computeAheadDays, computeDayStatus, computePlanUnitsToday, computeWeekProgress, type ActivityDocLike } from "@/lib/today";
 import { PHASE_COLORS, PHASE_LABELS } from "./PlanCard";
+import { ProgressBar } from "./ProgressBar";
 
 const QUALITY_BUTTONS = [
   { quality: 1, label: "Schwer", icon: XCircle, className: "bg-red-500/20 text-red-400 hover:bg-red-500/30" },
@@ -139,6 +140,23 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
   });
   const dayDone = dayStatus.dayDone;
 
+  // Tagesfortschritt PRO PLAN (dieselbe Rechnung wie in computeDayStatus und
+  // der Widget-API): heute bearbeitete Einheiten, Tagesziel, Vorsprung in
+  // Einheiten und Tagen.
+  const planDayProgress = activePlans.map((plan) => {
+    const items = itemsByPlan[plan.id] ?? [];
+    const todayDone = computePlanUnitsToday(items, today);
+    const todayTarget = computeDailyTarget(plan, items, today);
+    const aheadUnits = Math.max(todayDone - todayTarget, 0);
+    return {
+      plan,
+      todayDone,
+      todayTarget,
+      aheadUnits,
+      aheadDays: computeAheadDays(aheadUnits, todayTarget),
+    };
+  });
+
   const studyDaysUnion = (() => {
     if (activePlans.length === 0) return null;
     const union = new Set<number>();
@@ -225,56 +243,136 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     return renderCheckOffButtons(planId, item.id);
   }
 
+  function renderTopicCard(
+    block: { planId: string; neu: PlanItemWithId },
+    plan: PlanWithId,
+    vorarbeitChip?: string | null
+  ) {
+    const item = block.neu;
+    return (
+      <div
+        key={block.planId}
+        className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3 flex flex-wrap items-center justify-between gap-2"
+      >
+        <div className="min-w-0">
+          <p className="text-sm font-medium text-white">{item.title ?? "Unbenanntes Thema"}</p>
+          <p className="text-xs text-slate-500 mt-0.5">
+            {plan.title ?? "Unbenannter Plan"}
+            {vorarbeitChip != null && (
+              <span className="text-emerald-400 font-medium"> · {vorarbeitChip}</span>
+            )}
+          </p>
+        </div>
+        {renderItemActions(block.planId, item)}
+      </div>
+    );
+  }
+
+  // Tagesbalken statt Themenbalken: pro Plan der heutige Fortschritt als
+  // Balken (Einheiten heute vs. Tagesziel). Die nächsten Themen stehen
+  // darunter (Neu) bzw. — wenn das Pensum schon erfüllt ist — im Abschnitt
+  // „Vorarbeit" mit benanntem Vorsprung in Tagen.
+  const tagesbalkenBlock = (
+    <div className="space-y-3 mb-2">
+      {planDayProgress.map(({ plan, todayDone, todayTarget }) => {
+        const reached = todayDone >= todayTarget;
+        const pct =
+          todayTarget > 0
+            ? Math.min(100, Math.round((todayDone / todayTarget) * 100))
+            : 100;
+        return (
+          <div key={plan.id} className="space-y-1">
+            {activePlans.length > 1 && (
+              <p className="text-xs font-medium text-slate-400">
+                {plan.title ?? "Unbenannter Plan"}
+              </p>
+            )}
+            <div className="flex items-center gap-3">
+              <div className="flex-1">
+                <ProgressBar
+                  value={pct}
+                  size="sm"
+                  color={reached ? "#34d399" : "#8b5cf6"}
+                  animated={false}
+                />
+              </div>
+              <p className="text-xs text-slate-400 flex-shrink-0">
+                {reached
+                  ? "Tagespensum erfüllt"
+                  : `Heute ${todayDone} von ${todayTarget} Einheiten`}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  const progressByPlanId = new Map(planDayProgress.map((p) => [p.plan.id, p]));
+
+  const neuTodayCards: React.ReactNode[] = [];
+  const vorarbeitCards: React.ReactNode[] = [];
+  const phaseCards: React.ReactNode[] = [];
+
+  for (const block of schedule.blocks) {
+    const plan = planById.get(block.planId);
+    if (!plan) continue;
+
+    if (block.neu != null) {
+      const progress = progressByPlanId.get(block.planId);
+      const item = block.neu as PlanItemWithId;
+      const topicBlock = { planId: block.planId, neu: item };
+      if (progress && progress.todayDone >= progress.todayTarget) {
+        vorarbeitCards.push(
+          renderTopicCard(
+            topicBlock,
+            plan,
+            progress.aheadDays >= 1
+              ? `${progress.aheadDays} ${progress.aheadDays === 1 ? "Tag" : "Tage"} Vorsprung`
+              : null
+          )
+        );
+      } else {
+        neuTodayCards.push(renderTopicCard(topicBlock, plan, null));
+      }
+      continue;
+    }
+
+    const phase = computePhase(plan, today);
+    if (phase !== "aufbau") {
+      phaseCards.push(
+        <div
+          key={block.planId}
+          className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3"
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <span className={`text-xs px-2 py-0.5 rounded-full border ${PHASE_COLORS[phase]}`}>
+              {PHASE_LABELS[phase]}
+            </span>
+            <span className="text-sm font-medium text-slate-300">
+              {plan.title ?? "Unbenannter Plan"}
+            </span>
+          </div>
+          <p className="text-xs text-slate-500 mt-1.5">
+            {phase === "festigung"
+              ? PHASE_HINTS.festigung
+              : `${PHASE_HINTS.endspurt} (seit ${formatDateKey(computeEndspurtStart(plan, today))})`}
+          </p>
+        </div>
+      );
+    }
+  }
+
   const neuBlock = (
     <div className="space-y-2">
-      {schedule.blocks.flatMap((block) => {
-        const plan = planById.get(block.planId);
-        if (!plan) return [];
-
-        if (block.neu != null) {
-          const item = block.neu as PlanItemWithId;
-          return [
-            <div
-              key={block.planId}
-              className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3 flex flex-wrap items-center justify-between gap-2"
-            >
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-white">{item.title ?? "Unbenanntes Thema"}</p>
-                <p className="text-xs text-slate-500 mt-0.5">{plan.title ?? "Unbenannter Plan"}</p>
-              </div>
-              {renderItemActions(block.planId, item)}
-            </div>,
-          ];
-        }
-
-        const phase = computePhase(plan, today);
-        if (phase === "aufbau") return [];
-        return [
-          <div
-            key={block.planId}
-            className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3"
-          >
-            <div className="flex flex-wrap items-center gap-2">
-              <span className={`text-xs px-2 py-0.5 rounded-full border ${PHASE_COLORS[phase]}`}>
-                {PHASE_LABELS[phase]}
-              </span>
-              <span className="text-sm font-medium text-slate-300">
-                {plan.title ?? "Unbenannter Plan"}
-              </span>
-            </div>
-            <p className="text-xs text-slate-500 mt-1.5">
-              {phase === "festigung"
-                ? PHASE_HINTS.festigung
-                : `${PHASE_HINTS.endspurt} (seit ${formatDateKey(computeEndspurtStart(plan, today))})`}
-            </p>
-          </div>,
-        ];
-      })}
-      {schedule.blocks.every((block) => {
-        const plan = planById.get(block.planId);
-        if (!plan) return true;
-        return block.neu == null && computePhase(plan, today) === "aufbau";
-      }) && <p className="text-xs text-slate-500">Heute steht nichts Neues an.</p>}
+      {tagesbalkenBlock}
+      {neuTodayCards}
+      {phaseCards}
+      {neuTodayCards.length === 0 &&
+        phaseCards.length === 0 &&
+        vorarbeitCards.length === 0 && (
+          <p className="text-xs text-slate-500">Heute steht nichts Neues an.</p>
+        )}
     </div>
   );
 
@@ -414,6 +512,14 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
                 </p>
                 {neuBlock}
               </div>
+              {vorarbeitCards.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                    Vorarbeit
+                  </p>
+                  <div className="space-y-2">{vorarbeitCards}</div>
+                </div>
+              )}
               <div>
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
                   Wiederholung
@@ -427,6 +533,12 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
                 <h3 className="text-sm font-semibold text-slate-300 mb-2">Neu</h3>
                 {neuBlock}
               </div>
+              {vorarbeitCards.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-300 mb-2">Vorarbeit</h3>
+                  <div className="space-y-2">{vorarbeitCards}</div>
+                </div>
+              )}
               <div>
                 <h3 className="text-sm font-semibold text-slate-300 mb-2">Wiederholung</h3>
                 {wiederholungBlock}

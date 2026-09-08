@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   buildToday,
+  computeAheadDays,
   computeDayDone,
   computeDayStatus,
   computePlanUnitsToday,
@@ -340,6 +341,27 @@ describe("computeDayDone — Tag geschafft (Widget-API)", () => {
   });
 });
 
+describe("computeAheadDays — Vorsprung in Tagen (ehrlich, konservativ)", () => {
+  it("Einheiten über dem Pensum geteilt durch das Tagesziel, abgerundet", () => {
+    expect(computeAheadDays(0, 2)).toBe(0);
+    expect(computeAheadDays(2, 2)).toBe(1);
+    expect(computeAheadDays(3, 2)).toBe(1);
+    expect(computeAheadDays(4, 2)).toBe(2);
+    expect(computeAheadDays(5, 3)).toBe(1);
+    expect(computeAheadDays(6, 3)).toBe(2);
+  });
+
+  it("ein halber Tag Vorsprung bleibt unsichtbar", () => {
+    expect(computeAheadDays(1, 2)).toBe(0);
+  });
+
+  it("defensiv: kein Vorsprung / kein Ziel → 0", () => {
+    expect(computeAheadDays(0, 0)).toBe(0);
+    expect(computeAheadDays(3, 0)).toBe(0);
+    expect(computeAheadDays(-1, 2)).toBe(0);
+  });
+});
+
 describe("computeDayStatus — Tagesstatus für Karte, Übungs-Abschluss und API", () => {
   // Montag 14:00 Berlin → Tages-Key "2026-09-07"
   const NOW = new Date("2026-09-07T12:00:00Z");
@@ -448,6 +470,46 @@ describe("computeDayStatus — Tagesstatus für Karte, Übungs-Abschluss und API
     });
     expect(status.openCount).toBe(2); // 2 fällige, kein offenes Neu-Thema — p2 zählt nicht
     expect(status.dayDone).toBe(false);
+  });
+
+  it("liefert die Summen der heutigen Einheiten und Tagesziele über alle Pläne", () => {
+    const todayMs = Date.UTC(2026, 8, 7, 12, 0, 0);
+    const plans = [activePlan("p1"), activePlan("p2")];
+    const items = {
+      p1: [
+        makeItem({
+          order: 0,
+          weight: 2,
+          sm2: {
+            repetitions: 0,
+            interval: 0,
+            lastReview: todayMs,
+          } as PlanItemLike["sm2"],
+          completedUnits: 0,
+        }),
+        makeItem({ order: 1 }),
+      ],
+      p2: [
+        makeItem({
+          order: 0,
+          weight: 3,
+          sm2: {
+            repetitions: 0,
+            interval: 0,
+            lastReview: todayMs,
+          } as PlanItemLike["sm2"],
+        }),
+      ],
+    };
+    const status = computeDayStatus({
+      plans,
+      itemsByPlan: items,
+      quizPassedToday: false,
+      now: NOW,
+    });
+    // 2 + 3 gewichtete Einheiten heute; Tagesziele: ceil(9/92) + ceil(9/92)
+    expect(status.unitsToday).toBe(5);
+    expect(status.dailyTarget).toBe(2);
   });
 
   it("Bug-Fall: Einheiten zählen nur für den eigenen Plan", () => {
