@@ -36,6 +36,7 @@ import {
   type PlanItemWithId,
   type PlanWithId,
 } from "@/lib/plans";
+import { loadQuizDayDoc } from "@/lib/quizClient";
 import { hasExercisesForTopic } from "@/lib/exercises/session";
 import { computePhase, computeEndspurtStart, type Phase } from "@/lib/scheduling";
 import { effectiveDailyLessons } from "@/lib/streak";
@@ -75,6 +76,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
   const [activityByMonth, setActivityByMonth] = useState<
     Record<string, ActivityDocLike | undefined>
   >({});
+  const [quizPassed, setQuizPassed] = useState(false);
   const [working, setWorking] = useState<string | null>(null);
 
   const load = useCallback(async () => {
@@ -85,16 +87,19 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
       const monday = addDays(today, -(dayOfWeek(today) - 1));
       const months = [...new Set([monthKey(today), monthKey(monday)])];
 
-      const [plansRes, itemsRes, dueRes, ...activityRes] = await Promise.all([
-        loadPlans(uid),
-        loadAllPlanItems(uid),
-        loadDuePlanItems(uid),
-        ...months.map((m) => loadActivityMonth(uid, m)),
-      ]);
+      const [plansRes, itemsRes, dueRes, quizDayRes, ...activityRes] =
+        await Promise.all([
+          loadPlans(uid),
+          loadAllPlanItems(uid),
+          loadDuePlanItems(uid),
+          loadQuizDayDoc(uid, today),
+          ...months.map((m) => loadActivityMonth(uid, m)),
+        ]);
 
       setPlans(plansRes);
       setItemsByPlan(itemsRes);
       setDueItems(dueRes);
+      setQuizPassed(quizDayRes?.passed === true);
 
       const activity: Record<string, ActivityDocLike | undefined> = {};
       months.forEach((m, i) => {
@@ -219,10 +224,19 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         <div className="flex items-center gap-3 text-sm text-slate-400">
           <Link
             href="/tagesquiz"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 transition-all"
-            title="Quiz über deinen gesamten bisherigen Stoff — bestehst du beim ersten Versuch, gilt der Tag als geschafft"
+            className={
+              quizPassed
+                ? "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 border border-slate-600/60 hover:text-white hover:border-slate-500 transition-colors"
+                : "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 transition-all"
+            }
+            title={
+              quizPassed
+                ? "Heute schon bestanden — dieser Durchlauf zählt als Übung"
+                : "Quiz über deinen gesamten bisherigen Stoff — bestehst du beim ersten Versuch, gilt der Tag als geschafft"
+            }
           >
-            <Zap className="w-3.5 h-3.5" /> Tagesquiz
+            <Zap className="w-3.5 h-3.5" />
+            {quizPassed ? "Tagesquiz wiederholen (zählt nicht mehr)" : "Tagesquiz"}
           </Link>
           {profile.streak > 0 && (
             <span className="flex items-center gap-1.5">
@@ -239,6 +253,20 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
           <span>{lessonsToday} {lessonsToday === 1 ? "Lektion" : "Lektionen"} heute</span>
         </div>
       </div>
+
+      {quizPassed && (
+        <div className="mb-4 flex items-center gap-3 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+          <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-emerald-300">
+              Tagesziel erreicht — Tagesquiz bestanden
+            </p>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Die Themen unten sind noch offen, aber freiwillig — kein Rückstand.
+            </p>
+          </div>
+        </div>
+      )}
 
       {loading ? (
         <div className="flex items-center justify-center py-10">
@@ -272,7 +300,14 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         <div className="space-y-5">
           {/* Neu */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-300 mb-2">Neu</h3>
+            <h3 className="text-sm font-semibold text-slate-300 mb-2">
+              Neu
+              {quizPassed && (
+                <span className="ml-2 text-xs font-normal text-slate-500">
+                  · noch offen, freiwillig
+                </span>
+              )}
+            </h3>
             <div className="space-y-2">
               {schedule.blocks.flatMap((block) => {
                 const plan = planById.get(block.planId);
@@ -329,7 +364,14 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
 
           {/* Wiederholung */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-300 mb-2">Wiederholung</h3>
+            <h3 className="text-sm font-semibold text-slate-300 mb-2">
+              Wiederholung
+              {quizPassed && (
+                <span className="ml-2 text-xs font-normal text-slate-500">
+                  · noch offen, freiwillig
+                </span>
+              )}
+            </h3>
             {dueItems.length === 0 ? (
               <p className="text-xs text-slate-500">Keine fälligen Wiederholungen.</p>
             ) : (

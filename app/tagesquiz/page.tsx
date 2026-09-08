@@ -20,7 +20,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { AlertCircle, ArrowLeft, Loader2, Sparkles, Zap } from "lucide-react";
+import { AlertCircle, ArrowLeft, CheckCircle2, Loader2, Sparkles, Zap } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 import { LoginModal } from "@/components/LoginModal";
 import { ExerciseRunner } from "@/components/exercises/ExerciseRunner";
@@ -282,10 +282,18 @@ export default function DailyQuizPage() {
       {finished === null && (
         <div className="glass rounded-xl p-4 mb-4 space-y-2">
           {dayDoc?.passed === true ? (
-            <p className="text-sm text-emerald-300">
-              Heute schon geschafft — dieser Durchlauf zählt als reine Übung.
-              Du bekommst dieselben Fragen wie zuvor.
-            </p>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div className="space-y-0.5">
+                <p className="text-sm font-semibold text-emerald-300">
+                  Tagesziel erreicht — Tagesquiz bestanden
+                </p>
+                <p className="text-xs text-slate-400">
+                  Dieser Durchlauf zählt als reine Übung — du bekommst dieselben
+                  Fragen wie zuvor.
+                </p>
+              </div>
+            </div>
           ) : dayDoc?.passed === false ? (
             <p className="text-sm text-amber-300">
               Du hast heute schon ein Tagesquiz abgeschlossen — hier sind
