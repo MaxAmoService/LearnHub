@@ -168,6 +168,27 @@ export async function buildTodayApiData(
   const userData = userDoc.exists ? (userDoc.data() ?? {}) : {};
   const doneToday = mergedActivity.days?.[dayOfMonth(today)]?.units ?? 0;
 
+  // ── Tagesquiz-Status ──────────────────────────────────────────────────────
+  // quizDays/{today}.passed === true → die Pläne, aus denen das Quiz Fragen
+  // gezogen hat (planIds), gelten heute als erledigt — nur diese.
+  const quizDayData = quizDayDoc.exists
+    ? ((quizDayDoc.data() ?? {}) as QuizDayDocLike)
+    : null;
+  const quizPassedToday = quizDayData?.passed === true;
+
+  // dayDone + openCount (= totalDue) kommen aus derselben reinen Funktion
+  // wie Heute-Karte und Übungs-Abschluss (computeDayStatus).
+  const dayStatus = computeDayStatus({
+    plans: activePlans,
+    itemsByPlan,
+    quizPassedToday,
+    quizPlanIds: quizPassedToday ? quizPlanIdsFromDay(quizDayData) : [],
+    now,
+  });
+  // WICHTIG: VOR der plans-Map unten deklarieren — der Map-Callback greift
+  // darauf zu (sonst TDZ-ReferenceError im Produktionsbundle).
+  const planStatusById = new Map(dayStatus.plans.map((p) => [p.planId, p]));
+
   const plans: TodayApiPlan[] = activePlans.map((plan) => {
     const block = schedule.blocks.find((b) => b.planId === plan.id);
     const planItems = itemsByPlan[plan.id] ?? [];
@@ -197,25 +218,6 @@ export async function buildTodayApiData(
       done: planStatusById.get(plan.id)?.done ?? false,
     };
   });
-
-  // ── Tagesquiz-Status ──────────────────────────────────────────────────────
-  // quizDays/{today}.passed === true → die Pläne, aus denen das Quiz Fragen
-  // gezogen hat (planIds), gelten heute als erledigt — nur diese.
-  const quizDayData = quizDayDoc.exists
-    ? ((quizDayDoc.data() ?? {}) as QuizDayDocLike)
-    : null;
-  const quizPassedToday = quizDayData?.passed === true;
-
-  // dayDone + openCount (= totalDue) kommen aus derselben reinen Funktion
-  // wie Heute-Karte und Übungs-Abschluss (computeDayStatus).
-  const dayStatus = computeDayStatus({
-    plans: activePlans,
-    itemsByPlan,
-    quizPassedToday,
-    quizPlanIds: quizPassedToday ? quizPlanIdsFromDay(quizDayData) : [],
-    now,
-  });
-  const planStatusById = new Map(dayStatus.plans.map((p) => [p.planId, p]));
 
   return {
     date: today,
