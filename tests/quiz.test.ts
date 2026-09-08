@@ -3,6 +3,11 @@
 
 import { describe, expect, it } from "vitest";
 import { addDays } from "@/lib/dates";
+import { getExercisesForTopic } from "@/lib/exercises/registry";
+import {
+  buildExerciseSession,
+  mergeRecentExerciseIds,
+} from "@/lib/exercises/session";
 import {
   buildDailyQuiz,
   canClaimFreeDay,
@@ -160,6 +165,81 @@ describe("buildDailyQuiz — Zusammenstellung", () => {
     expect(replayed.tasks.map((t) => t.planId)).toEqual(a.tasks.map((t) => t.planId));
     expect(replayed.tasks.map((t) => t.itemId)).toEqual(a.tasks.map((t) => t.itemId));
     expect(replayed.tasks[0].exercise).toEqual(a.tasks[0].exercise);
+  });
+});
+
+describe("mergeRecentExerciseIds — zuletzt verwendete Aufgaben", () => {
+  it("hängt neue an, entdoppelt, deckelt auf die letzten 5", () => {
+    expect(mergeRecentExerciseIds(null, [])).toEqual([]);
+    expect(mergeRecentExerciseIds(null, ["a", "b"])).toEqual(["a", "b"]);
+    expect(mergeRecentExerciseIds(["a", "b"], ["c"])).toEqual(["a", "b", "c"]);
+    expect(mergeRecentExerciseIds(["a", "b", "c", "d", "e"], ["f"])).toEqual([
+      "b", "c", "d", "e", "f",
+    ]);
+  });
+
+  it("Wiederholung rückt ans Ende und bleibt einmalig", () => {
+    expect(mergeRecentExerciseIds(["a", "b", "c"], ["b"])).toEqual(["a", "c", "b"]);
+  });
+
+  it("ignoriert unvollständige Einträge defensiv", () => {
+    expect(mergeRecentExerciseIds(["a"], [undefined, null, "", "b"])).toEqual([
+      "a", "b",
+    ]);
+  });
+});
+
+describe("buildExerciseSession — Reihenfolge pro Aufruf gemischt", () => {
+  it("statisch: gleicher Seed → gleiche Reihenfolge, anderer Seed → andere", () => {
+    const a = buildExerciseSession(SLUGS.static, 123);
+    const b = buildExerciseSession(SLUGS.static, 123);
+    const c = buildExerciseSession(SLUGS.static, 124);
+    expect(a.exercises.map((e) => e.id)).toEqual(b.exercises.map((e) => e.id));
+    expect(a.exercises.map((e) => e.id)).not.toEqual(c.exercises.map((e) => e.id));
+    // Inhalt identisch, nur die Reihenfolge wechselt.
+    expect(new Set(c.exercises.map((e) => e.id))).toEqual(
+      new Set(a.exercises.map((e) => e.id))
+    );
+  });
+
+  it("prozedural: deterministisch über den Seed", () => {
+    const a = buildExerciseSession(SLUGS.procA, 77);
+    const b = buildExerciseSession(SLUGS.procA, 77);
+    expect(a.exercises.map((e) => e.id)).toEqual(b.exercises.map((e) => e.id));
+    expect(a.exercises.length).toBeGreaterThan(1);
+  });
+});
+
+describe("buildDailyQuiz — Auswahl-Abstinenz (recentExerciseIds)", () => {
+  it("meidet zuletzt verwendete Aufgaben des Themas", () => {
+    const all = getExercisesForTopic(SLUGS.static).map((e) => e.id);
+    const recent = all.slice(0, 4);
+    const topic = makeTopic({ topicSlug: SLUGS.static, recentExerciseIds: recent });
+    const quiz = buildDailyQuiz([topic], { today: TODAY, seed: 13 });
+    expect(quiz.tasks).toHaveLength(2);
+    for (const task of quiz.tasks) {
+      expect(recent).not.toContain(task.exercise.id);
+      expect(all.slice(4)).toContain(task.exercise.id);
+    }
+  });
+
+  it("fällt auf gemiedene Aufgaben zurück, wenn sonst nichts übrig ist", () => {
+    const all = getExercisesForTopic(SLUGS.static).map((e) => e.id);
+    const topic = makeTopic({ topicSlug: SLUGS.static, recentExerciseIds: all });
+    const quiz = buildDailyQuiz([topic], { today: TODAY, seed: 13 });
+    expect(quiz.tasks).toHaveLength(2);
+  });
+
+  it("streut über Seeds: nicht bei jedem Bogen dieselben Aufgaben", () => {
+    const seen = new Set<string>();
+    for (let seed = 1; seed <= 20; seed++) {
+      const quiz = buildDailyQuiz([makeTopic({ topicSlug: SLUGS.static })], {
+        today: TODAY,
+        seed,
+      });
+      for (const task of quiz.tasks) seen.add(task.exercise.id);
+    }
+    expect(seen.size).toBeGreaterThan(2);
   });
 });
 

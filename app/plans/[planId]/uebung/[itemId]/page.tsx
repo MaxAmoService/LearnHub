@@ -84,7 +84,14 @@ export default function ExercisePage() {
       setSaving(true);
       setSaveError(false);
       try {
-        const res = await completePlanItemExercise(user.uid, planId, itemId, correct, total);
+        const res = await completePlanItemExercise(
+          user.uid,
+          planId,
+          itemId,
+          correct,
+          total,
+          exercises.map((e) => e.id)
+        );
         setNextDueAt(res?.item.nextDueAt ?? null);
       } catch (err) {
         console.error("completePlanItemExercise error:", err);

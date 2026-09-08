@@ -31,8 +31,8 @@ import {
 import { getDb } from "./firebase";
 import { dayOfMonth, monthKey, todayKey } from "./dates";
 import { qualityFromRatio } from "./exercises/scoring";
+import { mergeRecentExerciseIds } from "./exercises/session";
 import { computePlanReview } from "./planReview";
-import { computeQuizTopicReviewPatch } from "./quiz";
 import { isConsolidated } from "./scheduling";
 import type { FlashcardProgress } from "./spacing";
 
@@ -78,6 +78,12 @@ export interface PlanItemDoc {
   lastAttempt: { at: string; correct: number; total: number } | null;
   /** Anzahl abgeschlossener Übungs-Durchläufe. */
   attemptCount: number;
+  /**
+   * Zuletzt verwendete Aufgaben-IDs (letzte 5) — Übungsseite und Tagesquiz
+   * schreiben sie fort; das Tagesquiz meidet sie beim Ziehen, damit nicht
+   * immer dieselben Aufgaben drankommen.
+   */
+  recentExerciseIds?: string[];
 }
 
 export interface PlanDoc {
@@ -210,13 +216,16 @@ export async function checkOffPlanItem(
  * NICHT aus einer Selbsteinschätzung. Zusätzlich zum SM-2-Review schreibt
  * dieselbe Transaktion den letzten Versuch (lastAttempt) und zählt ihn hoch —
  * atomar, damit Quote und Review-Zeitpunkt nie auseinanderlaufen.
+ * `exerciseIds` = verwendete Aufgaben der Sitzung → recentExerciseIds
+ * (Auswahl-Abstinenz des Tagesquiz), gedeckelt auf die letzten 5.
  */
 export async function completePlanItemExercise(
   uid: string,
   planId: string,
   itemId: string,
   correct: number,
-  total: number
+  total: number,
+  exerciseIds?: string[]
 ): Promise<{ plan: PlanDoc; item: PlanItemDoc } | null> {
   if (!Number.isFinite(total) || total <= 0) return null;
   const quality = qualityFromRatio(correct, total);
@@ -224,7 +233,7 @@ export async function completePlanItemExercise(
     at: new Date().toISOString(),
     correct: Math.max(0, correct),
     total,
-  });
+  }, exerciseIds);
 }
 
 /**
@@ -241,7 +250,8 @@ async function applyPlanItemReview(
   planId: string,
   itemId: string,
   quality: number,
-  attempt: { at: string; correct: number; total: number } | null
+  attempt: { at: string; correct: number; total: number } | null,
+  exerciseIds?: string[]
 ): Promise<{ plan: PlanDoc; item: PlanItemDoc } | null> {
   const db = getDb();
   const itemRef = doc(db, "users", uid, "plans", planId, "planItems", itemId);
@@ -295,7 +305,12 @@ async function applyPlanItemReview(
     const updatedItem: PlanItemDoc = { ...item, ...result.itemPatch };
     const updatedPlan: PlanDoc = { ...plan, stats: result.planStats };
 
-    tx.update(itemRef, result.itemPatch);
+    tx.update(itemRef, {
+      ...result.itemPatch,
+      ...(exerciseIds && exerciseIds.length > 0
+        ? { recentExerciseIds: mergeRecentExerciseIds(item.recentExerciseIds, exerciseIds) }
+        : {}),
+    });
     tx.update(planRef, { stats: result.planStats });
 
     // Activity: EIN Dokument pro Monat (nicht pro Tag) — ein Streak über zwei
@@ -322,31 +337,6 @@ async function applyPlanItemReview(
     }
 
     return { plan: updatedPlan, item: updatedItem };
-  });
-}
-
-/**
- * Tagesquiz: Falsch beantwortete Themen bekommen Quality 1 (lib/quiz.ts) —
- * das Quiz darf SM-2 NUR verschlechtern, nie verbessern. Bewusst KEIN
- * Streak-/lastStudyDate-/Activity-Write: Ein nicht bestandenes Quiz lässt
- * den Tag unangetastet, der bleibt über die Übungen offen.
- */
-export async function applyQuizTopicReview(
-  uid: string,
-  planId: string,
-  itemId: string,
-  now: Date = new Date()
-): Promise<PlanItemDoc | null> {
-  const db = getDb();
-  const itemRef = doc(db, "users", uid, "plans", planId, "planItems", itemId);
-
-  return runTransaction(db, async (tx) => {
-    const snap = await tx.get(itemRef);
-    if (!snap.exists()) return null;
-    const item = snap.data() as PlanItemDoc;
-    const patch = computeQuizTopicReviewPatch(itemId, item, now.getTime());
-    tx.update(itemRef, patch);
-    return { ...item, ...patch };
   });
 }
 

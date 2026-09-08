@@ -10,8 +10,8 @@
 // tests/exercises-registry.test.ts (Registry).
 
 import { getExercisesForTopic } from "./registry";
-import { proceduralGenerators } from "./procedural";
-import { sanitizeExercises } from "./scoring";
+import { proceduralGenerators, mulberry32 } from "./procedural";
+import { sanitizeExercises, shuffle } from "./scoring";
 import type { Exercise } from "./types";
 
 export type ExerciseSessionSource = "procedural" | "static";
@@ -19,6 +19,31 @@ export type ExerciseSessionSource = "procedural" | "static";
 export interface ExerciseSession {
   source: ExerciseSessionSource;
   exercises: Exercise[];
+}
+
+/** Höchstens so viele zuletzt verwendete Aufgaben-IDs werden pro Item gemerkt. */
+export const MAX_RECENT_EXERCISE_IDS = 5;
+
+/**
+ * Zuletzt verwendete Aufgaben-IDs eines Items fortschreiben: neu verwendete
+ * ans Ende, Duplikate bleiben einmalig, gekappt auf die letzten
+ * MAX_RECENT_EXERCISE_IDS. Grundlage für die Auswahl-Abstinenz des Tagesquiz
+ * (nicht zuletzt Verwendetes bevorzugen) — reine Funktion.
+ */
+export function mergeRecentExerciseIds(
+  previous: string[] | null | undefined,
+  used: readonly (string | null | undefined)[]
+): string[] {
+  const fresh = used.filter(
+    (id): id is string => typeof id === "string" && id.length > 0
+  );
+  if (fresh.length === 0) {
+    return Array.isArray(previous) ? previous.slice(-MAX_RECENT_EXERCISE_IDS) : [];
+  }
+  const prev = Array.isArray(previous)
+    ? previous.filter((id) => !fresh.includes(id))
+    : [];
+  return [...prev, ...fresh].slice(-MAX_RECENT_EXERCISE_IDS);
 }
 
 /**
@@ -34,19 +59,23 @@ export function hasExercisesForTopic(topicSlug: string | null | undefined): bool
 
 /**
  * Aufgabenliste für eine Sitzung — prozedural (neuer Seed) oder statisch,
- * in beiden Fällen um unvollständige Einträge bereinigt.
+ * in beiden Fällen um unvollständige Einträge bereinigt. Die Reihenfolge
+ * wird zusätzlich mit dem Seed gemischt (deterministisch: gleicher Seed →
+ * gleiche Reihenfolge, jeder Aufruf mit frischem Seed → andere Reihenfolge).
+ * Bei Wiederholung desselben Themas lernt man sonst die Positionen mit
+ * statt der Inhalte.
  */
 export function buildExerciseSession(topicSlug: string, seed: number): ExerciseSession {
   const generator = proceduralGenerators[topicSlug];
   if (generator) {
     return {
       source: "procedural",
-      exercises: sanitizeExercises(generator.generate(seed)),
+      exercises: shuffle(sanitizeExercises(generator.generate(seed)), mulberry32(seed)),
     };
   }
   return {
     source: "static",
-    exercises: sanitizeExercises(getExercisesForTopic(topicSlug)),
+    exercises: shuffle(sanitizeExercises(getExercisesForTopic(topicSlug)), mulberry32(seed)),
   };
 }
 

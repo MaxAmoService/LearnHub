@@ -8,7 +8,10 @@
 // bisherigen Stoff, keine Tagesübung. Gewichtung beim Ziehen: überfällig >
 // heute fällig > übriges Begonnenes; pro Thema höchstens 2 Aufgaben; die
 // Reihenfolge ist über Themen hinweg gemischt. Nicht begonnene Themen und
-// Themen ohne Übungsaufgaben kommen nicht dran.
+// Themen ohne Übungsaufgaben kommen nicht dran. Aufgaben werden ZUFÄLLIG
+// (seeded) aus dem Pool des Themas gezogen und bevorzugt gemieden, wenn sie
+// beim letzten Durchlauf des Themas drankamen (recentExerciseIds am planItem,
+// gedeckelt auf die letzten 5 — Übungsseite und Quiz schreiben sie fort).
 //
 // Der Fragenbogen wird pro Tag festgehalten (quizDays/{date}, siehe
 // lib/quizClient.ts): Ein zweiter Durchlauf am selben Tag bekommt EXAKT
@@ -22,7 +25,6 @@
 
 import { todayKey } from "./dates";
 import { mulberry32 } from "./exercises/procedural";
-import { shuffle } from "./exercises/scoring";
 import {
   buildExerciseSession,
   hasExercisesForTopic,
@@ -45,6 +47,8 @@ export interface QuizTopicLike {
   nextDueAt?: string | null;
   attemptCount?: number;
   completedUnits?: number;
+  /** Zuletzt verwendete Aufgaben-IDs (letzte 5) — werden beim Ziehen gemieden. */
+  recentExerciseIds?: string[];
 }
 
 export interface QuizTask {
@@ -108,7 +112,10 @@ interface Candidate {
 interface PoolEntry {
   source: ExerciseSessionSource;
   exercises: Exercise[];
-  nextIndex: number;
+  /** Noch nicht in DIESEM Bogen verwendete Indizes (ohne Zurücklegen). */
+  unused: number[];
+  /** Zuletzt verwendete Aufgaben des Themas — beim Ziehen bevorzugt gemieden. */
+  recentIds: Set<string>;
   used: number;
   topicSeed: number;
 }
@@ -125,9 +132,11 @@ function pickWeighted(candidates: Candidate[], rng: () => number): Candidate {
 
 /**
  * Baut den Fragenbogen: bis zu `count` Aufgaben aus allen begonnenen Themen.
- * Themen-Pools werden lazy gebaut (prozedural mit frischem `topicSeed`,
- * statische Registry gemischt) — derselbe Seed + dieselbe Themenmenge ergibt
- * deterministisch denselben Bogen (Tests verlassen sich darauf).
+ * Themen-Pools werden lazy gebaut (prozedural mit frischem `topicSeed`); aus
+ * jedem Pool wird ZUFÄLLIG (seeded) ohne Zurücklegen gezogen, wobei zuletzt
+ * verwendete Aufgaben (recentExerciseIds) gemieden werden. Derselbe Seed +
+ * dieselbe Themenmenge ergibt deterministisch denselben Bogen (Tests
+ * verlassen sich darauf).
  */
 export function buildDailyQuiz(
   topics: QuizTopicLike[],
@@ -157,7 +166,7 @@ export function buildDailyQuiz(
   while (tasks.length < count) {
     const alive = candidates.filter((c) => {
       const pool = pools.get(keyOf(c.topic));
-      return !pool || (pool.used < MAX_QUIZ_TASKS_PER_TOPIC && pool.nextIndex < pool.exercises.length);
+      return !pool || (pool.used < MAX_QUIZ_TASKS_PER_TOPIC && pool.unused.length > 0);
     });
     if (alive.length === 0) break;
 
@@ -170,20 +179,29 @@ export function buildDailyQuiz(
       const session = buildExerciseSession(chosen.topic.topicSlug!, topicSeed);
       pool = {
         source: session.source,
-        exercises:
-          session.source === "static"
-            ? shuffle(session.exercises, rng)
-            : session.exercises,
-        nextIndex: 0,
+        exercises: session.exercises,
+        unused: session.exercises.map((_, i) => i),
+        recentIds: new Set(
+          Array.isArray(chosen.topic.recentExerciseIds)
+            ? chosen.topic.recentExerciseIds
+            : []
+        ),
         used: 0,
         topicSeed,
       };
       pools.set(key, pool);
     }
 
-    const exercise = pool.exercises[pool.nextIndex];
-    pool.nextIndex += 1;
+    // Zufällig aus dem Pool ziehen (seeded) und Aufgaben bevorzugen, die beim
+    // letzten Durchlauf dieses Themas NICHT drankamen. Erst wenn alle übrigen
+    // gemieden wurden (Pool zu klein), fällt die Ziehung auf sie zurück.
+    const fresh = pool.unused.filter((i) => !pool.recentIds.has(pool.exercises[i].id));
+    const drawable = fresh.length > 0 ? fresh : pool.unused;
+    const index = drawable[Math.floor(rng() * drawable.length)];
+    pool.unused = pool.unused.filter((i) => i !== index);
     pool.used += 1;
+
+    const exercise = pool.exercises[index];
 
     tasks.push({
       planId: chosen.topic.planId,

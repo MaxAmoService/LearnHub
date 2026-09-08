@@ -55,6 +55,7 @@ function toTopics(itemsByPlan: Record<string, PlanItemWithId[]>): QuizTopicLike[
         nextDueAt: item.nextDueAt,
         attemptCount: item.attemptCount,
         completedUnits: item.completedUnits,
+        recentExerciseIds: item.recentExerciseIds,
       });
     }
   }

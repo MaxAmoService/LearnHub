@@ -19,8 +19,19 @@
 import { doc, getDoc, runTransaction } from "firebase/firestore";
 import { dayOfMonth, monthKey, todayKey } from "./dates";
 import { getDb } from "./firebase";
-import { applyQuizTopicReview, loadActiveStudyDays, type ActivityDoc } from "./plans";
-import { canClaimFreeDay, serializeQuizTasks, type DailyQuiz, type QuizDayDocLike } from "./quiz";
+import { mergeRecentExerciseIds } from "./exercises/session";
+import {
+  loadActiveStudyDays,
+  type ActivityDoc,
+  type PlanItemDoc,
+} from "./plans";
+import {
+  canClaimFreeDay,
+  computeQuizTopicReviewPatch,
+  serializeQuizTasks,
+  type DailyQuiz,
+  type QuizDayDocLike,
+} from "./quiz";
 import { updateStreak } from "./streak";
 
 export interface DailyQuizFinishResult {
@@ -67,11 +78,16 @@ export async function startDailyQuiz(
 }
 
 /**
- * Schließt einen Durchgang ab:
- *   1. Diagnose — falsche Themen: SM-2 Quality 1, OHNE Streak/Activity/attempt.
- *   2. Claim in einer Transaktion: Ergebnis des ERSTEN Durchgangs schreiben;
- *      bei bestandenem ersten Durchgang lastStudyDate/Streak fortschreiben
- *      und den Tag als Lerneinheit in der Activity vermerken.
+ * Schließt einen Durchgang ab — EINE Transaktion:
+ *   1. Zuletzt verwendete Aufgaben jedes Themas fortschreiben
+ *      (recentExerciseIds, gedeckelt auf 5) — Grundlage der
+ *      Auswahl-Abstinenz des nächsten Bogens.
+ *   2. Diagnose: NUR falsche Themen bekommen SM-2 Quality 1 (das Quiz darf
+ *      nur verschlechtern, nie verbessern) — OHNE Streak/Activity/attempt.
+ *      Richtig beantwortete Themen bleiben SM-2-seitig unangetastet.
+ *   3. Ergebnis des ERSTEN Durchgangs schreiben; bei bestandenem ersten
+ *      Durchgang lastStudyDate/Streak fortschreiben und den Tag als
+ *      Lerneinheit in der Activity vermerken.
  */
 export async function finishDailyQuiz(
   uid: string,
@@ -80,30 +96,60 @@ export async function finishDailyQuiz(
   wrongItemKeys: { planId: string; itemId: string }[],
   now: Date = new Date()
 ): Promise<DailyQuizFinishResult> {
-  for (const key of wrongItemKeys) {
-    try {
-      await applyQuizTopicReview(uid, key.planId, key.itemId, now);
-    } catch (err) {
-      // Ein einzelner Review-Fehler darf den Abschluss nicht blockieren —
-      // die Diagnose verliert dann nur diese eine Korrektur.
-      console.error("applyQuizTopicReview error:", err);
-    }
-  }
-
   const db = getDb();
   const today = todayKey(now);
+  const nowMs = now.getTime();
   const dayRef = doc(db, "users", uid, "quizDays", today);
   const userRef = doc(db, "users", uid);
   const activityRef = doc(db, "users", uid, "activity", monthKey(today));
   const day = dayOfMonth(today);
   const studyDays = await loadActiveStudyDays(uid);
 
+  // Verwendete Aufgaben je Item (für recentExerciseIds) + falsche Themen.
+  const wrongSet = new Set(wrongItemKeys.map((k) => `${k.planId}/${k.itemId}`));
+  const byItem = new Map<
+    string,
+    { planId: string; itemId: string; exerciseIds: string[] }
+  >();
+  for (const task of quiz.tasks) {
+    const key = `${task.planId}/${task.itemId}`;
+    const entry = byItem.get(key) ?? {
+      planId: task.planId,
+      itemId: task.itemId,
+      exerciseIds: [],
+    };
+    entry.exerciseIds.push(task.exercise.id);
+    byItem.set(key, entry);
+  }
+  const itemEntries = [...byItem.values()];
+
   return runTransaction(db, async (tx) => {
-    const [daySnap, userSnap, activitySnap] = await Promise.all([
+    const [daySnap, userSnap, activitySnap, ...itemSnaps] = await Promise.all([
       tx.get(dayRef),
       tx.get(userRef),
       tx.get(activityRef),
+      ...itemEntries.map((entry) =>
+        tx.get(
+          doc(db, "users", uid, "plans", entry.planId, "planItems", entry.itemId)
+        )
+      ),
     ]);
+
+    itemEntries.forEach((entry, i) => {
+      const snap = itemSnaps[i];
+      if (!snap.exists()) return;
+      const item = snap.data() as PlanItemDoc;
+      const patch: Partial<PlanItemDoc> = {
+        recentExerciseIds: mergeRecentExerciseIds(
+          item.recentExerciseIds,
+          entry.exerciseIds
+        ),
+      };
+      if (wrongSet.has(`${entry.planId}/${entry.itemId}`)) {
+        Object.assign(patch, computeQuizTopicReviewPatch(entry.itemId, item, nowMs));
+      }
+      tx.update(snap.ref, patch);
+    });
 
     const dayData = daySnap.exists() ? (daySnap.data() as QuizDayDocLike) : null;
     const firstAttempt = dayData === null || dayData.passed == null;

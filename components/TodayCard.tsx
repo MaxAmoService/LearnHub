@@ -301,12 +301,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
           {/* Neu */}
           <div>
             <h3 className="text-sm font-semibold text-slate-300 mb-2">
-              Neu
-              {quizPassed && (
-                <span className="ml-2 text-xs font-normal text-slate-500">
-                  · noch offen, freiwillig
-                </span>
-              )}
+              {quizPassed ? "Zusätzlich üben" : "Neu"}
             </h3>
             <div className="space-y-2">
               {schedule.blocks.flatMap((block) => {
@@ -365,12 +360,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
           {/* Wiederholung */}
           <div>
             <h3 className="text-sm font-semibold text-slate-300 mb-2">
-              Wiederholung
-              {quizPassed && (
-                <span className="ml-2 text-xs font-normal text-slate-500">
-                  · noch offen, freiwillig
-                </span>
-              )}
+              {quizPassed ? "Zusätzlich üben" : "Wiederholung"}
             </h3>
             {dueItems.length === 0 ? (
               <p className="text-xs text-slate-500">Keine fälligen Wiederholungen.</p>
