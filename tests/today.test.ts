@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { buildToday, computeWeekProgress } from "@/lib/today";
+import {
+  buildToday,
+  computeDayDone,
+  computePlanUnitsToday,
+  computeWeekProgress,
+  type DayDoneInput,
+} from "@/lib/today";
 import type { PlanItemLike, PlanLike } from "@/lib/scheduling";
 
 const NOW = new Date("2026-09-07T12:00:00Z"); // Montag
@@ -217,5 +223,118 @@ describe("computeWeekProgress", () => {
 
   it("leere studyDays: nichts geplant, nichts zählt", () => {
     expect(computeWeekProgress(TODAY, {}, [])).toEqual({ studied: 0, planned: 0 });
+  });
+});
+
+describe("computePlanUnitsToday — heute an DIESEM Plan bearbeitete Einheiten", () => {
+  const TODAY = "2026-09-07";
+  const todayMs = Date.UTC(2026, 8, 7, 12, 0, 0); // Mo 14:00 Berlin → heute
+  const yesterdayMs = Date.UTC(2026, 8, 6, 12, 0, 0); // So → gestern
+
+  function withReview(weight: number, lastReview: number): PlanItemLike {
+    return makeItem({
+      weight,
+      sm2: { repetitions: 1, interval: 1, lastReview } as PlanItemLike["sm2"],
+    });
+  }
+
+  it("zählt gewichtete Reviews von heute, ignoriert gestern/fehlende", () => {
+    const items = [
+      withReview(2, todayMs),
+      withReview(1, todayMs),
+      withReview(1, yesterdayMs),
+      makeItem({ weight: 1, sm2: null }),
+      makeItem({ weight: 1 }),
+    ];
+    expect(computePlanUnitsToday(items, TODAY)).toBe(3);
+  });
+
+  it("zählt nur die Items DIESES Plans — Aktivität anderer/gelöschter Pläne existiert hier gar nicht", () => {
+    // Die Einheiten kommen aus den Items des Plans selbst — der nutzerweite
+    // doneToday-Wert aus dem Activity-Doc wird nicht verwendet. Ein Plan
+    // ohne heutige Reviews liefert 0, egal was andere Pläne getan haben.
+    expect(computePlanUnitsToday([withReview(1, yesterdayMs)], TODAY)).toBe(0);
+    expect(computePlanUnitsToday([], TODAY)).toBe(0);
+  });
+
+  it("lastReview ohne gültigen Wert (0/fehlend) zählt nicht", () => {
+    const items = [
+      makeItem({ sm2: { repetitions: 0, interval: 0, lastReview: 0 } as PlanItemLike["sm2"] }),
+    ];
+    expect(computePlanUnitsToday(items, TODAY)).toBe(0);
+  });
+});
+
+describe("computeDayDone — Tag geschafft (Widget-API)", () => {
+  function progress(unitsToday: number, dailyTarget: number) {
+    return { unitsToday, dailyTarget };
+  }
+
+  function makeInput(overrides: Partial<DayDoneInput> = {}): DayDoneInput {
+    return {
+      quizPassedToday: false,
+      hasActivePlans: true,
+      dueCount: 0,
+      hasOpenNeu: false,
+      planProgress: [progress(2, 2)],
+      ...overrides,
+    };
+  }
+
+  it("Pensum jedes Plans erreicht, nichts offen → geschafft", () => {
+    expect(computeDayDone(makeInput())).toBe(true);
+    expect(
+      computeDayDone(makeInput({ planProgress: [progress(2, 2), progress(2, 2)] }))
+    ).toBe(true);
+  });
+
+  it("Pensum nicht erreicht → nicht geschafft", () => {
+    expect(computeDayDone(makeInput({ planProgress: [progress(1, 2)] }))).toBe(false);
+    // JEDER Plan muss sein Pensum erreichen — ein fertiger Plan reicht nicht.
+    expect(
+      computeDayDone(makeInput({ planProgress: [progress(5, 1), progress(0, 2)] }))
+    ).toBe(false);
+  });
+
+  it("Invariante: solange fällige Wiederholungen offen sind, ist dayDone nie true", () => {
+    expect(computeDayDone(makeInput({ dueCount: 1 }))).toBe(false);
+    // auch bei weit übererfülltem Pensum
+    expect(
+      computeDayDone(makeInput({ dueCount: 1, planProgress: [progress(99, 1)] }))
+    ).toBe(false);
+  });
+
+  it("Invariante: solange ein Neu-Thema done < target hat, ist dayDone nie true", () => {
+    expect(computeDayDone(makeInput({ hasOpenNeu: true }))).toBe(false);
+    expect(
+      computeDayDone(makeInput({ hasOpenNeu: true, planProgress: [progress(99, 1)] }))
+    ).toBe(false);
+  });
+
+  it("Invariante deckt den Bug-Fall ab: Fremde Tagesaktivität zählt nicht für den eigenen Plan", () => {
+    // doneToday=1 stammte aus einem inzwischen gelöschten Plan — die Einheiten
+    // des gelöschten Plans existieren in planProgress nicht mehr. Der neue
+    // Plan hat heute 0 Einheiten bei Ziel 1 → nicht geschafft.
+    expect(computeDayDone(makeInput({ planProgress: [progress(0, 1)] }))).toBe(false);
+  });
+
+  it("bestandenes Quiz schlägt die Invariante (Abkürzung)", () => {
+    expect(
+      computeDayDone(
+        makeInput({
+          quizPassedToday: true,
+          dueCount: 3,
+          hasOpenNeu: true,
+          planProgress: [progress(0, 5)],
+        })
+      )
+    ).toBe(true);
+  });
+
+  it("ohne aktive Pläne kann nur das Quiz den Tag schaffen", () => {
+    expect(computeDayDone(makeInput({ hasActivePlans: false }))).toBe(false);
+    expect(
+      computeDayDone(makeInput({ hasActivePlans: false, quizPassedToday: true }))
+    ).toBe(true);
   });
 });

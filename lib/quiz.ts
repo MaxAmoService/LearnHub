@@ -304,13 +304,20 @@ export function canClaimFreeDay(
  * Stufe) über dieselbe SM-2-Engine wie Übungen — das Thema rückt in der
  * Wiederholung nach vorn. Richtig beantwortete Themen bekommen KEINEN Patch
  * (eine einzelne richtige Frage ist kein Nachweis, dass ein Thema sitzt).
+ *
+ * `lastReview` bleibt dabei bewusst UNANGETASTET: Das Tagespensum
+ * (computePlanUnitsToday in lib/today.ts) misst den Tag über sm2.lastReview —
+ * ein Quiz-Review darf dort nicht als bearbeitete Einheit zählen, sonst
+ * könnte ein Fehlversuch den Tag doch noch freischalten.
  */
 export function computeQuizTopicReviewPatch(
   itemId: string,
   item: { sm2?: FlashcardProgress | null; completedUnits?: number; estimatedUnits?: number },
   nowMs: number
 ): { sm2: FlashcardProgress; completedUnits: number; nextDueAt: string } {
-  const newSm2 = sm2(1, item.sm2 ?? newCardProgress(itemId), nowMs);
+  const prev = item.sm2 ?? null;
+  const newSm2 = sm2(1, prev ?? newCardProgress(itemId), nowMs);
+  newSm2.lastReview = prev ? prev.lastReview : 0;
   const estimatedUnits = Math.max(item.estimatedUnits ?? 0, 1);
   const completedUnits = Math.min((item.completedUnits ?? 0) + 1, estimatedUnits);
   return {

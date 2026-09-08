@@ -234,6 +234,7 @@ describe("canClaimFreeDay — freier Tag nur beim ersten Durchgang", () => {
 describe("computeQuizTopicReviewPatch — Quiz darf SM-2 nur verschlechtern", () => {
   it("falsches Thema: Quality 1 setzt zurück und rückt die Wiederholung nach vorn", () => {
     const nowMs = Date.UTC(2026, 8, 7, 12, 0, 0); // Mo 14:00 Berliner Zeit
+    const previousReview = Date.UTC(2026, 8, 1, 12, 0, 0);
     const patch = computeQuizTopicReviewPatch(
       "item1",
       {
@@ -243,7 +244,7 @@ describe("computeQuizTopicReviewPatch — Quiz darf SM-2 nur verschlechtern", ()
           easeFactor: 2.5,
           repetitions: 4,
           nextReview: 0,
-          lastReview: 0,
+          lastReview: previousReview,
         },
         completedUnits: 2,
         estimatedUnits: 3,
@@ -255,12 +256,16 @@ describe("computeQuizTopicReviewPatch — Quiz darf SM-2 nur verschlechtern", ()
     expect(patch.sm2.interval).toBe(1);
     expect(patch.nextDueAt).toBe("2026-09-08"); // morgen statt in 3 Wochen
     expect(patch.completedUnits).toBe(3); // geklemmt auf estimatedUnits
+    // lastReview bleibt UNANGETASTET: Ein Quiz-Review zählt nicht als heutige
+    // Einheit im Tagespensum — ein Fehlversuch darf den Tag nicht freischalten.
+    expect(patch.sm2.lastReview).toBe(previousReview);
   });
 
   it("fehlender SM-2-Stand wird defensiv als neue Karte behandelt", () => {
     const nowMs = Date.UTC(2026, 8, 7, 12, 0, 0);
     const patch = computeQuizTopicReviewPatch("itemX", { sm2: null }, nowMs);
     expect(patch.sm2.cardId).toBe("itemX");
+    expect(patch.sm2.lastReview).toBe(0); // nie echt geübt → zählt nicht als Pensum
     expect(patch.nextDueAt).toBe("2026-09-08");
     expect(patch.completedUnits).toBe(1);
   });

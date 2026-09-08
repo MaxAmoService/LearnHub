@@ -137,6 +137,81 @@ export interface WeekProgress {
   planned: number;
 }
 
+// ─── Tag geschafft (dayDone der Widget-API) ─────────────────────────────────
+//
+// doneToday aus dem Activity-Doc ist nutzerweit und NICHT plan-bezogen —
+// Einheiten eines am selben Tag gelöschten Plans würden damit fälschlich dem
+// Pensum anderer Pläne zugerechnet. Deshalb zählt das Pensum pro Plan über
+// die heute an DIESEM Plan bearbeiteten Items (sm2.lastReview, Berliner Tag).
+// Quiz-Reviews zählen bewusst NICHT als Pensum: computeQuizTopicReviewPatch
+// (lib/quiz.ts) erhält das bisherige lastReview — ein Fehlversuch darf den
+// Tag nicht freischalten.
+
+/** sm2 mit lastReview — Firestore-Items tragen es, PlanItemLike nicht. */
+interface ReviewProgressLike {
+  repetitions?: number;
+  interval?: number;
+  lastReview?: number;
+}
+
+/**
+ * Heute an diesem Plan bearbeitete Einheiten — gemessen über die Items des
+ * Plans, deren letzter ECHTER Review auf den heutigen Berliner Tag fällt
+ * (sm2.lastReview). Gewichtet wie computeDailyTarget (weight ?? 1).
+ */
+export function computePlanUnitsToday(
+  items: readonly PlanItemLike[],
+  today: string
+): number {
+  let units = 0;
+  for (const item of items) {
+    const sm2 = item.sm2 as ReviewProgressLike | null | undefined;
+    if (!sm2 || typeof sm2.lastReview !== "number" || sm2.lastReview <= 0) continue;
+    if (todayKey(new Date(sm2.lastReview)) === today) {
+      units += item.weight ?? 1;
+    }
+  }
+  return units;
+}
+
+export interface PlanDayProgress {
+  /** Heute an diesem Plan bearbeitete gewichtete Einheiten (echte Reviews). */
+  unitsToday: number;
+  /** Tagesziel des Plans (computeDailyTarget) — gewichtete Einheiten. */
+  dailyTarget: number;
+}
+
+export interface DayDoneInput {
+  /** Tagesquiz heute bestanden — schlägt die Invariante (das ist die Abkürzung). */
+  quizPassedToday: boolean;
+  /** Mindestens ein aktiver Plan vorhanden? */
+  hasActivePlans: boolean;
+  /** Offene fällige Wiederholungen (nextDueAt <= heute) über alle aktiven Pläne. */
+  dueCount: number;
+  /** Offenes Neu-Thema (done < target) irgendwo? */
+  hasOpenNeu: boolean;
+  /** Pro aktivem Plan: heutige Einheiten + Tagesziel. */
+  planProgress: PlanDayProgress[];
+}
+
+/**
+ * Ob der heutige Tag als geschafft gilt (Widget-API `dayDone`).
+ *
+ * - Quiz heute bestanden → IMMER geschafft (Abkürzung, gewollt).
+ * - Sonst Plausibilitäts-Invariante: dayDone ist nie true, solange fällige
+ *   Wiederholungen offen sind oder ein Neu-Thema done < target hat — die
+ *   Antwort darf sich nicht selbst widersprechen.
+ * - Und das Tagespensum jedes aktiven Plans muss erreicht sein (heute an
+ *   DIESEM Plan bearbeitete Einheiten >= Tagesziel des Plans).
+ */
+export function computeDayDone(input: DayDoneInput): boolean {
+  if (input.quizPassedToday) return true;
+  if (!input.hasActivePlans) return false;
+  if (input.dueCount > 0 || input.hasOpenNeu) return false;
+  if (input.planProgress.length === 0) return false;
+  return input.planProgress.every((p) => p.unitsToday >= p.dailyTarget);
+}
+
 /**
  * Wochenfortschritt der laufenden Woche (Montag bis Sonntag).
  *

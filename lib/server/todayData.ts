@@ -17,7 +17,13 @@ import {
   monthKey,
   todayKey,
 } from "../dates";
-import { buildToday, computeWeekProgress, type ActivityDocLike } from "../today";
+import {
+  buildToday,
+  computeDayDone,
+  computePlanUnitsToday,
+  computeWeekProgress,
+  type ActivityDocLike,
+} from "../today";
 import { computeDailyTarget, computePace, computePhase, type PlanItemLike } from "../scheduling";
 import { hasExercisesForTopic } from "../exercises/session";
 import type {
@@ -186,24 +192,36 @@ export async function buildTodayApiData(
   const quizPassedToday = quizDayData.passed === true;
 
   // totalDue: fällige Wiederholungen UNGEDECKELT (buildToday kappt die
-  // Anzeige auf 3 pro Plan) + heutige Neu-Themen.
+  // Anzeige auf 3 pro Plan) + offene Neu-Themen (done < target).
   let dueCount = 0;
   for (const plan of activePlans) {
     for (const item of itemsByPlan[plan.id] ?? []) {
       if (item.nextDueAt != null && item.nextDueAt <= today) dueCount += 1;
     }
   }
-  const neuCount = schedule.blocks.filter((block) => block.neu !== null).length;
-
-  // dayDone: Quiz heute bestanden ODER (keine fälligen Wiederholungen mehr
-  // offen UND das Tagespensum aller aktiven Pläne erreicht).
-  const dailyTarget = activePlans.reduce(
-    (sum, plan) => sum + computeDailyTarget(plan, itemsByPlan[plan.id] ?? [], today),
-    0
+  const openNeuBlocks = schedule.blocks.filter(
+    (block) =>
+      block.neu !== null &&
+      (block.neu.completedUnits ?? 0) < Math.max(block.neu.estimatedUnits ?? 1, 1)
   );
-  const dayDone =
-    quizPassedToday ||
-    (activePlans.length > 0 && dueCount === 0 && doneToday >= dailyTarget);
+  const hasOpenNeu = openNeuBlocks.length > 0;
+
+  // Pensum PRO PLAN: nur die heute an DIESEM Plan bearbeiteten Einheiten
+  // zählen (sm2.lastReview der Items dieses Plans) — das nutzerweite
+  // doneToday aus dem Activity-Doc taugt dafür nicht (Einheiten eines
+  // gelöschten Plans würden anderen Plänen zugerechnet).
+  const planProgress = activePlans.map((plan) => ({
+    unitsToday: computePlanUnitsToday(itemsByPlan[plan.id] ?? [], today),
+    dailyTarget: computeDailyTarget(plan, itemsByPlan[plan.id] ?? [], today),
+  }));
+
+  const dayDone = computeDayDone({
+    quizPassedToday,
+    hasActivePlans: activePlans.length > 0,
+    dueCount,
+    hasOpenNeu,
+    planProgress,
+  });
 
   return {
     date: today,
@@ -217,6 +235,6 @@ export async function buildTodayApiData(
     plans,
     quizUrl: `${opts.baseUrl}/tagesquiz`,
     dayDone,
-    totalDue: dueCount + neuCount,
+    totalDue: dueCount + openNeuBlocks.length,
   };
 }

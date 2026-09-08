@@ -56,15 +56,17 @@ export interface TodayApiResponse {
   /** Absoluter Link auf das Tagesquiz — Widget verlinkt direkt dorthin. */
   quizUrl: string;
   /**
-   * Ob der heutige Tag bereits als geschafft gilt: Quiz heute bestanden ODER
-   * keine fälligen Wiederholungen mehr offen UND das Tagespensum aller
-   * aktiven Pläne erreicht.
+   * Ob der heutige Tag bereits als geschafft gilt. Tagesquiz heute bestanden
+   * → IMMER true (Abkürzung). Sonst gilt die Plausibilitäts-Invariante
+   * (lib/today.ts computeDayDone): keine fälligen Wiederholungen offen,
+   * kein Neu-Thema mit done < target, und das Tagespensum jedes aktiven
+   * Plans erreicht (heute an DIESEM Plan bearbeitete Einheiten).
    */
   dayDone: boolean;
   /**
    * Anzahl aller heute anstehenden Themen über alle aktiven Pläne: fällige
-   * Wiederholungen (ungedeckelt, anders als die 3-pro-Plan-Anzeige) plus die
-   * heutigen Neu-Themen.
+   * Wiederholungen (ungedeckelt, anders als die 3-pro-Plan-Anzeige) plus
+   * offene Neu-Themen (done < target).
    */
   totalDue: number;
 }
