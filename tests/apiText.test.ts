@@ -28,6 +28,9 @@ function makeData(overrides: Partial<TodayApiResponse> = {}): TodayApiResponse {
     date: "2026-09-07",
     streak: { current: 5, best: 5, doneToday: 0, weekDone: 3, weekTarget: 7 },
     plans: [],
+    quizUrl: "https://example.test/tagesquiz",
+    dayDone: false,
+    totalDue: 0,
     ...overrides,
   };
 }

@@ -18,7 +18,7 @@ import {
   todayKey,
 } from "../dates";
 import { buildToday, computeWeekProgress, type ActivityDocLike } from "../today";
-import { computePace, computePhase, type PlanItemLike } from "../scheduling";
+import { computeDailyTarget, computePace, computePhase, type PlanItemLike } from "../scheduling";
 import { hasExercisesForTopic } from "../exercises/session";
 import type {
   TodayApiItem,
@@ -84,13 +84,15 @@ export async function buildTodayApiData(
   const activitySnaps = months.map((m) =>
     db.collection("users").doc(uid).collection("activity").doc(m).get()
   );
+  const quizDaySnap = db
+    .collection("users")
+    .doc(uid)
+    .collection("quizDays")
+    .doc(today)
+    .get();
 
-  const [userDoc, plansDoc, itemsDoc, ...activityDocs] = await Promise.all([
-    userSnap,
-    plansSnap,
-    itemsSnap,
-    ...activitySnaps,
-  ]);
+  const [userDoc, plansDoc, itemsDoc, quizDayDoc, ...activityDocs] =
+    await Promise.all([userSnap, plansSnap, itemsSnap, quizDaySnap, ...activitySnaps]);
 
   // ── Defensiv lesen: schemalos, alte Docs haben neue Felder nicht ─────────
 
@@ -177,6 +179,32 @@ export async function buildTodayApiData(
     };
   });
 
+  // ── Tagesquiz-Status ──────────────────────────────────────────────────────
+  // quizDays/{today}.passed === true → freier Tag über das Quiz geholt
+  // (das Quiz stempelt dabei lastStudyDate, siehe lib/quizClient.ts).
+  const quizDayData = quizDayDoc.exists ? (quizDayDoc.data() ?? {}) : {};
+  const quizPassedToday = quizDayData.passed === true;
+
+  // totalDue: fällige Wiederholungen UNGEDECKELT (buildToday kappt die
+  // Anzeige auf 3 pro Plan) + heutige Neu-Themen.
+  let dueCount = 0;
+  for (const plan of activePlans) {
+    for (const item of itemsByPlan[plan.id] ?? []) {
+      if (item.nextDueAt != null && item.nextDueAt <= today) dueCount += 1;
+    }
+  }
+  const neuCount = schedule.blocks.filter((block) => block.neu !== null).length;
+
+  // dayDone: Quiz heute bestanden ODER (keine fälligen Wiederholungen mehr
+  // offen UND das Tagespensum aller aktiven Pläne erreicht).
+  const dailyTarget = activePlans.reduce(
+    (sum, plan) => sum + computeDailyTarget(plan, itemsByPlan[plan.id] ?? [], today),
+    0
+  );
+  const dayDone =
+    quizPassedToday ||
+    (activePlans.length > 0 && dueCount === 0 && doneToday >= dailyTarget);
+
   return {
     date: today,
     streak: {
@@ -187,5 +215,8 @@ export async function buildTodayApiData(
       weekTarget: week.planned,
     },
     plans,
+    quizUrl: `${opts.baseUrl}/tagesquiz`,
+    dayDone,
+    totalDue: dueCount + neuCount,
   };
 }

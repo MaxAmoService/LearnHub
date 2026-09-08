@@ -32,6 +32,7 @@ import { getDb } from "./firebase";
 import { dayOfMonth, monthKey, todayKey } from "./dates";
 import { qualityFromRatio } from "./exercises/scoring";
 import { computePlanReview } from "./planReview";
+import { computeQuizTopicReviewPatch } from "./quiz";
 import { isConsolidated } from "./scheduling";
 import type { FlashcardProgress } from "./spacing";
 
@@ -321,6 +322,31 @@ async function applyPlanItemReview(
     }
 
     return { plan: updatedPlan, item: updatedItem };
+  });
+}
+
+/**
+ * Tagesquiz: Falsch beantwortete Themen bekommen Quality 1 (lib/quiz.ts) —
+ * das Quiz darf SM-2 NUR verschlechtern, nie verbessern. Bewusst KEIN
+ * Streak-/lastStudyDate-/Activity-Write: Ein nicht bestandenes Quiz lässt
+ * den Tag unangetastet, der bleibt über die Übungen offen.
+ */
+export async function applyQuizTopicReview(
+  uid: string,
+  planId: string,
+  itemId: string,
+  now: Date = new Date()
+): Promise<PlanItemDoc | null> {
+  const db = getDb();
+  const itemRef = doc(db, "users", uid, "plans", planId, "planItems", itemId);
+
+  return runTransaction(db, async (tx) => {
+    const snap = await tx.get(itemRef);
+    if (!snap.exists()) return null;
+    const item = snap.data() as PlanItemDoc;
+    const patch = computeQuizTopicReviewPatch(itemId, item, now.getTime());
+    tx.update(itemRef, patch);
+    return { ...item, ...patch };
   });
 }
 

@@ -18,6 +18,7 @@ import {
   Loader2,
   Plus,
   XCircle,
+  Zap,
 } from "lucide-react";
 import {
   addDays,
@@ -216,6 +217,13 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <h2 className="font-semibold text-slate-200">Heute</h2>
         <div className="flex items-center gap-3 text-sm text-slate-400">
+          <Link
+            href="/tagesquiz"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 transition-all"
+            title="Quiz über deinen gesamten bisherigen Stoff — bestehst du beim ersten Versuch, gilt der Tag als geschafft"
+          >
+            <Zap className="w-3.5 h-3.5" /> Tagesquiz
+          </Link>
           {profile.streak > 0 && (
             <span className="flex items-center gap-1.5">
               <Flame className="w-4 h-4 text-orange-400" />

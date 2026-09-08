@@ -27,6 +27,88 @@ const TYPE_LABELS: Record<Exercise["type"], string> = {
   match: "Zuordnung",
 };
 
+/**
+ * Falsch beantwortete Aufgabe MIT Musterlösung/Erklärung — gemeinsam genutzt
+ * von der Übungsseite (ExerciseSummary) und dem Tagesquiz (QuizSummary).
+ */
+export function WrongExerciseReview({
+  exercise,
+  score,
+}: {
+  exercise: Exercise;
+  score: number;
+}) {
+  return (
+    <div className="rounded-lg border border-slate-700/50 bg-slate-800/40 p-3 space-y-2">
+      <div className="flex items-start gap-2">
+        <span className="text-xs px-2 py-0.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-300 flex-shrink-0">
+          {TYPE_LABELS[exercise.type]}
+        </span>
+        <p className="text-sm text-slate-200 whitespace-pre-wrap">{exercise.prompt}</p>
+      </div>
+      {isRecallExercise(exercise) && (
+        <>
+          <p className="text-xs text-slate-500">
+            {score === 0.5 ? "Bewertung: teilweise gewusst" : "Bewertung: nicht gewusst"}
+          </p>
+          <p className="text-sm text-slate-300">
+            <span className="text-emerald-400 font-medium">Musterlösung: </span>
+            {exercise.sampleAnswer}
+          </p>
+          {Array.isArray(exercise.keyPoints) && exercise.keyPoints.length > 0 && (
+            <ul className="space-y-0.5">
+              {exercise.keyPoints.map((point, i) => (
+                <li key={i} className="text-xs text-slate-400">
+                  · {point}
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      )}
+      {isNumericExercise(exercise) && (
+        <>
+          <p className="text-xs text-slate-500">
+            Richtige Antwort:{" "}
+            <span className="text-slate-300 font-medium">
+              {exercise.answer}
+              {typeof exercise.unit === "string" && exercise.unit.length > 0
+                ? ` ${exercise.unit}`
+                : ""}
+            </span>
+          </p>
+          <p className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
+            {exercise.explanation}
+          </p>
+        </>
+      )}
+      {isChoiceExercise(exercise) && (
+        <>
+          <p className="text-xs text-slate-500">
+            Richtige Antwort:{" "}
+            <span className="text-slate-300 font-medium">
+              {exercise.options[exercise.correctIndex]}
+            </span>
+          </p>
+          <p className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
+            {exercise.explanation}
+          </p>
+        </>
+      )}
+      {isMatchExercise(exercise) && (
+        <ul className="space-y-0.5">
+          {exercise.pairs.map((pair) => (
+            <li key={pair.left} className="text-xs text-slate-400">
+              {pair.left} <ArrowRight className="w-3 h-3 inline mx-1 text-slate-600" />
+              <span className="text-slate-300">{pair.right}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export function ExerciseSummary({
   results,
   correct,
@@ -76,76 +158,7 @@ export function ExerciseSummary({
             Diese {wrong.length === 1 ? "Aufgabe war" : "Aufgaben waren"} noch nicht ganz richtig
           </h2>
           {wrong.map(({ exercise, score }) => (
-            <div
-              key={exercise.id}
-              className="rounded-lg border border-slate-700/50 bg-slate-800/40 p-3 space-y-2"
-            >
-              <div className="flex items-start gap-2">
-                <span className="text-xs px-2 py-0.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-300 flex-shrink-0">
-                  {TYPE_LABELS[exercise.type]}
-                </span>
-                <p className="text-sm text-slate-200 whitespace-pre-wrap">{exercise.prompt}</p>
-              </div>
-              {isRecallExercise(exercise) && (
-                <>
-                  <p className="text-xs text-slate-500">
-                    {score === 0.5 ? "Bewertung: teilweise gewusst" : "Bewertung: nicht gewusst"}
-                  </p>
-                  <p className="text-sm text-slate-300">
-                    <span className="text-emerald-400 font-medium">Musterlösung: </span>
-                    {exercise.sampleAnswer}
-                  </p>
-                  {Array.isArray(exercise.keyPoints) && exercise.keyPoints.length > 0 && (
-                    <ul className="space-y-0.5">
-                      {exercise.keyPoints.map((point, i) => (
-                        <li key={i} className="text-xs text-slate-400">
-                          · {point}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              )}
-              {isNumericExercise(exercise) && (
-                <>
-                  <p className="text-xs text-slate-500">
-                    Richtige Antwort:{" "}
-                    <span className="text-slate-300 font-medium">
-                      {exercise.answer}
-                      {typeof exercise.unit === "string" && exercise.unit.length > 0
-                        ? ` ${exercise.unit}`
-                        : ""}
-                    </span>
-                  </p>
-                  <p className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-                    {exercise.explanation}
-                  </p>
-                </>
-              )}
-              {isChoiceExercise(exercise) && (
-                <>
-                  <p className="text-xs text-slate-500">
-                    Richtige Antwort:{" "}
-                    <span className="text-slate-300 font-medium">
-                      {exercise.options[exercise.correctIndex]}
-                    </span>
-                  </p>
-                  <p className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-                    {exercise.explanation}
-                  </p>
-                </>
-              )}
-              {isMatchExercise(exercise) && (
-                <ul className="space-y-0.5">
-                  {exercise.pairs.map((pair) => (
-                    <li key={pair.left} className="text-xs text-slate-400">
-                      {pair.left} <ArrowRight className="w-3 h-3 inline mx-1 text-slate-600" />
-                      <span className="text-slate-300">{pair.right}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+            <WrongExerciseReview key={exercise.id} exercise={exercise} score={score} />
           ))}
         </div>
       ) : (

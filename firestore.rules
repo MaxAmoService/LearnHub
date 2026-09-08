@@ -29,6 +29,12 @@ service cloud.firestore {
       match /activity/{month} {
         allow read, write: if request.auth != null && request.auth.uid == userId;
       }
+
+      // Tagesquiz: ein Doc pro Tag (gezogener Fragenbogen + Ergebnis des
+      // ersten Durchgangs). Gehört dem User.
+      match /quizDays/{date} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
     }
 
     // Lehrplan-Items: eigene Regel auf Gruppenebene. Verschachtelte
