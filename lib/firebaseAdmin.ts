@@ -15,8 +15,10 @@
 // Singleton über globalThis: Next.js-Hot-Reload würde bei Modul-Level-Init
 // mehrere App-Instanzen erzeugen.
 
+// Achtung: firebase-admin/auth hier NICHT importieren — es zieht jwks-rsa →
+// jose@6 nach und crasht auf Vercel (ERR_REQUIRE_ESM). ID-Token-Verifikation
+// läuft stattdessen über lib/server/idToken.ts (jose direkt, gebündelt).
 import { cert, getApps, initializeApp, type App } from "firebase-admin/app";
-import { getAuth, type Auth } from "firebase-admin/auth";
 import { getFirestore, type Firestore } from "firebase-admin/firestore";
 
 const globalForAdmin = globalThis as unknown as {
@@ -44,6 +46,10 @@ export function getAdminDb(): Firestore {
   return getFirestore(getAdminApp());
 }
 
-export function getAdminAuth(): Auth {
-  return getAuth(getAdminApp());
+export function getAdminProjectId(): string | undefined {
+  return (
+    getAdminApp().options.projectId ??
+    process.env.GOOGLE_CLOUD_PROJECT ??
+    process.env.GCLOUD_PROJECT
+  );
 }

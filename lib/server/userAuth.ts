@@ -5,11 +5,13 @@
 // Die App authentifiziert sich clientseitig über das Firebase Client SDK
 // (keine Session-Cookies). Server-Routen, die den eingeloggten User brauchen
 // (apiKeys-Verwaltung), bekommen daher den Firebase-ID-Token per
-// `Authorization: Bearer <idToken>` und verifizieren ihn hier gegen das
-// Admin SDK.
+// `Authorization: Bearer <idToken>`. Die Verifikation läuft über jose gegen
+// Googles JWKS (lib/server/idToken.ts) — NICHT über firebase-admin/auth,
+// das auf Vercel mit ERR_REQUIRE_ESM crasht (jwks-rsa → jose@6).
 
 import type { NextRequest } from "next/server";
-import { getAdminAuth } from "../firebaseAdmin";
+import { getAdminProjectId } from "../firebaseAdmin";
+import { verifyFirebaseIdToken } from "./idToken";
 
 export async function verifyBearerUser(
   request: NextRequest
@@ -17,10 +19,7 @@ export async function verifyBearerUser(
   const header = request.headers.get("authorization") ?? "";
   const token = header.startsWith("Bearer ") ? header.slice("Bearer ".length) : "";
   if (!token) return null;
-  try {
-    const decoded = await getAdminAuth().verifyIdToken(token);
-    return { uid: decoded.uid };
-  } catch {
-    return null;
-  }
+  const projectId = getAdminProjectId();
+  if (!projectId) return null;
+  return verifyFirebaseIdToken(token, { projectId });
 }
