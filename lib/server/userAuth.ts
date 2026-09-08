@@ -20,6 +20,13 @@ export async function verifyBearerUser(
   const token = header.startsWith("Bearer ") ? header.slice("Bearer ".length) : "";
   if (!token) return null;
   const projectId = getAdminProjectId();
-  if (!projectId) return null;
+  if (!projectId) {
+    console.error(
+      "[idToken] Ablehnung: Projekt-ID nicht ermittelbar — Service-Account ohne project_id und kein GOOGLE_CLOUD_PROJECT/GCLOUD_PROJECT gesetzt."
+    );
+    throw new Error(
+      "Projekt-ID für die ID-Token-Verifikation nicht ermittelbar (Service-Account-JSON ohne project_id)."
+    );
+  }
   return verifyFirebaseIdToken(token, { projectId });
 }

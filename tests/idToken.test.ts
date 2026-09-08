@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   createLocalJWKSet,
   exportJWK,
@@ -178,5 +178,63 @@ describe("verifyFirebaseIdToken", () => {
     await expect(
       verifyFirebaseIdToken("nicht.ein.token", { projectId: PROJECT_ID, getKey })
     ).resolves.toBeNull();
+  });
+});
+
+describe("Logging bei Ablehnung", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("loggt abgelaufene Token mit dem Grund", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { privateKey, getKey } = await buildKeyMaterial();
+    const token = await signToken(privateKey, {
+      iss: ISSUER,
+      aud: PROJECT_ID,
+      sub: "user-123",
+      expSeconds: Math.floor(Date.now() / 1000) - 3600,
+    });
+    await expect(
+      verifyFirebaseIdToken(token, { projectId: PROJECT_ID, getKey })
+    ).resolves.toBeNull();
+    const log = spy.mock.calls.map((c) => String(c[0])).join(" ");
+    expect(log).toContain("abgelaufen");
+    expect(log).toContain(PROJECT_ID);
+  });
+
+  it("loggt falsche Audience mit erwartet vs. erhalten", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { privateKey, getKey } = await buildKeyMaterial();
+    const token = await signToken(privateKey, {
+      iss: ISSUER,
+      aud: "fremde-app",
+      sub: "user-123",
+      expSeconds: Math.floor(Date.now() / 1000) + 3600,
+    });
+    await expect(
+      verifyFirebaseIdToken(token, { projectId: PROJECT_ID, getKey })
+    ).resolves.toBeNull();
+    const log = spy.mock.calls.map((c) => String(c[0])).join(" ");
+    expect(log).toContain("falsche Audience");
+    expect(log).toContain(`erwartet Project-ID ${PROJECT_ID}`);
+    expect(log).toContain("erhalten fremde-app");
+  });
+
+  it("loggt ungültige Signaturen mit dem Grund", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { getKey } = await buildKeyMaterial();
+    const other = await generateKeyPair("RS256");
+    const token = await signToken(other.privateKey, {
+      iss: ISSUER,
+      aud: PROJECT_ID,
+      sub: "user-123",
+      expSeconds: Math.floor(Date.now() / 1000) + 3600,
+    });
+    await expect(
+      verifyFirebaseIdToken(token, { projectId: PROJECT_ID, getKey })
+    ).resolves.toBeNull();
+    const log = spy.mock.calls.map((c) => String(c[0])).join(" ");
+    expect(log).toContain("Signatur ungültig");
   });
 });

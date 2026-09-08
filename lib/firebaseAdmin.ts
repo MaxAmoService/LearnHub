@@ -23,12 +23,19 @@ import { getFirestore, type Firestore } from "firebase-admin/firestore";
 
 const globalForAdmin = globalThis as unknown as {
   adminApp?: App;
+  /** project_id aus FIREBASE_SERVICE_ACCOUNT — app.options.projectId ist bei
+   *  cert()-Init NICHT gesetzt (firebase-admin löst intern über das Credential
+   *  auf), deshalb hier explizit mitgeführt. */
+  serviceAccountProjectId?: string;
 };
 
 function buildApp(): App {
   const encoded = process.env.FIREBASE_SERVICE_ACCOUNT;
   if (encoded) {
     const json = JSON.parse(Buffer.from(encoded, "base64").toString("utf8"));
+    if (typeof json.project_id === "string" && json.project_id.trim().length > 0) {
+      globalForAdmin.serviceAccountProjectId = json.project_id;
+    }
     return initializeApp({ credential: cert(json) });
   }
   // ADC: GOOGLE_APPLICATION_CREDENTIALS bzw. gcloud-Login (Skripte/CI).
@@ -47,8 +54,13 @@ export function getAdminDb(): Firestore {
 }
 
 export function getAdminProjectId(): string | undefined {
+  // buildApp() zuerst ausführen lassen — das setzt serviceAccountProjectId.
+  const app = getAdminApp();
+  if (globalForAdmin.serviceAccountProjectId) {
+    return globalForAdmin.serviceAccountProjectId;
+  }
   return (
-    getAdminApp().options.projectId ??
+    app.options.projectId ??
     process.env.GOOGLE_CLOUD_PROJECT ??
     process.env.GCLOUD_PROJECT
   );

@@ -14,15 +14,67 @@
 // Schlüssel (RS256, kid-Auswahl + Rotation via JWKS-Caching), issuer,
 // audience (= Project ID), exp (mit 300 s Clock-Tolerance wie
 // clockSkewSeconds im Admin SDK) und sub (nicht leer, ≤ 128 Zeichen).
-// firebase-admin/auth hier NICHT wieder hinzufügen.
+// Ablehnungen werden serverseitig mit Grund geloggt (console.error, ohne
+// Token-Inhalte). firebase-admin/auth hier NICHT wieder hinzufügen.
 
-import { createRemoteJWKSet, jwtVerify, type JWTVerifyGetKey } from "jose";
+import { createRemoteJWKSet, errors, jwtVerify, type JWTVerifyGetKey } from "jose";
 
 const FIREBASE_JWKS_URI =
   "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com";
 
 export function getFirebaseIssuer(projectId: string): string {
   return `https://securetoken.google.com/${projectId}`;
+}
+
+/**
+ * Ablehnungsgrund serverseitig loggen — NUR Grund und erwartete vs.
+ * erhaltene Projekt-ID/Issuer, niemals Token-Inhalte oder Secrets.
+ */
+function logRejection(err: unknown, projectId: string): void {
+  if (err instanceof errors.JWTExpired) {
+    console.error(`[idToken] Ablehnung: Token abgelaufen (exp) — Project-ID ${projectId}`);
+    return;
+  }
+  if (err instanceof errors.JWTClaimValidationFailed) {
+    const claim = err.claim;
+    if (claim === "iss") {
+      console.error(
+        `[idToken] Ablehnung: falscher Issuer — erwartet ${getFirebaseIssuer(projectId)}, erhalten ${String(err.payload?.iss ?? "?")}`
+      );
+    } else if (claim === "aud") {
+      console.error(
+        `[idToken] Ablehnung: falsche Audience — erwartet Project-ID ${projectId}, erhalten ${String(err.payload?.aud ?? "?")}`
+      );
+    } else {
+      console.error(`[idToken] Ablehnung: Claim "${claim}" ungültig — Project-ID ${projectId}`);
+    }
+    return;
+  }
+  if (err instanceof errors.JWSSignatureVerificationFailed) {
+    console.error(`[idToken] Ablehnung: Signatur ungültig — Project-ID ${projectId}`);
+    return;
+  }
+  if (err instanceof errors.JWKSNoMatchingKey || err instanceof errors.JWKSMultipleMatchingKeys) {
+    console.error(
+      `[idToken] Ablehnung: kein passender Schlüssel in Googles JWKS (kid/alg) — Project-ID ${projectId}`
+    );
+    return;
+  }
+  if (err instanceof errors.JWKSTimeout) {
+    console.error(`[idToken] Ablehnung: JWKS-Abruf Timeout — Project-ID ${projectId}`);
+    return;
+  }
+  if (err instanceof errors.JWSInvalid || err instanceof errors.JWTInvalid) {
+    console.error(`[idToken] Ablehnung: Token nicht parsebar — Project-ID ${projectId}`);
+    return;
+  }
+  if (err instanceof errors.JOSEError) {
+    console.error(`[idToken] Ablehnung: ${err.message} — Project-ID ${projectId}`);
+    return;
+  }
+  console.error(
+    `[idToken] Ablehnung: ${err instanceof Error ? err.message : String(err)} — Project-ID ${projectId}`
+  );
 }
 
 export interface VerifyIdTokenOptions {
@@ -48,10 +100,14 @@ export async function verifyFirebaseIdToken(
       payload.sub.length === 0 ||
       payload.sub.length > 128
     ) {
+      console.error(
+        `[idToken] Ablehnung: sub-Claim fehlt oder ungültig — Project-ID ${projectId}`
+      );
       return null;
     }
     return { uid: payload.sub };
-  } catch {
+  } catch (err) {
+    logRejection(err, projectId);
     return null;
   }
 }

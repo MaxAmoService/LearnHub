@@ -4,7 +4,12 @@
 //
 // Reine Funktion — für ESP32/LCD ohne JSON-Parser:
 //   - maximal 5 Zeilen
-//   - jede Zeile höchstens 40 Zeichen breit
+//   - jede Zeile höchstens 40 Zeichen breit; Kürzung an der Wortgrenze
+//     mit "..." (kein hartes Abschneiden mitten im Wort)
+//   - Plantitel max. 12 Zeichen (MAX_PLAN_TITLE), damit das done/target
+//     rechts Platz behält
+//   - "Wdh:"-Zeile: ein fälliges Thema → dessen Titel; mehrere → erster
+//     Titel + "+N" für die übrigen
 //   - reines ASCII (Umlaute transliteriert, keine Emojis)
 //   - deterministische Reihenfolge: Plan-Zeilen → "Wdh:"-Zeile → Streak-Zeile
 // Tests: tests/apiText.test.ts.
@@ -13,6 +18,7 @@ import type { TodayApiResponse } from "./apiTypes";
 
 export const MAX_TEXT_LINES = 5;
 export const MAX_TEXT_WIDTH = 40;
+export const MAX_PLAN_TITLE = 12;
 
 const TRANSLITERATION: Record<string, string> = {
   ä: "ae",
@@ -40,27 +46,49 @@ export function toAscii(s: string): string {
   return out;
 }
 
-/** Hartes Abschneiden auf `max` Zeichen (kein "…" — nicht ASCII). */
-export function truncate(s: string, max: number): string {
-  if (max <= 0) return "";
-  return s.length <= max ? s : s.slice(0, max);
+/**
+ * Auf `max` Zeichen kürzen — an der letzten Wortgrenze, mit "..." am Ende,
+ * damit erkennbar ist, dass gekürzt wurde. Unverändert, wenn `s` passt.
+ */
+export function truncateWords(s: string, max: number): string {
+  if (s.length <= max) return s;
+  const suffix = "...";
+  if (max <= suffix.length) return suffix.slice(0, max);
+  const limit = max - suffix.length;
+  const cut = s.slice(0, limit);
+  if (cut[limit - 1] === " " || s[limit] === " ") {
+    return cut.trimEnd() + suffix;
+  }
+  const idx = cut.lastIndexOf(" ");
+  const base = (idx > 0 ? cut.slice(0, idx) : cut).trimEnd();
+  return base + suffix;
 }
 
 function planLine(label: string, title: string, done: number, target: number): string {
   const ratio = `${done}/${target}`;
   const leftMax = MAX_TEXT_WIDTH - ratio.length - 1;
-  if (leftMax < 8) return truncate(ratio, MAX_TEXT_WIDTH);
-  const left = truncate(toAscii(`${label}  ${title}`), leftMax).padEnd(leftMax, " ");
+  if (leftMax < 8) return truncateWords(ratio, MAX_TEXT_WIDTH);
+  const shortTitle = truncateWords(toAscii(title), MAX_PLAN_TITLE);
+  const left = truncateWords(toAscii(`${label}  ${shortTitle}`), leftMax).padEnd(leftMax, " ");
   return `${left} ${ratio}`;
 }
 
 function wdhLine(titles: string[]): string {
   const unique = [...new Set(titles.map((t) => toAscii(t)))];
-  return truncate(`Wdh: ${unique.join(", ")}`, MAX_TEXT_WIDTH);
+  const first = unique[0] ?? "";
+  if (unique.length > 1) {
+    const extra = ` +${unique.length - 1}`;
+    const budget = MAX_TEXT_WIDTH - "Wdh: ".length - extra.length;
+    return `Wdh: ${truncateWords(first, budget)}${extra}`;
+  }
+  return truncateWords(`Wdh: ${first}`, MAX_TEXT_WIDTH);
 }
 
 function streakLine(data: TodayApiResponse): string {
-  return `Streak ${data.streak.current}/${data.streak.weekTarget}`;
+  return truncateWords(
+    `Streak ${data.streak.current}/${data.streak.weekTarget}`,
+    MAX_TEXT_WIDTH
+  );
 }
 
 export function formatTodayText(data: TodayApiResponse): string {
