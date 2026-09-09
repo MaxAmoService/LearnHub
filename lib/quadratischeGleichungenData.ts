@@ -757,6 +757,7 @@ export const quadratischeGleichungenPractice: Exercise[] = [
     question:
       "Löse mit der pq-Formel: $x^2 - 5x + 6 = 0$. Gib die **kleinere** Lösung an.",
     expectedAnswer: "2",
+    acceptedAnswers: ["3"],
     format: "Ganze Zahl",
     hint: "Lies $p$ und $q$ ab und setze in die pq-Formel ein.",
     solution:
@@ -770,6 +771,7 @@ export const quadratischeGleichungenPractice: Exercise[] = [
     question:
       "Löse mit der pq-Formel: $x^2 + 2x - 8 = 0$. Gib die **größere** Lösung an.",
     expectedAnswer: "2",
+    acceptedAnswers: ["-4"],
     format: "Ganze Zahl",
     solution:
       "$p = 2$, $q = -8$. $x_{1,2} = -1 \\pm \\sqrt{1 + 8} = -1 \\pm 3$. Größere Lösung: $x_1 = 2$.",
@@ -813,6 +815,7 @@ export const quadratischeGleichungenPractice: Exercise[] = [
     question:
       "Löse mit der abc-Formel: $2x^2 - 5x + 3 = 0$. Gib die **größere** Lösung an.",
     expectedAnswer: "1.5",
+    acceptedAnswers: ["1"],
     tolerance: 0.01,
     format: "Dezimalzahl",
     hint: "$a = 2$, $b = -5$, $c = 3$. Diskriminante zuerst berechnen.",
@@ -871,6 +874,7 @@ export const quadratischeGleichungenPractice: Exercise[] = [
     question:
       "Bestimme die Nullstellen von $f(x) = 2(x - 1)^2 - 8$. Gib die **größere** Nullstelle an.",
     expectedAnswer: "3",
+    acceptedAnswers: ["-1"],
     format: "Ganze Zahl",
     solution:
       "$2(x-1)^2 = 8 \\Rightarrow (x-1)^2 = 4 \\Rightarrow x - 1 = \\pm 2$. Größere Nullstelle: $x = 3$.",
@@ -902,6 +906,7 @@ export const quadratischeGleichungenExam: Exercise[] = [
     question:
       "Löse: $x^2 - 7x + 12 = 0$. Gib die **größere** Lösung an.",
     expectedAnswer: "4",
+    acceptedAnswers: ["3"],
     format: "Ganze Zahl",
     solution:
       "pq-Formel: $x_{1,2} = \\frac{7}{2} \\pm \\sqrt{\\frac{49}{4} - 12} = \\frac{7}{2} \\pm \\frac{1}{2}$. Größere Lösung: $x_1 = 4$.",
@@ -914,6 +919,7 @@ export const quadratischeGleichungenExam: Exercise[] = [
     question:
       "Löse: $x^2 + 3x - 10 = 0$. Gib die **kleinere** Lösung an.",
     expectedAnswer: "-5",
+    acceptedAnswers: ["2"],
     format: "Ganze Zahl",
     solution:
       "$p = 3$, $q = -10$. $x_{1,2} = -\\frac{3}{2} \\pm \\sqrt{\\frac{9}{4} + 10} = -\\frac{3}{2} \\pm \\frac{7}{2}$. Kleinere Lösung: $x_2 = -5$.",
@@ -926,6 +932,7 @@ export const quadratischeGleichungenExam: Exercise[] = [
     question:
       "Löse mit der abc-Formel: $3x^2 - 12x + 9 = 0$. Gib die **größere** Lösung an.",
     expectedAnswer: "3",
+    acceptedAnswers: ["1"],
     format: "Ganze Zahl",
     solution:
       "$a = 3$, $b = -12$, $c = 9$. $D = 144 - 108 = 36$. $x_{1,2} = \\frac{12 \\pm 6}{6}$. Größere Lösung: $x_1 = 3$.",
@@ -955,6 +962,7 @@ export const quadratischeGleichungenExam: Exercise[] = [
     question:
       "Bestimme die Nullstellen von $f(x) = -(x - 2)^2 + 9$. Gib die **größere** Nullstelle an.",
     expectedAnswer: "5",
+    acceptedAnswers: ["-1"],
     format: "Ganze Zahl",
     solution:
       "$(x-2)^2 = 9 \\Rightarrow x - 2 = \\pm 3$. Größere Nullstelle: $x = 5$.",

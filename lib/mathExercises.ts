@@ -19,6 +19,8 @@ export interface Exercise {
   question: string;
   hint?: string;
   expectedAnswer?: string;
+  /** Weitere gültige Antworten (z. B. zweite Lösung einer quadratischen Gleichung). */
+  acceptedAnswers?: string[];
   tolerance?: number;
   format?: string;
   options?: { label: string; value: string }[];
@@ -547,6 +549,7 @@ export const gleichungenPractice: Exercise[] = [
     type: "input",
     question: "Löse die quadratische Gleichung: $x^2 - 2x - 8 = 0$. Gib die kleinere Lösung an.",
     expectedAnswer: "-2",
+    acceptedAnswers: ["4"],
     format: "Ganze Zahl",
     solution: "$x^2 - 2x - 8 = (x - 4)(x + 2) = 0 \\Rightarrow x_1 = 4, x_2 = -2$. Kleinere: $-2$.",
   },
@@ -557,6 +560,7 @@ export const gleichungenPractice: Exercise[] = [
     type: "input",
     question: "Löse: $(x + 3)(x - 2) = 0$. Gib die größere Lösung an.",
     expectedAnswer: "2",
+    acceptedAnswers: ["-3"],
     format: "Ganze Zahl",
     solution: "$(x + 3)(x - 2) = 0 \\Rightarrow x_1 = -3, x_2 = 2$. Größere: $2$.",
   },
@@ -592,6 +596,7 @@ export const gleichungenPractice: Exercise[] = [
     type: "input",
     question: "Löse die quadratische Gleichung: $x^2 - 7x + 10 = 0$. Gib die größere Lösung an.",
     expectedAnswer: "5",
+    acceptedAnswers: ["2"],
     format: "Ganze Zahl",
     solution: "$(x - 2)(x - 5) = 0 \\Rightarrow x_1 = 2, x_2 = 5$. Größere: $5$.",
   },
@@ -633,6 +638,7 @@ export const gleichungenPractice: Exercise[] = [
     type: "input",
     question: "Löse mit der Mitternachtsformel: $x^2 + 5x + 6 = 0$. Gib die kleinere Lösung an.",
     expectedAnswer: "-3",
+    acceptedAnswers: ["-2"],
     format: "Ganze Zahl",
     hint: "Faktorisieren: $(x + 2)(x + 3) = 0$.",
     solution: "$(x + 2)(x + 3) = 0 \\Rightarrow x_1 = -2, x_2 = -3$. Kleinere: $-3$.",
@@ -697,6 +703,7 @@ export const gleichungenPractice: Exercise[] = [
     type: "input",
     question: "Löse: $x^2 + 2x - 15 = 0$. Gib die größere Lösung an.",
     expectedAnswer: "3",
+    acceptedAnswers: ["-5"],
     format: "Ganze Zahl",
     hint: "Suche zwei Zahlen, die multipliziert $-15$ und addiert $2$ ergeben.",
     solution: "$(x + 5)(x - 3) = 0 \\Rightarrow x_1 = -5, x_2 = 3$. Größere: $3$.",
@@ -762,6 +769,7 @@ export const gleichungenExam: Exercise[] = [
     type: "input",
     question: "Löse die quadratische Gleichung: $x^2 - 7x + 10 = 0$. Gib die größere Lösung an.",
     expectedAnswer: "5",
+    acceptedAnswers: ["2"],
     format: "Ganze Zahl",
     solution: "$(x - 2)(x - 5) = 0 \\Rightarrow x_1 = 2, x_2 = 5$. Größere: $5$.",
   },
@@ -822,6 +830,7 @@ export const gleichungenExam: Exercise[] = [
     type: "input",
     question: "Löse: $x^2 + 2x - 15 = 0$. Gib die größere Lösung an.",
     expectedAnswer: "3",
+    acceptedAnswers: ["-5"],
     format: "Ganze Zahl",
     solution: "$(x + 5)(x - 3) = 0 \\Rightarrow x_1 = -5, x_2 = 3$. Größere: $3$.",
   },
@@ -3068,6 +3077,7 @@ export const grundlagenFunktionenPractice: Exercise[] = [
     type: "input",
     question: "Bestimme die Nullstellen von $f(x) = x^2 - 6x + 8$. Gib beide durch Komma getrennt an (aufsteigend).",
     expectedAnswer: "2,4",
+    acceptedAnswers: ["4,2"],
     format: "Zahlen durch Komma getrennt",
     solution: "$x^2 - 6x + 8 = (x-2)(x-4) = 0 \\Rightarrow x = 2$ oder $x = 4$.",
   },
@@ -3176,6 +3186,7 @@ export const grundlagenFunktionenExam: Exercise[] = [
     type: "input",
     question: "Gegeben ist $f(x) = x^2 - 2x - 3$. Bestimme die Nullstellen. Gib die kleinere zuerst an.",
     expectedAnswer: "-1,3",
+    acceptedAnswers: ["3,-1"],
     format: "Zahlen durch Komma getrennt",
     solution: "$x^2 - 2x - 3 = (x - 3)(x + 1) = 0 \\Rightarrow x = -1$ oder $x = 3$.",
   },
@@ -6211,6 +6222,7 @@ export const kurvendiskussionPractice: Exercise[] = [
     type: "input",
     question: "Berechne die Nullstellen von $f(x) = x^2 - 9$. Gib die größere an.",
     expectedAnswer: "3",
+    acceptedAnswers: ["-3"],
     format: "Ganze Zahl",
     solution: "$x^2 - 9 = 0 \\Rightarrow x = \\pm 3$. Größere Nullstelle: $3$.",
   },

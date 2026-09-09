@@ -5,6 +5,7 @@ import { Exercise } from "@/lib/mathExercises";
 import { MathBlock } from "./MathBlock";
 import { InlineText } from "./InlineText";
 import { LessonFeedback } from "./LessonFeedback";
+import { checkFreeTextAnswer, allValidAnswers } from "@/lib/answerCheck";
 import { CheckCircle2, XCircle, Lightbulb, ChevronRight, RotateCcw, Trophy, Target, HelpCircle, Medal } from "lucide-react";
 
 interface Props {
@@ -85,19 +86,10 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
     if (current.type === "multiple" && current.correctOption) {
       correct = selectedOption === current.correctOption;
     } else if (current.type === "input" && current.expectedAnswer) {
-      const normalize = (s: string) => s.trim().toLowerCase().replace(/\s+/g, "").replace(/[{}]/g, "").replace(/,\s*(?=\d)/g, ",");
-      const normalizedUser = normalize(userAnswer);
-      const normalizedExpected = normalize(current.expectedAnswer);
-
-      if (current.tolerance) {
-        const userNum = parseFloat(normalizedUser);
-        const expectedNum = parseFloat(normalizedExpected);
-        if (!isNaN(userNum) && !isNaN(expectedNum)) {
-          correct = Math.abs(userNum - expectedNum) <= current.tolerance;
-        }
-      } else {
-        correct = normalizedUser === normalizedExpected;
-      }
+      correct = checkFreeTextAnswer(userAnswer, current.expectedAnswer, {
+        acceptedAnswers: current.acceptedAnswers,
+        tolerance: current.tolerance,
+      });
     }
 
     if (examMode) {
@@ -246,7 +238,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
                     <p className="text-xs text-slate-400">
                       Deine Antwort: <span className="text-red-300">{ans.exercise.type === "multiple" ? ans.exercise.options?.find(o => o.value === ans.selectedOption)?.label || "—" : ans.userAnswer || "—"}</span>
                       {" → "}
-                      Richtig: <span className="text-green-300">{ans.exercise.type === "multiple" ? ans.exercise.options?.find(o => o.value === ans.exercise.correctOption)?.label : ans.exercise.expectedAnswer}</span>
+                      Richtig: <span className="text-green-300">{ans.exercise.type === "multiple" ? ans.exercise.options?.find(o => o.value === ans.exercise.correctOption)?.label : allValidAnswers(ans.exercise.expectedAnswer || "", ans.exercise.acceptedAnswers).join(" oder ")}</span>
                     </p>
                   )}
                   {!ans.correct && (
@@ -471,7 +463,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
                         <span className="text-white font-medium">
                           <InlineText text={current.type === "multiple"
                             ? current.options?.find(o => o.value === current.correctOption)?.label || ""
-                            : current.expectedAnswer || ""} />
+                            : allValidAnswers(current.expectedAnswer || "", current.acceptedAnswers).join(" oder ")} />
                         </span>
                       </p>
                     </div>
