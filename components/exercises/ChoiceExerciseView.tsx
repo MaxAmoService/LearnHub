@@ -9,6 +9,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
+import { InlineText } from "../InlineText";
 import { shuffle } from "@/lib/exercises/scoring";
 import type { ChoiceExercise } from "@/lib/exercises/types";
 import type { ExerciseViewProps } from "./types";
@@ -68,7 +69,9 @@ export function ChoiceExerciseView({
 
   return (
     <div className="space-y-4">
-      <p className="text-slate-200 leading-relaxed">{exercise.prompt}</p>
+      <p className="text-slate-200 leading-relaxed">
+        <InlineText text={exercise.prompt} />
+      </p>
 
       <div className="space-y-2">
         {options.map((option, i) => {
@@ -92,7 +95,9 @@ export function ChoiceExerciseView({
               <kbd className="w-6 h-6 flex-shrink-0 rounded-md bg-slate-700/60 text-slate-300 text-xs font-bold flex items-center justify-center mt-0.5">
                 {i + 1}
               </kbd>
-              <span className="text-sm text-slate-200 flex-1">{option}</span>
+              <span className="text-sm text-slate-200 flex-1">
+                <InlineText text={option} />
+              </span>
               {phase === "resolved" && isCorrectOption && (
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
               )}
@@ -111,7 +116,7 @@ export function ChoiceExerciseView({
               {selected === correctDisplayIndex ? "Erklärung" : "Auflösung"}
             </p>
             <p className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-              {exercise.explanation}
+              <InlineText text={exercise.explanation} />
             </p>
           </div>
 

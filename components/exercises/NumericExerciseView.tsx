@@ -9,6 +9,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
+import { InlineText } from "../InlineText";
 import { checkNumericAnswer } from "@/lib/exercises/scoring";
 import type { NumericExercise } from "@/lib/exercises/types";
 import type { ExerciseViewProps } from "./types";
@@ -57,7 +58,9 @@ export function NumericExerciseView({
 
   return (
     <div className="space-y-4">
-      <p className="text-slate-200 leading-relaxed whitespace-pre-wrap">{exercise.prompt}</p>
+      <p className="text-slate-200 leading-relaxed whitespace-pre-wrap">
+        <InlineText text={exercise.prompt} />
+      </p>
 
       <div className="flex items-center gap-2">
         <input
@@ -117,7 +120,7 @@ export function NumericExerciseView({
           <div className="rounded-lg border border-slate-700/50 bg-slate-800/40 p-3">
             <p className="text-sm font-semibold text-slate-300 mb-1.5">Rechenweg</p>
             <p className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-              {exercise.explanation}
+              <InlineText text={exercise.explanation} />
             </p>
             {isStringAnswer && (
               <p className="mt-2 text-xs text-slate-500">

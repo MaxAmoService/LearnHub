@@ -11,6 +11,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, Circle, Lightbulb } from "lucide-react";
+import { InlineText } from "../InlineText";
 import type { RecallExercise } from "@/lib/exercises/types";
 import type { ExerciseViewProps } from "./types";
 
@@ -73,7 +74,9 @@ export function RecallExerciseView({
 
   return (
     <div className="space-y-4">
-      <p className="text-slate-200 leading-relaxed">{exercise.prompt}</p>
+      <p className="text-slate-200 leading-relaxed">
+        <InlineText text={exercise.prompt} />
+      </p>
 
       <textarea
         autoFocus
@@ -104,13 +107,15 @@ export function RecallExerciseView({
         <div className="space-y-3">
           <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
             <p className="text-sm font-semibold text-emerald-400 mb-1.5">Musterlösung</p>
-            <p className="text-sm text-slate-200 whitespace-pre-wrap">{exercise.sampleAnswer}</p>
+            <p className="text-sm text-slate-200 whitespace-pre-wrap">
+              <InlineText text={exercise.sampleAnswer} />
+            </p>
             {Array.isArray(exercise.keyPoints) && exercise.keyPoints.length > 0 && (
               <ul className="mt-2 space-y-1">
                 {exercise.keyPoints.map((point, i) => (
                   <li key={i} className="flex items-start gap-1.5 text-xs text-slate-400">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500/70 mt-0.5 flex-shrink-0" />
-                    {point}
+                    <InlineText text={point} />
                   </li>
                 ))}
               </ul>

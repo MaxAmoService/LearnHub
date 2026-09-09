@@ -11,6 +11,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, Eraser, X, XCircle } from "lucide-react";
+import { InlineText } from "../InlineText";
 import { scoreMatchPairs, shuffle } from "@/lib/exercises/scoring";
 import type { MatchExercise } from "@/lib/exercises/types";
 import type { ExerciseViewProps } from "./types";
@@ -86,7 +87,9 @@ export function MatchExerciseView({
 
   return (
     <div className="space-y-4">
-      <p className="text-slate-200 leading-relaxed">{exercise.prompt}</p>
+      <p className="text-slate-200 leading-relaxed">
+        <InlineText text={exercise.prompt} />
+      </p>
 
       <div className="space-y-2">
         {exercise.pairs.map((pair) => {
@@ -111,7 +114,7 @@ export function MatchExerciseView({
                 disabled={phase !== "answering"}
                 className="flex-1 min-w-0 text-left text-sm text-slate-200 disabled:cursor-default"
               >
-                {pair.left}
+                <InlineText text={pair.left} />
               </button>
 
               {assigned ? (
@@ -130,7 +133,7 @@ export function MatchExerciseView({
                     ) : (
                       <XCircle className="w-3.5 h-3.5" />
                     ))}
-                  {assigned}
+                  <InlineText text={assigned} />
                   {phase === "answering" && (
                     <button
                       onClick={() =>
@@ -171,7 +174,7 @@ export function MatchExerciseView({
                   }`}
                   title={isAssigned ? "Nochmal klicken löst diese Zuordnung" : undefined}
                 >
-                  {right}
+                  <InlineText text={right} />
                 </button>
               );
             })}
