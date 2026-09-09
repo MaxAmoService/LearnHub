@@ -74,13 +74,16 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    // Feedback: authentifizierte & anonyme Nutzer dürfen erstellen
+    // Feedback: authentifizierte & anonyme Nutzer dürfen erstellen.
+    // Löschen nur durch den User, dessen uid im Dokument steht — bei
+    // anonymem Feedback ("anonymous") kann kein Client löschen, nur das
+    // Admin SDK. Art. 5 Abs. 1 lit. f DSGVO (Integrität fremder Daten).
     match /feedback/{docId} {
       allow read: if false;
       allow create: if request.resource.data.message is string
         && request.resource.data.message.size() >= 10
         && request.resource.data.message.size() <= 2000;
-      allow delete: if request.auth != null;
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
     }
 
     // Alles andere: blockiert
