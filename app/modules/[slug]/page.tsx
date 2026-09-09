@@ -121,7 +121,19 @@ export default function ModulePage() {
   const params = useParams();
   const { user, completeLesson, toggleSaveModule } = useAuth();
   const module = getModule(params.slug as string);
-  const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
+
+  // Deep-Link: ?lesson=<id> selektiert die Lektion beim ersten Rendern.
+  // Bewusst window.location statt useSearchParams (kein Suspense-Wrapper
+  // beim Prerendering nötig). Unbekannte IDs fallen auf die Übersicht zurück.
+  const initialLessonId =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("lesson")
+      : null;
+  const initialLesson = initialLessonId
+    ? (module?.lessons.find((l) => l.id === initialLessonId) ?? null)
+    : null;
+
+  const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(initialLesson);
   const [showLogin, setShowLogin] = useState(false);
   const [showMerkblatt, setShowMerkblatt] = useState(false);
   const [showFlashcards, setShowFlashcards] = useState(false);
@@ -132,6 +144,8 @@ export default function ModulePage() {
     for (const l of (module?.lessons || [])) {
       if (l.group) names.add(l.group);
     }
+    // Gruppe der per Deep-Link gewählten Lektion aufklappen
+    if (initialLesson?.group) names.delete(initialLesson.group);
     return names;
   });
 
