@@ -231,7 +231,6 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
 
   function renderTopicCard(
     block: { planId: string; neu: PlanItemWithId },
-    plan: PlanWithId,
     vorarbeitChip?: string | null
   ) {
     const item = block.neu;
@@ -242,14 +241,61 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
       >
         <div className="min-w-0">
           <p className="text-sm font-medium text-white">{item.title ?? "Unbenanntes Thema"}</p>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {plan.title ?? "Unbenannter Plan"}
-            {vorarbeitChip != null && (
-              <span className="text-emerald-400 font-medium"> · {vorarbeitChip}</span>
-            )}
-          </p>
+          {vorarbeitChip != null && (
+            <p className="text-xs text-emerald-400 font-medium mt-0.5">{vorarbeitChip}</p>
+          )}
         </div>
         {renderItemActions(block.planId, item)}
+      </div>
+    );
+  }
+
+  function renderDueItemCard(item: PlanItemWithId) {
+    const overdue = item.nextDueAt != null && item.nextDueAt < today;
+    return (
+      <div
+        key={`${item.planId}/${item.id}`}
+        className={`rounded-lg border p-3 flex flex-wrap items-center justify-between gap-2 ${
+          overdue
+            ? "border-red-500/30 bg-red-500/5"
+            : "border-slate-700/40 bg-slate-800/40"
+        }`}
+      >
+        <div className="min-w-0">
+          <p className="text-sm font-medium text-white">
+            {item.title ?? "Unbenanntes Thema"}
+          </p>
+          {item.nextDueAt != null && (
+            <p className="text-xs text-slate-500 mt-0.5">
+              <span className={overdue ? "text-red-400 font-medium" : ""}>
+                {overdue
+                  ? `überfällig seit ${formatDateKey(item.nextDueAt)}`
+                  : `fällig seit ${formatDateKey(item.nextDueAt)}`}
+              </span>
+            </p>
+          )}
+        </div>
+        {renderItemActions(item.planId, item)}
+      </div>
+    );
+  }
+
+  function renderPhaseCard(plan: PlanWithId, phase: Exclude<Phase, "aufbau">) {
+    return (
+      <div
+        key={plan.id}
+        className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3"
+      >
+        <div className="flex flex-wrap items-center gap-2">
+          <span className={`text-xs px-2 py-0.5 rounded-full border ${PHASE_COLORS[phase]}`}>
+            {PHASE_LABELS[phase]}
+          </span>
+        </div>
+        <p className="text-xs text-slate-500 mt-1.5">
+          {phase === "festigung"
+            ? PHASE_HINTS.festigung
+            : `${PHASE_HINTS.endspurt} (seit ${formatDateKey(computeEndspurtStart(plan, today))})`}
+        </p>
       </div>
     );
   }
@@ -293,115 +339,66 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     </div>
   );
 
-  const statusByPlanId = new Map(dayStatus.plans.map((p) => [p.planId, p]));
+  // Themenkarten pro Plan gruppiert (wie die Tagesbalken oben): jeder Plan
+  // bekommt einen eigenen Block mit dem Plannamen als Überschrift, darin
+  // „Neu" und „Wiederholung" als Unterabschnitte. Pläne ohne anstehende
+  // Inhalte entfallen komplett — kein leerer Block.
+  const planBlocks: React.ReactNode[] = [];
+  let hasNeuContent = false;
 
-  const neuTodayCards: React.ReactNode[] = [];
-  const vorarbeitCards: React.ReactNode[] = [];
-  const phaseCards: React.ReactNode[] = [];
-
-  for (const block of schedule.blocks) {
-    const plan = planById.get(block.planId);
+  for (const status of dayStatus.plans) {
+    const plan = planById.get(status.planId);
     if (!plan) continue;
-
-    if (block.neu != null) {
-      const status = statusByPlanId.get(block.planId);
-      const item = block.neu as PlanItemWithId;
-      const topicBlock = { planId: block.planId, neu: item };
-      if (status && status.done) {
-        vorarbeitCards.push(
-          renderTopicCard(
-            topicBlock,
-            plan,
-            status.aheadDays >= 1
-              ? `${status.aheadDays} ${status.aheadDays === 1 ? "Tag" : "Tage"} Vorsprung`
-              : null
-          )
-        );
-      } else {
-        neuTodayCards.push(renderTopicCard(topicBlock, plan, null));
-      }
-      continue;
-    }
-
+    const block = schedule.blocks.find((b) => b.planId === status.planId);
     const phase = computePhase(plan, today);
-    if (phase !== "aufbau") {
-      phaseCards.push(
-        <div
-          key={block.planId}
-          className="rounded-lg border border-slate-700/40 bg-slate-800/40 p-3"
-        >
-          <div className="flex flex-wrap items-center gap-2">
-            <span className={`text-xs px-2 py-0.5 rounded-full border ${PHASE_COLORS[phase]}`}>
-              {PHASE_LABELS[phase]}
-            </span>
-            <span className="text-sm font-medium text-slate-300">
-              {plan.title ?? "Unbenannter Plan"}
-            </span>
-          </div>
-          <p className="text-xs text-slate-500 mt-1.5">
-            {phase === "festigung"
-              ? PHASE_HINTS.festigung
-              : `${PHASE_HINTS.endspurt} (seit ${formatDateKey(computeEndspurtStart(plan, today))})`}
-          </p>
-        </div>
+
+    const neuCards: React.ReactNode[] = [];
+    if (block?.neu != null) {
+      const item = block.neu as PlanItemWithId;
+      neuCards.push(
+        renderTopicCard(
+          { planId: status.planId, neu: item },
+          status.done && status.aheadDays >= 1
+            ? `${status.aheadDays} ${status.aheadDays === 1 ? "Tag" : "Tage"} Vorsprung`
+            : null
+        )
       );
+    } else if (phase !== "aufbau") {
+      neuCards.push(renderPhaseCard(plan, phase));
     }
-  }
+    if (neuCards.length > 0) hasNeuContent = true;
 
-  const neuBlock = (
-    <div className="space-y-2">
-      {tagesbalkenBlock}
-      {neuTodayCards}
-      {phaseCards}
-      {neuTodayCards.length === 0 &&
-        phaseCards.length === 0 &&
-        vorarbeitCards.length === 0 && (
-          <p className="text-xs text-slate-500">Heute steht nichts Neues an.</p>
+    const wiederholungCards = dueItems
+      .filter((item) => item.planId === status.planId)
+      .map(renderDueItemCard);
+
+    if (neuCards.length === 0 && wiederholungCards.length === 0) continue;
+
+    planBlocks.push(
+      <div
+        key={status.planId}
+        className="rounded-lg border border-slate-700/50 bg-slate-800/30 p-3 space-y-3"
+      >
+        <p className="text-xs font-medium text-slate-400">{status.title}</p>
+        {neuCards.length > 0 && (
+          <div>
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+              Neu
+            </p>
+            <div className="space-y-2">{neuCards}</div>
+          </div>
         )}
-    </div>
-  );
-
-  const wiederholungBlock =
-    dueItems.length === 0 ? (
-      <p className="text-xs text-slate-500">Keine fälligen Wiederholungen.</p>
-    ) : (
-      <div className="space-y-2">
-        {dueItems.map((item) => {
-          const plan = planById.get(item.planId);
-          const overdue = item.nextDueAt != null && item.nextDueAt < today;
-          return (
-            <div
-              key={`${item.planId}/${item.id}`}
-              className={`rounded-lg border p-3 flex flex-wrap items-center justify-between gap-2 ${
-                overdue
-                  ? "border-red-500/30 bg-red-500/5"
-                  : "border-slate-700/40 bg-slate-800/40"
-              }`}
-            >
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-white">
-                  {item.title ?? "Unbenanntes Thema"}
-                </p>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  {plan?.title ?? "Unbenannter Plan"}
-                  {item.nextDueAt != null && (
-                    <>
-                      {" · "}
-                      <span className={overdue ? "text-red-400 font-medium" : ""}>
-                        {overdue
-                          ? `überfällig seit ${formatDateKey(item.nextDueAt)}`
-                          : `fällig seit ${formatDateKey(item.nextDueAt)}`}
-                      </span>
-                    </>
-                  )}
-                </p>
-              </div>
-              {renderItemActions(item.planId, item)}
-            </div>
-          );
-        })}
+        {wiederholungCards.length > 0 && (
+          <div>
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+              Wiederholung
+            </p>
+            <div className="space-y-2">{wiederholungCards}</div>
+          </div>
+        )}
       </div>
     );
+  }
 
   return (
     <section className="glass rounded-xl p-5">
@@ -500,47 +497,16 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         </div>
       ) : (
         <div className="space-y-5">
-          {dayDone ? (
-            <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-slate-300">Zusätzlich üben</h3>
-              <div>
-                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                  Neu
-                </p>
-                {neuBlock}
-              </div>
-              {vorarbeitCards.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                    Vorarbeit
-                  </p>
-                  <div className="space-y-2">{vorarbeitCards}</div>
-                </div>
-              )}
-              <div>
-                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                  Wiederholung
-                </p>
-                {wiederholungBlock}
-              </div>
-            </div>
-          ) : (
-            <>
-              <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-2">Neu</h3>
-                {neuBlock}
-              </div>
-              {vorarbeitCards.length > 0 && (
-                <div>
-                  <h3 className="text-sm font-semibold text-slate-300 mb-2">Vorarbeit</h3>
-                  <div className="space-y-2">{vorarbeitCards}</div>
-                </div>
-              )}
-              <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-2">Wiederholung</h3>
-                {wiederholungBlock}
-              </div>
-            </>
+          {dayDone && (
+            <h3 className="text-sm font-semibold text-slate-300">Zusätzlich üben</h3>
+          )}
+          {tagesbalkenBlock}
+          <div className="space-y-3">{planBlocks}</div>
+          {!hasNeuContent && (
+            <p className="text-xs text-slate-500">Heute steht nichts Neues an.</p>
+          )}
+          {dueItems.length === 0 && (
+            <p className="text-xs text-slate-500">Keine fälligen Wiederholungen.</p>
           )}
         </div>
       )}
