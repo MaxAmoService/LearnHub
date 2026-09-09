@@ -19,6 +19,8 @@ export interface CheckAnswerOptions {
   acceptedAnswers?: string[];
   /** Numerische Toleranz — bei gesetzter Toleranz wird numerisch verglichen. */
   tolerance?: number;
+  /** Auch * und · als austauschbare Mal-Zeichen akzeptieren (Tagesquiz). */
+  allowDotStarSwap?: boolean;
 }
 
 /**
@@ -35,20 +37,29 @@ export function checkFreeTextAnswer(
 
   for (const candidate of candidates) {
     const normalizedExpected = normalizeFreeTextAnswer(candidate);
-
-    if (options.tolerance !== undefined) {
-      const userNum = parseFloat(normalizedUser);
-      const expectedNum = parseFloat(normalizedExpected);
-      if (!isNaN(userNum) && !isNaN(expectedNum)) {
-        if (Math.abs(userNum - expectedNum) <= options.tolerance) {
-          return true;
-        }
-        continue;
-      }
+    const variants = [normalizedExpected];
+    if (options.allowDotStarSwap) {
+      variants.push(
+        normalizedExpected.replace(/\*/g, "·"),
+        normalizedExpected.replace(/·/g, "*"),
+      );
     }
 
-    if (normalizedUser === normalizedExpected) {
-      return true;
+    for (const variant of variants) {
+      if (options.tolerance !== undefined) {
+        const userNum = parseFloat(normalizedUser);
+        const expectedNum = parseFloat(variant);
+        if (!isNaN(userNum) && !isNaN(expectedNum)) {
+          if (Math.abs(userNum - expectedNum) <= options.tolerance) {
+            return true;
+          }
+          continue;
+        }
+      }
+
+      if (normalizedUser === variant) {
+        return true;
+      }
     }
   }
 

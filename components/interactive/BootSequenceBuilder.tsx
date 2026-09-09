@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { shuffle } from "@/lib/array";
 
 // ============================================================================
 // Boot Sequence Builder — Bootvorgang interaktiv zusammenbauen
@@ -24,15 +25,6 @@ const correctSteps: BootStep[] = [
   { id: "init", label: "Init-Prozess", description: "Erster Prozess wird gestartet (systemd, init), Dienste werden gestartet" },
   { id: "login", label: "Login", description: "Anmeldebildschirm wird angezeigt — System ist bereit" },
 ];
-
-function shuffle<T>(array: T[]): T[] {
-  const a = [...array];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 export default function BootSequenceBuilder() {
   const [steps, setSteps] = useState(() => shuffle(correctSteps));

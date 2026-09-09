@@ -16,6 +16,8 @@ import { InlineText } from "./InlineText";
 import { CheckCircle2, XCircle, RotateCcw, Send } from "lucide-react";
 import { triggerXPPopup } from "./XPNotification";
 import { playCorrect, playWrong, playComplete } from "@/lib/sounds";
+import { shuffle } from "@/lib/array";
+import { checkFreeTextAnswer } from "@/lib/answerCheck";
 
 interface QuizQuestion {
   question: string;
@@ -670,14 +672,6 @@ const allQuizData: Record<string, QuizQuestion[]> = {
 };
 
 // Component to render questions with math
-function shuffleArray<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 /** Shuffle answer options for multiple-choice questions and update the correct index */
 function shuffleQuestionOptions(q: QuizQuestion): QuizQuestion {
@@ -721,7 +715,7 @@ export function Quiz({ moduleSlug, onComplete }: QuizProps) {
   const hasAwardedXP = useRef(quizAlreadyCompleted);
 
   useEffect(() => {
-    setQuestions(shuffleArray(rawQuestions).map(shuffleQuestionOptions));
+    setQuestions(shuffle(rawQuestions).map(shuffleQuestionOptions));
   }, [moduleSlug]);
 
   if (questions.length === 0) {
@@ -740,13 +734,10 @@ export function Quiz({ moduleSlug, onComplete }: QuizProps) {
     if (question.type === "multiple") {
       correct = selectedAnswer === question.correct;
     } else {
-      // Input: normalize and compare
-      const normalize = (s: string) => s.trim().toLowerCase().replace(/\s+/g, "").replace(/[{}]/g, "").replace(/,\s*(?=\d)/g, ",");
-      const userAnswer = normalize(inputAnswer);
-      const correctAnswer = normalize(String(question.correct));
-      correct = userAnswer === correctAnswer || 
-                userAnswer === correctAnswer.replace("*", "·") ||
-                userAnswer === correctAnswer.replace("·", "*");
+      // Input: normalisieren und vergleichen (inkl. * ↔ ·)
+      correct = checkFreeTextAnswer(inputAnswer, String(question.correct), {
+        allowDotStarSwap: true,
+      });
     }
     
     setIsCorrect(correct);
@@ -785,7 +776,7 @@ export function Quiz({ moduleSlug, onComplete }: QuizProps) {
   };
 
   const restart = () => {
-    setQuestions(shuffleArray(rawQuestions).map(shuffleQuestionOptions));
+    setQuestions(shuffle(rawQuestions).map(shuffleQuestionOptions));
     setCurrentQuestion(0);
     setSelectedAnswer(null);
     setInputAnswer("");

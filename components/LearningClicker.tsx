@@ -17,7 +17,11 @@ import {
   getBoxTiers,
   getPetBonuses,
   type ClickerState,
+  computePrestigePoints,
 } from "@/lib/auth";
+import { RARITY_STYLES } from "@/lib/rarity";
+import { formatCompact } from "@/lib/format";
+import { todayKey } from "@/lib/dates";
 import {
   Sparkles,
   Zap,
@@ -116,10 +120,10 @@ const BOX_DEFS = [
 ];
 
 const RARITY_COLORS: Record<string, { text: string; bg: string; border: string; glow: string }> = {
-  common: { text: "text-slate-300", bg: "bg-slate-500/10", border: "border-slate-500/30", glow: "shadow-slate-500/20" },
-  rare: { text: "text-blue-300", bg: "bg-blue-500/10", border: "border-blue-500/30", glow: "shadow-blue-500/30" },
-  epic: { text: "text-violet-300", bg: "bg-violet-500/10", border: "border-violet-500/30", glow: "shadow-violet-500/40" },
-  legendary: { text: "text-amber-300", bg: "bg-amber-500/10", border: "border-amber-500/30", glow: "shadow-amber-500/50" },
+  common: { ...RARITY_STYLES.common, glow: "shadow-slate-500/20" },
+  rare: { ...RARITY_STYLES.rare, glow: "shadow-blue-500/30" },
+  epic: { ...RARITY_STYLES.epic, glow: "shadow-violet-500/40" },
+  legendary: { ...RARITY_STYLES.legendary, glow: "shadow-amber-500/50" },
 };
 
 const DEFAULT_STATE: ClickerState = {
@@ -179,19 +183,6 @@ const MILESTONES = [
 
 function getUpgradeCost(upgrade: Upgrade, count: number): number {
   return Math.floor(upgrade.baseCost * Math.pow(upgrade.costMultiplier, count));
-}
-
-function formatNumber(n: number): string {
-  if (n >= 1_000_000_000_000) return short(n / 1_000_000_000_000) + "T";
-  if (n >= 1_000_000_000) return short(n / 1_000_000_000) + "B";
-  if (n >= 1_000_000) return short(n / 1_000_000) + "M";
-  if (n >= 1_000) return short(n / 1_000) + "K";
-  return Math.floor(n).toLocaleString("de-DE");
-}
-function short(v: number): string {
-  // Zeigt 1 Dezimalstelle nur wenn nötig, sonst ganzzahlig
-  const r = v.toFixed(1);
-  return r.endsWith(".0") ? Math.floor(v).toString() : r;
 }
 
 function getPrestigeAvatar(level: number, baseAvatar: string): string {
@@ -788,7 +779,7 @@ export default function LearningClicker() {
         lessonTitle: "Lern-Clicker",
         category: "verbesserung",
         message: feedbackMsg.trim(),
-        date: new Date().toISOString().split("T")[0],
+        date: todayKey(),
         createdAt: serverTimestamp(),
       });
       setFeedbackDone(true);
@@ -814,9 +805,7 @@ export default function LearningClicker() {
   const milestoneProgress = Math.min(1, (state.totalPoints - prevMilestonePoints) / (nextMilestone.points - prevMilestonePoints));
 
   // Prestige info
-  const prestigePointsToGain = state.totalPoints >= 10000
-    ? Math.floor(Math.log10(state.totalPoints / 10000))
-    : 0;
+  const prestigePointsToGain = computePrestigePoints(state.totalPoints);
   const prestigeRanks = [
     { lvl: 1, icon: "⭐", name: "Stern" },
     { lvl: 3, icon: "🥉", name: "Bronze" },
@@ -846,7 +835,7 @@ export default function LearningClicker() {
         </span>
         {state.totalPoints > 0 && (
           <div className="absolute -top-1 -right-1 px-1.5 py-0.5 bg-slate-900 rounded-full text-[10px] font-bold text-amber-400 border border-amber-500/30">
-            {formatNumber(state.points)}
+            {formatCompact(state.points)}
           </div>
         )}
         {state.prestigeLevel > 0 && (
@@ -1034,12 +1023,12 @@ export default function LearningClicker() {
                   className="text-2xl font-black text-white mb-0.5 tabular-nums tracking-tight"
                   style={{ textShadow: combo >= 12 ? "0 0 20px rgba(250,204,21,0.3)" : "none" }}
                 >
-                  {formatNumber(state.points)}
+                  {formatCompact(state.points)}
                 </div>
                 <div className="text-[12px] text-slate-500 tabular-nums">
-                  {formatNumber(state.totalPoints)} Gesamt
+                  {formatCompact(state.totalPoints)} Gesamt
                   {pointsPerSecond > 0 && (
-                    <span className="text-amber-500/80"> · {formatNumber(pointsPerSecond)}/s</span>
+                    <span className="text-amber-500/80"> · {formatCompact(pointsPerSecond)}/s</span>
                   )}
                   {state.prestigePoints > 0 && (
                     <span className="text-violet-400 ml-1">· {state.prestigePoints} PP</span>
@@ -1210,7 +1199,7 @@ export default function LearningClicker() {
                   </div>
                   <div className="flex justify-between text-[10px] text-slate-600 mt-0.5">
                     <span>{nextMilestone.icon} {nextMilestone.label}</span>
-                    <span>{formatNumber(state.totalPoints)}/{formatNumber(nextMilestone.points)}</span>
+                    <span>{formatCompact(state.totalPoints)}/{formatCompact(nextMilestone.points)}</span>
                   </div>
                 </div>
               </div>
@@ -1333,7 +1322,7 @@ export default function LearningClicker() {
                                 {upgrade.description}
                               </div>
                               <div className={`text-[11px] font-bold relative z-10 ${canAfford ? "text-amber-400" : "text-slate-600"}`}>
-                                {formatNumber(cost)}
+                                {formatCompact(cost)}
                               </div>
                               {count > 0 && (
                                 <div className="mt-1.5 h-1 bg-slate-700/40 rounded-full overflow-hidden relative z-10">
@@ -1389,7 +1378,7 @@ export default function LearningClicker() {
                               </div>
                               <div className="text-[11px] font-bold text-white truncate mb-0.5 relative z-10">{upgrade.name}</div>
                               <div className="text-[9px] text-slate-400 truncate mb-1 relative z-10">{upgrade.description}</div>
-                              <div className={`text-[11px] font-bold relative z-10 ${canAfford ? "text-emerald-400" : "text-slate-600"}`}>{formatNumber(cost)}</div>
+                              <div className={`text-[11px] font-bold relative z-10 ${canAfford ? "text-emerald-400" : "text-slate-600"}`}>{formatCompact(cost)}</div>
                               {count > 0 && (
                                 <div className="mt-1.5 h-1 bg-slate-700/40 rounded-full overflow-hidden relative z-10">
                                   <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-300" style={{ width: `${progressToNext * 100}%` }} />
@@ -1439,7 +1428,7 @@ export default function LearningClicker() {
                               </div>
                               <div className="text-[11px] font-bold text-white truncate mb-0.5 relative z-10">{upgrade.name}</div>
                               <div className="text-[9px] text-slate-400 truncate mb-1 relative z-10">{upgrade.description}</div>
-                              <div className={`text-[11px] font-bold relative z-10 ${canAfford ? "text-blue-400" : "text-slate-600"}`}>{formatNumber(cost)}</div>
+                              <div className={`text-[11px] font-bold relative z-10 ${canAfford ? "text-blue-400" : "text-slate-600"}`}>{formatCompact(cost)}</div>
                             </button>
                           );
                         })}
@@ -1484,7 +1473,7 @@ export default function LearningClicker() {
                               </div>
                               <div className="text-[11px] font-bold text-white truncate mb-0.5 relative z-10">{upgrade.name}</div>
                               <div className="text-[9px] text-slate-400 truncate mb-1 relative z-10">{upgrade.description}</div>
-                              <div className={`text-[11px] font-bold relative z-10 ${canAfford ? "text-purple-400" : "text-slate-600"}`}>{formatNumber(cost)}</div>
+                              <div className={`text-[11px] font-bold relative z-10 ${canAfford ? "text-purple-400" : "text-slate-600"}`}>{formatCompact(cost)}</div>
                             </button>
                           );
                         })}
@@ -1580,7 +1569,7 @@ export default function LearningClicker() {
                                     canAfford ? "text-amber-400 bg-amber-500/10 border border-amber-500/20" :
                                     "text-slate-600 bg-slate-700/20"
                                   }`}>
-                                    {isPrestigeLocked ? "🔒 Prestige" : formatNumber(box.cost)}
+                                    {isPrestigeLocked ? "🔒 Prestige" : formatCompact(box.cost)}
                                   </div>
                                 </div>
                               </div>
@@ -1663,7 +1652,7 @@ export default function LearningClicker() {
                                         className={`text-[7px] font-bold px-1 rounded ${
                                           canUpgrade ? "text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20" : "text-slate-600"
                                         }`}
-                                        title={`Upgrade: ${formatNumber(upgradeCost)} Punkte`}
+                                        title={`Upgrade: ${formatCompact(upgradeCost)} Punkte`}
                                       >
                                         ⬆
                                       </button>
@@ -1786,7 +1775,7 @@ export default function LearningClicker() {
                           <div className="flex-1 h-1.5 bg-slate-700/40 rounded-full overflow-hidden">
                             <div className="h-full bg-slate-600 rounded-full transition-all" style={{ width: `${Math.min(100, (state.totalPoints / 10000) * 100)}%` }} />
                           </div>
-                          <span className="text-[9px] text-slate-600">{formatNumber(state.totalPoints)}/10K</span>
+                          <span className="text-[9px] text-slate-600">{formatCompact(state.totalPoints)}/10K</span>
                         </div>
                       )}
                     </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { InlineText } from "./InlineText";
+import { checkFreeTextAnswer } from "@/lib/answerCheck";
 
 interface InlineExerciseProps {
   question: string;
@@ -18,7 +19,7 @@ export default function InlineExercise({ question, options, answer, explanation 
 
   const isCorrect = options
     ? selected === answer
-    : inputValue.trim().toLowerCase() === answer.trim().toLowerCase();
+    : checkFreeTextAnswer(inputValue, answer);
 
   const handleSubmit = () => {
     if (options && !selected) return;

@@ -6,6 +6,7 @@ import { MathBlock } from "./MathBlock";
 import { InlineText } from "./InlineText";
 import { LessonFeedback } from "./LessonFeedback";
 import { checkFreeTextAnswer, allValidAnswers } from "@/lib/answerCheck";
+import { shuffle } from "@/lib/array";
 import { CheckCircle2, XCircle, Lightbulb, ChevronRight, RotateCcw, Trophy, Target, HelpCircle, Medal } from "lucide-react";
 
 interface Props {
@@ -26,15 +27,6 @@ interface ExamAnswer {
   correct: boolean;
 }
 
-function shuffleArray<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
 export function InteractiveExercise({ exercises, moduleTitle, onComplete, difficulty, examMode, moduleSlug, lessonId, lessonTitle }: Props) {
   // Filter by difficulty if specified
   const filtered = useMemo(() => {
@@ -44,7 +36,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
 
   const [shuffledExercises, setShuffledExercises] = useState<Exercise[]>([]);
   useEffect(() => {
-    setShuffledExercises(shuffleArray(filtered));
+    setShuffledExercises(shuffle(filtered));
   }, [filtered]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -158,7 +150,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
     setStats({ correct: 0, wrong: 0 });
     setCompleted(false);
     setExamAnswers([]);
-    setShuffledExercises(shuffleArray(filtered));
+    setShuffledExercises(shuffle(filtered));
     resetExercise();
   };
 

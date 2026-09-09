@@ -189,11 +189,4 @@ export function sanitizeExercises(exercises: Exercise[]): Exercise[] {
  * Fisher-Yates mit injizierbarem Zufall (Tests nutzen einen festen rng).
  * Verhindert das Auswendiglernen von Positionen statt Inhalten.
  */
-export function shuffle<T>(items: readonly T[], rng: () => number = Math.random): T[] {
-  const arr = [...items];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
+export { shuffle } from "@/lib/array";

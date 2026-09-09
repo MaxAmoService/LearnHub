@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { shuffle } from "@/lib/array";
 
 // ============================================================================
 // Phishing Detector — E-Mails analysieren und Phishing erkennen
@@ -323,17 +324,8 @@ const phishingQuiz: QuizQuestion[] = [
   },
 ];
 
-function shuffleArray<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
 export function PhishingDetector() {
-  const [shuffledEmails, setShuffledEmails] = useState<Email[]>(() => shuffleArray(emails));
+  const [shuffledEmails, setShuffledEmails] = useState<Email[]>(() => shuffle(emails));
   const [currentEmailIndex, setCurrentEmailIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, boolean>>({});
   const [showExplanation, setShowExplanation] = useState(false);
@@ -362,7 +354,7 @@ export function PhishingDetector() {
   };
 
   const handleRestart = () => {
-    setShuffledEmails(shuffleArray(emails));
+    setShuffledEmails(shuffle(emails));
     setCurrentEmailIndex(0);
     setAnswers({});
     setShowExplanation(false);

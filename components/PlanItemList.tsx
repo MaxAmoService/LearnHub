@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCount } from "@/lib/format";
+
 // PlanItemList — Themenliste eines Plans (/plans/[id]): Status-Anzeige
 // (SM-2), Umsortieren, Bearbeiten, Hinzufügen, Löschen. Die Persistenz
 // liegt beim Aufrufer (lib/plans.ts), diese Komponente ist nur UI.
@@ -160,7 +162,7 @@ export function PlanItemList({
                       Number.isFinite(item.lastAttempt.correct) &&
                       Number.isFinite(item.lastAttempt.total) && (
                         <span className="text-xs text-slate-500">
-                          zuletzt {item.lastAttempt.correct.toLocaleString("de-DE", { maximumFractionDigits: 2 })}/
+                          zuletzt {formatCount(item.lastAttempt.correct)}/
                           {item.lastAttempt.total}
                         </span>
                       )}

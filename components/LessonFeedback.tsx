@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
+import { todayKey } from "@/lib/dates";
 import { MessageSquare, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 interface LessonFeedbackProps {
@@ -67,7 +68,7 @@ export function LessonFeedback({ moduleSlug, moduleTitle, lessonId, lessonTitle 
       const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
       const { getDb } = await import("@/lib/firebase");
 
-      const today = new Date().toISOString().split("T")[0]; // "2026-06-08"
+      const today = todayKey(); // Europe/Berlin, Tagesgrenze 04:00
 
       await addDoc(collection(getDb(), "feedback"), {
         uid: user?.uid || "anonymous",

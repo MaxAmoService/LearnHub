@@ -1,5 +1,7 @@
 "use client";
 
+import { formatInt } from "@/lib/format";
+
 import { useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { allModules as modules } from "@/lib/data";
@@ -111,7 +113,7 @@ export default function Dashboard() {
               <span className="text-xs text-slate-400 uppercase tracking-wider">Level {levelInfo.level}</span>
             </div>
             <p className="text-lg font-bold text-white">{levelInfo.title}</p>
-            <p className="text-xs text-amber-400 font-medium">{user.totalXP.toLocaleString("de-DE")} XP</p>
+            <p className="text-xs text-amber-400 font-medium">{formatInt(user.totalXP)} XP</p>
             <div className="mt-auto pt-2">
               <div className="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
                 <div className="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-700" style={{ width: `${levelInfo.progress}%` }} />

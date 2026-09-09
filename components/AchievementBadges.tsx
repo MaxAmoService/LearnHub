@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Trophy, Star, Flame, BookOpen, Zap, Target, Award } from "lucide-react";
 import { playLevelUp } from "@/lib/sounds";
+import { RARITY_STYLES, RARITY_LABELS, type Rarity } from "@/lib/rarity";
 
 interface Achievement {
   id: string;
@@ -40,11 +41,11 @@ const ACHIEVEMENTS: Achievement[] = [
   { id: "first_quiz", icon: "❓", title: "Quiz bestanden", description: "Erstes Quiz erfolgreich abgeschlossen", condition: s => s.quizPassed >= 1, rarity: "common" },
 ];
 
-const RARITY_COLORS = {
-  common: { bg: "bg-slate-500/15", border: "border-slate-500/30", text: "text-slate-300", label: "Häufig" },
-  rare: { bg: "bg-blue-500/15", border: "border-blue-500/30", text: "text-blue-300", label: "Selten" },
-  epic: { bg: "bg-purple-500/15", border: "border-purple-500/30", text: "text-purple-300", label: "Episch" },
-  legendary: { bg: "bg-amber-500/15", border: "border-amber-500/30", text: "text-amber-300", label: "Legendär" },
+const RARITY_COLORS: Record<Rarity, (typeof RARITY_STYLES)[Rarity] & { label: string }> = {
+  common: { ...RARITY_STYLES.common, label: RARITY_LABELS.common },
+  rare: { ...RARITY_STYLES.rare, label: RARITY_LABELS.rare },
+  epic: { ...RARITY_STYLES.epic, label: RARITY_LABELS.epic },
+  legendary: { ...RARITY_STYLES.legendary, label: RARITY_LABELS.legendary },
 };
 
 interface AchievementBadgesProps {

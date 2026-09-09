@@ -1,5 +1,7 @@
 "use client";
 
+import { formatInt } from "@/lib/format";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
@@ -624,7 +626,7 @@ export default function ProfilePage() {
                 <h3 className="font-semibold">Level {levelInfo.level} — {levelInfo.title}</h3>
                 <div className="flex items-center gap-1.5">
                   <Zap className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="text-sm font-semibold text-amber-400">{user.totalXP.toLocaleString("de-DE")} XP</span>
+                  <span className="text-sm font-semibold text-amber-400">{formatInt(user.totalXP)} XP</span>
                 </div>
               </div>
               <p className="text-xs text-slate-500 mb-2">{levelInfo.xpToNext} XP bis Level {levelInfo.level + 1}</p>

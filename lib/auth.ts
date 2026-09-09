@@ -101,6 +101,12 @@ export function validatePassword(password: string): { valid: boolean; error?: st
   return { valid: true };
 }
 
+/** Prestige-Punkte aus Gesamtpunkten: floor(log10(totalPoints / 10000)). */
+export function computePrestigePoints(totalPoints: number): number {
+  if (totalPoints < 10000) return 0;
+  return Math.floor(Math.log10(totalPoints / 10000));
+}
+
 export function getUserLevel(xp: number): { level: number; title: string; xpToNext: number; progress: number } {
   const levels = [
     { xp: 0, title: "Anfänger" },
@@ -940,8 +946,7 @@ export async function prestigeClickerState(uid: string): Promise<ClickerState | 
     const totalPoints = profile.clickerTotalPoints || 0;
     if (totalPoints < 10000) return null; // Mindestens 10.000 Punkte
 
-    // Prestige-Punkte berechnen: floor(log10(totalPoints / 10000))
-    const newPrestigePoints = Math.floor(Math.log10(totalPoints / 10000));
+    const newPrestigePoints = computePrestigePoints(totalPoints);
     const currentPrestigePoints = profile.clickerPrestigePoints || 0;
     const currentPrestigeLevel = profile.clickerPrestigeLevel || 0;
 

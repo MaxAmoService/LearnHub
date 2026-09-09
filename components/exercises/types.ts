@@ -18,6 +18,4 @@ export interface ExerciseViewProps {
   onComplete: (result: ExerciseResult) => void;
 }
 
-export function formatCount(value: number): string {
-  return value.toLocaleString("de-DE", { maximumFractionDigits: 2 });
-}
+export { formatCount } from "@/lib/format";
