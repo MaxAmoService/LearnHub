@@ -8,7 +8,6 @@ import { nextjsModule } from "./nextjsData";
 import { datenbankModule } from "./datenbankData";
 import { computersystemeModule } from "./computersystemeData";
 import { itSicherheitModule } from "./itSicherheitData";
-import { complexModule } from "./complexData";
 import { gitModule } from "./gitData";
 import { uxModule } from "./uxData";
 import { qualitaetModule } from "./qualitaetData";
@@ -66,7 +65,6 @@ export const allModules = [
   datenbankModule,
   computersystemeModule,
   itSicherheitModule,
-  complexModule,
   gitModule,
   uxModule,
   qualitaetModule,

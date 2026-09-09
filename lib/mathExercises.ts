@@ -12806,7 +12806,7 @@ export const examExercises: Record<string, Exercise[]> = {
   "m2-dgl": dglExam,
   "m-folgen": folgenExam,
   "m-numerik-grundlagen": numerikExam,
-  "m-komplexe-zahlen": komplexeExam,
+  "m-komplexe": komplexeExam,
   // Group C: Lineare Algebra, Geometrie, Stochastik
   "m2-vektoren": vektorenExam,
   "m-matrizen": matrizenExam,

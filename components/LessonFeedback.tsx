@@ -208,6 +208,14 @@ export function LessonFeedback({ moduleSlug, moduleTitle, lessonId, lessonTitle,
             Senden
           </button>
         </div>
+        <p className="text-[11px] text-slate-500 mt-2 leading-relaxed">
+          Mit dem Absenden erklärst du dich mit der Verarbeitung der Angaben
+          (Nachricht, Kategorie, Lektions-Kontext) gemäß unserer{" "}
+          <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+            Datenschutzerklärung
+          </a>{" "}
+          einverstanden.
+        </p>
       </div>
     </div>
   );

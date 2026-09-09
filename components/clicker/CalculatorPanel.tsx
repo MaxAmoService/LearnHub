@@ -123,6 +123,7 @@ export default function CalculatorPanel() {
           <button
             key={b}
             onClick={() => handleButton(b)}
+            aria-label={b === "⌫" ? "Letztes Zeichen löschen" : undefined}
             className={`h-11 rounded-lg border text-base font-semibold transition-colors active:scale-95 ${
               b === "="
                 ? "col-span-1 bg-amber-500/30 border-amber-500/50 text-amber-300 hover:bg-amber-500/40"

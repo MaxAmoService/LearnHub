@@ -2,14 +2,14 @@
 
 Interaktive Lernplattform für IHK-Fachinformatiker, Mathematik und Programmierung — kostenlos und Open Source.
 
-**🔗 [lernapp-nine.vercel.app](https://lernapp-nine.vercel.app)**
+**🔗 [learnhub-tau-indol.vercel.app](https://learnhub-tau-indol.vercel.app)**
 
 ---
 
 ## Features
 
-- 📚 **59 Lernmodule** — IHK AP1/AP2, Mathematik, Programmierung, Erweitert
-- 🎮 **85 interaktive Tools** — Subnet Calculator, OSI Explorer, SQL Playground, Scrum Board u.v.m.
+- 📚 **52 Lernmodule** — IHK AP1/AP2, Mathematik, Programmierung
+- 🎮 **81 interaktive Tools** — Subnet Calculator, OSI Explorer, SQL Playground, Scrum Board u.v.m.
 - 🃏 **307 Karteikarten** — Spaced Repetition (SM-2 Algorithmus)
 - 📝 **Übungsaufgaben** — 3 Schwierigkeitsstufen + Prüfungsmodus
 - 🏆 **Gamification** — XP, Level, Streaks, Leaderboard, Achievements
@@ -18,7 +18,7 @@ Interaktive Lernplattform für IHK-Fachinformatiker, Mathematik und Programmieru
 - 🌙 **Dark Theme** — Glass Morphism Design
 - 📱 **Responsive** — Desktop, Tablet, Handy
 - 🔐 **Auth** — Registrierung mit E-Mail-Bestätigung (Firebase Auth)
-- 🇪🇺 **DSGVO-konform** — Daten in EU (Frankfurt), e2e verschlüsselt
+- 🇪🇺 **Datenschutz** — DSGVO-orientiert, Impressum & Datenschutzerklärung, Consent-Banner
 
 ---
 
@@ -38,13 +38,9 @@ Interaktive Lernplattform für IHK-Fachinformatiker, Mathematik und Programmieru
 | 🐳 Docker & Containerisierung | Docker, Compose, Deployment, Kubernetes |
 | 🔧 Erweiterte Programmierung | SOLID, Clean Code, Interfaces, Unit-Tests, Refactoring |
 
-## Mathematik-Module (32)
+## Mathematik-Module (38)
 
-Analysis (Grenzwerte, Ableitungen, Integralrechnung, Reihen, Taylorreihen) · Lineare Algebra (Vektoren, Matrizen, LGS) · Stochastik (Wahrscheinlichkeit, Kombinatorik, Verteilungen) · Grundlagen (Mengen, Logik, Funktionen, Bruchrechnung, Gleichungen, Dreisatz) · Geometrie (Flächen, Körper, Trigonometrie, Analytische Geometrie) · Weiteres (Potenzen, Logarithmen, Statistik, Numerik, DGL, Kurvendiskussion, Prozentrechnung, Komplexe Zahlen)
-
-## Erweiterte Module (13)
-
-Mathe 1 · Algorithmen & Datenstrukturen · Datenbanken · Künstliche Intelligenz · Machine Learning · Kommunikationsbusse · Englisch · BWL · Software-Qualität · Programmierung 2 · BWL WS20 · Rechnernetze · Numerische Methoden 2
+Analysis (Grenzwerte, Ableitungen, Integralrechnung, Reihen, Taylorreihen) · Lineare Algebra (Vektoren, Matrizen, LGS) · Stochastik (Wahrscheinlichkeit, Kombinatorik, Verteilungen) · Grundlagen (Mengen, Logik, Funktionen, Bruchrechnung, Gleichungen, Dreisatz) · Geometrie (Flächen, Körper, Trigonometrie, Analytische Geometrie) · Weiteres (Potenzen, Logarithmen, Statistik, Numerik, DGL, Kurvendiskussion, Prozentrechnung, Komplexe Zahlen, Grundrechnen, Ganze Zahlen, Quadratische Gleichungen, Exponentialfunktionen, Wachstumsprozesse, Fourier-Reihen)
 
 ## Programmier-Module (3)
 
@@ -59,7 +55,7 @@ React Grundlagen · TypeScript Basics · Next.js
 | Framework | Next.js 14 (App Router, `"use client"`) |
 | Sprache | TypeScript |
 | Styling | Tailwind CSS (Dark Theme, Glass Morphism) |
-| Backend | Firebase (Auth + Firestore, Region eur3) |
+| Backend | Firebase (Auth + Firestore) |
 | Icons | Lucide React |
 | Mathematik | KaTeX |
 | Code Highlighting | PrismJS |
@@ -71,30 +67,40 @@ React Grundlagen · TypeScript Basics · Next.js
 ## Projektstruktur
 
 ```
-├── app/                    # Next.js App Router (Seiten)
+├── app/                    # Next.js App Router (Seiten + Route Handler)
 │   ├── page.tsx            # Dashboard
 │   ├── modules/            # Modul-Übersicht + Detailseiten
-│   ├── skilltree/          # Skill Tree Visualisierung
+│   ├── skilltree/          # Skill Tree Visualisierung (Etagen + Graph)
 │   ├── leaderboard/        # Rangliste
 │   ├── profile/            # Benutzerprofil + Einstellungen
-│   └── datenschutz/        # DSGVO
+│   ├── plans/              # Lehrpläne + Übungsseite
+│   ├── tagesquiz/          # Tagesquiz
+│   ├── impressum/          # Impressum
+│   ├── datenschutz/        # Datenschutzerklärung
+│   └── api/v1/             # Widget-/Key-API (today, log, keys, leaderboard, users)
 ├── components/
-│   ├── interactive/        # 85 interaktive Lern-Tools
+│   ├── interactive/        # 81 interaktive Lern-Tools
 │   ├── visuals/            # Mathematische Visualisierungen
-│   ├── LessonViewer.tsx    # Markdown-Renderer mit LaTeX
+│   ├── clicker/            # Clicker-Werkzeuge (Rechner, Skizzenfläche)
+│   ├── LessonViewer.tsx    # Lektions-Renderer
+│   ├── MarkdownContent.tsx # Geteilter Markdown-/LaTeX-Renderer
 │   ├── Quiz.tsx            # Quiz-Komponente
 │   ├── FlashcardViewer.tsx # Karteikarten mit SM-2
-│   ├── SkillTreeGraph.tsx  # Skill Tree Komponente
+│   ├── SkillTreeGraph.tsx  # Skill Tree Graph-Komponente
 │   ├── PixelBackground.tsx # Pixel-Art Hintergrund
 │   └── InlineText.tsx      # Inline-Rendering (LaTeX, Links, Bold)
+├── content/
+│   └── exercises/          # Aufgaben-JSONs (Themen + Modul-Pools)
 ├── lib/
 │   ├── *Data.ts            # Modulinhalte (statisch)
 │   ├── flashcardData.ts    # 307 Karteikarten
 │   ├── auth.ts             # Firebase Auth + User Management
-│   ├── flashcards.ts       # SM-2 Spaced Repetition
+│   ├── spacing.ts          # SM-2 Spaced Repetition
+│   ├── exercises/          # Aufgaben-Registry, Scoring, prozedurale Generatoren
 │   ├── sounds.ts           # Web Audio Soundeffekte
 │   └── types.ts            # TypeScript-Typen
-└── scripts/                # Build-Tools
+├── scripts/                # Build-Tools, Migrationen, Generatoren
+└── firestore.rules         # Firestore-Security-Rules
 ```
 
 ---
@@ -126,7 +132,10 @@ npm run lint         # ESLint
 
 ## Deployment
 
-Automatisch via Vercel bei Push auf `main`. Environment Variables in Vercel Settings konfigurieren (siehe `FIREBASE_SETUP.md`).
+Automatisch via Vercel bei Push auf `main`. Environment Variables in den Vercel
+Settings konfigurieren: Firebase-Client-Config (`NEXT_PUBLIC_*`) und
+`FIREBASE_SERVICE_ACCOUNT` (base64-kodiert, nur für Server-Routen — niemals
+mit `NEXT_PUBLIC_`-Prefix).
 
 ---
 

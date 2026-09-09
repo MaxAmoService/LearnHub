@@ -1,5 +1,6 @@
 import { Module, QuizQuestion, LessonVisual } from "./types";
 import { createExerciseLessons } from "./lessonHelpers";
+import { complexModule } from "./complexData";
 
 interface MathSubCategory {
   id: string;
@@ -2213,6 +2214,7 @@ Nach nur 3 Schritten: $\\sqrt{2} \\approx 1{,}4142$ (4 Dezimalstellen!)
     color: "#8b5cf6",
     category: "komplexe-numerik",
     progress: 0,
+    merkblatt: complexModule.merkblatt,
     lessons: [
       {
         id: "m-komplexe-1",
@@ -2329,6 +2331,7 @@ $(1+i)^4 = (\\sqrt{2})^4 \\cdot e^{i \\cdot 4 \\cdot 45°} = 4 \\cdot e^{i \\cdo
         exerciseDifficulty: 1,
         content: `Komplexe Zahlen addieren, subtrahieren und den Betrag berechnen.`,
       },
+      ...complexModule.lessons,
     ],
   },
 
@@ -4199,7 +4202,7 @@ Der Tafel-Test funktioniert immer:
         type: "text",
         content: `## Definitionsbereich & Nullstellen
 
-> **Roter Faden:** Du kennst bereits [Ableitungen](/modules/mathe-ableitungen) und [Grenzwerte](/modules/mathe-grenzwerte). Jetzt setzen wir alles zusammen: Die vollständige Analyse einer Funktion beginnt hier — mit Definitionsbereich und Nullstellen.
+> **Roter Faden:** Du kennst bereits [Ableitungen](/modules/mathe1-ableitungen) und [Grenzwerte](/modules/mathe1-grenzwerte). Jetzt setzen wir alles zusammen: Die vollständige Analyse einer Funktion beginnt hier — mit Definitionsbereich und Nullstellen.
 
 Bevor man eine Funktion analysiert, muss man wissen, wo sie **definiert** ist und wo sie die x-Achse schneidet.
 
@@ -4267,7 +4270,7 @@ $x_1 = 1$, $x_2 = 3$
         type: "text",
         content: `## Extrema
 
-> **Roter Faden:** Nach [Definitionsbereich & Nullstellen](/modules/mathe-kurvendiskussion) wissen wir, wo die Funktion existiert. Jetzt suchen wir die **Hoch- und Tiefpunkte** — hier werden die Ableitungen aus [Modul 4](/modules/mathe-ableitungen) zum zentralen Werkzeug.
+> **Roter Faden:** Nach [Definitionsbereich & Nullstellen](/modules/mathe-kurvendiskussion) wissen wir, wo die Funktion existiert. Jetzt suchen wir die **Hoch- und Tiefpunkte** — hier werden die Ableitungen aus [Modul 4](/modules/mathe1-ableitungen) zum zentralen Werkzeug.
 
 Extrema sind die **Hoch- und Tiefpunkte** einer Funktion. Man findet sie mit der Ableitung.
 
@@ -4481,7 +4484,7 @@ $x = \\frac{D_x}{D}$, $y = \\frac{D_y}{D}$
         type: "text",
         content: `## Einsetzungsverfahren
 
-> **Roter Faden:** Du kennst [Vektoren](/modules/mathe-vektoren) bereits. Lineare Gleichungssysteme sind der nächste Schritt — sie verbinden Vektoren mit Algebra. Das Gauß-Verfahren und die Matrizen bauen direkt darauf auf.
+> **Roter Faden:** Du kennst [Vektoren](/modules/mathe2-vektoren) bereits. Lineare Gleichungssysteme sind der nächste Schritt — sie verbinden Vektoren mit Algebra. Das Gauß-Verfahren und die Matrizen bauen direkt darauf auf.
 
 > 🎓 **Fürs Erweitert:** In MA3 (Lineare Algebra) wird Gauß das zentrale Werkzeug sein!
 
@@ -4700,7 +4703,7 @@ $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$`,
         type: "text",
         content: `## Matrix-Operationen
 
-> **Roter Faden:** Aus den [Linearen Gleichungssystemen](/modules/mathe-gleichungssysteme) und den [Vektoren](/modules/mathe-vektoren) ergibt sich ein neues Werkzeug: die **Matrix**. Sie ist die systematische Art, lineare Gleichungen zu schreiben und zu lösen.
+> **Roter Faden:** Aus den [Linearen Gleichungssystemen](/modules/mathe-gleichungssysteme) und den [Vektoren](/modules/mathe2-vektoren) ergibt sich ein neues Werkzeug: die **Matrix**. Sie ist die systematische Art, lineare Gleichungen zu schreiben und zu lösen.
 
 > 🎓 **Fürs Erweitert:** Matrizen sind das Herzstück von MA3. Wer sie hier versteht, hat im Erweitert einen riesigen Vorsprung!
 
@@ -4987,7 +4990,7 @@ $S = \\frac{a_1}{1-q}$ (nur für $|q| < 1$)`,
         type: "text",
         content: `## Arithmetische Folgen
 
-> **Roter Faden:** Mit Folgen und Reihen beginnt ein neuer Bereich der Analysis. Die arithmetische Folge ist der einfachste Fall — ein konstanter Abstand zwischen den Gliedern. Später folgen geometrische Folgen und die Verbindung zu [Reihen](/modules/mathe-reihen).
+> **Roter Faden:** Mit Folgen und Reihen beginnt ein neuer Bereich der Analysis. Die arithmetische Folge ist der einfachste Fall — ein konstanter Abstand zwischen den Gliedern. Später folgen geometrische Folgen und die Verbindung zu [Reihen](/modules/mathe1-reihen).
 
 Eine arithmetische Folge hat einen **konstanten Abstand** $d$ zwischen aufeinanderfolgenden Gliedern.
 
@@ -5048,7 +5051,7 @@ $S_{10} = \\frac{10}{2}(3 + 39) = 5 \\cdot 42 = 210$
         type: "text",
         content: `## Geometrische Folgen & Reihen
 
-> **Roter Faden:** Die [arithmetische Folge](/modules/mathe-folgen-reihen) hat einen konstanten Abstand. Jetzt kommt die **geometrische Folge** — ein konstanter **Faktor**. Das führt uns direkt zu den [Reihen](/modules/mathe-reihen) und später zu den [Taylorreihen](/modules/mathe-taylorreihen).
+> **Roter Faden:** Die [arithmetische Folge](/modules/mathe-folgen-reihen) hat einen konstanten Abstand. Jetzt kommt die **geometrische Folge** — ein konstanter **Faktor**. Das führt uns direkt zu den [Reihen](/modules/mathe1-reihen) und später zu den [Taylorreihen](/modules/mathe-taylorreihen).
 
 Eine geometrische Folge hat einen **konstanten Faktor** $q$ zwischen aufeinanderfolgenden Gliedern.
 
@@ -5106,7 +5109,7 @@ $a_5 = 2 \\cdot 3^4 = 162$
 $S_5 = 2 \\cdot \\frac{3^5 - 1}{3 - 1} = 2 \\cdot \\frac{242}{2} = 242$
 [PRACTICE_END]
 
-> **Nächstes:** Geometrische Reihen mit $|q| < 1$ konvergieren — das ist der Schlüssel zu den [Reihen](/modules/mathe-reihen) und später zu den [Taylorreihen](/modules/mathe-taylorreihen).`,
+> **Nächstes:** Geometrische Reihen mit $|q| < 1$ konvergieren — das ist der Schlüssel zu den [Reihen](/modules/mathe1-reihen) und später zu den [Taylorreihen](/modules/mathe-taylorreihen).`,
       },
       ...createExerciseLessons(
         "m-fr",
@@ -5150,7 +5153,7 @@ $d = \\frac{|\\vec{v} \\times (\\vec{a} - \\vec{p})|}{|\\vec{v}|}$`,
         type: "text",
         content: `## Geraden im Raum
 
-> **Roter Faden:** Du kennst [Vektoren](/modules/mathe-vektoren) und [Lineare Gleichungssysteme](/modules/mathe-gleichungssysteme). Jetzt bringt die **Analytische Geometrie** beides zusammen: Geraden und Ebenen im 3D-Raum werden durch Vektoren beschrieben.
+> **Roter Faden:** Du kennst [Vektoren](/modules/mathe2-vektoren) und [Lineare Gleichungssysteme](/modules/mathe-gleichungssysteme). Jetzt bringt die **Analytische Geometrie** beides zusammen: Geraden und Ebenen im 3D-Raum werden durch Vektoren beschrieben.
 
 > 🎓 **Fürs Erweitert:** Geraden und Ebenen im Raum werden in MA3 drankommen — zusammen mit Vektorräumen.
 
@@ -6105,7 +6108,7 @@ $f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n$
         type: "text",
         content: `## Taylor-Reihe
 
-> **Roter Faden:** Du kennst bereits [Reihen](/modules/mathe-reihen) und [Ableitungen](/modules/mathe-ableitungen). Die **Taylor-Reihe** verbindet beides: Jede glatte Funktion lässt sich als unendliche Summe von Potenzen darstellen. Das ist eines der mächtigsten Konzepte der Analysis!
+> **Roter Faden:** Du kennst bereits [Reihen](/modules/mathe1-reihen) und [Ableitungen](/modules/mathe1-ableitungen). Die **Taylor-Reihe** verbindet beides: Jede glatte Funktion lässt sich als unendliche Summe von Potenzen darstellen. Das ist eines der mächtigsten Konzepte der Analysis!
 
 > 🎬 **Taylor series** — https://www.youtube.com/watch?v=3d6DsjIBzJ4 — eine visuelle Erklärung, wie Taylor-Reihen funktionieren.
 
@@ -6241,7 +6244,7 @@ Exakter Wert: $e = 2{,}71828...$ -- nur 0,06% Fehler!
 
 > **Merke:** Mehr Terme = genauere Approximation. Schon 5-6 Terme reichen fuer viele praktische Anwendungen.
 
-> **Nächstes:** Damit ist der Analysis-Teil abgeschlossen! Zurückkehren kannst du jederzeit zu [Grenzwerte](/modules/mathe-grenzwerte), [Ableitungen](/modules/mathe-ableitungen) oder [Reihen](/modules/mathe-reihen).
+> **Nächstes:** Damit ist der Analysis-Teil abgeschlossen! Zurückkehren kannst du jederzeit zu [Grenzwerte](/modules/mathe1-grenzwerte), [Ableitungen](/modules/mathe1-ableitungen) oder [Reihen](/modules/mathe1-reihen).
 
 
 ---

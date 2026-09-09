@@ -19,6 +19,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -53,6 +54,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
   const reset = () => {
     setUsername(""); setEmail(""); setPassword(""); setConfirmPassword("");
+    setPrivacyAccepted(false);
     setError(""); setResendCooldown(0);
   };
 
@@ -94,6 +96,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
     const pw = validatePassword(password);
     if (!pw.valid) { setError(pw.error!); return; }
     if (password !== confirmPassword) { setError("Passwörter stimmen nicht überein"); return; }
+    if (!privacyAccepted) { setError("Bitte akzeptiere die Datenschutzerklärung"); return; }
     setLoading(true);
     try {
       await register(email, password, username);
@@ -328,9 +331,25 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                   )}
                 </div>
 
+                <label className="flex items-start gap-2.5 text-xs text-slate-400 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={privacyAccepted}
+                    onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                    className="mt-0.5 rounded accent-emerald-500"
+                  />
+                  <span>
+                    Ich habe die{" "}
+                    <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                      Datenschutzerklärung
+                    </a>{" "}
+                    gelesen und bin mit der Verarbeitung meiner Daten (E-Mail, Benutzername, Lernfortschritt) einverstanden.
+                  </span>
+                </label>
+
                 <button
                   type="submit"
-                  disabled={loading || !!(confirmPassword && password !== confirmPassword)}
+                  disabled={loading || !privacyAccepted || !!(confirmPassword && password !== confirmPassword)}
                   className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-500 hover:to-blue-500 disabled:from-slate-700 disabled:to-slate-700 disabled:text-slate-500 rounded-xl font-semibold text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
                 >
                   {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles className="w-5 h-5" />}

@@ -85,7 +85,7 @@ const quizData: Record<string, QuizQuestion[]> = {
       explanation: "Mit leerem Dependency Array [] wird useEffect nur einmal beim Mounten der Komponente ausgeführt.",
     },
   ],
-  "mathe-ableitungen": [
+  "mathe1-ableitungen": [
     {
       question: "Was ist die Ableitung von f(x) = x³?",
       type: "input",

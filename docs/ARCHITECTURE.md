@@ -64,11 +64,12 @@ flowchart TB
         todaylib["today.ts<br/>Tagesplan"]
         streak["streak.ts"]
         quiz["quiz.ts"]
-        scoring["scoring.ts<br/>Auswertung"]
+        scoring["lib/exercises/scoring.ts<br/>Auswertung"]
     end
 
     subgraph content["Statische Inhalte im Repo"]
-        exercises["content/exercises/*.json<br/>54 Themen"]
+        exercises["content/exercises/*.json<br/>60 Themen"]
+        modules["content/exercises/modules/*.json<br/>40 Modul-Pools<br/>via lib/exercises/moduleRegistry.ts"]
         templates["content/plan-templates/*.json"]
     end
 
@@ -159,7 +160,11 @@ und eine Regel auf Gruppenebene, weil verschachtelte Regeln dort nicht greifen.
 
 **`lastStudyDate` getrennt von `lastActive`.** Der Streak hing ursprünglich an
 `lastActive`, das der Presence-Heartbeat alle 20 Sekunden neu stempelt — er maß
-also "Tab offen", nicht "gelernt".
+also "Tab offen", nicht "gelernt". Der Heartbeat (`lib/presence.ts`) schreibt
+`status.state` + `lastActive` direkt per Client SDK; der `sendBeacon` an
+`/api/presence` beim Tab-Schließen läuft dagegen ins Leere — diese Route
+existiert (noch) nicht, die Offline-Markierung greift über den Firestore-
+Fallback in derselben Datei.
 
 ---
 
@@ -308,7 +313,7 @@ LearnHub wächst — die Richtung für die Organisation von Inhalten:
    Fortschritt verloren (deshalb erzeugt `createExerciseLessons` IDs über
    den optionalen `lessonIdPrefix`).
 
-**Modul-Aufgabenpools (migriert):** Die 41 Modul-Pools (880 Übungs- +
+**Modul-Aufgabenpools (migriert):** Die 40 Modul-Pools (880 Übungs- +
 371 Prüfungsaufgaben) liegen als JSON in `content/exercises/modules/` und
 werden über `lib/exercises/moduleRegistry.ts` geladen (generiert von
 `scripts/convert-module-exercises.ts`, Äquivalenz-Prüfung über
@@ -320,3 +325,6 @@ Generator-Quelle (kein App-Code importiert sie zur Laufzeit).
 `npm run convert:module-exercises`
 ins JSON überführt. Das Schema (`lib/exercises/types.ts`) kennt dafür
 `acceptedAnswers` (Lösungsmengen) und `format` am numeric-Typ.
+Anmerkung: Die Prüfungsaufgaben der komplexen Zahlen liegen im Pool
+`m-komplexe` (vorher eigener Pool `m-komplexe-zahlen`, der mit der
+Modul-Zusammenführung aufgelöst wurde).

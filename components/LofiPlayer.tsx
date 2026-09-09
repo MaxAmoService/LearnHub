@@ -69,7 +69,7 @@ export default function LofiPlayer() {
       {/* Volume Panel */}
       {showVol && (
         <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-700/50 rounded-xl px-3 py-2 shadow-lg">
-          <button onClick={() => changeVolume(0)} className="text-slate-500 hover:text-slate-300">
+          <button onClick={() => changeVolume(0)} className="text-slate-500 hover:text-slate-300" aria-label="Stummschalten">
             <VolumeX className="w-3 h-3" />
           </button>
           <input
@@ -92,6 +92,8 @@ export default function LofiPlayer() {
           onClick={() => setShowVol(!showVol)}
           className="p-1.5 rounded-lg text-slate-500 hover:text-slate-300 hover:bg-slate-800/60 transition-all"
           title="Lautstärke"
+          aria-label="Lautstärke einstellen"
+          aria-expanded={showVol}
         >
           <Volume2 className="w-3.5 h-3.5" />
         </button>
@@ -106,6 +108,8 @@ export default function LofiPlayer() {
             : "text-slate-600 hover:text-slate-400 hover:bg-slate-800/60"
         }`}
         title={playing ? "Lofi ausschalten" : "Lofi einschalten"}
+        aria-label={playing ? "Lofi-Musik ausschalten" : "Lofi-Musik einschalten"}
+        aria-pressed={playing}
       >
         <Music className="w-4 h-4" />
         {playing && (

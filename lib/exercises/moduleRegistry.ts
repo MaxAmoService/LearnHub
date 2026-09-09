@@ -28,7 +28,6 @@ import modulemgrundrechnen from "../../content/exercises/modules/m-grundrechnen.
 import modulemkoerper from "../../content/exercises/modules/m-koerper.json";
 import modulemkombinatorik from "../../content/exercises/modules/m-kombinatorik.json";
 import modulemkomplexe from "../../content/exercises/modules/m-komplexe.json";
-import modulemkomplexezahlen from "../../content/exercises/modules/m-komplexe-zahlen.json";
 import modulemkurvendiskussion from "../../content/exercises/modules/m-kurvendiskussion.json";
 import modulemlgs from "../../content/exercises/modules/m-lgs.json";
 import modulemlogarithmus from "../../content/exercises/modules/m-logarithmus.json";
@@ -73,7 +72,6 @@ const byModule: Record<string, ModuleExerciseFile> = {
   "m-koerper": modulemkoerper as ModuleExerciseFile,
   "m-kombinatorik": modulemkombinatorik as ModuleExerciseFile,
   "m-komplexe": modulemkomplexe as ModuleExerciseFile,
-  "m-komplexe-zahlen": modulemkomplexezahlen as ModuleExerciseFile,
   "m-kurvendiskussion": modulemkurvendiskussion as ModuleExerciseFile,
   "m-lgs": modulemlgs as ModuleExerciseFile,
   "m-logarithmus": modulemlogarithmus as ModuleExerciseFile,

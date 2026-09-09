@@ -15,8 +15,10 @@ Features (Module, Skill Tree, Bestenliste, Auth) dürfen nicht kaputtgehen.
   (Widget-API + Key-Verwaltung, siehe Abschnitt „API-Routen").
   `lib/presence.ts` sendet an `/api/presence`, das es (noch) nicht gibt.
 - `lib/` = Logik: `firebase.ts` (lazy init, getDb/getAuthInstance nutzen),
-  `auth.ts` (~1200 Zeilen, komplettes User-Management inkl. Streak/Clicker),
-  `flashcards.ts` (SM-2), `data.ts` (Modul-Registry), `*Data.ts` (Inhalte).
+  `auth.ts` (~1200 Zeilen, komplettes User-Management inkl. Streak-Anwendung/Clicker),
+  `spacing.ts` (SM-2-Engine, `flashcards.ts` re-exportiert nur für Bestandscode),
+  `streak.ts` (reine Streak-Berechnung, von `auth.ts`/`quizClient.ts` angewendet),
+  `data.ts` (Modul-Registry), `*Data.ts` (Inhalte).
   Server-only: `firebaseAdmin.ts` (Admin-SDK-Singleton, NIE clientseitig
   importieren), `apiKeys.ts`, `apiText.ts`, `planReview.ts` (reine
   Review-Berechnung, geteilt zwischen Web und API), `server/` (Admin-SDK-
@@ -73,9 +75,11 @@ CI). Commit-Stil: Conventional Commits (`feat: …`).
    Feld-Erweiterungen ohne Verhaltensänderung ok.
 5. **Bestehende Features nicht anfassen**, außer die Aufgabe verlangt es
    ausdrücklich: Module, Skill Tree, Bestenliste, Auth.
-6. **Kein zweites Spacing- und kein zweiter Streak-System.** SM-2 liegt in
-   `lib/flashcards.ts`, der Streak in `lib/auth.ts`. Neue Features nutzen diese
-   Logik oder ziehen sie in ein geteiltes Modul — sie bauen nichts Paralleles.
+6. **Kein zweites Spacing- und kein zweiter Streak-System.** Die SM-2-Engine
+   liegt in `lib/spacing.ts` (`lib/flashcards.ts` re-exportiert nur für
+   Bestandscode), die reine Streak-Berechnung in `lib/streak.ts` (`lib/auth.ts`
+   und `lib/quizClient.ts` wenden sie an). Neue Features nutzen diese Logik
+   oder ziehen sie in ein geteiltes Modul — sie bauen nichts Paralleles.
 7. **Neue Tagesberechnungen gehen über `lib/dates.ts`** (Europe/Berlin,
    Tagesgrenze 04:00). Bestehenden Code nicht umstellen.
 

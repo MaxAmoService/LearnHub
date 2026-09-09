@@ -299,7 +299,7 @@ export function MarkdownContent({ content, compact = false, renderInteractive }:
               <div className="relative" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${videoId}`}
+                  src={`https://www.youtube-nocookie.com/embed/${videoId}`}
                   title={title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

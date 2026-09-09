@@ -195,6 +195,8 @@ export default function SketchPad() {
               setEraser(false);
             }}
             title={c.id}
+            aria-label={`Farbe: ${c.id}`}
+            aria-pressed={!eraser && color === c.value}
             className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${
               !eraser && color === c.value ? "border-white scale-110" : "border-transparent"
             }`}
@@ -221,6 +223,8 @@ export default function SketchPad() {
       <div ref={wrapRef} className="w-full">
         <canvas
           ref={canvasRef}
+          role="img"
+          aria-label="Skizzenfläche — freies Zeichnen mit Maus oder Touch (nicht tastaturbedienbar)"
           className="w-full rounded-lg border border-slate-700/60 cursor-crosshair"
           style={{ touchAction: "none", backgroundColor: BG_COLOR }}
           onPointerDown={handlePointerDown}

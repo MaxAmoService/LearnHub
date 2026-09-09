@@ -20,7 +20,7 @@ export function setConsent(level: ConsentLevel) {
   if (typeof window === "undefined") return;
   localStorage.setItem(STORAGE_KEY, level);
 
-  // Google Consent Mode v2
+  // Google Consent Mode v2 — greift, wenn gtag bereits geladen ist
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).gtag?.("consent", "update", {
     analytics_storage: level === "all" ? "granted" : "denied",
@@ -28,6 +28,9 @@ export function setConsent(level: ConsentLevel) {
     ad_user_data: level === "all" ? "granted" : "denied",
     ad_personalization: level === "all" ? "granted" : "denied",
   });
+
+  // GoogleAnalytics lädt das Script nach, falls es noch nicht geladen ist
+  window.dispatchEvent(new Event("learnhub-consent-updated"));
 }
 
 export function CookieConsent() {
@@ -122,7 +125,7 @@ export function CookieConsent() {
             </button>
             <button
               onClick={handleNecessary}
-              className="flex-1 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium transition-colors text-sm"
+              className="flex-1 px-4 py-2.5 bg-slate-600 hover:bg-slate-500 text-white rounded-lg font-medium transition-colors text-sm"
             >
               Nur notwendige
             </button>
@@ -135,7 +138,7 @@ export function CookieConsent() {
           </div>
 
           {/* Links */}
-          <div className="mt-3 pt-3 border-t border-slate-800 flex gap-4 text-xs text-slate-500">
+          <div className="mt-3 pt-3 border-t border-slate-800 flex gap-4 text-xs text-slate-400">
             <a href="/impressum" className="hover:text-slate-300 transition-colors">
               Impressum
             </a>

@@ -1,56 +1,72 @@
 "use client";
 
-import Script from "next/script";
-import { getConsent } from "./CookieConsent";
+import { useEffect } from "react";
 
 const GA_MEASUREMENT_ID = "G-7GQD24BRCR";
+const CONSENT_KEY = "learnhub-cookie-consent";
+const CONSENT_EVENT = "learnhub-consent-updated";
+
+declare global {
+  interface Window {
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+/**
+ * Lädt Google Analytics erst NACH erteilter Einwilligung ("all").
+ * Vor der Einwilligung wird kein einziger Request an Google geschickt
+ * (kein gtag-Script, keine cookieless Pings) — DSGVO/TTDSG-konform,
+ * entspricht dem Text der Datenschutzerklärung.
+ */
+function loadGtag() {
+  if (typeof window === "undefined") return;
+  if (document.getElementById("ga-gtag-script")) return;
+
+  const s = document.createElement("script");
+  s.id = "ga-gtag-script";
+  s.async = true;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(s);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: unknown[]) {
+    window.dataLayer?.push(args);
+  }
+  window.gtag = gtag;
+
+  // Consent Mode v2 als Baseline — Consent liegt hier bereits vor ("all").
+  gtag("consent", "default", {
+    analytics_storage: "granted",
+    ad_storage: "granted",
+    ad_user_data: "granted",
+    ad_personalization: "granted",
+  });
+  gtag("js", new Date());
+  gtag("config", GA_MEASUREMENT_ID, {
+    page_title: document.title,
+    page_location: window.location.href,
+  });
+}
 
 export function GoogleAnalytics() {
-  return (
-    <>
-      {/* Google Consent Mode v2 — Default: denied (immer, DSGVO-konform) */}
-      <Script id="google-consent" strategy="beforeInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
-          });
-        `}
-      </Script>
+  useEffect(() => {
+    const hasConsent = () => {
+      try {
+        return localStorage.getItem(CONSENT_KEY) === "all";
+      } catch {
+        return false;
+      }
+    };
 
-      {/* Google Analytics Library — Consent Mode v2 verhindert Tracking bei denied */}
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+    if (hasConsent()) loadGtag();
 
-          // Nur config senden wenn Consent bereits erteilt wurde
-          // Bei denied wird nur ein cookieless Ping gesendet (Consent Mode v2)
-          var storedConsent = null;
-          try { storedConsent = localStorage.getItem('learnhub-cookie-consent'); } catch(e) {}
-          if (storedConsent === 'all') {
-            gtag('consent', 'update', {
-              'analytics_storage': 'granted',
-              'ad_storage': 'granted',
-              'ad_user_data': 'granted',
-              'ad_personalization': 'granted'
-            });
-          }
-          gtag('config', '${GA_MEASUREMENT_ID}', {
-            page_title: document.title,
-            page_location: window.location.href,
-          });
-        `}
-      </Script>
-    </>
-  );
+    const onConsentChange = () => {
+      if (hasConsent()) loadGtag();
+    };
+    window.addEventListener(CONSENT_EVENT, onConsentChange);
+    return () => window.removeEventListener(CONSENT_EVENT, onConsentChange);
+  }, []);
+
+  return null;
 }

@@ -838,6 +838,7 @@ export default function LearningClicker() {
         onClick={() => setIsOpen(true)}
         className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 shadow-lg shadow-amber-500/30 flex items-center justify-center transition-all hover:scale-110 group ${getPrestigeRing(state.prestigeLevel)}`}
         title="Lern-Clicker öffnen"
+        aria-label="Lern-Clicker öffnen"
       >
         <span className={`text-2xl ${getPrestigeGlow(state.prestigeLevel)}`}>
           {getPrestigeAvatar(state.prestigeLevel, "🎓")}
