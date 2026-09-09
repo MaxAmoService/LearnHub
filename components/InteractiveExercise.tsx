@@ -6,8 +6,9 @@ import { isChoiceExercise, isNumericExercise } from "@/lib/exercises/types";
 import { MathBlock } from "./MathBlock";
 import { InlineText } from "./InlineText";
 import { LessonFeedback } from "./LessonFeedback";
-import { checkFreeTextAnswer, allValidAnswers } from "@/lib/answerCheck";
+import { allValidAnswers } from "@/lib/answerCheck";
 import { shuffle } from "@/lib/array";
+import { gradeExerciseAnswer } from "@/lib/exercises/grading";
 import { CheckCircle2, XCircle, Lightbulb, ChevronRight, RotateCcw, Trophy, Target, HelpCircle, Medal } from "lucide-react";
 
 interface Props {
@@ -87,20 +88,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
 
   const checkAnswer = () => {
     if (!current) return;
-    let correct = false;
-
-    if (isChoiceExercise(current)) {
-      correct = selectedOption === current.correctIndex;
-    } else if (isNumericExercise(current)) {
-      correct = checkFreeTextAnswer(userAnswer, String(current.answer), {
-        acceptedAnswers: current.acceptedAnswers,
-        tolerance: current.tolerance,
-      });
-    } else {
-      // recall/match kommen in den Modul-Pools nicht vor (Konverter
-      // garantiert choice|numeric) — defensiv: nicht als richtig werten.
-      correct = false;
-    }
+    let correct = gradeExerciseAnswer(current, { userAnswer, selectedOption });
 
     if (examMode) {
       // Exam mode: record answer, no immediate feedback, auto-advance
