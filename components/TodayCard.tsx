@@ -250,7 +250,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     );
   }
 
-  function renderDueItemCard(item: PlanItemWithId) {
+  function renderDueItemCard(item: PlanItemWithId, withBadge = false) {
     const overdue = item.nextDueAt != null && item.nextDueAt < today;
     return (
       <div
@@ -264,6 +264,11 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         <div className="min-w-0">
           <p className="text-sm font-medium text-white">
             {item.title ?? "Unbenanntes Thema"}
+            {withBadge && (
+              <span className="ml-2 inline-block align-middle text-[10px] px-1.5 py-0.5 rounded-full bg-slate-700/60 text-slate-400 font-medium">
+                Wiederholung
+              </span>
+            )}
           </p>
           {item.nextDueAt != null && (
             <p className="text-xs text-slate-500 mt-0.5">
@@ -300,49 +305,12 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
     );
   }
 
-  // Tagesbalken statt Themenbalken: pro Plan der heutige Fortschritt als
-  // Balken (Einheiten heute vs. Tagesziel) — inkl. Plan-Status (per Quiz
-  // erledigt, Pensum erfüllt oder offen). Die nächsten Themen stehen
-  // darunter (Neu) bzw. — wenn der Plan schon erledigt ist — im Abschnitt
-  // „Vorarbeit" mit benanntem Vorsprung in Tagen.
-  const tagesbalkenBlock = (
-    <div className="space-y-3 mb-2">
-      {dayStatus.plans.map((status) => {
-        const pct =
-          status.todayTarget > 0
-            ? Math.min(100, Math.round((status.todayDone / status.todayTarget) * 100))
-            : 100;
-        const label = status.quizDone
-          ? "per Tagesquiz erledigt"
-          : status.done
-            ? "Tagespensum erfüllt"
-            : `Heute ${status.todayDone} von ${status.todayTarget} Einheiten`;
-        return (
-          <div key={status.planId} className="space-y-1">
-            {activePlans.length > 1 && (
-              <p className="text-xs font-medium text-slate-400">{status.title}</p>
-            )}
-            <div className="flex items-center gap-3">
-              <div className="flex-1">
-                <ProgressBar
-                  value={pct}
-                  size="sm"
-                  color={status.done ? "#34d399" : "#8b5cf6"}
-                  animated={false}
-                />
-              </div>
-              <p className="text-xs text-slate-400 flex-shrink-0">{label}</p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-
-  // Themenkarten pro Plan gruppiert (wie die Tagesbalken oben): jeder Plan
-  // bekommt einen eigenen Block mit dem Plannamen als Überschrift, darin
-  // „Neu" und „Wiederholung" als Unterabschnitte. Pläne ohne anstehende
-  // Inhalte entfallen komplett — kein leerer Block.
+  // Eine Karte pro Plan: Plan-Name klein oben, darunter der Tagesbalken mit
+  // X/Y-Label, darunter das nächste Thema (Neu) und die fälligen
+  // Wiederholungen — ohne separate Zusammenfassungszeile und ohne
+  // „Neu"/„Wiederholung"-Sektionstitel. Kommen Thema und Wiederholungen
+  // gleichzeitig vor, tragen die Wiederholungs-Einträge ein kleines Badge.
+  // Pläne ohne heute Anstehendes entfallen komplett.
   const planBlocks: React.ReactNode[] = [];
   let hasNeuContent = false;
 
@@ -370,9 +338,19 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
 
     const wiederholungCards = dueItems
       .filter((item) => item.planId === status.planId)
-      .map(renderDueItemCard);
+      .map((item) => renderDueItemCard(item, neuCards.length > 0));
 
     if (neuCards.length === 0 && wiederholungCards.length === 0) continue;
+
+    const pct =
+      status.todayTarget > 0
+        ? Math.min(100, Math.round((status.todayDone / status.todayTarget) * 100))
+        : 100;
+    const label = status.quizDone
+      ? "per Tagesquiz erledigt"
+      : status.done
+        ? "Tagespensum erfüllt"
+        : `Heute ${status.todayDone} von ${status.todayTarget} Einheiten`;
 
     planBlocks.push(
       <div
@@ -380,22 +358,19 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         className="rounded-lg border border-slate-700/50 bg-slate-800/30 p-3 space-y-3"
       >
         <p className="text-xs font-medium text-slate-400">{status.title}</p>
-        {neuCards.length > 0 && (
-          <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-              Neu
-            </p>
-            <div className="space-y-2">{neuCards}</div>
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <ProgressBar
+              value={pct}
+              size="sm"
+              color={status.done ? "#34d399" : "#8b5cf6"}
+              animated={false}
+            />
           </div>
-        )}
-        {wiederholungCards.length > 0 && (
-          <div>
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-              Wiederholung
-            </p>
-            <div className="space-y-2">{wiederholungCards}</div>
-          </div>
-        )}
+          <p className="text-xs text-slate-400 flex-shrink-0">{label}</p>
+        </div>
+        {neuCards}
+        {wiederholungCards}
       </div>
     );
   }
@@ -500,7 +475,6 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
           {dayDone && (
             <h3 className="text-sm font-semibold text-slate-300">Zusätzlich üben</h3>
           )}
-          {tagesbalkenBlock}
           <div className="space-y-3">{planBlocks}</div>
           {!hasNeuContent && (
             <p className="text-xs text-slate-500">Heute steht nichts Neues an.</p>
