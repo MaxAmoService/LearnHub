@@ -46,8 +46,9 @@ Features (Module, Skill Tree, Bestenliste, Auth) dürfen nicht kaputtgehen.
   Keys daraus an — betroffene UIDs werden geloggt).
 
 Nach jeder Aufgabe Typecheck UND Build laufen lassen. CI (Node 22, `npm ci`,
-`npm run build`) läuft bei Push auf `main` und triggert dann das
-Vercel-Deploy-Hook. Commit-Stil: Conventional Commits (`feat: …`).
+`npm run build`) läuft bei Push auf `main`; Deployment über die native
+Vercel-Git-Integration (Deploy bei jedem Push auf `main`, kein Hook in der
+CI). Commit-Stil: Conventional Commits (`feat: …`).
 
 ## Harte Regeln
 

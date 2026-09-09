@@ -29,7 +29,3 @@ jobs:
 
       - name: Build Test
         run: npm run build
-
-      - name: Deploy to Vercel
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
