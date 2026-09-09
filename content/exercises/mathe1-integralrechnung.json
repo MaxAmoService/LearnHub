@@ -1,0 +1,374 @@
+{
+  "topicSlug": "mathe1-integralrechnung",
+  "planTemplateSlug": "mathematik-1",
+  "itemTitle": "Integralrechnung",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "mathe1-integralrechnung-ex-01",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne das unbestimmte Integral: $\\int x^3 \\, dx$.",
+      "sampleAnswer": "$\\int x^3 \\, dx = \\frac{x^4}{4} + C$. Potenzregel: $\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$.",
+      "keyPoints": [
+        "x^4/4+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das bestimmte Integral: $\\int_{0}^{2} 3x \\, dx$.",
+      "answer": 6,
+      "explanation": "$\\int_0^2 3x \\, dx = \\left[\\frac{3x^2}{2}\\right]_0^2 = \\frac{3 \\cdot 4}{2} - 0 = 6$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-03",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\int e^x \\, dx$.",
+      "sampleAnswer": "$\\int e^x \\, dx = e^x + C$. Die $e$-Funktion ist ihre eigene Stammfunktion.",
+      "keyPoints": [
+        "e^x+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\int x^2 \\, dx$?",
+      "options": [
+        "$\\frac{x^3}{3} + C$",
+        "$x^3 + C$",
+        "$2x + C$",
+        "$\\frac{x^2}{2} + C$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int x^2 \\, dx = \\frac{x^3}{3} + C$. Exponent um $1$ erhöhen und durch den neuen Exponenten teilen."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\int_{0}^{1} 2x \\, dx$.",
+      "answer": 1,
+      "explanation": "$\\int_0^1 2x \\, dx = [x^2]_0^1 = 1 - 0 = 1$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-06",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\int \\sin(x) \\, dx$.",
+      "sampleAnswer": "$\\int \\sin(x) \\, dx = -\\cos(x) + C$.",
+      "keyPoints": [
+        "-cos(x)+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\int \\frac{1}{x} \\, dx$?",
+      "options": [
+        "$\\ln|x| + C$",
+        "$\\frac{1}{x^2} + C$",
+        "$-\\frac{1}{x^2} + C$",
+        "$x \\cdot \\ln(x) + C$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int \\frac{1}{x} \\, dx = \\ln|x| + C$. Sonderfall: Exponent $-1$ führt zum Logarithmus."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\int_{0}^{3} x \\, dx$?",
+      "options": [
+        "$\\frac{9}{2}$",
+        "$3$",
+        "$9$",
+        "$\\frac{3}{2}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int_0^3 x \\, dx = \\left[\\frac{x^2}{2}\\right]_0^3 = \\frac{9}{2} - 0 = \\frac{9}{2} = 4{,}5$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-09",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\int (4x^3 - 2x + 5) \\, dx$.",
+      "sampleAnswer": "$\\int (4x^3 - 2x + 5) \\, dx = x^4 - x^2 + 5x + C$.",
+      "keyPoints": [
+        "x^4-x^2+5x+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\int_{0}^{\\pi} \\sin(x) \\, dx$.",
+      "answer": 2,
+      "explanation": "$\\int_0^\\pi \\sin(x) \\, dx = [-\\cos(x)]_0^\\pi = -\\cos(\\pi) - (-\\cos(0)) = 1 + 1 = 2$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-11",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Berechne mit Substitution: $\\int 2x \\cdot e^{x^2} \\, dx$.",
+      "sampleAnswer": "Mit $u = x^2$, $du = 2x \\, dx$: $\\int e^u \\, du = e^u + C = e^{x^2} + C$.",
+      "keyPoints": [
+        "Substituiere $u = x^2$, dann ist $du = 2x \\, dx$.",
+        "e^{x^2}+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\int \\cos(3x) \\, dx$?",
+      "options": [
+        "$\\frac{\\sin(3x)}{3} + C$",
+        "$\\sin(3x) + C$",
+        "$-\\frac{\\sin(3x)}{3} + C$",
+        "$3\\sin(3x) + C$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int \\cos(3x) \\, dx = \\frac{\\sin(3x)}{3} + C$. Koeffizient $3$ im Nenner wegen der Kettenregel."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\int_{1}^{e} \\frac{1}{x} \\, dx$.",
+      "answer": 1,
+      "explanation": "$\\int_1^e \\frac{1}{x} \\, dx = [\\ln|x|]_1^e = \\ln(e) - \\ln(1) = 1 - 0 = 1$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\int_{0}^{1} (3x^2 + 1) \\, dx$.",
+      "answer": 2,
+      "explanation": "$\\int_0^1 (3x^2 + 1) \\, dx = [x^3 + x]_0^1 = (1 + 1) - 0 = 2$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was besagt der Hauptsatz der Differential- und Integralrechnung?",
+      "options": [
+        "$\\int_a^b f(x) \\, dx = F(b) - F(a)$",
+        "$\\int f(x) \\, dx = f(x) + C$",
+        "$F'(x) = \\int f(x) \\, dx$",
+        "$\\int_a^b f(x) \\, dx = f(b) - f(a)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Der Hauptsatz sagt: $\\int_a^b f(x) \\, dx = F(b) - F(a)$, wobei $F$ eine Stammfunktion von $f$ ist."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-16",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Berechne mit partieller Integration: $\\int x \\cdot e^x \\, dx$.",
+      "sampleAnswer": "$\\int x e^x dx = x e^x - \\int e^x dx = x e^x - e^x + C = e^x(x-1) + C$.",
+      "keyPoints": [
+        "Wähle $u = x$, $dv = e^x dx$.",
+        "x*e^x-e^x+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche unter $f(x) = x^2$ von $x = 0$ bis $x = 3$.",
+      "answer": 9,
+      "explanation": "$A = \\int_0^3 x^2 \\, dx = \\left[\\frac{x^3}{3}\\right]_0^3 = \\frac{27}{3} - 0 = 9$.\nTipp: $A = \\int_0^3 x^2 \\, dx$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\int_{-1}^{1} x^3 \\, dx$?",
+      "options": [
+        "$0$",
+        "$2$",
+        "$\\frac{1}{2}$",
+        "$-2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$x^3$ ist eine ungerade Funktion, integriert über ein symmetrisches Intervall $[-1, 1]$: Das Integral ist $0$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-19",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\int_{0}^{4} \\sqrt{x} \\, dx$.",
+      "sampleAnswer": "$\\int_0^4 x^{1/2} \\, dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 = \\frac{2}{3} \\cdot 8 = \\frac{16}{3}$.",
+      "keyPoints": [
+        "Schreibe $\\sqrt{x} = x^{1/2}$.",
+        "16/3"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-20",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\int_{0}^{2} (x^2 + 3x) \\, dx$.",
+      "sampleAnswer": "$\\int_0^2 (x^2 + 3x) \\, dx = \\left[\\frac{x^3}{3} + \\frac{3x^2}{2}\\right]_0^2 = \\frac{8}{3} + 6 = \\frac{8}{3} + \\frac{18}{3} = \\frac{26}{3}$.",
+      "keyPoints": [
+        "26/3"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\int_{0}^{1} e^x \\, dx$?",
+      "options": [
+        "$e - 1$",
+        "$e$",
+        "$1$",
+        "$e + 1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int_0^1 e^x \\, dx = [e^x]_0^1 = e^1 - e^0 = e - 1$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\int_{0}^{\\pi/2} \\cos(x) \\, dx$.",
+      "answer": 1,
+      "explanation": "$\\int_0^{\\pi/2} \\cos(x) \\, dx = [\\sin(x)]_0^{\\pi/2} = \\sin(\\pi/2) - \\sin(0) = 1 - 0 = 1$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche unter $f(x) = 3x^2$ von $x = 0$ bis $x = 2$.",
+      "answer": 8,
+      "explanation": "$\\int_0^2 3x^2 \\, dx = [x^3]_0^2 = 8 - 0 = 8$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\int_{0}^{2} 4x^3 \\, dx$?",
+      "options": [
+        "$16$",
+        "$8$",
+        "$4$",
+        "$12$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int_0^2 4x^3 \\, dx = [x^4]_0^2 = 16 - 0 = 16$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-25",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\int_{0}^{1} 4x^3 \\, dx$.",
+      "answer": 1,
+      "explanation": "$\\int_0^1 4x^3 \\, dx = [x^4]_0^1 = 1 - 0 = 1$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-26",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\int_{1}^{e} \\frac{1}{x} \\, dx$.",
+      "answer": 1,
+      "explanation": "$\\int_1^e \\frac{1}{x} \\, dx = [\\ln|x|]_1^e = \\ln(e) - \\ln(1) = 1 - 0 = 1$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-27",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\int \\cos(3x) \\, dx$.",
+      "sampleAnswer": "$\\int \\cos(3x) \\, dx = \\frac{\\sin(3x)}{3} + C$.",
+      "keyPoints": [
+        "$\\int \\cos(ax) dx = \\frac{1}{a}\\sin(ax) + C$.",
+        "sin(3x)/3+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-28",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\int_{-1}^{1} x^3 \\, dx$?",
+      "options": [
+        "$0$",
+        "$2$",
+        "$\\frac{1}{2}$",
+        "$-2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$x^3$ ist ungerade, $[-1,1]$ symmetrisch. Integral über symmetrisches Intervall einer ungeraden Funktion: $0$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-29",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche unter $f(x) = \\sqrt{x}$ von $x = 0$ bis $x = 4$.",
+      "sampleAnswer": "$\\int_0^4 x^{1/2} \\, dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 = \\frac{2}{3} \\cdot 8 = \\frac{16}{3}$.",
+      "keyPoints": [
+        "Schreibe $\\sqrt{x} = x^{1/2}$.",
+        "16/3"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-30",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\int x^5 \\, dx$.",
+      "sampleAnswer": "$\\int x^5 \\, dx = \\frac{x^6}{6} + C$.",
+      "keyPoints": [
+        "x^6/6+C"
+      ]
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-31",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\int 0 \\, dx$?",
+      "options": [
+        "$C$ (Konstante)",
+        "$0$",
+        "$x + C$",
+        "$1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int 0 \\, dx = C$. Die Stammfunktion von $0$ ist eine beliebige Konstante."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-32",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\int_{0}^{2} (x^3 - x) \\, dx$.",
+      "answer": 2,
+      "explanation": "$\\int_0^2 (x^3 - x) \\, dx = \\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_0^2 = (4 - 2) - 0 = 2$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-33",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\int_{0}^{1} (2x + 1) \\, dx$.",
+      "answer": 2,
+      "explanation": "$\\int_0^1 (2x + 1) \\, dx = [x^2 + x]_0^1 = (1 + 1) - 0 = 2$."
+    },
+    {
+      "id": "mathe1-integralrechnung-ex-34",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist die Fläche zwischen $f(x) = x^2$ und der $x$-Achse von $x = -1$ bis $x = 1$?",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$0$",
+        "$\\frac{1}{3}$",
+        "$1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\int_{-1}^{1} x^2 \\, dx = \\left[\\frac{x^3}{3}\\right]_{-1}^{1} = \\frac{1}{3} - \\left(-\\frac{1}{3}\\right) = \\frac{2}{3}$. $x^2$ ist gerade, also ist das Integral nicht $0$."
+    }
+  ]
+}

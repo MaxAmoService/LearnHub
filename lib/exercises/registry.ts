@@ -65,6 +65,14 @@ import zahlensystemeumrechnung from "../../content/exercises/zahlensysteme-umrec
 import zahlensystemezeichenkodierung from "../../content/exercises/zahlensysteme-zeichenkodierung.json";
 import zahlensystemezweierkomplement from "../../content/exercises/zahlensysteme-zweierkomplement.json";
 
+// Mathematik-1 (scripts/convert-math-exercises.ts)
+import mathe1komplexezahlen from "../../content/exercises/mathe1-komplexe-zahlen.json";
+import mathe1folgenreihen from "../../content/exercises/mathe1-folgen-reihen.json";
+import mathe1differentialrechnung from "../../content/exercises/mathe1-differentialrechnung.json";
+import mathe1integralrechnung from "../../content/exercises/mathe1-integralrechnung.json";
+import mathe1linearealgebra from "../../content/exercises/mathe1-lineare-algebra.json";
+import mathe1matrizen from "../../content/exercises/mathe1-matrizen.json";
+
 // JSON-Imports liefern string statt Literal-Union (source-Feld) — deshalb
 // der explizite Cast. Die Struktur ist über die Generatoren/Tests abgesichert.
 const files: ExerciseFile[] = [
@@ -122,6 +130,12 @@ const files: ExerciseFile[] = [
   zahlensystemeumrechnung as ExerciseFile,
   zahlensystemezeichenkodierung as ExerciseFile,
   zahlensystemezweierkomplement as ExerciseFile,
+  mathe1komplexezahlen as ExerciseFile,
+  mathe1folgenreihen as ExerciseFile,
+  mathe1differentialrechnung as ExerciseFile,
+  mathe1integralrechnung as ExerciseFile,
+  mathe1linearealgebra as ExerciseFile,
+  mathe1matrizen as ExerciseFile,
 ];
 
 const bySlug: Map<string, ExerciseFile> = new Map(files.map((f) => [f.topicSlug, f]));

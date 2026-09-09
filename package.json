@@ -19,6 +19,7 @@
     "gen:exercises": "tsx scripts/generate-exercises.ts",
     "materialize:procedural": "tsx scripts/materialize-procedural.ts",
     "convert:exercises": "tsx scripts/convert-existing-exercises.ts",
+    "convert:math-exercises": "tsx scripts/convert-math-exercises.ts",
     "seed:plan-templates": "tsx scripts/seed-plan-templates.ts",
     "migrate:api-tokens": "tsx scripts/migrate-api-tokens.ts"
   },

@@ -1,0 +1,717 @@
+{
+  "topicSlug": "mathe1-folgen-reihen",
+  "planTemplateSlug": "mathematik-1",
+  "itemTitle": "Folgen und Reihen",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "mathe1-folgen-reihen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das 6. Glied der Folge $a_n = 3n - 2$.",
+      "answer": 16,
+      "explanation": "$a_6 = 3 \\cdot 6 - 2 = 18 - 2 = 16$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den Grenzwert der Folge $a_n = \\frac{5}{n}$ für $n \\to \\infty$.",
+      "answer": 0,
+      "explanation": "$\\lim_{n \\to \\infty} \\frac{5}{n} = 0$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Folge ist monoton fallend?",
+      "options": [
+        "$a_n = \\frac{1}{n}$",
+        "$a_n = n^2$",
+        "$a_n = 2^n$",
+        "$a_n = (-1)^n$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$a_{n+1} = \\frac{1}{n+1} < \\frac{1}{n} = a_n$ für alle $n$. Monoton fallend."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $a_4$ für die Folge $a_n = 2^n + 1$.",
+      "answer": 17,
+      "explanation": "$a_4 = 2^4 + 1 = 16 + 1 = 17$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib die ersten 3 Glieder der Folge $a_n = n^2 - 1$ an. Berechne $a_1 + a_2 + a_3$.",
+      "answer": 11,
+      "explanation": "$a_1 = 0$, $a_2 = 3$, $a_3 = 8$. Summe: $0 + 3 + 8 = 11$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Ist die Folge $a_n = (-1)^n$ beschränkt?",
+      "options": [
+        "Ja, durch $[-1, 1]$",
+        "Nein, sie divergiert",
+        "Ja, durch $[0, 1]$",
+        "Man kann es nicht sagen"
+      ],
+      "correctIndex": 0,
+      "explanation": "$a_n \\in \\{-1, 1\\}$ für alle $n$. Beschränkt durch $[-1, 1]$, aber nicht konvergent."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $a_3$ für die rekursive Folge $a_1 = 2$, $a_{n+1} = a_n + 3$.",
+      "answer": 8,
+      "explanation": "$a_1 = 2$, $a_2 = 5$, $a_3 = 8$. Arithmetische Folge mit $d = 3$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $a_4$ für die rekursive Folge $a_1 = 1$, $a_{n+1} = 2a_n$.",
+      "answer": 8,
+      "explanation": "$a_1 = 1$, $a_2 = 2$, $a_3 = 4$, $a_4 = 8$. Geometrische Folge mit $q = 2$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{4n^2 + n}{2n^2 - 1}$.",
+      "answer": 2,
+      "explanation": "$\\frac{n^2(4 + 1/n)}{n^2(2 - 1/n^2)} \\to \\frac{4}{2} = 2$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-10",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Konvergiert die Folge $a_n = \\frac{n}{2n+1}$? Falls ja, gib den Grenzwert als Bruch an.",
+      "sampleAnswer": "$\\lim_{n \\to \\infty} \\frac{n}{2n+1} = \\lim \\frac{1}{2+1/n} = \\frac{1}{2}$.",
+      "keyPoints": [
+        "1/2"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Folge konvergiert?",
+      "options": [
+        "$a_n = \\frac{n^2}{n+1}$",
+        "$a_n = \\frac{n}{n^2+1}$",
+        "$a_n = (-1)^n \\cdot n$",
+        "$a_n = \\ln(n)$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\frac{n}{n^2+1} \\to 0$. Die anderen divergieren: $\\frac{n^2}{n+1} \\to \\infty$, $(-1)^n n$ divergiert, $\\ln n \\to \\infty$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Grenzwert der rekursiven Folge: $a_1 = 3$, $a_{n+1} = \\frac{a_n + 6}{2}$.",
+      "answer": 6,
+      "explanation": "Fixpunkt: $a = \\frac{a+6}{2} \\Rightarrow 2a = a + 6 \\Rightarrow a = 6$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{2^n + 1}{2^n - 1}$.",
+      "answer": 1,
+      "explanation": "$\\frac{2^n(1 + 2^{-n})}{2^n(1 - 2^{-n})} \\to \\frac{1}{1} = 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\left(\\frac{2}{3}\\right)^n$.",
+      "answer": 0,
+      "explanation": "$|q| = \\frac{2}{3} < 1$, also $q^n \\to 0$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Grenzwert der Folge $a_n = \\left(1 + \\frac{1}{n}\\right)^n$?",
+      "options": [
+        "$e$",
+        "$1$",
+        "$\\infty$",
+        "$0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Definition der Eulerschen Zahl: $\\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n = e \\approx 2{,}718$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{3n+1}{n+5}$.",
+      "answer": 3,
+      "explanation": "$\\frac{n(3+1/n)}{n(1+5/n)} \\to \\frac{3}{1} = 3$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-17",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\left(1 + \\frac{2}{n}\\right)^n$.",
+      "sampleAnswer": "$\\lim_{n \\to \\infty} \\left(1 + \\frac{2}{n}\\right)^n = e^2$.",
+      "keyPoints": [
+        "$\\lim_{n \\to \\infty} \\left(1 + \\frac{x}{n}\\right)^n = e^x$.",
+        "e^2"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\sqrt{n+1} - \\sqrt{n}$.",
+      "answer": 0,
+      "explanation": "$\\frac{(\\sqrt{n+1}-\\sqrt{n})(\\sqrt{n+1}+\\sqrt{n})}{\\sqrt{n+1}+\\sqrt{n}} = \\frac{1}{\\sqrt{n+1}+\\sqrt{n}} \\to 0$.\nTipp: Erweitere mit $\\sqrt{n+1} + \\sqrt{n}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Häufungspunkt der Folge $a_n = (-1)^n + \\frac{1}{n}$?",
+      "options": [
+        "$-1$ und $1$",
+        "Nur $0$",
+        "$1$",
+        "$-1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gerade $n$: $a_n \\to 1$. Ungerade $n$: $a_n \\to -1$. Zwei Häufungspunkte."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} n \\cdot \\sin\\left(\\frac{3}{n}\\right)$.",
+      "answer": 3,
+      "explanation": "$\\lim_{x \\to 0^+} \\frac{\\sin 3x}{x} = 3 \\cdot \\lim \\frac{\\sin 3x}{3x} = 3$.\nTipp: Substitution $x = \\frac{1}{n}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{n!}{n^n}$.",
+      "answer": 0,
+      "explanation": "$0 \\leq \\frac{n!}{n^n} \\leq \\frac{1}{n} \\to 0$. Nach dem Sandwich-Theorem: Grenzwert $= 0$.\nTipp: $\\frac{n!}{n^n} = \\frac{1}{n} \\cdot \\frac{2}{n} \\cdots \\frac{n}{n} \\leq \\frac{1}{n}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Folge divergiert?",
+      "options": [
+        "$a_n = \\frac{\\sin n}{n}$",
+        "$a_n = \\frac{n^2}{2^n}$",
+        "$a_n = \\left(1 + \\frac{1}{n}\\right)^{2n}$",
+        "$a_n = \\frac{(-1)^n n}{n+1}$"
+      ],
+      "correctIndex": 3,
+      "explanation": "$a_n = \\frac{(-1)^n n}{n+1} \\to \\pm 1$. Die Folge hat keinen eindeutigen Grenzwert → divergent."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-23",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\left(\\sqrt{n^2 + n} - n\\right)$.",
+      "sampleAnswer": "$\\frac{n}{\\sqrt{n^2+n}+n} = \\frac{1}{\\sqrt{1+1/n}+1} \\to \\frac{1}{2}$.",
+      "keyPoints": [
+        "Erweitere mit $\\sqrt{n^2+n} + n$.",
+        "1/2"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-24",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{1 + 2 + \\cdots + n}{n^2}$.",
+      "sampleAnswer": "$\\frac{n(n+1)/2}{n^2} = \\frac{n+1}{2n} = \\frac{1 + 1/n}{2} \\to \\frac{1}{2}$.",
+      "keyPoints": [
+        "$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$.",
+        "1/2"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-25",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das 3. Glied der Folge $a_n = n^2 + n$ an.",
+      "answer": 12,
+      "explanation": "$a_3 = 9 + 3 = 12$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-26",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{7n - 3}{2n + 1}$.",
+      "sampleAnswer": "$\\frac{n(7-3/n)}{n(2+1/n)} \\to \\frac{7}{2}$.",
+      "keyPoints": [
+        "7/2"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-27",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Konvergiert $a_n = \\frac{(-1)^n}{n}$? Falls ja, gegen welchen Wert?",
+      "answer": 0,
+      "explanation": "$|a_n| = \\frac{1}{n} \\to 0$, also $a_n \\to 0$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-28",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\lim_{n \\to \\infty} \\left(1 - \\frac{1}{n}\\right)^n$?",
+      "options": [
+        "$e^{-1}$",
+        "$0$",
+        "$1$",
+        "$e$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lim_{n \\to \\infty} \\left(1 + \\frac{-1}{n}\\right)^n = e^{-1} = \\frac{1}{e}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-29",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{2^n - 1}{2^n + 1}$.",
+      "answer": 1,
+      "explanation": "$\\frac{2^n(1 - 2^{-n})}{2^n(1 + 2^{-n})} \\to \\frac{1}{1} = 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-30",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Folge ist eine geometrische Folge?",
+      "options": [
+        "$a_n = 3 \\cdot 2^n$",
+        "$a_n = n^2$",
+        "$a_n = 2n + 1$",
+        "$a_n = \\frac{1}{n}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$a_n = 3 \\cdot 2^n$: konstantes Verhältnis $q = 2$. Geometrische Folge."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-31",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Grenzwert der rekursiven Folge: $a_1 = 1$, $a_{n+1} = \\frac{a_n + 3}{2}$.",
+      "answer": 3,
+      "explanation": "Fixpunkt: $a = \\frac{a+3}{2} \\Rightarrow 2a = a + 3 \\Rightarrow a = 3$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-32",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{1 - \\cos(1/n)}{1/n^2}$.",
+      "sampleAnswer": "$\\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2} = \\frac{1}{2}$ (L'Hôpital oder Taylor).",
+      "keyPoints": [
+        "Mit $x = \\frac{1}{n}$: $\\frac{1 - \\cos x}{x^2} \\to \\frac{1}{2}$.",
+        "1/2"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-33",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Ist die Folge $a_n = \\frac{n}{n+1}$ monoton? Gib 'steigend', 'fallend' oder 'nein' an.",
+      "sampleAnswer": "$a_{n+1} - a_n = \\frac{n+1}{n+2} - \\frac{n}{n+1} = \\frac{1}{(n+1)(n+2)} > 0$. Monoton steigend.",
+      "keyPoints": [
+        "steigend"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-34",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Folge $a_n = \\frac{\\ln n}{n}$ konvergiert gegen?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\infty$",
+        "$e$"
+      ],
+      "correctIndex": 0,
+      "explanation": "L'Hôpital: $\\lim_{x \\to \\infty} \\frac{\\ln x}{x} = \\lim \\frac{1/x}{1} = 0$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-35",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Partialsumme: $\\sum_{k=1}^{5} k$.",
+      "answer": 15,
+      "explanation": "$1 + 2 + 3 + 4 + 5 = 15$. Oder Gauß-Formel: $\\frac{5 \\cdot 6}{2} = 15$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-36",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne den Wert der geometrischen Reihe: $\\sum_{n=0}^{\\infty} \\left(\\frac{1}{4}\\right)^n$.",
+      "sampleAnswer": "Geometrische Reihe mit $q = \\frac{1}{4}$: $\\frac{1}{1 - 1/4} = \\frac{1}{3/4} = \\frac{4}{3}$.",
+      "keyPoints": [
+        "4/3"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-37",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche dieser Reihen ist eine geometrische Reihe?",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} 3 \\cdot 2^n$",
+        "$\\sum_{n=1}^{\\infty} \\frac{1}{n}$",
+        "$\\sum_{n=1}^{\\infty} n^2$",
+        "$\\sum_{n=0}^{\\infty} \\frac{1}{n!}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\sum 3 \\cdot 2^n$ hat den konstanten Quotienten $q = 2$. Die harmonische Reihe $\\sum \\frac{1}{n}$ und die anderen sind keine geometrischen Reihen."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-38",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\sum_{n=1}^{3} \\frac{1}{2^n}$.",
+      "sampleAnswer": "$\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} = \\frac{4+2+1}{8} = \\frac{7}{8}$.",
+      "keyPoints": [
+        "7/8"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-39",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Was ist das $n$-te Glied der Reihe $\\sum_{n=0}^{\\infty} a_n$ mit $a_n = \\frac{1}{3^n}$? Berechne $a_3$.",
+      "sampleAnswer": "$a_3 = \\frac{1}{3^3} = \\frac{1}{27}$.",
+      "keyPoints": [
+        "1/27"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-40",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Konvergiert die Reihe $\\sum_{n=1}^{\\infty} \\frac{1}{n}$?",
+      "options": [
+        "Ja, gegen $1$",
+        "Nein, sie divergiert",
+        "Ja, gegen $0$",
+        "Ja, gegen $e$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die harmonische Reihe $\\sum \\frac{1}{n}$ divergiert. Das ist ein klassisches Ergebnis (Integral- oder Vergleichskriterium)."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-41",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\sum_{k=0}^{4} (-1)^k$.",
+      "answer": 1,
+      "explanation": "$1 - 1 + 1 - 1 + 1 = 1$. Alternierende Summe mit 5 Gliedern."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-42",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne den Wert der geometrischen Reihe: $\\sum_{n=1}^{\\infty} \\left(\\frac{1}{5}\\right)^n$.",
+      "sampleAnswer": "$\\sum_{n=1}^{\\infty} q^n = \\frac{q}{1-q} = \\frac{1/5}{4/5} = \\frac{1}{4}$.",
+      "keyPoints": [
+        "1/4"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-43",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\left(\\frac{3}{4}\\right)^n$.",
+      "answer": 3,
+      "explanation": "$\\sum_{n=1}^{\\infty} q^n = \\frac{q}{1-q} = \\frac{3/4}{1/4} = 3$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-44",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Konvergenzkriterium eignet sich für $\\sum_{n=1}^{\\infty} \\frac{n^2}{3^n}$?",
+      "options": [
+        "Quotientenkriterium",
+        "Leibniz-Kriterium",
+        "Integralkriterium",
+        "Trivialkriterium"
+      ],
+      "correctIndex": 0,
+      "explanation": "Quotientenkriterium: $\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{(n+1)^2}{3^{n+1}} \\cdot \\frac{3^n}{n^2} = \\frac{(n+1)^2}{3n^2} \\to \\frac{1}{3} < 1$. Konvergent."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-45",
+      "type": "recall",
+      "difficulty": 2,
+      "prompt": "Konvergiert $\\sum_{n=1}^{\\infty} \\frac{1}{n^3}$? Gib 'ja' oder 'nein' an.",
+      "sampleAnswer": "Ja, nach dem $p$-Test (oder Integralkriterium): $\\sum \\frac{1}{n^p}$ konvergiert für $p > 1$. Hier $p = 3 > 1$.",
+      "keyPoints": [
+        "ja"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-46",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Für welche Werte von $x$ konvergiert $\\sum_{n=0}^{\\infty} x^n$?",
+      "options": [
+        "$|x| < 1$",
+        "$|x| \\leq 1$",
+        "$x > 0$",
+        "Für alle $x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die geometrische Reihe $\\sum x^n$ konvergiert genau dann, wenn $|x| < 1$ (Konvergenzradius $R = 1$)."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-47",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=0}^{\\infty} \\frac{1}{2^{n+1}}$.",
+      "answer": 1,
+      "explanation": "$\\sum_{n=0}^{\\infty} \\frac{1}{2^{n+1}} = \\frac{1}{2} \\sum_{n=0}^{\\infty} \\frac{1}{2^n} = \\frac{1}{2} \\cdot 2 = 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-48",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\frac{2}{n(n+1)}$. Hinweis: Partialbruchzerlegung.",
+      "answer": 2,
+      "explanation": "Teleskopsumme: $2\\sum\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) = 2(1 - 0) = 2$.\nTipp: $\\frac{2}{n(n+1)} = 2\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right)$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-49",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche der folgenden Reihen divergiert?",
+      "options": [
+        "$\\sum_{n=1}^{\\infty} \\frac{1}{n^2}$",
+        "$\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}$",
+        "$\\sum_{n=0}^{\\infty} \\frac{1}{2^n}$",
+        "$\\sum_{n=0}^{\\infty} \\frac{1}{n!}$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\sum \\frac{1}{\\sqrt{n}} = \\sum \\frac{1}{n^{1/2}}$ mit $p = \\frac{1}{2} \\leq 1$: divergiert nach dem $p$-Test."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-50",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Partialsumme: $\\sum_{k=1}^{6} (2k - 1)$.",
+      "answer": 36,
+      "explanation": "$1 + 3 + 5 + 7 + 9 + 11 = 36$. Alternativ: Summe der ersten $n$ ungeraden Zahlen ist $n^2 = 36$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-51",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne die Reihensumme: $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)(n+2)}$.",
+      "sampleAnswer": "Teleskopsumme: $\\frac{1}{2}\\sum\\left(\\frac{1}{n} - \\frac{2}{n+1} + \\frac{1}{n+2}\\right) = \\frac{1}{2}\\left(1 - \\frac{1}{2}\\right) = \\frac{1}{4}$.",
+      "keyPoints": [
+        "Partialbruchzerlegung: $\\frac{1}{n(n+1)(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n} - \\frac{2}{n+1} + \\frac{1}{n+2}\\right)$.",
+        "1/4"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-52",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Konvergenzradius der Potenzreihe $\\sum_{n=0}^{\\infty} \\frac{x^n}{n+1}$?",
+      "options": [
+        "$R = 1$",
+        "$R = 0$",
+        "$R = \\infty$",
+        "$R = 2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$R = \\lim_{n \\to \\infty} \\left|\\frac{a_n}{a_{n+1}}\\right| = \\lim \\frac{n+2}{n+1} = 1$. Konvergenzradius $R = 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-53",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Berechne den Wert: $\\sum_{n=0}^{\\infty} \\frac{(-1)^n}{2n+1}$. (Leibniz-Reihe für $\\pi$)",
+      "sampleAnswer": "$\\sum_{n=0}^{\\infty} \\frac{(-1)^n}{2n+1} = \\frac{\\pi}{4}$ (Leibniz-Formel für $\\pi$).",
+      "keyPoints": [
+        "Die Leibniz-Reihe: $\\frac{\\pi}{4} = 1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\cdots$.",
+        "pi/4"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-54",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Reihe $\\sum_{n=1}^{\\infty} \\frac{3^n}{n!}$ konvergiert gegen welchen Wert?",
+      "options": [
+        "$e^3 - 1$",
+        "$e^3$",
+        "$3e$",
+        "$e - 1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$e^3 = \\sum_{n=0}^{\\infty} \\frac{3^n}{n!} = 1 + \\sum_{n=1}^{\\infty} \\frac{3^n}{n!}$. Also $\\sum_{n=1}^{\\infty} \\frac{3^n}{n!} = e^3 - 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-55",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Approximiere $e$ mit den ersten 6 Gliedern ($n = 0$ bis $5$) der Exponentialreihe. Gib auf 4 Dezimalstellen an.",
+      "answer": 2.7167,
+      "tolerance": 0.002,
+      "explanation": "$1 + 1 + \\frac{1}{2} + \\frac{1}{6} + \\frac{1}{24} + \\frac{1}{120} = 2{,}71667 \\approx 2{,}7167$.\nTipp: $e = \\sum_{n=0}^{\\infty} \\frac{1}{n!}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-56",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Konvergenzradius von $\\sum_{n=0}^{\\infty} \\frac{x^n}{2^n}$.",
+      "answer": 2,
+      "explanation": "$R = \\lim \\left|\\frac{a_n}{a_{n+1}}\\right| = \\lim \\frac{2^{n+1}}{2^n} = 2$.\nTipp: $a_n = \\frac{1}{2^n}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-57",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Reihe stellt die Funktion $\\frac{1}{1+x}$ dar (für $|x| < 1$)?",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} (-1)^n x^n$",
+        "$\\sum_{n=0}^{\\infty} x^n$",
+        "$\\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$",
+        "$\\sum_{n=0}^{\\infty} (-1)^n \\frac{x^{2n+1}}{(2n+1)!}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{1}{1+x} = \\frac{1}{1-(-x)} = \\sum_{n=0}^{\\infty} (-x)^n = \\sum_{n=0}^{\\infty} (-1)^n x^n$ für $|x| < 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-58",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Schätze den Fehler ab, wenn $\\sum_{n=0}^{\\infty} \\frac{1}{n!}$ durch die ersten 4 Glieder ($n = 0$ bis $3$) approximiert wird. Gib die Fehlerschranke als Bruch an.",
+      "sampleAnswer": "$R_3 = \\frac{1}{24} + \\frac{1}{120} + \\cdots < \\frac{1}{24} \\cdot \\frac{1}{1-1/5} = \\frac{1}{24} \\cdot \\frac{5}{4} = \\frac{5}{96}$. Einfache Schranke: $\\frac{1}{24}$.",
+      "keyPoints": [
+        "Restglied: $R_3 = \\sum_{n=4}^{\\infty} \\frac{1}{n!} < \\frac{1}{4!} \\cdot \\frac{1}{1 - 1/5}$.",
+        "1/24"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-59",
+      "type": "recall",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\sum_{n=0}^{\\infty} \\left(\\frac{2}{5}\\right)^n$.",
+      "sampleAnswer": "$\\frac{1}{1-2/5} = \\frac{1}{3/5} = \\frac{5}{3}$.",
+      "keyPoints": [
+        "5/3"
+      ]
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-60",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\frac{3}{4^n}$.",
+      "answer": 1,
+      "explanation": "$3 \\sum_{n=1}^{\\infty} \\frac{1}{4^n} = 3 \\cdot \\frac{1/4}{3/4} = 3 \\cdot \\frac{1}{3} = 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-61",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Konvergiert $\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}$?",
+      "options": [
+        "Ja, nach dem Leibniz-Kriterium",
+        "Nein, sie divergiert",
+        "Ja, gegen $0$",
+        "Man kann es nicht entscheiden"
+      ],
+      "correctIndex": 0,
+      "explanation": "Leibniz: $\\frac{1}{n}$ ist monoton fallend gegen $0$. Die alternierende harmonische Reihe konvergiert (gegen $\\ln 2$)."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-62",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Konvergenzradius von $\\sum_{n=0}^{\\infty} \\frac{x^n}{(n+1)^2}$.",
+      "answer": 1,
+      "explanation": "$R = \\lim \\frac{a_n}{a_{n+1}} = \\lim \\frac{(n+2)^2}{(n+1)^2} = 1$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-63",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Sinus-Reihe: $\\sin(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!}$. Was sind die ersten drei Glieder?",
+      "options": [
+        "$x - \\frac{x^3}{6} + \\frac{x^5}{120}$",
+        "$x - \\frac{x^3}{3} + \\frac{x^5}{5}$",
+        "$1 - \\frac{x^2}{2} + \\frac{x^4}{24}$",
+        "$x + \\frac{x^3}{6} + \\frac{x^5}{120}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$n=0$: $x$. $n=1$: $-\\frac{x^3}{6}$. $n=2$: $\\frac{x^5}{120}$. Also $x - \\frac{x^3}{6} + \\frac{x^5}{120}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-64",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Partialsumme: $\\sum_{k=1}^{4} k^2$.",
+      "answer": 30,
+      "explanation": "$1 + 4 + 9 + 16 = 30$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-65",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$.",
+      "answer": 1,
+      "explanation": "Teleskopsumme: $\\sum (\\frac{1}{n} - \\frac{1}{n+1}) = 1 - 0 = 1$.\nTipp: Partialbruch: $\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-66",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Approximiere $\\cos(0{,}5)$ mit den ersten 3 Gliedern der Kosinus-Reihe. Gib auf 3 Dezimalstellen an.",
+      "answer": 0.878,
+      "tolerance": 0.005,
+      "explanation": "$1 - \\frac{0{,}25}{2} + \\frac{0{,}0625}{24} = 1 - 0{,}125 + 0{,}00260 = 0{,}87760 \\approx 0{,}878$.\nTipp: $\\cos(x) \\approx 1 - \\frac{x^2}{2} + \\frac{x^4}{24}$."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-67",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Aussage über die Reihe $\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^2}$ ist korrekt?",
+      "options": [
+        "Sie konvergiert absolut",
+        "Sie konvergiert nur bedingt",
+        "Sie divergiert",
+        "Man kann es nicht entscheiden"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\sum \\left|\\frac{(-1)^n}{n^2}\\right| = \\sum \\frac{1}{n^2}$ konvergiert ($p$-Test, $p = 2 > 1$). Also absolut konvergent."
+    },
+    {
+      "id": "mathe1-folgen-reihen-ex-68",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Für welche $x$ konvergiert $\\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$? Gib den Konvergenzradius an.",
+      "sampleAnswer": "$R = \\lim \\frac{a_n}{a_{n+1}} = \\lim \\frac{(n+1)!}{n!} = \\lim (n+1) = \\infty$. Die Reihe konvergiert für alle $x$.",
+      "keyPoints": [
+        "Quotientenkriterium anwenden.",
+        "unendlich"
+      ]
+    }
+  ]
+}

@@ -31,7 +31,7 @@ describe("exercises registry", () => {
 
   for (const file of files) {
     it(`${file.topicSlug}: Struktur gültig`, () => {
-      expect(file.planTemplateSlug).toBe("ap1-it-berufe");
+      expect(["ap1-it-berufe", "mathematik-1"]).toContain(file.planTemplateSlug);
       expect(["generated", "procedural", "existing", "manual"]).toContain(file.source);
       if (file.source === "generated") expect(file.generatedWith).toBeTruthy();
       expect(file.exercises.length).toBeGreaterThan(0);

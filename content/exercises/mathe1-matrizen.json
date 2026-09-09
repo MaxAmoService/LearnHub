@@ -1,0 +1,356 @@
+{
+  "topicSlug": "mathe1-matrizen",
+  "planTemplateSlug": "mathematik-1",
+  "itemTitle": "Matrizen",
+  "source": "existing",
+  "reviewedBy": null,
+  "exercises": [
+    {
+      "id": "mathe1-matrizen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Determinante: $\\det\\begin{pmatrix}5&2\\\\1&3\\end{pmatrix}$.",
+      "answer": 13,
+      "explanation": "$\\det = 5 \\cdot 3 - 2 \\cdot 1 = 15 - 2 = 13$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "$\\begin{pmatrix}2&1\\\\0&3\\end{pmatrix} + \\begin{pmatrix}1&4\\\\2&-1\\end{pmatrix}$. Gib das Element in Zeile 1, Spalte 2 an.",
+      "answer": 5,
+      "explanation": "Element $(1,2)$: $1 + 4 = 5$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist die Spur von $A = \\begin{pmatrix}3&1\\\\-2&7\\end{pmatrix}$?",
+      "answer": 10,
+      "explanation": "$\\operatorname{Sp}(A) = 3 + 7 = 10$. Die Spur ist die Summe der Diagonalelemente."
+    },
+    {
+      "id": "mathe1-matrizen-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Transponierte von $A = \\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$?",
+      "options": [
+        "$\\begin{pmatrix}1&3\\\\2&4\\end{pmatrix}$",
+        "$\\begin{pmatrix}4&2\\\\3&1\\end{pmatrix}$",
+        "$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$",
+        "$\\begin{pmatrix}4&3\\\\2&1\\end{pmatrix}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Bei der Transponierten werden Zeilen und Spalten getauscht: $(A^T)_{ij} = a_{ji}$. Also $A^T = \\begin{pmatrix}1&3\\\\2&4\\end{pmatrix}$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $3 \\cdot \\begin{pmatrix}2&-1\\\\0&4\\end{pmatrix}$. Gib das Element in Zeile 2, Spalte 2 an.",
+      "answer": 12,
+      "explanation": "Skalarmultiplikation: jedes Element mal 3. Element $(2,2)$: $3 \\cdot 4 = 12$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Dimension hat das Produkt einer $(2 \\times 3)$-Matrix mit einer $(3 \\times 4)$-Matrix?",
+      "options": [
+        "$2 \\times 4$",
+        "$3 \\times 3$",
+        "$2 \\times 3$",
+        "$6 \\times 12$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(m \\times n) \\cdot (n \\times p) = (m \\times p)$. Also $(2 \\times 3) \\cdot (3 \\times 4) = (2 \\times 4)$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Determinante: $\\det\\begin{pmatrix}-2&3\\\\4&1\\end{pmatrix}$.",
+      "answer": -14,
+      "explanation": "$\\det = (-2) \\cdot 1 - 3 \\cdot 4 = -2 - 12 = -14$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Einheitsmatrix $I_2$?",
+      "options": [
+        "$\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$",
+        "$\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$",
+        "$\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}$",
+        "$\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die Einheitsmatrix hat Einsen auf der Diagonalen und Nullen sonst. $I \\cdot A = A$ für alle $A$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix} \\cdot \\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$. Gib das Element in Zeile 1, Spalte 1 an.",
+      "answer": 5,
+      "explanation": "$1 \\cdot 1 + 2 \\cdot 2 = 1 + 4 = 5$.\nTipp: $c_{11} = a_{11}b_{11} + a_{12}b_{21}$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ist $A = \\begin{pmatrix}4&2\\\\6&3\\end{pmatrix}$ invertierbar?",
+      "options": [
+        "Ja",
+        "Nein, weil $\\det A = 0$",
+        "Nein, weil $A$ nicht symmetrisch ist",
+        "Ja, weil $\\det A = 1$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\det A = 4 \\cdot 3 - 2 \\cdot 6 = 12 - 12 = 0$. Daher nicht invertierbar."
+    },
+    {
+      "id": "mathe1-matrizen-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Für $A = \\begin{pmatrix}2&1\\\\5&3\\end{pmatrix}$: Berechne das Element $(1,1)$ von $A^{-1}$.",
+      "answer": 3,
+      "explanation": "$\\det A = 6 - 5 = 1$. $A^{-1} = \\begin{pmatrix}3&-1\\\\-5&2\\end{pmatrix}$. Element $(1,1)$: $3$.\nTipp: $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was gilt für die Transponierte eines Produkts?",
+      "options": [
+        "$(AB)^T = B^T A^T$",
+        "$(AB)^T = A^T B^T$",
+        "$(AB)^T = (BA)^T$",
+        "$(AB)^T = AB$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(AB)^T = B^T A^T$ — die Reihenfolge kehrt sich um!"
+    },
+    {
+      "id": "mathe1-matrizen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix} \\cdot \\begin{pmatrix}1&0\\\\-2&1\\end{pmatrix}$. Gib das Ergebnis. Was steht in Zeile 2, Spalte 1?",
+      "answer": 0,
+      "explanation": "$(2 \\cdot 1 + 1 \\cdot (-2)) = 0$. Die Matrizen sind zueinander invers!"
+    },
+    {
+      "id": "mathe1-matrizen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Für eine $2 \\times 2$-Matrix $A$ mit $\\det A = 3$: Was ist $\\det(A^{-1})$ als Dezimalzahl?",
+      "answer": 0.333,
+      "explanation": "$\\det(A^{-1}) = \\frac{1}{\\det A} = \\frac{1}{3} \\approx 0{,}333$.\nTipp: $\\det(A^{-1}) = \\frac{1}{\\det A}$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\det(3I_2)$, wobei $I_2$ die $2 \\times 2$-Einheitsmatrix ist.",
+      "answer": 9,
+      "explanation": "$\\det(3I_2) = 3 \\cdot 3 - 0 = 9$. Oder: $\\det(kI_n) = k^n$, also $3^2 = 9$.\nTipp: $3I_2 = \\begin{pmatrix}3&0\\\\0&3\\end{pmatrix}$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Für $n \\times n$-Matrizen gilt: $\\det(kA) = ?$",
+      "options": [
+        "$k^n \\det A$",
+        "$k \\det A$",
+        "$k^{2n} \\det A$",
+        "$\\det A$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Skalarmultiplikation: jedes der $n$ Zeilenvektoren wird mit $k$ multipliziert, daher $\\det(kA) = k^n \\det A$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne $\\det\\begin{pmatrix}2&1&0\\\\0&3&1\\\\1&0&2\\end{pmatrix}$.",
+      "answer": 11,
+      "explanation": "$\\det = 2(6-0) - 1(0-1) + 0 = 12 + 1 = 11$.\nTipp: Entwickle nach der ersten Zeile."
+    },
+    {
+      "id": "mathe1-matrizen-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Eigenwerte der Dreiecksmatrix $A = \\begin{pmatrix}2&5&1\\\\0&-3&4\\\\0&0&1\\end{pmatrix}$ sind:",
+      "options": [
+        "$2, -3, 1$",
+        "$2, 5, 1$",
+        "$5, -3, 4$",
+        "$2, -3, 4$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Bei einer Dreiecksmatrix stehen die Eigenwerte auf der Hauptdiagonalen: $\\lambda_1 = 2$, $\\lambda_2 = -3$, $\\lambda_3 = 1$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Welchen Rang hat $A = \\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$?",
+      "answer": 1,
+      "explanation": "Zeile 2 ist das Doppelte von Zeile 1: $(2,4) = 2 \\cdot (1,2)$. Rang $= 1$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-20",
+      "type": "recall",
+      "difficulty": 3,
+      "prompt": "Bestimme $x$ so, dass $\\det\\begin{pmatrix}x&2\\\\3&x\\end{pmatrix} = 5$ und $x > 0$ ist.",
+      "sampleAnswer": "$x^2 - 6 = 5 \\Rightarrow x^2 = 11 \\Rightarrow x = \\sqrt{11}$ (da $x > 0$).",
+      "keyPoints": [
+        "$\\det = x^2 - 6 = 5$.",
+        "√11"
+      ]
+    },
+    {
+      "id": "mathe1-matrizen-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Für $A = \\begin{pmatrix}1&2\\\\3&6\\end{pmatrix}$: Was ist $\\det(A)$?",
+      "options": [
+        "$0$",
+        "$12$",
+        "$-12$",
+        "$7$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\det A = 1 \\cdot 6 - 2 \\cdot 3 = 6 - 6 = 0$. Die Zeilen sind proportional."
+    },
+    {
+      "id": "mathe1-matrizen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne $\\det\\begin{pmatrix}1&0&2\\\\-1&3&1\\\\2&0&1\\end{pmatrix}$.",
+      "answer": -9,
+      "explanation": "Nach Spalte 2 entwickeln: $\\det = 0 - 3(1-4) + 0 = -3(-3) = 9$. Korrektur: $-1 \\cdot (1 \\cdot 1 - 2 \\cdot 2) = -1 \\cdot (-3) = 3$ für das $(1,1)$-Minor mal Vorzeichen. Lassen Sie mich korrekt rechnen: Entwicklung nach Zeile 2: $(-1) \\cdot (-1)^{2+1} \\det\\begin{pmatrix}0&2\\\\0&1\\end{pmatrix} + 3 \\cdot (-1)^{2+2} \\det\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix} + 1 \\cdot (-1)^{2+3} \\det\\begin{pmatrix}1&0\\\\2&0\\end{pmatrix}$. $= (-1)(-1)(0) + 3(1)(1-4) + 1(-1)(0) = 0 + 3(-3) + 0 = -9$.\nTipp: Entwickle nach der zweiten Spalte (viele Nullen!)."
+    },
+    {
+      "id": "mathe1-matrizen-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Für $A = \\begin{pmatrix}4&7\\\\1&2\\end{pmatrix}$: Berechne das Element $(2,1)$ von $A^{-1}$.",
+      "answer": -1,
+      "explanation": "$\\det A = 8 - 7 = 1$. $A^{-1} = \\begin{pmatrix}2&-7\\\\-1&4\\end{pmatrix}$. Element $(2,1)$: $-1$.\nTipp: $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix}2&-7\\\\-1&4\\end{pmatrix}$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Aussage über invertierbare Matrizen ist richtig?",
+      "options": [
+        "$\\det(A) \\neq 0$",
+        "$\\det(A) = 0$",
+        "$\\text{Sp}(A) = 0$",
+        "$A = A^T$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Eine Matrix ist genau dann invertierbar, wenn ihre Determinante ungleich null ist."
+    },
+    {
+      "id": "mathe1-matrizen-ex-25",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\det\\begin{pmatrix}6&1\\\\2&3\\end{pmatrix}$.",
+      "answer": 16,
+      "explanation": "$\\det = 6 \\cdot 3 - 1 \\cdot 2 = 18 - 2 = 16$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-26",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme die Inverse von $A = \\begin{pmatrix}3&1\\\\7&2\\end{pmatrix}$. Gib das Element $(1,2)$ an.",
+      "answer": -1,
+      "explanation": "$\\det A = 6 - 7 = -1$. $A^{-1} = \\begin{pmatrix}-2&1\\\\7&-3\\end{pmatrix}$. Element $(1,2)$: $1$. Korrektur: $A^{-1} = \\frac{1}{-1}\\begin{pmatrix}2&-1\\\\-7&3\\end{pmatrix} = \\begin{pmatrix}-2&1\\\\7&-3\\end{pmatrix}$. Element $(1,2) = 1$.\nTipp: $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix}2&-1\\\\-7&3\\end{pmatrix}$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-27",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Für $\\det A = 5$: Was ist $\\det(2A)$ bei einer $2 \\times 2$-Matrix?",
+      "options": [
+        "$20$",
+        "$10$",
+        "$5$",
+        "$40$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\det(2A) = 2^2 \\cdot \\det A = 4 \\cdot 5 = 20$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-28",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne $\\det\\begin{pmatrix}1&2&3\\\\0&1&4\\\\0&0&2\\end{pmatrix}$.",
+      "answer": 2,
+      "explanation": "$\\det = 1 \\cdot 1 \\cdot 2 = 2$.\nTipp: Dreiecksmatrix: Determinante = Produkt der Diagonalelemente."
+    },
+    {
+      "id": "mathe1-matrizen-ex-29",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Welchen Rang hat $A = \\begin{pmatrix}1&2&3\\\\2&4&6\\\\1&0&1\\end{pmatrix}$?",
+      "answer": 2,
+      "explanation": "Zeile 2 ist $2 \\times$ Zeile 1. Prüfe Zeilen 1 und 3: $(1,2,3)$ und $(1,0,1)$ sind unabhängig. Rang $= 2$.\nTipp: Zeile 2 = 2 × Zeile 1. Also ist der Rang kleiner als 3."
+    },
+    {
+      "id": "mathe1-matrizen-ex-30",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix} \\cdot \\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$. Gib das Element $(1,1)$ an.",
+      "answer": 1,
+      "explanation": "$2 \\cdot 1 + 1 \\cdot (-1) = 2 - 1 = 1$. (Die Matrizen sind zueinander invers!)"
+    },
+    {
+      "id": "mathe1-matrizen-ex-31",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist die Spur von $A = \\begin{pmatrix}1&2&3\\\\4&5&6\\\\7&8&9\\end{pmatrix}$?",
+      "answer": 15,
+      "explanation": "$\\operatorname{Sp}(A) = 1 + 5 + 9 = 15$."
+    },
+    {
+      "id": "mathe1-matrizen-ex-32",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Wann ist eine quadratische Matrix nicht diagonalisierbar?",
+      "options": [
+        "Wenn sie weniger als $n$ linear unabhängige Eigenvektoren hat",
+        "Wenn $\\det A = 0$",
+        "Wenn sie symmetrisch ist",
+        "Wenn sie keine reellen Eigenwerte hat"
+      ],
+      "correctIndex": 0,
+      "explanation": "Eine $n \\times n$-Matrix ist genau dann diagonalisierbar, wenn sie $n$ linear unabhängige Eigenvektoren besitzt."
+    },
+    {
+      "id": "mathe1-matrizen-ex-33",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ergibt $A \\cdot A^{-1}$?",
+      "options": [
+        "$I$ (Einheitsmatrix)",
+        "$A$",
+        "$0$ (Nullmatrix)",
+        "$A^T$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Per Definition gilt $A \\cdot A^{-1} = I$, die Einheitsmatrix."
+    },
+    {
+      "id": "mathe1-matrizen-ex-34",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\det\\begin{pmatrix}7&0\\\\0&3\\end{pmatrix}$.",
+      "answer": 21,
+      "explanation": "Diagonalmatrix: $\\det = 7 \\cdot 3 = 21$."
+    }
+  ]
+}

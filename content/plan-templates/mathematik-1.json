@@ -9,7 +9,8 @@
       "moduleSlug": "mathe-komplexe-zahlen",
       "order": 0,
       "weight": 3,
-      "estimatedUnits": 10
+      "estimatedUnits": 10,
+      "topicSlug": "mathe1-komplexe-zahlen"
     },
     {
       "title": "Folgen und Reihen",
@@ -17,35 +18,40 @@
       "order": 1,
       "weight": 3,
       "estimatedUnits": 10,
-      "lessonId": "m-fr-2"
+      "lessonId": "m-fr-2",
+      "topicSlug": "mathe1-folgen-reihen"
     },
     {
       "title": "Differentialrechnung",
       "moduleSlug": "mathe1-ableitungen",
       "order": 2,
       "weight": 5,
-      "estimatedUnits": 14
+      "estimatedUnits": 14,
+      "topicSlug": "mathe1-differentialrechnung"
     },
     {
       "title": "Integralrechnung",
       "moduleSlug": "mathe1-integration",
       "order": 3,
       "weight": 5,
-      "estimatedUnits": 14
+      "estimatedUnits": 14,
+      "topicSlug": "mathe1-integralrechnung"
     },
     {
       "title": "Lineare Algebra",
       "moduleSlug": "mathe2-vektoren",
       "order": 4,
       "weight": 4,
-      "estimatedUnits": 12
+      "estimatedUnits": 12,
+      "topicSlug": "mathe1-lineare-algebra"
     },
     {
       "title": "Matrizen",
       "moduleSlug": "mathe-matrizen",
       "order": 5,
       "weight": 4,
-      "estimatedUnits": 12
+      "estimatedUnits": 12,
+      "topicSlug": "mathe1-matrizen"
     }
   ]
 }
