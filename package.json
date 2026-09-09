@@ -15,6 +15,7 @@
     "backfill:laststudy": "tsx scripts/backfill-lastStudyDate.ts",
     "backfill:planitem-uid": "tsx scripts/backfill-planitem-uid.ts",
     "backfill:topic-slug": "tsx scripts/backfill-topic-slug.ts",
+    "backfill:plan-item-lessonids": "tsx scripts/backfill-plan-item-lessonids.ts",
     "gen:exercises": "tsx scripts/generate-exercises.ts",
     "materialize:procedural": "tsx scripts/materialize-procedural.ts",
     "convert:exercises": "tsx scripts/convert-existing-exercises.ts",
