@@ -44,7 +44,7 @@ export const ihkModule: Module = {
 
 ### Suchalgorithmen
 - Linear: Jedes Element durchsuchen — $O(n)$
-- Binär: Mitte vergleichen, halbieren — $O(\log n)$ — braucht sortierte Liste!
+- Binär: Mitte vergleichen, halbieren — $O(\\log n)$ — braucht sortierte Liste!
 
 ### Netzplantechnik
 - FAZ/FEZ/SAZ/SEZ | Pufferzeit = SAZ − FAZ
@@ -327,7 +327,7 @@ Sortieren ist eine der **grundlegendsten Aufgaben** in der Informatik. Viele Alg
 | **Stabil?** | ✅ Ja | ❌ Nein | ✅ Ja |
 | **Best for** | Verständnis | Wenig Tausche | Fast sortiert |
 
-> ⚠️ Alle drei haben $O(n^2)$ — für die IHK reicht das. Echte Anwendungen nutzen **Quicksort** ($O(n \log n)$) oder **Mergesort**.
+> ⚠️ Alle drei haben $O(n^2)$ — für die IHK reicht das. Echte Anwendungen nutzen **Quicksort** ($O(n \\log n)$) oder **Mergesort**.
 
 ---
 

@@ -121,10 +121,10 @@ Beispiele:
 ### Die Vorzeichenregel
 | Vorzeichen | Ergebnis |
 |------------|----------|
-| $+ \cdot +$ | $+$ |
-| $- \cdot -$ | $+$ |
-| $+ \cdot -$ | $-$ |
-| $- \cdot +$ | $-$ |
+| $+ \\cdot +$ | $+$ |
+| $- \\cdot -$ | $+$ |
+| $+ \\cdot -$ | $-$ |
+| $- \\cdot +$ | $-$ |
 
 **Merksatz:** Gleiche Vorzeichen → Plus, Verschiedene Vorzeichen → Minus
 

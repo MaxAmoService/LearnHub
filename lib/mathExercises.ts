@@ -11157,7 +11157,7 @@ export const stochastikPractice: Exercise[] = [
     hint: "Gegenereignis: beide Male Zahl.",
     expectedAnswer: "3/4",
     format: "Bruch wie 3/4",
-    solution: "$P(\\text{mind. 1\\times K}) = 1 - P(\\text{2\\times Z}) = 1 - \\frac{1}{4} = \\frac{3}{4}$.",
+    solution: "$P(\\text{mind. 1} \\times K) = 1 - P(2 \\times Z) = 1 - \\frac{1}{4} = \\frac{3}{4}$.",
   },
   {
     id: "sk-3",

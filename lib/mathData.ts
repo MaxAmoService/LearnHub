@@ -397,7 +397,7 @@ $$P \\land (Q \\lor R) \\equiv (P \\land Q) \\lor (P \\land R)$$
 
 > **Nächste Lektion:** Quantoren — "für alle" (∀) und "es existiert" (∃). Damit kannst du Aussagen über ganze Mengen treffen!
 
-> 🔗 **Verwandt:** De Morgan's Regeln gelten auch für Quantoren: $\neg \forall x P(x) \equiv \exists x \neg P(x)$
+> 🔗 **Verwandt:** De Morgan's Regeln gelten auch für Quantoren: $\\neg \\forall x P(x) \\equiv \\exists x \\neg P(x)$
 
 [INTERACTIVE]`,
       },
@@ -1055,10 +1055,10 @@ $(f \\cdot g)' = f' \\cdot g + f \\cdot g'$
 $\\left(\\frac{f}{g}\\right)' = \\frac{f' \\cdot g - f \\cdot g'}{g^2}$
 
 [PRACTICE_START]
-**Aufgabe:** Berechne die Ableitung von $f(x) = x^3 \cdot \sin(x)$.
+**Aufgabe:** Berechne die Ableitung von $f(x) = x^3 \\cdot \\sin(x)$.
 
 **Lösung (Produktregel):**
-$f'(x) = 3x^2 \cdot \sin(x) + x^3 \cdot \cos(x)$
+$f'(x) = 3x^2 \\cdot \\sin(x) + x^3 \\cdot \\cos(x)$
 [PRACTICE_END]
 
 > 🔗 **Anwendungen & Weiter:** Mit Ableitungsregeln kannst du jetzt Funktionen effizient ableiten! Damit stehen dir **Extremstellen** (Min/Max), **Tangenten** und die **Kurvendiskussion** offen. Als Nächstes kommt die **Integralrechnung** — die Umkehrung der Ableitung!
@@ -1092,7 +1092,7 @@ $$f'(x) = \\cos(3x) \\cdot 3$$
               duration: "10 min",
               type: "exercises",
               exerciseDifficulty: 1,
-              content: `Polynome mit der Potenzregel ableiten. Grundableitungen von $\sin x$, $\cos x$ und $e^x$ kennen.`,
+              content: `Polynome mit der Potenzregel ableiten. Grundableitungen von $\\sin x$, $\\cos x$ und $e^x$ kennen.`,
             },
             {
               id: "m1-ableitungen-aufgaben-mittel",
@@ -1231,7 +1231,7 @@ Das bestimmte Integral gibt die **Fläche** unter der Kurve (mit Vorzeichen).
 $\\int u \\, dv = uv - \\int v \\, du$
 
 [PRACTICE_START]
-**Aufgabe:** Berechne $\int_0^2 (3x^2 + 1) \, dx$.
+**Aufgabe:** Berechne $\\int_0^2 (3x^2 + 1) \, dx$.
 
 **Lösung:**
 $F(x) = x^3 + x$
@@ -1319,12 +1319,12 @@ $\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = q$
 - $q = 1$: kein Ergebnis
 
 [PRACTICE_START]
-**Aufgabe:** Konvergiert $\sum_{n=1}^{\infty} \frac{1}{n^2}$? Begründe mit dem p-Test.
+**Aufgabe:** Konvergiert $\\sum_{n=1}^{\\infty} \\frac{1}{n^2}$? Begründe mit dem p-Test.
 
-**Lösung:** Ja, denn $p = 2 > 1$. Nach dem p-Test konvergiert $\sum \frac{1}{n^p}$ genau dann, wenn $p > 1$.
+**Lösung:** Ja, denn $p = 2 > 1$. Nach dem p-Test konvergiert $\\sum \\frac{1}{n^p}$ genau dann, wenn $p > 1$.
 [PRACTICE_END]
 
-> 🔗 **Weiter:** Jetzt weißt du, ob eine Reihe konvergiert. Im nächsten Kapitel lernst du **Potenzreihen** kennen — Reihen mit Variablen, die Funktionen wie $e^x$ und $\sin x$ darstellen. Das ist der Übergang zur Taylor-Entwicklung!
+> 🔗 **Weiter:** Jetzt weißt du, ob eine Reihe konvergiert. Im nächsten Kapitel lernst du **Potenzreihen** kennen — Reihen mit Variablen, die Funktionen wie $e^x$ und $\\sin x$ darstellen. Das ist der Übergang zur Taylor-Entwicklung!
 
 [INTERACTIVE]`,
       },
@@ -1335,7 +1335,7 @@ $\\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = q$
         type: "text",
         content: `# Potenzreihen
 
-> Du kennst bereits unendliche Reihen und Konvergenzkriterien. Jetzt wird die Reihe zur **Funktion**: Potenzreihen sind Reihen mit Variablen, die Funktionen wie $e^x$, $\sin x$ und $\cos x$ darstellen. Der Konvergenzradius bestimmt, wo die Reihe gültig ist!
+> Du kennst bereits unendliche Reihen und Konvergenzkriterien. Jetzt wird die Reihe zur **Funktion**: Potenzreihen sind Reihen mit Variablen, die Funktionen wie $e^x$, $\\sin x$ und $\\cos x$ darstellen. Der Konvergenzradius bestimmt, wo die Reihe gültig ist!
 
 > 🎥 **3Blue1Brown:** Die Taylor-Reihe ist eines der schönsten Konzepte der Analysis — hier erklärt: [Taylor Series](https://www.youtube.com/watch?v=3d6DsjIBzJ4)
 
@@ -1367,44 +1367,44 @@ $f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x-a)^n$
 
 ### Beispiel 1: Konvergenzradius bestimmen
 
-$\sum_{n=0}^{\infty} \frac{x^n}{n+1}$
+$\\sum_{n=0}^{\\infty} \\frac{x^n}{n+1}$
 
-Schritt 1: $a_n = \frac{1}{n+1}$
+Schritt 1: $a_n = \\frac{1}{n+1}$
 
-Schritt 2: $R = \lim_{n\to\infty} \left|\frac{a_n}{a_{n+1}}\right| = \lim_{n\to\infty} \frac{n+2}{n+1} = 1$
+Schritt 2: $R = \\lim_{n\to\\infty} \\left|\\frac{a_n}{a_{n+1}}\\right| = \\lim_{n\to\\infty} \\frac{n+2}{n+1} = 1$
 
 Schritt 3: Konvergenzradius $R = 1$. Die Reihe konvergiert fuer $|x| < 1$.
 
 ### Beispiel 2: Reihe in eine bekannte Funktion umformen
 
-$\sum_{n=0}^{\infty} \frac{x^n}{n!}$
+$\\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$
 
 Erkenne: Das ist die Taylor-Reihe von $e^x$!
 
-Also: $\sum_{n=0}^{\infty} \frac{x^n}{n!} = e^x$ fuer alle $x \in \mathbb{R}$ ($R = \infty$).
+Also: $\\sum_{n=0}^{\\infty} \\frac{x^n}{n!} = e^x$ fuer alle $x \\in \\mathbb{R}$ ($R = \\infty$).
 
 > **Merke:** Potenzreihen kann man gliedweise ableiten und integrieren -- der Konvergenzradius bleibt gleich!
 
 [GUIDED_START]
-**Schritt-fuer-Schritt:** Entwickle $\frac{1}{1+x}$ als Potenzreihe um $a=0$
+**Schritt-fuer-Schritt:** Entwickle $\\frac{1}{1+x}$ als Potenzreihe um $a=0$
 
-**Schritt 1:** Erkenne: $\frac{1}{1+x} = \frac{1}{1-(-x)}$
+**Schritt 1:** Erkenne: $\\frac{1}{1+x} = \\frac{1}{1-(-x)}$
 
-**Schritt 2:** Geometrische Reihe: $\frac{1}{1-r} = \sum r^n$ mit $r = -x$
+**Schritt 2:** Geometrische Reihe: $\\frac{1}{1-r} = \\sum r^n$ mit $r = -x$
 
-**Schritt 3:** Einsetzen: $\frac{1}{1+x} = \sum_{n=0}^{\infty} (-1)^n x^n$
+**Schritt 3:** Einsetzen: $\\frac{1}{1+x} = \\sum_{n=0}^{\\infty} (-1)^n x^n$
 
 **Schritt 4:** Konvergenz: $|-x| < 1$ -> $|x| < 1$ -> $R = 1$
 [GUIDED_END]
 
 [PRACTICE_START]
-**Aufgabe 1:** Bestimme den Konvergenzradius von $\sum_{n=0}^{\infty} \frac{x^n}{2^n}$
+**Aufgabe 1:** Bestimme den Konvergenzradius von $\\sum_{n=0}^{\\infty} \\frac{x^n}{2^n}$
 
-**Lösung:** $a_n = \frac{1}{2^n}$, also $R = \lim_{n\to\infty} \frac{a_n}{a_{n+1}} = \lim \frac{2^{n+1}}{2^n} = 2$
+**Lösung:** $a_n = \\frac{1}{2^n}$, also $R = \\lim_{n\to\\infty} \\frac{a_n}{a_{n+1}} = \\lim \\frac{2^{n+1}}{2^n} = 2$
 
-**Aufgabe 2:** Entwickle $\cos(x)$ bis zum 4. Grad um $a=0$
+**Aufgabe 2:** Entwickle $\\cos(x)$ bis zum 4. Grad um $a=0$
 
-**Lösung:** $\cos(x) \approx 1 - \frac{x^2}{2} + \frac{x^4}{24}$ (nur gerade Potenzen!)
+**Lösung:** $\\cos(x) \\approx 1 - \\frac{x^2}{2} + \\frac{x^4}{24}$ (nur gerade Potenzen!)
 [PRACTICE_END]
 
 > 🔗 **Zusammenfassung Analysis:** Damit hast du die großen Themen der Analysis abgeschlossen: Grenzwerte, Ableitungen, Integration und Reihen. Diese Konzepte kehren in den **Differentialgleichungen** wieder — dort lösen wir Gleichungen, die Ableitungen enthalten!
@@ -1631,7 +1631,7 @@ $$C = A \\cdot B = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}$$
               duration: "12 min",
               type: "exercises",
               exerciseDifficulty: 3,
-              content: `Kreuzprodukt im $\mathbb{R}^3$, Flachen- und Volumenberechnung. Vektorielle Geometrie im Raum.`,
+              content: `Kreuzprodukt im $\\mathbb{R}^3$, Flachen- und Volumenberechnung. Vektorielle Geometrie im Raum.`,
             },
             {
               id: "m2-vektoren-pruefung",
@@ -1874,9 +1874,9 @@ $$P(A) = \\frac{|A|}{|\\Omega|}$$
 Ein **Zufallsexperiment** ist ein Experiment, dessen Ausgang nicht vorhersehbar ist.
 
 **Beispiele:**
-- Münzwurf: $\\Omega = \{K, Z\}$
-- Würfelwurf: $\\Omega = \{1, 2, 3, 4, 5, 6\}$
-- Kartenziehen: $\\Omega = \{\\text{Herz}, \\text{Karo}, \\text{Kreuz}, \\text{Pik}\}$
+- Münzwurf: $\\Omega = \\{K, Z\\}$
+- Würfelwurf: $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$
+- Kartenziehen: $\\Omega = \\{\\text{Herz}, \\text{Karo}, \\text{Kreuz}, \\text{Pik}\\}$
 
 ## Wahrscheinlichkeit
 
@@ -1996,7 +1996,7 @@ Ungerade Zahlen: {1, 3, 5}. Keine davon ist 6. Also $P = 0$.
 - Test: 95% Sensitivität (richtig positiv)
 - Test: 5% Falsch-Positiv-Rate
 
-$P(\\text{krank} | \\text{positiv}) = \\frac{0{,}95 \\cdot 0{,}01}{0{,}95 \\cdot 0{,}01 + 0{,}05 \\cdot 0{,}99} \\approx 16{,}1\%$
+$P(\\text{krank} | \\text{positiv}) = \\frac{0{,}95 \\cdot 0{,}01}{0{,}95 \\cdot 0{,}01 + 0{,}05 \\cdot 0{,}99} \\approx 16{,}1\\%$
 
 Überraschend niedrig! Das liegt an der niedrigen Grundrate.
 
@@ -2009,7 +2009,7 @@ A und B sind unabhängig, wenn $P(A|B) = P(A)$.
 [PRACTICE_START]
 **Aufgabe:** Urne: 3 rot, 2 blau. Ziehe 2 ohne Zurücklegen. P(beide rot)?
 
-**Lösung:** $P = \frac{3}{5} \cdot \frac{2}{4} = \frac{6}{20} = 0{,}3 = 30\%$
+**Lösung:** $P = \\frac{3}{5} \\cdot \\frac{2}{4} = \\frac{6}{20} = 0{,}3 = 30\\%$
 [PRACTICE_END]
 
 > 🔗 **Zusammenfassung Stochastik:** Du hast die drei Grundpfeiler der Wahrscheinlichkeitsrechnung kennengelernt: **Grundbegriffe** (Ereignisse, Laplace), **Kombinatorik** (Zählen) und **bedingte Wahrscheinlichkeit** (Bayes). Diese Konzepte bauen direkt auf der **Mengenlehre** auf — Vereinigung, Schnitt und Komplement sind hier überall!`,
@@ -2104,7 +2104,7 @@ $e_{\\text{rel}} = \\frac{|x_{\\text{approx}} - x_{\\text{exact}}|}{|x_{\\text{e
 
 **Beispiel:** $\\pi \\approx 3{,}14$
 
-$e_{\\text{rel}} = \\frac{0{,}00159}{3{,}14159} \\approx 0{,}0005 = 0{,}05\%$
+$e_{\\text{rel}} = \\frac{0{,}00159}{3{,}14159} \\approx 0{,}0005 = 0{,}05\\%$
 
 ### Rundungsfehler
 
@@ -2669,7 +2669,7 @@ $d = \\sqrt{9 + 16} = \\sqrt{25} = 5$
               duration: "10 min",
               type: "exercises",
               exerciseDifficulty: 2,
-              content: `Kreisflache, Trapez und zusammengesetzte Flachen. Auch mal $\pi$ im Ergebnis.`,
+              content: `Kreisflache, Trapez und zusammengesetzte Flachen. Auch mal $\\pi$ im Ergebnis.`,
             },
             {
               id: "m-geometrie-flaechen-aufgaben-schwer",
@@ -2894,10 +2894,10 @@ $c = \\sqrt{13} \\approx 3{,}61$
 > **Merke:** Sinussatz = Verhältnis, Kosinussatz = Verallgemeinerung von Pythagoras!
 
 [PRACTICE_START]
-**Aufgabe:** $a = 6$, $\alpha = 30°$, $\beta = 45°$. Berechne $b$.
+**Aufgabe:** $a = 6$, $\\alpha = 30°$, $\\beta = 45°$. Berechne $b$.
 
-**Lösung:** $\frac{6}{\sin 30°} = \frac{b}{\sin 45°}$
-$b = \frac{6 \cdot \sin 45°}{\sin 30°} = \frac{6 \cdot 0{,}707}{0{,}5} = 8{,}49$
+**Lösung:** $\\frac{6}{\\sin 30°} = \\frac{b}{\\sin 45°}$
+$b = \\frac{6 \\cdot \\sin 45°}{\\sin 30°} = \\frac{6 \\cdot 0{,}707}{0{,}5} = 8{,}49$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Trigonometrie abgeschlossen! Als Nächstes folgen **Potenzen und Logarithmen** — die Grundlage für Wachstumsprozesse und in der Analysis der Schlüssel zu den Exponentialfunktionen!
@@ -2910,7 +2910,7 @@ $b = \frac{6 \cdot \sin 45°}{\sin 30°} = \frac{6 \cdot 0{,}707}{0{,}5} = 8{,}4
               duration: "10 min",
               type: "exercises",
               exerciseDifficulty: 1,
-              content: `$\sin$, $\cos$ und $\tan$ im rechtwinkligen Dreieck. Spezielle Winkel auswendig parat haben.`,
+              content: `$\\sin$, $\\cos$ und $\\tan$ im rechtwinkligen Dreieck. Spezielle Winkel auswendig parat haben.`,
             },
             {
               id: "m-trigonometrie-aufgaben-mittel",
@@ -3045,13 +3045,13 @@ $2^{-3} = \\frac{1}{8} = 0{,}125$
 - Addieren wäre $a^m \\cdot a^n = a^{m+n}$ — das ist eine andere Regel.
 
 [PRACTICE_START]
-**Aufgabe 1:** Vereinfache $\frac{2^5 \cdot 2^3}{2^6}$
+**Aufgabe 1:** Vereinfache $\\frac{2^5 \\cdot 2^3}{2^6}$
 
 **Lösung:** $2^{5+3-6} = 2^2 = 4$
 
 **Aufgabe 2:** Vereinfache $(3^2)^4$
 
-**Lösung:** $3^{2 \cdot 4} = 3^8 = 6561$
+**Lösung:** $3^{2 \\cdot 4} = 3^8 = 6561$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Potenzen sind die Vorstufe zu **Logarithmen** — der Umkehrung der Potenzierung. Damit kannst du Gleichungen wie $2^x = 32$ lösen!`,
@@ -3107,13 +3107,13 @@ $x = \\log_2(16) = \\log_2(2^4) = 4$
 > **Merke:** Logarithmen wandeln Potenzen in Produkte um — das macht Rechnungen einfacher!
 
 [PRACTICE_START]
-**Aufgabe 1:** Vereinfache $\log_2(8) + \log_2(4)$
+**Aufgabe 1:** Vereinfache $\\log_2(8) + \\log_2(4)$
 
-**Lösung:** $\log_2(8) + \log_2(4) = 3 + 2 = 5$
+**Lösung:** $\\log_2(8) + \\log_2(4) = 3 + 2 = 5$
 
 **Aufgabe 2:** Löse $2^x = 32$
 
-**Lösung:** $x = \log_2(32) = 5$
+**Lösung:** $x = \\log_2(32) = 5$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Potenzen und Logarithmen sind die Werkzeuge. Jetzt verbinden wir sie zur **Exponentialfunktion** $e^x$ — die Funktion, die sich selbst ableitet!`,
@@ -3173,32 +3173,32 @@ $N(15) = 1000 \\cdot (\\frac{1}{2})^{15/5} = 1000 \\cdot \\frac{1}{8} = 125$
 
 ## Stetiges Wachstum -- Zinseszins
 
-$$K(t) = K_0 \cdot e^{rt}$$
+$$K(t) = K_0 \\cdot e^{rt}$$
 
 ### Beispiel 2: Zinseszins
 
 1000 Euro zu 5% ueber 10 Jahre, stetig verzinst:
 
-$K(10) = 1000 \cdot e^{0{,}05 \cdot 10} = 1000 \cdot e^{0{,}5} = 1000 \cdot 1{,}6487 = 1648{,}70$ Euro
+$K(10) = 1000 \\cdot e^{0{,}05 \\cdot 10} = 1000 \\cdot e^{0{,}5} = 1000 \\cdot 1{,}6487 = 1648{,}70$ Euro
 
-Vergleich einfach: $1000 \cdot 1{,}5 = 1500$ Euro. Stetig verzinst gibt mehr!
+Vergleich einfach: $1000 \\cdot 1{,}5 = 1500$ Euro. Stetig verzinst gibt mehr!
 
 ### Beispiel 3: Wann hat sich das Kapital verdoppelt?
 
-$2000 = 1000 \cdot e^{0{,}05t}$
+$2000 = 1000 \\cdot e^{0{,}05t}$
 
 $2 = e^{0{,}05t}$
 
-$\ln(2) = 0{,}05t$
+$\\ln(2) = 0{,}05t$
 
-$t = \frac{\ln(2)}{0{,}05} = \frac{0{,}693}{0{,}05} = 13{,}86$ Jahre
+$t = \\frac{\\ln(2)}{0{,}05} = \\frac{0{,}693}{0{,}05} = 13{,}86$ Jahre
 
-> **Merke:** Verdopplungszeit $T_2 = \frac{\ln 2}{r}$. Bei 5%: ca. 14 Jahre.
+> **Merke:** Verdopplungszeit $T_2 = \\frac{\\ln 2}{r}$. Bei 5%: ca. 14 Jahre.
 
 [PRACTICE_START]
 **Aufgabe:** Eine Bakterienkultur verdoppelt sich alle 3 Stunden. Start: 100. Nach 12 Stunden?
 
-**Lösung:** $N(12) = 100 \cdot 2^{12/3} = 100 \cdot 2^4 = 1600$
+**Lösung:** $N(12) = 100 \\cdot 2^{12/3} = 100 \\cdot 2^4 = 1600$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Potenzen, Logarithmen und Exponentialfunktionen abgeschlossen! Diese Werkzeuge brauchst du in der **Analysis** (Grenzwerte, Ableitungen von $e^x$) und in der **Stochastik** (Wahrscheinlichkeitsverteilungen).
@@ -3319,7 +3319,7 @@ Daten: 2, 3, 2, 1, 2, 4, 3 → Modus = 2 (kommt 3-mal vor)
 **Aufgabe:** Daten: 3, 7, 5, 3, 8. Berechne Mittelwert und Median.
 
 **Lösung:**
-Mittelwert: $\bar{x} = \frac{3+7+5+3+8}{5} = \frac{26}{5} = 5{,}2$
+Mittelwert: $\\bar{x} = \\frac{3+7+5+3+8}{5} = \\frac{26}{5} = 5{,}2$
 Sortiert: 3, 3, 5, 7, 8 → Median = 5
 [PRACTICE_END]
 
@@ -3377,9 +3377,9 @@ Klasse B: Noten 1, 2, 3, 4, 5 → $\\sigma \\approx 1{,}41$ (große Streuung)
 [PRACTICE_START]
 **Aufgabe:** Daten: 2, 4, 4, 4, 5, 5, 7, 9. Berechne Varianz und Standardabweichung.
 
-**Lösung:** $\bar{x} = 5$. Abweichungen: $-3, -1, -1, -1, 0, 0, 2, 4$
-$\sigma^2 = \frac{9+1+1+1+0+0+4+16}{8} = 4$
-$\sigma = 2$
+**Lösung:** $\\bar{x} = 5$. Abweichungen: $-3, -1, -1, -1, 0, 0, 2, 4$
+$\\sigma^2 = \\frac{9+1+1+1+0+0+4+16}{8} = 4$
+$\\sigma = 2$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Du kennst jetzt Mittelwert und Streuung. Im nächsten Kapitel lernst du **Quartile und Boxplots** kennen — damit kannst du Daten visualisieren und Ausreißer erkennen!`,
@@ -3673,9 +3673,9 @@ $= \\frac{6}{12} + \\frac{4}{12} + \\frac{3}{12} = \\frac{13}{12} = 1\\frac{1}{1
 > **Merke:** Gleicher Nenner = direkt addieren. Verschiedene Nenner = erst kgV suchen und erweitern!
 
 [PRACTICE_START]
-**Aufgabe:** $\frac{2}{3} + \frac{1}{4} = ?$
+**Aufgabe:** $\\frac{2}{3} + \\frac{1}{4} = ?$
 
-**Lösung:** KGV = 12. $\frac{8}{12} + \frac{3}{12} = \frac{11}{12}$
+**Lösung:** KGV = 12. $\\frac{8}{12} + \\frac{3}{12} = \\frac{11}{12}$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Addieren und Subtrahieren sitzen. Jetzt kommt die **Multiplikation und Division** von Brüchen — und die ist überraschenderweise einfacher!`,
@@ -3734,9 +3734,9 @@ $\\frac{5}{2} : \\frac{5}{4} = \\frac{5}{2} \\cdot \\frac{4}{5} = \\frac{20}{10}
 > **Merke:** Multiplizieren = Zähler×Zähler, Nenner×Nenner. Dividieren = Kehren und multiplizieren!
 
 [PRACTICE_START]
-**Aufgabe:** $\frac{3}{5} \cdot \frac{2}{7} = ?$
+**Aufgabe:** $\\frac{3}{5} \\cdot \\frac{2}{7} = ?$
 
-**Lösung:** $\frac{3 \cdot 2}{5 \cdot 7} = \frac{6}{35}$
+**Lösung:** $\\frac{3 \\cdot 2}{5 \\cdot 7} = \\frac{6}{35}$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Bruchrechnung abgeschlossen! Diese Fähigkeit brauchst du jetzt für **Gleichungen lösen** — dort wirst du Brüche in Gleichungen auflösen und Variablen isolieren.
@@ -3878,7 +3878,7 @@ $x = 12$
 **Aufgabe:** Löse $3x + 7 = 22$
 
 **Lösung:** $3x = 15$ → $x = 5$
-Probe: $3 \cdot 5 + 7 = 22$ ✓
+Probe: $3 \\cdot 5 + 7 = 22$ ✓
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Lineare Gleichungen sind die Basis. Jetzt werden sie **quadratisch**: $x^2$ taucht auf! Mit der pq-Formel oder abc-Formel kannst du sie lösen.
@@ -3932,15 +3932,15 @@ $D = b^2 - 4ac$ bestimmt die Anzahl der Lösungen:
 
 Fuer $ax^2 + bx + c = 0$:
 
-$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$
 
 ### Beispiel 2: abc-Formel anwenden
 
 $2x^2 + 3x - 2 = 0$ ($a=2$, $b=3$, $c=-2$)
 
-$x = \frac{-3 \pm \sqrt{9 + 16}}{4} = \frac{-3 \pm 5}{4}$
+$x = \\frac{-3 \\pm \\sqrt{9 + 16}}{4} = \\frac{-3 \\pm 5}{4}$
 
-$x_1 = \frac{-3+5}{4} = \frac{1}{2}$, $x_2 = \frac{-3-5}{4} = -2$
+$x_1 = \\frac{-3+5}{4} = \\frac{1}{2}$, $x_2 = \\frac{-3-5}{4} = -2$
 
 ---
 
@@ -3950,8 +3950,8 @@ $$D = b^2 - 4ac$$
 
 | $D$ | Bedeutung | Loesungen |
 |-----|-----------|----------|
-| $D > 0$ | Zwei verschiedene reelle Loesungen | $x_{1,2} = \frac{-b \pm \sqrt{D}}{2a}$ |
-| $D = 0$ | Eine doppelte Loesung | $x = \frac{-b}{2a}$ |
+| $D > 0$ | Zwei verschiedene reelle Loesungen | $x_{1,2} = \\frac{-b \\pm \\sqrt{D}}{2a}$ |
+| $D = 0$ | Eine doppelte Loesung | $x = \\frac{-b}{2a}$ |
 | $D < 0$ | Keine reellen Loesungen | (nur komplexe) |
 
 ### Beispiel 3: D-Bestimmung
@@ -3967,11 +3967,11 @@ $x^2 + x + 1 = 0$: $D = 1 - 4 = -3 < 0$ -> keine reellen Loesungen
 
 **Schritt 2:** Diskriminante: $D = 36 - 24 = 12 > 0$ -> zwei Loesungen
 
-**Schritt 3:** $x = \frac{6 \pm \sqrt{12}}{6} = 1 \pm \frac{\sqrt{3}}{3}$
+**Schritt 3:** $x = \\frac{6 \\pm \\sqrt{12}}{6} = 1 \\pm \\frac{\\sqrt{3}}{3}$
 
-**Schritt 4:** $x_1 \approx 1{,}577$, $x_2 \approx 0{,}423$
+**Schritt 4:** $x_1 \\approx 1{,}577$, $x_2 \\approx 0{,}423$
 
-**Probe:** $3(1{,}577)^2 - 6(1{,}577) + 2 \approx 0$
+**Probe:** $3(1{,}577)^2 - 6(1{,}577) + 2 \\approx 0$
 [GUIDED_END]
 
 ---
@@ -3995,7 +3995,7 @@ $x^2 + x + 1 = 0$: $D = 1 - 4 = -3 < 0$ -> keine reellen Loesungen
 [PRACTICE_START]
 **Aufgabe 1:** Löse $x^2 - 5x + 6 = 0$ mit der pq-Formel
 
-**Lösung:** $p=-5$, $q=6$. $x = \frac{5}{2} \pm \sqrt{\frac{25}{4}-6} = \frac{5}{2} \pm \frac{1}{2}$
+**Lösung:** $p=-5$, $q=6$. $x = \\frac{5}{2} \\pm \\sqrt{\\frac{25}{4}-6} = \\frac{5}{2} \\pm \\frac{1}{2}$
 $x_1 = 3$, $x_2 = 2$
 
 **Aufgabe 2:** Berechne die Diskriminante von $2x^2 + 3x + 5$
@@ -4186,7 +4186,7 @@ $4x^2 - 12x + 9 = (2x-3)^2$
 [PRACTICE_START]
 **Aufgabe:** Wende die 2. binomische Formel an: $(x + 3)^2$
 
-**Lösung:** $x^2 + 2 \cdot 3x + 9 = x^2 + 6x + 9$
+**Lösung:** $x^2 + 2 \\cdot 3x + 9 = x^2 + 6x + 9$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Termumformung abgeschlossen! Jetzt folgen **Ungleichungen** — dort suchst du nicht mehr einen einzelnen Wert, sondern einen **Bereich** von Lösungen!
@@ -4282,7 +4282,7 @@ $2x > 4$
 
 $x > 2$
 
-Lösungsmenge: $L = \{x \\in \\mathbb{R} \mid x > 2\} = (2, \\infty)$
+Lösungsmenge: $L = \\{x \\in \\mathbb{R} \\mid x > 2\\} = (2, \\infty)$
 
 ### Beispiel 2: Negativer Koeffizient
 
@@ -4321,7 +4321,7 @@ $x \\geq 2$: Geschlossener Kreis bei 2, Pfeil nach rechts.
 **Aufgabe:** Löse $2x - 5 > 3$
 
 **Lösung:** $2x > 8$ → $x > 4$
-Lösungsmenge: $L = \{x \in \mathbb{R} \mid x > 4\} = (4, \infty)$
+Lösungsmenge: $L = \\{x \\in \\mathbb{R} \\mid x > 4\\} = (4, \\infty)$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Lineare Ungleichungen sind die Basis. Jetzt werden sie **quadratisch**: $x^2$ taucht auf! Mit dem Tafel-Test findest du die Lösungsmenge.`,
@@ -4482,7 +4482,7 @@ $f(x) = \\frac{1}{x-2}$
 
 Nenner $\\neq 0$: $x - 2 \\neq 0 \\Rightarrow x \\neq 2$
 
-$D_f = \\mathbb{R} \\setminus \{2\} = (-\\infty, 2) \\cup (2, \\infty)$
+$D_f = \\mathbb{R} \\setminus \\{2\\} = (-\\infty, 2) \\cup (2, \\infty)$
 
 ### Beispiel 2
 
@@ -4591,7 +4591,7 @@ Absolutes Minimum: $f(0) = 0$
 [PRACTICE_START]
 **Aufgabe:** Finde die Extrema von $f(x) = x^3 - 3x$
 
-**Lösung:** $f'(x) = 3x^2 - 3 = 0$ → $x = \pm 1$
+**Lösung:** $f'(x) = 3x^2 - 3 = 0$ → $x = \\pm 1$
 $f''(x) = 6x$. $f''(-1) = -6 < 0$ → Max bei $(-1, 2)$
 $f''(1) = 6 > 0$ → Min bei $(1, -2)$
 [PRACTICE_END]
@@ -4668,7 +4668,7 @@ Anhand von $f''(x)$:
 [GUIDED_START]
 **Schritt-fuer-Schritt:** Fuehre eine vollstaendige Kurvendiskussion fuer $f(x) = x^3 - 3x + 2$ durch
 
-**Schritt 1: Definitionsbereich:** $D = \mathbb{R}$ (Polynom)
+**Schritt 1: Definitionsbereich:** $D = \\mathbb{R}$ (Polynom)
 
 **Schritt 2: Symmetrie:** Weder gerade noch ungerade
 
@@ -4691,7 +4691,7 @@ $f^{\prime\prime}(x) = 0$ bei $x = 0$. $f(0) = 2$. Wendepunkt bei $(0, 2)$.
 [PRACTICE_START]
 **Aufgabe 1:** Finde die Extrema von $f(x) = x^3 - 12x + 5$
 
-**Loesung:** $f^{\prime}(x) = 3x^2 - 12 = 0$ -> $x = \pm 2$
+**Loesung:** $f^{\prime}(x) = 3x^2 - 12 = 0$ -> $x = \\pm 2$
 $f^{\prime\prime}(-2) = -12 < 0$ -> Max bei $(-2, 21)$
 $f^{\prime\prime}(2) = 12 > 0$ -> Min bei $(2, -11)$
 
@@ -4780,7 +4780,7 @@ Das Einsetzungsverfahren ist eine Methode, um lineare Gleichungssysteme (LGS) zu
 
 ### Beispiel 1
 
-$\\begin{cases} 2x + y = 7 \\ x - y = 1 \\end{cases}$
+$\\begin{cases} 2x + y = 7 \\\\ x - y = 1 \\end{cases}$
 
 **Schritt 1:** Aus Gleichung 2: $x = y + 1$
 
@@ -4802,7 +4802,7 @@ $x = \\frac{5}{3} + 1 = \\frac{8}{3}$
 
 ### Beispiel 2
 
-$\\begin{cases} 3x + 2y = 12 \\ x - y = 1 \\end{cases}$
+$\\begin{cases} 3x + 2y = 12 \\\\ x - y = 1 \\end{cases}$
 
 Aus Gleichung 2: $x = y + 1$
 
@@ -4838,15 +4838,15 @@ Das Einsetzungsverfahren ist gut, wenn eine Variable leicht isolierbar ist (Koef
 Systematische Methode durch Zeilenumformung.
 
 ### Beispiel
-$\\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 2 \\end{cases}$
+$\\begin{cases} x + y + z = 6 \\\\ 2x - y + z = 3 \\\\ x + 2y - z = 2 \\end{cases}$
 
 **Schritt 1:** Zeile 2 - 2·Zeile 1, Zeile 3 - Zeile 1
 
-$\\begin{cases} x + y + z = 6 \\ -3y - z = -9 \\ y - 2z = -4 \\end{cases}$
+$\\begin{cases} x + y + z = 6 \\\\ -3y - z = -9 \\\\ y - 2z = -4 \\end{cases}$
 
 **Schritt 2:** Zeile 3 + $\\frac{1}{3}$·Zeile 2
 
-$\\begin{cases} x + y + z = 6 \\ -3y - z = -9 \\ -\\frac{7}{3}z = -7 \\end{cases}$
+$\\begin{cases} x + y + z = 6 \\\\ -3y - z = -9 \\\\ -\\frac{7}{3}z = -7 \\end{cases}$
 
 **Rückwärts:** $z = 3$, $y = 2$, $x = 1$
 
@@ -4865,13 +4865,13 @@ $\\begin{cases} x + y + z = 6 \\ -3y - z = -9 \\ -\\frac{7}{3}z = -7 \\end{cases
 ### Notation -- Erweiterte Koeffizientenmatrix
 
 Das System $2x + y = 5$, $4x + 3y = 11$ wird zu:
-$$\left(\begin{array}{cc|c} 2 & 1 & 5 \\ 4 & 3 & 11 \end{array}\right)$$
+$$\\left(\\begin{array}{cc|c} 2 & 1 & 5 \\\\ 4 & 3 & 11 \\end{array}\\right)$$
 
 ### Beispiel 2: System mit keiner Loesung
 
 $x + y = 3$, $2x + 2y = 7$
 
-$$\left(\begin{array}{cc|c} 1 & 1 & 3 \\ 2 & 2 & 7 \end{array}\right) \\xrightarrow{Z_2 - 2Z_1} \left(\begin{array}{cc|c} 1 & 1 & 3 \\ 0 & 0 & 1 \end{array}\right)$$
+$$\\left(\\begin{array}{cc|c} 1 & 1 & 3 \\\\ 2 & 2 & 7 \\end{array}\\right) \\xrightarrow{Z_2 - 2Z_1} \\left(\\begin{array}{cc|c} 1 & 1 & 3 \\\\ 0 & 0 & 1 \\end{array}\\right)$$
 
 Zeile 2 sagt $0 = 1$ -> **Widerspruch!** Keine Loesung.
 
@@ -4879,11 +4879,11 @@ Zeile 2 sagt $0 = 1$ -> **Widerspruch!** Keine Loesung.
 
 $x + y = 3$, $2x + 2y = 6$
 
-$$\left(\begin{array}{cc|c} 1 & 1 & 3 \\ 2 & 2 & 6 \end{array}\right) \\xrightarrow{Z_2 - 2Z_1} \left(\begin{array}{cc|c} 1 & 1 & 3 \\ 0 & 0 & 0 \end{array}\right)$$
+$$\\left(\\begin{array}{cc|c} 1 & 1 & 3 \\\\ 2 & 2 & 6 \\end{array}\\right) \\xrightarrow{Z_2 - 2Z_1} \\left(\\begin{array}{cc|c} 1 & 1 & 3 \\\\ 0 & 0 & 0 \\end{array}\\right)$$
 
 Zeile 2 sagt $0 = 0$ -> immer wahr. $y = t$ (frei), $x = 3 - t$. **Unendlich viele Loesungen!**
 
-> **Merke:** $0 = 0$ -> unendlich viele Loesungen. $0 = c$ (mit $c \neq 0$) -> keine Loesung.
+> **Merke:** $0 = 0$ -> unendlich viele Loesungen. $0 = c$ (mit $c \\neq 0$) -> keine Loesung.
 
 [GUIDED_START]
 **Schritt-fuer-Schritt:** Loese mit Gauss:
@@ -4892,10 +4892,10 @@ $2x + 5y + 3z = 20$
 $3x + 6y + 4z = 29$
 
 **Schritt 1:** Erweiterte Matrix:
-$\left(\begin{array}{ccc|c} 1 & 2 & 1 & 9 \\ 2 & 5 & 3 & 20 \\ 3 & 6 & 4 & 29 \end{array}\right)$
+$\\left(\\begin{array}{ccc|c} 1 & 2 & 1 & 9 \\\\ 2 & 5 & 3 & 20 \\\\ 3 & 6 & 4 & 29 \\end{array}\\right)$
 
 **Schritt 2:** $Z_2 - 2Z_1$, $Z_3 - 3Z_1$:
-$\left(\begin{array}{ccc|c} 1 & 2 & 1 & 9 \\ 0 & 1 & 1 & 2 \\ 0 & 0 & 1 & 2 \end{array}\right)$
+$\\left(\\begin{array}{ccc|c} 1 & 2 & 1 & 9 \\\\ 0 & 1 & 1 & 2 \\\\ 0 & 0 & 1 & 2 \\end{array}\\right)$
 
 **Schritt 3:** Ruecksubstitution:
 $z = 2$
@@ -4995,10 +4995,10 @@ Probe: $1+2=3$ ✓, $2-2=0$ ✓
 - **Transponiert:** $(A^T)_{ij} = a_{ji}$
 
 ### Determinante (2×2)
-$\\det\\begin{pmatrix}a&b\\c&d\\end{pmatrix} = ad - bc$
+$\\det\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix} = ad - bc$
 
 ### Inverse (2×2)
-$A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix}d&-b\\-c&a\\end{pmatrix}$`,
+$A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$`,
     lessons: [
       {
         id: "m-ma-1",
@@ -5014,7 +5014,7 @@ $A^{-1} = \\frac{1}{\\det A} \\begin{pmatrix}d&-b\\-c&a\\end{pmatrix}$`,
 Eine Matrix ist ein rechteckiges Zahlenfeld in Zeilen und Spalten.
 
 ### Notation
-$A = \\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \\end{pmatrix}$
+$A = \\begin{pmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{pmatrix}$
 
 Die Matrix hat 2 Zeilen und 2 Spalten → $2 \\times 2$-Matrix.
 
@@ -5022,11 +5022,11 @@ Die Matrix hat 2 Zeilen und 2 Spalten → $2 \\times 2$-Matrix.
 
 Matrizen gleicher Dimension werden elementweise addiert:
 
-$\\begin{pmatrix} 1 & 2 \\ 3 & 4 \\end{pmatrix} + \\begin{pmatrix} 5 & 6 \\ 7 & 8 \\end{pmatrix} = \\begin{pmatrix} 6 & 8 \\ 10 & 12 \\end{pmatrix}$
+$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} + \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix} = \\begin{pmatrix} 6 & 8 \\\\ 10 & 12 \\end{pmatrix}$
 
 ### Skalarmultiplikation
 
-$2 \\cdot \\begin{pmatrix} 1 & 2 \\ 3 & 4 \\end{pmatrix} = \\begin{pmatrix} 2 & 4 \\ 6 & 8 \\end{pmatrix}$
+$2 \\cdot \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} = \\begin{pmatrix} 2 & 4 \\\\ 6 & 8 \\end{pmatrix}$
 
 ### Matrixmultiplikation
 
@@ -5034,7 +5034,7 @@ $(AB)_{ij} = \\sum_{k=1}^{n} a_{ik} \\cdot b_{kj}$
 
 **Beispiel:**
 
-$\\begin{pmatrix} 1 & 2 \\ 3 & 4 \\end{pmatrix} \\cdot \\begin{pmatrix} 5 & 6 \\ 7 & 8 \\end{pmatrix}$
+$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\cdot \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$
 
 $(AB)_{11} = 1 \\cdot 5 + 2 \\cdot 7 = 19$
 
@@ -5044,13 +5044,13 @@ $(AB)_{21} = 3 \\cdot 5 + 4 \\cdot 7 = 43$
 
 $(AB)_{22} = 3 \\cdot 6 + 4 \\cdot 8 = 50$
 
-**Ergebnis:** $\\begin{pmatrix} 19 & 22 \\ 43 & 50 \\end{pmatrix}$
+**Ergebnis:** $\\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}$
 
 ### Transposition
 
 $A^T$: Zeilen werden zu Spalten
 
-$\\begin{pmatrix} 1 & 2 \\ 3 & 4 \\end{pmatrix}^T = \\begin{pmatrix} 1 & 3 \\ 2 & 4 \\end{pmatrix}$
+$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}^T = \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}$
 
 > **Merke:** Matrixmultiplikation ist NICHT kommutativ: $AB \\neq BA$ im Allgemeinen!`,
       },
@@ -5069,11 +5069,11 @@ Die Determinante ist eine Zahl, die aus einer quadratischen Matrix berechnet wir
 
 ### Determinante (2×2)
 
-$\\det(A) = \\det\\begin{pmatrix} a & b \\ c & d \\end{pmatrix} = ad - bc$
+$\\det(A) = \\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc$
 
 ### Beispiel 1
 
-$\\det\\begin{pmatrix} 3 & 1 \\ 2 & 4 \\end{pmatrix} = 3 \\cdot 4 - 1 \\cdot 2 = 12 - 2 = 10$
+$\\det\\begin{pmatrix} 3 & 1 \\\\ 2 & 4 \\end{pmatrix} = 3 \\cdot 4 - 1 \\cdot 2 = 12 - 2 = 10$
 
 ### Determinante (3×3)
 
@@ -5085,13 +5085,13 @@ $A \\cdot A^{-1} = I$ (Einheitsmatrix)
 
 Für $2 \\times 2$:
 
-$A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\ -c & a \\end{pmatrix}$
+$A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$
 
 ### Beispiel 2
 
-$A = \\begin{pmatrix} 3 & 1 \\ 2 & 4 \\end{pmatrix}$, $\\det(A) = 10$
+$A = \\begin{pmatrix} 3 & 1 \\\\ 2 & 4 \\end{pmatrix}$, $\\det(A) = 10$
 
-$A^{-1} = \\frac{1}{10} \\begin{pmatrix} 4 & -1 \\ -2 & 3 \\end{pmatrix} = \\begin{pmatrix} 0{,}4 & -0{,}1 \\ -0{,}2 & 0{,}3 \\end{pmatrix}$
+$A^{-1} = \\frac{1}{10} \\begin{pmatrix} 4 & -1 \\\\ -2 & 3 \\end{pmatrix} = \\begin{pmatrix} 0{,}4 & -0{,}1 \\\\ -0{,}2 & 0{,}3 \\end{pmatrix}$
 
 ### Wann existiert die Inverse?
 
@@ -5111,7 +5111,7 @@ $A \\vec{x} = \\vec{b} \\Rightarrow \\vec{x} = A^{-1} \\vec{b}$
         duration: "10 min",
         type: "exercises",
         exerciseDifficulty: 1,
-        content: `Matrizen addieren und mit Skalaren multiplizieren. Determinante einer $2\times2$-Matrix berechnen.`,
+        content: `Matrizen addieren und mit Skalaren multiplizieren. Determinante einer $2\\times2$-Matrix berechnen.`,
       },
       {
         id: "m-ma-aufgaben-mittel",
@@ -5119,7 +5119,7 @@ $A \\vec{x} = \\vec{b} \\Rightarrow \\vec{x} = A^{-1} \\vec{b}$
         duration: "10 min",
         type: "exercises",
         exerciseDifficulty: 2,
-        content: `Matrix-Multiplikation und ihre Regeln verstehen. Inverse einer $2\times2$-Matrix mit der Adjunkten-Formel.`,
+        content: `Matrix-Multiplikation und ihre Regeln verstehen. Inverse einer $2\\times2$-Matrix mit der Adjunkten-Formel.`,
       },
       {
         id: "m-ma-aufgaben-schwer",
@@ -5265,7 +5265,7 @@ $Z = \\frac{X - \\mu}{\\sigma}$ → $\\mu = 0$, $\\sigma = 1$
 
 IQ: $\\mu = 100$, $\\sigma = 15$
 
-$P(X > 130) = P\\left(Z > \\frac{130-100}{15}\\right) = P(Z > 2) \\approx 2{,}5\%$
+$P(X > 130) = P\\left(Z > \\frac{130-100}{15}\\right) = P(Z > 2) \\approx 2{,}5\\%$
 
 ### Warum so wichtig?
 
@@ -5388,8 +5388,8 @@ $S_5 = \\frac{5}{2}(5 + 17) = \\frac{5}{2} \\cdot 22 = 55$
 **Aufgabe:** $a_1 = 3$, $d = 4$. Berechne $a_{10}$ und $S_{10}$.
 
 **Lösung:**
-$a_{10} = 3 + 9 \cdot 4 = 39$
-$S_{10} = \frac{10}{2}(3 + 39) = 5 \cdot 42 = 210$
+$a_{10} = 3 + 9 \\cdot 4 = 39$
+$S_{10} = \\frac{10}{2}(3 + 39) = 5 \\cdot 42 = 210$
 [PRACTICE_END]`,
       },
       {
@@ -5453,8 +5453,8 @@ $0{,}333... = \\frac{3}{10} + \\frac{3}{100} + \\frac{3}{1000} + \\cdots = \\fra
 **Aufgabe:** $a_1 = 2$, $q = 3$. Berechne $a_5$ und $S_5$.
 
 **Lösung:**
-$a_5 = 2 \cdot 3^4 = 162$
-$S_5 = 2 \cdot \frac{3^5 - 1}{3 - 1} = 2 \cdot \frac{242}{2} = 242$
+$a_5 = 2 \\cdot 3^4 = 162$
+$S_5 = 2 \\cdot \\frac{3^5 - 1}{3 - 1} = 2 \\cdot \\frac{242}{2} = 242$
 [PRACTICE_END]
 
 > **Nächstes:** Geometrische Reihen mit $|q| < 1$ konvergieren — das ist der Schlüssel zu den [Reihen](/modules/mathe-reihen) und später zu den [Taylorreihen](/modules/mathe-taylorreihen).`,
@@ -5539,7 +5539,7 @@ $$\\vec{x} = \\vec{p} + t \\cdot \\vec{v}$$
 
 ### Beispiel 1
 
-$\\vec{x} = \\begin{pmatrix}1\\2\\3\\end{pmatrix} + t \\cdot \\begin{pmatrix}2\\-1\\1\\end{pmatrix}$
+$\\vec{x} = \\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + t \\cdot \\begin{pmatrix}2\\\\-1\\\\1\\end{pmatrix}$
 
 Für $t = 0$: Punkt $(1, 2, 3)$
 
@@ -5561,9 +5561,9 @@ $\\vec{p}_1 + t_1 \\vec{v}_1 = \\vec{p}_2 + t_2 \\vec{v}_2$
 
 ### Beispiel 2
 
-$g_1: \\vec{x} = \\begin{pmatrix}0\\0\\0\\end{pmatrix} + t \\begin{pmatrix}1\\1\\0\\end{pmatrix}$
+$g_1: \\vec{x} = \\begin{pmatrix}0\\\\0\\\\0\\end{pmatrix} + t \\begin{pmatrix}1\\\\1\\\\0\\end{pmatrix}$
 
-$g_2: \\vec{x} = \\begin{pmatrix}1\\0\\0\\end{pmatrix} + s \\begin{pmatrix}0\\1\\0\\end{pmatrix}$
+$g_2: \\vec{x} = \\begin{pmatrix}1\\\\0\\\\0\\end{pmatrix} + s \\begin{pmatrix}0\\\\1\\\\0\\end{pmatrix}$
 
 Gleichsetzen: $t = 1$, $t + 0 = 0 + s$ → $s = 1$
 
@@ -5598,7 +5598,7 @@ $$\\vec{x} = \\vec{p} + r \\cdot \\vec{u} + s \\cdot \\vec{v}$$
 
 ### Beispiel 1
 
-$\\vec{x} = \\begin{pmatrix}1\\2\\3\\end{pmatrix} + r \\begin{pmatrix}1\\0\\0\\end{pmatrix} + s \\begin{pmatrix}0\\1\\0\\end{pmatrix}$
+$\\vec{x} = \\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + r \\begin{pmatrix}1\\\\0\\\\0\\end{pmatrix} + s \\begin{pmatrix}0\\\\1\\\\0\\end{pmatrix}$
 
 Das ist die Ebene $z = 3$ (parallel zur xy-Ebene).
 
@@ -5606,7 +5606,7 @@ Das ist die Ebene $z = 3$ (parallel zur xy-Ebene).
 
 $$ax + by + cz = d$$
 
-$\\vec{n} = \\begin{pmatrix}a\\b\\c\\end{pmatrix}$ ist der **Normalenvektor** (senkrecht zur Ebene).
+$\\vec{n} = \\begin{pmatrix}a\\\\b\\\\c\\end{pmatrix}$ ist der **Normalenvektor** (senkrecht zur Ebene).
 
 ### Beispiel 2
 
@@ -5683,7 +5683,7 @@ $d = \\frac{|2 - 2 + 9 - 6|}{\\sqrt{4+1+9}} = \\frac{3}{\\sqrt{14}} \\approx 0{,
     merkblatt: `## Merkblatt: Prozent- & Zinsrechnung
 
 ### Prozentwert
-$p = W \\cdot \\frac{p\%}{100}$
+$p = W \\cdot \\frac{p\\%}{100}$
 
 ### Zinsen
 $Z = K \\cdot \\frac{p}{100} \\cdot \\frac{n}{12}$
@@ -5722,7 +5722,7 @@ $W = 150 \\cdot \\frac{20}{100} = 150 \\cdot 0{,}2 = 30€$
 
 30 von 200 — wie viel Prozent?
 
-$p = \\frac{W}{G} \\cdot 100 = \\frac{30}{200} \\cdot 100 = 15\%$
+$p = \\frac{W}{G} \\cdot 100 = \\frac{30}{200} \\cdot 100 = 15\\%$
 
 ### Beispiel 3: Grundwert berechnen
 
@@ -5732,13 +5732,13 @@ $G = \\frac{W \\cdot 100}{p} = \\frac{40 \\cdot 100}{25} = 160$
 
 ## Prozentuale Änderung
 
-$\\text{Änderung} = \\frac{\\text{Neu} - \\text{Alt}}{\\text{Alt}} \\cdot 100\%$
+$\\text{Änderung} = \\frac{\\text{Neu} - \\text{Alt}}{\\text{Alt}} \\cdot 100\\%$
 
 ### Beispiel 4: Preissteigerung
 
 Preis steigt von 80€ auf 100€:
 
-$\\frac{100 - 80}{80} \\cdot 100\% = \\frac{20}{80} \\cdot 100\% = 25\%$
+$\\frac{100 - 80}{80} \\cdot 100\\% = \\frac{20}{80} \\cdot 100\\% = 25\\%$
 
 ### Beispiel 5: Rabatt
 
@@ -5753,7 +5753,7 @@ $120 - 24 = 96€$ Endpreis
 [PRACTICE_START]
 **Aufgabe:** 80€ + 19% MwSt = ?
 
-**Lösung:** $80 \cdot 1{,}19 = 95{,}20€$
+**Lösung:** $80 \\cdot 1{,}19 = 95{,}20€$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Prozentrechnung sitzt! Jetzt wird sie zur **Zinsrechnung** erweitert — und mit dem Zinseszins wird Potenzrechnung zum entscheidenden Werkzeug.`,
@@ -5814,7 +5814,7 @@ $t \\approx \\frac{72}{8} = 9$ Jahre → $K_9 \\approx 10000 \\cdot 1{,}08^9 \\a
 [PRACTICE_START]
 **Aufgabe:** 1000€ zu 5% Zinsen nach 3 Jahren (einfach)?
 
-**Lösung:** $K_3 = 1000 \cdot (1 + 3 \cdot 0{,}05) = 1000 \cdot 1{,}15 = 1150€$
+**Lösung:** $K_3 = 1000 \\cdot (1 + 3 \\cdot 0{,}05) = 1000 \\cdot 1{,}15 = 1150€$
 [PRACTICE_END]
 
 > 🔗 **Verwandt:** Prozent- und Zinsrechnung verbindet Mathematik mit dem Alltag. Im Modul **Körper & Volumen** geht es zurück in die Geometrie — mit 3D-Formen und Volumenberechnungen!`,
@@ -6194,7 +6194,7 @@ $\\binom{10}{2} = \\frac{10!}{2! \\cdot 8!} = 45$
         duration: "10 min",
         type: "exercises",
         exerciseDifficulty: 2,
-        content: `Permutationen, Variationen und Kombinationen unterscheiden — mit und ohne Wiederholung. $\binom{n}{k}$ sicher nutzen.`,
+        content: `Permutationen, Variationen und Kombinationen unterscheiden — mit und ohne Wiederholung. $\\binom{n}{k}$ sicher nutzen.`,
       },
       {
         id: "m-kb-aufgaben-schwer",
@@ -6360,7 +6360,7 @@ $\\sum_{k=1}^{n+1} k = \\frac{n(n+1)}{2} + (n+1) = \\frac{n(n+1) + 2(n+1)}{2} = 
 
 ### Kontraposition
 
-Statt $p \\Rightarrow q$ beweisen wir $\lnot q \\Rightarrow \lnot p$.
+Statt $p \\Rightarrow q$ beweisen wir $\\lnot q \\Rightarrow \\lnot p$.
 
 **Beispiel:** Wenn $n^2$ ungerade, dann $n$ ungerade.
 
@@ -6483,7 +6483,7 @@ $b_2 = \\frac{120 \\cdot 60}{45} = 160$ km
 [PRACTICE_START]
 **Aufgabe:** 5 kg Äpfel kosten 7,50€. Was kosten 8 kg?
 
-**Lösung:** $\frac{7{,}50}{5} \cdot 8 = 1{,}50 \cdot 8 = 12€$
+**Lösung:** $\\frac{7{,}50}{5} \\cdot 8 = 1{,}50 \\cdot 8 = 12€$
 [PRACTICE_END]
 
 > 🔗 **Weiter:** Du kennst jetzt den direkt proportionalen Dreisatz. Im nächsten Schritt kommt das **Gegenteil**: indirekt proportional — wenn eine Größe steigt, sinkt die andere!`,
@@ -6545,7 +6545,7 @@ $b_2 = \\frac{8 \\cdot 1}{2} = 4$ Stunden
 [PRACTICE_START]
 **Aufgabe:** 6 Arbeiter brauchen 10 Tage. Wie lange brauchen 15 Arbeiter?
 
-**Lösung:** $\frac{6 \cdot 10}{15} = 4$ Tage
+**Lösung:** $\\frac{6 \\cdot 10}{15} = 4$ Tage
 [PRACTICE_END]
 
 > 🔗 **Verwandt:** Du kennst jetzt direkt und indirekt proportionale Zuordnungen. Im Modul **Prozent & Zinsen** wirst du diese Werkzeuge auf Rabatte und Zinseszins anwenden!`,
@@ -6720,27 +6720,27 @@ $e^x \\approx 1 + x + \\frac{x^2}{2}$
 
 ### Beispiel 1: Geometrische Reihe berechnen
 
-Berechne $\sum_{n=0}^{5} \left(\frac{1}{2}\right)^n$
+Berechne $\\sum_{n=0}^{5} \\left(\\frac{1}{2}\\right)^n$
 
-Schritt 1: Erkenne $|r| = \frac{1}{2} < 1$ -> konvergent
+Schritt 1: Erkenne $|r| = \\frac{1}{2} < 1$ -> konvergent
 
-Schritt 2: Partialsumme: $S_6 = \frac{1 - (\frac{1}{2})^6}{1 - \frac{1}{2}} = \frac{1 - \frac{1}{64}}{\frac{1}{2}} = \frac{63}{32} = 1{,}969$
+Schritt 2: Partialsumme: $S_6 = \\frac{1 - (\\frac{1}{2})^6}{1 - \\frac{1}{2}} = \\frac{1 - \\frac{1}{64}}{\\frac{1}{2}} = \\frac{63}{32} = 1{,}969$
 
-Schritt 3: Limes: $S_\infty = \frac{1}{1-\frac{1}{2}} = 2$
+Schritt 3: Limes: $S_\\infty = \\frac{1}{1-\\frac{1}{2}} = 2$
 
 ### Beispiel 2: Sinus approximieren
 
-Approximiere $\sin(0{,}1)$ mit der Taylor-Reihe:
+Approximiere $\\sin(0{,}1)$ mit der Taylor-Reihe:
 
-$\sin(0{,}1) \approx 0{,}1 - \frac{0{,}1^3}{6} + \frac{0{,}1^5}{120} = 0{,}1 - 0{,}000167 + 0{,}000000083 \approx 0{,}09983$
+$\\sin(0{,}1) \\approx 0{,}1 - \\frac{0{,}1^3}{6} + \\frac{0{,}1^5}{120} = 0{,}1 - 0{,}000167 + 0{,}000000083 \\approx 0{,}09983$
 
-Taschenrechner: $\sin(0{,}1) = 0{,}09983...$ -- stimmt auf 5 Stellen!
+Taschenrechner: $\\sin(0{,}1) = 0{,}09983...$ -- stimmt auf 5 Stellen!
 
 ### Beispiel 3: Eulersche Zahl
 
 Berechne $e$ mit $n = 5$ Termen:
 
-$e \approx 1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \frac{1}{120} = 2{,}7167$
+$e \\approx 1 + 1 + \\frac{1}{2} + \\frac{1}{6} + \\frac{1}{24} + \\frac{1}{120} = 2{,}7167$
 
 Exakter Wert: $e = 2{,}71828...$ -- nur 0,06% Fehler!
 
@@ -6753,72 +6753,72 @@ Exakter Wert: $e = 2{,}71828...$ -- nur 0,06% Fehler!
 
 ## Weitere Beispiele
 
-### Beispiel 2: Taylor-Reihe von $\sin(x)$
+### Beispiel 2: Taylor-Reihe von $\\sin(x)$
 
-$f(x) = \sin(x)$, $a = 0$:
+$f(x) = \\sin(x)$, $a = 0$:
 
 | $n$ | $f^{(n)}(0)$ | Term |
 |-----|-------------|------|
-| 0 | $\sin(0) = 0$ | $0$ |
-| 1 | $\cos(0) = 1$ | $x$ |
-| 2 | $-\sin(0) = 0$ | $0$ |
-| 3 | $-\cos(0) = -1$ | $-\frac{x^3}{6}$ |
-| 4 | $\sin(0) = 0$ | $0$ |
-| 5 | $\cos(0) = 1$ | $\frac{x^5}{120}$ |
+| 0 | $\\sin(0) = 0$ | $0$ |
+| 1 | $\\cos(0) = 1$ | $x$ |
+| 2 | $-\\sin(0) = 0$ | $0$ |
+| 3 | $-\\cos(0) = -1$ | $-\\frac{x^3}{6}$ |
+| 4 | $\\sin(0) = 0$ | $0$ |
+| 5 | $\\cos(0) = 1$ | $\\frac{x^5}{120}$ |
 
-$$\sin(x) = x - \frac{x^3}{6} + \frac{x^5}{120} - \ldots = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!}$$
+$$\\sin(x) = x - \\frac{x^3}{6} + \\frac{x^5}{120} - \\ldots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!}$$
 
-> **Merke:** Bei $\sin(x)$ fallen die geraden Potenzen weg.
+> **Merke:** Bei $\\sin(x)$ fallen die geraden Potenzen weg.
 
-### Beispiel 3: Taylor-Polynom 3. Grades von $\ln(1+x)$
+### Beispiel 3: Taylor-Polynom 3. Grades von $\\ln(1+x)$
 
 $f(0) = 0$, $f^{\prime}(0) = 1$, $f^{\prime\prime}(0) = -1$, $f^{\prime\prime\prime}(0) = 2$
 
-$$T_3(x) = x - \frac{x^2}{2} + \frac{x^3}{3}$$
+$$T_3(x) = x - \\frac{x^2}{2} + \\frac{x^3}{3}$$
 
-Probe: $\ln(1{,}1) \approx 0{,}1 - 0{,}005 + 0{,}000333 = 0{,}09533$
+Probe: $\\ln(1{,}1) \\approx 0{,}1 - 0{,}005 + 0{,}000333 = 0{,}09533$
 Taschenrechner: $0{,}09531$ -- sehr genau!
 
 [GUIDED_START]
-**Schritt-fuer-Schritt:** Taylor-Polynom 2. Grades von $f(x) = \sqrt{1+x}$ um $a=0$
+**Schritt-fuer-Schritt:** Taylor-Polynom 2. Grades von $f(x) = \\sqrt{1+x}$ um $a=0$
 
 **Schritt 1:** $f(0) = 1$
 
-**Schritt 2:** $f^{\prime}(x) = \frac{1}{2\sqrt{1+x}}$ -> $f^{\prime}(0) = \frac{1}{2}$
+**Schritt 2:** $f^{\prime}(x) = \\frac{1}{2\\sqrt{1+x}}$ -> $f^{\prime}(0) = \\frac{1}{2}$
 
-**Schritt 3:** $f^{\prime\prime}(x) = -\frac{1}{4(1+x)^{3/2}}$ -> $f^{\prime\prime}(0) = -\frac{1}{4}$
+**Schritt 3:** $f^{\prime\prime}(x) = -\\frac{1}{4(1+x)^{3/2}}$ -> $f^{\prime\prime}(0) = -\\frac{1}{4}$
 
-**Schritt 4:** Einsetzen: $T_2(x) = 1 + \frac{1}{2}x - \frac{1}{8}x^2$
+**Schritt 4:** Einsetzen: $T_2(x) = 1 + \\frac{1}{2}x - \\frac{1}{8}x^2$
 
-**Probe:** $\sqrt{1{,}1} \approx 1 + 0{,}05 - 0{,}00125 = 1{,}04875$
+**Probe:** $\\sqrt{1{,}1} \\approx 1 + 0{,}05 - 0{,}00125 = 1{,}04875$
 Taschenrechner: $1{,}04881$
 [GUIDED_END]
 
 [PRACTICE_START]
-**Aufgabe 1:** Taylor-Polynom 2. Grades von $f(x) = \cos(x)$ um $a=0$
+**Aufgabe 1:** Taylor-Polynom 2. Grades von $f(x) = \\cos(x)$ um $a=0$
 
 **Loesung:** $f(0)=1$, $f^{\prime}(0)=0$, $f^{\prime\prime}(0)=-1$
-$T_2(x) = 1 - \frac{x^2}{2}$
+$T_2(x) = 1 - \\frac{x^2}{2}$
 
 **Aufgabe 2:** Berechne $e^{0{,}2}$ mit $T_3(x)$ der Exponentialfunktion
 
-**Loesung:** $T_3(0{,}2) = 1 + 0{,}2 + \frac{0{,}04}{2} + \frac{0{,}008}{6} = 1{,}2213$
+**Loesung:** $T_3(0{,}2) = 1 + 0{,}2 + \\frac{0{,}04}{2} + \\frac{0{,}008}{6} = 1{,}2213$
 (Taschenrechner: $1{,}2214$)
 [PRACTICE_END]
 
 [PRACTICE_START]
-**Aufgabe 1:** Berechne $\sum_{n=0}^{3} 3 \cdot \left(\frac{1}{3}\right)^n$
+**Aufgabe 1:** Berechne $\\sum_{n=0}^{3} 3 \\cdot \\left(\\frac{1}{3}\\right)^n$
 
-**Loesung:** $3 + 1 + \frac{1}{3} + \frac{1}{9} = \frac{40}{9} \approx 4{,}44$
+**Loesung:** $3 + 1 + \\frac{1}{3} + \\frac{1}{9} = \\frac{40}{9} \\approx 4{,}44$
 
 **Aufgabe 2:** Approximiere $e^{0{,}5}$ mit 4 Termen
 
-**Loesung:** $1 + 0{,}5 + \frac{0{,}25}{2} + \frac{0{,}125}{6} = 1{,}6458$
+**Loesung:** $1 + 0{,}5 + \\frac{0{,}25}{2} + \\frac{0{,}125}{6} = 1{,}6458$
 (Taschenrechner: $1{,}6487$)
 
-**Aufgabe 3:** Konvergiert $\sum \frac{1}{n!}$? Wenn ja, gegen was?
+**Aufgabe 3:** Konvergiert $\\sum \\frac{1}{n!}$? Wenn ja, gegen was?
 
-**Loesung:** Ja! $\sum_{n=0}^{\infty} \frac{1}{n!} = e \approx 2{,}718$
+**Loesung:** Ja! $\\sum_{n=0}^{\\infty} \\frac{1}{n!} = e \\approx 2{,}718$
 [PRACTICE_END]`,
       },
       {
@@ -6827,7 +6827,7 @@ $T_2(x) = 1 - \frac{x^2}{2}$
         duration: "10 min",
         type: "exercises",
         exerciseDifficulty: 1,
-        content: `Maclaurin-Reihen fur $e^x$, $\sin x$ und $\cos x$ erkennen und die ersten Glieder hinschreiben.`,
+        content: `Maclaurin-Reihen fur $e^x$, $\\sin x$ und $\\cos x$ erkennen und die ersten Glieder hinschreiben.`,
       },
       {
         id: "m-tw-aufgaben-mittel",
@@ -7738,7 +7738,7 @@ export const mathQuizzes: Record<string, QuizQuestion[]> = {
     { question: "20% von 150?", type: "multiple", options: ["20", "25", "30", "35"], correct: 2, explanation: "$150 \\cdot 0.2 = 30$" },
     { question: "Zinseszins: 1000, 5%, 2J?", type: "multiple", options: ["1100", "1102.50", "1050", "1150"], correct: 1, explanation: "$1000 \\cdot 1.05^2 = 1102.50$" },
     { question: "72er-Regel bei 8%?", type: "multiple", options: ["6J", "9J", "12J", "18J"], correct: 1, explanation: "$72 / 8 = 9$ Jahre" },
-    { question: "Preis 200->250. Prozent?", type: "multiple", options: ["20%", "25%", "30%", "15%"], correct: 1, explanation: "$50/200 = 25\%$" },
+    { question: "Preis 200->250. Prozent?", type: "multiple", options: ["20%", "25%", "30%", "15%"], correct: 1, explanation: "$50/200 = 25\\%$" },
     { question: "15% Rabatt auf 80?", type: "multiple", options: ["12", "68", "65", "15"], correct: 1, explanation: "$80 - 12 = 68$" },
   ],
   "mathe-koerper": [
