@@ -210,7 +210,7 @@ export function TodayCard({ uid, profile, onProgress }: TodayCardProps) {
         <div className="flex items-center gap-3">
           {item.moduleSlug && (
             <Link
-              href={`/modules/${item.moduleSlug}`}
+              href={`/modules/${item.moduleSlug}${item.lessonId ? `?lesson=${item.lessonId}` : ""}`}
               className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-blue-400 transition-colors"
               title="Erst lesen, dann üben"
             >

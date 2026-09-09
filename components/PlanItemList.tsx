@@ -133,7 +133,7 @@ export function PlanItemList({
                     <p className="font-medium text-slate-200">{item.title ?? "Unbenanntes Thema"}</p>
                     {module && item.moduleSlug && (
                       <Link
-                        href={`/modules/${item.moduleSlug}`}
+                        href={`/modules/${item.moduleSlug}${item.lessonId ? `?lesson=${item.lessonId}` : ""}`}
                         className="inline-flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors"
                       >
                         <BookOpen className="w-3 h-3" /> Modul öffnen
