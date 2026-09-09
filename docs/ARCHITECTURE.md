@@ -255,7 +255,14 @@ zählt danach, nicht nach bearbeiteten Einheiten.
 | `lib/planReview.ts` | Reine Berechnung eines Review-Ergebnisses |
 | `lib/server/` | Admin-SDK-Pfade, ID-Token-Prüfung, Tagesdaten für die API |
 | `lib/apiText.ts` | 40-Spalten-Textformat für ESP32 und Widget |
-| `scripts/` | Seeds, Backfills, Aufgaben-Generator |
+| `lib/answerCheck.ts` | Freitext-Antwortvalidierung (Mengen, Toleranz, *↔·) |
+| `lib/array.ts`, `lib/format.ts`, `lib/rarity.ts` | Geteilte Mini-Helfer (Shuffle, Zahlenformat, Seltenheiten) |
+| `lib/calculator.ts` | Taschenrechner-Auswertung (Lern-Clicker, reine Funktion) |
+| `lib/skillTreeLayout.ts` | Deterministisches Graph-Layout der Skill-Tree-Graph-Ansicht |
+| `lib/lessonHelpers.ts` | Fabrik für die Standard-Aufgabenlektionen (leicht/mittel/schwer/Prüfung) |
+| `components/MarkdownContent.tsx` | Geteilter Renderer für Lektions- und Merkblatt-Content |
+| `components/clicker/` | Werkzeug-Panels des Lern-Clickers (Rechner, Notizfläche) |
+| `scripts/` | Seeds, Backfills, Aufgaben-Generator, LaTeX-Validierung/Fixes |
 
 ---
 
@@ -270,3 +277,41 @@ zählt danach, nicht nach bearbeiteten Einheiten.
 | Ein Streak, nicht zwei | Zwei Zahlen, die unterschiedliche Werte zeigen, sind schlimmer als eine ungenaue. |
 | Widget liest Cache-Datei, nie direkt das Netz | Ohne Verbindung bleibt der letzte Stand sichtbar statt einer leeren Fläche. Der API-Key bleibt im Skript. |
 | ID-Token-Prüfung ohne `firebase-admin/auth` | Dessen Abhängigkeit `jwks-rsa` bricht auf Vercel mit `ERR_REQUIRE_ESM`. Prüfung direkt mit `jose` gegen Googles JWKS. |
+| Clicker-Werkzeuge (Rechner, Skizzen) nur lokal gespeichert | Kein Firestore-Schema, keine Rules für Nebenbei-Tools — Skizzen sind Wegwerf-Notizen, kein Lernfortschritt. |
+
+---
+
+## 8. Datenorganisation & Ausblick
+
+LearnHub wächst — die Richtung für die Organisation von Inhalten:
+
+**Ein Registry pro Content-Typ, Content als Daten statt Code.**
+- **Übungsaufgaben** liegen als geprüfte JSONs in `content/exercises/` und werden
+  über `lib/exercises/registry.ts` (topicSlug → Datei) geladen. Das ist das
+  Zielformat — auch für die Modul-Aufgabenpools, die heute noch in
+  `lib/mathExercises.ts` stehen (siehe Migration unten).
+- **Module & Lektionen** sind Code (`lib/*Data.ts` → `lib/data.ts`), weil sie
+  interaktive Komponenten, Typen und Verweise brauchen. Eine JSON-Fassung würde
+  den Teil mit dem höchsten Änderungstempo (Texte, Übungen) nicht entkoppeln,
+  sondern doppelte Pflege erzeugen.
+- **Skill-Tree-Struktur** (`lib/skillTree.ts`: Knoten, Voraussetzungen, Etagen)
+  bleibt die einzige Quelle für Abhängigkeiten — beide Skill-Tree-Ansichten
+  (Etagen + Graph) beziehen sich daraus. Status kommt ausschließlich aus den
+  bestehenden Fortschrittsdaten (`completedModules`, `completedLessons`).
+
+**Regeln für Neues:**
+1. Neuer Content-Typ → eigenes JSON-Verzeichnis + Registry-Datei, nie eine
+   weitere `*Data.ts`-Kopie eines bestehenden Musters.
+2. Gleiche Logik (Scoring, Shuffle, Format, Antwortvalidierung) → `lib/`-
+   Modul, keine lokale Kopie in Komponenten.
+3. Lesson-IDs sind Nutzer-Fortschritts-Keys — nie umbenennen, sonst geht
+   Fortschritt verloren (deshalb erzeugt `createExerciseLessons` IDs über
+   den optionalen `lessonIdPrefix`).
+
+**Offene Migration (bewusst noch nicht umgesetzt):** Die Modul-Aufgabenpools
+(31 Module in `lib/mathExercises.ts` + die `*Data.ts`-Pools) auf das
+JSON/Registry-System heben. Werkzeuge dafür existieren bereits
+(`lib/exercises/convertMath.ts`, `scripts/convert-math-exercises.ts`,
+`tests/convertMath.test.ts`). Voraussetzung: Type-Mapping `input|multiple` →
+`recall|numeric|choice`, Prüfmodus und Difficulty-Filter bleiben
+verhaltensgleich, danach Smoke-Test über alle 31 Module.
