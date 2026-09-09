@@ -1,17 +1,19 @@
 /**
  * backfill-topic-slug.ts
  *
- * Befüllt bestehende planItems-Dokumente mit dem topicSlug aus der
- * AP1-Vorlage. Der topicSlug verknüpft ein Plan-Item mit seinen statischen
- * Übungsaufgaben (content/exercises/<topicSlug>.json) und wurde den
- * Template-Items nachträglich hinzugefügt — Bestands-Docs haben ihn nicht.
+ * Befüllt bestehende planItems-Dokumente mit dem topicSlug aus den
+ * Plan-Vorlagen (ap1-it-berufe + mathematik-1). Der topicSlug verknüpft ein
+ * Plan-Item mit seinen statischen Übungsaufgaben
+ * (content/exercises/<topicSlug>.json) und wurde den Template-Items
+ * nachträglich hinzugefügt — Bestands-Docs haben ihn nicht.
  *
- * Ablauf: Alle Pläne mit templateId "ap1-it-berufe" einsammeln (Collection
- * Group, paginiert über documentId — keine Composite-Index-Pflicht), dann je
- * Plan die planItems über die order dem Slug aus der Vorlagen-Datei zuordnen.
- * Idempotent: Items mit bereits korrektem topicSlug werden übersprungen,
- * falsche werden korrigiert. Pläne ohne Vorlage (templateId null) und Pläne
- * anderer Vorlagen bleiben unberührt.
+ * Ablauf: Alle Pläne mit templateId "ap1-it-berufe" oder "mathematik-1"
+ * einsammeln (Collection Group, paginiert über documentId — keine
+ * Composite-Index-Pflicht), dann je Plan die planItems über die order dem
+ * Slug aus der jeweiligen Vorlagen-Datei zuordnen. Idempotent: Items mit
+ * bereits korrektem topicSlug werden übersprungen, falsche werden
+ * korrigiert. Pläne ohne Vorlage (templateId null) und Pläne anderer
+ * Vorlagen bleiben unberührt.
  *
  * Voraussetzung: Service-Account-Credentials über
  * GOOGLE_APPLICATION_CREDENTIALS (oder gcloud ADC für learnhub-eca26).
@@ -36,19 +38,23 @@ if (getApps().length === 0) {
 
 const db = getFirestore();
 const PAGE_SIZE = 450; // unter dem Batch-Limit von 500
-const TEMPLATE_ID = "ap1-it-berufe";
+const TEMPLATE_IDS = ["ap1-it-berufe", "mathematik-1"];
 
 interface TemplateFile {
   items: { order: number; topicSlug: string | null }[];
 }
 
-const template: TemplateFile = JSON.parse(
-  readFileSync(join(process.cwd(), "content", "plan-templates", `${TEMPLATE_ID}.json`), "utf8")
-) as TemplateFile;
-
-const slugByOrder = new Map<number, string | null>();
-for (const item of template.items) {
-  slugByOrder.set(item.order, item.topicSlug ?? null);
+// topicSlug per order, je Vorlage — Quelle der Wahrheit sind die JSON-Dateien.
+const slugByTemplate = new Map<string, Map<number, string | null>>();
+for (const templateId of TEMPLATE_IDS) {
+  const template = JSON.parse(
+    readFileSync(join(process.cwd(), "content", "plan-templates", `${templateId}.json`), "utf8")
+  ) as TemplateFile;
+  const byOrder = new Map<number, string | null>();
+  for (const item of template.items) {
+    byOrder.set(item.order, item.topicSlug ?? null);
+  }
+  slugByTemplate.set(templateId, byOrder);
 }
 
 async function main(): Promise<void> {
@@ -72,7 +78,8 @@ async function main(): Promise<void> {
     for (const planSnap of snapshot.docs) {
       plansProcessed += 1;
       const plan = planSnap.data() as { templateId?: string | null };
-      if (plan.templateId !== TEMPLATE_ID) continue;
+      const byOrder = slugByTemplate.get(plan.templateId ?? "");
+      if (!byOrder) continue;
       plansMatched += 1;
 
       // Pfad: users/{uid}/plans/{planId}
@@ -90,9 +97,9 @@ async function main(): Promise<void> {
       for (const itemSnap of itemsSnap.docs) {
         itemsProcessed += 1;
         const item = itemSnap.data() as { order?: number; topicSlug?: string | null };
-        const expected = slugByOrder.get(item.order ?? -1) ?? null;
+        const expected = byOrder.get(item.order ?? -1) ?? null;
         if (expected === null) continue; // Vorlagen-Item ohne Slug → nichts zu tun
-        if (item.topicSlug === expected) {
+        if ((item.topicSlug ?? null) === expected) {
           itemsSkippedOk += 1;
           continue;
         }
@@ -112,7 +119,7 @@ async function main(): Promise<void> {
 
   console.log(
     `Fertig${dryRun ? " (dry-run)" : ""}: ${plansProcessed} Pläne verarbeitet, ` +
-      `${plansMatched} AP1-Pläne, ${itemsProcessed} Items geprüft, ` +
+      `${plansMatched} Template-Pläne, ${itemsProcessed} Items geprüft, ` +
       `${itemsUpdated} mit topicSlug befüllt/korrigiert, ${itemsSkippedOk} waren korrekt.`
   );
 }
