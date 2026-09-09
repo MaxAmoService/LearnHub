@@ -11,11 +11,13 @@ import { Lesson } from "./types";
 export function createExerciseLessons(
   moduleId: string,
   topic: string,
-  descriptions: { easy: string; medium: string; hard: string }
+  descriptions: { easy: string; medium: string; hard: string },
+  options: { lessonIdPrefix?: string } = {},
 ): Lesson[] {
+  const prefix = options.lessonIdPrefix ?? moduleId;
   return [
     {
-      id: `${moduleId}-aufgaben-leicht`,
+      id: `${prefix}-aufgaben-leicht`,
       title: "📝 Aufgaben (Leicht)",
       duration: "10 min",
       type: "exercises",
@@ -23,7 +25,7 @@ export function createExerciseLessons(
       content: descriptions.easy,
     },
     {
-      id: `${moduleId}-aufgaben-mittel`,
+      id: `${prefix}-aufgaben-mittel`,
       title: "📝 Aufgaben (Mittel)",
       duration: "10 min",
       type: "exercises",
@@ -31,7 +33,7 @@ export function createExerciseLessons(
       content: descriptions.medium,
     },
     {
-      id: `${moduleId}-aufgaben-schwer`,
+      id: `${prefix}-aufgaben-schwer`,
       title: "📝 Aufgaben (Schwer)",
       duration: "12 min",
       type: "exercises",
@@ -39,7 +41,7 @@ export function createExerciseLessons(
       content: descriptions.hard,
     },
     {
-      id: `${moduleId}-pruefung`,
+      id: `${prefix}-pruefung`,
       title: "📋 Prüfung",
       duration: "15 min",
       type: "exercises",
