@@ -46,6 +46,8 @@ export interface PlanTemplateItem {
   estimatedUnits: number;
   /** Statischer Slug für Übungsaufgaben aus content/exercises/<slug>.json. */
   topicSlug: string | null;
+  /** Deep-Link-Ziel innerhalb moduleSlug (Lektion-ID aus lib/types.ts). */
+  lessonId: string | null;
 }
 
 export interface PlanTemplate {
@@ -68,6 +70,12 @@ export interface PlanItemDoc {
    * Nur bei Template-Items gesetzt; Bestands-Docs vor dem Backfill: null.
    */
   topicSlug: string | null;
+  /**
+   * Lektions-Deep-Link innerhalb moduleSlug ("Modul öffnen" springt direkt
+   * zur Lektion). Von scripts/match-plan-items-to-lessons.ts gesetzt;
+   * Bestands-Docs vor dem Backfill: null.
+   */
+  lessonId: string | null;
   /** Exakt die Struktur aus FlashcardProgress (cardId = itemId). */
   sm2: FlashcardProgress | null;
   /** "YYYY-MM-DD" | null — abgeleitet aus sm2.nextReview über lib/dates.ts. */
@@ -155,6 +163,7 @@ export async function createPlanFromTemplate(
       weight: item.weight,
       estimatedUnits: item.estimatedUnits,
       topicSlug: item.topicSlug ?? null,
+      lessonId: item.lessonId ?? null,
       completedUnits: 0,
       sm2: null,
       nextDueAt: null,

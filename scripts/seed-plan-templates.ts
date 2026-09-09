@@ -35,6 +35,7 @@ interface TemplateItem {
   weight: unknown;
   estimatedUnits: unknown;
   topicSlug: unknown;
+  lessonId: unknown;
 }
 
 interface Template {
@@ -63,7 +64,10 @@ function isTemplateItem(value: unknown): value is TemplateItem {
     value.estimatedUnits > 0 &&
     (typeof value.topicSlug === "string" ||
       value.topicSlug === null ||
-      value.topicSlug === undefined)
+      value.topicSlug === undefined) &&
+    (typeof value.lessonId === "string" ||
+      value.lessonId === null ||
+      value.lessonId === undefined)
   );
 }
 
@@ -114,6 +118,7 @@ async function main(): Promise<void> {
         weight: item.weight,
         estimatedUnits: item.estimatedUnits,
         topicSlug: item.topicSlug ?? null,
+        lessonId: item.lessonId ?? null,
       }))
       .sort((a, b) => a.order - b.order);
 
