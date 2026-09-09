@@ -10,6 +10,8 @@ interface LessonFeedbackProps {
   moduleTitle: string;
   lessonId: string;
   lessonTitle: string;
+  /** Formular als schwebendes Panel unter dem Button (statt inline) — für Ecken/Overlays. */
+  popover?: boolean;
 }
 
 type FeedbackCategory = "fehler" | "verbesserung" | "frage" | "sonstiges";
@@ -24,7 +26,7 @@ const CATEGORIES: { value: FeedbackCategory; label: string; icon: string }[] = [
 const RATE_LIMIT_KEY = "learnhub_feedback_last_submit";
 const RATE_LIMIT_MS = 60_000; // 60 Sekunden
 
-export function LessonFeedback({ moduleSlug, moduleTitle, lessonId, lessonTitle }: LessonFeedbackProps) {
+export function LessonFeedback({ moduleSlug, moduleTitle, lessonId, lessonTitle, popover = false }: LessonFeedbackProps) {
   const { user } = useAuth();
   const [category, setCategory] = useState<FeedbackCategory>("fehler");
   const [message, setMessage] = useState("");
@@ -123,8 +125,8 @@ export function LessonFeedback({ moduleSlug, moduleTitle, lessonId, lessonTitle 
 
   // Expanded: Full feedback form below the action buttons
   return (
-    <div className="basis-full mt-2">
-      <div className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/40">
+    <div className={popover ? "absolute right-0 top-full mt-2 w-80 z-30" : "basis-full mt-2"}>
+      <div className={`p-4 rounded-xl bg-slate-800/30 border border-slate-700/40 ${popover ? "bg-slate-900/95 backdrop-blur shadow-2xl" : ""}`}>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <MessageSquare className="w-4 h-4 text-blue-400" />
