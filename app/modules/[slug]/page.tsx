@@ -34,88 +34,7 @@ import { getFlashcardsForModule } from "@/lib/flashcardData";
 import { fireConfetti } from "@/components/Confetti";
 import { triggerXPPopup } from "@/components/XPNotification";
 import { playComplete, playLevelUp } from "@/lib/sounds";
-
-// Merkblatt Content Component with full Markdown support
-function MerkblattContent({ content }: { content: string }) {
-  const elements: JSX.Element[] = [];
-  const lines = content.split("\n");
-  let tableHeadRow: JSX.Element | null = null;
-  let tableBodyRows: JSX.Element[] = [];
-  let tableKey = 0;
-  let elementKey = 0;
-
-  let isTableHeaderRow = true;
-  const flushTable = () => {
-    if (tableHeadRow || tableBodyRows.length > 0) {
-      elements.push(
-        <div key={`table-${tableKey++}`} className="overflow-x-auto my-3">
-          <table className="w-full border-collapse text-xs">
-            {tableHeadRow && <thead>{tableHeadRow}</thead>}
-            <tbody>{tableBodyRows}</tbody>
-          </table>
-        </div>
-      );
-      tableHeadRow = null;
-      tableBodyRows = [];
-    }
-    isTableHeaderRow = true;
-  };
-
-  lines.forEach((line) => {
-    // Table row
-    if (line.includes("|") && line.trim().startsWith("|") && line.trim().endsWith("|")) {
-      const cells = line.split("|").filter((_, i, arr) => i > 0 && i < arr.length - 1).map(c => c.trim());
-      // Skip separator rows (--- | --- | ---)
-      if (cells.every(c => /^[\s:-]*$/.test(c)) || cells.every(c => c.trim().length === 0)) {
-        isTableHeaderRow = false;
-        return;
-      }
-      const isHeader = isTableHeaderRow;
-      isTableHeaderRow = false;
-      const row = (
-        <tr key={`tr-${elementKey++}`} className="border-b border-slate-700/50">
-          {cells.map((cell, ci) => (
-            isHeader ? (
-              <th key={ci} className="px-3 py-2.5 text-left text-sm font-bold text-blue-200 bg-blue-500/15 border-b-2 border-blue-500/30">
-                <InlineText text={cell} />
-              </th>
-            ) : (
-              <td key={ci} className="px-3 py-1.5 text-slate-300 bg-slate-800/30">
-                <InlineText text={cell} />
-              </td>
-            )
-          ))}
-        </tr>
-      );
-      if (isHeader) {
-        tableHeadRow = row;
-      } else {
-        tableBodyRows.push(row);
-      }
-      return;
-    }
-
-    // Flush table if not a table row
-    flushTable();
-
-    // Headings
-    if (line.startsWith("### ")) {
-      elements.push(<h4 key={elementKey++} className="text-sm font-semibold text-slate-200 mt-3 mb-1"><InlineText text={line.slice(4)} /></h4>);
-    } else if (line.startsWith("## ")) {
-      elements.push(<h3 key={elementKey++} className="text-base font-semibold text-yellow-400 mt-4 mb-2"><InlineText text={line.slice(3)} /></h3>);
-    } else if (line.startsWith("# ")) {
-      elements.push(<h2 key={elementKey++} className="text-lg font-bold text-white mt-4 mb-2"><InlineText text={line.slice(2)} /></h2>);
-    } else if (line.startsWith("- ")) {
-      elements.push(<li key={elementKey++} className="text-slate-300 ml-4 mb-0.5 list-disc list-inside text-xs"><InlineText text={line.slice(2)} /></li>);
-    } else if (line.trim()) {
-      elements.push(<p key={elementKey++} className="text-slate-300 mb-1 text-xs"><InlineText text={line} /></p>);
-    }
-  });
-
-  flushTable(); // Flush any remaining table
-
-  return <div className="space-y-1">{elements}</div>;
-}
+import { MarkdownContent } from "@/components/MarkdownContent";
 
 export default function ModulePage() {
   const params = useParams();
@@ -356,7 +275,7 @@ export default function ModulePage() {
             )}
             {showMerkblatt && module.merkblatt && (
               <div className="mt-2 p-3 bg-slate-800/50 rounded-lg border border-slate-700 text-sm">
-                <MerkblattContent content={module.merkblatt} />
+                <MarkdownContent content={module.merkblatt} compact />
               </div>
             )}
           </div>
@@ -378,7 +297,7 @@ export default function ModulePage() {
                 </button>
                 {showMerkblatt && (
                   <div className="mt-2 p-4 bg-slate-800/50 rounded-lg border border-slate-700 text-sm">
-                    <MerkblattContent content={module.merkblatt} />
+                    <MarkdownContent content={module.merkblatt} compact />
                   </div>
                 )}
               </div>

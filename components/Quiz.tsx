@@ -11,7 +11,6 @@ import { logarithmusQuizzes } from "@/lib/logarithmusData";
 import { exponentialQuizzes } from "@/lib/exponentialData";
 import { wachstumsprozesseQuizzes } from "@/lib/wachstumsprozesseData";
 import { fourierQuizzes } from "@/lib/fourierData";
-import { MathBlock } from "./MathBlock";
 import { InlineText } from "./InlineText";
 import { CheckCircle2, XCircle, RotateCcw, Send } from "lucide-react";
 import { triggerXPPopup } from "./XPNotification";
@@ -685,20 +684,6 @@ function shuffleQuestionOptions(q: QuizQuestion): QuizQuestion {
   return { ...q, options: indexed.map(x => x.opt), correct: newCorrect };
 }
 
-function QuestionWithMath({ text }: { text: string }) {
-  const parts = text.split(/(\$[^$]+\$)/g);
-  return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith("$") && part.endsWith("$")) {
-          return <MathBlock key={i} math={part.slice(1, -1)} display={false} />;
-        }
-        return <span key={i}>{part}</span>;
-      })}
-    </>
-  );
-}
-
 export function Quiz({ moduleSlug, onComplete }: QuizProps) {
   const { completeLesson, user } = useAuth();
   const rawQuestions = allQuizData[moduleSlug] || [];
@@ -898,7 +883,7 @@ export function Quiz({ moduleSlug, onComplete }: QuizProps) {
       {/* Question */}
       <div className="text-xl font-semibold mb-6">
         {question.question.includes("$") ? (
-          <QuestionWithMath text={question.question} />
+          <InlineText text={question.question} />
         ) : (
           question.question
         )}
@@ -947,7 +932,7 @@ export function Quiz({ moduleSlug, onComplete }: QuizProps) {
                   </span>
                   <span>
                     {option.includes("$") ? (
-                      <QuestionWithMath text={option} />
+                      <InlineText text={option} />
                     ) : (
                       option
                     )}
