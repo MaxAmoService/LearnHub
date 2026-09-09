@@ -10,7 +10,7 @@ import {
   getRarityColor, getRarityBg, isAvatarUnlocked, isFrameUnlocked,
   type AvatarOption, type FrameOption,
 } from "@/lib/rewards";
-import { getLeaderboard } from "@/lib/auth";
+import { fetchLeaderboard } from "@/lib/leaderboardClient";
 import { AchievementBadges } from "@/components/AchievementBadges";
 import { setSoundEnabled, isSoundEnabled } from "@/lib/sounds";
 import { useTheme } from "@/components/ThemeProvider";
@@ -100,7 +100,7 @@ export default function ProfilePage() {
   // Leaderboard-Rang laden
   useEffect(() => {
     if (!user) return;
-    getLeaderboard(50).then((entries) => {
+    fetchLeaderboard().then((entries) => {
       const rank = entries.find(e => e.uid === user.uid);
       setLeaderboardRank(rank?.rank);
     }).catch(() => {});

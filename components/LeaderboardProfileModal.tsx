@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getUserProfile, getUserLevel, type UserProfile } from "@/lib/auth";
+import { getUserLevel } from "@/lib/auth";
+import { fetchPublicUserProfile } from "@/lib/leaderboardClient";
 import { AvatarFrame } from "@/components/AvatarFrame";
 import { X, Loader2, Trophy, Flame, Zap, Calendar, BookOpen, User } from "lucide-react";
 
 interface LeaderboardProfileModalProps {
   uid: string;
-  displayName: string;
+  username: string;
   avatar: string;
   equippedFrame: string;
   totalXP: number;
@@ -21,7 +22,7 @@ interface LeaderboardProfileModalProps {
 
 export function LeaderboardProfileModal({
   uid,
-  displayName,
+  username,
   avatar,
   equippedFrame,
   totalXP,
@@ -32,7 +33,7 @@ export function LeaderboardProfileModal({
   leaderboardRank,
   onClose,
 }: LeaderboardProfileModalProps) {
-  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [profile, setProfile] = useState<{ bio: string; createdAt: string | null } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,10 +41,10 @@ export function LeaderboardProfileModal({
     async function load() {
       setLoading(true);
       try {
-        const p = await getUserProfile(uid);
+        const p = await fetchPublicUserProfile(uid);
         if (!cancelled) setProfile(p);
       } catch (err) {
-        console.error("Failed to load profile:", err);
+        console.error("Failed to load public profile:", err);
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -96,7 +97,7 @@ export function LeaderboardProfileModal({
                 size="xl"
               />
             </div>
-            <h2 className="text-xl font-bold text-white">{displayName}</h2>
+            <h2 className="text-xl font-bold text-white">{username}</h2>
             <p className="text-sm text-slate-400 mt-0.5">
               {levelInfo.title} • Level {level}
             </p>

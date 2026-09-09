@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/components/AuthProvider";
-import { getLeaderboard, getUserLevel } from "@/lib/auth";
-import type { LeaderboardEntry } from "@/lib/auth";
+import { getUserLevel } from "@/lib/auth";
+import { fetchLeaderboard, type LeaderboardEntry } from "@/lib/leaderboardClient";
 import { AvatarFrame } from "@/components/AvatarFrame";
 import { getUnlockedAvatars } from "@/lib/rewards";
-import { FrameOnlineStatus } from "@/components/OnlineStatus";
 import { LeaderboardProfileModal } from "@/components/LeaderboardProfileModal";
 import { Trophy, Flame, Zap, Crown, Lock, Eye, EyeOff, Loader2, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
@@ -25,7 +24,7 @@ export default function LeaderboardPage() {
   async function loadEntries() {
     setLoading(true);
     try {
-      const data = await getLeaderboard(50);
+      const data = await fetchLeaderboard();
       setEntries(data);
     } catch (err) {
       console.error("Leaderboard error:", err);
@@ -172,7 +171,9 @@ export default function LeaderboardPage() {
                     leaderboardRank={rank}
                     size="md"
                   />
-                  <FrameOnlineStatus uid={entry.uid} hidden={false} className="-bottom-0.5 -right-0.5" />
+                  {entry.online && (
+                    <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-slate-900 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] z-20" />
+                  )}
                 </div>
 
                 {/* Name */}
@@ -180,7 +181,7 @@ export default function LeaderboardPage() {
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-2 min-w-0">
                       <p className={`font-semibold truncate ${isCurrentUser ? "text-blue-300" : "text-white"}`}>
-                        {entry.displayName}
+                        {entry.username}
                       </p>
                     </div>
                     {isCurrentUser && (
@@ -252,7 +253,7 @@ export default function LeaderboardPage() {
       {selectedEntry && (
         <LeaderboardProfileModal
           uid={selectedEntry.uid}
-          displayName={selectedEntry.displayName}
+          username={selectedEntry.username}
           avatar={selectedEntry.avatar}
           equippedFrame={selectedEntry.equippedFrame}
           totalXP={selectedEntry.totalXP}

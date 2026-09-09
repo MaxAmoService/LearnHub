@@ -456,63 +456,12 @@ export async function toggleSaveModule(uid: string, slug: string): Promise<UserP
 }
 
 // ─── Leaderboard ───────────────────────────────────────────────────────────
-
-export interface LeaderboardEntry {
-  uid: string;
-  username: string;
-  displayName: string;
-  avatar: string;
-  equippedFrame: string;
-  totalXP: number;
-  streak: number;
-  completedModules: number;
-  level: number;
-  levelTitle: string;
-  rank: number;
-}
-
-export async function getLeaderboard(limit: number = 50): Promise<LeaderboardEntry[]> {
-  try {
-    const { collection, getDocs } = await import("firebase/firestore");
-
-    // Alle Users laden (Firestore Free Tier: keine Composite-Index-Probleme)
-    const snap = await getDocs(collection(getDb(), "users"));
-
-    const entries: LeaderboardEntry[] = [];
-
-    snap.forEach((doc) => {
-      const data = doc.data() as UserProfile;
-      // Nur opted-in Users
-      if (data.leaderboardOptIn !== true) return;
-      if (!data.uid || !data.username) return;
-      const levelInfo = getUserLevel(data.totalXP || 0);
-      entries.push({
-        uid: data.uid,
-        username: data.username,
-        displayName: data.displayName || data.username,
-        avatar: data.avatar || "🎓",
-        equippedFrame: data.equippedFrame || "none",
-        totalXP: data.totalXP || 0,
-        streak: data.streak || 0,
-        completedModules: data.completedModules?.length || 0,
-        level: levelInfo.level,
-        levelTitle: levelInfo.title,
-        rank: 0,
-      });
-    });
-
-    // Client-seitig nach XP sortieren
-    entries.sort((a, b) => b.totalXP - a.totalXP);
-
-    // Ränge vergeben
-    entries.forEach((entry, i) => { entry.rank = i + 1; });
-
-    return entries.slice(0, limit);
-  } catch (err) {
-    console.error("Failed to load leaderboard:", err);
-    return [];
-  }
-}
+//
+// getLeaderboard (alle User-Docs in den Client laden) wurde durch die
+// serverseitige Bestenliste ersetzt: GET /api/v1/leaderboard (Admin SDK,
+// Positivliste, siehe lib/leaderboard.ts) + lib/leaderboardClient.ts.
+// Fremde User-Docs sind seit der firestore.rules-Verschärfung nur noch für
+// den eigenen Account lesbar.
 
 export async function toggleLeaderboardOptIn(uid: string, optIn: boolean): Promise<void> {
   try {
