@@ -1,0 +1,366 @@
+{
+  "moduleSlug": "m-bruchrechnen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-bruchrechnen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Addiere: $\\frac{3}{8} + \\frac{2}{8}$. Gib das Ergebnis als gekürzten Bruch an (Format: z.B. 3/4).",
+      "answer": "5/8",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Gleicher Nenner: $\\frac{3+2}{8} = \\frac{5}{8}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Subtrahiere: $\\frac{7}{9} - \\frac{4}{9}$.",
+      "answer": "1/3",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Gleicher Nenner: $\\frac{7-4}{9} = \\frac{3}{9} = \\frac{1}{3}$ (gekürzt durch 3)."
+    },
+    {
+      "id": "m-bruchrechnen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Multipliziere: $\\frac{2}{5} \\cdot \\frac{3}{4}$.",
+      "answer": "3/10",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{2 \\cdot 3}{5 \\cdot 4} = \\frac{6}{20} = \\frac{3}{10}$ (gekürzt durch 2)."
+    },
+    {
+      "id": "m-bruchrechnen-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welcher Bruch ist gleich $0{,}75$?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{2}{3}$"
+      ],
+      "correctIndex": 2,
+      "explanation": "$0{,}75 = \\frac{75}{100} = \\frac{3}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Kürze den Bruch $\\frac{18}{24}$ vollständig.",
+      "answer": "3/4",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "GGT(18,24) = 6. $\\frac{18 \\div 6}{24 \\div 6} = \\frac{3}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Wandle $\\frac{9}{4}$ in eine gemischte Zahl um.",
+      "options": [
+        "$2\\frac{1}{4}$",
+        "$1\\frac{3}{4}$",
+        "$2\\frac{1}{2}$",
+        "$3\\frac{1}{4}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$9 \\div 4 = 2$ Rest $1$. Also $2\\frac{1}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "$\\frac{1}{3} + \\frac{1}{3} = ?$",
+      "answer": "2/3",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Gleicher Nenner: $\\frac{1+1}{3} = \\frac{2}{3}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "$\\frac{5}{6} \\cdot \\frac{2}{3} = ?$",
+      "answer": "5/9",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{5 \\cdot 2}{6 \\cdot 3} = \\frac{10}{18} = \\frac{5}{9}$ (gekürzt durch 2)."
+    },
+    {
+      "id": "m-bruchrechnen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Addiere: $\\frac{2}{5} + \\frac{1}{3}$. (Hauptnenner bilden!)",
+      "answer": "11/15",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Hauptnenner 15: $\\frac{6}{15} + \\frac{5}{15} = \\frac{11}{15}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Dividiere: $\\frac{7}{10} : \\frac{2}{5}$.",
+      "options": [
+        "$\\frac{7}{4}$",
+        "$\\frac{14}{50}$",
+        "$\\frac{7}{25}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{7}{10} \\cdot \\frac{5}{2} = \\frac{35}{20} = \\frac{7}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Subtrahiere: $\\frac{5}{6} - \\frac{1}{4}$.",
+      "answer": "7/12",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Hauptnenner 12: $\\frac{10}{12} - \\frac{3}{12} = \\frac{7}{12}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\frac{5}{8} : \\frac{5}{4} = ?$",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{5}{8} \\cdot \\frac{4}{5} = \\frac{20}{40} = \\frac{1}{2}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-13",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wandle die gemischte Zahl $3\\frac{2}{7}$ in einen unechten Bruch um.",
+      "options": [
+        "$\\frac{21}{7}$",
+        "$\\frac{23}{7}$",
+        "$\\frac{5}{7}$",
+        "$\\frac{17}{7}$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$3 \\cdot 7 + 2 = 23$. Also $\\frac{23}{7}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Addiere: $\\frac{3}{4} + \\frac{2}{3}$.",
+      "answer": "17/12",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Hauptnenner 12: $\\frac{9}{12} + \\frac{8}{12} = \\frac{17}{12}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\frac{4}{9} \\cdot \\frac{3}{8} = ?$",
+      "answer": "1/6",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{4 \\cdot 3}{9 \\cdot 8} = \\frac{12}{72} = \\frac{1}{6}$ (gekürzt durch 12)."
+    },
+    {
+      "id": "m-bruchrechnen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\frac{7}{12} - \\frac{1}{3} = ?$",
+      "answer": "1/4",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{7}{12} - \\frac{4}{12} = \\frac{3}{12} = \\frac{1}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\left(\\frac{2}{3} + \\frac{1}{6}\\right) \\cdot \\frac{4}{5}$. Kürze vollständig.",
+      "hint": "Berechne zuerst die Klammer mit Hauptnenner 6.",
+      "answer": "2/3",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Klammer: $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$. Dann: $\\frac{5}{6} \\cdot \\frac{4}{5} = \\frac{20}{30} = \\frac{2}{3}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Schwimmbecken wird durch Rohr A in $4$ Stunden gefüllt, durch Rohr B in $6$ Stunden. Welcher Anteil wird in einer Stunde gefüllt, wenn beide gleichzeitig laufen?",
+      "hint": "Bestimme die Füllrate jedes Rohrs pro Stunde und addiere sie.",
+      "options": [
+        "$\\frac{5}{12}$",
+        "$\\frac{1}{5}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{7}{12}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Rohr A: $\\frac{1}{4}$/h, Rohr B: $\\frac{1}{6}$/h. Zusammen: $\\frac{3}{12} + \\frac{2}{12} = \\frac{5}{12}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "$\\frac{2}{3}$ eines Kuchens wird auf $4$ Personen verteilt. Welcher Anteil des ganzen Kuchens bekommt jede Person?",
+      "answer": "1/6",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{2}{3} : 4 = \\frac{2}{3} \\cdot \\frac{1}{4} = \\frac{2}{12} = \\frac{1}{6}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-20",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welcher Bruch ist größer: $\\frac{7}{9}$ oder $\\frac{3}{4}$?",
+      "options": [
+        "$\\frac{7}{9}$",
+        "$\\frac{3}{4}$",
+        "Sie sind gleich groß",
+        "Man kann es nicht vergleichen"
+      ],
+      "correctIndex": 0,
+      "explanation": "Hauptnenner 36: $\\frac{28}{36}$ vs $\\frac{27}{36}$. Also $\\frac{7}{9} > \\frac{3}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Artikel kostet $120$ EUR und wird um $\\frac{1}{4}$ reduziert. Wie viel kostet er jetzt? (Nur Zahl, ohne EUR)",
+      "answer": 90,
+      "format": "Ganze Zahl",
+      "explanation": "$120 \\cdot \\frac{1}{4} = 30$ EUR Rabatt. $120 - 30 = 90$ EUR."
+    },
+    {
+      "id": "m-bruchrechnen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "$\\frac{3}{5}$ der Schüler sind männlich. Davon tragen $\\frac{2}{3}$ eine Brille. Welcher Anteil der gesamten Klasse sind männliche Brillenträger?",
+      "answer": "2/5",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{3}{5} \\cdot \\frac{2}{3} = \\frac{6}{15} = \\frac{2}{5}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Tank ist zu $\\frac{2}{3}$ voll. Nach einer Fahrt ist er noch zu $\\frac{1}{4}$ voll. Welcher Anteil wurde verbraucht?",
+      "hint": "Verbrauch = Anfang - Ende.",
+      "answer": "5/12",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{2}{3} - \\frac{1}{4} = \\frac{8}{12} - \\frac{3}{12} = \\frac{5}{12}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Erbe von $48\\,000$ EUR wird verteilt: $\\frac{1}{3}$ an A, $\\frac{1}{4}$ an B, der Rest an C. Wie viel erhält C?",
+      "hint": "Berechne zuerst die Summe der Anteile von A und B.",
+      "options": [
+        "$20\\,000$ EUR",
+        "$24\\,000$ EUR",
+        "$28\\,000$ EUR",
+        "$16\\,000$ EUR"
+      ],
+      "correctIndex": 0,
+      "explanation": "A+B: $\\frac{7}{12}$. C: $\\frac{5}{12} \\cdot 48\\,000 = 20\\,000$ EUR."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-bruchrechnen-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Addiere alle drei Brüche: $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}$.",
+      "answer": "13/12",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Hauptnenner 12: $\\frac{6}{12} + \\frac{4}{12} + \\frac{3}{12} = \\frac{13}{12}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Dividiere und kürze: $\\frac{9}{16} : \\frac{3}{8}$.",
+      "answer": "3/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{9}{16} \\cdot \\frac{8}{3} = \\frac{72}{48} = \\frac{3}{2}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-03",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Welcher Bruch liegt genau in der Mitte zwischen $\\frac{1}{3}$ und $\\frac{1}{2}$?",
+      "hint": "Bilde den Mittelwert der beiden Brüche.",
+      "answer": "5/12",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Mittelwert: $\\frac{\\frac{1}{3} + \\frac{1}{2}}{2} = \\frac{\\frac{5}{6}}{2} = \\frac{5}{12}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Rechenoperation ist korrekt ausgeführt?",
+      "options": [
+        "$\\frac{3}{4} \\cdot \\frac{2}{3} = \\frac{6}{12}$",
+        "$\\frac{3}{4} : \\frac{2}{3} = \\frac{9}{8}$",
+        "$\\frac{3}{4} + \\frac{2}{3} = \\frac{5}{7}$",
+        "$\\frac{3}{4} - \\frac{2}{3} = \\frac{1}{1}$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\frac{3}{4} : \\frac{2}{3} = \\frac{9}{8}$ ist korrekt. Die anderen enthalten typische Fehler."
+    },
+    {
+      "id": "m-bruchrechnen-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Erbe von $48\\,000$ EUR wird verteilt: $\\frac{1}{3}$ an A, $\\frac{1}{4}$ an B, der Rest an C. Wie viel erhält C?",
+      "hint": "Berechne zuerst die Summe der Anteile von A und B.",
+      "options": [
+        "$20\\,000$ EUR",
+        "$24\\,000$ EUR",
+        "$28\\,000$ EUR",
+        "$16\\,000$ EUR"
+      ],
+      "correctIndex": 0,
+      "explanation": "A+B: $\\frac{7}{12}$. C: $\\frac{5}{12} \\cdot 48\\,000 = 20\\,000$ EUR."
+    },
+    {
+      "id": "m-bruchrechnen-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache: $\\frac{18}{24}$.",
+      "answer": "3/4",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "GGT(18,24) = 6. $\\frac{3}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "$\\frac{3}{5}$ der Schüler sind männlich, $\\frac{2}{3}$ davon tragen Brille. Welcher Anteil der Klasse sind männliche Brillenträger?",
+      "answer": "2/5",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{3}{5} \\cdot \\frac{2}{3} = \\frac{6}{15} = \\frac{2}{5}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Tank ist zu $\\frac{2}{3}$ voll, nach der Fahrt zu $\\frac{1}{4}$. Welcher Anteil wurde verbraucht?",
+      "answer": "5/12",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{2}{3} - \\frac{1}{4} = \\frac{8}{12} - \\frac{3}{12} = \\frac{5}{12}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\frac{5}{6} \\cdot \\frac{3}{10} = ?$",
+      "answer": "1/4",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{15}{60} = \\frac{1}{4}$."
+    },
+    {
+      "id": "m-bruchrechnen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\frac{1}{2} + \\frac{1}{3} - \\frac{1}{6}$.",
+      "answer": "2/3",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Hauptnenner 6: $\\frac{3}{6} + \\frac{2}{6} - \\frac{1}{6} = \\frac{4}{6} = \\frac{2}{3}$."
+    }
+  ]
+}

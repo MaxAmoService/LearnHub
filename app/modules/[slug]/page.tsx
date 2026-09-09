@@ -12,7 +12,7 @@ import { LoginModal } from "@/components/LoginModal";
 import { MathBlock } from "@/components/MathBlock";
 import { InlineText } from "@/components/InlineText";
 import { InteractiveExercise } from "@/components/InteractiveExercise";
-import { getExercisesForLesson, getExamExercises } from "@/lib/mathExercises";
+import { getModulePracticeExercises, getModuleExamExercises } from "@/lib/exercises/moduleRegistry";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -496,8 +496,8 @@ export default function ModulePage() {
                 key={selectedLesson.id}
                 exercises={
                   selectedLesson.examMode
-                    ? getExamExercises(module.id)
-                    : getExercisesForLesson(module.id)
+                    ? getModuleExamExercises(module.id)
+                    : getModulePracticeExercises(module.id)
                 }
                 moduleTitle={module.title}
                 onComplete={() => markComplete(selectedLesson.id)}

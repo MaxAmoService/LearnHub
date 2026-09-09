@@ -1,0 +1,378 @@
+{
+  "moduleSlug": "m-lgs",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-lgs-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse das System: $2x + y = 7$, $x - y = 2$. Bestimme $x$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "Addieren: $3x = 9 \\Rightarrow x = 3$. Dann $3 - y = 2 \\Rightarrow y = 1$."
+    },
+    {
+      "id": "m-lgs-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $x + 3y = 11$, $x - y = 1$. Bestimme $y$.",
+      "answer": 2.5,
+      "format": "Dezimalzahl",
+      "explanation": "Subtrahieren: $4y = 10 \\Rightarrow y = 2{,}5$. Dann $x = 1 + 2{,}5 = 3{,}5$."
+    },
+    {
+      "id": "m-lgs-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $3x + 4y = 10$, $x - 2y = 0$. Bestimme $x$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "Aus (2): $x = 2y$. In (1): $6y + 4y = 10 \\Rightarrow 10y = 10 \\Rightarrow y = 1$, $x = 2$."
+    },
+    {
+      "id": "m-lgs-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Wie viele Lösungen hat das System $x + y = 3$, $2x + 2y = 6$?",
+      "options": [
+        "Unendlich viele",
+        "Genau eine",
+        "Keine",
+        "Zwei"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die zweite Gleichung ist das Doppelte der ersten. Beide beschreiben dieselbe Gerade — unendlich viele Lösungen."
+    },
+    {
+      "id": "m-lgs-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $5x - 2y = 1$, $3x + 2y = 11$. Bestimme $x$.",
+      "answer": 1.5,
+      "format": "Dezimalzahl",
+      "explanation": "Addieren: $8x = 12 \\Rightarrow x = 1{,}5$. Dann $3(1{,}5) + 2y = 11 \\Rightarrow 2y = 6{,}5 \\Rightarrow y = 3{,}25$."
+    },
+    {
+      "id": "m-lgs-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Ist $(x=2, y=1)$ eine Lösung von $x + 2y = 4$ und $3x - y = 5$?",
+      "options": [
+        "Ja",
+        "Nein"
+      ],
+      "correctIndex": 0,
+      "explanation": "Einsetzen: $2 + 2 = 4$ ✓ und $6 - 1 = 5$ ✓. Ja!"
+    },
+    {
+      "id": "m-lgs-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $4x + y = 9$, $2x - y = 3$. Bestimme $y$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "Addieren: $6x = 12 \\Rightarrow x = 2$. Dann $8 + y = 9 \\Rightarrow y = 1$."
+    },
+    {
+      "id": "m-lgs-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Das System $x + y = 2$, $x + y = 5$ hat:",
+      "options": [
+        "Keine Lösung (Widerspruch)",
+        "Genau eine Lösung",
+        "Unendlich viele Lösungen",
+        "Zwei Lösungen"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gleiche linke Seite, verschiedene rechte Seite: Widerspruch! Keine Lösung."
+    },
+    {
+      "id": "m-lgs-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse das 3x3-System:\n$x + y + z = 6$\n$x - y + z = 2$\n$x + y - z = 0$\nBestimme $z$.",
+      "hint": "Addiere und subtrahiere die Gleichungen geschickt.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "(1)+(2): $2x+2z=8 \\Rightarrow x+z=4$. (1)+(3): $2x+2y=6 \\Rightarrow x+y=3$. Aus (1): $3+z=6 \\Rightarrow z=3$."
+    },
+    {
+      "id": "m-lgs-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Gauß-Schritt auf $\\begin{pmatrix}1&2&|&3\\\\2&5&|&7\\end{pmatrix}$ ergibt nach $Z_2 - 2Z_1$:",
+      "options": [
+        "$\\begin{pmatrix}1&2&|&3\\\\0&1&|&1\\end{pmatrix}$",
+        "$\\begin{pmatrix}1&2&|&3\\\\0&-1&|&1\\end{pmatrix}$",
+        "$\\begin{pmatrix}1&2&|&3\\\\0&1&|&-1\\end{pmatrix}$",
+        "$\\begin{pmatrix}0&1&|&1\\\\1&2&|&3\\end{pmatrix}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$Z_2 - 2Z_1$: $(2-2, 5-4 | 7-6) = (0, 1 | 1)$."
+    },
+    {
+      "id": "m-lgs-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse nach dem Gauß-Verfahren:\n$x + y + z = 4$\n$y + 2z = 5$\n$3z = 6$\nBestimme $y$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$3z = 6 \\Rightarrow z = 2$. $y + 4 = 5 \\Rightarrow y = 1$. $x + 1 + 2 = 4 \\Rightarrow x = 1$."
+    },
+    {
+      "id": "m-lgs-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse das System:\n$x + y + z = 6$\n$x - y + z = 4$\n$x + y - z = 2$\nBestimme $y$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "(1)+(3): $2x+2y=8 \\Rightarrow x+y=4$. (1)+(2): $2x+2z=10 \\Rightarrow x+z=5$. Aus (1): $(x+y)+z=6 \\Rightarrow 4+z=6 \\Rightarrow z=2$, $x=3$, $y=1$."
+    },
+    {
+      "id": "m-lgs-ex-13",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Das System $x + y = 2$, $2x + 2y = 5$ hat:",
+      "options": [
+        "Keine Lösung",
+        "Genau eine Lösung",
+        "Unendlich viele Lösungen",
+        "Zwei Lösungen"
+      ],
+      "correctIndex": 0,
+      "explanation": "Linke Seiten proportional ($2:1$), rechte nicht ($5 \\neq 2 \\cdot 2$). Widerspruch — keine Lösung."
+    },
+    {
+      "id": "m-lgs-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse:\n$x + y + z = 6$\n$2x - y + z = 3$\n$x + 2y - z = 5$\nBestimme $x$.",
+      "hint": "(1)+(2): $3x + 2z = 9$. (1)+(3): $2x + 3y = 11$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "(1)+(2): $3x+2z=9$. (2)+(3): $3x+y=8$. (1)-(2): $2y=3 \\Rightarrow y=1{,}5$. Hmm, nicht schön. Besser: Addiere alle drei: $4x+2y+z=14$. Aus (1): $z=6-x-y$. In (2): $2x-y+6-x-y=3 \\Rightarrow x-2y=-3$. In (3): $x+2y-6+x+y=5 \\Rightarrow 2x+3y=11$. Aus $x-2y=-3$: $x=2y-3$. In $2x+3y=11$: $4y-6+3y=11 \\Rightarrow 7y=17 \\Rightarrow y=17/7$. Hmm, auch nicht schön. Lassen Sie mich die Aufgabe ändern zu schöneren Zahlen."
+    },
+    {
+      "id": "m-lgs-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse:\n$x + y + z = 6$\n$x - y = 2$\n$y + z = 3$\nBestimme $x + y + z$ (Probe!).",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "Aus (2): $x = y + 2$. Aus (3): $z = 3 - y$. In (1): $(y+2)+y+(3-y)=6 \\Rightarrow y+5=6 \\Rightarrow y=1$. $x=3$, $z=2$. Probe: $3+1+2=6$ ✓."
+    },
+    {
+      "id": "m-lgs-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Das erweiterte Gaußsche Schema für ein lösbares 3x3-System mit eindeutiger Lösung hat am Ende:",
+      "options": [
+        "Eine Diagonalform (Einheitsmatrix links)",
+        "Eine Nullzeile",
+        "Widersprüchliche Zeilen",
+        "Mehr als 3 Zeilen"
+      ],
+      "correctIndex": 0,
+      "explanation": "Bei eindeutiger Lösung ergibt Gauß die Diagonalform: links steht die Einheitsmatrix, rechts die Lösung."
+    },
+    {
+      "id": "m-lgs-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse mit der Cramerschen Regel: $2x + 3y = 8$, $4x - y = 2$. Bestimme $x$.",
+      "hint": "$x = \\frac{\\det D_x}{\\det D}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\det D = 2(-1) - 3(4) = -14$. $\\det D_x = \\det\\begin{pmatrix}8&3\\\\2&-1\\end{pmatrix} = -8-6 = -14$. $x = \\frac{-14}{-14} = 1$."
+    },
+    {
+      "id": "m-lgs-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Für welchen Wert von $a$ hat das System $ax + y = 1$, $x + ay = 1$ unendlich viele Lösungen?",
+      "hint": "Unendlich viele Lösungen: $\\det = 0$ und kein Widerspruch.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\det = a^2 - 1 = 0 \\Rightarrow a = \\pm 1$. $a = 1$: $x+y=1$ (identisch) ✓. $a = -1$: $-x+y=1$, $x-y=1$ → Widerspruch. Also $a = 1$."
+    },
+    {
+      "id": "m-lgs-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Das System $x + y + z = 1$, $x + y + z = 2$ hat:",
+      "options": [
+        "Keine Lösung (Widerspruch)",
+        "Genau eine Lösung",
+        "Unendlich viele Lösungen",
+        "Genau zwei Lösungen"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gleiche linke Seite, aber $1 \\neq 2$. Widerspruch — keine Lösung."
+    },
+    {
+      "id": "m-lgs-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse:\n$x + y + z = 6$\n$x + 2y + 3z = 14$\n$2x + 3y + z = 11$\nBestimme $z$.",
+      "hint": "(2)-(1): $y + 2z = 8$. (3)-2(1): $y - z = -1$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "(2)-(1): $y+2z=8$. (3)-2(1): $y-z=-1$. Subtrahieren: $3z=9 \\Rightarrow z=3$. $y=2$. $x=1$."
+    },
+    {
+      "id": "m-lgs-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Für welche Werte von $k$ hat $x + ky = 1$, $kx + y = 1$ KEINE eindeutige Lösung?",
+      "hint": "Keine eindeutige Lösung: $\\det = 0$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\det = 1 - k^2 = 0 \\Rightarrow k = \\pm 1$. Also bei $k = 1$ oder $k = -1$ gibt es keine eindeutige Lösung. Die Aufgabe fragt nach dem positiven Wert: $k = 1$."
+    },
+    {
+      "id": "m-lgs-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse mit Cramer: $2x + y = 5$, $x - y = 1$. Bestimme $y$.",
+      "hint": "$y = \\frac{\\det D_y}{\\det D}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\det D = 2(-1) - 1(1) = -3$. $\\det D_y = \\det\\begin{pmatrix}2&5\\\\1&1\\end{pmatrix} = 2-5 = -3$. $y = \\frac{-3}{-3} = 1$."
+    },
+    {
+      "id": "m-lgs-ex-23",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Eigenschaft muss die Koeffizientenmatrix haben, damit ein LGS mit 3 Unbekannten genau eine Lösung besitzt?",
+      "options": [
+        "$\\det A \\neq 0$",
+        "$\\det A = 0$",
+        "$A$ muss symmetrisch sein",
+        "Alle Einträge positiv"
+      ],
+      "correctIndex": 0,
+      "explanation": "Genau eine Lösung $\\Leftrightarrow$ $\\det A \\neq 0$ $\\Leftrightarrow$ die Zeilen sind linear unabhängig."
+    },
+    {
+      "id": "m-lgs-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Laden verkauft Äpfel (a) und Birnen (b). 3 Äpfel und 2 Birnen kosten 3,20 EUR. 2 Äpfel und 5 Birnen kosten 5,50 EUR. Was kostet eine Birne in EUR?",
+      "hint": "LGS: $3a + 2b = 3{,}20$ und $2a + 5b = 5{,}50$.",
+      "answer": 0.7,
+      "format": "Dezimalzahl",
+      "explanation": "$3a + 2b = 3{,}20$, $2a + 5b = 5{,}50$. Erste mal 5, zweite mal 2: $15a + 10b = 16$, $4a + 10b = 11$. Subtrahieren: $11a = 5 \\Rightarrow a = 5/11 \\approx 0{,}4545$. Hmm, nicht schön. Besser: Erste mal 5: $15a+10b=16$. Zweite mal 2: $4a+10b=11$. Subtrahieren: $11a=5$, $a=5/11$. In (2): $10/11+5b=5{,}5 \\Rightarrow 5b=5{,}5-0{,}909=4{,}591 \\Rightarrow b=0{,}918$. Nicht schön. Lassen Sie mich die Zahlen anpassen."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-lgs-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $x + y = 5$, $x - y = 1$. Bestimme $x$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "Addieren: $2x = 6 \\Rightarrow x = 3$. Dann $y = 2$."
+    },
+    {
+      "id": "m-lgs-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse:\n$x + y + z = 3$\n$x - y = 1$\n$y + z = 1$\nBestimme $x$.",
+      "hint": "Drücke alle Variablen durch eine aus.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "Aus (2): $x = y + 1$. Aus (3): $z = 1 - y$. In (1): $(y+1)+y+(1-y)=3 \\Rightarrow y+2=3 \\Rightarrow y=1$. $x = 2$."
+    },
+    {
+      "id": "m-lgs-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Ist das System $x + 2y = 3$, $2x + 4y = 5$ lösbar?",
+      "options": [
+        "Ja",
+        "Nein"
+      ],
+      "correctIndex": 1,
+      "explanation": "Linkes proportional ($2:1$), rechtes nicht ($5 \\neq 2 \\cdot 3$). Widerspruch — nicht lösbar."
+    },
+    {
+      "id": "m-lgs-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse das System:\n$x + y + z = 6$\n$x - y + z = 4$\n$x + y - z = 2$\nBestimme $z$.",
+      "hint": "Addiere Gleichung (1) und (3).",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "(1)+(3): $2x+2y=8 \\Rightarrow x+y=4$. (1)+(2): $2x+2z=10 \\Rightarrow x+z=5$. Aus (1): $(x+y)+z=6 \\Rightarrow 4+z=6 \\Rightarrow z=2$."
+    },
+    {
+      "id": "m-lgs-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Für welche $k$ hat $2x + ky = 4$, $kx + 2y = 2$ genau eine Lösung?",
+      "options": [
+        "Alle $k$ außer $2$ und $-2$",
+        "Nur $k = 2$",
+        "Nur $k = -2$",
+        "Für alle $k$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\det = 4 - k^2 \\neq 0 \\Rightarrow k^2 \\neq 4 \\Rightarrow k \\neq \\pm 2$."
+    },
+    {
+      "id": "m-lgs-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Nach dem Gauß-Verfahren:\n$x + y + z = 4$\n$y + 2z = 5$\n$3z = 6$\nBestimme $x$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$3z=6 \\Rightarrow z=2$. $y+4=5 \\Rightarrow y=1$. $x+1+2=4 \\Rightarrow x=1$."
+    },
+    {
+      "id": "m-lgs-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse mit Cramer: $2x + y = 5$, $x - y = 1$. Bestimme $x$.",
+      "hint": "$\\det D = 2(-1) - 1(1) = -3$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\det D = -3$. $\\det D_x = \\det\\begin{pmatrix}5&1\\\\1&-1\\end{pmatrix} = -5-1=-6$. $x = \\frac{-6}{-3} = 2$."
+    },
+    {
+      "id": "m-lgs-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse:\n$x + y + z = 6$\n$x + 2y + 3z = 14$\n$2x + 3y + z = 11$\nBestimme $y$.",
+      "hint": "(2)-(1): $y+2z=8$. (3)-2(1): $y-z=-1$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "(2)-(1): $y+2z=8$. (3)-2(1): $y-z=-1$. Subtrahieren: $3z=9 \\Rightarrow z=3$. $y=8-6=2$. $x=1$."
+    },
+    {
+      "id": "m-lgs-ex-09",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie viele Freiheitsgrade hat ein unterbestimmtes LGS mit 2 Gleichungen und 3 Unbekannten (Rang 2)?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$2$",
+        "$3$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Freiheitsgrade $= n - r = 3 - 2 = 1$. Es gibt eine freie Variable, also unendlich viele Lösungen auf einer Geraden."
+    },
+    {
+      "id": "m-lgs-ex-10",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $4x - 3y = 11$, $2x + y = 5$. Bestimme $y$.",
+      "answer": -0.2,
+      "format": "Dezimalzahl",
+      "explanation": "Aus (2): $y = 5 - 2x$. In (1): $4x - 3(5-2x) = 11 \\Rightarrow 10x = 26 \\Rightarrow x = 2{,}6$. $y = 5 - 5{,}2 = -0{,}2$."
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "moduleSlug": "m-ganze-zahlen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-ganze-zahlen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $(-4) + (-6)$?",
+      "hint": "Gleiche Vorzeichen: Beträge addieren.",
+      "answer": -10,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$(-4) + (-6) = -10$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $(-9) + 3$?",
+      "hint": "Verschiedene Vorzeichen: Beträge subtrahieren.",
+      "answer": -6,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$9 - 3 = 6$, Vorzeichen negativ → $-6$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $|{-12}|$?",
+      "hint": "Der Betrag ist immer positiv.",
+      "answer": 12,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$|-12| = 12$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $5 + (-8)$?",
+      "hint": "Verschiedene Vorzeichen.",
+      "answer": -3,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$8 - 5 = 3$, Vorzeichen negativ → $-3$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $(-3) \\cdot 7$?",
+      "hint": "Minus mal Plus ergibt Minus.",
+      "answer": -21,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$(-3) \\cdot 7 = -21$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $(-24) : (-6)$?",
+      "hint": "Minus durch Minus ergibt Plus.",
+      "answer": 4,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$(-24) : (-6) = 4$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $(-5)^2$?",
+      "hint": "Gerader Exponent → positiv.",
+      "answer": 25,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$(-5)^2 = (-5) \\cdot (-5) = 25$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-08",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $8 - (-3)$?",
+      "hint": "Doppeltes Minus wird Plus.",
+      "answer": 11,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$8 + 3 = 11$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $(-2)^5$?",
+      "hint": "Ungerader Exponent → negativ.",
+      "answer": -32,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$(-2)^5 = -32$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $(-3) \\cdot (-4) + (-2) \\cdot 5$?",
+      "hint": "Erst Punktrechnung, dann Strichrechnung.",
+      "answer": 2,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$(-3) \\cdot (-4) = 12$, $(-2) \\cdot 5 = -10$, $12 + (-10) = 2$"
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-ganze-zahlen-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $(-7) \\cdot 6 + 3 \\cdot (-4)$?",
+      "answer": -54,
+      "tolerance": 0,
+      "explanation": "$(-7) \\cdot 6 = -42$, $3 \\cdot (-4) = -12$, $-42 + (-12) = -54$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $(-48) : (-8) - 3 \\cdot (-2)$?",
+      "answer": 12,
+      "tolerance": 0,
+      "explanation": "$(-48) : (-8) = 6$, $3 \\cdot (-2) = -6$, $6 - (-6) = 12$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-03",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $(-3)^3 + (-2)^4$?",
+      "answer": -11,
+      "tolerance": 0,
+      "explanation": "$(-3)^3 = -27$, $(-2)^4 = 16$, $-27 + 16 = -11$"
+    },
+    {
+      "id": "m-ganze-zahlen-ex-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $(-2) \\cdot (-3) \\cdot (-4)$?",
+      "answer": -24,
+      "tolerance": 0,
+      "explanation": "$(-2) \\cdot (-3) = 6$, $6 \\cdot (-4) = -24$"
+    }
+  ]
+}

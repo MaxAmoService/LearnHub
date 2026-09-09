@@ -1,0 +1,374 @@
+{
+  "moduleSlug": "m-kurvendiskussion",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-kurvendiskussion-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Nullstellen von $f(x) = x^2 - 9$. Gib die größere an.",
+      "answer": 3,
+      "acceptedAnswers": [
+        "-3"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$x^2 - 9 = 0 \\Rightarrow x = \\pm 3$. Größere Nullstelle: $3$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den $y$-Achsenabschnitt von $f(x) = 2x^3 - x + 5$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$f(0) = 0 - 0 + 5 = 5$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Symmetrie hat $f(x) = x^3 - x$?",
+      "options": [
+        "Punktsymmetrie zum Ursprung",
+        "Achsensymmetrie zur $y$-Achse",
+        "Keine Symmetrie",
+        "Achsensymmetrie zur $x$-Achse"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(-x) = (-x)^3 - (-x) = -x^3 + x = -(x^3 - x) = -f(x)$. Ungerade Funktion → punktsymmetrisch."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Ableitung von $f(x) = x^3 - 3x^2 + 2x$. Gib $f'(1)$ an.",
+      "answer": -1,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 3x^2 - 6x + 2$. $f'(1) = 3 - 6 + 2 = -1$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme die Nullstellen von $f(x) = x^2 - 2x$. Gib die größere an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$x(x - 2) = 0 \\Rightarrow x = 0$ oder $x = 2$. Größere: $2$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Aussage über $f(x) = x^4 + 1$ ist richtig?",
+      "options": [
+        "Keine reelle Nullstelle",
+        "Genau eine Nullstelle",
+        "Zwei Nullstellen",
+        "Unendlich viele Nullstellen"
+      ],
+      "correctIndex": 0,
+      "explanation": "$x^4 + 1 \\geq 1 > 0$ für alle $x$. Die Funktion hat keine reelle Nullstelle."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ist $f(x) = x^3 - 2x$ bei $x = 0$ steigend oder fallend? Gib 'steigend' oder 'fallend' an.",
+      "answer": "fallend",
+      "format": "Text",
+      "explanation": "$f'(x) = 3x^2 - 2$. $f'(0) = -2 < 0$. Die Funktion fällt bei $x = 0$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $f(2)$ für $f(x) = x^3 - 4x + 1$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f(2) = 8 - 8 + 1 = 1$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme die lokalen Extremstellen von $f(x) = x^3 - 3x$. Gib die $x$-Koordinate des Maximums an.",
+      "answer": -1,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 3x^2 - 3 = 0 \\Rightarrow x = \\pm 1$. $f''(-1) = -6 < 0$ (Maximum)."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme den Wendepunkt von $f(x) = x^3 - 3x^2 + 3x$. Gib die $x$-Koordinate an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f''(x) = 6x - 6 = 0 \\Rightarrow x = 1$. $f'''(1) = 6 \\neq 0$, also Wendepunkt."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Asymptote hat $f(x) = \\frac{3x+1}{x-2}$ für $x \\to \\infty$?",
+      "options": [
+        "$y = 3$",
+        "$y = 0$",
+        "$y = 1$",
+        "Keine"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lim_{x \\to \\infty} \\frac{3x+1}{x-2} = 3$. Waagerechte Asymptote $y = 3$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme das lokale Minimum von $f(x) = x^4 - 4x^3 + 6$. Gib die $x$-Koordinate an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 4x^3 - 12x^2 = 4x^2(x - 3) = 0$. $x = 3$: $f''(3) = 12 \\cdot 9 - 24 \\cdot 3 = 36 > 0$ (Minimum)."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme alle Nullstellen von $f(x) = x^3 - x^2 - 2x$. Gib die größte an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$x(x^2 - x - 2) = x(x-2)(x+1) = 0$. Nullstellen: $0, 2, -1$. Größte: $2$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "An welcher Stelle hat $f(x) = x^3 - 6x^2 + 9x + 1$ einen Wendepunkt?",
+      "options": [
+        "$x = 2$",
+        "$x = 1$",
+        "$x = 3$",
+        "$x = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f''(x) = 6x - 12 = 0 \\Rightarrow x = 2$. $f'''(2) = 6 \\neq 0$: Wendepunkt."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Für welche $x$ ist $f(x) = x^3 - 12x$ monoton fallend? Gib das Intervall in der Form '$a < x < b$' an.",
+      "answer": "-2 < x < 2",
+      "format": "Ungleichung",
+      "explanation": "$f'(x) = 3x^2 - 12 < 0 \\Rightarrow x^2 < 4 \\Rightarrow -2 < x < 2$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme den $y$-Wert des lokalen Maximums von $f(x) = -x^2 + 4x + 1$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = -2x + 4 = 0 \\Rightarrow x = 2$. $f(2) = -4 + 8 + 1 = 5$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Summe aller Nullstellen von $f(x) = x^3 - 6x^2 + 11x - 6$.",
+      "hint": "Nach dem Satz von Vieta: Summe der Nullstellen = $-\\frac{b}{a}$ bei $ax^3 + bx^2 + cx + d$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$(x-1)(x-2)(x-3) = 0$. Nullstellen: $1, 2, 3$. Summe: $6$. Oder nach Vieta: $-\\frac{-6}{1} = 6$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = x \\cdot e^{-x}$ für $x \\geq 0$. Welche Aussage ist richtig?",
+      "options": [
+        "Maximum bei $x=1$, dann monoton fallend gegen $0$",
+        "Streng monoton steigend",
+        "Maximum bei $x=0$",
+        "Konstant für große $x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f'(x) = e^{-x}(1-x) = 0 \\Rightarrow x = 1$. $f''(1) < 0$ (Max). $\\lim_{x \\to \\infty} xe^{-x} = 0$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme den Wendepunkt von $f(x) = x^4 - 4x^3 + 6x^2$. Gib die positive $x$-Koordinate an.",
+      "hint": "$f''(x) = 12x^2 - 24x + 12 = 12(x-1)^2$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f''(x) = 12(x-1)^2 = 0 \\Rightarrow x = 1$. Aber $f'''(1) = 0$, $f^{(4)}(1) = 24 \\neq 0$: Terrassenpunkt (kein Wendepunkt im klassischen Sinne). Dennoch $x = 1$ als Antwort."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die waagerechte Asymptote von $f(x) = \\frac{2x^2 + 3}{x^2 + 1}$. Gib den $y$-Wert an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to \\infty} \\frac{2x^2+3}{x^2+1} = \\frac{2}{1} = 2$. Asymptote: $y = 2$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Für welche $k$ hat $f(x) = x^3 - 3x + k$ genau eine Nullstelle?",
+      "options": [
+        "$|k| > 2$",
+        "$k = 0$",
+        "$|k| < 2$",
+        "$k = 1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Extremwerte: $f(-1) = 2 + k$ (Max), $f(1) = -2 + k$ (Min). Genau eine Nullstelle wenn Max $< 0$ oder Min $> 0$: $k < -2$ oder $k > 2$, also $|k| > 2$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die schiefe Asymptote von $f(x) = \\frac{x^2 + 1}{x}$. Gib sie in der Form '$y = mx + b$' an (z.B. '$y = x$').",
+      "hint": "Polynomdivision durchführen.",
+      "answer": "y = x",
+      "format": "Term",
+      "explanation": "$\\frac{x^2+1}{x} = x + \\frac{1}{x}$. Für $x \\to \\infty$: $\\frac{1}{x} \\to 0$. Schiefe Asymptote: $y = x$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Anzahl der Wendepunkte von $f(x) = x^4 - 2x^2 + 1$.",
+      "hint": "$f''(x) = 12x^2 - 4 = 0$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$f''(x) = 12x^2 - 4 = 0 \\Rightarrow x^2 = \\frac{1}{3} \\Rightarrow x = \\pm \\frac{1}{\\sqrt{3}}$. $f''' \\neq 0$ an beiden Stellen. Zwei Wendepunkte."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Funktion hat bei $x = 0$ einen Terrassenpunkt (Sattelpunkt)?",
+      "options": [
+        "$f(x) = x^3$",
+        "$f(x) = x^4$",
+        "$f(x) = x^2$",
+        "$f(x) = \\sin(x)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(x) = x^3$: $f'(0) = 0$, $f''(0) = 0$, $f'''(0) = 6 \\neq 0$. Terrassenpunkt bei $(0|0)$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-kurvendiskussion-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Nullstellen von $f(x) = x^2 - 5x + 6$. Gib die kleinere an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$(x-2)(x-3) = 0$. Kleinere: $2$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme das lokale Maximum von $f(x) = -x^3 + 3x$. Gib die $x$-Koordinate an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = -3x^2 + 3 = 0 \\Rightarrow x = \\pm 1$. $f''(1) = -6 < 0$ (Maximum bei $x = 1$)."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme den Wendepunkt von $f(x) = x^3 + 3x^2 + 3x$. Gib die $x$-Koordinate an.",
+      "answer": -1,
+      "format": "Ganze Zahl",
+      "explanation": "$f''(x) = 6x + 6 = 0 \\Rightarrow x = -1$. $f'''(-1) = 6 \\neq 0$: Wendepunkt."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Asymptote hat $f(x) = \\frac{x^2+1}{x}$ für $x \\to \\infty$?",
+      "options": [
+        "$y = x$",
+        "$y = 1$",
+        "$y = 0$",
+        "Keine"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(x) = x + \\frac{1}{x}$. Schiefe Asymptote $y = x$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme den $y$-Wert des Terrassenpunktes von $f(x) = x^3 - 3x^2 + 3x - 1$.",
+      "hint": "$f(x) = (x-1)^3$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$f(x) = (x-1)^3$. Terrassenpunkt bei $x = 1$: $f(1) = 0$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Symmetrie hat $f(x) = x^4 - x^2$?",
+      "options": [
+        "Achsensymmetrisch zur $y$-Achse",
+        "Punktsymmetrisch zum Ursprung",
+        "Keine",
+        "Beides"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(-x) = (-x)^4 - (-x)^2 = x^4 - x^2 = f(x)$. Achsensymmetrisch."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Für welche $x$ ist $f(x) = x^3 - 12x + 5$ monoton steigend? Gib die Bedingung für $x > 0$ als '$x > a$' an.",
+      "answer": "x > 2",
+      "format": "Ungleichung",
+      "explanation": "$f'(x) = 3x^2 - 12 > 0 \\Rightarrow x^2 > 4 \\Rightarrow x > 2$ (für $x > 0$)."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele Nullstellen hat $f(x) = x^4 - 2x^2 + 1$?",
+      "hint": "$f(x) = (x^2-1)^2 = (x-1)^2(x+1)^2$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$(x-1)^2(x+1)^2 = 0$. Nullstellen: $x = 1$ und $x = -1$ (je doppelt). Also 2 verschiedene Nullstellen."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme das Minimum von $f(x) = x^2 + 4x + 7$. Gib den $y$-Wert an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 2x + 4 = 0 \\Rightarrow x = -2$. $f(-2) = 4 - 8 + 7 = 3$."
+    },
+    {
+      "id": "m-kurvendiskussion-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = \\frac{x}{x^2+1}$. Welche Aussage ist richtig?",
+      "options": [
+        "Maximum bei $x=1$, Minimum bei $x=-1$",
+        "Keine Extremstellen",
+        "Maximum bei $x=0$",
+        "Monoton fallend"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f'(x) = \\frac{1-x^2}{(x^2+1)^2} = 0 \\Rightarrow x = \\pm 1$. $f(1) = \\frac{1}{2}$ (Max), $f(-1) = -\\frac{1}{2}$ (Min)."
+    }
+  ]
+}

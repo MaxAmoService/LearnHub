@@ -1,0 +1,381 @@
+{
+  "moduleSlug": "m1-reihen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m1-reihen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Partialsumme: $\\sum_{k=1}^{5} k$.",
+      "answer": 15,
+      "format": "Ganze Zahl",
+      "explanation": "$1 + 2 + 3 + 4 + 5 = 15$. Oder Gauß-Formel: $\\frac{5 \\cdot 6}{2} = 15$."
+    },
+    {
+      "id": "m1-reihen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Wert der geometrischen Reihe: $\\sum_{n=0}^{\\infty} \\left(\\frac{1}{4}\\right)^n$.",
+      "answer": "4/3",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Geometrische Reihe mit $q = \\frac{1}{4}$: $\\frac{1}{1 - 1/4} = \\frac{1}{3/4} = \\frac{4}{3}$."
+    },
+    {
+      "id": "m1-reihen-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche dieser Reihen ist eine geometrische Reihe?",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} 3 \\cdot 2^n$",
+        "$\\sum_{n=1}^{\\infty} \\frac{1}{n}$",
+        "$\\sum_{n=1}^{\\infty} n^2$",
+        "$\\sum_{n=0}^{\\infty} \\frac{1}{n!}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\sum 3 \\cdot 2^n$ hat den konstanten Quotienten $q = 2$. Die harmonische Reihe $\\sum \\frac{1}{n}$ und die anderen sind keine geometrischen Reihen."
+    },
+    {
+      "id": "m1-reihen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\sum_{n=1}^{3} \\frac{1}{2^n}$.",
+      "answer": "7/8",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} = \\frac{4+2+1}{8} = \\frac{7}{8}$."
+    },
+    {
+      "id": "m1-reihen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist das $n$-te Glied der Reihe $\\sum_{n=0}^{\\infty} a_n$ mit $a_n = \\frac{1}{3^n}$? Berechne $a_3$.",
+      "answer": "1/27",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$a_3 = \\frac{1}{3^3} = \\frac{1}{27}$."
+    },
+    {
+      "id": "m1-reihen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Konvergiert die Reihe $\\sum_{n=1}^{\\infty} \\frac{1}{n}$?",
+      "options": [
+        "Ja, gegen $1$",
+        "Nein, sie divergiert",
+        "Ja, gegen $0$",
+        "Ja, gegen $e$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die harmonische Reihe $\\sum \\frac{1}{n}$ divergiert. Das ist ein klassisches Ergebnis (Integral- oder Vergleichskriterium)."
+    },
+    {
+      "id": "m1-reihen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\sum_{k=0}^{4} (-1)^k$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$1 - 1 + 1 - 1 + 1 = 1$. Alternierende Summe mit 5 Gliedern."
+    },
+    {
+      "id": "m1-reihen-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Wert der geometrischen Reihe: $\\sum_{n=1}^{\\infty} \\left(\\frac{1}{5}\\right)^n$.",
+      "answer": "1/4",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\sum_{n=1}^{\\infty} q^n = \\frac{q}{1-q} = \\frac{1/5}{4/5} = \\frac{1}{4}$."
+    },
+    {
+      "id": "m1-reihen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\left(\\frac{3}{4}\\right)^n$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\sum_{n=1}^{\\infty} q^n = \\frac{q}{1-q} = \\frac{3/4}{1/4} = 3$."
+    },
+    {
+      "id": "m1-reihen-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Konvergenzkriterium eignet sich für $\\sum_{n=1}^{\\infty} \\frac{n^2}{3^n}$?",
+      "options": [
+        "Quotientenkriterium",
+        "Leibniz-Kriterium",
+        "Integralkriterium",
+        "Trivialkriterium"
+      ],
+      "correctIndex": 0,
+      "explanation": "Quotientenkriterium: $\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{(n+1)^2}{3^{n+1}} \\cdot \\frac{3^n}{n^2} = \\frac{(n+1)^2}{3n^2} \\to \\frac{1}{3} < 1$. Konvergent."
+    },
+    {
+      "id": "m1-reihen-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Konvergiert $\\sum_{n=1}^{\\infty} \\frac{1}{n^3}$? Gib 'ja' oder 'nein' an.",
+      "answer": "ja",
+      "format": "ja oder nein",
+      "explanation": "Ja, nach dem $p$-Test (oder Integralkriterium): $\\sum \\frac{1}{n^p}$ konvergiert für $p > 1$. Hier $p = 3 > 1$."
+    },
+    {
+      "id": "m1-reihen-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Für welche Werte von $x$ konvergiert $\\sum_{n=0}^{\\infty} x^n$?",
+      "options": [
+        "$|x| < 1$",
+        "$|x| \\leq 1$",
+        "$x > 0$",
+        "Für alle $x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die geometrische Reihe $\\sum x^n$ konvergiert genau dann, wenn $|x| < 1$ (Konvergenzradius $R = 1$)."
+    },
+    {
+      "id": "m1-reihen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=0}^{\\infty} \\frac{1}{2^{n+1}}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\sum_{n=0}^{\\infty} \\frac{1}{2^{n+1}} = \\frac{1}{2} \\sum_{n=0}^{\\infty} \\frac{1}{2^n} = \\frac{1}{2} \\cdot 2 = 1$."
+    },
+    {
+      "id": "m1-reihen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\frac{2}{n(n+1)}$. Hinweis: Partialbruchzerlegung.",
+      "hint": "$\\frac{2}{n(n+1)} = 2\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right)$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "Teleskopsumme: $2\\sum\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) = 2(1 - 0) = 2$."
+    },
+    {
+      "id": "m1-reihen-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche der folgenden Reihen divergiert?",
+      "options": [
+        "$\\sum_{n=1}^{\\infty} \\frac{1}{n^2}$",
+        "$\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}$",
+        "$\\sum_{n=0}^{\\infty} \\frac{1}{2^n}$",
+        "$\\sum_{n=0}^{\\infty} \\frac{1}{n!}$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\sum \\frac{1}{\\sqrt{n}} = \\sum \\frac{1}{n^{1/2}}$ mit $p = \\frac{1}{2} \\leq 1$: divergiert nach dem $p$-Test."
+    },
+    {
+      "id": "m1-reihen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Partialsumme: $\\sum_{k=1}^{6} (2k - 1)$.",
+      "answer": 36,
+      "format": "Ganze Zahl",
+      "explanation": "$1 + 3 + 5 + 7 + 9 + 11 = 36$. Alternativ: Summe der ersten $n$ ungeraden Zahlen ist $n^2 = 36$."
+    },
+    {
+      "id": "m1-reihen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Reihensumme: $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)(n+2)}$.",
+      "hint": "Partialbruchzerlegung: $\\frac{1}{n(n+1)(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n} - \\frac{2}{n+1} + \\frac{1}{n+2}\\right)$.",
+      "answer": "1/4",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "Teleskopsumme: $\\frac{1}{2}\\sum\\left(\\frac{1}{n} - \\frac{2}{n+1} + \\frac{1}{n+2}\\right) = \\frac{1}{2}\\left(1 - \\frac{1}{2}\\right) = \\frac{1}{4}$."
+    },
+    {
+      "id": "m1-reihen-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Konvergenzradius der Potenzreihe $\\sum_{n=0}^{\\infty} \\frac{x^n}{n+1}$?",
+      "options": [
+        "$R = 1$",
+        "$R = 0$",
+        "$R = \\infty$",
+        "$R = 2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$R = \\lim_{n \\to \\infty} \\left|\\frac{a_n}{a_{n+1}}\\right| = \\lim \\frac{n+2}{n+1} = 1$. Konvergenzradius $R = 1$."
+    },
+    {
+      "id": "m1-reihen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Wert: $\\sum_{n=0}^{\\infty} \\frac{(-1)^n}{2n+1}$. (Leibniz-Reihe für $\\pi$)",
+      "hint": "Die Leibniz-Reihe: $\\frac{\\pi}{4} = 1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\cdots$.",
+      "answer": "pi/4",
+      "format": "Term",
+      "explanation": "$\\sum_{n=0}^{\\infty} \\frac{(-1)^n}{2n+1} = \\frac{\\pi}{4}$ (Leibniz-Formel für $\\pi$)."
+    },
+    {
+      "id": "m1-reihen-ex-20",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Reihe $\\sum_{n=1}^{\\infty} \\frac{3^n}{n!}$ konvergiert gegen welchen Wert?",
+      "options": [
+        "$e^3 - 1$",
+        "$e^3$",
+        "$3e$",
+        "$e - 1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$e^3 = \\sum_{n=0}^{\\infty} \\frac{3^n}{n!} = 1 + \\sum_{n=1}^{\\infty} \\frac{3^n}{n!}$. Also $\\sum_{n=1}^{\\infty} \\frac{3^n}{n!} = e^3 - 1$."
+    },
+    {
+      "id": "m1-reihen-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Approximiere $e$ mit den ersten 6 Gliedern ($n = 0$ bis $5$) der Exponentialreihe. Gib auf 4 Dezimalstellen an.",
+      "hint": "$e = \\sum_{n=0}^{\\infty} \\frac{1}{n!}$.",
+      "answer": 2.7167,
+      "tolerance": 0.002,
+      "format": "Dezimalzahl",
+      "explanation": "$1 + 1 + \\frac{1}{2} + \\frac{1}{6} + \\frac{1}{24} + \\frac{1}{120} = 2{,}71667 \\approx 2{,}7167$."
+    },
+    {
+      "id": "m1-reihen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Konvergenzradius von $\\sum_{n=0}^{\\infty} \\frac{x^n}{2^n}$.",
+      "hint": "$a_n = \\frac{1}{2^n}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$R = \\lim \\left|\\frac{a_n}{a_{n+1}}\\right| = \\lim \\frac{2^{n+1}}{2^n} = 2$."
+    },
+    {
+      "id": "m1-reihen-ex-23",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Reihe stellt die Funktion $\\frac{1}{1+x}$ dar (für $|x| < 1$)?",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} (-1)^n x^n$",
+        "$\\sum_{n=0}^{\\infty} x^n$",
+        "$\\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$",
+        "$\\sum_{n=0}^{\\infty} (-1)^n \\frac{x^{2n+1}}{(2n+1)!}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{1}{1+x} = \\frac{1}{1-(-x)} = \\sum_{n=0}^{\\infty} (-x)^n = \\sum_{n=0}^{\\infty} (-1)^n x^n$ für $|x| < 1$."
+    },
+    {
+      "id": "m1-reihen-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Schätze den Fehler ab, wenn $\\sum_{n=0}^{\\infty} \\frac{1}{n!}$ durch die ersten 4 Glieder ($n = 0$ bis $3$) approximiert wird. Gib die Fehlerschranke als Bruch an.",
+      "hint": "Restglied: $R_3 = \\sum_{n=4}^{\\infty} \\frac{1}{n!} < \\frac{1}{4!} \\cdot \\frac{1}{1 - 1/5}$.",
+      "answer": "1/24",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$R_3 = \\frac{1}{24} + \\frac{1}{120} + \\cdots < \\frac{1}{24} \\cdot \\frac{1}{1-1/5} = \\frac{1}{24} \\cdot \\frac{5}{4} = \\frac{5}{96}$. Einfache Schranke: $\\frac{1}{24}$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m1-reihen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\sum_{n=0}^{\\infty} \\left(\\frac{2}{5}\\right)^n$.",
+      "answer": "5/3",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{1}{1-2/5} = \\frac{1}{3/5} = \\frac{5}{3}$."
+    },
+    {
+      "id": "m1-reihen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\frac{3}{4^n}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$3 \\sum_{n=1}^{\\infty} \\frac{1}{4^n} = 3 \\cdot \\frac{1/4}{3/4} = 3 \\cdot \\frac{1}{3} = 1$."
+    },
+    {
+      "id": "m1-reihen-ex-03",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Konvergiert $\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}$?",
+      "options": [
+        "Ja, nach dem Leibniz-Kriterium",
+        "Nein, sie divergiert",
+        "Ja, gegen $0$",
+        "Man kann es nicht entscheiden"
+      ],
+      "correctIndex": 0,
+      "explanation": "Leibniz: $\\frac{1}{n}$ ist monoton fallend gegen $0$. Die alternierende harmonische Reihe konvergiert (gegen $\\ln 2$)."
+    },
+    {
+      "id": "m1-reihen-ex-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Konvergenzradius von $\\sum_{n=0}^{\\infty} \\frac{x^n}{(n+1)^2}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$R = \\lim \\frac{a_n}{a_{n+1}} = \\lim \\frac{(n+2)^2}{(n+1)^2} = 1$."
+    },
+    {
+      "id": "m1-reihen-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Sinus-Reihe: $\\sin(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!}$. Was sind die ersten drei Glieder?",
+      "options": [
+        "$x - \\frac{x^3}{6} + \\frac{x^5}{120}$",
+        "$x - \\frac{x^3}{3} + \\frac{x^5}{5}$",
+        "$1 - \\frac{x^2}{2} + \\frac{x^4}{24}$",
+        "$x + \\frac{x^3}{6} + \\frac{x^5}{120}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$n=0$: $x$. $n=1$: $-\\frac{x^3}{6}$. $n=2$: $\\frac{x^5}{120}$. Also $x - \\frac{x^3}{6} + \\frac{x^5}{120}$."
+    },
+    {
+      "id": "m1-reihen-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Partialsumme: $\\sum_{k=1}^{4} k^2$.",
+      "answer": 30,
+      "format": "Ganze Zahl",
+      "explanation": "$1 + 4 + 9 + 16 = 30$."
+    },
+    {
+      "id": "m1-reihen-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$.",
+      "hint": "Partialbruch: $\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "Teleskopsumme: $\\sum (\\frac{1}{n} - \\frac{1}{n+1}) = 1 - 0 = 1$."
+    },
+    {
+      "id": "m1-reihen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Approximiere $\\cos(0{,}5)$ mit den ersten 3 Gliedern der Kosinus-Reihe. Gib auf 3 Dezimalstellen an.",
+      "hint": "$\\cos(x) \\approx 1 - \\frac{x^2}{2} + \\frac{x^4}{24}$.",
+      "answer": 0.878,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$1 - \\frac{0{,}25}{2} + \\frac{0{,}0625}{24} = 1 - 0{,}125 + 0{,}00260 = 0{,}87760 \\approx 0{,}878$."
+    },
+    {
+      "id": "m1-reihen-ex-09",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Aussage über die Reihe $\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^2}$ ist korrekt?",
+      "options": [
+        "Sie konvergiert absolut",
+        "Sie konvergiert nur bedingt",
+        "Sie divergiert",
+        "Man kann es nicht entscheiden"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\sum \\left|\\frac{(-1)^n}{n^2}\\right| = \\sum \\frac{1}{n^2}$ konvergiert ($p$-Test, $p = 2 > 1$). Also absolut konvergent."
+    },
+    {
+      "id": "m1-reihen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Für welche $x$ konvergiert $\\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$? Gib den Konvergenzradius an.",
+      "hint": "Quotientenkriterium anwenden.",
+      "answer": "unendlich",
+      "format": "Text",
+      "explanation": "$R = \\lim \\frac{a_n}{a_{n+1}} = \\lim \\frac{(n+1)!}{n!} = \\lim (n+1) = \\infty$. Die Reihe konvergiert für alle $x$."
+    }
+  ]
+}

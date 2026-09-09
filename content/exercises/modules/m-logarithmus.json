@@ -1,0 +1,360 @@
+{
+  "moduleSlug": "m-logarithmus",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-logarithmus-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\log_2(64)$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$2^6 = 64$, also $\\log_2(64) = 6$."
+    },
+    {
+      "id": "m-logarithmus-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\log_{10}(100)$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$10^2 = 100$, also $\\log_{10}(100) = 2$."
+    },
+    {
+      "id": "m-logarithmus-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\log_5(5)$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$5$",
+        "undefiniert"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\log_a(a) = 1$ für jede Basis $a$, denn $a^1 = a$."
+    },
+    {
+      "id": "m-logarithmus-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\ln(1)$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\ln(1) = \\log_e(1) = 0$, denn $e^0 = 1$. Jeder Logarithmus von $1$ ist $0$."
+    },
+    {
+      "id": "m-logarithmus-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\log_3(81)$.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$3^4 = 81$, also $\\log_3(81) = 4$."
+    },
+    {
+      "id": "m-logarithmus-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\log_7(1)$?",
+      "options": [
+        "$1$",
+        "$7$",
+        "$0$",
+        "undefiniert"
+      ],
+      "correctIndex": 2,
+      "explanation": "$7^0 = 1$, also $\\log_7(1) = 0$."
+    },
+    {
+      "id": "m-logarithmus-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\log_{10}(0{,}01)$.",
+      "answer": -2,
+      "format": "Ganze Zahl",
+      "explanation": "$10^{-2} = 0{,}01$, also $\\log_{10}(0{,}01) = -2$."
+    },
+    {
+      "id": "m-logarithmus-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\ln(e^5)$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$\\ln$ und $e^x$ sind Umkehrfunktionen: $\\ln(e^5) = 5$."
+    },
+    {
+      "id": "m-logarithmus-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache: $\\log_2(8) + \\log_2(4)$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_2(8) = 3$ und $\\log_2(4) = 2$. Summe: $3 + 2 = 5$. Alternativ: $\\log_2(32) = 5$."
+    },
+    {
+      "id": "m-logarithmus-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache: $\\log_5(125) - \\log_5(25)$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_5(125) = 3$ und $\\log_5(25) = 2$. Differenz: $3 - 2 = 1$."
+    },
+    {
+      "id": "m-logarithmus-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\log_2(2^7)$?",
+      "options": [
+        "$2$",
+        "$7$",
+        "$14$",
+        "$128$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Potenzregel: $\\log_a(a^n) = n$. Also $\\log_2(2^7) = 7$."
+    },
+    {
+      "id": "m-logarithmus-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\log_4(64)$ mithilfe der Basiswechsel-Formel. Gib das Ergebnis als Dezimalzahl an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_4(64) = \\frac{\\ln 64}{\\ln 4} = \\frac{\\ln(4^3)}{\\ln 4} = \\frac{3 \\cdot \\ln 4}{\\ln 4} = 3$. Probe: $4^3 = 64$ ✓"
+    },
+    {
+      "id": "m-logarithmus-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache: $2 \\cdot \\log_3(9)$.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_3(9) = 2$. Also $2 \\cdot 2 = 4$. Alternativ: $\\log_3(9^2) = \\log_3(81) = 4$."
+    },
+    {
+      "id": "m-logarithmus-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\log_2(8 \\cdot 16)$?",
+      "options": [
+        "$7$",
+        "$24$",
+        "$128$",
+        "$5$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\log_2(8 \\cdot 16) = \\log_2(8) + \\log_2(16) = 3 + 4 = 7$. Oder: $8 \\cdot 16 = 128 = 2^7$."
+    },
+    {
+      "id": "m-logarithmus-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\log_4(8)$ als Dezimalzahl.",
+      "answer": 1.5,
+      "format": "Dezimalzahl (z.B. 2.5)",
+      "explanation": "$\\log_4(8) = \\frac{\\ln 8}{\\ln 4} = \\frac{3 \\ln 2}{2 \\ln 2} = \\frac{3}{2} = 1{,}5$."
+    },
+    {
+      "id": "m-logarithmus-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache: $e^{\\ln(7)}$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$e^{\\ln(x)} = x$, da $e^x$ und $\\ln$ Umkehrfunktionen sind. Also $e^{\\ln(7)} = 7$."
+    },
+    {
+      "id": "m-logarithmus-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $\\log_2(x) = 5$.",
+      "hint": "Wandle in eine Potenzgleichung um.",
+      "answer": 32,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_2(x) = 5 \\Rightarrow x = 2^5 = 32$."
+    },
+    {
+      "id": "m-logarithmus-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $e^x = 100$. Gib $x$ auf zwei Dezimalstellen gerundet an.",
+      "hint": "Wende den natürlichen Logarithmus auf beiden Seiten an.",
+      "answer": 4.61,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl (z.B. 2.50)",
+      "explanation": "$e^x = 100 \\Rightarrow x = \\ln(100) \\approx 4{,}605 \\approx 4{,}61$."
+    },
+    {
+      "id": "m-logarithmus-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $\\log_3(x) + \\log_3(9) = 5$.",
+      "hint": "Berechne zuerst $\\log_3(9)$ und forme dann um.",
+      "answer": 27,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_3(x) + 2 = 5 \\Rightarrow \\log_3(x) = 3 \\Rightarrow x = 3^3 = 27$. Probe: $\\log_3(27) + \\log_3(9) = 3 + 2 = 5$ ✓"
+    },
+    {
+      "id": "m-logarithmus-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $2^x = 64$.",
+      "hint": "Schreibe 64 als Potenz von 2.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$64 = 2^6$, also $2^x = 2^6 \\Rightarrow x = 6$."
+    },
+    {
+      "id": "m-logarithmus-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Löse: $\\log_2(x) + \\log_2(x - 2) = 3$. Welche Lösung ist gültig?",
+      "options": [
+        "$x = 4$",
+        "$x = -2$",
+        "$x = 2$",
+        "$x = 8$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Produktregel: $\\log_2(x(x-2)) = 3 \\Rightarrow x^2-2x=8 \\Rightarrow x=4$ oder $x=-2$. Da $\\log_2(-2)$ nicht definiert ist, gilt nur $x=4$."
+    },
+    {
+      "id": "m-logarithmus-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $\\ln(x) = 2$. Gib $x$ auf eine Dezimalstelle gerundet an.",
+      "answer": 7.4,
+      "tolerance": 0.1,
+      "format": "Dezimalzahl (z.B. 2.5)",
+      "explanation": "$\\ln(x) = 2 \\Rightarrow x = e^2 \\approx 7{,}389 \\approx 7{,}4$."
+    },
+    {
+      "id": "m-logarithmus-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $10^x = 0{,}001$.",
+      "hint": "Schreibe 0,001 als Potenz von 10.",
+      "answer": -3,
+      "format": "Ganze Zahl",
+      "explanation": "$0{,}001 = 10^{-3}$, also $10^x = 10^{-3} \\Rightarrow x = -3$. Alternativ: $x = \\log_{10}(0{,}001) = -3$."
+    },
+    {
+      "id": "m-logarithmus-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $\\log_5(x) = -1$.",
+      "answer": 0.2,
+      "format": "Dezimalzahl (z.B. 0.5)",
+      "explanation": "$\\log_5(x) = -1 \\Rightarrow x = 5^{-1} = \\frac{1}{5} = 0{,}2$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-logarithmus-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\log_3(27)$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$3^3 = 27$, also $\\log_3(27) = 3$."
+    },
+    {
+      "id": "m-logarithmus-ex-02",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\log_{10}(1)$?",
+      "options": [
+        "$1$",
+        "$10$",
+        "$0$",
+        "undefiniert"
+      ],
+      "correctIndex": 2,
+      "explanation": "$10^0 = 1$, also $\\log_{10}(1) = 0$. Jeder Logarithmus von $1$ ist $0$."
+    },
+    {
+      "id": "m-logarithmus-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache: $\\log_2(32) - \\log_2(4)$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_2(32) = 5$ und $\\log_2(4) = 2$. Differenz: $5 - 2 = 3$."
+    },
+    {
+      "id": "m-logarithmus-ex-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\log_a(a^5)$?",
+      "options": [
+        "$a$",
+        "$5a$",
+        "$5$",
+        "$a^5$"
+      ],
+      "correctIndex": 2,
+      "explanation": "Potenzregel: $\\log_a(a^n) = n$. Also $\\log_a(a^5) = 5$."
+    },
+    {
+      "id": "m-logarithmus-ex-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\log_9(27)$ mithilfe der Basiswechsel-Formel. Gib das Ergebnis als Dezimalzahl an.",
+      "answer": 1.5,
+      "format": "Dezimalzahl (z.B. 2.5)",
+      "explanation": "$\\log_9(27) = \\frac{\\ln 27}{\\ln 9} = \\frac{3 \\ln 3}{2 \\ln 3} = \\frac{3}{2} = 1{,}5$. Probe: $9^{1,5} = 9 \\cdot 3 = 27$ ✓"
+    },
+    {
+      "id": "m-logarithmus-ex-06",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $\\log_2(x) = 6$.",
+      "answer": 64,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_2(x) = 6 \\Rightarrow x = 2^6 = 64$."
+    },
+    {
+      "id": "m-logarithmus-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $3^x = 81$.",
+      "hint": "Schreibe 81 als Potenz von 3.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$81 = 3^4$, also $3^x = 3^4 \\Rightarrow x = 4$."
+    },
+    {
+      "id": "m-logarithmus-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $\\log_4(x) - \\log_4(2) = 2$.",
+      "hint": "Fasse die linke Seite mit der Quotientenregel zusammen.",
+      "answer": 32,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_4\\!\\left(\\frac{x}{2}\\right) = 2 \\Rightarrow \\frac{x}{2} = 4^2 = 16 \\Rightarrow x = 32$. Probe: $\\log_4(32) - \\log_4(2) = \\log_4(16) = 2$ ✓"
+    },
+    {
+      "id": "m-logarithmus-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $e^x = 50$. Gib $x$ auf zwei Dezimalstellen gerundet an.",
+      "answer": 3.91,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl (z.B. 2.50)",
+      "explanation": "$x = \\ln(50) \\approx 3{,}912 \\approx 3{,}91$."
+    },
+    {
+      "id": "m-logarithmus-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache: $\\log_5(25) + \\log_5(5)$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\log_5(25) = 2$ und $\\log_5(5) = 1$. Summe: $2 + 1 = 3$."
+    }
+  ]
+}

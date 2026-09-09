@@ -1,7 +1,7 @@
 // Tests für die Mathe-Konvertierung (lib/exercises/convertMath.ts).
 
 import { describe, expect, it } from "vitest";
-import { convertMathExercise } from "@/lib/exercises/convertMath";
+import { convertMathExercise, convertModuleExercise } from "@/lib/exercises/convertMath";
 import type { LegacyMathExercise } from "@/lib/exercises/convertMath";
 
 function base(overrides: Partial<LegacyMathExercise>): LegacyMathExercise {
@@ -124,5 +124,97 @@ describe("convertMathExercise", () => {
     if (ex.type !== "recall") throw new Error("unreachable");
     expect(ex.keyPoints.length).toBeGreaterThan(0);
     expect(ex.keyPoints[0]).toBe("Kurze Lösung ohne Punkt");
+  });
+});
+
+// ─── Modul-Variante (convertModuleExercise) ─────────────────────────────────
+
+describe("convertModuleExercise", () => {
+  it("mappt multiple → choice auch mit 2 Optionen", () => {
+    const ex = convertModuleExercise(
+      {
+        id: "q-1",
+        difficulty: 2,
+        type: "multiple",
+        question: "Ja oder Nein?",
+        options: [
+          { label: "Ja", value: "a" },
+          { label: "Nein", value: "b" },
+        ],
+        correctOption: "b",
+        solution: "Weil Nein.",
+      },
+      "m-test",
+      0
+    );
+    expect(ex.type).toBe("choice");
+    if (ex.type !== "choice") throw new Error("unreachable");
+    expect(ex.options).toEqual(["Ja", "Nein"]);
+    expect(ex.correctIndex).toBe(1);
+    expect(ex.explanation).toBe("Weil Nein.");
+  });
+
+  it("mappt numerische input → numeric number mit acceptedAnswers + tolerance", () => {
+    const ex = convertModuleExercise(
+      {
+        id: "q-2",
+        difficulty: 2,
+        type: "input",
+        question: "x²-2x-8=0, kleinere Lösung?",
+        expectedAnswer: "-2",
+        acceptedAnswers: ["4"],
+        tolerance: 0.01,
+        hint: "Faktorisieren.",
+        format: "Ganze Zahl",
+        solution: "(x-4)(x+2)=0.",
+      },
+      "m-test",
+      1
+    );
+    expect(ex.type).toBe("numeric");
+    if (ex.type !== "numeric") throw new Error("unreachable");
+    expect(ex.answer).toBe(-2);
+    expect(ex.acceptedAnswers).toEqual(["4"]);
+    expect(ex.tolerance).toBe(0.01);
+    expect(ex.hint).toBe("Faktorisieren.");
+    expect(ex.format).toBe("Ganze Zahl");
+    expect(ex.explanation).toBe("(x-4)(x+2)=0.");
+  });
+
+  it("mappt nicht-numerische input → numeric mit String-Antwort (exakter Vergleich wie bisher)", () => {
+    const ex = convertModuleExercise(
+      {
+        id: "q-3",
+        difficulty: 1,
+        type: "input",
+        question: "Bruch?",
+        expectedAnswer: "3/4",
+        solution: "Gekürzt.",
+      },
+      "m-test",
+      2
+    );
+    expect(ex.type).toBe("numeric");
+    if (ex.type !== "numeric") throw new Error("unreachable");
+    expect(ex.answer).toBe("3/4");
+  });
+
+  it("wirft bei input ohne expectedAnswer", () => {
+    expect(() =>
+      convertModuleExercise(
+        { id: "q-4", difficulty: 1, type: "input", question: "?", solution: "x." },
+        "m-test",
+        3
+      )
+    ).toThrow(/ohne expectedAnswer/);
+  });
+
+  it("vergibt fortlaufende IDs pro Modul", () => {
+    const a = convertModuleExercise(
+      { id: "q-5", difficulty: 1, type: "input", question: "?", expectedAnswer: "1", solution: "x." },
+      "m-test",
+      7
+    );
+    expect(a.id).toBe("m-test-ex-08");
   });
 });

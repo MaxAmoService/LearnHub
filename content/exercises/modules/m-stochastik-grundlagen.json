@@ -1,0 +1,364 @@
+{
+  "moduleSlug": "m-stochastik-grundlagen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-stochastik-grundlagen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein fairer Würfel wird einmal geworfen. Wie groß ist die Wahrscheinlichkeit, eine Zahl größer oder gleich 5 zu würfeln? Gib als Bruch an (z.B. 1/3).",
+      "answer": "1/3",
+      "format": "Bruch wie 1/3",
+      "explanation": "Günstige Ergebnisse: $\\{5, 6\\}$ (2 von 6). $P = \\frac{2}{6} = \\frac{1}{3}$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Eine faire Münze wird zweimal geworfen. Wie groß ist die Wahrscheinlichkeit für mindestens einmal Kopf? Gib als Bruch an (z.B. 3/4).",
+      "hint": "Gegenereignis: beide Male Zahl.",
+      "answer": "3/4",
+      "format": "Bruch wie 3/4",
+      "explanation": "$P(\\text{mind. 1} \\times K) = 1 - P(2 \\times Z) = 1 - \\frac{1}{4} = \\frac{3}{4}$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "In einer Urne sind 3 rote und 7 blaue Kugeln. Wie groß ist $P(\\text{rot})$ beim einmaligen Ziehen? Gib als Dezimalzahl an.",
+      "answer": 0.3,
+      "format": "Dezimalzahl",
+      "explanation": "$P(\\text{rot}) = \\frac{3}{10} = 0{,}3$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "$P(A) = 0{,}15$. Wie groß ist $P(\\overline{A})$ (Komplementärereignis)?",
+      "answer": 0.85,
+      "format": "Dezimalzahl",
+      "explanation": "$P(\\overline{A}) = 1 - P(A) = 1 - 0{,}15 = 0{,}85$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein fairer Würfel wird geworfen. Wie groß ist die Wahrscheinlichkeit für eine gerade Augenzahl? Gib als Bruch an (z.B. 1/2).",
+      "answer": "1/2",
+      "format": "Bruch wie 1/2",
+      "explanation": "Gerade Zahlen: $\\{2, 4, 6\\}$ (3 von 6). $P = \\frac{3}{6} = \\frac{1}{2}$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welches Ereignis ist sicher (Wahrscheinlichkeit $= 1$)?",
+      "options": [
+        "Eine Münze zeigt Kopf",
+        "Ein Würfel zeigt eine Zahl $\\leq 6$",
+        "Ein Würfel zeigt eine $7$",
+        "Es regnet morgen"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ein Würfel zeigt immer eine Zahl zwischen 1 und 6, also ist $P(\\leq 6) = 1$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Eine Urne enthält 5 rote und 15 blaue Kugeln. Wie groß ist $P(\\text{rot})$ beim einmaligen Ziehen? Gib als Dezimalzahl an.",
+      "answer": 0.25,
+      "format": "Dezimalzahl",
+      "explanation": "$P(\\text{rot}) = \\frac{5}{20} = \\frac{1}{4} = 0{,}25$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Kartenspiel hat 32 Karten. Wie groß ist die Wahrscheinlichkeit, eine Herz-Karte zu ziehen (8 Herz-Karten)? Gib als Bruch an.",
+      "answer": "1/4",
+      "format": "Bruch wie 1/4",
+      "explanation": "$P(\\text{Herz}) = \\frac{8}{32} = \\frac{1}{4}$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$P(A) = 0{,}3$, $P(B) = 0{,}5$. $A$ und $B$ sind unabhängig. Berechne $P(A \\cap B)$.",
+      "hint": "Bei Unabhängigkeit: $P(A \\cap B) = P(A) \\cdot P(B)$.",
+      "answer": 0.15,
+      "format": "Dezimalzahl",
+      "explanation": "$P(A \\cap B) = 0{,}3 \\cdot 0{,}5 = 0{,}15$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$P(A) = 0{,}4$, $P(B \\mid A) = 0{,}6$. Berechne $P(A \\cap B)$.",
+      "hint": "$P(A \\cap B) = P(A) \\cdot P(B \\mid A)$.",
+      "answer": 0.24,
+      "format": "Dezimalzahl",
+      "explanation": "$P(A \\cap B) = 0{,}4 \\cdot 0{,}6 = 0{,}24$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Würfel wird zweimal geworfen. Wie groß ist die Wahrscheinlichkeit für die Augensumme $7$?",
+      "options": [
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{12}$",
+        "$\\frac{7}{36}$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Günstige Paare: $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$ — 6 von 36. $P = \\frac{6}{36} = \\frac{1}{6}$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "In einer Urne sind 4 rote und 6 blaue Kugeln. Zwei Ziehungen ohne Zurücklegen. Berechne $P(\\text{beide rot})$ als Dezimalzahl.",
+      "hint": "$P = \\frac{4}{10} \\cdot \\frac{3}{9}$.",
+      "answer": 0.13,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl",
+      "explanation": "$P = \\frac{4}{10} \\cdot \\frac{3}{9} = \\frac{12}{90} = 0{,}133 \\approx 0{,}13$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Würfel wird dreimal geworfen. Berechne $P(\\text{beide Male eine } 6)$ für die ersten zwei Würfe als Bruch.",
+      "answer": "1/36",
+      "format": "Bruch wie 1/36",
+      "explanation": "$P = \\frac{1}{6} \\cdot \\frac{1}{6} = \\frac{1}{36}$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$P(A) = 0{,}5$, $P(B) = 0{,}3$, $A$ und $B$ sind unabhängig. Berechne $P(A \\cup B)$ als Dezimalzahl.",
+      "hint": "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.",
+      "answer": 0.65,
+      "format": "Dezimalzahl",
+      "explanation": "$P(A \\cap B) = 0{,}5 \\cdot 0{,}3 = 0{,}15$. $P(A \\cup B) = 0{,}5 + 0{,}3 - 0{,}15 = 0{,}65$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was bedeutet es, wenn $P(A \\mid B) = P(A)$?",
+      "options": [
+        "$A$ und $B$ sind unabhängig",
+        "$A$ und $B$ sind disjunkt",
+        "$A$ und $B$ sind identisch",
+        "$A$ ist unmöglich"
+      ],
+      "correctIndex": 0,
+      "explanation": "Wenn $P(A \\mid B) = P(A)$, dann hat das Eintreten von $B$ keinen Einfluss auf $A$. Das ist die Definition von Unabhängigkeit."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$P(A \\cup B) = 0{,}7$, $P(A) = 0{,}4$, $P(A \\cap B) = 0{,}1$. Berechne $P(B)$.",
+      "hint": "Additionsregel umstellen.",
+      "answer": 0.4,
+      "format": "Dezimalzahl",
+      "explanation": "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. $0{,}7 = 0{,}4 + P(B) - 0{,}1 \\Rightarrow P(B) = 0{,}4$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-17",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Gegeben: $P(A) = 0{,}6$, $P(B) = 0{,}5$, $P(A \\cup B) = 0{,}8$. Sind $A$ und $B$ unabhängig?",
+      "hint": "Berechne $P(A \\cap B)$ und vergleiche mit $P(A) \\cdot P(B)$.",
+      "options": [
+        "Ja",
+        "Nein"
+      ],
+      "correctIndex": 0,
+      "explanation": "$P(A \\cap B) = 0{,}6 + 0{,}5 - 0{,}8 = 0{,}3$. $P(A) \\cdot P(B) = 0{,}3$. Übereinstimmung, also unabhängig."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Urne: 4 rote, 6 blaue Kugeln. Zwei Ziehungen mit Zurücklegen. Berechne $P(\\text{erst rot, dann blau})$ als Dezimalzahl.",
+      "hint": "Mit Zurücklegen bleiben die Wahrscheinlichkeiten gleich.",
+      "answer": 0.24,
+      "format": "Dezimalzahl",
+      "explanation": "$P = \\frac{4}{10} \\cdot \\frac{6}{10} = 0{,}4 \\cdot 0{,}6 = 0{,}24$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "$P(A) = 0{,}2$, $P(B) = 0{,}3$, $P(A \\mid B) = 0{,}4$. Berechne $P(A \\cap B)$ als Dezimalzahl.",
+      "hint": "$P(A \\cap B) = P(B) \\cdot P(A \\mid B)$.",
+      "answer": 0.12,
+      "format": "Dezimalzahl",
+      "explanation": "$P(A \\cap B) = 0{,}3 \\cdot 0{,}4 = 0{,}12$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "In einer Klasse sind $60\\%$ Jungen und $40\\%$ Mädchen. $30\\%$ der Jungen und $50\\%$ der Mädchen tragen eine Brille. Berechne $P(\\text{Brille})$ insgesamt als Dezimalzahl.",
+      "hint": "Satz der totalen Wahrscheinlichkeit: $P(B) = P(B|J)P(J) + P(B|M)P(M)$.",
+      "answer": 0.38,
+      "format": "Dezimalzahl",
+      "explanation": "$P(B) = 0{,}3 \\cdot 0{,}6 + 0{,}5 \\cdot 0{,}4 = 0{,}18 + 0{,}20 = 0{,}38$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Test erkennt $95\\%$ der Kranken korrekt (Sensitivität). Die Prävalenz beträgt $1\\%$. Ein Patient testet positiv. Die False-Positive-Rate beträgt $5\\%$. Berechne $P(\\text{krank} \\mid \\text{positiv})$ mit Bayes. Gib als Dezimalzahl (2 Stellen) an.",
+      "hint": "$P(K|+) = \\frac{P(+|K) \\cdot P(K)}{P(+|K) \\cdot P(K) + P(+|\\overline{K}) \\cdot P(\\overline{K})}$.",
+      "answer": 0.16,
+      "tolerance": 0.03,
+      "format": "Dezimalzahl",
+      "explanation": "$P(+) = 0{,}95 \\cdot 0{,}01 + 0{,}05 \\cdot 0{,}99 = 0{,}0095 + 0{,}0495 = 0{,}059$. $P(K|+) = \\frac{0{,}0095}{0{,}059} \\approx 0{,}16$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "$P(A) = 0{,}7$, $P(\\overline{B}) = 0{,}4$, $A$ und $B$ unabhängig. Berechne $P(A \\cap B)$.",
+      "hint": "Erst $P(B)$ aus $P(\\overline{B})$ bestimmen.",
+      "answer": 0.42,
+      "format": "Dezimalzahl",
+      "explanation": "$P(B) = 1 - 0{,}4 = 0{,}6$. $P(A \\cap B) = 0{,}7 \\cdot 0{,}6 = 0{,}42$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Urne enthält 3 rote und 7 blaue Kugeln. Drei Ziehungen ohne Zurücklegen. Berechne $P(\\text{alle drei rot})$ auf 3 Dezimalstellen.",
+      "hint": "$P = \\frac{3}{10} \\cdot \\frac{2}{9} \\cdot \\frac{1}{8}$.",
+      "answer": 0.008,
+      "tolerance": 0.003,
+      "format": "Dezimalzahl",
+      "explanation": "$P = \\frac{3 \\cdot 2 \\cdot 1}{10 \\cdot 9 \\cdot 8} = \\frac{6}{720} = 0{,}0083 \\approx 0{,}008$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Sind disjunkte Ereignisse $A$ und $B$ mit $P(A) > 0$ und $P(B) > 0$ jemals unabhängig?",
+      "options": [
+        "Ja, immer",
+        "Nein, nie",
+        "Nur wenn $P(A) = P(B)$",
+        "Nur wenn $P(A) = 0{,}5$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Disjunkt: $P(A \\cap B) = 0$. Unabhängig: $P(A \\cap B) = P(A) \\cdot P(B) > 0$. Widerspruch! Disjunkte Ereignisse mit positiven Wahrscheinlichkeiten sind nie unabhängig."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-stochastik-grundlagen-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Würfel wird zweimal geworfen. Berechne $P(\\text{beide Male eine } 6)$ als Bruch (z.B. 1/36).",
+      "answer": "1/36",
+      "format": "Bruch wie 1/36",
+      "explanation": "$P = \\frac{1}{6} \\cdot \\frac{1}{6} = \\frac{1}{36}$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "$P(A) = 0{,}15$. Wie groß ist $P(\\overline{A})$ (Komplementärereignis)?",
+      "answer": 0.85,
+      "format": "Dezimalzahl",
+      "explanation": "$P(\\overline{A}) = 1 - P(A) = 1 - 0{,}15 = 0{,}85$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-03",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Würfel wird dreimal geworfen. Berechne $P(\\text{mindestens eine } 6)$ als Dezimalzahl (2 Stellen).",
+      "hint": "$P(\\text{mind. eine 6}) = 1 - P(\\text{keine 6}) = 1 - (\\frac{5}{6})^3$.",
+      "answer": 0.42,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl, z.B. 0.42",
+      "explanation": "$1 - (\\frac{5}{6})^3 = 1 - \\frac{125}{216} = \\frac{91}{216} \\approx 0{,}42$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Urne enthält 5 rote und 15 blaue Kugeln. Wie groß ist $P(\\text{rot})$ beim einmaligen Ziehen? Gib als Dezimalzahl an.",
+      "answer": 0.25,
+      "format": "Dezimalzahl",
+      "explanation": "$P(\\text{rot}) = \\frac{5}{20} = \\frac{1}{4} = 0{,}25$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben: $P(A) = 0{,}7$, $P(\\overline{B}) = 0{,}4$, $A$ und $B$ unabhängig. Berechne $P(A \\cap B)$.",
+      "hint": "Erst $P(B)$ aus $P(\\overline{B})$ bestimmen.",
+      "answer": 0.42,
+      "format": "Dezimalzahl",
+      "explanation": "$P(B) = 1 - 0{,}4 = 0{,}6$. $P(A \\cap B) = 0{,}7 \\cdot 0{,}6 = 0{,}42$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist das Gegenereignis von \"mindestens eine 6 in drei Würfen\"?",
+      "options": [
+        "Höchstens eine 6",
+        "Keine 6 in drei Würfen",
+        "Genau eine 6",
+        "Alle drei sind 6"
+      ],
+      "correctIndex": 1,
+      "explanation": "\"Mindestens eine 6\" bedeutet $X \\geq 1$. Das Gegenereignis ist $X = 0$, also \"keine 6\"."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$P(A) = 0{,}4$, $P(B) = 0{,}5$, $P(A \\cap B) = 0{,}2$. Sind $A$ und $B$ unabhängig? Antworte mit 'ja' oder 'nein'.",
+      "answer": "ja",
+      "format": "ja oder nein",
+      "explanation": "$P(A) \\cdot P(B) = 0{,}4 \\cdot 0{,}5 = 0{,}2 = P(A \\cap B)$. Ja, sie sind unabhängig."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "In einer Fabrik werden $10\\%$ der Teile von Maschine A und $90\\%$ von Maschine B produziert. Die Ausschussquote von A ist $5\\%$, von B ist $2\\%$. Berechne $P(\\text{Ausschuss})$ insgesamt als Dezimalzahl.",
+      "hint": "Satz der totalen Wahrscheinlichkeit.",
+      "answer": 0.023,
+      "format": "Dezimalzahl",
+      "explanation": "$P(\\text{Aus}) = 0{,}05 \\cdot 0{,}10 + 0{,}02 \\cdot 0{,}90 = 0{,}005 + 0{,}018 = 0{,}023$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$P(A \\cup B) = 0{,}8$, $P(A) = 0{,}5$, $P(B) = 0{,}5$. Berechne $P(A \\cap B)$ als Dezimalzahl.",
+      "answer": 0.2,
+      "format": "Dezimalzahl",
+      "explanation": "$P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0{,}5 + 0{,}5 - 0{,}8 = 0{,}2$."
+    },
+    {
+      "id": "m-stochastik-grundlagen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Zwei unabhängige Ereignisse $A$ und $B$ haben $P(A) = 0{,}6$ und $P(B) = 0{,}3$. Berechne $P(\\overline{A} \\cap \\overline{B})$ als Dezimalzahl.",
+      "hint": "Bei Unabhängigkeit: $P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B})$.",
+      "answer": 0.28,
+      "format": "Dezimalzahl",
+      "explanation": "$P(\\overline{A}) = 0{,}4$, $P(\\overline{B}) = 0{,}7$. $P(\\overline{A} \\cap \\overline{B}) = 0{,}4 \\cdot 0{,}7 = 0{,}28$."
+    }
+  ]
+}

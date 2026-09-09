@@ -1,0 +1,363 @@
+{
+  "moduleSlug": "m-prozent",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-prozent-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $15\\%$ von $320$ EUR.",
+      "answer": 48,
+      "format": "Ganze Zahl",
+      "explanation": "$320 \\cdot 0{,}15 = 48$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Pullover für $60$ EUR wird im Schlussverkauf um $25\\%$ reduziert. Wie viel kostet er jetzt in EUR?",
+      "answer": 45,
+      "format": "Ganze Zahl",
+      "explanation": "Rabatt: $60 \\cdot 0{,}25 = 15$ EUR. Neuer Preis: $60 - 15 = 45$ EUR. Oder direkt: $60 \\cdot 0{,}75 = 45$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Der Preis eines Produkts steigt von $80$ EUR auf $96$ EUR. Um wie viel Prozent ist der Preis gestiegen?",
+      "answer": 20,
+      "format": "Prozentangabe als Zahl",
+      "explanation": "Absolute Erhöhung: $96 - 80 = 16$ EUR. Prozentual: $\\frac{16}{80} = 0{,}20 = 20\\%$."
+    },
+    {
+      "id": "m-prozent-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was sind $10\\%$ von $250$ EUR?",
+      "options": [
+        "$25$ EUR",
+        "$2{,}50$ EUR",
+        "$50$ EUR",
+        "$125$ EUR"
+      ],
+      "correctIndex": 0,
+      "explanation": "$10\\%$ von $250 = 250 \\cdot 0{,}10 = 25$ EUR. Tipp: $10\\%$ = einen Zehntel, also $250 \\div 10 = 25$."
+    },
+    {
+      "id": "m-prozent-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $8\\%$ von $450$ EUR.",
+      "answer": 36,
+      "format": "Ganze Zahl",
+      "explanation": "$450 \\cdot 0{,}08 = 36$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Artikel kostet $120$ EUR und wird um $\\frac{1}{4}$ reduziert. Wie viel EUR kostet er jetzt?",
+      "answer": 90,
+      "format": "Ganze Zahl",
+      "explanation": "$120 \\cdot \\frac{1}{4} = 30$ EUR Rabatt. $120 - 30 = 90$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Ein Produkt wird von $50$ EUR auf $40$ EUR reduziert. Um wie viel Prozent?",
+      "options": [
+        "$10\\%$",
+        "$20\\%$",
+        "$25\\%$",
+        "$15\\%$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Reduktion: $50 - 40 = 10$ EUR. Prozentual: $\\frac{10}{50} = 0{,}20 = 20\\%$."
+    },
+    {
+      "id": "m-prozent-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "In einer Klasse sind $24$ Schüler, davon $18$ Mädchen. Wie viel Prozent sind Mädchen?",
+      "answer": 75,
+      "format": "Prozentangabe als Zahl",
+      "explanation": "$\\frac{18}{24} = 0{,}75 = 75\\%$."
+    },
+    {
+      "id": "m-prozent-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Kapital von $5000$ EUR wird zu einem Zinssatz von $3{,}5\\%$ für ein Jahr angelegt. Wie viele EUR Zinsen erhält man?",
+      "answer": 175,
+      "format": "Dezimalzahl",
+      "explanation": "$Z = K \\cdot p\\% = 5000 \\cdot 0{,}035 = 175$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Ware kostet inklusive $19\\%$ Mehrwertsteuer $238$ EUR. Wie hoch ist der Nettopreis in EUR?",
+      "answer": 200,
+      "format": "Ganze Zahl",
+      "explanation": "Brutto = Netto $\\cdot 1{,}19$. Also: Netto $= 238 \\div 1{,}19 = 200$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Nach einer Preissenkung von $10\\%$ kostet ein Artikel $72$ EUR. Wie viel EUR hat er ursprünglich gekostet?",
+      "answer": 80,
+      "format": "Ganze Zahl",
+      "explanation": "$72$ EUR entsprechen $90\\%$ des Originalpreises. Original: $72 \\div 0{,}90 = 80$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Händler gewährt $12\\%$ Rabatt auf eine Waschmaschine. Der Kunde zahlt $616$ EUR. Was war der ursprüngliche Preis?",
+      "options": [
+        "$700$ EUR",
+        "$680$ EUR",
+        "$720$ EUR",
+        "$650$ EUR"
+      ],
+      "correctIndex": 0,
+      "explanation": "$616$ EUR sind $88\\%$ des Originalpreises. Original: $616 \\div 0{,}88 = 700$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Der Gewinn einer Firma stieg von $320\\,000$ EUR auf $400\\,000$ EUR. Wie viel Prozent beträgt die Steigerung?",
+      "answer": 25,
+      "format": "Prozentangabe als Zahl",
+      "explanation": "Absolute Steigerung: $400\\,000 - 320\\,000 = 80\\,000$ EUR. Prozentual: $\\frac{80\\,000}{320\\,000} = 0{,}25 = 25\\%$."
+    },
+    {
+      "id": "m-prozent-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Handy wird für $360$ EUR angeboten, inklusive $19\\%$ MwSt. Wie viel EUR MwSt sind enthalten?",
+      "answer": 57.31,
+      "tolerance": 0.5,
+      "format": "Dezimalzahl",
+      "explanation": "Nettopreis: $360 \\div 1{,}19 = 302{,}52$ EUR. MwSt: $360 - 302{,}52 = 57{,}48$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Kapital von $2000$ EUR wird zu $4\\%$ für $3$ Jahre angelegt (einfache Zinsen). Wie hoch ist das Endkapital?",
+      "options": [
+        "$2240$ EUR",
+        "$2200$ EUR",
+        "$2120$ EUR",
+        "$2480$ EUR"
+      ],
+      "correctIndex": 0,
+      "explanation": "Zinsen: $2000 \\cdot 0{,}04 \\cdot 3 = 240$ EUR. Endkapital: $2000 + 240 = 2240$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Schuh wird für $89{,}99$ EUR angeboten, reduziert um $20\\%$. Wie viel EUR kostet er nach Rabatt? (Runde auf 2 Dezimalstellen.)",
+      "answer": 71.99,
+      "tolerance": 0.5,
+      "format": "Dezimalzahl",
+      "explanation": "$89{,}99 \\cdot 0{,}80 = 71{,}992 \\approx 71{,}99$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Kapital von $10000$ EUR wird zu $5\\%$ Zinseszins für zwei Jahre angelegt. Wie hoch ist das Endkapital in EUR?",
+      "hint": "Verwende die Zinseszinsformel: $K_n = K_0 \\cdot q^n$ mit $q = 1 + p\\%$.",
+      "answer": 11025,
+      "format": "Ganze Zahl",
+      "explanation": "$K_2 = 10\\,000 \\cdot 1{,}05^2 = 10\\,000 \\cdot 1{,}1025 = 11\\,025$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Der Preis eines Autos wird zuerst um $15\\%$ erhöht und danach um $10\\%$ gesenkt. Das Auto kostete ursprünglich $20\\,000$ EUR. Wie hoch ist der Endpreis in EUR?",
+      "hint": "Führe die beiden prozentualen Änderungen nacheinander durch.",
+      "answer": 20700,
+      "format": "Ganze Zahl",
+      "explanation": "Nach Erhöhung: $20\\,000 \\cdot 1{,}15 = 23\\,000$ EUR. Nach Senkung: $23\\,000 \\cdot 0{,}90 = 20\\,700$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Bei welchem jährlichen Zinssatz verdoppelt sich ein Kapital durch Zinseszins in etwa $10$ Jahren? (72er-Regel)",
+      "options": [
+        "$5\\%$",
+        "$7\\%$",
+        "$10\\%$",
+        "$12\\%$"
+      ],
+      "correctIndex": 1,
+      "explanation": "72er-Regel: $72 \\div 10 = 7{,}2$. Also etwa $7\\%$. Genau: $1{,}07^{10} \\approx 1{,}967$, nahezu Verdopplung."
+    },
+    {
+      "id": "m-prozent-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Bevölkerung von $50\\,000$ wächst jährlich um $2\\%$. Wie viele Einwohner gibt es nach $3$ Jahren? Runde auf ganze Personen.",
+      "hint": "Wende die Zinseszinsformel an: $B_n = B_0 \\cdot (1 + p\\%)^n$.",
+      "answer": 53060,
+      "format": "Ganze Zahl",
+      "explanation": "$50\\,000 \\cdot 1{,}02^3 = 50\\,000 \\cdot 1{,}061208 = 53\\,060{,}4 \\approx 53\\,060$ Einwohner."
+    },
+    {
+      "id": "m-prozent-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Produkt wird zweimal reduziert: erst um $20\\%$, dann um $10\\%$. Ursprünglich kostete es $100$ EUR. Wie viel EUR kostet es jetzt?",
+      "hint": "Die Gesamtreduktion ist NICHT $30\\%$!",
+      "answer": 72,
+      "format": "Ganze Zahl",
+      "explanation": "$100 \\cdot 0{,}80 = 80$ EUR nach erster Reduktion. $80 \\cdot 0{,}90 = 72$ EUR nach zweiter Reduktion. Gesamtreduktion: $28\\%$, nicht $30\\%$!"
+    },
+    {
+      "id": "m-prozent-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Artikel wird um $30\\%$ reduziert. Um wie viel Prozent muss man den reduzierten Preis erhöhen, um wieder auf den Originalpreis zu kommen?",
+      "options": [
+        "$30\\%$",
+        "$42{,}9\\%$",
+        "$35\\%$",
+        "$50\\%$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Reduzierter Preis: $70\\%$. Um auf $100\\%$ zu kommen: $\\frac{100}{70} \\approx 1{,}4286$, also $+42{,}86\\% \\approx 42{,}9\\%$. Prozentuale Änderungen sind NICHT symmetrisch!"
+    },
+    {
+      "id": "m-prozent-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Kapital von $8000$ EUR wird zu $3\\%$ Zinseszins angelegt. Nach wie vielen Jahren hat es sich verdoppelt? (Nutze die 72er-Regel.)",
+      "hint": "72er-Regel: Verdopplungszeit $\\approx 72 \\div Zinssatz$.",
+      "answer": 24,
+      "format": "Ganze Zahl",
+      "explanation": "$72 \\div 3 = 24$ Jahre. Genau: $8000 \\cdot 1{,}03^{24} = 8000 \\cdot 2{,}0328 = 16\\,262$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Geschäft bietet \"2 für 3\" an: Man zahlt für $3$ Artikel, bekommt aber $2$ kostenlos dazu. Wie viel Prozent Rabatt entspricht das (auf den Gesamtpreis)?",
+      "hint": "Man bekommt $5$ Artikel, zahlt aber nur für $3$.",
+      "answer": 40,
+      "format": "Prozentangabe als Zahl",
+      "explanation": "Für $5$ Artikel zahlt man den Preis von $3$. Rabatt: $\\frac{2}{5} = 0{,}40 = 40\\%$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-prozent-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $8\\%$ von $450$ EUR.",
+      "answer": 36,
+      "format": "Ganze Zahl",
+      "explanation": "$450 \\cdot 0{,}08 = 36$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Pullover für $60$ EUR wird um $25\\%$ reduziert. Wie viel EUR kostet er jetzt?",
+      "answer": 45,
+      "format": "Ganze Zahl",
+      "explanation": "$60 \\cdot 0{,}75 = 45$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Der Gewinn einer Firma stieg von $320\\,000$ EUR auf $400\\,000$ EUR. Wie viel Prozent beträgt die Steigerung?",
+      "answer": 25,
+      "format": "Prozentangabe als Zahl",
+      "explanation": "$\\frac{80\\,000}{320\\,000} = 0{,}25 = 25\\%$."
+    },
+    {
+      "id": "m-prozent-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Händler gewährt $12\\%$ Rabatt. Der Kunde zahlt $616$ EUR. Was war der Originalpreis?",
+      "answer": 700,
+      "format": "Ganze Zahl",
+      "explanation": "$616 \\div 0{,}88 = 700$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Bei welchem jährlichen Zinssatz verdoppelt sich ein Kapital in etwa $10$ Jahren? (72er-Regel)",
+      "options": [
+        "$5\\%$",
+        "$7\\%$",
+        "$10\\%$",
+        "$12\\%$"
+      ],
+      "correctIndex": 1,
+      "explanation": "72er-Regel: $72 \\div 10 = 7{,}2$, also etwa $7\\%$."
+    },
+    {
+      "id": "m-prozent-ex-06",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Bevölkerung von $50\\,000$ wächst jährlich um $2\\%$. Wie viele Einwohner gibt es nach $3$ Jahren?",
+      "answer": 53060,
+      "format": "Ganze Zahl",
+      "explanation": "$50\\,000 \\cdot 1{,}02^3 = 53\\,060{,}4 \\approx 53\\,060$."
+    },
+    {
+      "id": "m-prozent-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Kapital von $5000$ EUR wird zu $3{,}5\\%$ für ein Jahr angelegt. Wie viele EUR Zinsen?",
+      "answer": 175,
+      "format": "Dezimalzahl",
+      "explanation": "$5000 \\cdot 0{,}035 = 175$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was sind $10\\%$ von $250$ EUR?",
+      "options": [
+        "$25$ EUR",
+        "$2{,}50$ EUR",
+        "$50$ EUR",
+        "$125$ EUR"
+      ],
+      "correctIndex": 0,
+      "explanation": "$250 \\cdot 0{,}10 = 25$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Kapital von $10\\,000$ EUR wird zu $5\\%$ Zinseszins für $2$ Jahre angelegt. Wie hoch ist das Endkapital?",
+      "answer": 11025,
+      "format": "Ganze Zahl",
+      "explanation": "$10\\,000 \\cdot 1{,}05^2 = 11\\,025$ EUR."
+    },
+    {
+      "id": "m-prozent-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Ware kostet inkl. $19\\%$ MwSt $238$ EUR. Wie hoch ist der Nettopreis?",
+      "answer": 200,
+      "format": "Ganze Zahl",
+      "explanation": "$238 \\div 1{,}19 = 200$ EUR."
+    }
+  ]
+}

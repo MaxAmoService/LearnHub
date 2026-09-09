@@ -1,0 +1,381 @@
+{
+  "moduleSlug": "m-numerik-grundlagen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-numerik-grundlagen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Führe einen Schritt des Newton-Verfahrens für $f(x) = x^2 - 3$ mit Startwert $x_0 = 2$ durch. Gib $x_1$ als Dezimalzahl an.",
+      "answer": 1.75,
+      "format": "Dezimalzahl",
+      "explanation": "$x_1 = 2 - \\frac{2^2-3}{2 \\cdot 2} = 2 - \\frac{1}{4} = 1{,}75$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Approximiere $\\int_0^1 x^2 \\, dx$ mit der Rechteckregel (Mittelpunkt) für $n = 1$. Gib den Wert an.",
+      "answer": 0.25,
+      "format": "Dezimalzahl",
+      "explanation": "Mittelpunkt $x = 0{,}5$. $f(0{,}5) \\cdot 1 = 0{,}25$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben $x = 3{,}14159$. Runde auf 2 Dezimalstellen.",
+      "answer": 3.14,
+      "format": "Dezimalzahl",
+      "explanation": "Dritte Dezimalstelle ist $1 < 5$, also abrunden: $3{,}14$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den absoluten Fehler von $\\pi \\approx 3{,}14$. Gib auf 3 Dezimalstellen an.",
+      "answer": 0.002,
+      "tolerance": 0.001,
+      "format": "Dezimalzahl",
+      "explanation": "$|3{,}14159... - 3{,}14| = 0{,}00159... \\approx 0{,}002$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-05",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der absolute Fehler von $\\sqrt{2} \\approx 1{,}414$?",
+      "options": [
+        "$\\approx 0{,}0002$",
+        "$\\approx 0{,}002$",
+        "$\\approx 0{,}02$",
+        "$\\approx 0{,}2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\sqrt{2} = 1{,}41421356...$. $|1{,}41421... - 1{,}414| = 0{,}00021... \\approx 0{,}0002$. Also Option a."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Bisektionsschritt: $f(1) = -1$, $f(2) = 3$. Gib die neue Mitte $c$ als Dezimalzahl an.",
+      "answer": 1.5,
+      "format": "Dezimalzahl",
+      "explanation": "$c = \\frac{1+2}{2} = 1{,}5$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den relativen Fehler von $e \\approx 2{,}72$. Gib in Prozent auf 2 Dezimalstellen an.",
+      "answer": 0.07,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl",
+      "explanation": "$e = 2{,}71828...$. $e_{\\text{rel}} = \\frac{|2{,}71828 - 2{,}72|}{2{,}71828} = \\frac{0{,}00172}{2{,}71828} \\approx 0{,}063\\% \\approx 0{,}06\\%$. Also $\\approx 0{,}07$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welches Verfahren braucht einen Startwert?",
+      "options": [
+        "Newton-Verfahren",
+        "Bisektionsverfahren",
+        "Rechteckregel",
+        "Gauß-Elimination"
+      ],
+      "correctIndex": 0,
+      "explanation": "Das Newton-Verfahren braucht einen Startwert $x_0$. Bisektion braucht ein Intervall, Rechteckregel braucht nur die Integrationsgrenzen."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Führe zwei Schritte des Newton-Verfahrens für $f(x) = x^2 - 5$ mit $x_0 = 3$ durch. Gib $x_2$ auf 3 Dezimalstellen an.",
+      "answer": 2.238,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$x_1 = 3 - \\frac{4}{6} = 2{,}333$. $x_2 = 2{,}333 - \\frac{0{,}444}{4{,}667} = 2{,}238$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Approximiere $\\int_0^2 x^3 \\, dx$ mit der Trapezregel für $n = 1$. Gib den Wert an.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "Trapezregel: $\\frac{2}{2}(0^3 + 2^3) = 8$. Exakt: $4$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Führe einen Schritt der Fixpunktiteration $x_{n+1} = \\frac{1}{2}(x_n + \\frac{5}{x_n})$ mit $x_0 = 3$ durch. Gib $x_1$ auf 3 Dezimalstellen an.",
+      "hint": "Dies ist das Heron-Verfahren für $\\sqrt{5}$.",
+      "answer": 2.333,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$x_1 = \\frac{1}{2}(3 + \\frac{5}{3}) = \\frac{1}{2}(3 + 1{,}667) = 2{,}333$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Verfahren konvergiert quadratisch?",
+      "options": [
+        "Newton-Verfahren",
+        "Bisektion",
+        "Sekantenverfahren",
+        "Fixpunktiteration (allgemein)"
+      ],
+      "correctIndex": 0,
+      "explanation": "Newton konvergiert lokal quadratisch ($p=2$). Bisektion linear ($p=1$), Sekanten superlinear ($p \\approx 1{,}618$)."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Führe zwei Schritte der Bisektion für $f(x) = x^2 - 2$ auf $[1, 2]$ durch. Gib $c_2$ als Dezimalzahl an.",
+      "answer": 1.25,
+      "format": "Dezimalzahl",
+      "explanation": "$c_1 = 1{,}5$, $f(1{,}5) = 0{,}25 > 0$. Neues Intervall: $[1, 1{,}5]$. $c_2 = 1{,}25$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Approximiere $\\int_0^1 e^x \\, dx$ mit der Simpson-Regel für $n = 2$. Gib auf 3 Dezimalstellen an.",
+      "hint": "Simpson: $\\frac{h}{3}(f(a) + 4f(m) + f(b))$ mit $h = 0{,}5$, $m = 0{,}5$.",
+      "answer": 1.718,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$\\frac{0{,}5}{3}(1 + 4e^{0{,}5} + e) = \\frac{0{,}5}{3}(1 + 4 \\cdot 1{,}6487 + 2{,}7183) = \\frac{0{,}5}{3}(1 + 6{,}5948 + 2{,}7183) = \\frac{0{,}5}{3} \\cdot 10{,}313 = 1{,}719$. Ungefähr $1{,}718$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie viele Schritte braucht die Bisektion auf $[0, 1]$, um eine Genauigkeit von $10^{-3}$ zu erreichen?",
+      "options": [
+        "$10$",
+        "$7$",
+        "$20$",
+        "$3$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{1}{2^n} < 10^{-3} \\Rightarrow 2^n > 1000 \\Rightarrow n > \\log_2(1000) \\approx 9{,}97$. Also $n = 10$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den relativen Fehler von $\\frac{22}{7}$ als Näherung für $\\pi$. Gib in Prozent auf 2 Dezimalstellen an.",
+      "answer": 0.04,
+      "tolerance": 0.01,
+      "format": "Dezimalzahl",
+      "explanation": "$\\frac{22}{7} = 3{,}14286$. $e_{\\text{rel}} = \\frac{|3{,}14286 - 3{,}14159|}{3{,}14159} \\approx 0{,}04\\%$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Führe drei Schritte des Newton-Verfahrens für $f(x) = x^3 - 8$ mit $x_0 = 3$ durch. Gib $x_3$ auf 3 Dezimalstellen an.",
+      "answer": 2,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$x_1 = 3 - \\frac{19}{27} = 2{,}296$. $x_2 = 2{,}296 - \\frac{4{,}15}{15{,}82} = 2{,}034$. $x_3 = 2{,}034 - \\frac{0{,}415}{12{,}41} = 2{,}000$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Konvergenzordnung hat das Sekantenverfahren?",
+      "options": [
+        "Superlinear ($p \\approx 1{,}618$)",
+        "Linear ($p = 1$)",
+        "Quadratisch ($p = 2$)",
+        "Kubisch ($p = 3$)"
+      ],
+      "correctIndex": 0,
+      "explanation": "Sekantenverfahren: $p = \\frac{1+\\sqrt{5}}{2} \\approx 1{,}618$ (goldener Schnitt). Superlinear, aber langsamer als Newton."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Für das Newton-Verfahren auf $f(x) = x^2 - a$ ergibt sich die Iteration $x_{n+1} = \\frac{1}{2}(x_n + \\frac{a}{x_n})$. Berechne $\\sqrt{10}$ mit $x_0 = 3$ nach 2 Schritten. Gib auf 4 Dezimalstellen an.",
+      "answer": 3.1623,
+      "tolerance": 0.001,
+      "format": "Dezimalzahl",
+      "explanation": "$x_1 = \\frac{1}{2}(3 + \\frac{10}{3}) = 3{,}1667$. $x_2 = \\frac{1}{2}(3{,}1667 + \\frac{10}{3{,}1667}) = 3{,}1623$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele Schritte der Bisektion auf $[1, 3]$ braucht man für eine Genauigkeit von $0{,}001$? Gib die Anzahl an.",
+      "hint": "$\\frac{b-a}{2^n} < 0{,}001$.",
+      "answer": 11,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{2}{2^n} < 0{,}001 \\Rightarrow 2^n > 2000 \\Rightarrow n > \\log_2(2000) \\approx 10{,}97$. Also $n = 11$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Wann versagt das Newton-Verfahren typischerweise?",
+      "options": [
+        "Wenn $f'(x_n) \\approx 0$",
+        "Wenn $f(x_n) > 0$",
+        "Wenn $x_0 > 0$",
+        "Wenn $f$ stetig ist"
+      ],
+      "correctIndex": 0,
+      "explanation": "$x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$. Bei $f'(x_n) \\approx 0$ wird der Korrekturterm sehr groß → Divergenz."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Konvergenzordnung der Fixpunktiteration $x_{n+1} = g(x_n)$ am Fixpunkt $x^*$. Wenn $g'(x^*) = 0{,}5$ und $g''(x^*) \\neq 0$: Ist sie linear oder quadratisch? Gib 'linear' oder 'quadratisch' an.",
+      "answer": "linear",
+      "format": "Text",
+      "explanation": "$|g'(x^*)| = 0{,}5 \\neq 0$: die Konvergenz ist linear (Ordnung 1). Quadratisch wäre $g'(x^*) = 0$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Approximiere $\\int_0^1 \\frac{1}{1+x} \\, dx$ mit der Trapezregel für $n = 2$. Gib den Wert auf 3 Dezimalstellen an.",
+      "hint": "$h = 0{,}5$, Stützstellen: $0, 0{,}5, 1$.",
+      "answer": 0.708,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$\\frac{0{,}5}{2}(f(0) + 2f(0{,}5) + f(1)) = 0{,}25(1 + 2 \\cdot 0{,}6667 + 0{,}5) = 0{,}25 \\cdot 2{,}8333 = 0{,}708$. Exakt: $\\ln 2 \\approx 0{,}693$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Aussage über die Kondition von $f(x) = \\frac{1}{x}$ bei $x \\approx 0$ ist richtig?",
+      "options": [
+        "Schlecht konditioniert",
+        "Gut konditioniert",
+        "Unkonditioniert",
+        "Kondition hängt von der Maschinengenauigkeit ab"
+      ],
+      "correctIndex": 0,
+      "explanation": "Konditionszahl: $\\left|\\frac{x f'(x)}{f(x)}\\right| = \\left|\\frac{x \\cdot (-1/x^2)}{1/x}\\right| = 1$. Bei $x \\approx 0$ ist $f(x)$ groß, aber kleine Änderungen in $x$ verursachen große Änderungen in $f(x)$ → schlecht konditioniert."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-numerik-grundlagen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Runde $e \\approx 2{,}71828$ auf 3 Dezimalstellen.",
+      "answer": 2.718,
+      "format": "Dezimalzahl",
+      "explanation": "Vierte Dezimalstelle ist $2 < 5$, also abrunden: $2{,}718$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Führe einen Schritt des Newton-Verfahrens für $f(x) = x^2 - 7$ mit $x_0 = 3$ durch. Gib $x_1$ auf 3 Dezimalstellen an.",
+      "answer": 2.667,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$x_1 = 3 - \\frac{9-7}{6} = 3 - \\frac{2}{6} = 2{,}667$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Approximiere $\\int_0^1 x^3 \\, dx$ mit der Trapezregel für $n = 1$. Gib den Wert an.",
+      "answer": 0.5,
+      "format": "Dezimalzahl",
+      "explanation": "$\\frac{1}{2}(f(0) + f(1)) = \\frac{1}{2}(0 + 1) = 0{,}5$. Exakt: $0{,}25$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welches Verfahren hat die höchste Konvergenzordnung?",
+      "options": [
+        "Newton-Verfahren ($p = 2$)",
+        "Bisektion ($p = 1$)",
+        "Sekantenverfahren ($p \\approx 1{,}618$)",
+        "Regula Falsi ($p = 1$)"
+      ],
+      "correctIndex": 0,
+      "explanation": "Newton hat quadratische Konvergenz ($p = 2$), die höchste unter den aufgeführten Verfahren."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele Schritte der Bisektion auf $[0, 4]$ braucht man für Genauigkeit $0{,}01$? Gib die Anzahl an.",
+      "answer": 9,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{4}{2^n} < 0{,}01 \\Rightarrow 2^n > 400 \\Rightarrow n > \\log_2(400) \\approx 8{,}64$. Also $n = 9$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den absoluten Fehler von $\\frac{1}{3} \\approx 0{,}333$. Gib auf 4 Dezimalstellen an.",
+      "answer": 0.0003,
+      "tolerance": 0.0003,
+      "format": "Dezimalzahl",
+      "explanation": "$|0{,}33333... - 0{,}333| = 0{,}00033... \\approx 0{,}0003$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Hauptvorteil der Bisektion gegenüber dem Newton-Verfahren?",
+      "options": [
+        "Garantierte Konvergenz",
+        "Schnellere Konvergenz",
+        "Braucht keine Ableitung",
+        "Genauer"
+      ],
+      "correctIndex": 0,
+      "explanation": "Bisektion garantiert Konvergenz (wenn Vorzeichenwechsel vorhanden), während Newton divergieren kann."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne $\\sqrt{7}$ mit dem Heron-Verfahren ($x_{n+1} = \\frac{1}{2}(x_n + \\frac{7}{x_n})$), Start $x_0 = 3$. Gib $x_2$ auf 4 Dezimalstellen an.",
+      "answer": 2.6458,
+      "tolerance": 0.001,
+      "format": "Dezimalzahl",
+      "explanation": "$x_1 = \\frac{1}{2}(3 + \\frac{7}{3}) = 2{,}6667$. $x_2 = \\frac{1}{2}(2{,}6667 + \\frac{7}{2{,}6667}) = 2{,}6458$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Führe 2 Schritte der Bisektion für $f(x) = x^3 - x - 1$ auf $[1, 2]$ durch. Gib die Mitte nach 2 Schritten an.",
+      "answer": 1.25,
+      "format": "Dezimalzahl",
+      "explanation": "$c_1 = 1{,}5$, $f(1{,}5) = 0{,}875 > 0$. Intervall $[1, 1{,}5]$. $c_2 = 1{,}25$."
+    },
+    {
+      "id": "m-numerik-grundlagen-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Simpson-Regel hat welchen Approximationsfehler?",
+      "options": [
+        "$O(h^4)$",
+        "$O(h^2)$",
+        "$O(h)$",
+        "$O(h^3)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Simpson-Regel: Fehler $O(h^4)$. Trapezregel: $O(h^2)$. Rechteckregel: $O(h^2)$ (Mittelpunkt) bzw. $O(h)$."
+    }
+  ]
+}

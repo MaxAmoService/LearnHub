@@ -1,0 +1,371 @@
+{
+  "moduleSlug": "m2-dgl",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m2-dgl-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse die DGL: $y' = 5$. Gib die allgemeine Lösung an.",
+      "answer": "5x+C",
+      "format": "Term",
+      "explanation": "$y' = 5 \\Rightarrow y = \\int 5 \\, dx = 5x + C$."
+    },
+    {
+      "id": "m2-dgl-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse die DGL: $y' = -y$. Gib die allgemeine Lösung an.",
+      "answer": "C*e^{-x}",
+      "format": "Term",
+      "explanation": "$\\frac{dy}{dx} = -y \\Rightarrow \\int \\frac{dy}{y} = \\int -dx \\Rightarrow \\ln|y| = -x + C \\Rightarrow y = Ce^{-x}$."
+    },
+    {
+      "id": "m2-dgl-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Ordnung hat die DGL $y'' + 3y' - y = \\sin(x)$?",
+      "options": [
+        "2",
+        "1",
+        "3",
+        "0"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die höchste Ableitung ist $y''$ (2. Ableitung), daher Ordnung 2."
+    },
+    {
+      "id": "m2-dgl-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $y' = 4x$. Gib die allgemeine Lösung an.",
+      "answer": "2x^2+C",
+      "format": "Term",
+      "explanation": "$y = \\int 4x \\, dx = 2x^2 + C$."
+    },
+    {
+      "id": "m2-dgl-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ist $y = 3e^{2x}$ eine Lösung von $y' = 2y$? Gib 'ja' oder 'nein' an.",
+      "answer": "ja",
+      "format": "ja oder nein",
+      "explanation": "$y' = 6e^{2x} = 2 \\cdot 3e^{2x} = 2y$. Ja!"
+    },
+    {
+      "id": "m2-dgl-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Ordnung der DGL $y''' + y = 0$?",
+      "options": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "correctIndex": 0,
+      "explanation": "Höchste Ableitung: $y'''$ → Ordnung 3."
+    },
+    {
+      "id": "m2-dgl-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse das AWP: $y' = 2$, $y(0) = 3$.",
+      "answer": "2x+3",
+      "format": "Term",
+      "explanation": "$y = 2x + C$. $y(0) = C = 3$. Also $y = 2x + 3$."
+    },
+    {
+      "id": "m2-dgl-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $y' = e^x$. Gib die allgemeine Lösung an.",
+      "answer": "e^x+C",
+      "format": "Term",
+      "explanation": "$y = \\int e^x \\, dx = e^x + C$."
+    },
+    {
+      "id": "m2-dgl-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse durch Trennung der Variablen: $y' = 3xy$. Gib die allgemeine Lösung an.",
+      "answer": "C*e^{3x^2/2}",
+      "format": "Term",
+      "explanation": "$\\frac{dy}{y} = 3x \\, dx \\Rightarrow \\ln|y| = \\frac{3x^2}{2} + C \\Rightarrow y = Ce^{3x^2/2}$."
+    },
+    {
+      "id": "m2-dgl-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse das AWP: $y' = -3y$, $y(0) = 4$.",
+      "answer": "4e^{-3x}",
+      "format": "Term",
+      "explanation": "$y = Ce^{-3x}$. $y(0) = C = 4$. Also $y = 4e^{-3x}$."
+    },
+    {
+      "id": "m2-dgl-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $y' + 2y = 0$, $y(0) = 1$. Gib $y(1)$ als Dezimalzahl an (2 Nachkommastellen).",
+      "answer": 0.14,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl",
+      "explanation": "$y = e^{-2x}$. $y(1) = e^{-2} \\approx 0{,}1353 \\approx 0{,}14$."
+    },
+    {
+      "id": "m2-dgl-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche DGL ist eine lineare DGL 1. Ordnung?",
+      "options": [
+        "$y' + p(x)y = q(x)$",
+        "$y' = y^2$",
+        "$y'' + y = 0$",
+        "$(y')^2 = x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Lineare DGL 1. Ordnung: $y' + p(x)y = q(x)$. Die anderen sind nicht-linear oder höherer Ordnung."
+    },
+    {
+      "id": "m2-dgl-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $y' = \\frac{y}{x}$ für $x > 0$. Gib die allgemeine Lösung an.",
+      "answer": "C*x",
+      "format": "Term",
+      "explanation": "$\\frac{dy}{y} = \\frac{dx}{x} \\Rightarrow \\ln|y| = \\ln|x| + C \\Rightarrow y = Cx$."
+    },
+    {
+      "id": "m2-dgl-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme die stationäre Lösung von $y' = y(2 - y)$. Gib den größten Wert an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$y' = 0 \\Rightarrow y(2-y) = 0 \\Rightarrow y = 0$ oder $y = 2$. Größte stationäre Lösung: $2$."
+    },
+    {
+      "id": "m2-dgl-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse das AWP: $y' = 2x + 1$, $y(0) = -1$.",
+      "answer": "x^2+x-1",
+      "format": "Term",
+      "explanation": "$y = x^2 + x + C$. $y(0) = C = -1$. Also $y = x^2 + x - 1$."
+    },
+    {
+      "id": "m2-dgl-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Lösung hat die DGL $y' = -2y$ mit $y(0) = 3$?",
+      "options": [
+        "$y = 3e^{-2x}$",
+        "$y = 3e^{2x}$",
+        "$y = -2e^{3x}$",
+        "$y = e^{-6x}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$y = Ce^{-2x}$. $y(0) = C = 3$. Also $y = 3e^{-2x}$."
+    },
+    {
+      "id": "m2-dgl-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y'' - 4y = 0$. Gib die allgemeine Lösung an (verwende C1 und C2).",
+      "hint": "Charakteristisches Polynom: $\\lambda^2 - 4 = 0$.",
+      "answer": "C1*e^{2x}+C2*e^{-2x}",
+      "format": "Term",
+      "explanation": "$\\lambda^2 - 4 = 0 \\Rightarrow \\lambda = \\pm 2$. $y = C_1 e^{2x} + C_2 e^{-2x}$."
+    },
+    {
+      "id": "m2-dgl-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y'' + 9y = 0$. Gib die allgemeine Lösung an (verwende C1 und C2, cos und sin).",
+      "hint": "Charakteristisches Polynom: $\\lambda^2 + 9 = 0 \\Rightarrow \\lambda = \\pm 3i$.",
+      "answer": "C1*cos(3x)+C2*sin(3x)",
+      "format": "Term",
+      "explanation": "$\\lambda = \\pm 3i$ ($\\alpha = 0$, $\\beta = 3$). $y = C_1 \\cos(3x) + C_2 \\sin(3x)$."
+    },
+    {
+      "id": "m2-dgl-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche DGL beschreibt gedämpfte Schwingungen?",
+      "options": [
+        "$y'' + 2\\delta y' + \\omega_0^2 y = 0$",
+        "$y'' + \\omega_0^2 y = 0$",
+        "$y' + ky = 0$",
+        "$y''' + y = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$y'' + 2\\delta y' + \\omega_0^2 y = 0$ ist die DGL des gedämpften harmonischen Oszillators."
+    },
+    {
+      "id": "m2-dgl-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y'' - 5y' + 6y = 0$. Gib die allgemeine Lösung an (verwende C1 und C2).",
+      "hint": "$\\lambda^2 - 5\\lambda + 6 = (\\lambda-2)(\\lambda-3) = 0$.",
+      "answer": "C1*e^{2x}+C2*e^{3x}",
+      "format": "Term",
+      "explanation": "$\\lambda_1 = 2$, $\\lambda_2 = 3$. $y = C_1 e^{2x} + C_2 e^{3x}$."
+    },
+    {
+      "id": "m2-dgl-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y'' - 4y' + 4y = 0$. Gib die allgemeine Lösung an (verwende C1 und C2).",
+      "hint": "$\\lambda^2 - 4\\lambda + 4 = (\\lambda-2)^2 = 0$: doppelte Wurzel.",
+      "answer": "(C1+C2*x)*e^{2x}",
+      "format": "Term",
+      "explanation": "$\\lambda = 2$ (doppelt). $y = (C_1 + C_2 x) e^{2x}$."
+    },
+    {
+      "id": "m2-dgl-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die charakteristische Gleichung einer DGL 2. Ordnung hat die Wurzeln $\\lambda = -1 \\pm 2i$. Wie sieht die allgemeine Lösung aus?",
+      "options": [
+        "$y = e^{-x}(C_1\\cos 2x + C_2\\sin 2x)$",
+        "$y = C_1 e^{-x} + C_2 e^{2x}$",
+        "$y = C_1 \\cos x + C_2 \\sin x$",
+        "$y = (C_1 + C_2x)e^{-x}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\alpha = -1$, $\\beta = 2$. $y = e^{-x}(C_1 \\cos 2x + C_2 \\sin 2x)$."
+    },
+    {
+      "id": "m2-dgl-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y' + y = 2$. Gib die allgemeine Lösung an.",
+      "hint": "Homogen: $y_h = Ce^{-x}$. Partikulär: $y_p = 2$.",
+      "answer": "2+C*e^{-x}",
+      "format": "Term",
+      "explanation": "Homogen: $y_h = Ce^{-x}$. Partikulär: Ansatz $y_p = A$, $A = 2$. $y = 2 + Ce^{-x}$."
+    },
+    {
+      "id": "m2-dgl-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y'' + y' - 2y = 0$ mit $y(0) = 1$, $y'(0) = 0$. Gib $y(0)$ als Probe an.",
+      "hint": "$\\lambda^2 + \\lambda - 2 = (\\lambda+2)(\\lambda-1) = 0$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lambda_1 = 1$, $\\lambda_2 = -2$. $y = C_1 e^x + C_2 e^{-2x}$. $y(0) = C_1 + C_2 = 1$ (Probe)."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m2-dgl-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $y' = \\sin(x)$, $y(0) = 0$.",
+      "answer": "1-cos(x)",
+      "format": "Term",
+      "explanation": "$y = -\\cos(x) + C$. $y(0) = -1 + C = 0 \\Rightarrow C = 1$. $y = 1 - \\cos(x)$."
+    },
+    {
+      "id": "m2-dgl-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $y' = -4y$, $y(0) = 2$. Gib $y(\\ln 2)$ an.",
+      "answer": 0.125,
+      "format": "Dezimalzahl",
+      "explanation": "$y = 2e^{-4x}$. $y(\\ln 2) = 2e^{-4\\ln 2} = 2 \\cdot 2^{-4} = \\frac{2}{16} = 0{,}125$."
+    },
+    {
+      "id": "m2-dgl-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme die allgemeine Lösung von $y'' - 9y = 0$.",
+      "hint": "$\\lambda^2 - 9 = 0$.",
+      "answer": "C1*e^{3x}+C2*e^{-3x}",
+      "format": "Term",
+      "explanation": "$\\lambda = \\pm 3$. $y = C_1 e^{3x} + C_2 e^{-3x}$."
+    },
+    {
+      "id": "m2-dgl-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Lösung hat $y'' + 4y = 0$ mit $y(0) = 1$, $y'(0) = 0$?",
+      "options": [
+        "$y = \\cos(2x)$",
+        "$y = \\sin(2x)$",
+        "$y = e^{-2x}$",
+        "$y = \\cos(x)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$y = C_1 \\cos 2x + C_2 \\sin 2x$. $y(0) = C_1 = 1$. $y'(0) = 2C_2 = 0 \\Rightarrow C_2 = 0$. $y = \\cos 2x$."
+    },
+    {
+      "id": "m2-dgl-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y'' + 2y' + y = 0$. Gib die allgemeine Lösung an.",
+      "hint": "$\\lambda^2 + 2\\lambda + 1 = (\\lambda+1)^2 = 0$.",
+      "answer": "(C1+C2*x)*e^{-x}",
+      "format": "Term",
+      "explanation": "$\\lambda = -1$ (doppelt). $y = (C_1 + C_2 x) e^{-x}$."
+    },
+    {
+      "id": "m2-dgl-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $y' = 3$, $y(0) = -2$.",
+      "answer": "3x-2",
+      "format": "Term",
+      "explanation": "$y = 3x + C$. $y(0) = C = -2$. $y = 3x - 2$."
+    },
+    {
+      "id": "m2-dgl-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Integrationsverfahren eignet sich für $y' = xy$?",
+      "options": [
+        "Trennung der Variablen",
+        "Partielle Integration",
+        "Polynomdivision",
+        "Substitution $u = x^2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{dy}{y} = x \\, dx$. Trennung der Variablen ist hier die Methode der Wahl."
+    },
+    {
+      "id": "m2-dgl-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $y'' - 2y' - 3y = 0$ mit $y(0) = 2$, $y'(0) = 2$. Gib $C_1$ an.",
+      "hint": "$\\lambda^2 - 2\\lambda - 3 = (\\lambda-3)(\\lambda+1) = 0$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$y = C_1 e^{3x} + C_2 e^{-x}$. $y(0) = C_1 + C_2 = 2$. $y'(0) = 3C_1 - C_2 = 2$. Addiert: $4C_1 = 4 \\Rightarrow C_1 = 1$."
+    },
+    {
+      "id": "m2-dgl-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $y' = -y + 3$, $y(0) = 0$. Gib die Lösung an.",
+      "hint": "Partikuläre Lösung: $y_p = 3$.",
+      "answer": "3-3*e^{-x}",
+      "format": "Term",
+      "explanation": "$y_h = Ce^{-x}$, $y_p = 3$. $y = 3 + Ce^{-x}$. $y(0) = 3 + C = 0 \\Rightarrow C = -3$. $y = 3 - 3e^{-x}$."
+    },
+    {
+      "id": "m2-dgl-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche DGL hat die Lösung $y = e^{2x}\\cos(x)$?",
+      "options": [
+        "$y'' - 4y' + 5y = 0$",
+        "$y'' + y = 0$",
+        "$y'' - 4y = 0$",
+        "$y'' - 2y' + y = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lambda = 2 \\pm i$. Charakteristisches Polynom: $(\\lambda - 2 - i)(\\lambda - 2 + i) = \\lambda^2 - 4\\lambda + 5 = 0$."
+    }
+  ]
+}

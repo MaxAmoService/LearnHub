@@ -1,0 +1,214 @@
+{
+  "moduleSlug": "m-quadratische-gleichungen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-quadratische-gleichungen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse mit der pq-Formel: $x^2 - 5x + 6 = 0$. Gib die **kleinere** Lösung an.",
+      "hint": "Lies $p$ und $q$ ab und setze in die pq-Formel ein.",
+      "answer": 2,
+      "acceptedAnswers": [
+        "3"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$p = -5$, $q = 6$. $x_{1,2} = \\frac{5}{2} \\pm \\sqrt{\\frac{25}{4} - 6} = \\frac{5}{2} \\pm \\frac{1}{2}$. Kleinere Lösung: $x_2 = 2$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse mit der pq-Formel: $x^2 + 2x - 8 = 0$. Gib die **größere** Lösung an.",
+      "answer": 2,
+      "acceptedAnswers": [
+        "-4"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$p = 2$, $q = -8$. $x_{1,2} = -1 \\pm \\sqrt{1 + 8} = -1 \\pm 3$. Größere Lösung: $x_1 = 2$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Gleichung hat die Lösungen $x_1 = 3$ und $x_2 = -1$?",
+      "options": [
+        "$x^2 - 2x - 3 = 0$",
+        "$x^2 + 2x - 3 = 0$",
+        "$x^2 - 4x + 3 = 0$",
+        "$x^2 + 4x + 3 = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Aus $x_1 = 3$, $x_2 = -1$: $p = -(x_1 + x_2) = -2$ und $q = x_1 \\cdot x_2 = -3$. Also $x^2 - 2x - 3 = 0$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $x^2 - 6x + 9 = 0$. Gib die Lösung an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$p = -6$, $q = 9$. $(\\frac{-6}{2})^2 - 9 = 9 - 9 = 0$. Eine Lösung: $x = 3$ (doppelte Nullstelle)."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse mit der abc-Formel: $2x^2 - 5x + 3 = 0$. Gib die **größere** Lösung an.",
+      "hint": "$a = 2$, $b = -5$, $c = 3$. Diskriminante zuerst berechnen.",
+      "answer": 1.5,
+      "acceptedAnswers": [
+        "1"
+      ],
+      "tolerance": 0.01,
+      "format": "Dezimalzahl",
+      "explanation": "$D = 25 - 24 = 1$. $x_{1,2} = \\frac{5 \\pm 1}{4}$. Größere Lösung: $x_1 = \\frac{6}{4} = 1{,}5$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Diskriminante von $3x^2 + 2x - 1 = 0$.",
+      "answer": 16,
+      "format": "Ganze Zahl",
+      "explanation": "$D = 2^2 - 4 \\cdot 3 \\cdot (-1) = 4 + 12 = 16$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie viele reelle Nullstellen hat $f(x) = x^2 + x + 1$?",
+      "options": [
+        "Keine",
+        "Genau eine",
+        "Zwei",
+        "Unendlich viele"
+      ],
+      "correctIndex": 0,
+      "explanation": "$D = 1^2 - 4 \\cdot 1 \\cdot 1 = 1 - 4 = -3 < 0$. Keine reellen Nullstellen."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme den Scheitelpunkt von $f(x) = x^2 - 6x + 5$. Gib die **y-Koordinate** des Scheitelpunkts an.",
+      "hint": "Nutze $d = -\\frac{b}{2a}$ und $e = f(d)$.",
+      "answer": -4,
+      "format": "Ganze Zahl",
+      "explanation": "$d = \\frac{6}{2} = 3$. $e = f(3) = 9 - 18 + 5 = -4$. Scheitelpunkt: $S(3, -4)$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Nullstellen von $f(x) = 2(x - 1)^2 - 8$. Gib die **größere** Nullstelle an.",
+      "answer": 3,
+      "acceptedAnswers": [
+        "-1"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$2(x-1)^2 = 8 \\Rightarrow (x-1)^2 = 4 \\Rightarrow x - 1 = \\pm 2$. Größere Nullstelle: $x = 3$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Forme $f(x) = x^2 + 4x + 7$ in Scheitelpunktform um. Gib den **e-Wert** (y-Koordinate des Scheitelpunkts) an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$d = -\\frac{4}{2} = -2$. $e = 7 - \\frac{16}{4} = 7 - 4 = 3$. Scheitelpunktform: $f(x) = (x+2)^2 + 3$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-quadratische-gleichungen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $x^2 - 7x + 12 = 0$. Gib die **größere** Lösung an.",
+      "answer": 4,
+      "acceptedAnswers": [
+        "3"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "pq-Formel: $x_{1,2} = \\frac{7}{2} \\pm \\sqrt{\\frac{49}{4} - 12} = \\frac{7}{2} \\pm \\frac{1}{2}$. Größere Lösung: $x_1 = 4$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $x^2 + 3x - 10 = 0$. Gib die **kleinere** Lösung an.",
+      "answer": -5,
+      "acceptedAnswers": [
+        "2"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$p = 3$, $q = -10$. $x_{1,2} = -\\frac{3}{2} \\pm \\sqrt{\\frac{9}{4} + 10} = -\\frac{3}{2} \\pm \\frac{7}{2}$. Kleinere Lösung: $x_2 = -5$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse mit der abc-Formel: $3x^2 - 12x + 9 = 0$. Gib die **größere** Lösung an.",
+      "answer": 3,
+      "acceptedAnswers": [
+        "1"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$a = 3$, $b = -12$, $c = 9$. $D = 144 - 108 = 36$. $x_{1,2} = \\frac{12 \\pm 6}{6}$. Größere Lösung: $x_1 = 3$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche quadratische Gleichung hat **keine** reellen Lösungen?",
+      "options": [
+        "$x^2 - 4x + 3 = 0$",
+        "$x^2 + 2x + 1 = 0$",
+        "$x^2 + x + 1 = 0$",
+        "$x^2 - 9 = 0$"
+      ],
+      "correctIndex": 2,
+      "explanation": "a) $D = 16 - 12 = 4 > 0$. b) $D = 4 - 4 = 0$. c) $D = 1 - 4 = -3 < 0$ ✓. d) $D = 36 > 0$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Nullstellen von $f(x) = -(x - 2)^2 + 9$. Gib die **größere** Nullstelle an.",
+      "answer": 5,
+      "acceptedAnswers": [
+        "-1"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$(x-2)^2 = 9 \\Rightarrow x - 2 = \\pm 3$. Größere Nullstelle: $x = 5$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-06",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Der Scheitelpunkt einer Parabel ist $S(2, -1)$ und sie geht durch den Punkt $(0, 3)$. Bestimme $a$ in $f(x) = a(x - 2)^2 - 1$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f(0) = a(0-2)^2 - 1 = 4a - 1 = 3 \\Rightarrow 4a = 4 \\Rightarrow a = 1$."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Diskriminante von $4x^2 - 4x + 1 = 0$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$D = (-4)^2 - 4 \\cdot 4 \\cdot 1 = 16 - 16 = 0$. Eine doppelte Nullstelle."
+    },
+    {
+      "id": "m-quadratische-gleichungen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Forme $f(x) = 2x^2 - 8x + 3$ in Scheitelpunktform um. Gib den **e-Wert** an.",
+      "answer": -5,
+      "format": "Ganze Zahl",
+      "explanation": "$d = \\frac{8}{4} = 2$. $e = 3 - \\frac{64}{8} = 3 - 8 = -5$. Scheitelpunktform: $f(x) = 2(x-2)^2 - 5$."
+    }
+  ]
+}

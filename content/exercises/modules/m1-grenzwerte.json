@@ -1,0 +1,382 @@
+{
+  "moduleSlug": "m1-grenzwerte",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m1-grenzwerte-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Grenzwert: $\\lim_{x \\to 2} (3x + 1)$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 2} (3x + 1) = 3 \\cdot 2 + 1 = 7$. Bei stetigen Funktionen kann man direkt einsetzen."
+    },
+    {
+      "id": "m1-grenzwerte-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\lim_{x \\to 0} \\frac{x^2 + 3x}{x}$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 0} \\frac{x(x + 3)}{x} = \\lim_{x \\to 0} (x + 3) = 3$. Nach Kürzen von $x$ ist der Ausdruck bei $x = 0$ definiert."
+    },
+    {
+      "id": "m1-grenzwerte-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} \\frac{1}{x}$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to \\infty} \\frac{1}{x} = 0$. Je größer $x$, desto kleiner der Bruch."
+    },
+    {
+      "id": "m1-grenzwerte-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\lim_{x \\to 0} \\frac{\\sin(x)}{x}$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\infty$",
+        "Existiert nicht"
+      ],
+      "correctIndex": 0,
+      "explanation": "Dies ist ein berühmter Grenzwert: $\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1$. Man kann ihn mit L'Hôpital oder dem Squeeze-Theorem zeigen."
+    },
+    {
+      "id": "m1-grenzwerte-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\lim_{x \\to 3} (2x + 1)$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 3} (2x + 1) = 2 \\cdot 3 + 1 = 7$. Direktes Einsetzen bei stetiger Funktion."
+    },
+    {
+      "id": "m1-grenzwerte-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\lim_{x \\to 0} \\frac{5x^2 + 2x}{x}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 0} \\frac{x(5x + 2)}{x} = \\lim_{x \\to 0} (5x + 2) = 2$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\lim_{x \\to \\infty} \\frac{1}{x^2}$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\infty$",
+        "$-\\infty$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Wie bei $\\frac{1}{x}$ geht auch $\\frac{1}{x^2}$ gegen $0$ für $x \\to \\infty$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welcher der folgenden Grenzwerte existiert NICHT?",
+      "options": [
+        "$\\lim_{x \\to 0} \\frac{1}{x}$",
+        "$\\lim_{x \\to 0} \\frac{x}{x}$",
+        "$\\lim_{x \\to 0} \\frac{x^2}{x}$",
+        "$\\lim_{x \\to 0} \\frac{\\sin x}{x}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lim_{x \\to 0} \\frac{1}{x}$ divergiert: von rechts gegen $+\\infty$, von links gegen $-\\infty$. Die anderen haben endliche Grenzwerte."
+    },
+    {
+      "id": "m1-grenzwerte-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{(x-3)(x+3)}{x-3} = x+3$ für $x \\neq 3$. Also $\\lim_{x \\to 3} (x+3) = 6$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} \\frac{2x^2 + 3x}{x^2 - 5}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "Höchste Potenz $x^2$ ausklammern: $\\frac{x^2(2 + 3/x)}{x^2(1 - 5/x^2)} \\to \\frac{2}{1} = 2$ für $x \\to \\infty$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\lim_{x \\to 0} \\frac{e^x - 1}{x}$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$e$",
+        "$\\infty$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Typ $\\frac{0}{0}$, L'Hôpital: $\\lim_{x \\to 0} \\frac{e^x}{1} = e^0 = 1$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{(x-1)(x+1)}{x-1} = x+1 \\to 2$ für $x \\to 1$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} \\frac{3x + 1}{x + 2}$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "Höchste Potenz $x$ ausklammern: $\\frac{x(3 + 1/x)}{x(1 + 2/x)} \\to \\frac{3}{1} = 3$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$?",
+      "options": [
+        "$3$",
+        "$1$",
+        "$0$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lim_{x \\to 0} \\frac{\\sin(3x)}{x} = 3 \\cdot \\lim_{x \\to 0} \\frac{\\sin(3x)}{3x} = 3 \\cdot 1 = 3$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to 5} \\frac{x^2 - 25}{x - 5}$.",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{(x-5)(x+5)}{x-5} = x+5 \\to 10$ für $x \\to 5$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wann darf man die Regel von L'Hôpital anwenden?",
+      "options": [
+        "Bei $\\frac{0}{0}$ oder $\\frac{\\infty}{\\infty}$",
+        "Bei jedem Grenzwert",
+        "Nur bei $\\frac{0}{\\infty}$",
+        "Nur bei Polynomen"
+      ],
+      "correctIndex": 0,
+      "explanation": "L'Hôpital gilt nur bei unbestimmten Ausdrücken $\\frac{0}{0}$ oder $\\frac{\\infty}{\\infty}$. Sonst direkt einsetzen!"
+    },
+    {
+      "id": "m1-grenzwerte-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne mit L'Hôpital: $\\lim_{x \\to 0} \\frac{\\cos(x) - 1}{x^2}$.",
+      "hint": "Typ $\\frac{0}{0}$, zweimal L'Hôpital anwenden.",
+      "answer": "-1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "1. L'Hôpital: $\\lim \\frac{-\\sin(x)}{2x}$. Noch $\\frac{0}{0}$. 2. L'Hôpital: $\\lim \\frac{-\\cos(x)}{2} = \\frac{-1}{2}$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\lim_{x \\to \\infty} \\left(1 + \\frac{1}{x}\\right)^x$?",
+      "options": [
+        "$e$",
+        "$1$",
+        "$\\infty$",
+        "$0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Dies ist die Definition der Euler-Zahl: $\\lim_{x \\to \\infty} \\left(1 + \\frac{1}{x}\\right)^x = e \\approx 2{,}718$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{x \\to 0^+} x \\cdot \\ln(x)$. Gib den Grenzwert als ganze Zahl an.",
+      "hint": "Schreibe als $\\frac{\\ln x}{1/x}$ und wende L'Hôpital an.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 0^+} \\frac{\\ln x}{1/x}$. L'Hôpital ($\\frac{-\\infty}{\\infty}$): $\\lim \\frac{1/x}{-1/x^2} = \\lim (-x) = 0$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} \\frac{x^2 + 1}{2x^2 - x}$.",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{x^2(1 + 1/x^2)}{x^2(2 - 1/x)} \\to \\frac{1}{2}$ für $x \\to \\infty$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2}$?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$1$",
+        "$0$",
+        "$-\\frac{1}{2}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "L'Hôpital (2×): $\\lim \\frac{\\sin x}{2x} \\to \\lim \\frac{\\cos x}{2} = \\frac{1}{2}$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} (\\sqrt{x^2 + x} - x)$.",
+      "hint": "Erweitere mit dem konjugierten Ausdruck $(\\sqrt{x^2 + x} + x)$.",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{(\\sqrt{x^2+x} - x)(\\sqrt{x^2+x} + x)}{\\sqrt{x^2+x} + x} = \\frac{x}{\\sqrt{x^2+x} + x} = \\frac{1}{\\sqrt{1+1/x} + 1} \\to \\frac{1}{2}$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{x \\to 1} \\frac{x^3 - 1}{x - 1}$.",
+      "hint": "Faktorisiere $x^3 - 1 = (x-1)(x^2+x+1)$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{(x-1)(x^2+x+1)}{x-1} = x^2+x+1 \\to 1+1+1 = 3$ für $x \\to 1$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\lim_{x \\to \\infty} \\left(1 + \\frac{2}{x}\\right)^x$?",
+      "options": [
+        "$e^2$",
+        "$e$",
+        "$2e$",
+        "$1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lim_{x \\to \\infty} \\left(1 + \\frac{2}{x}\\right)^x = \\lim \\left[\\left(1 + \\frac{2}{x}\\right)^{x/2}\\right]^2 = e^2$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m1-grenzwerte-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\lim_{x \\to 4} \\sqrt{x}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 4} \\sqrt{x} = \\sqrt{4} = 2$ (Stetigkeit der Wurzelfunktion)."
+    },
+    {
+      "id": "m1-grenzwerte-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{(x-1)(x+1)}{x-1} = x+1 \\to 2$ für $x \\to 1$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} \\frac{5x^3 - 2x}{x^3 + 7}$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "Höchste Potenz $x^3$ ausklammern: $\\frac{x^3(5 - 2/x^2)}{x^3(1 + 7/x^3)} \\to \\frac{5}{1} = 5$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$?",
+      "options": [
+        "$3$",
+        "$1$",
+        "$0$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lim_{x \\to 0} \\frac{\\sin(3x)}{x} = 3 \\cdot \\lim_{x \\to 0} \\frac{\\sin(3x)}{3x} = 3 \\cdot 1 = 3$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} (\\sqrt{x^2 + x} - x)$.",
+      "hint": "Erweitere mit $(\\sqrt{x^2 + x} + x)$.",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{x}{\\sqrt{x^2+x} + x} = \\frac{1}{\\sqrt{1+1/x} + 1} \\to \\frac{1}{2}$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\lim_{x \\to 0} (3x + 2)$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 0} (3x + 2) = 0 + 2 = 2$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x}$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\frac{1}{2}$",
+        "$-1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "L'Hôpital: $\\lim_{x \\to 0} \\frac{\\sin(x)}{1} = \\sin(0) = 0$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{x \\to \\infty} \\left(1 + \\frac{3}{x}\\right)^x$.",
+      "hint": "Verallgemeinerte E-Definition: $\\lim (1 + a/x)^x = e^a$.",
+      "answer": "e^3",
+      "format": "Term",
+      "explanation": "$\\lim_{x \\to \\infty} \\left(1 + \\frac{3}{x}\\right)^x = e^3$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{x \\to 2} \\frac{x^3 - 8}{x - 2}$.",
+      "hint": "Faktorisiere $x^3 - 8 = (x-2)(x^2+2x+4)$.",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{(x-2)(x^2+2x+4)}{x-2} = x^2+2x+4 \\to 4+4+4 = 12$ für $x \\to 2$."
+    },
+    {
+      "id": "m1-grenzwerte-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\lim_{x \\to 0^+} \\frac{1}{x}$?",
+      "options": [
+        "$+\\infty$",
+        "$-\\infty$",
+        "$0$",
+        "$1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Für $x \\to 0^+$ (von rechts) wird $\\frac{1}{x}$ beliebig groß positiv: $+\\infty$."
+    }
+  ]
+}

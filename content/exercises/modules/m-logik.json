@@ -1,0 +1,395 @@
+{
+  "moduleSlug": "m-logik",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-logik-ex-01",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Wann ist die UND-Verknüpfung $P \\land Q$ wahr?",
+      "options": [
+        "Nur wenn beide Aussagen wahr sind",
+        "Wenn mindestens eine Aussage wahr ist",
+        "Wenn genau eine Aussage wahr ist",
+        "Wenn beide Aussagen falsch sind"
+      ],
+      "correctIndex": 0,
+      "explanation": "$P \\land Q$ ist nur wahr, wenn **beide** Aussagen $P$ und $Q$ wahr sind."
+    },
+    {
+      "id": "m-logik-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Wahrheitswert: $w \\lor f$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "Die ODER-Verknüpfung ist wahr, wenn mindestens ein Operand wahr ist. $w \\lor f = w$."
+    },
+    {
+      "id": "m-logik-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $\\neg(\\neg P)$ logisch äquivalent zu? Gib $P$ oder $\\neg P$ an.",
+      "answer": "P",
+      "format": "P oder ¬P",
+      "explanation": "Doppelte Negation hebt sich auf: $\\neg(\\neg P) \\equiv P$."
+    },
+    {
+      "id": "m-logik-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\neg w$ (die Negation von \"wahr\")?",
+      "options": [
+        "$f$ (falsch)",
+        "$w$ (wahr)",
+        "undefiniert",
+        "$w \\lor f$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die Negation dreht den Wahrheitswert um: $\\neg w = f$."
+    },
+    {
+      "id": "m-logik-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $w \\land f$. Gib $w$ oder $f$ an.",
+      "answer": "f",
+      "format": "w oder f",
+      "explanation": "$w \\land f = f$. UND ist nur wahr, wenn beide wahr sind."
+    },
+    {
+      "id": "m-logik-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $f \\lor f$. Gib $w$ oder $f$ an.",
+      "answer": "f",
+      "format": "w oder f",
+      "explanation": "$f \\lor f = f$. ODER ist nur falsch, wenn beide falsch sind."
+    },
+    {
+      "id": "m-logik-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Ist $P \\lor \\neg P$ immer wahr, immer falsch, oder abhängig von $P$?",
+      "options": [
+        "Immer wahr (Tautologie)",
+        "Immer falsch (Kontradiktion)",
+        "Hängt vom Wahrheitswert von $P$ ab",
+        "Nur wahr, wenn $P$ wahr ist"
+      ],
+      "correctIndex": 0,
+      "explanation": "$P \\lor \\neg P$ ist der Satz vom ausgeschlossenen Dritten — immer wahr, egal welchen Wert $P$ hat."
+    },
+    {
+      "id": "m-logik-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $w \\rightarrow w$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$w \\rightarrow w = w$. Eine wahre Aussage impliziert sich selbst."
+    },
+    {
+      "id": "m-logik-ex-09",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wann ist die Implikation $P \\rightarrow Q$ falsch?",
+      "options": [
+        "Nur wenn $P$ wahr und $Q$ falsch ist",
+        "Wenn beide falsch sind",
+        "Wenn $P$ falsch ist",
+        "Wenn beide wahr sind"
+      ],
+      "correctIndex": 0,
+      "explanation": "$P \\rightarrow Q$ ist nur falsch bei Wahr → Falsch. In allen anderen Fällen ist sie wahr."
+    },
+    {
+      "id": "m-logik-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\neg(w \\land w)$. Gib $w$ oder $f$ an.",
+      "answer": "f",
+      "format": "w oder f",
+      "explanation": "$w \\land w = w$. Dann $\\neg w = f$."
+    },
+    {
+      "id": "m-logik-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie lautet die De-Morgan-Regel für $\\neg(P \\land Q)$?",
+      "options": [
+        "$\\neg P \\lor \\neg Q$",
+        "$\\neg P \\land \\neg Q$",
+        "$P \\lor Q$",
+        "$P \\land Q$"
+      ],
+      "correctIndex": 0,
+      "explanation": "De Morgan: $\\neg(P \\land Q) \\equiv \\neg P \\lor \\neg Q$. Die Negation von UND wird zum ODER der Negationen."
+    },
+    {
+      "id": "m-logik-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $f \\rightarrow w$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "Eine Implikation mit falscher Prämisse ist immer wahr: $f \\rightarrow w = w$."
+    },
+    {
+      "id": "m-logik-ex-13",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welcher Ausdruck ist logisch äquivalent zu $P \\rightarrow Q$?",
+      "options": [
+        "$\\neg P \\lor Q$",
+        "$P \\land Q$",
+        "$\\neg P \\land Q$",
+        "$P \\lor \\neg Q$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$P \\rightarrow Q \\equiv \\neg P \\lor Q$. \"Wenn P, dann Q\" bedeutet \"P ist falsch oder Q ist wahr\"."
+    },
+    {
+      "id": "m-logik-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $(w \\rightarrow f) \\lor (f \\rightarrow w)$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$w \\rightarrow f = f$. $f \\rightarrow w = w$. Dann $f \\lor w = w$."
+    },
+    {
+      "id": "m-logik-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie lautet die Kontraposition von $P \\rightarrow Q$?",
+      "options": [
+        "$\\neg Q \\rightarrow \\neg P$",
+        "$Q \\rightarrow P$",
+        "$\\neg P \\rightarrow \\neg Q$",
+        "$P \\land \\neg Q$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die Kontraposition $(P \\rightarrow Q) \\equiv (\\neg Q \\rightarrow \\neg P)$ ist logisch äquivalent zur ursprünglichen Implikation."
+    },
+    {
+      "id": "m-logik-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\neg(f \\lor w)$. Gib $w$ oder $f$ an.",
+      "answer": "f",
+      "format": "w oder f",
+      "explanation": "$f \\lor w = w$. Dann $\\neg w = f$."
+    },
+    {
+      "id": "m-logik-ex-17",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist die Negation von $\\forall x \\in \\mathbb{N}: x \\geq 0$?",
+      "options": [
+        "$\\exists x \\in \\mathbb{N}: x < 0$",
+        "$\\forall x \\in \\mathbb{N}: x < 0$",
+        "$\\exists x \\in \\mathbb{N}: x \\geq 0$",
+        "$\\forall x \\in \\mathbb{N}: x \\leq 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\neg(\\forall x: P(x)) \\equiv \\exists x: \\neg P(x)$. Also: $\\exists x \\in \\mathbb{N}: x < 0$."
+    },
+    {
+      "id": "m-logik-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $(w \\rightarrow f) \\rightarrow f$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$w \\rightarrow f = f$. Dann $f \\rightarrow f = w$. Eine Implikation mit falscher Prämisse ist wahr."
+    },
+    {
+      "id": "m-logik-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche der folgenden Aussagen ist eine Tautologie (immer wahr)?",
+      "options": [
+        "$P \\lor \\neg P$",
+        "$P \\land \\neg P$",
+        "$P \\rightarrow \\neg P$",
+        "$\\neg(P \\lor P)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$P \\lor \\neg P$ (Satz vom ausgeschlossenen Dritten) ist immer wahr. $P \\land \\neg P$ ist eine Kontradiktion (immer falsch)."
+    },
+    {
+      "id": "m-logik-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $(w \\rightarrow w) \\land (w \\rightarrow f)$. Gib $w$ oder $f$ an.",
+      "answer": "f",
+      "format": "w oder f",
+      "explanation": "$w \\rightarrow w = w$ und $w \\rightarrow f = f$. Dann $w \\land f = f$."
+    },
+    {
+      "id": "m-logik-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche logische Schlussregel beschreibt den Modus Ponens?",
+      "options": [
+        "Aus $P \\rightarrow Q$ und $P$ folgt $Q$",
+        "Aus $P \\rightarrow Q$ und $Q$ folgt $P$",
+        "Aus $P \\rightarrow Q$ und $\\neg P$ folgt $\\neg Q$",
+        "Aus $P \\land Q$ folgt $P \\lor Q$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Modus Ponens: Wenn $P \\rightarrow Q$ gilt und $P$ wahr ist, dann muss $Q$ wahr sein."
+    },
+    {
+      "id": "m-logik-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\neg(\\neg w \\land \\neg f)$. Gib $w$ oder $f$ an.",
+      "hint": "Wende Schritt für Schritt aus.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$\\neg w = f$, $\\neg f = w$. $f \\land w = f$. $\\neg f = w$. Ergebnis: $w$."
+    },
+    {
+      "id": "m-logik-ex-23",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist die Negation von $\\exists x: P(x)$?",
+      "options": [
+        "$\\forall x: \\neg P(x)$",
+        "$\\exists x: \\neg P(x)$",
+        "$\\forall x: P(x)$",
+        "$\\neg(\\forall x: P(x))$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\neg(\\exists x: P(x)) \\equiv \\forall x: \\neg P(x)$. \"Es gibt keinen\" = \"Alle sind nicht\"."
+    },
+    {
+      "id": "m-logik-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $(w \\rightarrow f) \\rightarrow (w \\rightarrow f)$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$w \\rightarrow f = f$. Dann $f \\rightarrow f = w$. Jede Implikation $A \\rightarrow A$ ist eine Tautologie."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-logik-ex-01",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Berechne den Wahrheitswert: $(f \\land w) \\lor w$.",
+      "options": [
+        "$w$",
+        "$f$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(f \\land w) = f$, dann $f \\lor w = w$. Das ODER mit wahr ergibt immer wahr."
+    },
+    {
+      "id": "m-logik-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vereinfache $\\neg(P \\lor \\neg Q)$ für $P = f$, $Q = w$. Gib $w$ oder $f$ an.",
+      "hint": "Wende Schritt für Schritt aus.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$\\neg Q = \\neg w = f$. $P \\lor \\neg Q = f \\lor f = f$. $\\neg(f) = w$. Ergebnis: $w$."
+    },
+    {
+      "id": "m-logik-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $(w \\rightarrow f) \\rightarrow (f \\rightarrow w)$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$(w \\rightarrow f) = f$. $(f \\rightarrow w) = w$. Dann $f \\rightarrow w = w$. Eine Implikation mit falscher Prämisse ist immer wahr."
+    },
+    {
+      "id": "m-logik-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche logische Schlussregel wird beim Modus Tollens verwendet?",
+      "options": [
+        "Aus $P \\rightarrow Q$ und $\\neg Q$ folgt $\\neg P$",
+        "Aus $P \\rightarrow Q$ und $P$ folgt $Q$",
+        "Aus $P \\rightarrow Q$ und $Q$ folgt $P$",
+        "Aus $\\neg P \\rightarrow \\neg Q$ folgt $Q \\rightarrow P$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Modus Tollens: Wenn $P \\rightarrow Q$ gilt und $Q$ falsch ist, dann muss $P$ auch falsch sein. Das ist die Kontraposition."
+    },
+    {
+      "id": "m-logik-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ist die Aussage $(P \\rightarrow Q) \\rightarrow (Q \\rightarrow P)$ eine Tautologie?",
+      "options": [
+        "Nein, Gegenbeispiel: $P=f$, $Q=w$",
+        "Ja, sie ist immer wahr",
+        "Nein, Gegenbeispiel: $P=w$, $Q=f$",
+        "Ja, wegen der Kontraposition"
+      ],
+      "correctIndex": 0,
+      "explanation": "Mit $P = f$, $Q = w$: $P \\rightarrow Q = w$, $Q \\rightarrow P = f$. Dann $(w \\rightarrow f) = f$. Die Implikation ist nicht symmetrisch!"
+    },
+    {
+      "id": "m-logik-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $\\neg w$. Gib $w$ oder $f$ an.",
+      "answer": "f",
+      "format": "w oder f",
+      "explanation": "$\\neg w = f$. Die Negation von wahr ist falsch."
+    },
+    {
+      "id": "m-logik-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\neg(w \\land f)$. Gib $w$ oder $f$ an.",
+      "answer": "w",
+      "format": "w oder f",
+      "explanation": "$w \\land f = f$. $\\neg f = w$."
+    },
+    {
+      "id": "m-logik-ex-08",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie lautet die De-Morgan-Regel für $\\neg(P \\lor Q)$?",
+      "options": [
+        "$\\neg P \\land \\neg Q$",
+        "$\\neg P \\lor \\neg Q$",
+        "$P \\land Q$",
+        "$P \\lor Q$"
+      ],
+      "correctIndex": 0,
+      "explanation": "De Morgan: $\\neg(P \\lor Q) \\equiv \\neg P \\land \\neg Q$. Die Negation von ODER wird zum UND der Negationen."
+    },
+    {
+      "id": "m-logik-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $(\\neg P \\rightarrow Q)$ für $P = f$, $Q = f$. Gib $w$ oder $f$ an.",
+      "answer": "f",
+      "format": "w oder f",
+      "explanation": "$\\neg P = \\neg f = w$. Dann $w \\rightarrow f = f$."
+    },
+    {
+      "id": "m-logik-ex-10",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Verknüpfung ist nur dann wahr, wenn beide Operanden wahr sind?",
+      "options": [
+        "UND ($\\land$)",
+        "ODER ($\\lor$)",
+        "Implikation ($\\rightarrow$)",
+        "Negation ($\\neg$)"
+      ],
+      "correctIndex": 0,
+      "explanation": "UND ($\\land$) ist nur wahr, wenn beide Operanden wahr sind. ODER reicht einer von beiden."
+    }
+  ]
+}

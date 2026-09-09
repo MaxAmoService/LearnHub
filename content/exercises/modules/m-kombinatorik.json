@@ -1,0 +1,355 @@
+{
+  "moduleSlug": "m-kombinatorik",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-kombinatorik-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $4!$ (4 Fakultät).",
+      "answer": 24,
+      "format": "Ganze Zahl",
+      "explanation": "$4! = 4 \\cdot 3 \\cdot 2 \\cdot 1 = 24$."
+    },
+    {
+      "id": "m-kombinatorik-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Binomialkoeffizienten $\\binom{7}{2}$.",
+      "answer": 21,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{7}{2} = \\frac{7 \\cdot 6}{2 \\cdot 1} = 21$."
+    },
+    {
+      "id": "m-kombinatorik-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wie viele verschiedene Sitzordnungen gibt es für 3 Personen auf 3 Stühlen?",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$3! = 3 \\cdot 2 \\cdot 1 = 6$ Permutationen."
+    },
+    {
+      "id": "m-kombinatorik-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $5!$.",
+      "answer": 120,
+      "format": "Ganze Zahl",
+      "explanation": "$5! = 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1 = 120$."
+    },
+    {
+      "id": "m-kombinatorik-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\binom{5}{1}$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{5}{1} = \\frac{5}{1} = 5$."
+    },
+    {
+      "id": "m-kombinatorik-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Wie viele Möglichkeiten gibt es, 2 Kugeln aus einer Urne mit 4 verschiedenen Kugeln zu ziehen (Reihenfolge egal)?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$8$",
+        "$12$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\binom{4}{2} = \\frac{4 \\cdot 3}{2} = 6$."
+    },
+    {
+      "id": "m-kombinatorik-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\binom{6}{0}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{n}{0} = 1$ für alle $n$. Es gibt genau eine Möglichkeit, nichts auszuwählen."
+    },
+    {
+      "id": "m-kombinatorik-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\binom{4}{4}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{4}{4} = 1$. Es gibt genau eine Möglichkeit, alle 4 Elemente auszuwählen."
+    },
+    {
+      "id": "m-kombinatorik-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Variation $V(7,3)$ (3 aus 7 mit Reihenfolge, ohne Wiederholung).",
+      "hint": "$V(n,k) = n \\cdot (n-1) \\cdot ... \\cdot (n-k+1)$.",
+      "answer": 210,
+      "format": "Ganze Zahl",
+      "explanation": "$V(7,3) = 7 \\cdot 6 \\cdot 5 = 210$."
+    },
+    {
+      "id": "m-kombinatorik-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\binom{10}{2}$.",
+      "answer": 45,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{10}{2} = \\frac{10 \\cdot 9}{2 \\cdot 1} = 45$."
+    },
+    {
+      "id": "m-kombinatorik-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie viele Permutationen gibt es für die Buchstaben des Wortes \"MATHE\" (alle verschieden)?",
+      "answer": 120,
+      "format": "Ganze Zahl",
+      "explanation": "$5! = 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1 = 120$."
+    },
+    {
+      "id": "m-kombinatorik-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie viele 4-stellige PINs kann man aus den Ziffern 0-9 bilden?",
+      "hint": "4 Stellen, je 10 Möglichkeiten (mit Wiederholung).",
+      "answer": 10000,
+      "format": "Ganze Zahl",
+      "explanation": "$10^4 = 10 \\cdot 10 \\cdot 10 \\cdot 10 = 10\\,000$."
+    },
+    {
+      "id": "m-kombinatorik-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\binom{8}{3}$.",
+      "answer": 56,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{8}{3} = \\frac{8 \\cdot 7 \\cdot 6}{3 \\cdot 2 \\cdot 1} = \\frac{336}{6} = 56$."
+    },
+    {
+      "id": "m-kombinatorik-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie viele 3-stellige Zahlen kann man aus den Ziffern $\\{1,2,3,4\\}$ bilden (Ziffern dürfen mehrfach vorkommen)?",
+      "hint": "Variation mit Wiederholung: $n^k$.",
+      "answer": 64,
+      "format": "Ganze Zahl",
+      "explanation": "$4^3 = 4 \\cdot 4 \\cdot 4 = 64$."
+    },
+    {
+      "id": "m-kombinatorik-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen Variation und Kombination?",
+      "options": [
+        "Bei der Variation ist die Reihenfolge wichtig, bei der Kombination nicht",
+        "Bei der Kombination ist die Reihenfolge wichtig, bei der Variation nicht",
+        "Es gibt keinen Unterschied",
+        "Bei der Variation ist Wiederholung erlaubt, bei der Kombination nicht"
+      ],
+      "correctIndex": 0,
+      "explanation": "Variation: Reihenfolge zählt ($(A,B) \\neq (B,A)$). Kombination: Reihenfolge egal ($(A,B) = (B,A)$)."
+    },
+    {
+      "id": "m-kombinatorik-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Variation $V(5,2)$.",
+      "answer": 20,
+      "format": "Ganze Zahl",
+      "explanation": "$V(5,2) = 5 \\cdot 4 = 20$."
+    },
+    {
+      "id": "m-kombinatorik-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Aus 9 Personen soll ein Team von 3 Personen ausgewählt werden (Reihenfolge egal). Wie viele Möglichkeiten gibt es?",
+      "hint": "Kombination ohne Wiederholung: $\\binom{n}{k}$.",
+      "answer": 84,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{9}{3} = \\frac{9 \\cdot 8 \\cdot 7}{3 \\cdot 2 \\cdot 1} = 84$."
+    },
+    {
+      "id": "m-kombinatorik-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele verschiedene Wörter (auch sinnlose) kann man aus den Buchstaben von \"ANA\" bilden?",
+      "hint": "Permutation mit Wiederholung: $\\frac{3!}{2!}$ wegen des doppelten A.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{3!}{2!} = \\frac{6}{2} = 3$: ANA, AAN, NAA."
+    },
+    {
+      "id": "m-kombinatorik-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "6 verschiedene Bücher sollen in einem Regal angeordnet werden. Wie viele Reihenfolgen gibt es?",
+      "answer": 720,
+      "format": "Ganze Zahl",
+      "explanation": "$6! = 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1 = 720$."
+    },
+    {
+      "id": "m-kombinatorik-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele verschiedene Wörter kann man aus den Buchstaben von \"ANANAS\" bilden?",
+      "hint": "6 Buchstaben: A (3×), N (2×), S (1×). Formel: $\\frac{6!}{3! \\cdot 2!}$.",
+      "answer": 60,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{6!}{3! \\cdot 2!} = \\frac{720}{6 \\cdot 2} = \\frac{720}{12} = 60$."
+    },
+    {
+      "id": "m-kombinatorik-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "In einem Regal stehen 5 Mathe- und 3 Physikbücher. Wie viele Möglichkeiten gibt es, wenn die Mathebücher nebeneinander stehen sollen?",
+      "hint": "Betrachte den Matheblock als ein Objekt.",
+      "options": [
+        "$5! \\cdot 3! \\cdot 4$",
+        "$5! \\cdot 3!$",
+        "$8!$",
+        "$5! \\cdot 4!$"
+      ],
+      "correctIndex": 3,
+      "explanation": "Matheblock (intern $5!$) + 3 Physikbücher = 4 Objekte. $4!$ Anordnungen der 4 Objekte. Gesamt: $5! \\cdot 4! = 2880$."
+    },
+    {
+      "id": "m-kombinatorik-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Aus 10 Personen sollen ein Vorsitzender und ein Stellvertreter gewählt werden (Reihenfolge wichtig). Wie viele Möglichkeiten gibt es?",
+      "hint": "Variation: $V(10, 2)$.",
+      "answer": 90,
+      "format": "Ganze Zahl",
+      "explanation": "$V(10, 2) = 10 \\cdot 9 = 90$."
+    },
+    {
+      "id": "m-kombinatorik-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele Möglichkeiten gibt es, 5 verschiedene Karten aus einem Skatblatt (32 Karten) zu ziehen (Reihenfolge egal)?",
+      "hint": "$\\binom{32}{5}$.",
+      "answer": 201376,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{32}{5} = \\frac{32 \\cdot 31 \\cdot 30 \\cdot 29 \\cdot 28}{5!} = \\frac{33\\,690\\,240}{120} = 201\\,376$."
+    },
+    {
+      "id": "m-kombinatorik-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Auf wie viele Arten kann man 4 verschiedene Prizes an 3 verschiedene Personen verteilen (jeder kann mehrere bekommen)?",
+      "hint": "Jeder Prize geht an eine von 3 Personen: $3^4$.",
+      "answer": 81,
+      "format": "Ganze Zahl",
+      "explanation": "$3^4 = 3 \\cdot 3 \\cdot 3 \\cdot 3 = 81$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-kombinatorik-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wie viele 4-stellige PINs kann man aus den Ziffern 0-9 bilden?",
+      "hint": "4 Stellen, je 10 Möglichkeiten (mit Wiederholung).",
+      "answer": 10000,
+      "format": "Ganze Zahl",
+      "explanation": "$10^4 = 10 \\cdot 10 \\cdot 10 \\cdot 10 = 10\\,000$."
+    },
+    {
+      "id": "m-kombinatorik-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\binom{12}{5}$.",
+      "hint": "$\\binom{12}{5} = \\frac{12 \\cdot 11 \\cdot 10 \\cdot 9 \\cdot 8}{5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1}$.",
+      "answer": 792,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{12}{5} = \\frac{95\\,040}{120} = 792$."
+    },
+    {
+      "id": "m-kombinatorik-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie viele 4-stellige Zahlen kann man aus den Ziffern $\\{1,2,3\\}$ bilden (Ziffern dürfen mehrfach vorkommen)?",
+      "hint": "Variation mit Wiederholung: $n^k$.",
+      "answer": 81,
+      "format": "Ganze Zahl",
+      "explanation": "$3^4 = 3 \\cdot 3 \\cdot 3 \\cdot 3 = 81$."
+    },
+    {
+      "id": "m-kombinatorik-ex-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele verschiedene Wörter kann man aus den Buchstaben von \"ANANAS\" bilden?",
+      "hint": "6 Buchstaben: A (3×), N (2×), S (1×). Formel: $\\frac{6!}{3! \\cdot 2!}$.",
+      "answer": 60,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{6!}{3! \\cdot 2!} = \\frac{720}{6 \\cdot 2} = \\frac{720}{12} = 60$."
+    },
+    {
+      "id": "m-kombinatorik-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "In einem Regal stehen 5 Mathe- und 3 Physikbücher. Wie viele Möglichkeiten gibt es, wenn die Mathebücher nebeneinander stehen sollen?",
+      "hint": "Betrachte den Matheblock als ein Objekt.",
+      "options": [
+        "$5! \\cdot 3! \\cdot 4$",
+        "$5! \\cdot 3!$",
+        "$8!$",
+        "$5! \\cdot 4!$"
+      ],
+      "correctIndex": 3,
+      "explanation": "Matheblock (intern $5!$) + 3 Physikbücher = 4 Objekte. $4!$ Anordnungen. Gesamt: $5! \\cdot 4! = 2880$."
+    },
+    {
+      "id": "m-kombinatorik-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\binom{6}{2}$.",
+      "answer": 15,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{6}{2} = \\frac{6 \\cdot 5}{2} = 15$."
+    },
+    {
+      "id": "m-kombinatorik-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Formel berechnet die Anzahl der Möglichkeiten, $k$ Objekte aus $n$ verschiedenen auszuwählen (ohne Beachtung der Reihenfolge)?",
+      "options": [
+        "$n^k$",
+        "$\\frac{n!}{(n-k)!}$",
+        "$\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$",
+        "$n!$"
+      ],
+      "correctIndex": 2,
+      "explanation": "Die Kombination $\\binom{n}{k}$ zählt die Möglichkeiten der Auswahl ohne Reihenfolge."
+    },
+    {
+      "id": "m-kombinatorik-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Aus einer Gruppe von 8 Personen soll ein Komitee von 4 Personen gebildet werden. Wie viele Möglichkeiten gibt es?",
+      "answer": 70,
+      "format": "Ganze Zahl",
+      "explanation": "$\\binom{8}{4} = \\frac{8 \\cdot 7 \\cdot 6 \\cdot 5}{4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{1680}{24} = 70$."
+    },
+    {
+      "id": "m-kombinatorik-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $V(6,3)$ (3 aus 6 mit Reihenfolge, ohne Wiederholung).",
+      "answer": 120,
+      "format": "Ganze Zahl",
+      "explanation": "$V(6,3) = 6 \\cdot 5 \\cdot 4 = 120$."
+    },
+    {
+      "id": "m-kombinatorik-ex-10",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $3!$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$3! = 3 \\cdot 2 \\cdot 1 = 6$."
+    }
+  ]
+}

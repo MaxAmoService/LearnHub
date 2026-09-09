@@ -1,0 +1,440 @@
+{
+  "moduleSlug": "ihk-it-sicherheit",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "ihk-it-sicherheit-ex-01",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was beschreibt die CIA-Triade?",
+      "options": [
+        "Confidentiality, Integrity, Availability",
+        "Control, Identification, Authentication",
+        "Configuration, Installation, Administration",
+        "Certification, Inspection, Authorization"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die CIA-Triade steht für Vertraulichkeit (Confidentiality), Integrität (Integrity) und Verfügbarkeit (Availability) — die drei Grundpfeiler der IT-Sicherheit."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Wie viele Zeichen sollte ein sicheres Passwort MINDESTENS haben?",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "Experten empfehlen mindestens 12 Zeichen. Längere Passwörter sind exponentiell schwerer zu knacken."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen Authentifizierung und Autorisierung?",
+      "options": [
+        "Authentifizierung = Wer bist du? Autorisierung = Was darfst du?",
+        "Authentifizierung = Was darfst du? Autorisierung = Wer bist du?",
+        "Beide Begriffe bedeuten dasselbe",
+        "Authentifizierung ist verschlüsselt, Autorisierung nicht"
+      ],
+      "correctIndex": 0,
+      "explanation": "Authentifizierung prüft die IDENTITÄT (Wer bist du?), Autorisierung prüft die BERECHTIGUNG (Was darfst du?)."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Art von Malware verschlüsselt Daten und verlangt Lösegeld?",
+      "options": [
+        "Trojaner",
+        "Wurm",
+        "Ransomware",
+        "Spyware"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ransomware verschlüsselt die Dateien des Opfers und fordert eine Zahlung (meist in Kryptowährung) für den Entschlüsselungskey."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was besagt die 3-2-1-Backup-Regel? Wie viele Kopien sollte man haben?",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "3-2-1-Regel: 3 Kopien der Daten, auf 2 verschiedenen Medien, 1 davon extern (offsite)."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was macht ein Hashing-Algorithmus (z.B. SHA-256)?",
+      "options": [
+        "Verschlüsselt Daten symmetrisch",
+        "Erzeugt einen eindeutigen Festwert fester Länge",
+        "Komprimiert Daten auf die Hälfte",
+        "Signiert digital mit einem Private Key"
+      ],
+      "correctIndex": 1,
+      "explanation": "Hashing erzeugt aus beliebig langen Daten einen eindeutigen Hash fester Länge (SHA-256 = 256 Bit). Es ist EINWEG — man kann den Hash nicht zurückrechnen."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist ein Man-in-the-Middle-Angriff (MITM)?",
+      "options": [
+        "Ein Virus der sich in der Mitte einer Datei versteckt",
+        "Ein Angreifer der sich zwischen zwei Kommunikationspartner schaltet",
+        "Ein Angriff auf die Mitte eines Netzwerks",
+        "Ein Trojaner der Admin-Rechte erlangt"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bei einem MITM-Angriff positioniert sich der Angreifer zwischen Sender und Empfänger und kann den Datenverkehr mitlesen oder manipulieren."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Welcher Port wird standardmäßig für HTTPS verwendet?",
+      "answer": 443,
+      "format": "Ganze Zahl",
+      "explanation": "HTTPS nutzt Port 443 (TLS/SSL). HTTP nutzt Port 80."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-09",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist eine SQL-Injection?",
+      "options": [
+        "Ein Virus der SQL-Datenbanken befällt",
+        "Einschleusen von SQL-Befehlen über Eingabefelder",
+        "Ein Backup einer SQL-Datenbank",
+        "Eine Verschlüsselungsmethode für SQL"
+      ],
+      "correctIndex": 1,
+      "explanation": "SQL-Injection: Der Angreifer gibt SQL-Code in Eingabefelder ein, der dann vom Server ausgeführt wird. Schutz: Prepared Statements, Input Validation."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen symmetrischer und asymmetrischer Verschlüsselung?",
+      "options": [
+        "Symmetrisch = 1 Key, Asymmetrisch = 2 Keys (Public + Private)",
+        "Symmetrisch = schneller, Asymmetrisch = langsamer — gleiche Keys",
+        "Symmetrisch ist unsicherer als asymmetrisch",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 0,
+      "explanation": "Symmetrisch: ein gemeinsamer Key für Ver- und Entschlüsselung (z.B. AES). Asymmetrisch: Public Key zum Verschlüsseln, Private Key zum Entschlüsseln (z.B. RSA)."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was steht hinter der Abkürzung XSS?",
+      "answer": "Cross-Site Scripting",
+      "format": "Text",
+      "explanation": "XSS = Cross-Site Scripting. Der Angreifer schleust JavaScript-Code in Webseiten ein, der im Browser des Opfers ausgeführt wird."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was macht eine Firewall?",
+      "options": [
+        "Verschlüsselt den gesamten Netzwerkverkehr",
+        "Filtert Netzwerkverkehr nach definierten Regeln",
+        "Ersetzt den Virenscanner",
+        "Speichert Passwörter sicher"
+      ],
+      "correctIndex": 1,
+      "explanation": "Eine Firewall filtert den Netzwerkverkehr anhand von Regeln (z.B. erlaubte/verbotene Ports, IP-Adressen). Sie schützt vor unberechtigtem Zugriff."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-13",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist Phishing?",
+      "options": [
+        "Ein Angriff auf Netzwerkinfrastruktur",
+        "Das Ausspähen von Passwörtern über gefälschte E-Mails/Webseiten",
+        "Eine Methode zum Passwort-Hashing",
+        "Ein Verschlüsselungsverfahren"
+      ],
+      "correctIndex": 1,
+      "explanation": "Phishing: Der Angreifer täuscht dem Opfer eine vertrauenswürdige Quelle vor (z.B. Bank, E-Mail-Provider), um an sensible Daten zu kommen."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Zweck von Salting beim Passwort-Hashing?",
+      "options": [
+        "Die Hashes kürzer zu machen",
+        "Gleiche Passwörter erzeugen unterschiedliche Hashes",
+        "Die Verschlüsselung zu beschleunigen",
+        "Passwörter lesbar zu speichern"
+      ],
+      "correctIndex": 1,
+      "explanation": "Salting: Vor dem Hashen wird ein zufälliger Wert (Salt) angehängt. So erzeugen gleiche Passwörter unterschiedliche Hashes — Rainbow-Table-Angriffe werden nutzlos."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist eine DMZ (Demilitarisierte Zone)?",
+      "options": [
+        "Ein gesicherter Bereich zwischen internem Netz und Internet",
+        "Ein Netzwerk ohne Firewall",
+        "Ein verschlüsseltes WLAN",
+        "Ein Backup-Rechenzentrum"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die DMZ ist ein abgeschirmtes Netzwerk zwischen dem internen Netz und dem Internet. Öffentliche Server (Web, Mail) stehen hier — kompromittiert ist trotzdem das interne Netz geschützt."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was steht hinter der Abkürzung CSRF?",
+      "answer": "Cross-Site Request Forgery",
+      "format": "Text",
+      "explanation": "CSRF = Cross-Site Request Forgery. Der Angreifer lässt den Browser des Opfers unbemerkt eine Aktion auf einer anderen Webseite ausführen (z.B. Überweisung)."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-17",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Login-Formular prüft Benutzereingaben nicht. Welche Attacke ist am wahrscheinlichsten?",
+      "options": [
+        "DDoS",
+        "SQL-Injection",
+        "Phishing",
+        "Man-in-the-Middle"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fehlende Input-Validierung ist die #1 Voraussetzung für SQL-Injection. Der Angreifer kann SQL-Befehle direkt in die Eingabefelder schreiben."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Gegenmaßnahme verhindert SQL-Injection am zuverlässigsten?",
+      "options": [
+        "Passwörter hashen",
+        "HTTPS aktivieren",
+        "Prepared Statements / Parameterized Queries verwenden",
+        "Eine Firewall installieren"
+      ],
+      "correctIndex": 2,
+      "explanation": "Prepared Statements trennen Code und Daten. Die Eingabe wird NIE als SQL-Code interpretiert — die effektivste Schutzmaßnahme."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Nutzer bekommt eine E-Mail: 'Ihr Paket konnte nicht zugestellt werden. Klicken Sie hier.' Die URL zeigt auf eine unbekannte Domain. Was ist das?",
+      "options": [
+        "Ein normaler Kundenservice",
+        "Spear-Phishing",
+        "Phishing",
+        "Social Engineering per Telefon"
+      ],
+      "correctIndex": 2,
+      "explanation": "Klassisches Phishing: eine gefälschte E-Mail mit Link auf eine betrügerische Seite. Spear-Phishing wäre zielgerichtet auf eine bestimmte Person."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele Positionen hat die OWASP Top 10 Liste (Stand 2021)?",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "Die OWASP Top 10 enthält — wie der Name sagt — die 10 kritischsten Web-Sicherheitsrisiken."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Unterschied zwischen IDS und IPS?",
+      "options": [
+        "IDS erkennt Angriffe, IPS erkennt UND blockiert sie automatisch",
+        "IDS ist für interne Netze, IPS für externe",
+        "Beide sind identisch",
+        "IDS verschlüsselt, IPS entschlüsselt"
+      ],
+      "correctIndex": 0,
+      "explanation": "IDS (Intrusion Detection System) warnt nur. IPS (Intrusion Prevention System) erkennt und BLOCKIERT Angriffe automatisch."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Mitarbeiter gibt am Telefon seine PIN weiter, weil sich jemand als IT-Abteilung ausgibt. Was ist das?",
+      "options": [
+        "Phishing",
+        "Pretexting (Social Engineering)",
+        "Brute-Force",
+        "Keylogging"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pretexting: Der Angreifer erfindet einen Vorwand (Prätext), um an Informationen zu kommen. Hier: Fake-Anruf als IT-Abteilung."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Welches Protokoll wird für ein sicheres VPN verwendet (Abkürzung)?",
+      "answer": "IPSec",
+      "format": "Text",
+      "explanation": "IPSec (Internet Protocol Security) ist das gängigste VPN-Protokoll. Alternatien: OpenVPN, WireGuard."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was empfiehlt das BSI IT-Grundschutz-Konzept?",
+      "options": [
+        "Alle Systeme gleich absichern",
+        "Standardisierte Sicherheitsmaßnahmen für typische IT-Strukturen",
+        "Nur Firewalls einsetzen",
+        "Sicherheit nur für Server, nicht für Clients"
+      ],
+      "correctIndex": 1,
+      "explanation": "BSI IT-Grundschutz bietet standardisierte Bausteine mit Schutzmaßnahmen für typische IT-Umgebungen — ein systematischer Ansatz zur Absicherung."
+    }
+  ],
+  "exam": [
+    {
+      "id": "ihk-it-sicherheit-ex-01",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Prinzip besagt, dass ein Benutzer nur die Berechtigungen haben sollte, die er für seine Arbeit benötigt?",
+      "options": [
+        "Defense in Depth",
+        "Need-to-know / Least Privilege",
+        "Separation of Duties",
+        "Fail-Safe Defaults"
+      ],
+      "correctIndex": 1,
+      "explanation": "Least Privilege: Jeder Benutzer bekommt nur die minimal nötigen Rechte. So wird bei einem Kompromittierung der Schaden begrenzt."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-02",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was bedeutet Verfügbarkeit (Availability) in der CIA-Triade?",
+      "options": [
+        "Daten sind verschlüsselt",
+        "Systeme und Daten sind zugänglich wenn sie gebraucht werden",
+        "Daten sind nicht verändert worden",
+        "Nur autorisierte Personen haben Zugriff"
+      ],
+      "correctIndex": 1,
+      "explanation": "Verfügbarkeit = Systeme und Daten sind für autorisiutzer stets zugänglich. DDoS-Angriffe zielen z.B. gegen die Verfügbarkeit."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-03",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Webshop zeigt in der URL: `shop.de/product?id=1`. Welche Angriffsart ist hier möglich?",
+      "options": [
+        "Cross-Site Scripting (XSS)",
+        "SQL-Injection über die URL-Parameter",
+        "DDoS",
+        "Phishing"
+      ],
+      "correctIndex": 1,
+      "explanation": "URL-Parameter wie `id=1` können für SQL-Injection missbraucht werden: `id=1 OR 1=1`. Schutz: Prepared Statements."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie nennt man den Prozess, bei dem Passwörter durch systematisches Ausprobieren geknackt werden?",
+      "answer": "Brute-Force",
+      "format": "Text",
+      "explanation": "Brute-Force: Alle möglichen Kombinationen werden durchprobiert. Schutz: lange Passwörter, Account-Lockout, Captcha."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist ein Zero-Day-Exploit?",
+      "options": [
+        "Ein Angriff der am ersten Tag nach der Installation stattfindet",
+        "Ein Exploit für eine Schwachstelle, für die es noch keinen Patch gibt",
+        "Ein Angriff mit null Schaden",
+        "Ein Test der keine Schwachstellen findet"
+      ],
+      "correctIndex": 1,
+      "explanation": "Zero-Day: Die Schwachstelle ist noch nicht bekannt (0 Tage seit Entdeckung) — es gibt keinen Patch. Besonders gefährlich."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-06",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Protokoll sorgt für verschlüsselte Webseiten-Übertragung?",
+      "options": [
+        "HTTP",
+        "FTP",
+        "TLS/SSL (HTTPS)",
+        "SMTP"
+      ],
+      "correctIndex": 2,
+      "explanation": "TLS (Transport Layer Security) verschlüsselt die Verbindung zwischen Browser und Server — erkannt am https:// und Schloss-Symbol."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-07",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Mitarbeiter öffnet einen USB-Stick mit 'Gehaltsliste_2024.pdf.exe'. Was für ein Angriff?",
+      "options": [
+        "Phishing",
+        "Baiting (Social Engineering)",
+        "SQL-Injection",
+        "DDoS"
+      ],
+      "correctIndex": 1,
+      "explanation": "Baiting: Lockmittel (hier: vermeintliche Gehaltsliste) wird ausgelegt. Die .exe-Datei ist Malware. Social Engineering über Neugier."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-08",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was steht hinter der Abkürzung VPN?",
+      "answer": "Virtual Private Network",
+      "format": "Text",
+      "explanation": "VPN = Virtual Private Network. Erzeugt einen verschlüsselten Tunnel durch das Internet — wichtig für remote Arbeit."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-09",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche OWASP-Top-10-Schwachstelle erlaubt es einem Angreifer, eigenen JavaScript-Code im Browser anderer Nutzer auszuführen?",
+      "options": [
+        "Injection",
+        "Broken Authentication",
+        "Cross-Site Scripting (XSS)",
+        "Insecure Deserialization"
+      ],
+      "correctIndex": 2,
+      "explanation": "XSS erlaubt das Einschleusen von JavaScript in Webseiten, das dann im Browser anderer Nutzer ausgeführt wird. Schutz: Output Encoding, CSP."
+    },
+    {
+      "id": "ihk-it-sicherheit-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Zweck einer digitalen Signatur?",
+      "options": [
+        "Daten verschlüsseln",
+        "Authentizität und Integrität eines Dokuments nachweisen",
+        "Passwörter sicher speichern",
+        "Netzwerkverkehr filtern"
+      ],
+      "correctIndex": 1,
+      "explanation": "Digitale Signatur: Der Sender signiert mit seinem Private Key. Der Empfänger prüft mit dem Public Key — beweist Authentizität und Unverändertheit."
+    }
+  ]
+}

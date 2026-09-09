@@ -13,6 +13,10 @@
 //
 // IDs: "<slug>-ex-NN" fortlaufend (Muster der AP1-Übernahme).
 //
+// Für die MODUL-Aufgabenpools gibt es convertModuleExercise: dort bleibt
+// die automatische Auswertung erhalten (choice auch mit 2 Optionen, input →
+// numeric mit String-/Zahlen-Antwort inkl. acceptedAnswers).
+//
 // Tests: tests/convertMath.test.ts.
 
 import type { Exercise } from "./types";
@@ -25,7 +29,9 @@ export interface LegacyMathExercise {
   question: string;
   hint?: string;
   expectedAnswer?: string;
+  acceptedAnswers?: string[];
   tolerance?: number;
+  format?: string;
   options?: { label: string; value: string }[];
   correctOption?: string;
   solution: string;
@@ -117,5 +123,60 @@ export function convertMathExercise(
     prompt: ex.question,
     sampleAnswer: ex.solution,
     keyPoints: buildKeyPoints(ex),
+  };
+}
+
+/**
+ * MODUL-Variante: erhält die automatische Auswertung der Modul-Lektionen.
+ *
+ *   - multiple → choice (auch mit 2 Optionen — die Modul-UI zeigt sie als
+ *     Auswahl; der Registry-Guard für Pläne gilt hier nicht)
+ *   - input → numeric: Zahl bleibt Zahl, sonst String-Vergleich (normalisiert)
+ *     — exakt das Verhalten der bisherigen InteractiveExercise-UI.
+ *   - acceptedAnswers werden übernommen (Lösungsmengen, vertauschte
+ *     Komma-Listen) und tolerance bleibt erhalten.
+ */
+export function convertModuleExercise(
+  ex: LegacyMathExercise,
+  moduleSlug: string,
+  index: number,
+): Exercise {
+  const id = `${moduleSlug}-ex-${String(index + 1).padStart(2, "0")}`;
+
+  if (ex.type === "multiple") {
+    if (!ex.correctOption || !ex.options || ex.options.length === 0) {
+      throw new Error(`Aufgabe ${ex.id}: multiple ohne gültige options/correctOption.`);
+    }
+    const correctIndex = ex.options.findIndex((o) => o.value === ex.correctOption);
+    if (correctIndex === -1) {
+      throw new Error(`Aufgabe ${ex.id}: correctOption "${ex.correctOption}" nicht in options.`);
+    }
+    return {
+      id,
+      type: "choice",
+      difficulty: ex.difficulty,
+      prompt: ex.question,
+      ...(ex.hint ? { hint: ex.hint } : {}),
+      options: ex.options.map((o) => o.label),
+      correctIndex,
+      explanation: ex.solution,
+    };
+  }
+
+  const expected = (ex.expectedAnswer ?? "").trim();
+  if (expected === "") {
+    throw new Error(`Aufgabe ${ex.id}: input ohne expectedAnswer.`);
+  }
+  return {
+    id,
+    type: "numeric",
+    difficulty: ex.difficulty,
+    prompt: ex.question,
+    ...(ex.hint ? { hint: ex.hint } : {}),
+    answer: NUMBER_RE.test(expected) ? Number(expected) : expected,
+    ...(ex.acceptedAnswers && ex.acceptedAnswers.length > 0 ? { acceptedAnswers: ex.acceptedAnswers } : {}),
+    ...(ex.tolerance !== undefined ? { tolerance: ex.tolerance } : {}),
+    ...(ex.format !== undefined ? { format: ex.format } : {}),
+    explanation: ex.solution,
   };
 }

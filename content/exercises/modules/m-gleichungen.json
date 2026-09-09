@@ -1,0 +1,408 @@
+{
+  "moduleSlug": "m-gleichungen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-gleichungen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse die lineare Gleichung: $3x + 7 = 22$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$3x + 7 = 22 \\Rightarrow 3x = 15 \\Rightarrow x = 5$."
+    },
+    {
+      "id": "m-gleichungen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $5x - 3 = 2x + 12$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$5x - 3 = 2x + 12 \\Rightarrow 3x = 15 \\Rightarrow x = 5$."
+    },
+    {
+      "id": "m-gleichungen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $\\frac{x}{2} + 3 = 7$.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{x}{2} + 3 = 7 \\Rightarrow \\frac{x}{2} = 4 \\Rightarrow x = 8$."
+    },
+    {
+      "id": "m-gleichungen-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Gleichung hat die Lösung $x = 3$?",
+      "options": [
+        "$2x + 1 = 7$",
+        "$3x - 1 = 7$",
+        "$x + 5 = 7$",
+        "$4x = 10$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$2 \\cdot 3 + 1 = 7$ ✓. Probe: $3 \\cdot 3 - 1 = 8 \\neq 7$, $3 + 5 = 8 \\neq 7$, $4 \\cdot 3 = 12 \\neq 10$."
+    },
+    {
+      "id": "m-gleichungen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $4x - 9 = 2x + 3$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$4x - 9 = 2x + 3 \\Rightarrow 2x = 12 \\Rightarrow x = 6$."
+    },
+    {
+      "id": "m-gleichungen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Lösung von $7x = 3x + 16$?",
+      "options": [
+        "$x = 4$",
+        "$x = 2$",
+        "$x = 8$",
+        "$x = 5$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$7x = 3x + 16 \\Rightarrow 4x = 16 \\Rightarrow x = 4$."
+    },
+    {
+      "id": "m-gleichungen-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Lösung von $2(x + 3) = 14$?",
+      "options": [
+        "$x = 4$",
+        "$x = 5$",
+        "$x = 7$",
+        "$x = 10$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$2(x + 3) = 14 \\Rightarrow x + 3 = 7 \\Rightarrow x = 4$."
+    },
+    {
+      "id": "m-gleichungen-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $\\frac{x}{3} - 2 = 1$.",
+      "answer": 9,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{x}{3} - 2 = 1 \\Rightarrow \\frac{x}{3} = 3 \\Rightarrow x = 9$."
+    },
+    {
+      "id": "m-gleichungen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $2(x - 3) = 3x + 1$.",
+      "answer": -7,
+      "format": "Ganze Zahl",
+      "explanation": "$2x - 6 = 3x + 1 \\Rightarrow -6 - 1 = 3x - 2x \\Rightarrow x = -7$."
+    },
+    {
+      "id": "m-gleichungen-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse die quadratische Gleichung: $x^2 - 2x - 8 = 0$. Gib die kleinere Lösung an.",
+      "answer": -2,
+      "acceptedAnswers": [
+        "4"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$x^2 - 2x - 8 = (x - 4)(x + 2) = 0 \\Rightarrow x_1 = 4, x_2 = -2$. Kleinere: $-2$."
+    },
+    {
+      "id": "m-gleichungen-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $(x + 3)(x - 2) = 0$. Gib die größere Lösung an.",
+      "answer": 2,
+      "acceptedAnswers": [
+        "-3"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$(x + 3)(x - 2) = 0 \\Rightarrow x_1 = -3, x_2 = 2$. Größere: $2$."
+    },
+    {
+      "id": "m-gleichungen-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $\\frac{3x - 5}{2} = x + 1$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$3x - 5 = 2x + 2 \\Rightarrow x = 7$. Probe: $\\frac{16}{2} = 8 = 7 + 1$ ✓."
+    },
+    {
+      "id": "m-gleichungen-ex-13",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche quadratische Gleichung hat die Lösungen $x = 2$ und $x = 5$?",
+      "options": [
+        "$x^2 - 7x + 10 = 0$",
+        "$x^2 + 7x + 10 = 0$",
+        "$x^2 - 3x - 10 = 0$",
+        "$x^2 - 7x - 10 = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(x - 2)(x - 5) = x^2 - 7x + 10 = 0$. Probe: $2^2 - 14 + 10 = 0$ ✓, $25 - 35 + 10 = 0$ ✓."
+    },
+    {
+      "id": "m-gleichungen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse die quadratische Gleichung: $x^2 - 7x + 10 = 0$. Gib die größere Lösung an.",
+      "answer": 5,
+      "acceptedAnswers": [
+        "2"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$(x - 2)(x - 5) = 0 \\Rightarrow x_1 = 2, x_2 = 5$. Größere: $5$."
+    },
+    {
+      "id": "m-gleichungen-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist die Lösung von $3(x + 2) - 2(x - 1) = 10$?",
+      "options": [
+        "$x = 2$",
+        "$x = 4$",
+        "$x = -2$",
+        "$x = 1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$3x + 6 - 2x + 2 = 10 \\Rightarrow x + 8 = 10 \\Rightarrow x = 2$. Typischer Fehler: Vorzeichen beim Ausmultiplizieren verwechseln."
+    },
+    {
+      "id": "m-gleichungen-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Für welchen Wert von $k$ hat die Gleichung $2x + k = 0$ die Lösung $x = -4$?",
+      "options": [
+        "$k = 8$",
+        "$k = -8$",
+        "$k = 4$",
+        "$k = -4$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$2 \\cdot (-4) + k = 0 \\Rightarrow -8 + k = 0 \\Rightarrow k = 8$."
+    },
+    {
+      "id": "m-gleichungen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse mit der Mitternachtsformel: $x^2 + 5x + 6 = 0$. Gib die kleinere Lösung an.",
+      "hint": "Faktorisieren: $(x + 2)(x + 3) = 0$.",
+      "answer": -3,
+      "acceptedAnswers": [
+        "-2"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$(x + 2)(x + 3) = 0 \\Rightarrow x_1 = -2, x_2 = -3$. Kleinere: $-3$."
+    },
+    {
+      "id": "m-gleichungen-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse die Bruchgleichung: $\\frac{2x + 1}{x - 1} = 3$ für $x \\neq 1$.",
+      "hint": "Multipliziere beide Seiten mit $(x - 1)$.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$2x + 1 = 3(x - 1) \\Rightarrow 2x + 1 = 3x - 3 \\Rightarrow x = 4$. Probe: $\\frac{9}{3} = 3$ ✓."
+    },
+    {
+      "id": "m-gleichungen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse mit der pq-Formel: $x^2 - 6x + 5 = 0$. Gib die Differenz der beiden Lösungen an ($x_2 - x_1$ mit $x_2 > x_1$).",
+      "hint": "Faktorisiere zuerst.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$(x-1)(x-5) = 0 \\Rightarrow x_1 = 1, x_2 = 5$. Differenz: $5 - 1 = 4$."
+    },
+    {
+      "id": "m-gleichungen-ex-20",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Gleichung hat genau eine reelle Lösung?",
+      "options": [
+        "$x^2 + 4x + 4 = 0$",
+        "$x^2 + 1 = 0$",
+        "$x^2 - 4 = 0$",
+        "$x^2 + x - 6 = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$x^2 + 4x + 4 = (x+2)^2 = 0$ hat genau eine Lösung: $x = -2$ (doppelte Nullstelle)."
+    },
+    {
+      "id": "m-gleichungen-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Löse das Gleichungssystem: $x + y = 5$ und $x - y = 1$. Was ist $x$?",
+      "hint": "Addiere die beiden Gleichungen.",
+      "options": [
+        "$x = 3$",
+        "$x = 2$",
+        "$x = 4$",
+        "$x = 1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Addition: $2x = 6 \\Rightarrow x = 3$. Dann $y = 5 - 3 = 2$. Probe: $3 + 2 = 5$ ✓, $3 - 2 = 1$ ✓."
+    },
+    {
+      "id": "m-gleichungen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $x^2 + 2x - 15 = 0$. Gib die größere Lösung an.",
+      "hint": "Suche zwei Zahlen, die multipliziert $-15$ und addiert $2$ ergeben.",
+      "answer": 3,
+      "acceptedAnswers": [
+        "-5"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$(x + 5)(x - 3) = 0 \\Rightarrow x_1 = -5, x_2 = 3$. Größere: $3$."
+    },
+    {
+      "id": "m-gleichungen-ex-23",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Wie viele Lösungen hat die Gleichung $x^2 + 2x + 5 = 0$ in $\\mathbb{R}$?",
+      "options": [
+        "Keine reelle Lösung",
+        "Genau eine Lösung",
+        "Zwei Lösungen",
+        "Unendlich viele Lösungen"
+      ],
+      "correctIndex": 0,
+      "explanation": "Diskriminante: $D = 4 - 20 = -16 < 0$. Keine reelle Lösung."
+    },
+    {
+      "id": "m-gleichungen-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Rechteck hat den Umfang $30$ cm und die Fläche $54$ cm². Berechne die kürzere Seite.",
+      "hint": "Stelle $2(a + b) = 30$ und $a \\cdot b = 54$ auf.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$a + b = 15$, $a \\cdot b = 54$. $x^2 - 15x + 54 = 0 \\Rightarrow (x - 6)(x - 9) = 0$. Kürzere Seite: $6$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-gleichungen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Löse: $5x - 3 = 2x + 12$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$5x - 3 = 2x + 12 \\Rightarrow 3x = 15 \\Rightarrow x = 5$."
+    },
+    {
+      "id": "m-gleichungen-ex-02",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Lösung von $4x + 8 = 3x + 11$?",
+      "options": [
+        "$x = 3$",
+        "$x = 2$",
+        "$x = 4$",
+        "$x = -3$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$4x + 8 = 3x + 11 \\Rightarrow x = 3$. Probe: $20 = 20$ ✓."
+    },
+    {
+      "id": "m-gleichungen-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse die quadratische Gleichung: $x^2 - 7x + 10 = 0$. Gib die größere Lösung an.",
+      "answer": 5,
+      "acceptedAnswers": [
+        "2"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$(x - 2)(x - 5) = 0 \\Rightarrow x_1 = 2, x_2 = 5$. Größere: $5$."
+    },
+    {
+      "id": "m-gleichungen-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Löse: $\\frac{3x - 5}{2} = x + 1$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$3x - 5 = 2x + 2 \\Rightarrow x = 7$."
+    },
+    {
+      "id": "m-gleichungen-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Gleichung hat genau eine reelle Lösung?",
+      "options": [
+        "$x^2 + 4x + 4 = 0$",
+        "$x^2 + 1 = 0$",
+        "$x^2 - 4 = 0$",
+        "$x^2 + x - 6 = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(x+2)^2 = 0$ hat genau eine Lösung: $x = -2$."
+    },
+    {
+      "id": "m-gleichungen-ex-06",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $x^2 - 6x + 5 = 0$. Gib die Differenz der Lösungen an ($x_2 - x_1$, $x_2 > x_1$).",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$(x-1)(x-5) = 0 \\Rightarrow x_1 = 1, x_2 = 5$. Differenz: $5 - 1 = 4$."
+    },
+    {
+      "id": "m-gleichungen-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was besagt die Diskriminante $D = b^2 - 4ac$ einer quadratischen Gleichung?",
+      "options": [
+        "$D > 0$: zwei reelle Lösungen",
+        "$D = 0$: keine Lösung",
+        "$D < 0$: zwei reelle Lösungen",
+        "$D > 0$: keine reelle Lösung"
+      ],
+      "correctIndex": 0,
+      "explanation": "$D > 0$: zwei Lösungen. $D = 0$: eine (doppelte). $D < 0$: keine reelle Lösung."
+    },
+    {
+      "id": "m-gleichungen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse: $x^2 + 2x - 15 = 0$. Gib die größere Lösung an.",
+      "answer": 3,
+      "acceptedAnswers": [
+        "-5"
+      ],
+      "format": "Ganze Zahl",
+      "explanation": "$(x + 5)(x - 3) = 0 \\Rightarrow x_1 = -5, x_2 = 3$. Größere: $3$."
+    },
+    {
+      "id": "m-gleichungen-ex-09",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Lösung von $6x = 42$?",
+      "options": [
+        "$x = 7$",
+        "$x = 6$",
+        "$x = 8$",
+        "$x = 42$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$6x = 42 \\Rightarrow x = 7$. Probe: $6 \\cdot 7 = 42$ ✓."
+    },
+    {
+      "id": "m-gleichungen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse das Gleichungssystem: $2x + y = 7$ und $x - y = 2$. Gib $x$ an.",
+      "hint": "Addiere die Gleichungen.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "Addition: $3x = 9 \\Rightarrow x = 3$. Dann $y = 7 - 6 = 1$."
+    }
+  ]
+}

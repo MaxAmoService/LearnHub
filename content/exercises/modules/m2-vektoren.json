@@ -1,0 +1,370 @@
+{
+  "moduleSlug": "m2-vektoren",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m2-vektoren-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben $\\vec{a} = \\binom{3}{1}$ und $\\vec{b} = \\binom{-2}{4}$. Berechne die erste Komponente von $\\vec{a} + \\vec{b}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} + \\vec{b} = \\binom{3+(-2)}{1+4} = \\binom{1}{5}$. Erste Komponente: $1$."
+    },
+    {
+      "id": "m2-vektoren-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Betrag des Vektors $\\vec{v} = \\binom{6}{8}$.",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{v}| = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$."
+    },
+    {
+      "id": "m2-vektoren-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben $\\vec{v} = \\binom{2}{-3}$. Berechne $5 \\cdot \\vec{v}$. Gib die zweite Komponente an.",
+      "answer": -15,
+      "format": "Ganze Zahl",
+      "explanation": "$5 \\cdot \\vec{v} = 5 \\cdot \\binom{2}{-3} = \\binom{10}{-15}$. Zweite Komponente: $-15$."
+    },
+    {
+      "id": "m2-vektoren-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welcher Vektor hat den Betrag $5$?",
+      "options": [
+        "$\\binom{3}{4}$",
+        "$\\binom{2}{3}$",
+        "$\\binom{5}{5}$",
+        "$\\binom{1}{5}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$|\\binom{3}{4}| = \\sqrt{9+16} = \\sqrt{25} = 5$. Die anderen ergeben $\\sqrt{13}$, $\\sqrt{50}$, $\\sqrt{26}$."
+    },
+    {
+      "id": "m2-vektoren-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben $\\vec{a} = \\binom{5}{2}$ und $\\vec{b} = \\binom{1}{-3}$. Berechne $\\vec{a} - \\vec{b}$. Gib die erste Komponente an.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} - \\vec{b} = \\binom{5-1}{2-(-3)} = \\binom{4}{5}$. Erste Komponente: $4$."
+    },
+    {
+      "id": "m2-vektoren-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $\\vec{0} + \\vec{v}$ für einen beliebigen Vektor $\\vec{v}$?",
+      "options": [
+        "$\\vec{v}$",
+        "$\\vec{0}$",
+        "$-\\vec{v}$",
+        "$2\\vec{v}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Der Nullvektor ist das neutrale Element der Addition: $\\vec{0} + \\vec{v} = \\vec{v}$."
+    },
+    {
+      "id": "m2-vektoren-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Betrag von $\\vec{v} = \\binom{-5}{12}$.",
+      "answer": 13,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{v}| = \\sqrt{(-5)^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$."
+    },
+    {
+      "id": "m2-vektoren-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Normiere den Vektor $\\vec{v} = \\binom{0}{7}$. Gib den Betrag des Einheitsvektors an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{v}| = 7$. $\\vec{v}_0 = \\frac{1}{7}\\binom{0}{7} = \\binom{0}{1}$. Betrag: $1$."
+    },
+    {
+      "id": "m2-vektoren-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne das Skalarprodukt $\\vec{a} \\cdot \\vec{b}$ für $\\vec{a} = \\binom{2}{-3}$ und $\\vec{b} = \\binom{4}{1}$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} \\cdot \\vec{b} = 2 \\cdot 4 + (-3) \\cdot 1 = 8 - 3 = 5$."
+    },
+    {
+      "id": "m2-vektoren-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welcher Vektor ist orthogonal zu $\\vec{a} = \\binom{3}{-2}$?",
+      "options": [
+        "$\\binom{2}{3}$",
+        "$\\binom{3}{2}$",
+        "$\\binom{-3}{2}$",
+        "$\\binom{1}{1}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\binom{3}{-2} \\cdot \\binom{2}{3} = 6 - 6 = 0$. orthogonal!"
+    },
+    {
+      "id": "m2-vektoren-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\vec{a} = \\binom{4}{-1}$ und $\\vec{b} = \\binom{t}{8}$ sollen orthogonal sein. Bestimme $t$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} \\cdot \\vec{b} = 4t + (-1) \\cdot 8 = 4t - 8 = 0 \\Rightarrow t = 2$."
+    },
+    {
+      "id": "m2-vektoren-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welcher Winkel (in Grad) ergibt sich für $\\vec{a} = \\binom{1}{0}$ und $\\vec{b} = \\binom{0}{1}$?",
+      "options": [
+        "$90°$",
+        "$0°$",
+        "$45°$",
+        "$180°$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{a} \\cdot \\vec{b} = 0$. Da $\\cos(\\theta) = 0$, ist $\\theta = 90°$. Die Standardvektoren sind orthogonal."
+    },
+    {
+      "id": "m2-vektoren-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\vec{a} \\cdot \\vec{b}$ für $\\vec{a} = \\binom{-1}{2}{3}$ (3D) und $\\vec{b} = \\binom{3}{0}{-1}$.",
+      "hint": "3D-Skalarprodukt: $a_1b_1 + a_2b_2 + a_3b_3$.",
+      "answer": -6,
+      "format": "Ganze Zahl",
+      "explanation": "$(-1) \\cdot 3 + 2 \\cdot 0 + 3 \\cdot (-1) = -3 + 0 - 3 = -6$."
+    },
+    {
+      "id": "m2-vektoren-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Betrag des 3D-Vektors $\\vec{v} = \\binom{1}{2}{2}$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{v}| = \\sqrt{1 + 4 + 4} = \\sqrt{9} = 3$."
+    },
+    {
+      "id": "m2-vektoren-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Sind $\\vec{a} = \\binom{2}{-4}$ und $\\vec{b} = \\binom{-1}{2}$ parallel?",
+      "options": [
+        "Ja, $\\vec{a} = -2\\vec{b}$",
+        "Nein",
+        "Ja, $\\vec{a} = 2\\vec{b}$",
+        "Ja, $\\vec{a} = -\\vec{b}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{a} = \\binom{2}{-4} = -2 \\cdot \\binom{-1}{2} = -2\\vec{b}$. Ja, sie sind antiparallel."
+    },
+    {
+      "id": "m2-vektoren-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Normiere den Vektor $\\vec{v} = \\binom{3}{4}$. Gib die erste Komponente des Einheitsvektors als Dezimalzahl an.",
+      "answer": 0.6,
+      "format": "Dezimalzahl",
+      "explanation": "$|\\vec{v}| = 5$. $\\vec{v}_0 = \\frac{1}{5}\\binom{3}{4} = \\binom{0{,}6}{0{,}8}$. Erste Komponente: $0{,}6$."
+    },
+    {
+      "id": "m2-vektoren-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ für $\\vec{a} = \\binom{1}{0}{0}$ und $\\vec{b} = \\binom{0}{1}{0}$. Gib die dritte Komponente an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} \\times \\vec{b} = \\binom{0 \\cdot 0 - 0 \\cdot 1}{0 \\cdot 0 - 1 \\cdot 0}{1 \\cdot 1 - 0 \\cdot 0} = \\binom{0}{0}{1}$. Dritte Komponente: $1$."
+    },
+    {
+      "id": "m2-vektoren-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Fläche des Parallelogramms, das von $\\vec{a} = \\binom{3}{1}$ und $\\vec{b} = \\binom{2}{4}$ aufgespannt wird.",
+      "hint": "Fläche $= |\\det(\\vec{a}, \\vec{b})|$.",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "Fläche $= |3 \\cdot 4 - 1 \\cdot 2| = |12 - 2| = 10$."
+    },
+    {
+      "id": "m2-vektoren-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Eigenschaft hat das Kreuzprodukt $\\vec{a} \\times \\vec{b}$?",
+      "options": [
+        "Es steht senkrecht auf $\\vec{a}$ und $\\vec{b}$",
+        "Es ist parallel zu $\\vec{a}$",
+        "Es ist immer der Nullvektor",
+        "Es hat immer den Betrag 1"
+      ],
+      "correctIndex": 0,
+      "explanation": "Das Kreuzprodukt steht senkrecht auf beiden Vektoren. Sein Betrag gibt die Fläche des aufgespannten Parallelogramms an."
+    },
+    {
+      "id": "m2-vektoren-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Die Vektoren $\\vec{a} = \\binom{x}{2}$ und $\\vec{b} = \\binom{6}{3}$ sind kollinear. Bestimme $x$.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "Kollinear: $\\frac{x}{6} = \\frac{2}{3}$. Also $x = 6 \\cdot \\frac{2}{3} = 4$."
+    },
+    {
+      "id": "m2-vektoren-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Winkel zwischen $\\vec{a} = \\binom{1}{1}$ und $\\vec{b} = \\binom{1}{0}$ in Grad.",
+      "hint": "$\\cos(\\theta) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}$.",
+      "answer": 45,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} \\cdot \\vec{b} = 1$. $|\\vec{a}| = \\sqrt{2}$, $|\\vec{b}| = 1$. $\\cos\\theta = \\frac{1}{\\sqrt{2}}$. $\\theta = 45°$."
+    },
+    {
+      "id": "m2-vektoren-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $|\\vec{a} \\times \\vec{b}|$ für $\\vec{a} = \\binom{1}{0}{0}$ und $\\vec{b} = \\binom{0}{2}{0}$?",
+      "options": [
+        "$2$",
+        "$0$",
+        "$1$",
+        "$4$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$|\\vec{a} \\times \\vec{b}| = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\sin(90°) = 1 \\cdot 2 \\cdot 1 = 2$. Alternativ: $\\vec{a} \\times \\vec{b} = \\binom{0}{0}{2}$, Betrag $= 2$."
+    },
+    {
+      "id": "m2-vektoren-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ für $\\vec{a} = \\binom{2}{1}{0}$ und $\\vec{b} = \\binom{0}{1}{1}$. Gib die erste Komponente an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "Erste Komponente: $a_2b_3 - a_3b_2 = 1 \\cdot 1 - 0 \\cdot 1 = 1$."
+    },
+    {
+      "id": "m2-vektoren-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne das Spatprodukt $\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$ für $\\vec{a} = \\binom{1}{0}{0}$, $\\vec{b} = \\binom{0}{1}{0}$, $\\vec{c} = \\binom{0}{0}{1}$.",
+      "hint": "$\\vec{b} \\times \\vec{c} = \\binom{1}{0}{0}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{b} \\times \\vec{c} = \\binom{1 \\cdot 1 - 0 \\cdot 0}{0 \\cdot 0 - 1 \\cdot 1}{0 \\cdot 0 - 1 \\cdot 0} = \\binom{1}{0}{0}$ (Korrektur: $\\binom{1}{-0}{0} = \\binom{1}{0}{0}$). $\\vec{a} \\cdot \\binom{1}{0}{0} = 1$. Das Volumen des Einheitswürfels ist $1$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m2-vektoren-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben $\\vec{a} = \\binom{2}{3}$ und $\\vec{b} = \\binom{-1}{2}$. Berechne die erste Komponente von $3\\vec{a} - 2\\vec{b}$.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "$3\\vec{a} = \\binom{6}{9}$, $2\\vec{b} = \\binom{-2}{4}$. $3\\vec{a} - 2\\vec{b} = \\binom{8}{5}$. Erste Komponente: $8$."
+    },
+    {
+      "id": "m2-vektoren-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Betrag von $\\vec{v} = \\binom{-8}{15}$.",
+      "answer": 17,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{v}| = \\sqrt{64 + 225} = \\sqrt{289} = 17$."
+    },
+    {
+      "id": "m2-vektoren-ex-03",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welcher Vektor ist parallel zu $\\vec{v} = \\binom{4}{-6}$?",
+      "options": [
+        "$\\binom{-2}{3}$",
+        "$\\binom{2}{3}$",
+        "$\\binom{4}{6}$",
+        "$\\binom{6}{-4}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{v} = -2 \\cdot \\binom{-2}{3}$. Nur Option a ist ein skalares Vielfaches."
+    },
+    {
+      "id": "m2-vektoren-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\vec{a} \\cdot \\vec{b}$ für $\\vec{a} = \\binom{3}{-1}{2}$ und $\\vec{b} = \\binom{1}{4}{-1}$.",
+      "answer": -3,
+      "format": "Ganze Zahl",
+      "explanation": "$3 \\cdot 1 + (-1) \\cdot 4 + 2 \\cdot (-1) = 3 - 4 - 2 = -3$."
+    },
+    {
+      "id": "m2-vektoren-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Fläche des Dreiecks mit den Eckpunkten $A(0,0)$, $B(4,0)$, $C(2,3)$.",
+      "hint": "Fläche $= \\frac{1}{2}|\\det(\\overrightarrow{AB}, \\overrightarrow{AC})|$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$\\overrightarrow{AB} = \\binom{4}{0}$, $\\overrightarrow{AC} = \\binom{2}{3}$. Fläche $= \\frac{1}{2}|4 \\cdot 3 - 0 \\cdot 2| = \\frac{1}{2} \\cdot 12 = 6$."
+    },
+    {
+      "id": "m2-vektoren-ex-06",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ für $\\vec{a} = \\binom{1}{2}{3}$ und $\\vec{b} = \\binom{4}{5}{6}$. Gib die dritte Komponente an.",
+      "answer": -3,
+      "format": "Ganze Zahl",
+      "explanation": "Dritte Komponente: $a_1b_2 - a_2b_1 = 1 \\cdot 5 - 2 \\cdot 4 = 5 - 8 = -3$."
+    },
+    {
+      "id": "m2-vektoren-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "$\\vec{a} = \\binom{3}{k}$ und $\\vec{b} = \\binom{2}{-6}$ sind orthogonal. Bestimme $k$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} \\cdot \\vec{b} = 6 - 6k = 0 \\Rightarrow k = 1$."
+    },
+    {
+      "id": "m2-vektoren-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ergibt $-1 \\cdot \\vec{v}$ geometrisch?",
+      "options": [
+        "Gegenrichtung, gleiche Länge",
+        "Gleiche Richtung, doppelte Länge",
+        "Senkrecht zu $\\vec{v}$",
+        "Nullvektor"
+      ],
+      "correctIndex": 0,
+      "explanation": "$-1 \\cdot \\vec{v}$ dreht den Vektor um $180°$ (Gegenrichtung), behält aber den gleichen Betrag."
+    },
+    {
+      "id": "m2-vektoren-ex-09",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Wann ist $\\vec{a} \\times \\vec{b} = \\vec{0}$?",
+      "options": [
+        "Wenn $\\vec{a}$ und $\\vec{b}$ parallel sind",
+        "Wenn $\\vec{a}$ und $\\vec{b}$ orthogonal sind",
+        "Immer",
+        "Nie"
+      ],
+      "correctIndex": 0,
+      "explanation": "$|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\alpha = 0$ genau dann, wenn $\\sin\\alpha = 0$, also $\\alpha = 0°$ oder $180°$ — die Vektoren sind parallel."
+    },
+    {
+      "id": "m2-vektoren-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Normiere $\\vec{v} = \\binom{5}{12}$. Gib den Betrag an.",
+      "answer": 13,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{v}| = \\sqrt{25 + 144} = \\sqrt{169} = 13$. Der Einheitsvektor hat den Betrag $1$."
+    }
+  ]
+}

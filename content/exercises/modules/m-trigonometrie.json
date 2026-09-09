@@ -1,0 +1,373 @@
+{
+  "moduleSlug": "m-trigonometrie",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-trigonometrie-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $\\cos(0°)$?",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\cos(0°) = 1$."
+    },
+    {
+      "id": "m-trigonometrie-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Im rechtwinkligen Dreieck: Ankathete $= 4$, Hypotenuse $= 5$. Berechne $\\cos(\\alpha)$ als Bruch (z.B. 4/5).",
+      "answer": "4/5",
+      "format": "Bruch wie 4/5",
+      "explanation": "$\\cos(\\alpha) = \\frac{\\text{Ankathete}}{\\text{Hypotenuse}} = \\frac{4}{5}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $\\sin(0°)$?",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\sin(0°) = 0$."
+    },
+    {
+      "id": "m-trigonometrie-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "In einem rechtwinkligen Dreieck ist die Hypotenuse $10$ und eine Kathete $6$. Welches trigonometrische Verhältnis berechnet man direkt mit $\\frac{6}{10}$?",
+      "options": [
+        "$\\sin(\\alpha)$ oder $\\cos(\\alpha)$, je nach Position der Kathete",
+        "Immer $\\tan(\\alpha)$",
+        "Immer $\\sin(\\alpha)$",
+        "$\\cot(\\alpha)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{6}{10}$ ist entweder $\\sin$ (wenn $6$ die Gegenkathete ist) oder $\\cos$ (wenn $6$ die Ankathete ist)."
+    },
+    {
+      "id": "m-trigonometrie-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $\\sin(90°)$?",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\sin(90°) = 1$."
+    },
+    {
+      "id": "m-trigonometrie-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $\\tan(0°)$?",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\tan(0°) = \\frac{\\sin(0°)}{\\cos(0°)} = \\frac{0}{1} = 0$."
+    },
+    {
+      "id": "m-trigonometrie-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welcher Winkel gehört zu $\\sin(\\alpha) = 1$?",
+      "options": [
+        "$0°$",
+        "$45°$",
+        "$90°$",
+        "$180°$"
+      ],
+      "correctIndex": 2,
+      "explanation": "$\\sin(90°) = 1$. Auf dem Einheitskreis liegt der Punkt bei $(0, 1)$."
+    },
+    {
+      "id": "m-trigonometrie-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Im rechtwinkligen Dreieck: Gegenkathete $= 5$, Ankathete $= 5$. Berechne $\\tan(\\alpha)$ als ganze Zahl.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\tan(\\alpha) = \\frac{5}{5} = 1$. Der Winkel ist $\\alpha = 45°$."
+    },
+    {
+      "id": "m-trigonometrie-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\sin(30°)$ als Bruch (z.B. 1/2).",
+      "answer": "1/2",
+      "format": "Bruch wie 1/2",
+      "explanation": "$\\sin(30°) = \\frac{1}{2}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Im rechtwinkligen Dreieck: Gegenkathete $= 5$, Ankathete $= 12$. Berechne $\\tan(\\alpha)$ als Bruch (z.B. 5/12).",
+      "answer": "5/12",
+      "format": "Bruch wie 5/12",
+      "explanation": "$\\tan(\\alpha) = \\frac{\\text{Gegenkathete}}{\\text{Ankathete}} = \\frac{5}{12}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $\\cos(90°)$?",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\cos(90°) = 0$."
+    },
+    {
+      "id": "m-trigonometrie-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Für welchen Winkel $\\alpha$ gilt $\\sin(\\alpha) = \\cos(\\alpha)$?",
+      "options": [
+        "$30°$",
+        "$45°$",
+        "$60°$",
+        "$90°$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bei $45°$ sind Gegenkathete und Ankathete gleich, also $\\sin(45°) = \\cos(45°) = \\frac{\\sqrt{2}}{2}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\cos(60°)$ als Bruch (z.B. 1/2).",
+      "answer": "1/2",
+      "format": "Bruch wie 1/2",
+      "explanation": "$\\cos(60°) = \\frac{1}{2}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\tan(45°)$ als ganze Zahl.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\tan(45°) = \\frac{\\sin(45°)}{\\cos(45°)} = 1$."
+    },
+    {
+      "id": "m-trigonometrie-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\sin^2(30°) + \\cos^2(30°)$?",
+      "options": [
+        "$1$",
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{4}$",
+        "$\\sqrt{3}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Trigonometrischer Pythagoras: $\\sin^2(x) + \\cos^2(x) = 1$ für jedes $x$."
+    },
+    {
+      "id": "m-trigonometrie-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\sin(60°)$ als Bruch mit Wurzel. Gib den Faktor vor $\\sqrt{3}$ als Bruch an (z.B. 1/2).",
+      "answer": "1/2",
+      "format": "Bruch wie 1/2",
+      "explanation": "$\\sin(60°) = \\frac{\\sqrt{3}}{2}$. Der Faktor ist $\\frac{1}{2}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben $\\sin(\\alpha) = \\frac{3}{5}$ mit spitzem Winkel $\\alpha$. Berechne $\\cos(\\alpha)$ als Dezimalzahl.",
+      "hint": "$\\cos^2(\\alpha) = 1 - \\sin^2(\\alpha)$.",
+      "answer": 0.8,
+      "format": "Dezimalzahl",
+      "explanation": "$\\cos^2(\\alpha) = 1 - \\frac{9}{25} = \\frac{16}{25}$. Da $\\alpha$ spitz: $\\cos(\\alpha) = \\frac{4}{5} = 0{,}8$."
+    },
+    {
+      "id": "m-trigonometrie-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Im rechtwinkligen Dreieck mit $\\alpha = 30°$ und Hypotenuse $= 10$. Berechne die Länge der Gegenkathete.",
+      "hint": "Gegenkathete $= \\text{Hypotenuse} \\cdot \\sin(\\alpha)$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$\\text{GK} = 10 \\cdot \\sin(30°) = 10 \\cdot \\frac{1}{2} = 5$."
+    },
+    {
+      "id": "m-trigonometrie-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben: $a = 8$, $b = 5$, $\\gamma = 60°$. Berechne $c$ mit dem Kosinussatz.",
+      "hint": "$c^2 = a^2 + b^2 - 2ab\\cos(\\gamma)$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$c^2 = 64 + 25 - 80 \\cdot 0{,}5 = 89 - 40 = 49$. $c = 7$."
+    },
+    {
+      "id": "m-trigonometrie-ex-20",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Gegeben: $a = 7$, $b = 10$, $\\alpha = 30°$. Wie berechnet man $\\sin(\\beta)$ mit dem Sinussatz?",
+      "options": [
+        "$\\sin(\\beta) = \\frac{10 \\cdot \\sin(30°)}{7}$",
+        "$\\sin(\\beta) = \\frac{7 \\cdot \\sin(30°)}{10}$",
+        "$\\sin(\\beta) = \\frac{7}{10}$",
+        "$\\sin(\\beta) = \\frac{10}{7}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Sinussatz: $\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta}$. Umgestellt: $\\sin\\beta = \\frac{b \\cdot \\sin\\alpha}{a} = \\frac{10 \\cdot \\sin(30°)}{7}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche eines Dreiecks mit $a = 6$, $b = 8$ und eingeschlossenen Winkel $\\gamma = 30°$.",
+      "hint": "$A = \\frac{1}{2} a b \\sin(\\gamma)$.",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{1}{2} \\cdot 6 \\cdot 8 \\cdot \\sin(30°) = 24 \\cdot 0{,}5 = 12$."
+    },
+    {
+      "id": "m-trigonometrie-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Turm wirft einen $20\\,\\text{m}$ langen Schatten. Die Sonne steht unter einem Elevationswinkel von $45°$. Berechne die Höhe des Turms in Metern.",
+      "hint": "$\\tan(45°) = \\frac{\\text{Höhe}}{\\text{Schattenlänge}}$.",
+      "answer": 20,
+      "format": "Ganze Zahl",
+      "explanation": "$\\text{Höhe} = 20 \\cdot \\tan(45°) = 20 \\cdot 1 = 20\\,\\text{m}$."
+    },
+    {
+      "id": "m-trigonometrie-ex-23",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche trigonometrische Funktion hat die Periode $180°$?",
+      "options": [
+        "$\\sin(x)$",
+        "$\\cos(x)$",
+        "$\\tan(x)$",
+        "Alle drei"
+      ],
+      "correctIndex": 2,
+      "explanation": "$\\sin$ und $\\cos$ haben Periode $360°$. $\\tan$ hat Periode $180°$, da $\\tan(x + 180°) = \\tan(x)$."
+    },
+    {
+      "id": "m-trigonometrie-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein rechtwinkliges Dreieck hat Katheten $a = 5$ und $b = 12$. Welchen Winkel hat $\\alpha$ (gegenüber $a$) ungefähr?",
+      "hint": "$\\tan(\\alpha) = \\frac{5}{12} \\approx 0{,}417$.",
+      "options": [
+        "$\\approx 22{,}6°$",
+        "$\\approx 45°$",
+        "$\\approx 67{,}4°$",
+        "$\\approx 30°$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\tan(\\alpha) = \\frac{5}{12}$. $\\alpha = \\arctan(0{,}417) \\approx 22{,}6°$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-trigonometrie-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\tan(60°)$. Gib den Faktor vor $\\sqrt{3}$ an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$. Der Faktor ist $1$."
+    },
+    {
+      "id": "m-trigonometrie-ex-02",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne $\\sin(\\frac{\\pi}{2})$ (Bogenmaß).",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\sin(\\frac{\\pi}{2}) = \\sin(90°) = 1$."
+    },
+    {
+      "id": "m-trigonometrie-ex-03",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Dreieck hat die Seiten $a = 5$, $b = 12$, $c = 13$. Ist es rechtwinklig?",
+      "options": [
+        "Ja, bei $C$",
+        "Ja, bei $A$",
+        "Nein",
+        "Nicht entscheidbar"
+      ],
+      "correctIndex": 0,
+      "explanation": "$5^2 + 12^2 = 169 = 13^2$. Rechter Winkel bei $C$."
+    },
+    {
+      "id": "m-trigonometrie-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\sin(45°) \\cdot \\sqrt{2}$. Gib das Ergebnis als ganze Zahl an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{\\sqrt{2}}{2} \\cdot \\sqrt{2} = 1$."
+    },
+    {
+      "id": "m-trigonometrie-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben: $a = 8$, $b = 5$, $\\gamma = 60°$. Berechne $c$ (Kosinussatz).",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$c^2 = 64 + 25 - 40 = 49$. $c = 7$."
+    },
+    {
+      "id": "m-trigonometrie-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Im rechtwinkligen Dreieck ist die Ankathete $= 8$ und die Hypotenuse $= 10$. Berechne $\\cos(\\alpha)$ als Dezimalzahl.",
+      "answer": 0.8,
+      "format": "Dezimalzahl",
+      "explanation": "$\\cos(\\alpha) = \\frac{8}{10} = 0{,}8$."
+    },
+    {
+      "id": "m-trigonometrie-ex-07",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Winkelsumme hat ein Dreieck?",
+      "options": [
+        "$90°$",
+        "$180°$",
+        "$270°$",
+        "$360°$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die Winkelsumme in einem Dreieck beträgt immer $180°$."
+    },
+    {
+      "id": "m-trigonometrie-ex-08",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist $\\cos(180°)$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$-1$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctIndex": 2,
+      "explanation": "$\\cos(180°) = -1$. Der Punkt auf dem Einheitskreis liegt bei $(-1, 0)$."
+    },
+    {
+      "id": "m-trigonometrie-ex-09",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $\\tan(90°)$. Ist es definiert? Gib 'nein' an.",
+      "answer": "nein",
+      "format": "ja oder nein",
+      "explanation": "$\\tan(90°) = \\frac{\\sin(90°)}{\\cos(90°)} = \\frac{1}{0}$ ist nicht definiert (Polstelle)."
+    },
+    {
+      "id": "m-trigonometrie-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben: $a = 7$, $\\alpha = 30°$, $\\beta = 45°$. Berechne $b$ mit dem Sinussatz auf 1 Dezimalstelle.",
+      "hint": "$\\frac{a}{\\sin\\alpha} = \\frac{b}{\\sin\\beta}$.",
+      "answer": 9.9,
+      "tolerance": 0.3,
+      "format": "Dezimalzahl",
+      "explanation": "$b = \\frac{7 \\cdot \\sin(45°)}{\\sin(30°)} = \\frac{7 \\cdot 0{,}707}{0{,}5} \\approx 9{,}9$."
+    }
+  ]
+}

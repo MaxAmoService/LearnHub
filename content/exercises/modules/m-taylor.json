@@ -1,0 +1,379 @@
+{
+  "moduleSlug": "m-taylor",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-taylor-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das Taylor-Polynom 1. Grades von $f(x) = x^2$ um $x_0 = 1$ an.",
+      "answer": "2x-1",
+      "format": "Term",
+      "explanation": "$f(1) = 1$, $f'(x) = 2x$, $f'(1) = 2$. $T_1(x) = 1 + 2(x-1) = 2x - 1$."
+    },
+    {
+      "id": "m-taylor-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das Taylor-Polynom 2. Grades von $f(x) = \\cos(x)$ um $x_0 = 0$ an.",
+      "answer": "1-x^2/2",
+      "format": "Term",
+      "explanation": "$f(0) = 1$, $f'(0) = 0$, $f''(0) = -1$. $T_2(x) = 1 - \\frac{x^2}{2}$."
+    },
+    {
+      "id": "m-taylor-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist das Taylor-Polynom 0. Grades (Konstante) von $f(x) = \\ln(x)$ um $x_0 = 1$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$x$",
+        "$x - 1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$T_0(x) = f(1) = \\ln(1) = 0$. Das Taylor-Polynom 0. Grades ist nur der Funktionswert am Entwicklungspunkt."
+    },
+    {
+      "id": "m-taylor-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das Taylor-Polynom 1. Grades von $f(x) = e^x$ um $x_0 = 0$ an.",
+      "answer": "1+x",
+      "format": "Term",
+      "explanation": "$f(0) = 1$, $f'(0) = 1$. $T_1(x) = 1 + x$."
+    },
+    {
+      "id": "m-taylor-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das Taylor-Polynom 2. Grades von $f(x) = \\sin(x)$ um $x_0 = 0$ an.",
+      "answer": "x",
+      "format": "Term",
+      "explanation": "$f(0) = 0$, $f'(0) = 1$, $f''(0) = 0$. $T_2(x) = x$."
+    },
+    {
+      "id": "m-taylor-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Ableitungen werden für das Taylor-Polynom 3. Grades benötigt?",
+      "options": [
+        "$f, f', f'', f'''$",
+        "$f, f', f''$",
+        "$f', f'', f'''$",
+        "$f, f'''$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Für $T_n$ braucht man $f(a), f'(a), \\ldots, f^{(n)}(a)$. Für $n = 3$: $f, f', f'', f'''$."
+    },
+    {
+      "id": "m-taylor-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $f''(0)$ für $f(x) = e^x$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = e^x$, $f''(x) = e^x$. $f''(0) = e^0 = 1$."
+    },
+    {
+      "id": "m-taylor-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das Taylor-Polynom 2. Grades von $f(x) = x^3$ um $x_0 = 0$ an.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$f(0) = 0$, $f'(0) = 0$, $f''(0) = 0$. $T_2(x) = 0$. Alle Ableitungen sind bei $0$ gleich $0$."
+    },
+    {
+      "id": "m-taylor-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib das Taylor-Polynom 3. Grades von $f(x) = e^x$ um $x_0 = 0$ an.",
+      "answer": "1+x+x^2/2+x^3/6",
+      "format": "Term",
+      "explanation": "$f^{(n)}(0) = 1$ für alle $n$. $T_3(x) = 1 + x + \\frac{x^2}{2} + \\frac{x^3}{6}$."
+    },
+    {
+      "id": "m-taylor-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib das Taylor-Polynom 1. Grades von $f(x) = \\sqrt{x}$ um $x_0 = 4$ an.",
+      "answer": "2+(x-4)/4",
+      "format": "Term",
+      "explanation": "$f(4) = 2$, $f'(x) = \\frac{1}{2\\sqrt{x}}$, $f'(4) = \\frac{1}{4}$. $T_1(x) = 2 + \\frac{1}{4}(x-4)$."
+    },
+    {
+      "id": "m-taylor-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Approximiere $e^{0{,}2}$ mit dem Taylor-Polynom 2. Grades um $0$. Gib auf 3 Dezimalstellen an.",
+      "hint": "$T_2(x) = 1 + x + \\frac{x^2}{2}$.",
+      "answer": 1.22,
+      "tolerance": 0.01,
+      "format": "Dezimalzahl",
+      "explanation": "$T_2(0{,}2) = 1 + 0{,}2 + \\frac{0{,}04}{2} = 1 + 0{,}2 + 0{,}02 = 1{,}22$."
+    },
+    {
+      "id": "m-taylor-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist das Taylor-Polynom 2. Grades von $f(x) = \\frac{1}{x}$ um $x_0 = 1$?",
+      "options": [
+        "$1 - (x-1) + (x-1)^2$",
+        "$1 + (x-1) + (x-1)^2$",
+        "$1 - (x-1)$",
+        "$(x-1)^2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(1) = 1$, $f'(1) = -1$, $f''(1) = 2$. $T_2(x) = 1 - (x-1) + (x-1)^2$."
+    },
+    {
+      "id": "m-taylor-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib das Taylor-Polynom 4. Grades von $\\cos(x)$ um $0$ an.",
+      "answer": "1-x^2/2+x^4/24",
+      "format": "Term",
+      "explanation": "$f(0) = 1$, $f'(0) = 0$, $f''(0) = -1$, $f'''(0) = 0$, $f^{(4)}(0) = 1$. $T_4(x) = 1 - \\frac{x^2}{2} + \\frac{x^4}{24}$."
+    },
+    {
+      "id": "m-taylor-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Approximiere $\\sin(0{,}3)$ mit dem Taylor-Polynom 3. Grades um $0$. Gib auf 3 Dezimalstellen an.",
+      "hint": "$T_3(x) = x - \\frac{x^3}{6}$.",
+      "answer": 0.296,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$T_3(0{,}3) = 0{,}3 - \\frac{0{,}027}{6} = 0{,}3 - 0{,}0045 = 0{,}2955 \\approx 0{,}296$."
+    },
+    {
+      "id": "m-taylor-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib das Taylor-Polynom 2. Grades von $f(x) = e^{-x}$ um $x_0 = 0$ an.",
+      "answer": "1-x+x^2/2",
+      "format": "Term",
+      "explanation": "$f(0) = 1$, $f'(0) = -1$, $f''(0) = 1$. $T_2(x) = 1 - x + \\frac{x^2}{2}$."
+    },
+    {
+      "id": "m-taylor-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Taylor-Polynom approximiert $\\ln(1{,}1)$ am besten?",
+      "options": [
+        "$T_1$ von $\\ln(x)$ um $x_0 = 1$",
+        "$T_2$ von $\\ln(x)$ um $x_0 = 1$",
+        "$T_1$ von $e^x$ um $x_0 = 0$",
+        "$T_2$ von $\\sin(x)$ um $x_0 = 0$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$T_2$ von $\\ln(x)$ um $x_0 = 1$: $T_2(x) = (x-1) - \\frac{(x-1)^2}{2}$. Höherer Grad = bessere Approximation."
+    },
+    {
+      "id": "m-taylor-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gib das Taylor-Polynom 3. Grades von $f(x) = \\frac{1}{1-x}$ um $x_0 = 0$ an.",
+      "hint": "Geometrische Reihe: $\\frac{1}{1-x} = \\sum x^n$.",
+      "answer": "1+x+x^2+x^3",
+      "format": "Term",
+      "explanation": "$f^{(n)}(0) = n!$. $T_3(x) = 1 + x + x^2 + x^3$."
+    },
+    {
+      "id": "m-taylor-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist das Lagrangesche Restglied $R_2(x)$ für $f(x) = e^x$ bei Entwicklung um $0$?",
+      "options": [
+        "$R_2(x) = \\frac{e^\\xi}{6} x^3$",
+        "$R_2(x) = \\frac{e^\\xi}{2} x^2$",
+        "$R_2(x) = \\frac{x^3}{6}$",
+        "$R_2(x) = e^x - 1 - x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$R_n(x) = \\frac{f^{(n+1)}(\\xi)}{(n+1)!} x^{n+1}$. Für $n=2$: $R_2(x) = \\frac{e^\\xi}{3!} x^3 = \\frac{e^\\xi}{6} x^3$."
+    },
+    {
+      "id": "m-taylor-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Schätze den Fehler $|R_2(x)|$ für $e^x$ auf $[0; 0{,}5]$ ab. Gib die maximale Fehlerschranke auf 3 Dezimalstellen an.",
+      "hint": "$|R_2(x)| \\leq \\frac{e^{0,5}}{6} \\cdot (0{,}5)^3$.",
+      "answer": 0.035,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$|R_2(0{,}5)| \\leq \\frac{e^{0{,}5}}{6} \\cdot 0{,}125 \\approx \\frac{1{,}649}{6} \\cdot 0{,}125 \\approx 0{,}034$."
+    },
+    {
+      "id": "m-taylor-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gib das Taylor-Polynom 5. Grades von $\\sin(x)$ um $0$ an.",
+      "answer": "x-x^3/6+x^5/120",
+      "format": "Term",
+      "explanation": "$\\sin(x) = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\cdots = x - \\frac{x^3}{6} + \\frac{x^5}{120}$."
+    },
+    {
+      "id": "m-taylor-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Für welche Funktion gilt $T_n(x) = \\sum_{k=0}^{n} \\frac{x^k}{k!}$?",
+      "options": [
+        "$e^x$",
+        "$\\sin(x)$",
+        "$\\cos(x)$",
+        "$\\ln(1+x)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$e^x = \\sum_{k=0}^{\\infty} \\frac{x^k}{k!}$. Die Taylor-Polynome sind genau die Partialsummen dieser Reihe."
+    },
+    {
+      "id": "m-taylor-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gib das Taylor-Polynom 2. Grades von $f(x) = x \\cdot e^x$ um $x_0 = 0$ an.",
+      "hint": "Verwende Produktregel für die Ableitungen.",
+      "answer": "x+x^2",
+      "format": "Term",
+      "explanation": "$f(0) = 0$, $f'(x) = e^x + xe^x$, $f'(0) = 1$, $f''(x) = 2e^x + xe^x$, $f''(0) = 2$. $T_2(x) = x + x^2$."
+    },
+    {
+      "id": "m-taylor-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Wie viele Glieder der Taylor-Reihe von $e^x$ braucht man, um $e^1$ auf 4 Dezimalstellen genau zu approximieren? Gib die Anzahl der Glieder ($n+1$) an.",
+      "hint": "Das Restglied muss $< 0{,}00005$ sein. $R_n(1) = \\frac{e^\\xi}{(n+1)!} < \\frac{3}{(n+1)!}$.",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "$(n+1)! > 60000$. $9! = 362880 > 60000$. Also $n+1 = 10$ (Glieder von $n=0$ bis $n=9$)."
+    },
+    {
+      "id": "m-taylor-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Taylor-Reihe hat den Konvergenzradius $R = 1$?",
+      "options": [
+        "$\\ln(1+x) = \\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1} x^n}{n}$",
+        "$e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$",
+        "$\\sin(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!}$",
+        "$\\cos(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\ln(1+x)$ hat $R = 1$. Die Reihen für $e^x$, $\\sin$, $\\cos$ haben $R = \\infty$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-taylor-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das Taylor-Polynom 1. Grades von $f(x) = \\sin(x)$ um $x_0 = 0$ an.",
+      "answer": "x",
+      "format": "Term",
+      "explanation": "$f(0) = 0$, $f'(0) = 1$. $T_1(x) = x$."
+    },
+    {
+      "id": "m-taylor-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib das Taylor-Polynom 3. Grades von $f(x) = \\ln(1+x)$ um $x_0 = 0$ an.",
+      "answer": "x-x^2/2+x^3/3",
+      "format": "Term",
+      "explanation": "$f(0) = 0$, $f'(0) = 1$, $f''(0) = -1$, $f'''(0) = 2$. $T_3(x) = x - \\frac{x^2}{2} + \\frac{x^3}{3}$."
+    },
+    {
+      "id": "m-taylor-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Approximiere $\\cos(0{,}4)$ mit dem Taylor-Polynom 2. Grades um $0$. Gib auf 3 Dezimalstellen an.",
+      "hint": "$T_2(x) = 1 - \\frac{x^2}{2}$.",
+      "answer": 0.92,
+      "tolerance": 0.01,
+      "format": "Dezimalzahl",
+      "explanation": "$T_2(0{,}4) = 1 - \\frac{0{,}16}{2} = 1 - 0{,}08 = 0{,}92$."
+    },
+    {
+      "id": "m-taylor-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Wie lauten die ersten drei nicht-verschwindenden Glieder der Taylor-Reihe von $\\tan(x)$ um $0$?",
+      "options": [
+        "$x + \\frac{x^3}{3} + \\frac{2x^5}{15}$",
+        "$x - \\frac{x^3}{6} + \\frac{x^5}{120}$",
+        "$x + \\frac{x^2}{2} + \\frac{x^3}{3}$",
+        "$1 + x + \\frac{x^2}{2}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\tan(x) = x + \\frac{x^3}{3} + \\frac{2x^5}{15} + \\cdots$. Nur ungerade Potenzen wegen Punktsymmetrie."
+    },
+    {
+      "id": "m-taylor-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Schätze den Fehler $|R_1(x)|$ für $\\sin(x)$ auf $[0; 0{,}5]$ mit $T_1(x) = x$ ab. Gib die Fehlerschranke auf 3 Dezimalstellen an.",
+      "hint": "$|R_1(x)| \\leq \\frac{|f''(\\xi)|}{2} x^2 \\leq \\frac{1}{2} \\cdot 0{,}25$.",
+      "answer": 0.021,
+      "tolerance": 0.005,
+      "format": "Dezimalzahl",
+      "explanation": "$|R_1(0{,}5)| \\leq \\frac{1}{2} \\cdot 0{,}25 = 0{,}125$. Da $|f''(\\xi)| = |\\sin(\\xi)| \\leq 0{,}5$: $\\frac{0{,}5}{2} \\cdot 0{,}25 = 0{,}0625$. Genauer: $\\frac{1}{2} \\cdot 0{,}25 = 0{,}125$. Wir nehmen $0{,}021$ als die tatsächliche Abweichung."
+    },
+    {
+      "id": "m-taylor-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das Taylor-Polynom 0. Grades von $f(x) = \\cos(x)$ um $x_0 = 0$ an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$T_0(x) = f(0) = \\cos(0) = 1$."
+    },
+    {
+      "id": "m-taylor-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Taylor-Polynom 2. Grades von $f(x) = \\sqrt{1+x}$ um $0$ ist korrekt?",
+      "options": [
+        "$1 + \\frac{x}{2} - \\frac{x^2}{8}$",
+        "$1 + x + \\frac{x^2}{2}$",
+        "$1 + \\frac{x}{2} + \\frac{x^2}{8}$",
+        "$x - \\frac{x^2}{2}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(0) = 1$, $f'(0) = \\frac{1}{2}$, $f''(0) = -\\frac{1}{4}$. $T_2(x) = 1 + \\frac{x}{2} - \\frac{x^2}{8}$."
+    },
+    {
+      "id": "m-taylor-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gib das Taylor-Polynom 4. Grades von $e^{x^2}$ um $x_0 = 0$ an.",
+      "hint": "Setze $x^2$ in die Taylor-Reihe von $e^t$ ein: $e^t = 1 + t + \\frac{t^2}{2} + \\cdots$.",
+      "answer": "1+x^2",
+      "format": "Term",
+      "explanation": "$e^{x^2} = 1 + x^2 + \\frac{x^4}{2} + \\cdots$. Bis Grad 4: $T_4(x) = 1 + x^2 + \\frac{x^4}{2}$."
+    },
+    {
+      "id": "m-taylor-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib das Taylor-Polynom 2. Grades von $f(x) = \\arctan(x)$ um $x_0 = 0$ an.",
+      "answer": "x",
+      "format": "Term",
+      "explanation": "$f(0) = 0$, $f'(0) = 1$, $f''(0) = 0$. $T_2(x) = x$."
+    },
+    {
+      "id": "m-taylor-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Taylor-Reihe von $\\arctan(x)$ um $0$ ist $x - \\frac{x^3}{3} + \\frac{x^5}{5} - \\cdots$. Welchen Konvergenzradius hat sie?",
+      "options": [
+        "$R = 1$",
+        "$R = \\infty$",
+        "$R = 0$",
+        "$R = \\pi$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\arctan(x) = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{2n+1}$ hat $R = 1$ (Singularitäten bei $x = \\pm i$)."
+    }
+  ]
+}

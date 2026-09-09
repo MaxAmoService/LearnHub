@@ -1,0 +1,377 @@
+{
+  "moduleSlug": "m1-ableitungen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m1-ableitungen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Leite ab: $f(x) = x^4$.",
+      "answer": "4x^3",
+      "format": "Term",
+      "explanation": "$f'(x) = 4x^3$ (Potenzregel: $\\frac{d}{dx}x^n = n \\cdot x^{n-1}$)."
+    },
+    {
+      "id": "m1-ableitungen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Leite ab: $f(x) = 5x^3 - 2x + 7$.",
+      "answer": "15x^2-2",
+      "format": "Term",
+      "explanation": "$f'(x) = 15x^2 - 2$. Summenregel + Potenzregel. Ableitung der Konstanten $7$ ist $0$."
+    },
+    {
+      "id": "m1-ableitungen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Leite ab: $f(x) = e^x$.",
+      "answer": "e^x",
+      "format": "Term",
+      "explanation": "$f'(x) = e^x$. Die Exponentialfunktion $e^x$ reproduziert sich beim Ableiten."
+    },
+    {
+      "id": "m1-ableitungen-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Ableitung von $f(x) = \\sin(x)$?",
+      "options": [
+        "$\\cos(x)$",
+        "$-\\cos(x)$",
+        "$-\\sin(x)$",
+        "$\\tan(x)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{d}{dx}\\sin(x) = \\cos(x)$."
+    },
+    {
+      "id": "m1-ableitungen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Leite ab: $f(x) = x^6$.",
+      "answer": "6x^5",
+      "format": "Term",
+      "explanation": "$f'(x) = 6x^5$ (Potenzregel)."
+    },
+    {
+      "id": "m1-ableitungen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Ableitung einer Konstanten, z.B. $f(x) = 5$?",
+      "options": [
+        "$0$",
+        "$5$",
+        "$1$",
+        "$5x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die Ableitung einer Konstanten ist immer $0$: $\\frac{d}{dx}c = 0$."
+    },
+    {
+      "id": "m1-ableitungen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Leite ab: $f(x) = 3x^2$.",
+      "answer": "6x",
+      "format": "Term",
+      "explanation": "$f'(x) = 3 \\cdot 2x = 6x$."
+    },
+    {
+      "id": "m1-ableitungen-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Ableitung von $f(x) = \\ln(x)$?",
+      "options": [
+        "$\\frac{1}{x}$",
+        "$e^x$",
+        "$\\frac{1}{x^2}$",
+        "$x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{d}{dx}\\ln(x) = \\frac{1}{x}$ für $x > 0$."
+    },
+    {
+      "id": "m1-ableitungen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Leite mit der Produktregel ab: $f(x) = x^2 \\cdot \\sin(x)$.",
+      "answer": "2x*sin(x)+x^2*cos(x)",
+      "format": "Term",
+      "explanation": "Produktregel $(uv)' = u'v + uv'$: $f'(x) = 2x \\cdot \\sin(x) + x^2 \\cdot \\cos(x)$."
+    },
+    {
+      "id": "m1-ableitungen-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Leite mit der Kettenregel ab: $f(x) = e^{2x}$.",
+      "answer": "2*e^{2x}",
+      "format": "Term",
+      "explanation": "Kettenregel: $f'(x) = e^{2x} \\cdot 2 = 2e^{2x}$. Äußere Ableitung mal innere Ableitung."
+    },
+    {
+      "id": "m1-ableitungen-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie lautet die Produktregel für $(f \\cdot g)'$?",
+      "options": [
+        "$f' \\cdot g + f \\cdot g'$",
+        "$f' \\cdot g'$",
+        "$\\frac{f'}{g'}$",
+        "$f' \\cdot g - f \\cdot g'$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Produktregel: $(f \\cdot g)' = f' \\cdot g + f \\cdot g'$. \"Außen mal Ableitung von innen plus innen mal Ableitung von außen.\""
+    },
+    {
+      "id": "m1-ableitungen-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben $f(x) = x^2 - 3x$. Berechne $f'(2)$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 2x - 3$. $f'(2) = 4 - 3 = 1$."
+    },
+    {
+      "id": "m1-ableitungen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Leite ab: $f(x) = x^2 + 3x - 5$. Berechne $f'(2)$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 2x + 3$. $f'(2) = 4 + 3 = 7$."
+    },
+    {
+      "id": "m1-ableitungen-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Wie lautet die Kettenregel für $(f(g(x)))'$?",
+      "options": [
+        "$f'(g(x)) \\cdot g'(x)$",
+        "$f'(x) \\cdot g'(x)$",
+        "$f'(g(x)) + g'(x)$",
+        "$f(g'(x))$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Kettenregel: $(f \\circ g)'(x) = f'(g(x)) \\cdot g'(x)$. Äußere Ableitung an der inneren Stelle, mal innere Ableitung."
+    },
+    {
+      "id": "m1-ableitungen-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Leite mit der Kettenregel ab: $f(x) = (2x + 1)^3$.",
+      "answer": "6*(2x+1)^2",
+      "format": "Term",
+      "explanation": "$f'(x) = 3(2x+1)^2 \\cdot 2 = 6(2x+1)^2$."
+    },
+    {
+      "id": "m1-ableitungen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Leite ab: $f(x) = \\frac{1}{x}$.",
+      "answer": "-1/x^2",
+      "format": "Term",
+      "explanation": "$f(x) = x^{-1}$. $f'(x) = -1 \\cdot x^{-2} = -\\frac{1}{x^2}$."
+    },
+    {
+      "id": "m1-ableitungen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Leite ab: $f(x) = \\sin(x^2)$.",
+      "hint": "Kettenregel: äußere Funktion $\\sin$, innere $x^2$.",
+      "answer": "2x*cos(x^2)",
+      "format": "Term",
+      "explanation": "$f'(x) = \\cos(x^2) \\cdot 2x = 2x \\cos(x^2)$."
+    },
+    {
+      "id": "m1-ableitungen-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Wo hat $f(x) = x^3 - 3x$ ein lokales Maximum?",
+      "options": [
+        "$x = -1$",
+        "$x = 1$",
+        "$x = 0$",
+        "$x = 3$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f'(x) = 3x^2 - 3 = 0 \\Rightarrow x = \\pm 1$. $f''(x) = 6x$. $f''(-1) = -6 < 0$ → Maximum bei $x = -1$."
+    },
+    {
+      "id": "m1-ableitungen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die zweite Ableitung von $f(x) = x^3 - 6x^2 + 9x$.",
+      "hint": "Leite zweimal nacheinander ab.",
+      "answer": "6x-12",
+      "format": "Term",
+      "explanation": "$f'(x) = 3x^2 - 12x + 9$. $f''(x) = 6x - 12$."
+    },
+    {
+      "id": "m1-ableitungen-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = \\frac{x+1}{x-1}$. Berechne $f'(2)$.",
+      "hint": "Quotientenregel: $\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}$.",
+      "answer": -2,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = \\frac{1 \\cdot (x-1) - (x+1) \\cdot 1}{(x-1)^2} = \\frac{-2}{(x-1)^2}$. $f'(2) = \\frac{-2}{1} = -2$."
+    },
+    {
+      "id": "m1-ableitungen-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist die Ableitung von $f(x) = \\tan(x)$?",
+      "options": [
+        "$\\frac{1}{\\cos^2(x)}$",
+        "$\\frac{1}{\\sin^2(x)}$",
+        "$-\\frac{1}{\\cos^2(x)}$",
+        "$\\cos(x) \\cdot \\sin(x)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\tan(x) = \\frac{\\sin x}{\\cos x}$. Quotientenregel ergibt: $\\frac{\\cos^2 x + \\sin^2 x}{\\cos^2 x} = \\frac{1}{\\cos^2 x}$."
+    },
+    {
+      "id": "m1-ableitungen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = x^4 - 8x^2 + 16$. Berechne $f'(1)$.",
+      "answer": -12,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 4x^3 - 16x$. $f'(1) = 4 - 16 = -12$."
+    },
+    {
+      "id": "m1-ableitungen-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Tangentensteigung von $f(x) = 2x^2 + x$ an der Stelle $x = 3$.",
+      "answer": 13,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 4x + 1$. $f'(3) = 12 + 1 = 13$."
+    },
+    {
+      "id": "m1-ableitungen-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Für welche $x$ hat $f(x) = \\frac{1}{3}x^3 - 2x^2 + 3x$ die Ableitung $0$?",
+      "options": [
+        "$x = 1$ und $x = 3$",
+        "$x = 0$ und $x = 2$",
+        "$x = -1$ und $x = 3$",
+        "$x = 2$ und $x = 4$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f'(x) = x^2 - 4x + 3 = (x-1)(x-3) = 0 \\Rightarrow x = 1$ oder $x = 3$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m1-ableitungen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Leite ab: $f(x) = 3x^2 + 4x - 1$.",
+      "answer": "6x+4",
+      "format": "Term",
+      "explanation": "$f'(x) = 6x + 4$."
+    },
+    {
+      "id": "m1-ableitungen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Leite ab: $f(x) = (2x + 1)^3$.",
+      "hint": "Kettenregel: $3(2x+1)^2 \\cdot 2$.",
+      "answer": "6*(2x+1)^2",
+      "format": "Term",
+      "explanation": "$f'(x) = 3(2x+1)^2 \\cdot 2 = 6(2x+1)^2$."
+    },
+    {
+      "id": "m1-ableitungen-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Tangentensteigung von $f(x) = x^2 - 3x$ an der Stelle $x = 2$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 2x - 3$. $f'(2) = 4 - 3 = 1$."
+    },
+    {
+      "id": "m1-ableitungen-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Für welche $x$ hat $f(x) = \\frac{1}{3}x^3 - 2x^2 + 3x$ die Ableitung $0$?",
+      "options": [
+        "$x = 1$ und $x = 3$",
+        "$x = 0$ und $x = 2$",
+        "$x = -1$ und $x = 1$",
+        "$x = 2$ und $x = 4$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f'(x) = x^2 - 4x + 3 = (x-1)(x-3) = 0 \\Rightarrow x = 1$ oder $x = 3$."
+    },
+    {
+      "id": "m1-ableitungen-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = x \\cdot e^x$. Berechne $f'(1)$ als Dezimalzahl (1 Dezimalstelle).",
+      "hint": "Produktregel: $(x)'e^x + x(e^x)'$.",
+      "answer": 5.4,
+      "tolerance": 0.2,
+      "format": "Dezimalzahl (z.B. 2.5)",
+      "explanation": "$f'(x) = 1 \\cdot e^x + x \\cdot e^x = e^x(1+x)$. $f'(1) = e \\cdot 2 = 2e \\approx 5{,}44$."
+    },
+    {
+      "id": "m1-ableitungen-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Leite ab: $f(x) = 7x - 3$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$f'(x) = 7$. Die Ableitung von $mx + b$ ist $m$."
+    },
+    {
+      "id": "m1-ableitungen-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Ableitung von $f(x) = \\cos(x)$?",
+      "options": [
+        "$-\\sin(x)$",
+        "$\\sin(x)$",
+        "$-\\cos(x)$",
+        "$\\tan(x)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{d}{dx}\\cos(x) = -\\sin(x)$."
+    },
+    {
+      "id": "m1-ableitungen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = e^{x^2}$. Berechne $f'(1)$.",
+      "hint": "Kettenregel: $e^{x^2} \\cdot 2x$.",
+      "answer": "2e",
+      "format": "Term",
+      "explanation": "$f'(x) = e^{x^2} \\cdot 2x$. $f'(1) = e^1 \\cdot 2 = 2e$."
+    },
+    {
+      "id": "m1-ableitungen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Leite mit der Produktregel ab: $f(x) = x^2 \\cdot \\cos(x)$.",
+      "answer": "2x*cos(x)-x^2*sin(x)",
+      "format": "Term",
+      "explanation": "$f'(x) = 2x \\cdot \\cos(x) + x^2 \\cdot (-\\sin(x)) = 2x\\cos(x) - x^2\\sin(x)$."
+    },
+    {
+      "id": "m1-ableitungen-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Wo hat $f(x) = x^3 - 3x^2$ einen Wendepunkt?",
+      "options": [
+        "$x = 1$",
+        "$x = 0$",
+        "$x = 2$",
+        "$x = 3$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f'(x) = 3x^2 - 6x$. $f''(x) = 6x - 6 = 0 \\Rightarrow x = 1$. $f'''(1) = 6 \\neq 0$ → Wendepunkt."
+    }
+  ]
+}

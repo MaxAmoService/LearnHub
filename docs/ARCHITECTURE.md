@@ -308,10 +308,15 @@ LearnHub wächst — die Richtung für die Organisation von Inhalten:
    Fortschritt verloren (deshalb erzeugt `createExerciseLessons` IDs über
    den optionalen `lessonIdPrefix`).
 
-**Offene Migration (bewusst noch nicht umgesetzt):** Die Modul-Aufgabenpools
-(31 Module in `lib/mathExercises.ts` + die `*Data.ts`-Pools) auf das
-JSON/Registry-System heben. Werkzeuge dafür existieren bereits
-(`lib/exercises/convertMath.ts`, `scripts/convert-math-exercises.ts`,
-`tests/convertMath.test.ts`). Voraussetzung: Type-Mapping `input|multiple` →
-`recall|numeric|choice`, Prüfmodus und Difficulty-Filter bleiben
-verhaltensgleich, danach Smoke-Test über alle 31 Module.
+**Modul-Aufgabenpools (migriert):** Die 41 Modul-Pools (880 Übungs- +
+371 Prüfungsaufgaben) liegen als JSON in `content/exercises/modules/` und
+werden über `lib/exercises/moduleRegistry.ts` geladen (generiert von
+`scripts/convert-module-exercises.ts`, Äquivalenz-Prüfung über
+`scripts/verify-module-migration.ts`). Die Laufzeit-App nutzt
+ausschließlich die JSON-Registry; `lib/mathExercises.ts` + die
+`*Practice`/`*Exam`-Arrays in den Data-Dateien sind nur noch
+Generator-Quelle (kein App-Code importiert sie zur Laufzeit).
+**Neue Aufgaben** werden in den Legacy-Arrays ergänzt und per
+`npm run convert:module-exercises`
+ins JSON überführt. Das Schema (`lib/exercises/types.ts`) kennt dafür
+`acceptedAnswers` (Lösungsmengen) und `format` am numeric-Typ.

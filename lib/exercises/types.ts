@@ -23,6 +23,8 @@ export interface RecallExercise {
   type: "recall";
   difficulty: ExerciseDifficulty;
   prompt: string;
+  /** Optionaler Tipp, der vor der Lösung eingeblendet werden kann. */
+  hint?: string;
   sampleAnswer: string;
   /** Stichpunkte, die in der Antwort vorkommen sollten (ehrlicher Selbstvergleich). */
   keyPoints: string[];
@@ -33,13 +35,19 @@ export interface NumericExercise {
   type: "numeric";
   difficulty: ExerciseDifficulty;
   prompt: string;
+  /** Optionaler Tipp, der vor der Lösung eingeblendet werden kann. */
+  hint?: string;
   /**
    * Zahl oder Bitmuster (z. B. IEEE-754-Darstellung). Bei string:
    * Vergleich normalisiert über Leerzeichen/Präfixe erfolgt in der UI.
    */
   answer: string | number;
+  /** Weitere gültige Antworten (z. B. zweite Lösung einer quadratischen Gleichung). */
+  acceptedAnswers?: string[];
   /** Absoluter Toleranzbereich um answer (nur bei number-Answers). */
   tolerance?: number;
+  /** Hinweis aufs Antwortformat (z. B. "Ganze Zahl", "Bruch wie 3/4"). */
+  format?: string;
   /** Einheit, z. B. "Hosts", "Jahre", "€". */
   unit?: string;
   /**
@@ -57,6 +65,8 @@ export interface ChoiceExercise {
   type: "choice";
   difficulty: ExerciseDifficulty;
   prompt: string;
+  /** Optionaler Tipp, der vor der Lösung eingeblendet werden kann. */
+  hint?: string;
   options: string[];
   correctIndex: number;
   /** Auch: warum die anderen falsch sind. */
@@ -73,6 +83,8 @@ export interface MatchExercise {
   type: "match";
   difficulty: ExerciseDifficulty;
   prompt: string;
+  /** Optionaler Tipp, der vor der Lösung eingeblendet werden kann. */
+  hint?: string;
   pairs: MatchPair[];
 }
 

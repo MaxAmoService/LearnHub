@@ -1,0 +1,419 @@
+{
+  "moduleSlug": "ihk-computersysteme",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "ihk-computersysteme-ex-01",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Komponente führt arithmetische und logische Operationen in der CPU durch?",
+      "options": [
+        "Steuerwerk",
+        "ALU",
+        "Register",
+        "Cache"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die ALU (Arithmetic Logic Unit) ist das Rechenwerk der CPU. Sie führt alle Rechenoperationen durch: Addition, Subtraktion, UND, ODER, NICHT."
+    },
+    {
+      "id": "ihk-computersysteme-ex-02",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Aufgabe des Program Counters (PC)?",
+      "options": [
+        "Speichert Rechenergebnisse",
+        "Enthält die Adresse des nächsten Befehls",
+        "Decodiert den aktuellen Befehl",
+        "Führt Berechnungen durch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Der Program Counter (PC) enthält immer die Adresse des nächsten Befehls, der aus dem Speicher geholt werden soll."
+    },
+    {
+      "id": "ihk-computersysteme-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Beschreibe die drei Phasen des Fetch-Decode-Execute-Zyklus in der richtigen Reihenfolge.",
+      "hint": "PC → MAR → Speicher → MDR → IR → Decode → Execute",
+      "answer": "fetch decode execute",
+      "explanation": "1. FETCH: PC→MAR, Speicher liefert Befehl→MDR→IR, PC wird erhöht. 2. DECODE: Steuerwerk analysiert den Befehl im IR. 3. EXECUTE: ALU führt Operation aus, Ergebnis wird gespeichert."
+    },
+    {
+      "id": "ihk-computersysteme-ex-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen CISC und RISC?",
+      "options": [
+        "CISC = einfache Befehle, RISC = komplexe Befehle",
+        "CISC = komplexe Befehle variabel lang, RISC = einfache Befehle einheitlich lang",
+        "CISC = nur für Server, RISC = nur für Mobilgeräte",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 1,
+      "explanation": "CISC (z.B. Intel/AMD x86) hat komplexe Befehle variabler Länge. RISC (z.B. ARM) hat einfache Befehle einheitlicher Länge — Pipeline-freundlich."
+    },
+    {
+      "id": "ihk-computersysteme-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Von-Neumann-Flaschenhals?",
+      "options": [
+        "Die CPU ist zu langsam für den Speicher",
+        "Programm und Daten teilen sich denselben Bus — sequenzieller Zugriff begrenzt Geschwindigkeit",
+        "Der Cache ist zu klein",
+        "Es gibt zu viele Register"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bei Von-Neumann teilen sich Programm und Daten denselben Speicher und Bus. Die CPU muss abwechselnd Befehle und Daten holen — das erzeugt einen Flaschenhals."
+    },
+    {
+      "id": "ihk-computersysteme-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche drei Arten von Bussen gibt es?",
+      "options": [
+        "Schnellbus, Langsambus, Cachebus",
+        "Adressbus, Datenbus, Steuerbus",
+        "CPU-Bus, RAM-Bus, GPU-Bus",
+        "USB, SATA, PCIe"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die drei Busse: Adressbus (CPU→Speicher, bestimmt Adressraum), Datenbus (bidirektional, Datenübertragung), Steuerbus (Signale wie Lesen/Schreiben/Interrupt)."
+    },
+    {
+      "id": "ihk-computersysteme-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Prozessor hat 32 Adressleitungen. Wie viele Bytes kann er maximal adressieren?",
+      "hint": "Formel: 2^n Bytes, wobei n = Anzahl Adressleitungen",
+      "answer": 4294967296,
+      "tolerance": 1,
+      "explanation": "2^32 = 4.294.967.296 Bytes = 4 GB. Der 32-Bit-Adressraum ist auf 4 GB begrenzt — ein Grund für 64-Bit-Systeme."
+    },
+    {
+      "id": "ihk-computersysteme-ex-08",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Eine CPU hat 4 GHz Taktfrequenz und IPC = 3. Wie viele Befehle pro Sekunde?",
+      "options": [
+        "4 Milliarden",
+        "12 Milliarden",
+        "1,33 Milliarden",
+        "7 Milliarden"
+      ],
+      "correctIndex": 1,
+      "explanation": "Befehle/Sekunde = Taktfrequenz × IPC = 4 GHz × 3 = 12 Milliarden Befehle pro Sekunde."
+    },
+    {
+      "id": "ihk-computersysteme-ex-09",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welcher Authentifizierungsfaktor ist Fingerabdruck?",
+      "options": [
+        "Was man weiß",
+        "Was man hat",
+        "Was man ist",
+        "Was man tut"
+      ],
+      "correctIndex": 2,
+      "explanation": "Biometrie = 'was man IST'. Die drei Faktoren: 'was man weiß' (Passwort), 'was man hat' (Token), 'was man ist' (Biometrie)."
+    },
+    {
+      "id": "ihk-computersysteme-ex-10",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen RFID und NFC?",
+      "options": [
+        "RFID und NFC sind identisch",
+        "NFC ist eine Teilmenge von RFID mit kürzerer Reichweite (<4cm) und bidirektional",
+        "RFID ist moderner als NFC",
+        "NFC funktioniert nur mit Kabel"
+      ],
+      "correctIndex": 1,
+      "explanation": "NFC ist eine Teilmenge von RFID. Reichweite <4cm, bidirektional, sicherer. RFID: bis 12m, meist einseitig. NFC = kontaktloses Bezahlen."
+    },
+    {
+      "id": "ihk-computersysteme-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches biometrische Verfahren hat die höchste Sicherheit?",
+      "options": [
+        "Fingerabdruck",
+        "Gesichtserkennung",
+        "Iris-Scan",
+        "Stimmerkennung"
+      ],
+      "correctIndex": 2,
+      "explanation": "Iris-Scan hat die höchste Genauigkeit und Sicherheit — wird in Hochsicherheitsbereichen eingesetzt. Fingerabdruck ist mittel-hoch, Gesichtserkennung hoch, Stimmerkennung mittel."
+    },
+    {
+      "id": "ihk-computersysteme-ex-12",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welches Druckverfahren nutzt Toner (Pulver)?",
+      "options": [
+        "Tintenstrahldrucker",
+        "Laserdrucker",
+        "Nadeldrucker",
+        "Thermischer Drucker"
+      ],
+      "correctIndex": 1,
+      "explanation": "Laserdrucker nutzen Toner (Pulver), das durch Laser auf eine Trommel übertragen und durch Hitze fixiert wird. NICHT Tinte!"
+    },
+    {
+      "id": "ihk-computersysteme-ex-13",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Vorteil von OLED gegenüber LCD?",
+      "options": [
+        "Günstiger in der Herstellung",
+        "Perfektes Schwarz (selbstleuchtend), dünn, hoher Kontrast",
+        "Kein Burn-in möglich",
+        "Höhere Helligkeit bei Sonnenlicht"
+      ],
+      "correctIndex": 1,
+      "explanation": "OLED-Pixel leuchten selbst — bei Schwarz sind sie aus = perfektes Schwarz, hoher Kontrast, dünn. Nachteil: Burn-in-Gefahr, teurer."
+    },
+    {
+      "id": "ihk-computersysteme-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was bedeutet 'dpi' bei einem Drucker?",
+      "options": [
+        "Data Processing Interface",
+        "Dots Per Inch — Druckauflösung",
+        "Digital Print Integration",
+        "Druckparameter-Index"
+      ],
+      "correctIndex": 1,
+      "explanation": "DPI = Dots Per Inch = Punkte pro Zoll. 300 dpi reicht für Text, 1200+ dpi für Fotos. Höher = feinerer Druck."
+    },
+    {
+      "id": "ihk-computersysteme-ex-15",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Hauptunterschied zwischen HDD und SSD?",
+      "options": [
+        "HDD ist schneller als SSD",
+        "SSD hat keine mechanischen Teile — schneller, robuster, teurer",
+        "SSD nutzt Magnetismus, HDD Halbleiter",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 1,
+      "explanation": "SSD: NAND-Flash (Halbleiter), keine Mechanik, ~0.1ms Zugriff. HDD: Magnetische Scheiben, Mechanik, ~5-10ms Zugriff, günstiger pro GB."
+    },
+    {
+      "id": "ihk-computersysteme-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie viel nutzbare Kapazität hat ein RAID 5 mit 5 Platten à 2 TB?",
+      "hint": "RAID 5: nutzbare Kapazität = (n-1) × Plattengröße",
+      "answer": 8,
+      "explanation": "RAID 5: (n-1) × Plattengröße = (5-1) × 2 TB = 8 TB. Eine Platte wird für die verteilte Parität verwendet."
+    },
+    {
+      "id": "ihk-computersysteme-ex-17",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches RAID-Level bietet den besten Kompromiss aus Leistung und Sicherheit?",
+      "options": [
+        "RAID 0",
+        "RAID 1",
+        "RAID 5",
+        "RAID 10"
+      ],
+      "correctIndex": 2,
+      "explanation": "RAID 5: Striping + verteilte Parität. Gute Lesegeschwindigkeit, 1 Platte darf ausfallen, effiziente Kapazitätsnutzung. RAID 10 ist besser aber teurer."
+    },
+    {
+      "id": "ihk-computersysteme-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Unternehmen braucht 8 TB Speicher mit Ausfallsicherheit (1 Platte darf ausfallen). Welches RAID mit 4-TB-Platten und wie viele Platten?",
+      "hint": "RAID 5: nutzbare Kapazität = (n-1) × Platte. 8 TB = (n-1) × 4 TB → n = 3",
+      "answer": "raid 5",
+      "explanation": "RAID 5 mit 3 Platten à 4 TB: (3-1) × 4 TB = 8 TB nutzbar. RAID 5 erlaubt 1 Platte Ausfall. Alternativ: RAID 1 mit 4 Platten (aber nur 8 TB bei 16 TB gesamt)."
+    },
+    {
+      "id": "ihk-computersysteme-ex-19",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Unterschied zwischen SRAM und DRAM?",
+      "options": [
+        "SRAM ist langsamer aber günstiger",
+        "SRAM ist schneller, teuer, für Cache. DRAM ist langsamer, günstig, für RAM, braucht Refresh",
+        "DRAM behält Daten ohne Strom",
+        "SRAM und DRAM sind identisch"
+      ],
+      "correctIndex": 1,
+      "explanation": "SRAM: Flip-Flop (6 Transistoren), ~1ns, teuer, für Cache. DRAM: Kondensator (1 Transistor), ~100ns, günstig, braucht Refresh alle ~64ms, für RAM."
+    },
+    {
+      "id": "ihk-computersysteme-ex-20",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Nenne die Speicherhierarchie von schnell nach langsam (6 Ebenen).",
+      "hint": "Merksatz: Rein Lustig Lernen Lektionen Richtig Schnell",
+      "answer": "register l1 l2 l3 ram ssd hdd",
+      "explanation": "Register → L1 Cache → L2 Cache → L3 Cache → RAM → SSD → HDD. Je schneller, desto teurer und kleiner."
+    },
+    {
+      "id": "ihk-computersysteme-ex-21",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein System hat 8 GB RAM und die Seitengröße beträgt 4 KB. Wie viele Seitenrahmen gibt es?",
+      "hint": "Seitenrahmen = RAM-Größe / Seitengröße. 8 GB = 8 × 1024 × 1024 × 1024 Bytes",
+      "answer": 2097152,
+      "tolerance": 1,
+      "explanation": "8 GB / 4 KB = (8 × 1024³) / (4 × 1024) = 8.589.934.592 / 4.096 = 2.097.152 Seitenrahmen."
+    },
+    {
+      "id": "ihk-computersysteme-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was passiert bei einem Page Fault?",
+      "options": [
+        "Die CPU stürzt ab",
+        "OS muss die angefragte Seite von der Festplatte in den RAM laden — langsam!",
+        "Der Cache wird geleert",
+        "Ein Register wird überschrieben"
+      ],
+      "correctIndex": 1,
+      "explanation": "Page Fault: Zugriff auf Seite, die nicht im RAM ist. OS muss sie von Festplatte (SSD/HDD) laden — ~100x langsamer als RAM-Zugrift. Wenn RAM voll: eine andere Seite wird ausgelagert."
+    },
+    {
+      "id": "ihk-computersysteme-ex-23",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist der Kernel eines Betriebssystems?",
+      "options": [
+        "Die grafische Oberfläche",
+        "Der Kern des OS — direkter Hardwarezugriff, Prozess- und Speicherverwaltung",
+        "Ein Virenscanner",
+        "Der Webbrowser"
+      ],
+      "correctIndex": 1,
+      "explanation": "Der Kernel ist der Kern des Betriebssystems mit direktem Hardwarezugriff. Er verwaltet Prozesse, Speicher, Geräte und Sicherheit."
+    },
+    {
+      "id": "ihk-computersysteme-ex-24",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "BIOS vs. UEFI — was ist moderner?",
+      "options": [
+        "BIOS ist moderner",
+        "UEFI ist moderner: 32/64-Bit, GPT, grafisch, Secure Boot",
+        "Beide sind gleich alt",
+        "BIOS und UEFI sind identisch"
+      ],
+      "correctIndex": 1,
+      "explanation": "UEFI ersetzt BIOS: 32/64-Bit (statt 16-Bit), GPT (statt MBR, max. 9.4 ZB), grafische Oberfläche, Secure Boot, Netzwerk-Support."
+    },
+    {
+      "id": "ihk-computersysteme-ex-25",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen Preemptive und Cooperativem Multitasking?",
+      "options": [
+        "Preemptive: OS entscheidet Umschaltung. Cooperativ: Prozess gibt freiwillig ab.",
+        "Cooperatives ist schneller",
+        "Preemptive funktioniert nur mit einem Kern",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctIndex": 0,
+      "explanation": "Preemptive: OS erzwingt Umschaltung per Zeitscheibe (modern: Windows, Linux). Cooperativ: Prozess muss freiwillig CPU abgeben (veraltet, anfällig für Einfrieren)."
+    }
+  ],
+  "exam": [
+    {
+      "id": "ihk-computersysteme-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Erkläre den Fetch-Decode-Execute-Zyklus anhand eines ADD-Befehls (ADD AX, BX).",
+      "answer": "fetch decode execute",
+      "explanation": "FETCH: PC→MAR, Befehl 'ADD AX,BX' aus Speicher→MDR→IR, PC++. DECODE: Steuerwerk erkennt Opcode ADD, Operanden AX und BX. EXECUTE: ALU addiert AX+BX, Ergebnis in AX gespeichert."
+    },
+    {
+      "id": "ihk-computersysteme-ex-02",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Unternehmen braucht 8 TB Speicher mit Ausfallsicherheit. Welches RAID und wie viele Platten bei 4 TB pro Platte?",
+      "answer": "raid 5",
+      "explanation": "RAID 5 mit 3 Platten à 4 TB: (3-1) × 4 TB = 8 TB nutzbar. 1 Platte darf ausfallen (verteilte Parität). Alternativ RAID 6 mit 4 Platten für höhere Sicherheit."
+    },
+    {
+      "id": "ihk-computersysteme-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein System hat 4 GB RAM und die Page Size ist 4 KB. Wie viele Seitenrahmen gibt es?",
+      "answer": 1048576,
+      "tolerance": 1,
+      "explanation": "4 GB / 4 KB = (4 × 1024³) / (4 × 1024) = 4.294.967.296 / 4.096 = 1.048.576 Seitenrahmen."
+    },
+    {
+      "id": "ihk-computersysteme-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Vergleiche Typ-1 und Typ-2 Hypervisor in Bezug auf Performance und Sicherheit.",
+      "answer": "typ 1 typ 2",
+      "explanation": "Typ 1 (Bare-Metal): Direkt auf Hardware, bessere Performance, sicherere Isolation (z.B. ESXi, Hyper-V). Typ 2 (Hosted): Auf Host-OS, mehr Overhead, weniger performant, einfacher zu installieren (z.B. VirtualBox)."
+    },
+    {
+      "id": "ihk-computersysteme-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bei 80% Parallelisierung: Was ist der maximale Speedup mit 4 Prozessoren nach Amdahl?",
+      "answer": 2.5,
+      "tolerance": 0.1,
+      "explanation": "Speedup = 1 / ((1-p) + p/n) = 1 / ((1-0.8) + 0.8/4) = 1 / (0.2 + 0.2) = 1 / 0.4 = 2.5. Maximaler Speedup (n→∞) = 1/(1-0.8) = 5."
+    },
+    {
+      "id": "ihk-computersysteme-ex-06",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welches Speichermedium eignet sich für ein NAS im Unternehmen mit 24/7-Betrieb?",
+      "options": [
+        "Consumer-SSD",
+        "Enterprise-HDD oder NAS-HDD (z.B. WD Red, Seagate IronWolf)",
+        "USB-Stick",
+        "Blu-ray"
+      ],
+      "correctIndex": 1,
+      "explanation": "NAS-festige HDDs (WD Red, Seagate IronWolf) sind für 24/7-Betrieb ausgelegt, vibrationsresistent und haben längere Garantie. Consumer-SSDs sind nicht für Dauerbetrieb optimiert."
+    },
+    {
+      "id": "ihk-computersysteme-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein 64-Bit-Prozessor hat 48 Adressleitungen. Wie viel RAM kann er maximal adressieren?",
+      "answer": 256,
+      "explanation": "2^48 Bytes = 281.474.976.710.656 Bytes = 256 TB. Die 64-Bit-Architektur erlaubt theoretisch 16 EB, aber physisch oft nur 48 Adressleitungen."
+    },
+    {
+      "id": "ihk-computersysteme-ex-08",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Erkläre den Unterschied zwischen SRAM und DRAM und wo werden sie eingesetzt?",
+      "answer": "sram dram",
+      "explanation": "SRAM: Flip-Flop, schnell (~1ns), teuer, kein Refresh → für Cache (L1/L2/L3). DRAM: Kondensator, langsamer (~100ns), günstig, Refresh nötig → für Hauptspeicher (RAM)."
+    },
+    {
+      "id": "ihk-computersysteme-ex-09",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Nenne 3 Maßnahmen für Green IT in einem Rechenzentrum.",
+      "answer": "green it",
+      "explanation": "1. Server-Virtualisierung (weniger physische Server). 2. Free Cooling (Außenluft statt Klimaanlage). 3. Erneuerbare Energien nutzen. Weitere: Effiziente Netzteile (80 PLUS), Server-Konsolidierung, Recycling."
+    },
+    {
+      "id": "ihk-computersysteme-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist der Unterschied zwischen BIOS und UEFI?",
+      "answer": "bios uefi",
+      "explanation": "BIOS: 16-Bit, MBR (max. 2 TB), textbasiert, langsamer Boot. UEFI: 32/64-Bit, GPT (max. 9.4 ZB), grafisch, Secure Boot, schneller Boot, Netzwerk-Support."
+    }
+  ]
+}

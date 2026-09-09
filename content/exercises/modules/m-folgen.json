@@ -1,0 +1,367 @@
+{
+  "moduleSlug": "m-folgen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-folgen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das 6. Glied der Folge $a_n = 3n - 2$.",
+      "answer": 16,
+      "format": "Ganze Zahl",
+      "explanation": "$a_6 = 3 \\cdot 6 - 2 = 18 - 2 = 16$."
+    },
+    {
+      "id": "m-folgen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den Grenzwert der Folge $a_n = \\frac{5}{n}$ für $n \\to \\infty$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{n \\to \\infty} \\frac{5}{n} = 0$."
+    },
+    {
+      "id": "m-folgen-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Folge ist monoton fallend?",
+      "options": [
+        "$a_n = \\frac{1}{n}$",
+        "$a_n = n^2$",
+        "$a_n = 2^n$",
+        "$a_n = (-1)^n$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$a_{n+1} = \\frac{1}{n+1} < \\frac{1}{n} = a_n$ für alle $n$. Monoton fallend."
+    },
+    {
+      "id": "m-folgen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $a_4$ für die Folge $a_n = 2^n + 1$.",
+      "answer": 17,
+      "format": "Ganze Zahl",
+      "explanation": "$a_4 = 2^4 + 1 = 16 + 1 = 17$."
+    },
+    {
+      "id": "m-folgen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib die ersten 3 Glieder der Folge $a_n = n^2 - 1$ an. Berechne $a_1 + a_2 + a_3$.",
+      "answer": 11,
+      "format": "Ganze Zahl",
+      "explanation": "$a_1 = 0$, $a_2 = 3$, $a_3 = 8$. Summe: $0 + 3 + 8 = 11$."
+    },
+    {
+      "id": "m-folgen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Ist die Folge $a_n = (-1)^n$ beschränkt?",
+      "options": [
+        "Ja, durch $[-1, 1]$",
+        "Nein, sie divergiert",
+        "Ja, durch $[0, 1]$",
+        "Man kann es nicht sagen"
+      ],
+      "correctIndex": 0,
+      "explanation": "$a_n \\in \\{-1, 1\\}$ für alle $n$. Beschränkt durch $[-1, 1]$, aber nicht konvergent."
+    },
+    {
+      "id": "m-folgen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $a_3$ für die rekursive Folge $a_1 = 2$, $a_{n+1} = a_n + 3$.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "$a_1 = 2$, $a_2 = 5$, $a_3 = 8$. Arithmetische Folge mit $d = 3$."
+    },
+    {
+      "id": "m-folgen-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $a_4$ für die rekursive Folge $a_1 = 1$, $a_{n+1} = 2a_n$.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "$a_1 = 1$, $a_2 = 2$, $a_3 = 4$, $a_4 = 8$. Geometrische Folge mit $q = 2$."
+    },
+    {
+      "id": "m-folgen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{4n^2 + n}{2n^2 - 1}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{n^2(4 + 1/n)}{n^2(2 - 1/n^2)} \\to \\frac{4}{2} = 2$."
+    },
+    {
+      "id": "m-folgen-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Konvergiert die Folge $a_n = \\frac{n}{2n+1}$? Falls ja, gib den Grenzwert als Bruch an.",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\lim_{n \\to \\infty} \\frac{n}{2n+1} = \\lim \\frac{1}{2+1/n} = \\frac{1}{2}$."
+    },
+    {
+      "id": "m-folgen-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Folge konvergiert?",
+      "options": [
+        "$a_n = \\frac{n^2}{n+1}$",
+        "$a_n = \\frac{n}{n^2+1}$",
+        "$a_n = (-1)^n \\cdot n$",
+        "$a_n = \\ln(n)$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\frac{n}{n^2+1} \\to 0$. Die anderen divergieren: $\\frac{n^2}{n+1} \\to \\infty$, $(-1)^n n$ divergiert, $\\ln n \\to \\infty$."
+    },
+    {
+      "id": "m-folgen-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Grenzwert der rekursiven Folge: $a_1 = 3$, $a_{n+1} = \\frac{a_n + 6}{2}$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "Fixpunkt: $a = \\frac{a+6}{2} \\Rightarrow 2a = a + 6 \\Rightarrow a = 6$."
+    },
+    {
+      "id": "m-folgen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{2^n + 1}{2^n - 1}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{2^n(1 + 2^{-n})}{2^n(1 - 2^{-n})} \\to \\frac{1}{1} = 1$."
+    },
+    {
+      "id": "m-folgen-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\left(\\frac{2}{3}\\right)^n$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$|q| = \\frac{2}{3} < 1$, also $q^n \\to 0$."
+    },
+    {
+      "id": "m-folgen-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Grenzwert der Folge $a_n = \\left(1 + \\frac{1}{n}\\right)^n$?",
+      "options": [
+        "$e$",
+        "$1$",
+        "$\\infty$",
+        "$0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Definition der Eulerschen Zahl: $\\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n = e \\approx 2{,}718$."
+    },
+    {
+      "id": "m-folgen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{3n+1}{n+5}$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{n(3+1/n)}{n(1+5/n)} \\to \\frac{3}{1} = 3$."
+    },
+    {
+      "id": "m-folgen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\left(1 + \\frac{2}{n}\\right)^n$.",
+      "hint": "$\\lim_{n \\to \\infty} \\left(1 + \\frac{x}{n}\\right)^n = e^x$.",
+      "answer": "e^2",
+      "format": "Term",
+      "explanation": "$\\lim_{n \\to \\infty} \\left(1 + \\frac{2}{n}\\right)^n = e^2$."
+    },
+    {
+      "id": "m-folgen-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\sqrt{n+1} - \\sqrt{n}$.",
+      "hint": "Erweitere mit $\\sqrt{n+1} + \\sqrt{n}$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{(\\sqrt{n+1}-\\sqrt{n})(\\sqrt{n+1}+\\sqrt{n})}{\\sqrt{n+1}+\\sqrt{n}} = \\frac{1}{\\sqrt{n+1}+\\sqrt{n}} \\to 0$."
+    },
+    {
+      "id": "m-folgen-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist der Häufungspunkt der Folge $a_n = (-1)^n + \\frac{1}{n}$?",
+      "options": [
+        "$-1$ und $1$",
+        "Nur $0$",
+        "$1$",
+        "$-1$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gerade $n$: $a_n \\to 1$. Ungerade $n$: $a_n \\to -1$. Zwei Häufungspunkte."
+    },
+    {
+      "id": "m-folgen-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} n \\cdot \\sin\\left(\\frac{3}{n}\\right)$.",
+      "hint": "Substitution $x = \\frac{1}{n}$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$\\lim_{x \\to 0^+} \\frac{\\sin 3x}{x} = 3 \\cdot \\lim \\frac{\\sin 3x}{3x} = 3$."
+    },
+    {
+      "id": "m-folgen-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{n!}{n^n}$.",
+      "hint": "$\\frac{n!}{n^n} = \\frac{1}{n} \\cdot \\frac{2}{n} \\cdots \\frac{n}{n} \\leq \\frac{1}{n}$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$0 \\leq \\frac{n!}{n^n} \\leq \\frac{1}{n} \\to 0$. Nach dem Sandwich-Theorem: Grenzwert $= 0$."
+    },
+    {
+      "id": "m-folgen-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Folge divergiert?",
+      "options": [
+        "$a_n = \\frac{\\sin n}{n}$",
+        "$a_n = \\frac{n^2}{2^n}$",
+        "$a_n = \\left(1 + \\frac{1}{n}\\right)^{2n}$",
+        "$a_n = \\frac{(-1)^n n}{n+1}$"
+      ],
+      "correctIndex": 3,
+      "explanation": "$a_n = \\frac{(-1)^n n}{n+1} \\to \\pm 1$. Die Folge hat keinen eindeutigen Grenzwert → divergent."
+    },
+    {
+      "id": "m-folgen-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\left(\\sqrt{n^2 + n} - n\\right)$.",
+      "hint": "Erweitere mit $\\sqrt{n^2+n} + n$.",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{n}{\\sqrt{n^2+n}+n} = \\frac{1}{\\sqrt{1+1/n}+1} \\to \\frac{1}{2}$."
+    },
+    {
+      "id": "m-folgen-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{1 + 2 + \\cdots + n}{n^2}$.",
+      "hint": "$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$.",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{n(n+1)/2}{n^2} = \\frac{n+1}{2n} = \\frac{1 + 1/n}{2} \\to \\frac{1}{2}$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-folgen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib das 3. Glied der Folge $a_n = n^2 + n$ an.",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "$a_3 = 9 + 3 = 12$."
+    },
+    {
+      "id": "m-folgen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{7n - 3}{2n + 1}$.",
+      "answer": "7/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\frac{n(7-3/n)}{n(2+1/n)} \\to \\frac{7}{2}$."
+    },
+    {
+      "id": "m-folgen-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Konvergiert $a_n = \\frac{(-1)^n}{n}$? Falls ja, gegen welchen Wert?",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$|a_n| = \\frac{1}{n} \\to 0$, also $a_n \\to 0$."
+    },
+    {
+      "id": "m-folgen-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $\\lim_{n \\to \\infty} \\left(1 - \\frac{1}{n}\\right)^n$?",
+      "options": [
+        "$e^{-1}$",
+        "$0$",
+        "$1$",
+        "$e$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\lim_{n \\to \\infty} \\left(1 + \\frac{-1}{n}\\right)^n = e^{-1} = \\frac{1}{e}$."
+    },
+    {
+      "id": "m-folgen-ex-05",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{2^n - 1}{2^n + 1}$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{2^n(1 - 2^{-n})}{2^n(1 + 2^{-n})} \\to \\frac{1}{1} = 1$."
+    },
+    {
+      "id": "m-folgen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Folge ist eine geometrische Folge?",
+      "options": [
+        "$a_n = 3 \\cdot 2^n$",
+        "$a_n = n^2$",
+        "$a_n = 2n + 1$",
+        "$a_n = \\frac{1}{n}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$a_n = 3 \\cdot 2^n$: konstantes Verhältnis $q = 2$. Geometrische Folge."
+    },
+    {
+      "id": "m-folgen-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Grenzwert der rekursiven Folge: $a_1 = 1$, $a_{n+1} = \\frac{a_n + 3}{2}$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "Fixpunkt: $a = \\frac{a+3}{2} \\Rightarrow 2a = a + 3 \\Rightarrow a = 3$."
+    },
+    {
+      "id": "m-folgen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne: $\\lim_{n \\to \\infty} \\frac{1 - \\cos(1/n)}{1/n^2}$.",
+      "hint": "Mit $x = \\frac{1}{n}$: $\\frac{1 - \\cos x}{x^2} \\to \\frac{1}{2}$.",
+      "answer": "1/2",
+      "format": "Bruch (z.B. 3/4)",
+      "explanation": "$\\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2} = \\frac{1}{2}$ (L'Hôpital oder Taylor)."
+    },
+    {
+      "id": "m-folgen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ist die Folge $a_n = \\frac{n}{n+1}$ monoton? Gib 'steigend', 'fallend' oder 'nein' an.",
+      "answer": "steigend",
+      "format": "Text",
+      "explanation": "$a_{n+1} - a_n = \\frac{n+1}{n+2} - \\frac{n}{n+1} = \\frac{1}{(n+1)(n+2)} > 0$. Monoton steigend."
+    },
+    {
+      "id": "m-folgen-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Folge $a_n = \\frac{\\ln n}{n}$ konvergiert gegen?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\infty$",
+        "$e$"
+      ],
+      "correctIndex": 0,
+      "explanation": "L'Hôpital: $\\lim_{x \\to \\infty} \\frac{\\ln x}{x} = \\lim \\frac{1/x}{1} = 0$."
+    }
+  ]
+}

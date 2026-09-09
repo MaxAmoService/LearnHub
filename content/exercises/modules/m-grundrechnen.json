@@ -1,0 +1,155 @@
+{
+  "moduleSlug": "m-grundrechnen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-grundrechnen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $12 + 7$?",
+      "hint": "Zähle 7 zu 12 dazu.",
+      "answer": 19,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$12 + 7 = 19$"
+    },
+    {
+      "id": "m-grundrechnen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $25 - 8$?",
+      "hint": "Ziehe 8 von 25 ab.",
+      "answer": 17,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$25 - 8 = 17$"
+    },
+    {
+      "id": "m-grundrechnen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $6 \\cdot 7$?",
+      "hint": "6 mal 7.",
+      "answer": 42,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$6 \\cdot 7 = 42$"
+    },
+    {
+      "id": "m-grundrechnen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Was ist $56 : 8$?",
+      "hint": "Wie oft passt 8 in 56?",
+      "answer": 7,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$56 : 8 = 7$"
+    },
+    {
+      "id": "m-grundrechnen-ex-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $3 + 4 \\cdot 5$?",
+      "hint": "Punkt vor Strich!",
+      "answer": 23,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$4 \\cdot 5 = 20$, dann $3 + 20 = 23$"
+    },
+    {
+      "id": "m-grundrechnen-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $(6 + 2) \\cdot 3$?",
+      "hint": "Klammer zuerst!",
+      "answer": 24,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$6 + 2 = 8$, dann $8 \\cdot 3 = 24$"
+    },
+    {
+      "id": "m-grundrechnen-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $100 - 3 \\cdot 15$?",
+      "hint": "Erst multiplizieren!",
+      "answer": 55,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$3 \\cdot 15 = 45$, dann $100 - 45 = 55$"
+    },
+    {
+      "id": "m-grundrechnen-ex-08",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $2 \\cdot (3 + 4) - 5 \\cdot 2$?",
+      "hint": "Klammer zuerst, dann Punkt, dann Strich.",
+      "answer": 4,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$3 + 4 = 7$, $2 \\cdot 7 = 14$, $5 \\cdot 2 = 10$, $14 - 10 = 4$"
+    },
+    {
+      "id": "m-grundrechnen-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $(10 - 3) \\cdot (4 + 2) : 7$?",
+      "hint": "Erst beide Klammern, dann von links nach rechts.",
+      "answer": 6,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$10 - 3 = 7$, $4 + 2 = 6$, $7 \\cdot 6 = 42$, $42 : 7 = 6$"
+    },
+    {
+      "id": "m-grundrechnen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $50 : (3 + 7) + 4 \\cdot (8 - 3)$?",
+      "hint": "Klammer 1, Klammer 2, dann Punkt, dann Strich.",
+      "answer": 25,
+      "tolerance": 0,
+      "format": "Zahl",
+      "explanation": "$3 + 7 = 10$, $8 - 3 = 5$, $50 : 10 = 5$, $4 \\cdot 5 = 20$, $5 + 20 = 25$"
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-grundrechnen-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $17 + 8 \\cdot 3 - 4$?",
+      "answer": 33,
+      "tolerance": 0,
+      "explanation": "$8 \\cdot 3 = 24$, $17 + 24 - 4 = 33$"
+    },
+    {
+      "id": "m-grundrechnen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Was ist $(12 - 5) \\cdot (3 + 4)$?",
+      "answer": 49,
+      "tolerance": 0,
+      "explanation": "$12 - 5 = 7$, $3 + 4 = 7$, $7 \\cdot 7 = 49$"
+    },
+    {
+      "id": "m-grundrechnen-ex-03",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $100 : (2 + 3) - 3 \\cdot (7 - 4)$?",
+      "answer": 11,
+      "tolerance": 0,
+      "explanation": "$2 + 3 = 5$, $7 - 4 = 3$, $100 : 5 = 20$, $3 \\cdot 3 = 9$, $20 - 9 = 11$"
+    },
+    {
+      "id": "m-grundrechnen-ex-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Was ist $(4 + 6) \\cdot (10 - 7) + 2 \\cdot 5$?",
+      "answer": 40,
+      "tolerance": 0,
+      "explanation": "$4 + 6 = 10$, $10 - 7 = 3$, $10 \\cdot 3 = 30$, $2 \\cdot 5 = 10$, $30 + 10 = 40$"
+    }
+  ]
+}

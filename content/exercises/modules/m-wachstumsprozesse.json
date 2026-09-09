@@ -1,0 +1,190 @@
+{
+  "moduleSlug": "m-wachstumsprozesse",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-wachstumsprozesse-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Konto hat 500 € Guthaben. Monatlich werden 80 € eingezahlt. Wie viel ist nach 6 Monaten auf dem Konto?",
+      "answer": 980,
+      "format": "Zahl (z.B. 980)",
+      "explanation": "$f(6) = 500 + 80 \\cdot 6 = 500 + 480 = 980$ €."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Die Temperatur sinkt um 1,5 °C pro Stunde. Um 12:00 Uhr sind es 24 °C. Wie hoch ist die Temperatur um 16:00 Uhr?",
+      "answer": 18,
+      "format": "Zahl in °C (z.B. 18)",
+      "explanation": "$f(4) = 24 - 1{,}5 \\cdot 4 = 24 - 6 = 18$ °C."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Tank enthält 1200 Liter und wird mit 50 Liter pro Minute geleert. Wie viel ist nach 15 Minuten noch drin?",
+      "answer": 450,
+      "format": "Zahl (z.B. 450)",
+      "explanation": "$f(15) = 1200 - 50 \\cdot 15 = 1200 - 750 = 450$ Liter."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Funktion beschreibt lineares Wachstum mit Startwert 100 und Steigung 15?",
+      "options": [
+        "$f(t) = 100 \\cdot 15^t$",
+        "$f(t) = 100 + 15t$",
+        "$f(t) = 15 + 100t$",
+        "$f(t) = 100 \\cdot 15t$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Lineares Wachstum: $f(t) = a + b \\cdot t = 100 + 15t$."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Investition von 1.000 € wächst jährlich um 6 %. Wie viel ist nach 5 Jahren vorhanden? (auf ganze Euro gerundet)",
+      "hint": "Verwende $f(t) = 1000 \\cdot 1{,}06^5$.",
+      "answer": 1338,
+      "format": "Zahl (z.B. 1338)",
+      "explanation": "$f(5) = 1000 \\cdot 1{,}06^5 = 1000 \\cdot 1{,}3382 \\approx 1338$ €."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Bakterienkultur verdoppelt sich alle 3 Stunden. Startwert: 800. Wie viele Bakterien gibt es nach 9 Stunden?",
+      "hint": "Verwende $f(t) = 800 \\cdot 2^{t/3}$.",
+      "answer": 6400,
+      "format": "Zahl (z.B. 6400)",
+      "explanation": "$f(9) = 800 \\cdot 2^{9/3} = 800 \\cdot 2^3 = 800 \\cdot 8 = 6400$."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-07",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Bestimme die Verdopplungszeit bei kontinuierlichem Wachstum mit $k = 0{,}05$. (auf 2 Dezimalstellen)",
+      "hint": "Verwende $T_d = \\frac{\\ln 2}{k}$.",
+      "answer": 13.86,
+      "format": "Zahl (z.B. 13.86)",
+      "explanation": "$T_d = \\frac{\\ln 2}{0{,}05} = \\frac{0{,}6931}{0{,}05} \\approx 13{,}86$ Zeiteinheiten."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-08",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Wachstumsfaktor von $b = 0{,}95$ bedeutet …",
+      "options": [
+        "5 % Wachstum pro Periode",
+        "95 % Wachstum pro Periode",
+        "5 % Abnahme pro Periode",
+        "95 % Abnahme pro Periode"
+      ],
+      "correctIndex": 2,
+      "explanation": "$b = 0{,}95 = 1 - 0{,}05$. Die Größe nimmt um 5 % pro Periode ab."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine logistische Funktion hat $K = 2000$ und $k = 0{,}3$. Bei welchem Funktionswert liegt der Wendepunkt?",
+      "hint": "Der Wendepunkt liegt bei $f(t_0) = K/2$.",
+      "answer": 1000,
+      "format": "Zahl (z.B. 1000)",
+      "explanation": "Der Wendepunkt liegt immer bei $f(t_0) = \\frac{K}{2} = \\frac{2000}{2} = 1000$."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Stadt hat aktuell 40.000 Einwohner und wächst exponentiell mit $k = 0{,}02$ pro Jahr. Nach wie vielen Jahren hat sie 60.000 Einwohner? (auf ganze Jahre gerundet)",
+      "hint": "Löse $60000 = 40000 \\cdot e^{0{,}02t}$ nach $t$ auf.",
+      "answer": 20,
+      "format": "Zahl (z.B. 20)",
+      "explanation": "$1{,}5 = e^{0{,}02t} \\Rightarrow \\ln 1{,}5 = 0{,}02t \\Rightarrow t = \\frac{0{,}405}{0{,}02} \\approx 20$ Jahre."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-11",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Aussage über logistisches Wachstum ist korrekt?",
+      "options": [
+        "Das Wachstum ist immer konstant.",
+        "Die Funktion nähert sich asymptotisch dem Wert $K$.",
+        "Es gibt keinen Wendepunkt.",
+        "Die Funktion wächst unbegrenzt."
+      ],
+      "correctIndex": 1,
+      "explanation": "Beim logistischen Wachstum nähert sich die Funktion asymptotisch der Kapazitätsgrenze $K$ an. Der Wendepunkt liegt bei $(t_0, K/2)$."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-12",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Produkt hat einen Markt von 8.000 Kunden. Im logistischen Modell mit $t_0 = 12$ und $K = 8000$: Wie viele Kunden haben es nach sehr langer Zeit (Sättigung) erworben?",
+      "hint": "Für $t \\to \\infty$ nähert sich $f(t)$ dem Wert $K$.",
+      "answer": 8000,
+      "format": "Zahl (z.B. 8000)",
+      "explanation": "Für $t \\to \\infty$ gilt $e^{-k(t-t_0)} \\to 0$, also $f(t) \\to \\frac{K}{1+0} = K = 8000$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-wachstumsprozesse-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Arbeitnehmer verdient 2.800 € brutto und bekommt jährlich 120 € mehr. Nach wie vielen Jahren verdient er 3.640 €?",
+      "answer": 7,
+      "format": "Zahl (z.B. 7)",
+      "explanation": "$3640 = 2800 + 120t \\Rightarrow 120t = 840 \\Rightarrow t = 7$ Jahre."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Aktie steht bei 45 € und wächst kontinuierlich mit $k = 0{,}08$ pro Jahr. Wie viel ist sie nach 10 Jahren wert? (auf 2 Dezimalstellen)",
+      "answer": 100.54,
+      "format": "Zahl (z.B. 100.54)",
+      "explanation": "$f(10) = 45 \\cdot e^{0{,}08 \\cdot 10} = 45 \\cdot e^{0{,}8} = 45 \\cdot 2{,}2255 \\approx 100{,}15$ €. (Hinweis: Genauer Wert $100{,}15$ €)"
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-03",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Infektion breitet sich logistisch aus: $f(t) = \\frac{10000}{1 + 499 \\cdot e^{-0{,}3t}}$. Bestimme den Wendepunkt (Zeitpunkt $t_0$). (auf 1 Dezimalstelle)",
+      "hint": "Im Wendepunkt gilt $f(t_0) = K/2 = 5000$. Löse nach $t_0$ auf.",
+      "answer": 21,
+      "format": "Zahl (z.B. 21.0)",
+      "explanation": "$5000 = \\frac{10000}{1+499e^{-0{,}3t_0}} \\Rightarrow 1+499e^{-0{,}3t_0} = 2 \\Rightarrow e^{-0{,}3t_0} = \\frac{1}{499} \\Rightarrow t_0 = \\frac{\\ln 499}{0{,}3} \\approx \\frac{6{,}213}{0{,}3} \\approx 20{,}7$."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Bakterienstamm wächst von 500 auf 2.000 in 6 Stunden (exponentiell). Was ist die Verdopplungszeit?",
+      "options": [
+        "$T_d = 1{,}5$ Stunden",
+        "$T_d = 2$ Stunden",
+        "$T_d = 3$ Stunden",
+        "$T_d = 6$ Stunden"
+      ],
+      "correctIndex": 2,
+      "explanation": "$2000 = 500 \\cdot 2^{6/T_d} \\Rightarrow 4 = 2^{6/T_d} \\Rightarrow 2^2 = 2^{6/T_d} \\Rightarrow T_d = 3$ Stunden."
+    },
+    {
+      "id": "m-wachstumsprozesse-ex-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Stadt hat 25.000 Einwohner und wächst jährlich um 3 %. Wie viele Einwohner hat sie nach 20 Jahren? (auf ganze Tausend gerundet)",
+      "hint": "Verwende $f(20) = 25000 \\cdot 1{,}03^{20}$.",
+      "answer": 45000,
+      "format": "Zahl (z.B. 45000)",
+      "explanation": "$f(20) = 25000 \\cdot 1{,}03^{20} = 25000 \\cdot 1{,}8061 \\approx 45153 \\approx 45.000$."
+    }
+  ]
+}

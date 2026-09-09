@@ -1,0 +1,377 @@
+{
+  "moduleSlug": "m-geometrie-flaechen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-geometrie-flaechen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Fläche eines Rechtecks mit den Seitenlängen $a = 9\\text{ cm}$ und $b = 4\\text{ cm}$.",
+      "answer": 36,
+      "format": "Ganze Zahl",
+      "explanation": "$A = a \\cdot b = 9 \\cdot 4 = 36\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-02",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Berechne die Fläche eines Quadrats mit Seitenlänge $a = 7\\text{ m}$.",
+      "options": [
+        "$42\\text{ m}^2$",
+        "$49\\text{ m}^2$",
+        "$28\\text{ m}^2$",
+        "$56\\text{ m}^2$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$A = a^2 = 7^2 = 49\\text{ m}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Fläche eines Dreiecks mit Grundseite $g = 8\\text{ cm}$ und Höhe $h = 5\\text{ cm}$.",
+      "answer": 20,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{g \\cdot h}{2} = \\frac{8 \\cdot 5}{2} = 20\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Formel beschreibt die Fläche eines Parallelogramms?",
+      "options": [
+        "$A = a \\cdot b$",
+        "$A = g \\cdot h$",
+        "$A = \\frac{a \\cdot h}{2}$",
+        "$A = a + b + h$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die Fläche eines Parallelogramms ist $A = g \\cdot h$ (Grundseite mal Höhe). Nicht zu verwechseln mit dem Rechteck ($a \\cdot b$)."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Rechteck hat den Flächeninhalt $60\\text{ cm}^2$ und die Breite $5\\text{ cm}$. Berechne die Länge.",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "$A = a \\cdot b \\Rightarrow 60 = a \\cdot 5 \\Rightarrow a = 12\\text{ cm}$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Fläche eines Dreiecks mit $g = 10\\text{ cm}$ und $h = 6\\text{ cm}$.",
+      "answer": 30,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{10 \\cdot 6}{2} = \\frac{60}{2} = 30\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Figur hat die Flächenformel $A = \\frac{a^2\\sqrt{3}}{4}$?",
+      "options": [
+        "Quadrat",
+        "Regelmäßiges Dreieck (gleichseitig)",
+        "Kreis",
+        "Raute"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die Fläche eines gleichseitigen Dreiecks mit Seitenlänge $a$ ist $A = \\frac{a^2\\sqrt{3}}{4}$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Fläche eines Quadrats mit Diagonale $d = 10\\text{ cm}$. (Hinweis: $A = \\frac{d^2}{2}$)",
+      "answer": 50,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{d^2}{2} = \\frac{100}{2} = 50\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Fläche eines Kreises mit Radius $r = 7\\text{ cm}$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 49,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\pi r^2 = 49\\pi$. Der Faktor ist $49$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Fläche eines Trapezes mit den parallelen Seiten $a = 8\\text{ cm}$, $c = 2\\text{ cm}$ und Höhe $h = 4\\text{ cm}$.",
+      "answer": 20,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{a + c}{2} \\cdot h = \\frac{8 + 2}{2} \\cdot 4 = 5 \\cdot 4 = 20\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Fläche eines Parallelogramms mit Grundseite $g = 9\\text{ cm}$ und Höhe $h = 4\\text{ cm}$.",
+      "answer": 36,
+      "format": "Ganze Zahl",
+      "explanation": "$A = g \\cdot h = 9 \\cdot 4 = 36\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Kreisring hat den Außenradius $R = 6$ und den Innenradius $r = 4$. Welche Fläche hat er?",
+      "options": [
+        "$20\\pi$",
+        "$12\\pi$",
+        "$24\\pi$",
+        "$10\\pi$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$A = \\pi(R^2 - r^2) = \\pi(36 - 16) = 20\\pi$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Fläche einer Ellipse mit den Halbachsen $a = 6$ und $b = 4$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 24,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\pi \\cdot a \\cdot b = 24\\pi$. Der Faktor ist $24$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Trapez hat die Fläche $45\\text{ cm}^2$, die parallelen Seiten $a = 12$ und $c = 6$. Welche Höhe $h$ hat es?",
+      "options": [
+        "$4\\text{ cm}$",
+        "$5\\text{ cm}$",
+        "$6\\text{ cm}$",
+        "$9\\text{ cm}$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$A = \\frac{a+c}{2} \\cdot h \\Rightarrow 45 = 9h \\Rightarrow h = 5\\text{ cm}$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Drachenviereck hat die Diagonalen $e = 12$ und $f = 5$. Wie groß ist seine Fläche?",
+      "options": [
+        "$60$",
+        "$30$",
+        "$17$",
+        "$35$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$A = \\frac{e \\cdot f}{2} = \\frac{12 \\cdot 5}{2} = 30$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Radius eines Kreises mit der Fläche $A = 36\\pi$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\pi r^2 = 36\\pi \\Rightarrow r^2 = 36 \\Rightarrow r = 6$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Raute hat die Diagonalen $e = 8\\text{ cm}$ und $f = 6\\text{ cm}$. Berechne ihre Fläche.",
+      "answer": 24,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{e \\cdot f}{2} = \\frac{8 \\cdot 6}{2} = 24\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche eines Dreiecks mit den Seitenlängen $a = 13$, $b = 14$, $c = 15$ (Heron-Formel).",
+      "answer": 84,
+      "format": "Ganze Zahl",
+      "explanation": "$s = \\frac{13+14+15}{2} = 21$. $A = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = \\sqrt{7056} = 84$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche eines Kreissektors mit Radius $r = 6\\text{ cm}$ und Mittelpunktswinkel $\\alpha = 60°$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\pi r^2 \\cdot \\frac{\\alpha}{360°} = 36\\pi \\cdot \\frac{1}{6} = 6\\pi$. Der Faktor ist $6$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-20",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "In einem rechtwinkligen Dreieck ist die Hypotenuse $c = 10$ und eine Kathete $a = 6$. Wie groß ist die Fläche?",
+      "options": [
+        "$24$",
+        "$30$",
+        "$48$",
+        "$40$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$b = \\sqrt{100 - 36} = 8$. $A = \\frac{6 \\cdot 8}{2} = 24$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Dreieck hat die Seiten $a = 5$, $b = 6$ und den eingeschlossenen Winkel $\\gamma = 30°$. Berechne die Fläche.",
+      "answer": 7.5,
+      "format": "Dezimalzahl",
+      "explanation": "$A = \\frac{1}{2} \\cdot 5 \\cdot 6 \\cdot \\sin(30°) = 15 \\cdot 0{,}5 = 7{,}5$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Rechteck hat den Umfang $36\\text{ cm}$ und die Seitenlängen stehen im Verhältnis $2:1$. Wie groß ist die Fläche?",
+      "options": [
+        "$54\\text{ cm}^2$",
+        "$72\\text{ cm}^2$",
+        "$81\\text{ cm}^2$",
+        "$64\\text{ cm}^2$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$2(a+b) = 36 \\Rightarrow a+b = 18$. Verhältnis $2:1$: $a = 12$, $b = 6$. $A = 12 \\cdot 6 = 72\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-23",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein gleichseitiges Dreieck hat den Umfang $18\\text{ cm}$. Wie groß ist seine Fläche?",
+      "hint": "$A = \\frac{a^2\\sqrt{3}}{4}$.",
+      "options": [
+        "$9\\sqrt{3}$",
+        "$6\\sqrt{3}$",
+        "$18\\sqrt{3}$",
+        "$3\\sqrt{3}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Seitenlänge $a = 6$. $A = \\frac{36\\sqrt{3}}{4} = 9\\sqrt{3} \\approx 15{,}59\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Kreissektor hat den Radius $r = 10$ und die Fläche $25\\pi$. Berechne den Mittelpunktswinkel $\\alpha$ in Grad.",
+      "answer": 90,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\pi r^2 \\cdot \\frac{\\alpha}{360} = 100\\pi \\cdot \\frac{\\alpha}{360} = 25\\pi$. $\\frac{\\alpha}{360} = 0{,}25 \\Rightarrow \\alpha = 90°$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-geometrie-flaechen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Fläche eines Drachenvierecks mit den Diagonalen $e = 10$ und $f = 8$.",
+      "answer": 40,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{e \\cdot f}{2} = \\frac{10 \\cdot 8}{2} = 40$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Fläche eines Quadrats mit Seitenlänge $a = 11\\text{ cm}$.",
+      "answer": 121,
+      "format": "Ganze Zahl",
+      "explanation": "$A = a^2 = 11^2 = 121\\text{ cm}^2$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Fläche eines Kreisrings mit Außenradius $R = 5\\text{ cm}$ und Innenradius $r = 3\\text{ cm}$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 16,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\pi(R^2 - r^2) = \\pi(25 - 9) = 16\\pi$. Der Faktor ist $16$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-04",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Trapez hat die parallelen Seiten $a = 10$, $c = 6$ und Höhe $h = 5$. Welche Fläche hat es?",
+      "options": [
+        "$40$",
+        "$30$",
+        "$80$",
+        "$50$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$A = \\frac{a+c}{2} \\cdot h = \\frac{16}{2} \\cdot 5 = 40$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-05",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Fläche eines Parallelogramms mit Grundseite $g = 15$ und Höhe $h = 8$.",
+      "answer": 120,
+      "format": "Ganze Zahl",
+      "explanation": "$A = g \\cdot h = 15 \\cdot 8 = 120$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-06",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Dreieck hat die Seiten $a = 8$, $b = 11$ und den eingeschlossenen Winkel $\\gamma = 30°$. Berechne die Fläche.",
+      "answer": 22,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\frac{1}{2} \\cdot 8 \\cdot 11 \\cdot \\sin(30°) = 44 \\cdot 0{,}5 = 22$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche eines Kreissektors mit Radius $r = 8$ und Winkel $\\alpha = 45°$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "$A = \\pi \\cdot 64 \\cdot \\frac{45}{360} = 64\\pi \\cdot \\frac{1}{8} = 8\\pi$. Der Faktor ist $8$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-08",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein gleichseitiges Dreieck hat die Seitenlänge $a = 6$. Welche Fläche hat es?",
+      "hint": "$A = \\frac{a^2\\sqrt{3}}{4}$.",
+      "options": [
+        "$9\\sqrt{3}$",
+        "$36\\sqrt{3}$",
+        "$18$",
+        "$12\\sqrt{3}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$A = \\frac{36\\sqrt{3}}{4} = 9\\sqrt{3} \\approx 15{,}59$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-09",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Kreis hat die Fläche $A = 64\\pi$. Gib den Faktor vor $\\pi$ für den Umfang an.",
+      "options": [
+        "$8$",
+        "$16$",
+        "$32$",
+        "$12$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$r^2 = 64 \\Rightarrow r = 8$. $U = 2\\pi r = 16\\pi$. Der Faktor ist $16$."
+    },
+    {
+      "id": "m-geometrie-flaechen-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Fläche eines Dreiecks mit den Seitenlängen $a = 5$, $b = 12$, $c = 13$. (Hinweis: Prüfe zuerst, ob es rechtwinklig ist!)",
+      "answer": 30,
+      "format": "Ganze Zahl",
+      "explanation": "$5^2 + 12^2 = 25 + 144 = 169 = 13^2$. Es ist rechtwinklig! $A = \\frac{5 \\cdot 12}{2} = 30$."
+    }
+  ]
+}

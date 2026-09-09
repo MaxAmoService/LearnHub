@@ -1,0 +1,363 @@
+{
+  "moduleSlug": "m-dreisatz",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-dreisatz-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Vier Kilogramm Kartoffeln kosten $6{,}40$ EUR. Wie viel kosten sieben Kilogramm Kartoffeln? Gib den Betrag in EUR an.",
+      "answer": 11.2,
+      "format": "Dezimalzahl",
+      "explanation": "Preis pro kg: $6{,}40 \\div 4 = 1{,}60$ EUR. Für $7$ kg: $7 \\cdot 1{,}60 = 11{,}20$ EUR. (Direkt proportionaler Dreisatz.)"
+    },
+    {
+      "id": "m-dreisatz-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Sechs Bauarbeiter benötigen für das Errichten einer Mauer acht Tage. Wie viele Tage benötigen vier Bauarbeiter für dieselbe Mauer?",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "Antiproportional: Je weniger Arbeiter, desto mehr Tage. Gesamtaufwand: $6 \\cdot 8 = 48$ Arbeitertage. Bei $4$ Arbeitern: $48 \\div 4 = 12$ Tage."
+    },
+    {
+      "id": "m-dreisatz-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Auto verbraucht auf $250$ Kilometern etwa $17{,}5$ Liter Benzin. Wie viel Liter verbraucht es auf $400$ Kilometern bei gleichem Fahrstil?",
+      "answer": 28,
+      "format": "Dezimalzahl",
+      "explanation": "Verbrauch pro km: $17{,}5 \\div 250 = 0{,}07$ L/km. Für $400$ km: $400 \\cdot 0{,}07 = 28$ Liter."
+    },
+    {
+      "id": "m-dreisatz-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Zuordnung ist direkt proportional?",
+      "options": [
+        "Anzahl der Arbeiter und benötigte Tage",
+        "Gekaufte Menge und Gesamtpreis",
+        "Geschwindigkeit und Fahrzeit für gleiche Strecke",
+        "Anzahl der Pumpen und Füllzeit eines Beckens"
+      ],
+      "correctIndex": 1,
+      "explanation": "Menge und Preis sind direkt proportional: doppelt so viel Menge kostet doppelt so viel. Die anderen sind antiproportional."
+    },
+    {
+      "id": "m-dreisatz-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Drei Äpfel kosten $1{,}80$ EUR. Was kosten fünf Äpfel?",
+      "answer": 3,
+      "format": "Dezimalzahl",
+      "explanation": "Preis pro Apfel: $1{,}80 \\div 3 = 0{,}60$ EUR. Für $5$ Äpfel: $5 \\cdot 0{,}60 = 3{,}00$ EUR."
+    },
+    {
+      "id": "m-dreisatz-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Zwei Maschinen produzieren in $6$ Stunden $120$ Teile. Wie viele Teile produzieren zwei Maschinen in $10$ Stunden?",
+      "answer": 200,
+      "format": "Ganze Zahl",
+      "explanation": "Pro Maschine und Stunde: $120 \\div (2 \\cdot 6) = 10$ Teile. In $10$ Stunden mit $2$ Maschinen: $2 \\cdot 10 \\cdot 10 = 200$."
+    },
+    {
+      "id": "m-dreisatz-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Bei einer antiproportionalen Zuordnung verdoppelt sich einer der Werte. Was passiert mit dem anderen?",
+      "options": [
+        "Er halbiert sich",
+        "Er verdoppelt sich auch",
+        "Er vervierfacht sich",
+        "Er bleibt gleich"
+      ],
+      "correctIndex": 0,
+      "explanation": "Bei antiproportionaler Zuordnung gilt: $x_1 \\cdot y_1 = x_2 \\cdot y_2$. Verdoppelt sich $x$, halbiert sich $y$."
+    },
+    {
+      "id": "m-dreisatz-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Ein Fahrrad fährt $60$ km in $2{,}5$ Stunden. Wie weit fährt es in $4$ Stunden?",
+      "answer": 96,
+      "format": "Ganze Zahl",
+      "explanation": "Geschwindigkeit: $60 \\div 2{,}5 = 24$ km/h. In $4$ Stunden: $4 \\cdot 24 = 96$ km."
+    },
+    {
+      "id": "m-dreisatz-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Futtervorrat reicht für acht Pferde genau fünfzehn Tage. Wie viele Pferde können mit dem gleichen Vorrat zehn Tage lang versorgt werden?",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "Antiproportional: Gesamtfutter: $8 \\cdot 15 = 120$ Tagesrationen. Bei $10$ Tagen: $120 \\div 10 = 12$ Pferde."
+    },
+    {
+      "id": "m-dreisatz-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Aus sechs Kilogramm frischen Äpfeln lassen sich $4{,}8$ Liter Apfelsaft pressen. Wie viel Liter Saft ergeben fünfzehn Kilogramm Äpfel?",
+      "answer": 12,
+      "format": "Dezimalzahl",
+      "explanation": "Saftausbeute pro kg: $4{,}8 \\div 6 = 0{,}8$ L/kg. Für $15$ kg: $15 \\cdot 0{,}8 = 12$ Liter."
+    },
+    {
+      "id": "m-dreisatz-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Wasserbecken wird von drei gleich starken Pumpen in acht Stunden leer gepumpt. Wie lange dauert der Vorgang mit fünf Pumpen?",
+      "answer": 4.8,
+      "format": "Dezimalzahl",
+      "explanation": "Antiproportional: Gesamtarbeit: $3 \\cdot 8 = 24$ Pumpenstunden. Mit $5$ Pumpen: $24 \\div 5 = 4{,}8$ Stunden."
+    },
+    {
+      "id": "m-dreisatz-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Rezept für $4$ Personen braucht $300$ g Mehl. Für wie viele Personen reicht $750$ g Mehl?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$6$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mehl pro Person: $300 \\div 4 = 75$ g. Für $750$ g: $750 \\div 75 = 10$ Personen."
+    },
+    {
+      "id": "m-dreisatz-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Dreißig Liter Farbe reichen für $120$ Quadratmeter Wandfläche. Wie viel Liter Farbe benötigt man für $200$ Quadratmeter?",
+      "answer": 50,
+      "format": "Ganze Zahl",
+      "explanation": "Farbe pro m²: $30 \\div 120 = 0{,}25$ L/m². Für $200$ m²: $200 \\cdot 0{,}25 = 50$ Liter."
+    },
+    {
+      "id": "m-dreisatz-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Fünf Drucker benötigen für einen Großauftrag vierzehn Tage. Wie viele Tage würden sieben Drucker für denselben Auftrag brauchen?",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "Antiproportional: $5 \\cdot 14 = 70$ Druckertage. Mit $7$ Druckern: $70 \\div 7 = 10$ Tage."
+    },
+    {
+      "id": "m-dreisatz-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Teich wird von drei gleich großen Rohren in zehn Stunden gefüllt. Wie lange dauert es mit fünf Rohren?",
+      "options": [
+        "$6$ Stunden",
+        "$8$ Stunden",
+        "$5$ Stunden",
+        "$16{,}7$ Stunden"
+      ],
+      "correctIndex": 0,
+      "explanation": "Antiproportional: $3 \\cdot 10 = 30$ Rohrstunden. Mit $5$ Rohren: $30 \\div 5 = 6$ Stunden."
+    },
+    {
+      "id": "m-dreisatz-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Fabrik produziert in $5$ Tagen $2000$ Stück. Wie viele Stück produziert sie in $12$ Tagen?",
+      "answer": 4800,
+      "format": "Ganze Zahl",
+      "explanation": "Produktion pro Tag: $2000 \\div 5 = 400$ Stück. In $12$ Tagen: $12 \\cdot 400 = 4800$ Stück."
+    },
+    {
+      "id": "m-dreisatz-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Baugrube soll von fünf Baggern in zwölf Tagen ausgehoben werden. Nach drei Tagen kommt ein sechster Bagger hinzu. Wie viele Tage dauert die Arbeit insgesamt?",
+      "hint": "Berechne den Gesamtaufwand in Baggertagen. Ziehe die bereits geleistete Arbeit ab und teile den Rest durch die neue Baggerzahl.",
+      "answer": 10.5,
+      "format": "Dezimalzahl",
+      "explanation": "Gesamtaufwand: $5 \\cdot 12 = 60$ Baggertage. Nach $3$ Tagen: $5 \\cdot 3 = 15$ bereits erledigt, Rest $45$. Mit $6$ Baggern: $45 \\div 6 = 7{,}5$ Tage. Gesamt: $3 + 7{,}5 = 10{,}5$ Tage."
+    },
+    {
+      "id": "m-dreisatz-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Acht Maschinen produzieren in fünf Tagen insgesamt $3600$ Bauteile. Wie viele Bauteile produzieren sechs Maschinen in neun Tagen?",
+      "hint": "Bestimme die Produktion pro Maschine und Tag, dann hochrechnen auf die neue Situation.",
+      "answer": 4860,
+      "format": "Ganze Zahl",
+      "explanation": "Pro Maschine und Tag: $3600 \\div (8 \\cdot 5) = 90$ Teile. Bei $6$ Maschinen in $9$ Tagen: $6 \\cdot 9 \\cdot 90 = 4860$ Bauteile."
+    },
+    {
+      "id": "m-dreisatz-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Eine Futterration reicht für fünfzehn Kühe genau vierundzwanzig Tage. Nach sechs Tagen werden fünf Kühe verkauft. Wie viele Tage reicht das verbleibende Futter insgesamt?",
+      "options": [
+        "$33$ Tage",
+        "$27$ Tage",
+        "$36$ Tage",
+        "$30$ Tage"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gesamt: $15 \\cdot 24 = 360$ Kuhtage. Nach $6$ Tagen: $15 \\cdot 6 = 90$ verbraucht, Rest $270$. Mit $10$ Kühen: $270 \\div 10 = 27$ Tage. Gesamtdauer: $6 + 27 = 33$ Tage."
+    },
+    {
+      "id": "m-dreisatz-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Mischung besteht aus $3$ Teilen Rotwein und $5$ Teilen Weißwein. Wie viel Rotwein muss man zu $40$ Liter der Mischung hinzufügen, damit das Verhältnis $1:1$ wird?",
+      "hint": "Bestimme zuerst, wie viel Rotwein in der Mischung enthalten ist.",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "In $40$ L Mischung: $\\frac{3}{8} \\cdot 40 = 15$ L Rotwein, $\\frac{5}{8} \\cdot 40 = 25$ L Weißwein. Für $1:1$: $15 + x = 25 \\Rightarrow x = 10$ Liter."
+    },
+    {
+      "id": "m-dreisatz-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Zwei Züge fahren einander entgegen. Zug A fährt $80$ km/h, Zug B $100$ km/h. Sie sind $360$ km voneinander entfernt. Nach wie vielen Minuten treffen sie sich?",
+      "hint": "Addiere die Geschwindigkeiten, da sie einander entgegenfahren.",
+      "answer": 120,
+      "format": "Ganze Zahl",
+      "explanation": "Relative Geschwindigkeit: $80 + 100 = 180$ km/h. Zeit: $360 \\div 180 = 2$ Stunden $= 120$ Minuten."
+    },
+    {
+      "id": "m-dreisatz-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Kessel füllt sich in $20$ Minuten, ein Abfluss leert ihn in $30$ Minuten. Wie lange dauert das Füllen, wenn beide gleichzeitig offen sind?",
+      "options": [
+        "$60$ Minuten",
+        "$50$ Minuten",
+        "$12$ Minuten",
+        "$10$ Minuten"
+      ],
+      "correctIndex": 0,
+      "explanation": "Füllrate: $\\frac{1}{20}$/min, Abfluss: $\\frac{1}{30}$/min. Netto: $\\frac{1}{20} - \\frac{1}{30} = \\frac{3-2}{60} = \\frac{1}{60}$/min. Also $60$ Minuten."
+    },
+    {
+      "id": "m-dreisatz-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Drei Arbeiter brauchen für eine Reparatur $6$ Stunden. Wie lange brauchen $5$ Arbeiter, wenn einer der drei langsamer arbeitet (seine Leistung beträgt nur $60\\%$ eines normalen Arbeiters)?",
+      "hint": "Berechne die Gesamtarbeit in \"Arbeiterstunden\" und passe die Leistung des langsameren Arbeiters an.",
+      "answer": 3.6,
+      "format": "Dezimalzahl",
+      "explanation": "Die 3 Arbeiter: 2 normal + 1 langsam (0,6 normal). Effektiv: $2 + 0{,}6 = 2{,}6$ Normalarbeiter. Gesamtarbeit: $2{,}6 \\cdot 6 = 15{,}6$ Normalarbeiter-Stunden. 5 Arbeiter: 4 normal + 1 langsam = $4{,}6$ Normalarbeiter. Zeit: $15{,}6 \\div 4{,}6 \\approx 3{,}39$ Stunden."
+    },
+    {
+      "id": "m-dreisatz-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Mischungsverhältnis von Wasser und Konzentrat ist $5:2$. Wie viel Konzentrat muss man zu $35$ Liter der Mischung hinzufügen, damit das Verhältnis $3:2$ wird?",
+      "hint": "Bestimme den Konzentratanteil in der Ausgangsmischung.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "In $35$ L: $\\frac{2}{7} \\cdot 35 = 10$ L Konzentrat, $\\frac{5}{7} \\cdot 35 = 25$ L Wasser. Neues Verhältnis $3:2$: $\\frac{25}{10 + x} = \\frac{3}{2} \\Rightarrow 50 = 30 + 3x \\Rightarrow x = \\frac{20}{3} \\approx 6{,}67$ Liter."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-dreisatz-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Dreißig Liter Farbe reichen für $120$ Quadratmeter Wandfläche. Wie viel Liter Farbe benötigt man für $200$ Quadratmeter?",
+      "answer": 50,
+      "format": "Ganze Zahl",
+      "explanation": "Farbe pro m²: $30 \\div 120 = 0{,}25$ L/m². Für $200$ m²: $200 \\cdot 0{,}25 = 50$ Liter."
+    },
+    {
+      "id": "m-dreisatz-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Fünf Drucker benötigen für einen Großauftrag vierzehn Tage. Wie viele Tage würden sieben Drucker für denselben Auftrag brauchen?",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "Antiproportional: $5 \\cdot 14 = 70$ Druckertage. Mit $7$ Druckern: $70 \\div 7 = 10$ Tage."
+    },
+    {
+      "id": "m-dreisatz-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Teich wird von drei gleich großen Rohren in zehn Stunden gefüllt. Wie viele Stunden dauert die Füllung mit fünf Rohren?",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "Antiproportional: $3 \\cdot 10 = 30$ Rohrstunden. Mit $5$ Rohren: $30 \\div 5 = 6$ Stunden."
+    },
+    {
+      "id": "m-dreisatz-ex-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Futterration reicht für fünfzehn Kühe genau vierundzwanzig Tage. Nach sechs Tagen werden fünf Kühe verkauft. Wie viele Tage reicht das verbleibende Futter insgesamt?",
+      "hint": "Berechne den Gesamtbedarf in Kuhtagen und arbeite schrittweise.",
+      "answer": 33,
+      "format": "Ganze Zahl",
+      "explanation": "Gesamt: $15 \\cdot 24 = 360$ Kuhtage. Nach $6$ Tagen verbraucht: $15 \\cdot 6 = 90$, Rest $270$. Mit $10$ Kühen: $270 \\div 10 = 27$ Tage. Gesamtdauer: $6 + 27 = 33$ Tage."
+    },
+    {
+      "id": "m-dreisatz-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Bei welcher der folgenden Beziehungen handelt es sich um eine antiproportionale Zuordnung?",
+      "options": [
+        "Gefahrene Kilometer und verbrauchtes Benzin",
+        "Anzahl der Arbeiter und benötigte Arbeitszeit",
+        "Gekaufte Menge und zu zahlender Preis",
+        "Seitenlänge und Umfang eines Quadrats"
+      ],
+      "correctIndex": 1,
+      "explanation": "Nur die Beziehung \"Arbeiter und Arbeitszeit\" ist antiproportional: doppelt so viele Arbeiter brauchen die halbe Zeit. Alle anderen sind direkt proportional."
+    },
+    {
+      "id": "m-dreisatz-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Fabrik produziert in $5$ Tagen $2000$ Stück. Wie viele Stück produziert sie in $12$ Tagen?",
+      "answer": 4800,
+      "format": "Ganze Zahl",
+      "explanation": "Pro Tag: $2000 \\div 5 = 400$. In $12$ Tagen: $12 \\cdot 400 = 4800$ Stück."
+    },
+    {
+      "id": "m-dreisatz-ex-07",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Rezept für $4$ Personen braucht $300$ g Mehl. Wie viel Mehl braucht man für $10$ Personen?",
+      "options": [
+        "$600$ g",
+        "$750$ g",
+        "$500$ g",
+        "$900$ g"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mehl pro Person: $300 \\div 4 = 75$ g. Für $10$ Personen: $10 \\cdot 75 = 750$ g."
+    },
+    {
+      "id": "m-dreisatz-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Sieben Äpfel kosten $4{,}20$ EUR. Was kosten drei Äpfel?",
+      "answer": 1.8,
+      "format": "Dezimalzahl",
+      "explanation": "Pro Apfel: $4{,}20 \\div 7 = 0{,}60$ EUR. Drei Äpfel: $3 \\cdot 0{,}60 = 1{,}80$ EUR."
+    },
+    {
+      "id": "m-dreisatz-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Acht Maschinen produzieren in fünf Tagen $3600$ Bauteile. Wie viele Bauteile produzieren sechs Maschinen in neun Tagen?",
+      "answer": 4860,
+      "format": "Ganze Zahl",
+      "explanation": "Pro Maschine/Tag: $3600 \\div 40 = 90$. $6 \\cdot 9 \\cdot 90 = 4860$."
+    },
+    {
+      "id": "m-dreisatz-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Ein Kessel füllt sich mit $3$ Rohren in $15$ Minuten. Mit wie vielen Rohren füllt er sich in $9$ Minuten?",
+      "hint": "Antiproportional: Gesamtarbeit = Rohre × Zeit.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "Gesamtarbeit: $3 \\cdot 15 = 45$ Rohrminuten. Für $9$ Minuten: $45 \\div 9 = 5$ Rohre."
+    }
+  ]
+}

@@ -21,7 +21,8 @@
     "convert:exercises": "tsx scripts/convert-existing-exercises.ts",
     "convert:math-exercises": "tsx scripts/convert-math-exercises.ts",
     "seed:plan-templates": "tsx scripts/seed-plan-templates.ts",
-    "migrate:api-tokens": "tsx scripts/migrate-api-tokens.ts"
+    "migrate:api-tokens": "tsx scripts/migrate-api-tokens.ts",
+    "convert:module-exercises": "tsx scripts/convert-module-exercises.ts"
   },
   "dependencies": {
     "@radix-ui/react-progress": "^1.0.3",

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import { Exercise } from "@/lib/mathExercises";
+import type { Exercise } from "@/lib/exercises/types";
+import { isChoiceExercise, isNumericExercise } from "@/lib/exercises/types";
 import { MathBlock } from "./MathBlock";
 import { InlineText } from "./InlineText";
 import { LessonFeedback } from "./LessonFeedback";
@@ -23,8 +24,21 @@ interface Props {
 interface ExamAnswer {
   exercise: Exercise;
   userAnswer: string;
-  selectedOption: string | null;
+  selectedOption: number | null;
   correct: boolean;
+}
+
+function correctAnswerLabel(ex: Exercise): string {
+  if (isChoiceExercise(ex)) return ex.options[ex.correctIndex] ?? "";
+  if (isNumericExercise(ex)) {
+    return allValidAnswers(String(ex.answer), ex.acceptedAnswers).join(" oder ");
+  }
+  return "sampleAnswer" in ex ? ex.sampleAnswer : "";
+}
+
+function solutionText(ex: Exercise): string {
+  if (isChoiceExercise(ex) || isNumericExercise(ex)) return ex.explanation;
+  return "sampleAnswer" in ex ? ex.sampleAnswer : "";
 }
 
 export function InteractiveExercise({ exercises, moduleTitle, onComplete, difficulty, examMode, moduleSlug, lessonId, lessonTitle }: Props) {
@@ -41,7 +55,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
@@ -75,13 +89,17 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
     if (!current) return;
     let correct = false;
 
-    if (current.type === "multiple" && current.correctOption) {
-      correct = selectedOption === current.correctOption;
-    } else if (current.type === "input" && current.expectedAnswer) {
-      correct = checkFreeTextAnswer(userAnswer, current.expectedAnswer, {
+    if (isChoiceExercise(current)) {
+      correct = selectedOption === current.correctIndex;
+    } else if (isNumericExercise(current)) {
+      correct = checkFreeTextAnswer(userAnswer, String(current.answer), {
         acceptedAnswers: current.acceptedAnswers,
         tolerance: current.tolerance,
       });
+    } else {
+      // recall/match kommen in den Modul-Pools nicht vor (Konverter
+      // garantiert choice|numeric) — defensiv: nicht als richtig werten.
+      correct = false;
     }
 
     if (examMode) {
@@ -225,18 +243,18 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
                   : <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
                 }
                 <div className="flex-1 min-w-0">
-                  <p className="text-white text-sm mb-1"><InlineText text={ans.exercise.question} /></p>
+                  <p className="text-white text-sm mb-1"><InlineText text={ans.exercise.prompt} /></p>
                   {!ans.correct && (
                     <p className="text-xs text-slate-400">
-                      Deine Antwort: <span className="text-red-300">{ans.exercise.type === "multiple" ? ans.exercise.options?.find(o => o.value === ans.selectedOption)?.label || "—" : ans.userAnswer || "—"}</span>
+                      Deine Antwort: <span className="text-red-300">{isChoiceExercise(ans.exercise) && ans.selectedOption !== null ? ans.exercise.options[ans.selectedOption] ?? "—" : ans.userAnswer || "—"}</span>
                       {" → "}
-                      Richtig: <span className="text-green-300">{ans.exercise.type === "multiple" ? ans.exercise.options?.find(o => o.value === ans.exercise.correctOption)?.label : allValidAnswers(ans.exercise.expectedAnswer || "", ans.exercise.acceptedAnswers).join(" oder ")}</span>
+                      Richtig: <span className="text-green-300">{correctAnswerLabel(ans.exercise)}</span>
                     </p>
                   )}
                   {!ans.correct && (
                     <details className="mt-1">
                       <summary className="text-xs text-blue-400 cursor-pointer hover:text-blue-300">Lösung anzeigen</summary>
-                      <p className="text-xs text-slate-400 mt-1"><InlineText text={ans.exercise.solution} /></p>
+                      <p className="text-xs text-slate-400 mt-1"><InlineText text={solutionText(ans.exercise)} /></p>
                     </details>
                   )}
                 </div>
@@ -356,7 +374,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
         {/* Frage */}
         <div className="p-6">
           <div className="text-white text-lg md:text-xl mb-6 leading-relaxed">
-            <InlineText text={current.question} />
+            <InlineText text={current.prompt} />
           </div>
 
           {/* Hinweis — nur im normalen Modus */}
@@ -384,7 +402,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
           )}
 
           {/* Eingabefeld */}
-          {current.type === "input" && !showResult && (
+          {isNumericExercise(current) && !showResult && (
             <div className="space-y-3">
               <input
                 type="text"
@@ -404,28 +422,28 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
           )}
 
           {/* Multiple Choice */}
-          {current.type === "multiple" && !showResult && (
+          {isChoiceExercise(current) && !showResult && (
             <div className="space-y-3">
-              {current.options?.map((option, idx) => (
+              {current.options.map((option, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setSelectedOption(option.value)}
+                  onClick={() => setSelectedOption(idx)}
                   className={`w-full text-left p-4 rounded-lg border transition-all ${
-                    selectedOption === option.value
+                    selectedOption === idx
                       ? "border-blue-500 bg-blue-500/20"
                       : "border-slate-600 hover:border-slate-500 bg-slate-800/30"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      selectedOption === option.value ? "border-blue-500" : "border-slate-500"
+                      selectedOption === idx ? "border-blue-500" : "border-slate-500"
                     }`}>
-                      {selectedOption === option.value && (
+                      {selectedOption === idx && (
                         <div className="w-2.5 h-2.5 bg-blue-500 rounded-full" />
                       )}
                     </div>
                     <span className="text-white text-base">
-                      <InlineText text={option.label} />
+                      <InlineText text={option} />
                     </span>
                   </div>
                 </button>
@@ -453,9 +471,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
                       <p className="mb-1">
                         <span className="text-slate-500">Richtige Antwort:</span>{" "}
                         <span className="text-white font-medium">
-                          <InlineText text={current.type === "multiple"
-                            ? current.options?.find(o => o.value === current.correctOption)?.label || ""
-                            : allValidAnswers(current.expectedAnswer || "", current.acceptedAnswers).join(" oder ")} />
+                          <InlineText text={correctAnswerLabel(current)} />
                         </span>
                       </p>
                     </div>
@@ -483,7 +499,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
                 Lösung
               </h4>
               <div className="text-slate-300 text-base">
-                <InlineText text={current.solution} />
+                <InlineText text={solutionText(current)} />
               </div>
             </div>
           )}
@@ -494,7 +510,7 @@ export function InteractiveExercise({ exercises, moduleTitle, onComplete, diffic
           {!showResult ? (
             <button
               onClick={checkAnswer}
-              disabled={current.type === "input" ? !userAnswer : !selectedOption}
+              disabled={isNumericExercise(current) ? !userAnswer : !selectedOption && selectedOption !== 0}
               className={`w-full py-3 rounded-lg font-medium transition-colors disabled:bg-slate-700 disabled:text-slate-500 ${
                 examMode
                   ? "bg-amber-500 hover:bg-amber-600 text-slate-900"

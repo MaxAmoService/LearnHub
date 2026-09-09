@@ -138,6 +138,13 @@ CI). Commit-Stil: Conventional Commits (`feat: …`).
 3. Optional `lib/<fach>Exercises.ts`, Karteikarten nach `lib/flashcardData.ts`.
 4. Enthält die Datei LaTeX: in `scripts/validate-latex.sh` `FILES` ergänzen.
 
+**Modul-Aufgabenpools:** Neue Übungs-/Prüfungsaufgaben werden in den
+Legacy-Arrays (`lib/mathExercises.ts` bzw. den `*Data.ts`-Pools) ergänzt und
+danach per `npm run convert:module-exercises` ins JSON-Registry-System
+(`content/exercises/modules/`, `lib/exercises/moduleRegistry.ts`) überführt.
+Die Laufzeit-App liest ausschließlich die JSON-Registry. Äquivalenz-Check:
+`npx tsx scripts/verify-module-migration.ts`.
+
 Neue interaktive Komponente: in `components/interactive/` anlegen, in
 `components/interactive/index.ts` exportieren, `InteractiveType` in
 `lib/types.ts` erweitern, per `interactive`-Feld in Lektionsdaten referenzieren.

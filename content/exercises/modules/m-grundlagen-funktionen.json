@@ -1,0 +1,383 @@
+{
+  "moduleSlug": "m-grundlagen-funktionen",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-grundlagen-funktionen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist $f(x) = 2x + 3$. Berechne $f(4)$.",
+      "answer": 11,
+      "format": "Ganze Zahl",
+      "explanation": "$f(4) = 2 \\cdot 4 + 3 = 8 + 3 = 11$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist $g(x) = x^2 - 5x + 6$. Berechne $g(2)$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$g(2) = 2^2 - 5 \\cdot 2 + 6 = 4 - 10 + 6 = 0$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welcher Definitionsbereich hat $f(x) = \\frac{1}{x - 2}$?",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{2\\}$",
+        "$\\mathbb{R} \\setminus \\{0\\}$",
+        "$[2, \\infty)$",
+        "$\\mathbb{R}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Der Nenner darf nicht null sein: $x - 2 \\neq 0 \\Rightarrow x \\neq 2$. Also $D = \\mathbb{R} \\setminus \\{2\\}$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist $f(x) = 3x - 7$. Berechne $f(5)$.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "$f(5) = 3 \\cdot 5 - 7 = 15 - 7 = 8$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist $f(x) = x^2 + 1$. Berechne $f(-3)$.",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "$f(-3) = (-3)^2 + 1 = 9 + 1 = 10$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Aussage beschreibt den Begriff \"Funktion\" korrekt?",
+      "options": [
+        "Jedem $x$ wird genau ein $y$ zugeordnet",
+        "Jedem $y$ wird genau ein $x$ zugeordnet",
+        "Jedem $x$ werden beliebig viele $y$ zugeordnet",
+        "Der Graph darf die $y$-Achse nicht schneiden"
+      ],
+      "correctIndex": 0,
+      "explanation": "Eine Funktion ordnet jedem Element des Definitionsbereichs **genau ein** Element des Wertebereichs zu. Vertikale schneiden den Graphen höchstens einmal."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist $f(x) = 4x^2 - 2x + 1$. Berechne $f(0)$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$f(0) = 4 \\cdot 0^2 - 2 \\cdot 0 + 1 = 1$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Funktionstyp ist $f(x) = 2^x$?",
+      "options": [
+        "Exponentialfunktion",
+        "Polynomfunktion",
+        "Logarithmusfunktion",
+        "Rationale Funktion"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(x) = 2^x$ ist eine Exponentialfunktion, da die Variable $x$ im Exponenten steht."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben ist $f(x) = 2x + 4$. Bestimme $x$, sodass $f(x) = 10$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$2x + 4 = 10 \\Rightarrow 2x = 6 \\Rightarrow x = 3$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben ist $f(x) = \\sqrt{x - 3}$. Gib den kleinsten Wert von $x$ an, für den $f$ definiert ist.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "Das Argument der Wurzel muss $\\geq 0$ sein: $x - 3 \\geq 0 \\Rightarrow x \\geq 3$. Kleinster Wert: $3$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-11",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche der folgenden Funktionen ist gerade (achsensymmetrisch zur $y$-Achse)?",
+      "options": [
+        "$f(x) = x^2$",
+        "$f(x) = x^3$",
+        "$f(x) = x + 1$",
+        "$f(x) = \\sin(x)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(-x) = (-x)^2 = x^2 = f(x)$ — gerade Funktion. $x^3$ und $\\sin(x)$ sind ungerade, $x+1$ ist weder noch."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Der Scheitelpunkt der Parabel $f(x) = x^2 - 4x + 3$ hat die $x$-Koordinate $x_s$. Berechne $x_s$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$x_s = -\\frac{b}{2a} = -\\frac{-4}{2 \\cdot 1} = 2$. Oder: $f(x) = (x-2)^2 - 1$, Scheitelpunkt $(2 \\mid -1)$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben ist $f(x) = 3x + 6$. Berechne $f^{-1}(12)$ (den Funktionswert der Umkehrfunktion).",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "Setze $f(x) = 12$: $3x + 6 = 12 \\Rightarrow 3x = 6 \\Rightarrow x = 2$. Also $f^{-1}(12) = 2$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Wertebereich von $f(x) = x^2 + 2$?",
+      "options": [
+        "$[2, \\infty)$",
+        "$[0, \\infty)$",
+        "$\\mathbb{R}$",
+        "$(-\\infty, 2]$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$x^2 \\geq 0$ für alle $x$, also $x^2 + 2 \\geq 2$. Minimum bei $x = 0$: $f(0) = 2$. Wertebereich: $[2, \\infty)$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben $f(x) = 2x - 1$ und $g(x) = x^2$. Berechne $(f \\circ g)(3)$, also $f(g(3))$.",
+      "answer": 17,
+      "format": "Ganze Zahl",
+      "explanation": "$g(3) = 3^2 = 9$. $f(9) = 2 \\cdot 9 - 1 = 17$. Also $(f \\circ g)(3) = 17$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben ist $f(x) = |x - 3|$. Berechne $f(-2)$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$f(-2) = |-2 - 3| = |-5| = 5$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme die Nullstellen von $f(x) = x^2 - 6x + 8$. Gib beide durch Komma getrennt an (aufsteigend).",
+      "answer": "2,4",
+      "acceptedAnswers": [
+        "4,2"
+      ],
+      "format": "Zahlen durch Komma getrennt",
+      "explanation": "$x^2 - 6x + 8 = (x-2)(x-4) = 0 \\Rightarrow x = 2$ oder $x = 4$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-18",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche der folgenden Funktionen ist ungerade (punktsymmetrisch zum Ursprung)?",
+      "options": [
+        "$f(x) = x^3 - x$",
+        "$f(x) = x^2 + 1$",
+        "$f(x) = |x|$",
+        "$f(x) = e^x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(-x) = (-x)^3 - (-x) = -x^3 + x = -(x^3 - x) = -f(x)$. Ungerade!"
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = x + 3$ und $g(x) = x^2$. Berechne $(g \\circ f)(2)$.",
+      "answer": 25,
+      "format": "Ganze Zahl",
+      "explanation": "$f(2) = 2 + 3 = 5$. $g(5) = 5^2 = 25$. Also $(g \\circ f)(2) = 25$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben ist $f(x) = (x - 1)^2 + 3$. Gib die $y$-Koordinate des Scheitelpunkts an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "In Scheitelpunktform $f(x) = (x - x_s)^2 + y_s$ ist der Scheitelpunkt $(1 \\mid 3)$. Die $y$-Koordinate ist $3$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-21",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Werte darf $x$ bei $f(x) = \\frac{1}{x^2 - 4}$ NICHT annehmen?",
+      "options": [
+        "$x = 2$ und $x = -2$",
+        "$x = 0$",
+        "$x = 4$",
+        "$x = 2$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$x^2 - 4 = (x-2)(x+2) = 0 \\Rightarrow x = 2$ oder $x = -2$. Diese Werte sind ausgeschlossen."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben ist $f(x) = \\sqrt{2x + 6}$. Bestimme $x$, sodass $f(x) = 4$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$\\sqrt{2x + 6} = 4 \\Rightarrow 2x + 6 = 16 \\Rightarrow 2x = 10 \\Rightarrow x = 5$. Probe: $\\sqrt{16} = 4$ ✓"
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben ist $f(x) = 2^x$. Berechne $f(3) + f(2)$.",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "$f(3) = 2^3 = 8$, $f(2) = 2^2 = 4$. Summe: $8 + 4 = 12$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Verschiebung wandelt $f(x) = x^2$ in $g(x) = (x + 3)^2 - 2$ um?",
+      "options": [
+        "3 nach links, 2 nach unten",
+        "3 nach rechts, 2 nach unten",
+        "3 nach links, 2 nach oben",
+        "3 nach rechts, 2 nach oben"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(x + 3)^2$ bedeutet Verschiebung um $3$ nach links ($(x - (-3))^2$). $-2$ bedeutet Verschiebung um $2$ nach unten."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-grundlagen-funktionen-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist $f(x) = 5x - 2$. Berechne $f(3)$.",
+      "answer": 13,
+      "format": "Ganze Zahl",
+      "explanation": "$f(3) = 5 \\cdot 3 - 2 = 15 - 2 = 13$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben ist $f(x) = x^2 - 2x - 3$. Bestimme die Nullstellen. Gib die kleinere zuerst an.",
+      "answer": "-1,3",
+      "acceptedAnswers": [
+        "3,-1"
+      ],
+      "format": "Zahlen durch Komma getrennt",
+      "explanation": "$x^2 - 2x - 3 = (x - 3)(x + 1) = 0 \\Rightarrow x = -1$ oder $x = 3$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-03",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist der Definitionsbereich von $f(x) = \\sqrt{4 - x}$?",
+      "options": [
+        "$(-\\infty, 4]$",
+        "$[4, \\infty)$",
+        "$[0, 4]$",
+        "$\\mathbb{R}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$4 - x \\geq 0 \\Rightarrow x \\leq 4$. Also $D = (-\\infty, 4]$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gegeben ist $f(x) = 3x + 1$. Berechne $f^{-1}(10)$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$3x + 1 = 10 \\Rightarrow 3x = 9 \\Rightarrow x = 3$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Aussage über $f(x) = \\frac{1}{x}$ ist richtig?",
+      "options": [
+        "$f$ ist ungerade und hat keine Nullstellen",
+        "$f$ ist gerade und hat eine Nullstelle bei $x = 0$",
+        "$f$ ist ungerade und hat eine Nullstelle bei $x = 0$",
+        "$f$ ist weder gerade noch ungerade"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(-x) = \\frac{1}{-x} = -\\frac{1}{x} = -f(x)$ — ungerade. $\\frac{1}{x} = 0$ hat keine Lösung — keine Nullstellen."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist $f(x) = x^2 + 3x$. Berechne $f(-2)$.",
+      "answer": -2,
+      "format": "Ganze Zahl",
+      "explanation": "$f(-2) = (-2)^2 + 3 \\cdot (-2) = 4 - 6 = -2$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben $f(x) = x + 1$ und $g(x) = 2x - 3$. Berechne $(g \\circ f)(4)$.",
+      "hint": "Berechne zuerst $f(4)$, dann $g$ davon.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$f(4) = 4 + 1 = 5$. $g(5) = 2 \\cdot 5 - 3 = 7$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Zu welchem Punkt ist der Graph von $f(x) = x^3$ punktsymmetrisch?",
+      "options": [
+        "Ursprung $(0 \\mid 0)$",
+        "$(1 \\mid 1)$",
+        "$(0 \\mid 1)$",
+        "Er ist achsensymmetrisch"
+      ],
+      "correctIndex": 0,
+      "explanation": "$f(-x) = (-x)^3 = -x^3 = -f(x)$ — $f$ ist ungerade, also punktsymmetrisch zum Ursprung."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben ist $f(x) = x^2 - 4x + 7$. Bestimme den Minimalwert von $f$.",
+      "hint": "Forme in Scheitelpunktform um.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$f(x) = (x^2 - 4x + 4) + 3 = (x - 2)^2 + 3$. Minimum: $y_s = 3$ bei $x = 2$."
+    },
+    {
+      "id": "m-grundlagen-funktionen-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Funktion hat den Wertebereich $W = (-\\infty, 0) \\cup (0, \\infty)$?",
+      "options": [
+        "$f(x) = \\frac{1}{x}$",
+        "$f(x) = x^2$",
+        "$f(x) = |x|$",
+        "$f(x) = e^x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\frac{1}{x}$ kann jeden Wert außer $0$ annehmen. $x^2$ und $|x|$ haben $W = [0, \\infty)$, $e^x$ hat $W = (0, \\infty)$."
+    }
+  ]
+}

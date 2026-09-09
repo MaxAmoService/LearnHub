@@ -1,0 +1,354 @@
+{
+  "moduleSlug": "m-statistik",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-statistik-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das arithmetische Mittel von $5, 10, 15$.",
+      "answer": 10,
+      "format": "Ganze Zahl",
+      "explanation": "$\\bar{x} = \\frac{5 + 10 + 15}{3} = \\frac{30}{3} = 10$."
+    },
+    {
+      "id": "m-statistik-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den Median der Datenreihe $1, 4, 7, 10, 13$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "5 Werte (ungerade), der mittlere (3.) Wert ist $7$."
+    },
+    {
+      "id": "m-statistik-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den Modalwert (Modus) der Datenreihe $2, 3, 3, 4, 5, 5, 5, 6$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "Der Wert $5$ kommt am häufigsten vor (3-mal)."
+    },
+    {
+      "id": "m-statistik-ex-04",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das arithmetische Mittel von $2, 4, 6, 8, 10$.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$\\bar{x} = \\frac{2+4+6+8+10}{5} = \\frac{30}{5} = 6$."
+    },
+    {
+      "id": "m-statistik-ex-05",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was beschreibt der Median?",
+      "options": [
+        "Den Durchschnittswert",
+        "Den mittleren Wert einer sortierten Datenreihe",
+        "Den am häufigsten vorkommenden Wert",
+        "Die Streuung der Daten"
+      ],
+      "correctIndex": 1,
+      "explanation": "Der Median ist der mittlere Wert einer sortierten Datenreihe. Er teilt die Daten in zwei gleich große Hälften."
+    },
+    {
+      "id": "m-statistik-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den Median der Datenreihe $3, 7, 9$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "3 Werte (ungerade), der mittlere (2.) Wert ist $7$."
+    },
+    {
+      "id": "m-statistik-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das arithmetische Mittel von $15, 25, 35, 45, 55$.",
+      "answer": 35,
+      "format": "Ganze Zahl",
+      "explanation": "$\\bar{x} = \\frac{15+25+35+45+55}{5} = \\frac{175}{5} = 35$."
+    },
+    {
+      "id": "m-statistik-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den Modus der Datenreihe $1, 2, 2, 3, 4, 4, 4, 5$.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "Der Wert $4$ kommt am häufigsten vor (3-mal)."
+    },
+    {
+      "id": "m-statistik-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Spannweite von $3, 7, 8, 12, 15$.",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "Spannweite $= x_{\\max} - x_{\\min} = 15 - 3 = 12$."
+    },
+    {
+      "id": "m-statistik-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Varianz ($s^2$) der Stichprobe $2, 4, 6, 8$.",
+      "hint": "$\\bar{x} = \\frac{2+4+6+8}{4} = 5$. Dann $s^2 = \\frac{\\sum(x_i - \\bar{x})^2}{n}$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$\\bar{x} = 5$. $s^2 = \\frac{(2-5)^2+(4-5)^2+(6-5)^2+(8-5)^2}{4} = \\frac{9+1+1+9}{4} = \\frac{20}{4} = 5$."
+    },
+    {
+      "id": "m-statistik-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Median der Datenreihe $1, 2, 4, 8, 16, 32$.",
+      "hint": "Bei gerader Anzahl: Mittelwert der beiden mittleren Werte.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "6 Werte (gerade). Median $= \\frac{x_3 + x_4}{2} = \\frac{4 + 8}{2} = 6$."
+    },
+    {
+      "id": "m-statistik-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Median von $12, 7, 3, 18, 9, 14$. (Erst sortieren!)",
+      "hint": "Sortiert: $3, 7, 9, 12, 14, 18$.",
+      "answer": 10.5,
+      "format": "Dezimalzahl",
+      "explanation": "6 Werte. Median $= \\frac{9 + 12}{2} = 10{,}5$."
+    },
+    {
+      "id": "m-statistik-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Varianz von $10, 20, 30$.",
+      "hint": "$\\bar{x} = 20$.",
+      "answer": 66.67,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl, z.B. 66.67",
+      "explanation": "$\\bar{x} = 20$. $s^2 = \\frac{(10-20)^2+(20-20)^2+(30-20)^2}{3} = \\frac{100+0+100}{3} = \\frac{200}{3} \\approx 66{,}67$."
+    },
+    {
+      "id": "m-statistik-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Spannweite der Daten $-5, -2, 0, 3, 7$.",
+      "answer": 12,
+      "format": "Ganze Zahl",
+      "explanation": "Spannweite $= 7 - (-5) = 7 + 5 = 12$."
+    },
+    {
+      "id": "m-statistik-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Aussage zur Standardabweichung ist korrekt?",
+      "options": [
+        "Sie hat dieselbe Einheit wie die Daten",
+        "Sie ist immer größer als die Spannweite",
+        "Sie kann negativ sein",
+        "Sie ist gleich dem arithmetischen Mittel"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die Standardabweichung $s = \\sqrt{s^2}$ hat dieselbe Einheit wie die Daten. Sie ist immer $\\geq 0$ und kleiner als die Spannweite."
+    },
+    {
+      "id": "m-statistik-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Varianz ($s^2$) der Stichprobe $1, 3, 5$.",
+      "hint": "$\\bar{x} = 3$.",
+      "answer": 2.67,
+      "tolerance": 0.05,
+      "format": "Dezimalzahl",
+      "explanation": "$\\bar{x} = 3$. $s^2 = \\frac{(1-3)^2+(3-3)^2+(5-3)^2}{3} = \\frac{4+0+4}{3} = \\frac{8}{3} \\approx 2{,}67$."
+    },
+    {
+      "id": "m-statistik-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Standardabweichung der Daten $1, 3, 5, 7$ auf 2 Dezimalstellen.",
+      "hint": "Erst $\\bar{x}$ und $s^2$, dann $s = \\sqrt{s^2}$.",
+      "answer": 2.24,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl, z.B. 2.24",
+      "explanation": "$\\bar{x} = 4$. $s^2 = \\frac{9+1+1+9}{4} = 5$. $s = \\sqrt{5} \\approx 2{,}24$."
+    },
+    {
+      "id": "m-statistik-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Interquartilsabstand (IQR) von $1, 2, 3, 4, 5, 6, 7$.",
+      "hint": "IQR = Q3 - Q1. Bei 7 Werten: Q1 ist der 2. Wert, Q3 der 6. Wert.",
+      "answer": 4,
+      "format": "Ganze Zahl",
+      "explanation": "$Q_1 = x_2 = 2$, $Q_3 = x_6 = 6$. $IQR = 6 - 2 = 4$."
+    },
+    {
+      "id": "m-statistik-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den gewichteten Mittelwert: Note 1 (20 %), Note 2 (30 %), Note 3 (50 %).",
+      "hint": "$\\bar{x} = \\sum w_i \\cdot x_i$.",
+      "answer": 2.3,
+      "format": "Dezimalzahl",
+      "explanation": "$\\bar{x} = 0{,}2 \\cdot 1 + 0{,}3 \\cdot 2 + 0{,}5 \\cdot 3 = 0{,}2 + 0{,}6 + 1{,}5 = 2{,}3$."
+    },
+    {
+      "id": "m-statistik-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Messreihe hat $\\bar{x} = 50$ und $s = 5$. Ein Wert von $60$ hat welchen $z$-Score?",
+      "hint": "$z = \\frac{x - \\bar{x}}{s}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$z = \\frac{60 - 50}{5} = \\frac{10}{5} = 2$. Der Wert liegt 2 Standardabweichungen über dem Mittel."
+    },
+    {
+      "id": "m-statistik-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den IQR der Daten $2, 4, 6, 8, 10, 12, 14, 16$.",
+      "hint": "8 Werte (gerade). Q1 = Mittelwert von $x_2$ und $x_3$, Q3 = Mittelwert von $x_6$ und $x_7$.",
+      "answer": 8,
+      "format": "Ganze Zahl",
+      "explanation": "$Q_1 = \\frac{4+6}{2} = 5$, $Q_3 = \\frac{12+14}{2} = 13$. $IQR = 13 - 5 = 8$."
+    },
+    {
+      "id": "m-statistik-ex-22",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den gewichteten Mittelwert: Test 1: 80 Punkte (Gewicht 40 %), Test 2: 60 Punkte (Gewicht 60 %).",
+      "answer": 68,
+      "format": "Ganze Zahl",
+      "explanation": "$\\bar{x} = 0{,}4 \\cdot 80 + 0{,}6 \\cdot 60 = 32 + 36 = 68$."
+    },
+    {
+      "id": "m-statistik-ex-23",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was zeigt ein Boxplot?",
+      "options": [
+        "Minimum, Q1, Median, Q3, Maximum",
+        "Nur den Mittelwert",
+        "Die Häufigkeitsverteilung",
+        "Die Standardabweichung"
+      ],
+      "correctIndex": 0,
+      "explanation": "Ein Boxplot zeigt die 5-Werte-Zusammenfassung: Minimum, erstes Quartil (Q1), Median, drittes Quartil (Q3) und Maximum."
+    },
+    {
+      "id": "m-statistik-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Stichprobe hat $\\bar{x} = 100$ und $s^2 = 16$. Ein Wert von $92$ hat welchen $z$-Score?",
+      "hint": "$s = \\sqrt{s^2} = \\sqrt{16} = 4$. Dann $z = \\frac{x - \\bar{x}}{s}$.",
+      "answer": -2,
+      "format": "Ganze Zahl",
+      "explanation": "$s = 4$. $z = \\frac{92 - 100}{4} = \\frac{-8}{4} = -2$. Der Wert liegt 2 Standardabweichungen unter dem Mittel."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-statistik-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das arithmetische Mittel von $15, 25, 35, 45, 55$.",
+      "answer": 35,
+      "format": "Ganze Zahl",
+      "explanation": "$\\bar{x} = \\frac{15+25+35+45+55}{5} = \\frac{175}{5} = 35$."
+    },
+    {
+      "id": "m-statistik-ex-02",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Median von $12, 7, 3, 18, 9, 14$. (Erst sortieren!)",
+      "hint": "Sortiert: $3, 7, 9, 12, 14, 18$.",
+      "answer": 10.5,
+      "format": "Dezimalzahl",
+      "explanation": "6 Werte. Median $= \\frac{9 + 12}{2} = 10{,}5$."
+    },
+    {
+      "id": "m-statistik-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Varianz von $10, 20, 30$.",
+      "hint": "$\\bar{x} = 20$.",
+      "answer": 66.67,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl, z.B. 66.67",
+      "explanation": "$\\bar{x} = 20$. $s^2 = \\frac{100+0+100}{3} = \\frac{200}{3} \\approx 66{,}67$."
+    },
+    {
+      "id": "m-statistik-ex-04",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Messreihe hat $\\bar{x} = 50$ und $s = 5$. Ein Wert von $60$ hat welchen $z$-Score?",
+      "hint": "$z = \\frac{x - \\bar{x}}{s}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$z = \\frac{60 - 50}{5} = \\frac{10}{5} = 2$."
+    },
+    {
+      "id": "m-statistik-ex-05",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Aussage zum Boxplot ist korrekt?",
+      "options": [
+        "Die Box zeigt den Bereich von Minimum bis Maximum",
+        "Die Box zeigt den Interquartilsabstand (IQR)",
+        "Der Median liegt immer in der Mitte der Box",
+        "Die Whisker zeigen Q1 und Q3"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die Box im Boxplot zeigt den Bereich zwischen Q1 und Q3, also den Interquartilsabstand (IQR)."
+    },
+    {
+      "id": "m-statistik-ex-06",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Spannweite der Daten $4, 8, 15, 16, 23, 42$.",
+      "answer": 38,
+      "format": "Ganze Zahl",
+      "explanation": "Spannweite $= 42 - 4 = 38$."
+    },
+    {
+      "id": "m-statistik-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den IQR von $10, 20, 30, 40, 50, 60$.",
+      "hint": "6 Werte. Q1 = 20, Q3 = 50.",
+      "answer": 30,
+      "format": "Ganze Zahl",
+      "explanation": "$Q_1 = 20$, $Q_3 = 50$. $IQR = 50 - 20 = 30$."
+    },
+    {
+      "id": "m-statistik-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Bestimme den Modus der Datenreihe $5, 3, 8, 3, 9, 3, 2$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "Der Wert $3$ kommt am häufigsten vor (3-mal)."
+    },
+    {
+      "id": "m-statistik-ex-09",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den gewichteten Mittelwert: Klausur (70 Punkte, Gewicht 60 %), Hausarbeit (90 Punkte, Gewicht 40 %).",
+      "answer": 78,
+      "format": "Ganze Zahl",
+      "explanation": "$\\bar{x} = 0{,}6 \\cdot 70 + 0{,}4 \\cdot 90 = 42 + 36 = 78$."
+    },
+    {
+      "id": "m-statistik-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Standardabweichung der Daten $4, 4, 4, 4$.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "Alle Werte sind gleich, also $\\bar{x} = 4$ und $s^2 = 0$. $s = 0$."
+    }
+  ]
+}

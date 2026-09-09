@@ -1,0 +1,370 @@
+{
+  "moduleSlug": "m-anageo",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-anageo-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib den Normalenvektor der Ebene $2x + 3y - z = 7$ an (in der Form (a,b,c)).",
+      "answer": "(2,3,-1)",
+      "format": "Vektor wie (2,3,-1)",
+      "explanation": "$\\vec{n} = (2, 3, -1)$ aus den Koeffizienten der Ebenengleichung."
+    },
+    {
+      "id": "m-anageo-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gegeben ist die Gerade $\\vec{x} = \\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix} + t \\begin{pmatrix}3\\\\-1\\\\4\\end{pmatrix}$. Welchen Punkt erhält man für $t = 0$? Gib die $z$-Koordinate an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "Für $t = 0$: $\\vec{x} = \\begin{pmatrix}1\\\\0\\\\2\\end{pmatrix}$. $z$-Koordinate: $2$."
+    },
+    {
+      "id": "m-anageo-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Eine Gerade geht durch $A(2,1,3)$ und $B(4,5,7)$. Gib die erste Komponente des Richtungsvektors $\\vec{AB}$ an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{AB} = (4-2, 5-1, 7-3) = (2, 4, 4)$. Erste Komponente: $2$."
+    },
+    {
+      "id": "m-anageo-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Dimension hat der Vektor $\\vec{v} = \\begin{pmatrix}3\\\\-1\\\\2\\\\5\\end{pmatrix}$?",
+      "options": [
+        "$\\mathbb{R}^2$",
+        "$\\mathbb{R}^3$",
+        "$\\mathbb{R}^4$",
+        "$\\mathbb{R}^5$"
+      ],
+      "correctIndex": 2,
+      "explanation": "Der Vektor hat 4 Komponenten, also ist er ein Element von $\\mathbb{R}^4$."
+    },
+    {
+      "id": "m-anageo-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Mittelpunkt der Strecke von $A(2,4,6)$ nach $B(8,2,0)$. Gib die $y$-Koordinate an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$M = (5, 3, 3)$. $y$-Koordinate: $3$."
+    },
+    {
+      "id": "m-anageo-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Form hat die Gleichung einer Ebene im $\\mathbb{R}^3$?",
+      "options": [
+        "$ax + by = d$",
+        "$ax + by + cz = d$",
+        "$x = a + tb$",
+        "$x^2 + y^2 + z^2 = r^2$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Eine Ebene im $\\mathbb{R}^3$ hat die Form $ax + by + cz = d$ mit Normalenvektor $\\vec{n} = (a, b, c)$."
+    },
+    {
+      "id": "m-anageo-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Abstand der Punkte $A(1,0,0)$ und $B(0,1,0)$ im $\\mathbb{R}^3$. Runde auf 2 Dezimalstellen.",
+      "answer": 1.41,
+      "tolerance": 0.02,
+      "format": "Dezimalzahl",
+      "explanation": "$d = \\sqrt{1+1+0} = \\sqrt{2} \\approx 1{,}41$."
+    },
+    {
+      "id": "m-anageo-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Gib die Gleichung der Ebene an, die den Normalenvektor $\\vec{n} = (0,0,1)$ hat und durch den Ursprung geht.",
+      "answer": "z=0",
+      "format": "Gleichung",
+      "explanation": "$z = 0$. Dies ist die $xy$-Ebene."
+    },
+    {
+      "id": "m-anageo-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Abstand des Ursprungs $(0,0,0)$ zur Ebene $x + 2y + 2z = 9$.",
+      "hint": "$d = \\frac{|ax_0 + by_0 + cz_0 - d|}{|\\vec{n}|}$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{n}| = 3$. $d = \\frac{9}{3} = 3$."
+    },
+    {
+      "id": "m-anageo-ex-10",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Die Ebenen $x + y + z = 1$ und $x - y = 0$ schneiden sich. Unter welchem Winkel?",
+      "options": [
+        "90°",
+        "45°",
+        "60°",
+        "0°"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{n}_1 \\cdot \\vec{n}_2 = (1,1,1) \\cdot (1,-1,0) = 0$. Winkel $= 90°$."
+    },
+    {
+      "id": "m-anageo-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Der Punkt $P(1,2,3)$ liegt auf der Geraden $\\vec{x} = (1,0,1)^T + t \\cdot (0,2,2)^T$. Bestimme $t$.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$y$: $0 + 2t = 2 \\Rightarrow t = 1$. Probe: $z = 1 + 2 = 3$ ✓."
+    },
+    {
+      "id": "m-anageo-ex-12",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Länge des Richtungsvektors $\\vec{d} = (2, 3, 6)^T$.",
+      "answer": 7,
+      "format": "Ganze Zahl",
+      "explanation": "$|\\vec{d}| = \\sqrt{4+9+36} = \\sqrt{49} = 7$."
+    },
+    {
+      "id": "m-anageo-ex-13",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Sind die Vektoren $\\vec{a} = (1, 2, 3)$ und $\\vec{b} = (2, 4, 6)$ linear abhängig?",
+      "options": [
+        "Ja, $\\vec{b} = 2\\vec{a}$",
+        "Nein, sie sind unabhängig",
+        "Ja, $\\vec{a} = 2\\vec{b}$",
+        "Man kann es nicht prüfen"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{b} = 2 \\cdot (1,2,3) = 2\\vec{a}$. Linear abhängig."
+    },
+    {
+      "id": "m-anageo-ex-14",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib die Ebenengleichung durch $P(2,0,1)$ mit Normalenvektor $\\vec{n} = (1,2,3)$ an. Bestimme $d$ in $x + 2y + 3z = d$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$1 \\cdot 2 + 2 \\cdot 0 + 3 \\cdot 1 = 5$."
+    },
+    {
+      "id": "m-anageo-ex-15",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist das Skalarprodukt von $\\vec{a} = (1, 0, 0)$ und $\\vec{b} = (0, 1, 0)$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$(0, 0, 1)$",
+        "$(1, 1, 0)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{a} \\cdot \\vec{b} = 1 \\cdot 0 + 0 \\cdot 1 + 0 \\cdot 0 = 0$. Die Vektoren sind orthogonal."
+    },
+    {
+      "id": "m-anageo-ex-16",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Normiere den Vektor $\\vec{v} = (0, 3, 4)^T$. Gib die dritte Komponente des Einheitsvektors an.",
+      "answer": 0.8,
+      "format": "Dezimalzahl",
+      "explanation": "$|\\vec{v}| = 5$. $\\vec{v}_0 = (0, 0{,}6, 0{,}8)$. Dritte Komponente: $0{,}8$."
+    },
+    {
+      "id": "m-anageo-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Abstand von $P(1,0,-1)$ zur Ebene $2x - y + 2z = 6$.",
+      "hint": "$d = \\frac{|2 \\cdot 1 - 0 + 2 \\cdot (-1) - 6|}{\\sqrt{4+1+4}}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$d = \\frac{|2-0-2-6|}{3} = \\frac{6}{3} = 2$."
+    },
+    {
+      "id": "m-anageo-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Gerade $g$: $\\vec{x} = (1,1,1)^T + t \\cdot (1,0,0)^T$ schneidet die Ebene $x = 3$. Gib die $z$-Koordinate des Schnittpunkts an.",
+      "answer": 1,
+      "format": "Ganze Zahl",
+      "explanation": "$x = 1 + t = 3 \\Rightarrow t = 2$. $z = 1 + 0 = 1$."
+    },
+    {
+      "id": "m-anageo-ex-19",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Sind die Geraden $g_1$: $(1,0,0)^T + t(2,1,0)^T$ und $g_2$: $(0,1,0)^T + s(4,2,0)^T$ parallel?",
+      "options": [
+        "Ja, sie sind parallel",
+        "Nein, sie schneiden sich",
+        "Nein, sie sind windschief",
+        "Nicht entscheidbar"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(4,2,0) = 2 \\cdot (2,1,0)$. Die Richtungsvektoren sind Vielfache, also parallel."
+    },
+    {
+      "id": "m-anageo-ex-20",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben die Ebene $E: x + y + z = 6$. Prüfe, ob $P(1, 2, 3)$ in der Ebene liegt. Wenn ja, gib $0$ an.",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "$1 + 2 + 3 = 6$ ✓. Abstand $= 0$."
+    },
+    {
+      "id": "m-anageo-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme den Schnittpunkt der Geraden $\\vec{x} = (0,0,1)^T + t(1,1,1)^T$ mit der Ebene $z = 4$. Gib die $x$-Koordinate an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$z = 1 + t = 4 \\Rightarrow t = 3$. $x = 0 + 3 = 3$."
+    },
+    {
+      "id": "m-anageo-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ergibt das Kreuzprodukt $\\vec{a} \\times \\vec{b}$ für $\\vec{a} = (1,0,0)$ und $\\vec{b} = (0,1,0)$?",
+      "options": [
+        "$(0, 0, 1)$",
+        "$(1, 1, 0)$",
+        "$(0, 0, 0)$",
+        "$(1, 0, 1)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$(1,0,0) \\times (0,1,0) = (0 \\cdot 0 - 0 \\cdot 1, 0 \\cdot 0 - 1 \\cdot 0, 1 \\cdot 1 - 0 \\cdot 0) = (0, 0, 1)$."
+    },
+    {
+      "id": "m-anageo-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne den Abstand zwischen den parallelen Ebenen $x + y + z = 0$ und $x + y + z = 3$. Runde auf 2 Dezimalstellen.",
+      "answer": 1.73,
+      "tolerance": 0.05,
+      "format": "Dezimalzahl",
+      "explanation": "$d = \\frac{3}{\\sqrt{3}} = \\sqrt{3} \\approx 1{,}73$."
+    },
+    {
+      "id": "m-anageo-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Gegeben die Ebene $E: 2x + y - 2z = 4$. Berechne den Abstand von $Q(2, 1, 0)$ zur Ebene.",
+      "answer": 0.33,
+      "tolerance": 0.05,
+      "format": "Dezimalzahl",
+      "explanation": "$d = \\frac{|4+1-0-4|}{3} = \\frac{1}{3} \\approx 0{,}33$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-anageo-ex-01",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Gib die Ebenengleichung durch $P(2,0,1)$ mit Normalenvektor $\\vec{n} = (1,2,3)$ an. Bestimme $d$ in $x + 2y + 3z = d$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$1 \\cdot 2 + 2 \\cdot 0 + 3 \\cdot 1 = 5$."
+    },
+    {
+      "id": "m-anageo-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Mittelpunkt der Strecke von $A(2,4,6)$ nach $B(8,2,0)$. Gib die $z$-Koordinate an.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$M = (5, 3, 3)$. $z$-Koordinate: $3$."
+    },
+    {
+      "id": "m-anageo-ex-03",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Lage haben die Ebenen $x + y + z = 1$ und $2x + 2y + 2z = 3$ zueinander?",
+      "options": [
+        "Sie sind parallel",
+        "Sie sind identisch",
+        "Sie schneiden sich in einer Geraden",
+        "Sie sind orthogonal"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{n}_2 = 2\\vec{n}_1$, aber $3 \\neq 2 \\cdot 1$. Parallel, nicht identisch."
+    },
+    {
+      "id": "m-anageo-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne den Abstand von $P(3,4,0)$ zur $xy$-Ebene ($z = 0$).",
+      "answer": 0,
+      "format": "Ganze Zahl",
+      "explanation": "Der Punkt liegt in der $xy$-Ebene. Abstand $= 0$."
+    },
+    {
+      "id": "m-anageo-ex-05",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welcher Punkt liegt in der Ebene $x + 2y - z = 4$?",
+      "options": [
+        "$P(1,1,1)$",
+        "$Q(2,1,0)$",
+        "$R(0,0,0)$",
+        "$S(4,0,0)$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Nur $Q$: $2 + 2 \\cdot 1 - 0 = 4$ ✓."
+    },
+    {
+      "id": "m-anageo-ex-06",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Abstand der Punkte $A(0,0,0)$ und $B(1,2,2)$.",
+      "answer": 3,
+      "format": "Ganze Zahl",
+      "explanation": "$d = \\sqrt{1+4+4} = 3$."
+    },
+    {
+      "id": "m-anageo-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme den Schnittpunkt der Geraden $\\vec{x} = (1,0,2)^T + t(1,1,0)^T$ mit der Ebene $x + y = 5$. Gib die $z$-Koordinate an.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$(1+t) + (0+t) = 5 \\Rightarrow t = 2$. $z = 2$."
+    },
+    {
+      "id": "m-anageo-ex-08",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Der Normalenvektor der Ebene $3x - y + 2z = 5$ ist:",
+      "options": [
+        "$(3, -1, 2)$",
+        "$(3, 1, 2)$",
+        "$(-3, 1, -2)$",
+        "$(5, 0, 0)$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$\\vec{n} = (3, -1, 2)$ aus den Koeffizienten."
+    },
+    {
+      "id": "m-anageo-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Normiere den Vektor $\\vec{v} = (6, 0, 8)^T$. Gib die dritte Komponente des Einheitsvektors an.",
+      "answer": 0.8,
+      "format": "Dezimalzahl",
+      "explanation": "$|\\vec{v}| = 10$. $\\vec{v}_0 = (0{,}6, 0, 0{,}8)$."
+    },
+    {
+      "id": "m-anageo-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne das Skalarprodukt $\\vec{a} \\cdot \\vec{b}$ für $\\vec{a} = (1, 2, -1)$ und $\\vec{b} = (3, 0, 4)$.",
+      "answer": -1,
+      "format": "Ganze Zahl",
+      "explanation": "$\\vec{a} \\cdot \\vec{b} = 3 + 0 - 4 = -1$."
+    }
+  ]
+}

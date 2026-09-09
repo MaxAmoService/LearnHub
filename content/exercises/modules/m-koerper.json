@@ -1,0 +1,371 @@
+{
+  "moduleSlug": "m-koerper",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-koerper-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das Volumen eines Würfels mit Kantenlänge $a = 4\\text{ cm}$.",
+      "answer": 64,
+      "format": "Ganze Zahl",
+      "explanation": "$V = a^3 = 4^3 = 64\\text{ cm}^3$."
+    },
+    {
+      "id": "m-koerper-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das Volumen eines Quaders mit den Kanten $a = 2$, $b = 5$, $c = 3$.",
+      "answer": 30,
+      "format": "Ganze Zahl",
+      "explanation": "$V = a \\cdot b \\cdot c = 2 \\cdot 5 \\cdot 3 = 30$."
+    },
+    {
+      "id": "m-koerper-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Oberfläche eines Würfels mit Kantenlänge $a = 5\\text{ cm}$.",
+      "answer": 150,
+      "format": "Ganze Zahl",
+      "explanation": "$O = 6a^2 = 6 \\cdot 25 = 150\\text{ cm}^2$."
+    },
+    {
+      "id": "m-koerper-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Formel beschreibt das Volumen eines Zylinders?",
+      "options": [
+        "$V = \\pi r h$",
+        "$V = \\pi r^2 h$",
+        "$V = \\frac{4}{3}\\pi r^3$",
+        "$V = \\frac{1}{3}\\pi r^2 h$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Das Volumen eines Zylinders ist $V = \\pi r^2 h$ (Grundfläche mal Höhe)."
+    },
+    {
+      "id": "m-koerper-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Raumdiagonale eines Würfels mit Kantenlänge $a = 5$. Gib den Faktor vor $\\sqrt{3}$ an.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$d = a\\sqrt{3} = 5\\sqrt{3}$. Der Faktor ist $5$."
+    },
+    {
+      "id": "m-koerper-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Berechne die Oberfläche eines Quaders mit $a = 3$, $b = 4$, $c = 5$.",
+      "options": [
+        "$94$",
+        "$60$",
+        "$47$",
+        "$80$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$O = 2(ab + ac + bc) = 2(12 + 15 + 20) = 2 \\cdot 47 = 94$."
+    },
+    {
+      "id": "m-koerper-ex-07",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Ein Würfel hat das Volumen $125\\text{ cm}^3$. Wie lang ist seine Kante?",
+      "options": [
+        "$5\\text{ cm}$",
+        "$25\\text{ cm}$",
+        "$4\\text{ cm}$",
+        "$15\\text{ cm}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$a = \\sqrt[3]{125} = 5\\text{ cm}$."
+    },
+    {
+      "id": "m-koerper-ex-08",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das Volumen eines Quaders mit Grundfläche $G = 20\\text{ cm}^2$ und Höhe $h = 6\\text{ cm}$.",
+      "answer": 120,
+      "format": "Ganze Zahl",
+      "explanation": "$V = G \\cdot h = 20 \\cdot 6 = 120\\text{ cm}^3$."
+    },
+    {
+      "id": "m-koerper-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne das Volumen eines Zylinders mit Radius $r = 3\\text{ cm}$ und Höhe $h = 4\\text{ cm}$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 36,
+      "format": "Ganze Zahl",
+      "explanation": "$V = \\pi r^2 h = \\pi \\cdot 9 \\cdot 4 = 36\\pi$. Der Faktor ist $36$."
+    },
+    {
+      "id": "m-koerper-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne das Volumen einer Kugel mit Radius $r = 6\\text{ cm}$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 288,
+      "format": "Ganze Zahl",
+      "explanation": "$V = \\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi \\cdot 216 = 288\\pi$. Der Faktor ist $288$."
+    },
+    {
+      "id": "m-koerper-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne das Volumen eines Kegels mit Radius $r = 3\\text{ cm}$ und Höhe $h = 7\\text{ cm}$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 21,
+      "format": "Ganze Zahl",
+      "explanation": "$V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi \\cdot 9 \\cdot 7 = 21\\pi$. Der Faktor ist $21$."
+    },
+    {
+      "id": "m-koerper-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Eine Pyramide und ein Prisma haben dieselbe Grundfläche und Höhe. Wie verhalten sich ihre Volumina?",
+      "options": [
+        "$V_{\\text{Pyramide}} = \\frac{1}{2} V_{\\text{Prisma}}$",
+        "$V_{\\text{Pyramide}} = \\frac{1}{3} V_{\\text{Prisma}}$",
+        "$V_{\\text{Pyramide}} = V_{\\text{Prisma}}$",
+        "$V_{\\text{Pyramide}} = \\frac{2}{3} V_{\\text{Prisma}}$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Eine Pyramide hat genau $\\frac{1}{3}$ des Volumens eines Prismas mit gleicher Grundfläche und Höhe."
+    },
+    {
+      "id": "m-koerper-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne das Volumen eines Prismas mit der Grundfläche $G = 12\\text{ cm}^2$ und der Höhe $h = 8\\text{ cm}$.",
+      "answer": 96,
+      "format": "Ganze Zahl",
+      "explanation": "$V = G \\cdot h = 12 \\cdot 8 = 96\\text{ cm}^3$."
+    },
+    {
+      "id": "m-koerper-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Eine Kugel hat das Volumen $V = 36\\pi$. Welchen Radius hat sie?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$6$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$\\frac{4}{3}\\pi r^3 = 36\\pi \\Rightarrow r^3 = 27 \\Rightarrow r = 3$."
+    },
+    {
+      "id": "m-koerper-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne die Mantelfläche eines Zylinders mit $r = 4$ und $h = 10$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 80,
+      "format": "Ganze Zahl",
+      "explanation": "$M = 2\\pi r h = 2\\pi \\cdot 4 \\cdot 10 = 80\\pi$. Der Faktor ist $80$."
+    },
+    {
+      "id": "m-koerper-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welcher Körper hat bei gleichem Volumen die kleinste Oberfläche?",
+      "options": [
+        "Würfel",
+        "Kugel",
+        "Zylinder",
+        "Quader"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die Kugel ist der geometrische Körper mit dem besten Volumen-Oberfläche-Verhältnis (isoperimetrische Eigenschaft)."
+    },
+    {
+      "id": "m-koerper-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne das Volumen einer Pyramide mit rechteckiger Grundfläche ($a = 6$, $b = 4$) und Höhe $h = 9$.",
+      "answer": 72,
+      "format": "Ganze Zahl",
+      "explanation": "$G = 6 \\cdot 4 = 24$. $V = \\frac{1}{3} \\cdot 24 \\cdot 9 = 72$."
+    },
+    {
+      "id": "m-koerper-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Oberfläche einer Kugel mit Radius $r = 4\\text{ cm}$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 64,
+      "format": "Ganze Zahl",
+      "explanation": "$O = 4\\pi r^2 = 4\\pi \\cdot 16 = 64\\pi$. Der Faktor ist $64$."
+    },
+    {
+      "id": "m-koerper-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Oberfläche eines Zylinders mit $r = 2$ und $h = 5$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 28,
+      "format": "Ganze Zahl",
+      "explanation": "$O = 2\\pi r^2 + 2\\pi r h = 8\\pi + 20\\pi = 28\\pi$. Der Faktor ist $28$."
+    },
+    {
+      "id": "m-koerper-ex-20",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Zylinder und ein Kegel haben denselben Radius und dieselbe Höhe. Wie verhalten sich ihre Volumina?",
+      "options": [
+        "$V_{\\text{Kegel}} = \\frac{1}{3} V_{\\text{Zylinder}}$",
+        "$V_{\\text{Kegel}} = \\frac{1}{2} V_{\\text{Zylinder}}$",
+        "$V_{\\text{Kegel}} = V_{\\text{Zylinder}}$",
+        "$V_{\\text{Kegel}} = \\frac{2}{3} V_{\\text{Zylinder}}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Der Kegel hat $\\frac{1}{3}$ des Volumens des Zylinders mit gleichem Radius und Höhe."
+    },
+    {
+      "id": "m-koerper-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Eine Kugel hat die Oberfläche $O = 100\\pi$. Bestimme den Radius.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$4\\pi r^2 = 100\\pi \\Rightarrow r^2 = 25 \\Rightarrow r = 5$."
+    },
+    {
+      "id": "m-koerper-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Hohlzylinder hat Außenradius $R = 5$, Innenradius $r = 3$ und Höhe $h = 8$. Welchen Faktor vor $\\pi$ hat das Volumen?",
+      "options": [
+        "$128$",
+        "$160$",
+        "$64$",
+        "$96$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$V = \\pi(R^2 - r^2)h = \\pi(25 - 9) \\cdot 8 = 128\\pi$. Der Faktor ist $128$."
+    },
+    {
+      "id": "m-koerper-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Kegel hat den Radius $r = 6$ und die Schiefe Höhe $l = 10$. Berechne die Mantelfläche. Gib den Faktor vor $\\pi$ an.",
+      "answer": 60,
+      "format": "Ganze Zahl",
+      "explanation": "$M = \\pi r l = \\pi \\cdot 6 \\cdot 10 = 60\\pi$. Der Faktor ist $60$."
+    },
+    {
+      "id": "m-koerper-ex-24",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Quader hat die Kanten $a = 3$, $b = 4$, $c = 12$. Berechne die Länge der Raumdiagonale.",
+      "answer": 13,
+      "format": "Ganze Zahl",
+      "explanation": "$d = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13$."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-koerper-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne das Volumen eines Würfels mit Kantenlänge $a = 6\\text{ cm}$.",
+      "answer": 216,
+      "format": "Ganze Zahl",
+      "explanation": "$V = a^3 = 6^3 = 216\\text{ cm}^3$."
+    },
+    {
+      "id": "m-koerper-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne die Oberfläche eines Würfels mit Kantenlänge $a = 3\\text{ cm}$.",
+      "answer": 54,
+      "format": "Ganze Zahl",
+      "explanation": "$O = 6a^2 = 6 \\cdot 9 = 54\\text{ cm}^2$."
+    },
+    {
+      "id": "m-koerper-ex-03",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne das Volumen eines Zylinders mit $r = 5$ und $h = 3$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 75,
+      "format": "Ganze Zahl",
+      "explanation": "$V = \\pi r^2 h = \\pi \\cdot 25 \\cdot 3 = 75\\pi$. Der Faktor ist $75$."
+    },
+    {
+      "id": "m-koerper-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Eine Kugel hat das Volumen $V = 288\\pi$. Bestimme den Radius.",
+      "answer": 6,
+      "format": "Ganze Zahl",
+      "explanation": "$\\frac{4}{3}\\pi r^3 = 288\\pi \\Rightarrow r^3 = 216 \\Rightarrow r = 6$."
+    },
+    {
+      "id": "m-koerper-ex-05",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Ein Würfel hat die Oberfläche $150\\text{ cm}^2$. Wie lang ist seine Kante?",
+      "options": [
+        "$5\\text{ cm}$",
+        "$25\\text{ cm}$",
+        "$6\\text{ cm}$",
+        "$10\\text{ cm}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$6a^2 = 150 \\Rightarrow a^2 = 25 \\Rightarrow a = 5$."
+    },
+    {
+      "id": "m-koerper-ex-06",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne das Volumen einer Pyramide mit quadratischer Grundfläche ($a = 8$) und Höhe $h = 15$.",
+      "answer": 320,
+      "format": "Ganze Zahl",
+      "explanation": "$G = 8^2 = 64$. $V = \\frac{1}{3} \\cdot 64 \\cdot 15 = 320$."
+    },
+    {
+      "id": "m-koerper-ex-07",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne die Oberfläche einer Kugel mit Radius $r = 7$. Gib den Faktor vor $\\pi$ an.",
+      "answer": 196,
+      "format": "Ganze Zahl",
+      "explanation": "$O = 4\\pi r^2 = 4\\pi \\cdot 49 = 196\\pi$. Der Faktor ist $196$."
+    },
+    {
+      "id": "m-koerper-ex-08",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Ein Kegel hat Radius $r = 3$ und Höhe $h = 4$. Wie lang ist die schiefe Höhe $l$?",
+      "hint": "Pythagoras: $l = \\sqrt{r^2 + h^2}$.",
+      "options": [
+        "$5$",
+        "$7$",
+        "$6$",
+        "$\\sqrt{7}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$l = \\sqrt{r^2 + h^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$."
+    },
+    {
+      "id": "m-koerper-ex-09",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Berechne die Mantelfläche eines Zylinders mit $r = 3$ und $h = 7$. Welchen Faktor vor $\\pi$ hat sie?",
+      "options": [
+        "$21$",
+        "$42$",
+        "$28$",
+        "$56$"
+      ],
+      "correctIndex": 1,
+      "explanation": "$M = 2\\pi r h = 2\\pi \\cdot 3 \\cdot 7 = 42\\pi$. Der Faktor ist $42$."
+    },
+    {
+      "id": "m-koerper-ex-10",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Ein Hohlzylinder hat $R = 6$, $r = 4$ und $h = 5$. Berechne das Volumen. Gib den Faktor vor $\\pi$ an.",
+      "answer": 100,
+      "format": "Ganze Zahl",
+      "explanation": "$V = \\pi(R^2 - r^2)h = \\pi(36 - 16) \\cdot 5 = 100\\pi$. Der Faktor ist $100$."
+    }
+  ]
+}

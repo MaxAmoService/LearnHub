@@ -1,0 +1,276 @@
+{
+  "moduleSlug": "m-komplexe",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-komplexe-ex-01",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $(4 + 3i) + (2 - 5i)$. Gib das Ergebnis in der Form $a + bi$ an.",
+      "answer": "6-2i",
+      "format": "Term wie a+bi",
+      "explanation": "Reelle Teile addieren: $4 + 2 = 6$. Imaginäre Teile addieren: $3i + (-5i) = -2i$. Ergebnis: $6 - 2i$."
+    },
+    {
+      "id": "m-komplexe-ex-02",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne: $(7 + 2i) - (3 + 6i)$. Gib das Ergebnis in der Form $a + bi$ an.",
+      "answer": "4-4i",
+      "format": "Term wie a+bi",
+      "explanation": "$7 - 3 = 4$ und $2i - 6i = -4i$. Ergebnis: $4 - 4i$."
+    },
+    {
+      "id": "m-komplexe-ex-03",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Betrag von $z = 5 + 12i$.",
+      "answer": 13,
+      "format": "Ganze Zahl",
+      "explanation": "$|z| = \\sqrt{5^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$."
+    },
+    {
+      "id": "m-komplexe-ex-04",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist das komplex Konjugierte von $z = 3 - 4i$?",
+      "options": [
+        "$3 + 4i$",
+        "$-3 + 4i$",
+        "$-3 - 4i$",
+        "$4 + 3i$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Das Konjugierte erhält man, indem man das Vorzeichen des Imaginärteils umdreht: $\\overline{3 - 4i} = 3 + 4i$."
+    },
+    {
+      "id": "m-komplexe-ex-05",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne $i^3$. (Hinweis: $i^2 = -1$)",
+      "answer": "-i",
+      "format": "Term",
+      "explanation": "$i^3 = i^2 \\cdot i = -1 \\cdot i = -i$."
+    },
+    {
+      "id": "m-komplexe-ex-06",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Aussage über $i = \\sqrt{-1}$ ist korrekt?",
+      "options": [
+        "$i^2 = 1$",
+        "$i^2 = -1$",
+        "$i^4 = -1$",
+        "$i^3 = 1$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Per Definition ist $i^2 = -1$. Weiter: $i^3 = -i$, $i^4 = 1$, und das Muster wiederholt sich alle 4."
+    },
+    {
+      "id": "m-komplexe-ex-07",
+      "type": "numeric",
+      "difficulty": 1,
+      "prompt": "Berechne den Betrag von $z = -3 + 4i$.",
+      "answer": 5,
+      "format": "Ganze Zahl",
+      "explanation": "$|z| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$."
+    },
+    {
+      "id": "m-komplexe-ex-08",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist $z \\cdot \\overline{z}$ für $z = 2 + 3i$?",
+      "options": [
+        "$13$",
+        "$-5$",
+        "$4 + 9i$",
+        "$1 + 0i$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$z \\cdot \\overline{z} = (2+3i)(2-3i) = 4 - 9i^2 = 4 + 9 = 13 = |z|^2$. Allgemein gilt: $z\\overline{z} = |z|^2$."
+    },
+    {
+      "id": "m-komplexe-ex-09",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne: $(2 + i)(3 - 4i)$. Gib das Ergebnis in der Form $a + bi$ an.",
+      "answer": "10-5i",
+      "format": "Term wie a+bi",
+      "explanation": "$(2+i)(3-4i) = 6 - 8i + 3i - 4i^2 = 6 - 5i + 4 = 10 - 5i$."
+    },
+    {
+      "id": "m-komplexe-ex-10",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\frac{4 + 2i}{1 + i}$. Gib das Ergebnis in der Form $a + bi$ an.",
+      "hint": "Erweitere mit dem Konjugierten des Nenners: $1 - i$.",
+      "answer": "3-i",
+      "format": "Term wie a+bi",
+      "explanation": "$\\frac{4+2i}{1+i} \\cdot \\frac{1-i}{1-i} = \\frac{(4+2i)(1-i)}{1+1} = \\frac{4-4i+2i-2i^2}{2} = \\frac{6-2i}{2} = 3 - i$."
+    },
+    {
+      "id": "m-komplexe-ex-11",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $i^{15}$. (Hinweis: Das Muster $i, -1, -i, 1$ wiederholt sich alle 4.)",
+      "answer": "-i",
+      "format": "Term",
+      "explanation": "$15 \\div 4 = 3$ Rest $3$. Also $i^{15} = i^3 = -i$."
+    },
+    {
+      "id": "m-komplexe-ex-12",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Schreibe $z = 1 + i$ in der Polarform $z = r \\cdot e^{i\\varphi}$. Wie groß ist $r$?",
+      "options": [
+        "$\\sqrt{2}$",
+        "$2$",
+        "$1$",
+        "$\\sqrt{3}$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$r = |z| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$. Der Winkel ist $\\varphi = 45°$."
+    },
+    {
+      "id": "m-komplexe-ex-13",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $\\frac{3}{2 - i}$. Gib den Realteil als Dezimalzahl an.",
+      "hint": "Erweitere mit $2 + i$.",
+      "answer": 1.2,
+      "format": "Dezimalzahl",
+      "explanation": "$\\frac{3}{2-i} \\cdot \\frac{2+i}{2+i} = \\frac{6+3i}{4+1} = \\frac{6+3i}{5} = 1{,}2 + 0{,}6i$. Realteil: $1{,}2$."
+    },
+    {
+      "id": "m-komplexe-ex-14",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Für welche reelle Zahl $a$ gilt $|a + 2i| = 4$?",
+      "options": [
+        "$a = \\pm 2\\sqrt{3}$",
+        "$a = 4$",
+        "$a = \\pm 2$",
+        "$a = 0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$|z| = \\sqrt{a^2 + 4} = 4 \\Rightarrow a^2 + 4 = 16 \\Rightarrow a^2 = 12 \\Rightarrow a = \\pm 2\\sqrt{3}$."
+    },
+    {
+      "id": "m-komplexe-ex-15",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Berechne $(1 + i)^2$. Gib das Ergebnis in der Form $a + bi$ an.",
+      "answer": "2i",
+      "format": "Term wie a+bi",
+      "explanation": "$(1+i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 2i$."
+    },
+    {
+      "id": "m-komplexe-ex-16",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welcher Winkel $\\varphi$ (in Grad) gehört zur Polarform von $z = -i$?",
+      "options": [
+        "$270°$",
+        "$90°$",
+        "$180°$",
+        "$0°$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$z = -i$ liegt auf der negativen imaginären Achse. Das entspricht $270°$ (oder $-90°$)."
+    },
+    {
+      "id": "m-komplexe-ex-17",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse die Gleichung $z^2 + 4 = 0$ über $\\mathbb{C}$. Gib den positiven Imaginärteil der Lösungen an.",
+      "hint": "$z^2 = -4$, also $z = \\pm\\sqrt{-4}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$z^2 = -4 \\Rightarrow z = \\pm\\sqrt{-4} = \\pm 2i$. Der positive Imaginärteil ist $2$."
+    },
+    {
+      "id": "m-komplexe-ex-18",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne $(2e^{i\\pi/3})^3$. Gib das Ergebnis als ganze Zahl an.",
+      "hint": "Nutze $(re^{i\\varphi})^n = r^n e^{in\\varphi}$.",
+      "answer": -8,
+      "format": "Ganze Zahl",
+      "explanation": "$(2e^{i\\pi/3})^3 = 2^3 e^{i\\pi} = 8(-1 + 0i) = -8$."
+    },
+    {
+      "id": "m-komplexe-ex-19",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Löse die quadratische Gleichung $z^2 - 2z + 5 = 0$. Gib den Imaginärteil der Lösungen an (positiver Wert).",
+      "hint": "Mitternachtsformel: $z = \\frac{2 \\pm \\sqrt{4 - 20}}{2}$.",
+      "answer": 2,
+      "format": "Ganze Zahl",
+      "explanation": "$z = \\frac{2 \\pm \\sqrt{-16}}{2} = \\frac{2 \\pm 4i}{2} = 1 \\pm 2i$. Imaginärteil: $\\pm 2$, positiver Wert: $2$."
+    },
+    {
+      "id": "m-komplexe-ex-20",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $e^{i\\pi} + 1$? (Eulersche Identität)",
+      "options": [
+        "$0$",
+        "$2$",
+        "$-2$",
+        "$i$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$e^{i\\pi} = \\cos\\pi + i\\sin\\pi = -1$. Also $e^{i\\pi} + 1 = -1 + 1 = 0$. Das ist die berühmte Eulersche Identität!"
+    },
+    {
+      "id": "m-komplexe-ex-21",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Berechne $(1+i)^4$. Gib das Ergebnis als ganze Zahl an.",
+      "hint": "$(1+i)^2 = 2i$, dann quadrieren.",
+      "answer": -4,
+      "format": "Ganze Zahl",
+      "explanation": "$(1+i)^2 = 2i$. $(2i)^2 = 4i^2 = -4$."
+    },
+    {
+      "id": "m-komplexe-ex-22",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Die Gleichung $z^4 = 1$ hat 4 Lösungen. Wie viele davon sind reell?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$1$",
+        "$0$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$z^4 = 1 \\Rightarrow z = \\pm 1, \\pm i$. Die reellen Lösungen sind $z = 1$ und $z = -1$. Also $2$ reelle Lösungen."
+    },
+    {
+      "id": "m-komplexe-ex-23",
+      "type": "numeric",
+      "difficulty": 3,
+      "prompt": "Bestimme den Betrag von $z = \\frac{3 + 4i}{1 - 2i}$.",
+      "hint": "Nutze $|\\frac{z_1}{z_2}| = \\frac{|z_1|}{|z_2|}$.",
+      "answer": "√5",
+      "format": "Term",
+      "explanation": "$|3+4i| = 5$, $|1-2i| = \\sqrt{5}$. $|z| = \\frac{5}{\\sqrt{5}} = \\sqrt{5}$."
+    },
+    {
+      "id": "m-komplexe-ex-24",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist $(1+i)^8$? (Nutze die Polarform!)",
+      "options": [
+        "$16$",
+        "$-16$",
+        "$16i$",
+        "$256$"
+      ],
+      "correctIndex": 0,
+      "explanation": "$1+i = \\sqrt{2} e^{i\\pi/4}$. $(1+i)^8 = (\\sqrt{2})^8 e^{i \\cdot 8 \\cdot \\pi/4} = 16 e^{i2\\pi} = 16 \\cdot 1 = 16$."
+    }
+  ],
+  "exam": []
+}

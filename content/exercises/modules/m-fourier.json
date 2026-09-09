@@ -1,0 +1,202 @@
+{
+  "moduleSlug": "m-fourier",
+  "source": "manual",
+  "reviewedBy": null,
+  "practice": [
+    {
+      "id": "m-fourier-ex-01",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Wie viele Sinus-Terme braucht man für eine exakte Rechteckfunktion?",
+      "options": [
+        "1",
+        "3",
+        "Endlich viele",
+        "Unendlich viele"
+      ],
+      "correctIndex": 3,
+      "explanation": "Die Fourier-Reihe einer Rechteckfunktion hat unendlich viele Terme."
+    },
+    {
+      "id": "m-fourier-ex-02",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Was ist die Grundfrequenz einer Funktion mit Periode $T$?",
+      "options": [
+        "$f = T$",
+        "$f = 1/T$",
+        "$f = 2\\pi T$",
+        "$f = T/2\\pi$"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die Grundfrequenz ist $f = 1/T$."
+    },
+    {
+      "id": "m-fourier-ex-03",
+      "type": "choice",
+      "difficulty": 1,
+      "prompt": "Welche Fourier-Koeffizienten hat eine gerade Funktion?",
+      "options": [
+        "Nur $a_n$",
+        "Nur $b_n$",
+        "Beide",
+        "Keine"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gerade Funktionen haben nur Kosinus-Terme ($a_n$), da Kosinus gerade ist."
+    },
+    {
+      "id": "m-fourier-ex-04",
+      "type": "numeric",
+      "difficulty": 2,
+      "prompt": "Wie heißt die Periode der Funktion $f(x) = \\sin(3x)$?",
+      "hint": "$T = 2\\pi/n$.",
+      "answer": "2pi/3",
+      "tolerance": 0.01,
+      "format": "Bruch mit pi",
+      "explanation": "$T = \\frac{2\\pi}{3}$"
+    },
+    {
+      "id": "m-fourier-ex-05",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was bedeutet Orthogonalität bei Sinus/Kosinus?",
+      "options": [
+        "Sie sind senkrecht zueinander",
+        "Ihr Integral über eine Periode ist 0",
+        "Sie haben gleiche Amplitude",
+        "Sie sind identisch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Orthogonal bedeutet: $\\int_{-\\pi}^{\\pi} \\cos(mx)\\cos(nx)dx = 0$ für $m \\neq n$."
+    },
+    {
+      "id": "m-fourier-ex-06",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Komplexität hat die naive DFT?",
+      "options": [
+        "$O(n)$",
+        "$O(n \\log n)$",
+        "$O(n^2)$",
+        "$O(2^n)$"
+      ],
+      "correctIndex": 2,
+      "explanation": "Die naive DFT hat $O(n^2)$, die FFT verbessert auf $O(n \\log n)$."
+    },
+    {
+      "id": "m-fourier-ex-07",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was nutzt MP3 zur Kompression?",
+      "options": [
+        "Fourier-Transformation",
+        "Mittelwertbildung",
+        "Rundung",
+        "Sortierung"
+      ],
+      "correctIndex": 0,
+      "explanation": "MP3 nutzt eine Variante der Fourier-Transformation (MDCT), um unwichtige Frequenzen zu entfernen."
+    },
+    {
+      "id": "m-fourier-ex-08",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was passiert bei der inversen Fourier-Transformation?",
+      "options": [
+        "Zeit → Frequenz",
+        "Frequenz → Zeit",
+        "Amplitude → Phase",
+        "Phase → Amplitude"
+      ],
+      "correctIndex": 1,
+      "explanation": "Die inverse Transformation geht vom Frequenzbereich zurück in den Zeitbereich."
+    },
+    {
+      "id": "m-fourier-ex-09",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Welche Anwendung hat Fourier in der Medizin?",
+      "options": [
+        "Blutdruckmessung",
+        "CT/MRT-Bildrekonstruktion",
+        "Herzfrequenzmessung",
+        "Röntgenaufnahmen"
+      ],
+      "correctIndex": 1,
+      "explanation": "CT und MRT nutzen Fourier-basierte Algorithmen zur Bildrekonstruktion."
+    },
+    {
+      "id": "m-fourier-ex-10",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was ist das Frequenzspektrum?",
+      "options": [
+        "Die maximale Frequenz",
+        "Die Darstellung aller enthaltenen Frequenzen",
+        "Die Grundfrequenz",
+        "Die Phasenverschiebung"
+      ],
+      "correctIndex": 1,
+      "explanation": "Das Spektrum zeigt, welche Frequenzen mit welcher Amplitude im Signal enthalten sind."
+    }
+  ],
+  "exam": [
+    {
+      "id": "m-fourier-ex-01",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Welche Koeffizienten hat eine ungerade Funktion?",
+      "options": [
+        "Nur $a_n$",
+        "Nur $b_n$",
+        "Beide",
+        "Keine"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ungerade Funktionen haben nur Sinus-Terme ($b_n$), da Sinus ungerade ist."
+    },
+    {
+      "id": "m-fourier-ex-02",
+      "type": "choice",
+      "difficulty": 2,
+      "prompt": "Was ist die Euler-Formel?",
+      "options": [
+        "$e^{ix} = \\cos x + i\\sin x$",
+        "$e^{ix} = \\cos x - i\\sin x$",
+        "$e^x = \\cos x + \\sin x$",
+        "$e^{ix} = i\\cos x + \\sin x$"
+      ],
+      "correctIndex": 0,
+      "explanation": "Die Euler-Formel: $e^{ix} = \\cos x + i\\sin x$."
+    },
+    {
+      "id": "m-fourier-ex-03",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Was beschreibt die Unschärferelation bei Fourier?",
+      "options": [
+        "Je breiter das Signal, desto breiter das Spektrum",
+        "Je schmaler das Signal, desto breiter das Spektrum",
+        "Signal und Spektrum haben immer gleiche Breite",
+        "Es gibt keine Beziehung"
+      ],
+      "correctIndex": 1,
+      "explanation": "Unschärferelation: $\\Delta t \\cdot \\Delta \\omega \\geq 1/2$. Schmales Signal → breites Spektrum."
+    },
+    {
+      "id": "m-fourier-ex-04",
+      "type": "choice",
+      "difficulty": 3,
+      "prompt": "Warum ist FFT schneller als DFT?",
+      "options": [
+        "Weniger Datenpunkte",
+        "Teile-und-herrsche-Prinzip",
+        "Approximation",
+        "Parallelisierung"
+      ],
+      "correctIndex": 1,
+      "explanation": "FFT nutzt Symmetrien und das Teile-und-herrsche-Prinzip, um die Komplexität von $O(n^2)$ auf $O(n\\log n)$ zu reduzieren."
+    }
+  ]
+}
