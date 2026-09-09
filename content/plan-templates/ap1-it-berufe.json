@@ -66,7 +66,8 @@
       "order": 7,
       "weight": 3,
       "estimatedUnits": 2,
-      "topicSlug": "computersysteme-virtualisierung-cloud"
+      "topicSlug": "computersysteme-virtualisierung-cloud",
+      "lessonId": "hw-8"
     },
     {
       "title": "Von-Neumann-Architektur und CPU-Aufbau",
@@ -74,7 +75,8 @@
       "order": 8,
       "weight": 4,
       "estimatedUnits": 2,
-      "topicSlug": "computersysteme-von-neumann-cpu"
+      "topicSlug": "computersysteme-von-neumann-cpu",
+      "lessonId": "hw-1"
     },
     {
       "title": "CPU: Pipelining, Caches und RISC vs. CISC",
@@ -90,7 +92,8 @@
       "order": 10,
       "weight": 3,
       "estimatedUnits": 1,
-      "topicSlug": "computersysteme-busse-takt-befehlssatz"
+      "topicSlug": "computersysteme-busse-takt-befehlssatz",
+      "lessonId": "hw-2"
     },
     {
       "title": "Speicherhierarchie und RAM-Arten",
@@ -106,7 +109,8 @@
       "order": 12,
       "weight": 4,
       "estimatedUnits": 2,
-      "topicSlug": "computersysteme-speichermedien-raid"
+      "topicSlug": "computersysteme-speichermedien-raid",
+      "lessonId": "hw-5"
     },
     {
       "title": "Ein- und Ausgabegeräte",
@@ -114,7 +118,8 @@
       "order": 13,
       "weight": 2,
       "estimatedUnits": 1,
-      "topicSlug": "computersysteme-ein-ausgabegeraete"
+      "topicSlug": "computersysteme-ein-ausgabegeraete",
+      "lessonId": "hw-4"
     },
     {
       "title": "BIOS/UEFI und Bootvorgang",
@@ -122,7 +127,8 @@
       "order": 14,
       "weight": 3,
       "estimatedUnits": 1,
-      "topicSlug": "computersysteme-bios-uefi-boot"
+      "topicSlug": "computersysteme-bios-uefi-boot",
+      "lessonId": "hw-12"
     },
     {
       "title": "Schnittstellen und Datenübertragung (seriell/parallel)",
@@ -154,7 +160,8 @@
       "order": 18,
       "weight": 4,
       "estimatedUnits": 2,
-      "topicSlug": "netzwerktechnik-tcpip-protokolle"
+      "topicSlug": "netzwerktechnik-tcpip-protokolle",
+      "lessonId": "netz-2"
     },
     {
       "title": "IPv4-Adressierung",
@@ -162,7 +169,8 @@
       "order": 19,
       "weight": 4,
       "estimatedUnits": 2,
-      "topicSlug": "netzwerktechnik-ipv4-adressierung"
+      "topicSlug": "netzwerktechnik-ipv4-adressierung",
+      "lessonId": "netz-3"
     },
     {
       "title": "Subnetting: CIDR, Subnetzmaske, VLSM",
@@ -170,7 +178,8 @@
       "order": 20,
       "weight": 5,
       "estimatedUnits": 3,
-      "topicSlug": "netzwerktechnik-subnetting"
+      "topicSlug": "netzwerktechnik-subnetting",
+      "lessonId": "netz-4"
     },
     {
       "title": "IPv6-Grundlagen",
@@ -306,7 +315,8 @@
       "order": 37,
       "weight": 3,
       "estimatedUnits": 1,
-      "topicSlug": "it-sicherheit-authentifizierung-passwoerter"
+      "topicSlug": "it-sicherheit-authentifizierung-passwoerter",
+      "lessonId": "sec-2"
     },
     {
       "title": "Netzwerksicherheit und Firewalls",
@@ -322,7 +332,8 @@
       "order": 39,
       "weight": 4,
       "estimatedUnits": 2,
-      "topicSlug": "it-sicherheit-verschluesselung-pki"
+      "topicSlug": "it-sicherheit-verschluesselung-pki",
+      "lessonId": "sec-5"
     },
     {
       "title": "Web-Security (OWASP Top 10)",
@@ -330,7 +341,8 @@
       "order": 40,
       "weight": 4,
       "estimatedUnits": 2,
-      "topicSlug": "it-sicherheit-web-security-owasp"
+      "topicSlug": "it-sicherheit-web-security-owasp",
+      "lessonId": "sec-4"
     },
     {
       "title": "Social Engineering und Phishing",
@@ -338,7 +350,8 @@
       "order": 41,
       "weight": 3,
       "estimatedUnits": 1,
-      "topicSlug": "it-sicherheit-social-engineering"
+      "topicSlug": "it-sicherheit-social-engineering",
+      "lessonId": "sec-6"
     },
     {
       "title": "Wirtschaftlichkeit: Kosten, Nutzen, Gewinn",
@@ -402,7 +415,8 @@
       "order": 49,
       "weight": 2,
       "estimatedUnits": 1,
-      "topicSlug": "projektmanagement-magisches-dreieck"
+      "topicSlug": "projektmanagement-magisches-dreieck",
+      "lessonId": "pm-2"
     },
     {
       "title": "Klassisches Projektmanagement: Wasserfall und Meilensteine",

@@ -16,7 +16,8 @@
       "moduleSlug": "mathe-folgen-reihen",
       "order": 1,
       "weight": 3,
-      "estimatedUnits": 10
+      "estimatedUnits": 10,
+      "lessonId": "m-fr-2"
     },
     {
       "title": "Differentialrechnung",
