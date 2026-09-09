@@ -1,5 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useAuth } from "./AuthProvider";
 import {
@@ -35,7 +37,13 @@ import {
   MessageSquare,
   Send,
   CheckCircle2,
+  MousePointerClick,
+  Calculator,
+  PenLine,
 } from "lucide-react";
+
+const CalculatorPanel = dynamic(() => import("./clicker/CalculatorPanel"), { ssr: false });
+const SketchPad = dynamic(() => import("./clicker/SketchPad"), { ssr: false });
 
 // ---------------------------------------------------------------------------
 // Types
@@ -234,6 +242,7 @@ export default function LearningClicker() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [activeTab, setActiveTab] = useState<"upgrades" | "pets" | "prestige">("upgrades");
+  const [mainTab, setMainTab] = useState<"clicker" | "rechner" | "notizen">("clicker");
   const [clickEffects, setClickEffects] = useState<{ id: number; x: number; y: number; value: number; isCrit: boolean }[]>([]);
   const [particles, setParticles] = useState<{ id: number; x: number; y: number; color: string; angle: number }[]>([]);
   const [pulseRings, setPulseRings] = useState<{ id: number; color: string }[]>([]);
@@ -245,7 +254,7 @@ export default function LearningClicker() {
   const [buyFeedback, setBuyFeedback] = useState<string | null>(null);
   const [buttonGlow, setButtonGlow] = useState<"combo" | "golden" | null>(null);
   const [upgradesSubTab, setUpgradesSubTab] = useState<"klick" | "auto" | "speed" | "synergie">("klick");
-  const [windowSize, setWindowSize] = useState({ w: 384, h: 0 });
+  const [windowSize, setWindowSize] = useState({ w: 400, h: 0 });
   const [isResizing, setIsResizing] = useState(false);
   const [tooltipSkill, setTooltipSkill] = useState<string | null>(null);
   const tooltipTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -1015,7 +1024,31 @@ export default function LearningClicker() {
             </button>
           </div>
 
-          {!isMinimized && !loading && (
+          {/* Haupt-Tabs: Clicker | Rechner | Notizen */}
+          {!isMinimized && (
+            <div className="flex border-b border-slate-700/50 bg-slate-900/60">
+              {([
+                { id: "clicker", label: "Clicker", icon: <MousePointerClick className="w-3.5 h-3.5" /> },
+                { id: "rechner", label: "Rechner", icon: <Calculator className="w-3.5 h-3.5" /> },
+                { id: "notizen", label: "Notizen", icon: <PenLine className="w-3.5 h-3.5" /> },
+              ] as const).map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setMainTab(tab.id)}
+                  className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-[11px] font-semibold transition-colors border-r border-slate-700/30 last:border-r-0 ${
+                    mainTab === tab.id
+                      ? "bg-slate-800/80 text-amber-300 border-b-2 border-b-amber-400"
+                      : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40"
+                  }`}
+                >
+                  {tab.icon}
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {!isMinimized && !loading && mainTab === "clicker" && (
             <>
               {/* Points display */}
               <div className="p-3 text-center">
@@ -1949,6 +1982,9 @@ export default function LearningClicker() {
               </div>
             </>
           )}
+
+          {!isMinimized && mainTab === "rechner" && <CalculatorPanel />}
+          {!isMinimized && mainTab === "notizen" && <SketchPad />}
 
           {loading && (
             <div className="p-4 text-center text-slate-500 text-xs">Lade...</div>
